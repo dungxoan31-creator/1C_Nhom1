@@ -34,6 +34,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Report.APReconciliationWithAccounting</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Report.CashPosition</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Report.ActualVsPlanCashFlow</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.APVerification</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

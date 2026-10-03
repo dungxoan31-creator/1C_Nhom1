@@ -38,7 +38,7 @@ FROM
 		CFP.CashFlowItem) AS Plan
 		FULL JOIN (SELECT
 			CF.CashFlowItem AS CashFlowItem,
-			SUM(CF.AmountExpenseTurnover) AS ActualAmount
+			SUM(CF.AmountExpense) AS ActualAmount
 		FROM
 			AccumulationRegister.CashFlow.Turnovers AS CF
 		GROUP BY

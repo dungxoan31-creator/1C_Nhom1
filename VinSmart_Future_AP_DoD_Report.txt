@@ -1,0 +1,18 @@
+﻿=================================================================
+   VINSMART FUTURE - AP & CASH MANAGEMENT MVP VERIFICATION REPORT
+   Thoi gian chay: 10/3/2026 3:10:51 PM
+=================================================================
+
+[DoD 1] Du no chi tiet AWS Cloud Services (100tr - 40tr = 60tr): PASS (60,000,000 VND)
+[DoD 2] Du no chi tiet Qualcomm Technologies (200tr): PASS (200,000,000 VND)
+[DoD 3] Tong du no So chi tiet AP (60tr + 200tr = 260tr): PASS (260,000,000 VND)
+[DoD 4] Tong so du Co TK 331 tren So cai GeneralLedger: PASS (260,000,000 VND)
+[DoD 5] Doi chieu So chi tiet AP va TK 331 (Variance = 0): PASS (Variance = 0.00)
+[DoD 6] Dong tien thuc chi ghi nhan tren So CashFlow: PASS (40,000,000 VND)
+[DoD 7] Tinh DueDate tu dong (AWS Net 30 -> 31/10/2026, Qualcomm Net 45 -> 15/11/2026): PASS
+[DoD 8] Bien dong cong no AWS (Dau ky: 0, Mua: 100tr, Tra: 40tr, Cuoi ky: 60tr): PASS
+[DoD 9] Actual vs Plan (Ke hoach thang 10: 100tr, Thuc chi: 40tr, Chenh lech: 60tr): PASS
+
+=================================================================
+   KET QUA CHUNG CUOC: >>> TAT CA 9 TIEU CHI DOD HOAN TOAN DAT CHUAN (100% PASS) <<<
+=================================================================

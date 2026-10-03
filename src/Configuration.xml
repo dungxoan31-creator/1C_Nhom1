@@ -221,6 +221,7 @@
 			<Subsystem>Sale</Subsystem>
 			<Subsystem>Staffs</Subsystem>
 			<Subsystem>AccountsPayable</Subsystem>
+			<CommonModule>APVerification</CommonModule>
 			<Catalog>Warehouses</Catalog>
 			<Catalog>Departments</Catalog>
 			<Catalog>Staffs</Catalog>

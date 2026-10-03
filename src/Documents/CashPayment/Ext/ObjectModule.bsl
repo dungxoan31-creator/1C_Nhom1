@@ -53,14 +53,14 @@ Procedure Posting(Cancel, Mode)
 	CFRecord.SourceDocument = Ref;
 
 	// 4. Hạch toán Sổ cái Kế toán: Nợ TK 331 (Phải trả NCC), Có TK 112 (Ngân hàng) hoặc TK 111 (Tiền mặt)
-	CrAccount = ChartsOfAccounts.Main.BankDeposits;
+	CrAccount = ChartsOfAccounts.Main.FindByCode("112");
 	If ValueIsFilled(Account) And ValueIsFilled(Account.AccountType) And Account.AccountType = Enums.CashAccountTypes.Cash Then
-		CrAccount = ChartsOfAccounts.Main.Cash;
+		CrAccount = ChartsOfAccounts.Main.FindByCode("111");
 	EndIf;
 
 	GLRecord = RegisterRecords.GeneralLedger.Add();
 	GLRecord.Period = Date;
-	GLRecord.AccountDr = ChartsOfAccounts.Main.AccountsPayable;
+	GLRecord.AccountDr = ChartsOfAccounts.Main.FindByCode("331");
 	GLRecord.AccountCr = CrAccount;
 	GLRecord.Amount = PaymentAmount;
 EndProcedure

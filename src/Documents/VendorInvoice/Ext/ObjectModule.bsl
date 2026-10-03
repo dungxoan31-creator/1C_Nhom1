@@ -31,7 +31,7 @@ Procedure Posting(Cancel, Mode)
 	RegisterRecords.GeneralLedger.Write = True;
 	GLRecord = RegisterRecords.GeneralLedger.Add();
 	GLRecord.Period = Date;
-	GLRecord.AccountDr = ChartsOfAccounts.Main.CloudInfrastructure;
-	GLRecord.AccountCr = ChartsOfAccounts.Main.AccountsPayable;
+	GLRecord.AccountDr = ChartsOfAccounts.Main.FindByCode("627");
+	GLRecord.AccountCr = ChartsOfAccounts.Main.FindByCode("331");
 	GLRecord.Amount = TotalAmount;
 EndProcedure

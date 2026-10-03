@@ -36,7 +36,7 @@ FROM
 		AccumulationRegister.AccountsPayable.Balance AS APBalance) AS AP
 		FULL JOIN (SELECT
 			1 AS JoinKey,
-			SUM(GLBalance.AmountBalanceCredit) AS GLAmount
+			SUM(GLBalance.AmountBalanceCr) AS GLAmount
 		FROM
 			AccountingRegister.GeneralLedger.Balance(, Account.Code = "331") AS GLBalance) AS GL
 		ON AP.JoinKey = GL.JoinKey</query>
