@@ -26,6 +26,8 @@
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.AccountsPayable</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.CashFlow</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashFlowPlan</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.CashFlowPlan</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

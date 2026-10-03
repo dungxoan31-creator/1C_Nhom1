@@ -239,6 +239,7 @@
 			<Document>ProductsPricePlan</Document>
 			<Document>VendorInvoice</Document>
 			<Document>CashPayment</Document>
+			<Document>CashFlowPlan</Document>
 			<Enum>Gender</Enum>
 			<Enum>ProductTypes</Enum>
 			<Enum>Units</Enum>
@@ -249,6 +250,7 @@
 			<AccumulationRegister>Inventory</AccumulationRegister>
 			<AccumulationRegister>AccountsPayable</AccumulationRegister>
 			<AccumulationRegister>CashFlow</AccumulationRegister>
+			<AccumulationRegister>CashFlowPlan</AccumulationRegister>
 			<ChartOfAccounts>Main</ChartOfAccounts>
 			<AccountingRegister>GeneralLedger</AccountingRegister>
 		</ChildObjects>
