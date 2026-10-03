@@ -248,6 +248,7 @@
 			<InformationRegister>PriceHistory</InformationRegister>
 			<AccumulationRegister>Inventory</AccumulationRegister>
 			<AccumulationRegister>AccountsPayable</AccumulationRegister>
+			<AccumulationRegister>CashFlow</AccumulationRegister>
 			<ChartOfAccounts>Main</ChartOfAccounts>
 			<AccountingRegister>GeneralLedger</AccountingRegister>
 		</ChildObjects>

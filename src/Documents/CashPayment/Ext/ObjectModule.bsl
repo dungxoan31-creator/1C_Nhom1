@@ -7,6 +7,7 @@ EndProcedure
 
 Procedure Posting(Cancel, Mode)
 	RegisterRecords.AccountsPayable.Write = True;
+	RegisterRecords.CashFlow.Write = True;
 	RegisterRecords.GeneralLedger.Write = True;
 
 	TotalAllocated = 0;
@@ -41,7 +42,17 @@ Procedure Posting(Cancel, Mode)
 		Record.Amount = UnallocatedAmount;
 	EndIf;
 
-	// 3. Hạch toán Sổ cái Kế toán: Nợ TK 331 (Phải trả NCC), Có TK 112 (Ngân hàng) hoặc TK 111 (Tiền mặt)
+	// 3. Ghi sổ Dòng tiền (CashFlow Outflow) & Cập nhật số dư quỹ/ngân hàng (Cash Position)
+	CFRecord = RegisterRecords.CashFlow.Add();
+	CFRecord.RecordType = AccumulationRecordType.Expense;
+	CFRecord.Period = Date;
+	CFRecord.Account = Account;
+	CFRecord.CashFlowItem = CashFlowItem;
+	CFRecord.Amount = PaymentAmount;
+	CFRecord.Counterparty = Counterparty;
+	CFRecord.SourceDocument = Ref;
+
+	// 4. Hạch toán Sổ cái Kế toán: Nợ TK 331 (Phải trả NCC), Có TK 112 (Ngân hàng) hoặc TK 111 (Tiền mặt)
 	CrAccount = ChartsOfAccounts.Main.BankDeposits;
 	If ValueIsFilled(Account) And ValueIsFilled(Account.AccountType) And Account.AccountType = Enums.CashAccountTypes.Cash Then
 		CrAccount = ChartsOfAccounts.Main.Cash;
