@@ -246,6 +246,12 @@
 			<Enum>CashFlowType</Enum>
 			<Enum>CashClassificationMethod</Enum>
 			<Enum>CashAccountTypes</Enum>
+			<Report>APOutstanding</Report>
+			<Report>APAging</Report>
+			<Report>SupplierStatement</Report>
+			<Report>APReconciliationWithAccounting</Report>
+			<Report>CashPosition</Report>
+			<Report>ActualVsPlanCashFlow</Report>
 			<InformationRegister>PriceHistory</InformationRegister>
 			<AccumulationRegister>Inventory</AccumulationRegister>
 			<AccumulationRegister>AccountsPayable</AccumulationRegister>

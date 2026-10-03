@@ -28,6 +28,12 @@
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.CashFlow</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashFlowPlan</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.CashFlowPlan</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.APOutstanding</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.APAging</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.SupplierStatement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.APReconciliationWithAccounting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.CashPosition</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.ActualVsPlanCashFlow</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>
