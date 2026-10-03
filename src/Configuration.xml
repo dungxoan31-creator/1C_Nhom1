@@ -237,6 +237,7 @@
 			<Document>SendAndExportProducts</Document>
 			<Document>InventoryTransfer</Document>
 			<Document>ProductsPricePlan</Document>
+			<Document>VendorInvoice</Document>
 			<Enum>Gender</Enum>
 			<Enum>ProductTypes</Enum>
 			<Enum>Units</Enum>
@@ -245,6 +246,7 @@
 			<Enum>CashAccountTypes</Enum>
 			<InformationRegister>PriceHistory</InformationRegister>
 			<AccumulationRegister>Inventory</AccumulationRegister>
+			<AccumulationRegister>AccountsPayable</AccumulationRegister>
 			<ChartOfAccounts>Main</ChartOfAccounts>
 			<AccountingRegister>GeneralLedger</AccountingRegister>
 		</ChildObjects>

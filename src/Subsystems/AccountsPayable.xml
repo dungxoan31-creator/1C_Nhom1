@@ -22,6 +22,8 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.CashFlowItems</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">ChartOfAccounts.Main</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccountingRegister.GeneralLedger</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.VendorInvoice</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.AccountsPayable</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>
