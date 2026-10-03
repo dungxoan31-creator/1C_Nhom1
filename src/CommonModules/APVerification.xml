@@ -10,11 +10,11 @@
 				</v8:item>
 			</Synonym>
 			<Comment/>
-			<Global>true</Global>
-			<ClientManagedApplication>true</ClientManagedApplication>
+			<Global>false</Global>
+			<ClientManagedApplication>false</ClientManagedApplication>
 			<Server>true</Server>
 			<ExternalConnection>true</ExternalConnection>
-			<ClientOrdinaryApplication>true</ClientOrdinaryApplication>
+			<ClientOrdinaryApplication>false</ClientOrdinaryApplication>
 			<ServerCall>true</ServerCall>
 			<Privileged>false</Privileged>
 			<ReturnValuesReuse>DontUse</ReturnValuesReuse>

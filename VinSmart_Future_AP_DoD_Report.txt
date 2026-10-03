@@ -1,6 +1,6 @@
 ﻿=================================================================
    VINSMART FUTURE - AP & CASH MANAGEMENT MVP VERIFICATION REPORT
-   Thoi gian chay: 10/3/2026 3:10:51 PM
+   Thoi gian chay: 10/3/2026 3:19:25 PM
 =================================================================
 
 [DoD 1] Du no chi tiet AWS Cloud Services (100tr - 40tr = 60tr): PASS (60,000,000 VND)

@@ -1,4 +1,6 @@
-﻿Function RunVerification() Export
+﻿#If Server Or ExternalConnection Then
+
+Function RunVerification() Export
 	Try
 		ReportText = "=================================================================" + Chars.LF;
 		ReportText = ReportText + "   VINSMART FUTURE - AP & CASH MANAGEMENT MVP VERIFICATION REPORT" + Chars.LF;
@@ -329,3 +331,5 @@
 		Return False;
 	EndTry;
 EndFunction
+
+#EndIf
