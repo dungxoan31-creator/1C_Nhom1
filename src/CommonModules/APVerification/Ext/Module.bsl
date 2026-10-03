@@ -314,7 +314,12 @@ Function RunVerification() Export
 		If Not Passed9 Then AllPassed = False; EndIf;
 
 		ReportText = ReportText + Chars.LF + "=================================================================" + Chars.LF;
-		ReportText = ReportText + "   KET QUA CHUNG CUOC: " + ?(AllPassed, ">>> TAT CA 9 TIEU CHI DOD HOAN TOAN DAT CHUAN (100% PASS) <<<", ">>> CO TIEU CHI CHUA DAT <<<") + Chars.LF;
+		If AllPassed Then
+			StatusStr = "TAT CA 9 TIEU CHI DOD HOAN TOAN DAT CHUAN (100% PASS)";
+		Else
+			StatusStr = "CO TIEU CHI CHUA DAT";
+		EndIf;
+		ReportText = ReportText + "   KET QUA CHUNG CUOC: " + StatusStr + Chars.LF;
 		ReportText = ReportText + "=================================================================" + Chars.LF;
 
 		// Ghi ra file bao cao nghiem thu
