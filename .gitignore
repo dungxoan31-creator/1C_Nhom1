@@ -1,0 +1,9 @@
+Infobase/
+setupt/
+*.zip
+*.log
+*.dt
+*.cab
+*.msi
+*.exe
+.superpowers/
