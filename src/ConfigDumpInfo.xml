@@ -1,26 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.15">
 	<ConfigVersions>
-		<Metadata name="AccumulationRegister.Inventory" id="fbd7e78d-8b5d-499f-b589-404e676cc665" configVersion="ee16ce31ae008e4cba175fbea5d03be300000000">
+		<Metadata name="AccountingRegister.GeneralLedger" id="56077e18-464a-4273-8863-38dfc0bfabbe" configVersion="bd8610941b502449bcabc2b665f69b0f00000000">
+			<Metadata name="AccountingRegister.GeneralLedger.Resource.Amount" id="b9247a59-63ff-419e-8096-5d748c5b430d"/>
+		</Metadata>
+		<Metadata name="AccumulationRegister.Inventory" id="fbd7e78d-8b5d-499f-b589-404e676cc665" configVersion="e7e69108b027c24ab748426485aeb7d400000000">
 			<Metadata name="AccumulationRegister.Inventory.Dimension.Warehouse" id="1e1a711f-30ca-4620-bb21-a12a6f6dcac3"/>
 			<Metadata name="AccumulationRegister.Inventory.Dimension.Product" id="4f71f3e4-e354-46e5-9389-9806d70f5747"/>
 			<Metadata name="AccumulationRegister.Inventory.Resource.Quantity" id="abb578db-5fc5-4da6-92dc-7931074d4ec3"/>
 		</Metadata>
-		<Metadata name="Catalog.CashAccounts" id="cf4a5b97-fb6b-4490-b742-72640afdb633" configVersion="2569642347491a4c9de3801da685f7ad00000000">
+		<Metadata name="Catalog.CashAccounts" id="cf4a5b97-fb6b-4490-b742-72640afdb633" configVersion="86a883d3ed33e34b8a49139f5617094e00000000">
 			<Metadata name="Catalog.CashAccounts.Attribute.BankName" id="58619f5d-1c85-4d8e-8ece-8bf7cebdc198"/>
 			<Metadata name="Catalog.CashAccounts.Attribute.AccountNumber" id="8be77596-3af2-4619-95f6-5a6f752cc201"/>
 			<Metadata name="Catalog.CashAccounts.Attribute.AccountType" id="aad2ff05-54ab-4e6c-9216-1e1d9e8a52ba"/>
 		</Metadata>
-		<Metadata name="Catalog.CashFlowItems" id="8a1db1ec-c048-4170-ac84-ed4c9ac4dac8" configVersion="26d9e0314395c449a1e146c4ea0a6e4e00000000">
+		<Metadata name="Catalog.CashFlowItems" id="8a1db1ec-c048-4170-ac84-ed4c9ac4dac8" configVersion="684b454dd6bbcd4682246bec98026c3600000000">
 			<Metadata name="Catalog.CashFlowItems.Attribute.FlowType" id="8d941448-aab2-4881-85a4-47e8e222455c"/>
 			<Metadata name="Catalog.CashFlowItems.Attribute.Active" id="f1af92ad-1afa-47f3-8fd2-c28d43ceb509"/>
 		</Metadata>
-		<Metadata name="Catalog.Contracts" id="c3f626f7-8955-43f7-854d-b5630ae88933" configVersion="bc8fd9a74cd9494e89684dd59b2d50e200000000">
+		<Metadata name="Catalog.Contracts" id="c3f626f7-8955-43f7-854d-b5630ae88933" configVersion="a264bcc7bcbd4748b857690a8a7fc4d600000000">
 			<Metadata name="Catalog.Contracts.Attribute.Active" id="273a0e3d-94fb-4673-9b3c-247015e36d7c"/>
 			<Metadata name="Catalog.Contracts.Attribute.PaymentTermsDays" id="286acacb-92c9-473e-b3c0-7fee6b39658e"/>
 			<Metadata name="Catalog.Contracts.Attribute.DefaultCashFlowItem" id="766b4d5a-5fd3-413e-ab27-0f7fdb9ababb"/>
 		</Metadata>
-		<Metadata name="Catalog.Counterparties" id="c9edeb41-5d07-4368-b0c1-41d46a9d9c1d" configVersion="db78f615e3148f408722140a1c556c8500000000">
+		<Metadata name="Catalog.Counterparties" id="c9edeb41-5d07-4368-b0c1-41d46a9d9c1d" configVersion="0ad927a21290694db57ed9197f8b64cc00000000">
 			<Metadata name="Catalog.Counterparties.Attribute.Email" id="077b215f-378e-4a2d-85e0-b52552bb37c7"/>
 			<Metadata name="Catalog.Counterparties.Attribute.Gender" id="3aa23346-e273-4854-aa0a-8df80236c6ed"/>
 			<Metadata name="Catalog.Counterparties.Attribute.IsCustomer" id="3f9f25aa-780d-4d11-bd48-f8edf3e64dc4"/>
@@ -28,19 +31,19 @@
 			<Metadata name="Catalog.Counterparties.Attribute.Phone" id="c7337212-3cb3-4415-af19-a7cbd1f265a4"/>
 			<Metadata name="Catalog.Counterparties.Attribute.Address" id="f3872ad5-6159-4a58-9bb6-17c6e6848474"/>
 		</Metadata>
-		<Metadata name="Catalog.Counterparties.Form.ListOfCounterparites" id="899eb91a-47b2-41fd-b44b-7d63afc6a638" configVersion="a03e84432052724c8fca9125ed3d8dfc00000000"/>
-		<Metadata name="Catalog.Counterparties.Form.ListOfCounterparites.Form" id="899eb91a-47b2-41fd-b44b-7d63afc6a638.0" configVersion="9394aa9ac0d8ac43a6467e853b90e1ec00000000"/>
-		<Metadata name="Catalog.Counterparties.Form.ListOfCustomers" id="f5d06b9f-a139-43ee-a21e-851c351eac6b" configVersion="e26d1f6cc393fe43a7d3c78b16a5400f00000000"/>
-		<Metadata name="Catalog.Counterparties.Form.ListOfCustomers.Form" id="f5d06b9f-a139-43ee-a21e-851c351eac6b.0" configVersion="5dd8ddf9c08013489e1b8c8318faac3500000000"/>
-		<Metadata name="Catalog.Counterparties.Form.PhoneDetail" id="1cf0e733-ff74-471c-aeaa-f6e33d21afc1" configVersion="294eda903bc122409327def41600c9db00000000"/>
-		<Metadata name="Catalog.Counterparties.Form.PhoneDetail.Form" id="1cf0e733-ff74-471c-aeaa-f6e33d21afc1.0" configVersion="e85d7de5eec98d45822c8b64de3952eb00000000"/>
-		<Metadata name="Catalog.Counterparties.Form.StaffDetail" id="2ee01422-6308-40f2-b8ec-7626014ed20d" configVersion="42f587d96449534dbb3d7f64488cee0500000000"/>
-		<Metadata name="Catalog.Counterparties.Form.StaffDetail.Form" id="2ee01422-6308-40f2-b8ec-7626014ed20d.0" configVersion="8647d712047d7249af1be217823069dd00000000"/>
-		<Metadata name="Catalog.Departments" id="5707c4ea-15ff-4c31-b017-4904c8bd15cb" configVersion="4c002d0b4d49d6419ceb552efeed232d00000000"/>
-		<Metadata name="Catalog.Nations" id="21374611-b351-40be-8548-d41b575d7037" configVersion="40f049516508aa42a306d0a58577da3200000000"/>
-		<Metadata name="Catalog.Positions" id="22908634-279d-4537-bc2d-a0ef750a772d" configVersion="a093a27270d23841b51959f45a905dcf00000000"/>
-		<Metadata name="Catalog.ProductTypes" id="e9b25ea8-1c7e-4cf1-a868-cb8c95e07e0e" configVersion="b73fca30ae93324b994855a05b6c997900000000"/>
-		<Metadata name="Catalog.Products" id="391dec8b-b139-4b11-8d86-5ea0a6ba788a" configVersion="d590134a3ef1234582cc2af85ce0328b00000000">
+		<Metadata name="Catalog.Counterparties.Form.ListOfCounterparites" id="899eb91a-47b2-41fd-b44b-7d63afc6a638" configVersion="6d596a4c0ac42c44be649621537fd4c500000000"/>
+		<Metadata name="Catalog.Counterparties.Form.ListOfCounterparites.Form" id="899eb91a-47b2-41fd-b44b-7d63afc6a638.0" configVersion="ccfbd7ddac6211488d8d0c7cd9d0a68f00000000"/>
+		<Metadata name="Catalog.Counterparties.Form.ListOfCustomers" id="f5d06b9f-a139-43ee-a21e-851c351eac6b" configVersion="5027cbd6ddb77a4c81f835b0827736b800000000"/>
+		<Metadata name="Catalog.Counterparties.Form.ListOfCustomers.Form" id="f5d06b9f-a139-43ee-a21e-851c351eac6b.0" configVersion="28f2269835ce6d4b9c0268ea52f3182f00000000"/>
+		<Metadata name="Catalog.Counterparties.Form.PhoneDetail" id="1cf0e733-ff74-471c-aeaa-f6e33d21afc1" configVersion="c54a48eb5b7d7d4998e346dc1e2600c200000000"/>
+		<Metadata name="Catalog.Counterparties.Form.PhoneDetail.Form" id="1cf0e733-ff74-471c-aeaa-f6e33d21afc1.0" configVersion="5278a13043956e4bace49003a890ba8700000000"/>
+		<Metadata name="Catalog.Counterparties.Form.StaffDetail" id="2ee01422-6308-40f2-b8ec-7626014ed20d" configVersion="c5b04369334047429608efd1ae55fae600000000"/>
+		<Metadata name="Catalog.Counterparties.Form.StaffDetail.Form" id="2ee01422-6308-40f2-b8ec-7626014ed20d.0" configVersion="e9043bfe240e374daa48f9775a22115800000000"/>
+		<Metadata name="Catalog.Departments" id="5707c4ea-15ff-4c31-b017-4904c8bd15cb" configVersion="6825cce3cba92341a8baca245b82188d00000000"/>
+		<Metadata name="Catalog.Nations" id="21374611-b351-40be-8548-d41b575d7037" configVersion="ac6ac94485a20745a9ed34084463d53f00000000"/>
+		<Metadata name="Catalog.Positions" id="22908634-279d-4537-bc2d-a0ef750a772d" configVersion="a628da6abeffc8438b9b06d7a037401d00000000"/>
+		<Metadata name="Catalog.ProductTypes" id="e9b25ea8-1c7e-4cf1-a868-cb8c95e07e0e" configVersion="3aa81b3c389edf43a11d8dba0742479800000000"/>
+		<Metadata name="Catalog.Products" id="391dec8b-b139-4b11-8d86-5ea0a6ba788a" configVersion="e63551b86bdda34b91b6abfe118f4a8200000000">
 			<Metadata name="Catalog.Products.TabularSection.Details.Attribute.b" id="144d3eb4-0c51-4ee7-9f64-dbd11238a6c7"/>
 			<Metadata name="Catalog.Products.Attribute.ProductType" id="6aaf804e-c76f-49f9-8d58-cae1a17e7320"/>
 			<Metadata name="Catalog.Products.Attribute.Orgigin" id="8ca49431-11ef-44b2-8847-77d38bbdf415"/>
@@ -50,21 +53,22 @@
 			<Metadata name="Catalog.Products.Attribute.Barcode" id="e5690072-60f5-4b48-b03d-488201eac211"/>
 			<Metadata name="Catalog.Products.Attribute.ProductCode" id="f92bbb20-1840-4bb1-823b-6bb2276ff075"/>
 		</Metadata>
-		<Metadata name="Catalog.Products.Form.ListOfProducts" id="46b33961-68fa-4c91-8aab-b20766070372" configVersion="879f56a9469a0046b84d85b28be9e88800000000"/>
-		<Metadata name="Catalog.Products.Form.ListOfProducts.Form" id="46b33961-68fa-4c91-8aab-b20766070372.0" configVersion="405882668bd51b4ca6f329924319575f00000000"/>
-		<Metadata name="Catalog.Products.Form.ProductDetail" id="fa345b26-5208-4181-a112-882d32f734ff" configVersion="8a7d5cf629f11249aa52cdb63ebc658e00000000"/>
-		<Metadata name="Catalog.Products.Form.ProductDetail.Form" id="fa345b26-5208-4181-a112-882d32f734ff.0" configVersion="2a740c4be818a7459a78acdcb4cb7f1b00000000"/>
-		<Metadata name="Catalog.Staffs" id="c5a72531-e9a9-45e7-8992-1127af8694ad" configVersion="9b36cbc6a4de474b85cc9d3b4c05934d00000000">
+		<Metadata name="Catalog.Products.Form.ListOfProducts" id="46b33961-68fa-4c91-8aab-b20766070372" configVersion="dd3095ebb79ba7449e102446bef21f3400000000"/>
+		<Metadata name="Catalog.Products.Form.ListOfProducts.Form" id="46b33961-68fa-4c91-8aab-b20766070372.0" configVersion="df7ce680508f1248bfa6b964b2cc87e800000000"/>
+		<Metadata name="Catalog.Products.Form.ProductDetail" id="fa345b26-5208-4181-a112-882d32f734ff" configVersion="2a7634d598248945941779e3295ab0c500000000"/>
+		<Metadata name="Catalog.Products.Form.ProductDetail.Form" id="fa345b26-5208-4181-a112-882d32f734ff.0" configVersion="ae02168f35420243b2f8aebacc841b1c00000000"/>
+		<Metadata name="Catalog.Staffs" id="c5a72531-e9a9-45e7-8992-1127af8694ad" configVersion="13d23cd770629f4ea3176aef3f91c36400000000">
 			<Metadata name="Catalog.Staffs.Attribute.Position" id="0db2a9d4-d682-4094-bc9d-d59ac7d760d5"/>
 			<Metadata name="Catalog.Staffs.Attribute.Department" id="3a2d8c61-1cf8-4925-b92b-5eb78a635d01"/>
 		</Metadata>
-		<Metadata name="Catalog.Staffs.Form.ItemForm" id="3c58a7a7-7312-492c-9ab6-14591cccf6c0" configVersion="8a016d698b05a8479ace5a5a8ca2a6c100000000"/>
-		<Metadata name="Catalog.Staffs.Form.ItemForm.Form" id="3c58a7a7-7312-492c-9ab6-14591cccf6c0.0" configVersion="b712737da425254aac764c3e64b2e0ed00000000"/>
-		<Metadata name="Catalog.Units" id="46eb7da8-b9ff-4c4d-940b-317bfb1da022" configVersion="fe8c847a4884964190bb3b48c0b66af000000000"/>
-		<Metadata name="Catalog.Warehouses" id="1fbe279f-8aa9-4cf1-bb55-90967f27264d" configVersion="3c2402651a04064280f9623ec72765fa00000000"/>
-		<Metadata name="Configuration.Configuration" id="097a612e-c834-4cc9-9bdb-b99f80e6356c" configVersion="921c23d6509221499e937dc24e1ed2e700000000"/>
-		<Metadata name="Configuration.Configuration.ManagedApplicationModule" id="9b24fcb6-4fec-4419-9355-f2eecc4be68f.6" configVersion="0fb0eaf0c0b60c419295e9734a11147b00000000"/>
-		<Metadata name="Document.InventoryTransfer" id="27092dd2-0ae1-486a-b820-be7b03331f4f" configVersion="4c98805f2f1fb744ace0a3d75c3ab0ed00000000">
+		<Metadata name="Catalog.Staffs.Form.ItemForm" id="3c58a7a7-7312-492c-9ab6-14591cccf6c0" configVersion="5a96e93b1cf52748b46ffb0c51eab11500000000"/>
+		<Metadata name="Catalog.Staffs.Form.ItemForm.Form" id="3c58a7a7-7312-492c-9ab6-14591cccf6c0.0" configVersion="0499b198c1e75743bd83107d8a67a77600000000"/>
+		<Metadata name="Catalog.Units" id="46eb7da8-b9ff-4c4d-940b-317bfb1da022" configVersion="9dd5c26ea10b9b4e9595c081fb692d0c00000000"/>
+		<Metadata name="Catalog.Warehouses" id="1fbe279f-8aa9-4cf1-bb55-90967f27264d" configVersion="c53e548a80263b40a95db69b1db2a50300000000"/>
+		<Metadata name="ChartOfAccounts.Main" id="06f2e581-f8bb-4d02-a8c4-f5136f45e392" configVersion="c6b17001bd091844a017390b62f4566900000000"/>
+		<Metadata name="Configuration.Configuration" id="097a612e-c834-4cc9-9bdb-b99f80e6356c" configVersion="d2fe454e9cd30040820f3b48d64ce46200000000"/>
+		<Metadata name="Configuration.Configuration.ManagedApplicationModule" id="9b24fcb6-4fec-4419-9355-f2eecc4be68f.6" configVersion="366a97ef75ec8a4893507470f3c28f2800000000"/>
+		<Metadata name="Document.InventoryTransfer" id="27092dd2-0ae1-486a-b820-be7b03331f4f" configVersion="87afedb1070b11428d4c37920cdfa82100000000">
 			<Metadata name="Document.InventoryTransfer.Attribute.WarehouseReceiper" id="3a610190-63ae-4938-a582-70815ef9db78"/>
 			<Metadata name="Document.InventoryTransfer.Command.PrintInventoryTransfer" id="455264d0-f449-4e97-8f56-9cb100a41c6e"/>
 			<Metadata name="Document.InventoryTransfer.Attribute.ReceivingStaff" id="632ce594-b766-4e69-a009-6ace0c234379"/>
@@ -76,23 +80,23 @@
 			<Metadata name="Document.InventoryTransfer.TabularSection.Products.Attribute.Product" id="dc5fc704-b980-441e-b535-a36b1b5449f2"/>
 			<Metadata name="Document.InventoryTransfer.TabularSection.Products.Attribute.Quantity" id="fae0838c-95db-4c63-bfc9-d23e582c42e3"/>
 		</Metadata>
-		<Metadata name="Document.InventoryTransfer.Command.PrintInventoryTransfer.CommandModule" id="455264d0-f449-4e97-8f56-9cb100a41c6e.2" configVersion="fbfc039741896e4f8f25b5cfa5a48c3100000000"/>
-		<Metadata name="Document.InventoryTransfer.Form.DocumentDetail" id="193d973f-cc5d-48c9-813b-257fbbf95fd3" configVersion="17d1340b618abe45a28f267d58e7e55b00000000"/>
-		<Metadata name="Document.InventoryTransfer.Form.DocumentDetail.Form" id="193d973f-cc5d-48c9-813b-257fbbf95fd3.0" configVersion="1ca0637209598941936c0376b8f51c0300000000"/>
-		<Metadata name="Document.InventoryTransfer.ManagerModule" id="27092dd2-0ae1-486a-b820-be7b03331f4f.2" configVersion="23a480f80bbc10498148613ef34f8e0700000000"/>
-		<Metadata name="Document.InventoryTransfer.ObjectModule" id="27092dd2-0ae1-486a-b820-be7b03331f4f.0" configVersion="b7a8014b3e260443b084c15f535629be00000000"/>
-		<Metadata name="Document.InventoryTransfer.Template.PrintInventoryTransfer" id="47c40d3f-7f79-41a7-bf04-9a7d3b533fd6" configVersion="fe622b3a3b25bd41880a49c6b522f3a300000000"/>
-		<Metadata name="Document.InventoryTransfer.Template.PrintInventoryTransfer.Template" id="47c40d3f-7f79-41a7-bf04-9a7d3b533fd6.0" configVersion="2a57bdbb63a6474c8f06ad6353a6848f00000000"/>
-		<Metadata name="Document.ProductsPricePlan" id="2e4984f3-0008-478a-8d6e-c350caaf08eb" configVersion="74558aeda14fcc45a607a85582f798f800000000">
+		<Metadata name="Document.InventoryTransfer.Command.PrintInventoryTransfer.CommandModule" id="455264d0-f449-4e97-8f56-9cb100a41c6e.2" configVersion="49b6196aca54e348b3f03babec00ba9a00000000"/>
+		<Metadata name="Document.InventoryTransfer.Form.DocumentDetail" id="193d973f-cc5d-48c9-813b-257fbbf95fd3" configVersion="9694b6fa838ebe43beb087b6f9ce9f2000000000"/>
+		<Metadata name="Document.InventoryTransfer.Form.DocumentDetail.Form" id="193d973f-cc5d-48c9-813b-257fbbf95fd3.0" configVersion="52eb0bdbafff054a90876ca25cad021300000000"/>
+		<Metadata name="Document.InventoryTransfer.ManagerModule" id="27092dd2-0ae1-486a-b820-be7b03331f4f.2" configVersion="44c9d13a1772f54db2665a8349e6ace400000000"/>
+		<Metadata name="Document.InventoryTransfer.ObjectModule" id="27092dd2-0ae1-486a-b820-be7b03331f4f.0" configVersion="84e6da65c3bd384296ee032077140fc500000000"/>
+		<Metadata name="Document.InventoryTransfer.Template.PrintInventoryTransfer" id="47c40d3f-7f79-41a7-bf04-9a7d3b533fd6" configVersion="759f6fad67cdb54596d5d7f6d78757c700000000"/>
+		<Metadata name="Document.InventoryTransfer.Template.PrintInventoryTransfer.Template" id="47c40d3f-7f79-41a7-bf04-9a7d3b533fd6.0" configVersion="abb42c95a8f45d459232b79c065d201100000000"/>
+		<Metadata name="Document.ProductsPricePlan" id="2e4984f3-0008-478a-8d6e-c350caaf08eb" configVersion="19cb8e12bb23fc4ba401b9d0cd9a3c6000000000">
 			<Metadata name="Document.ProductsPricePlan.TabularSection.Products" id="3c38f027-a4b0-4b27-a5ea-4c6da98efb11"/>
 			<Metadata name="Document.ProductsPricePlan.TabularSection.Products.Attribute.Price" id="54834bc2-32f1-4334-8166-4ad20884d0fd"/>
 			<Metadata name="Document.ProductsPricePlan.TabularSection.Products.Attribute.Product" id="6b3650d7-258d-4912-908c-11de8b0a192b"/>
 			<Metadata name="Document.ProductsPricePlan.Attribute.ValidDate" id="8d0aecd8-957c-44ff-a32b-24ce87457ea0"/>
 		</Metadata>
-		<Metadata name="Document.ProductsPricePlan.Form.PriceHistory" id="fae7bebd-e78f-4778-9450-23e73e02d83e" configVersion="2336144bdba97845a290ec3f91c2792e00000000"/>
-		<Metadata name="Document.ProductsPricePlan.Form.PriceHistory.Form" id="fae7bebd-e78f-4778-9450-23e73e02d83e.0" configVersion="77d15cb7e131944dacca77b720515db800000000"/>
-		<Metadata name="Document.ProductsPricePlan.ObjectModule" id="2e4984f3-0008-478a-8d6e-c350caaf08eb.0" configVersion="e40f45a09884c9499e9875d97ac38e3000000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts" id="9be37332-0f87-405f-9282-b982a0728405" configVersion="d56ba16f9ab06f4cb3e74417dc5e9af800000000">
+		<Metadata name="Document.ProductsPricePlan.Form.PriceHistory" id="fae7bebd-e78f-4778-9450-23e73e02d83e" configVersion="f51672ac25fb3049adecf5783f623c7b00000000"/>
+		<Metadata name="Document.ProductsPricePlan.Form.PriceHistory.Form" id="fae7bebd-e78f-4778-9450-23e73e02d83e.0" configVersion="28858ed5cef1194e9432fe3990ffe39a00000000"/>
+		<Metadata name="Document.ProductsPricePlan.ObjectModule" id="2e4984f3-0008-478a-8d6e-c350caaf08eb.0" configVersion="2864a5ea43c02d4ba0fac56b67a202e700000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts" id="9be37332-0f87-405f-9282-b982a0728405" configVersion="993e8c376c29dd438f8d2cd77c53dd1f00000000">
 			<Metadata name="Document.ReceiveAndImportProducts.TabularSection.Products.Attribute.Amount" id="035100e4-bf7a-442c-82b8-286d4dd081e9"/>
 			<Metadata name="Document.ReceiveAndImportProducts.TabularSection.Products.Attribute.Quantity" id="0713b1e0-ca84-441a-91a3-deb5395e1234"/>
 			<Metadata name="Document.ReceiveAndImportProducts.Attribute.Staff" id="10565bdd-2ce7-4aa7-9bad-4d48c305b9b7"/>
@@ -106,14 +110,14 @@
 			<Metadata name="Document.ReceiveAndImportProducts.TabularSection.Products.Attribute.Product" id="94412d05-d096-4b17-abe5-cd1beeee0e9e"/>
 			<Metadata name="Document.ReceiveAndImportProducts.TabularSection.Products.Attribute.Unit" id="e64e9b21-b7f0-444e-bd28-be85344561d1"/>
 		</Metadata>
-		<Metadata name="Document.ReceiveAndImportProducts.Command.PrintImportProducts.CommandModule" id="6ba2e2f9-bdb2-4eee-8a03-1acc20b0bfcd.2" configVersion="a4207c806c97504686984990cef8ad9400000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts.Form.DocumentDetail" id="c75679e1-6d49-4175-9182-db094b409533" configVersion="2c8b0c36de933546ad7242ad4f2fc95f00000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts.Form.DocumentDetail.Form" id="c75679e1-6d49-4175-9182-db094b409533.0" configVersion="40e6a7a88af1d743ac3630651760176a00000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts.ManagerModule" id="9be37332-0f87-405f-9282-b982a0728405.2" configVersion="c14fb785aa593a4f80cf45386d47d2b700000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts.ObjectModule" id="9be37332-0f87-405f-9282-b982a0728405.0" configVersion="09ac2549397e5448b96721aa6b6a0b1c00000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts.Template.PrintImportProducts" id="e7da71f3-833a-4492-9a4d-d2dda086a7c6" configVersion="6e077636ef32ff4c899b246ddb9d51cc00000000"/>
-		<Metadata name="Document.ReceiveAndImportProducts.Template.PrintImportProducts.Template" id="e7da71f3-833a-4492-9a4d-d2dda086a7c6.0" configVersion="75db86e7a635b44f816c5381ed4a1ea900000000"/>
-		<Metadata name="Document.SendAndExportProducts" id="2bb756a6-c7c1-4ef5-8b35-40593dc2cf7f" configVersion="00f0bc44729bb4409119e78510c94b4100000000">
+		<Metadata name="Document.ReceiveAndImportProducts.Command.PrintImportProducts.CommandModule" id="6ba2e2f9-bdb2-4eee-8a03-1acc20b0bfcd.2" configVersion="9b014f4d3d0d1946a013c07258976c4d00000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts.Form.DocumentDetail" id="c75679e1-6d49-4175-9182-db094b409533" configVersion="8df57286a512d74c9000779b0da414b200000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts.Form.DocumentDetail.Form" id="c75679e1-6d49-4175-9182-db094b409533.0" configVersion="7870cdfed65a6442a93cdab0fae42b1300000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts.ManagerModule" id="9be37332-0f87-405f-9282-b982a0728405.2" configVersion="0c049de826dcad4b9c1c5401c599a0cc00000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts.ObjectModule" id="9be37332-0f87-405f-9282-b982a0728405.0" configVersion="28ea2dc2a6e0c34ab61cc76251b2fabd00000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts.Template.PrintImportProducts" id="e7da71f3-833a-4492-9a4d-d2dda086a7c6" configVersion="9551430ed0b66e40ab4af27fbc70202a00000000"/>
+		<Metadata name="Document.ReceiveAndImportProducts.Template.PrintImportProducts.Template" id="e7da71f3-833a-4492-9a4d-d2dda086a7c6.0" configVersion="f358c47674db4643922bcee5334faec700000000"/>
+		<Metadata name="Document.SendAndExportProducts" id="2bb756a6-c7c1-4ef5-8b35-40593dc2cf7f" configVersion="1772f310b632574b96b4003c0cfbee9800000000">
 			<Metadata name="Document.SendAndExportProducts.TabularSection.Products.Attribute.Note" id="02e9be50-eae8-4fb7-804e-3029ef0f3f4e"/>
 			<Metadata name="Document.SendAndExportProducts.TabularSection.Products.Attribute.Amount" id="2a1c6fdf-165c-43cf-b004-0112a7dad30d"/>
 			<Metadata name="Document.SendAndExportProducts.Attribute.Customer" id="566f6463-6ae1-4aa5-9d0a-a784d2bf9edb"/>
@@ -127,37 +131,37 @@
 			<Metadata name="Document.SendAndExportProducts.TabularSection.Products.Attribute.Price" id="f68b2f4a-c937-40db-8f93-f2cb995fa7ec"/>
 			<Metadata name="Document.SendAndExportProducts.TabularSection.Products.Attribute.Product" id="fe57699e-6cd5-482f-877a-a8c4fc6f8884"/>
 		</Metadata>
-		<Metadata name="Document.SendAndExportProducts.Command.Print.CommandModule" id="c318f35f-d95a-4437-ac0c-8d51b4ae2118.2" configVersion="cc4c0ae8f7cc6f47a9a9194a967c721b00000000"/>
-		<Metadata name="Document.SendAndExportProducts.Form.DocumentDetail" id="433d2579-8f06-4e00-a57b-130a8e9f2c25" configVersion="1a9f9ed76cc3ba4e9fe02bcf6597a6f300000000"/>
-		<Metadata name="Document.SendAndExportProducts.Form.DocumentDetail.Form" id="433d2579-8f06-4e00-a57b-130a8e9f2c25.0" configVersion="660f3aa217f84848aec7aa069eb3db6200000000"/>
-		<Metadata name="Document.SendAndExportProducts.ManagerModule" id="2bb756a6-c7c1-4ef5-8b35-40593dc2cf7f.2" configVersion="afaf9ee2536d0347aaa98d7c49e30c2c00000000"/>
-		<Metadata name="Document.SendAndExportProducts.ObjectModule" id="2bb756a6-c7c1-4ef5-8b35-40593dc2cf7f.0" configVersion="46e59d9915a1a148babe43e5a480c75600000000"/>
-		<Metadata name="Document.SendAndExportProducts.Template.Print" id="2d37b4bc-0baa-470d-85e0-49e3c2cd30b9" configVersion="5e5b39dd8feff940892f1875684d5f4500000000"/>
-		<Metadata name="Document.SendAndExportProducts.Template.Print.Template" id="2d37b4bc-0baa-470d-85e0-49e3c2cd30b9.0" configVersion="214f697c951f8e46b0f722674a1fcd9b00000000"/>
-		<Metadata name="Enum.CashAccountTypes" id="d176d7b0-7db1-4939-bef1-bfcd8509aa6a" configVersion="99373739d42881499a56b6c63e1b023b00000000">
+		<Metadata name="Document.SendAndExportProducts.Command.Print.CommandModule" id="c318f35f-d95a-4437-ac0c-8d51b4ae2118.2" configVersion="a817fd29256f0848add177027afb335000000000"/>
+		<Metadata name="Document.SendAndExportProducts.Form.DocumentDetail" id="433d2579-8f06-4e00-a57b-130a8e9f2c25" configVersion="82f0ccd994bec4448a4ff0b9eea64dbd00000000"/>
+		<Metadata name="Document.SendAndExportProducts.Form.DocumentDetail.Form" id="433d2579-8f06-4e00-a57b-130a8e9f2c25.0" configVersion="b5a032ecdd05cf4dbb54c1408cc7a10100000000"/>
+		<Metadata name="Document.SendAndExportProducts.ManagerModule" id="2bb756a6-c7c1-4ef5-8b35-40593dc2cf7f.2" configVersion="661848942a840f4d804e8f4cd7fc680e00000000"/>
+		<Metadata name="Document.SendAndExportProducts.ObjectModule" id="2bb756a6-c7c1-4ef5-8b35-40593dc2cf7f.0" configVersion="206d2175a735c74782fc97b99a1c00e600000000"/>
+		<Metadata name="Document.SendAndExportProducts.Template.Print" id="2d37b4bc-0baa-470d-85e0-49e3c2cd30b9" configVersion="3f4cd448b2edbf4781189e4e49a1a85e00000000"/>
+		<Metadata name="Document.SendAndExportProducts.Template.Print.Template" id="2d37b4bc-0baa-470d-85e0-49e3c2cd30b9.0" configVersion="2547014af94c4d4580b3fc7b88b195a400000000"/>
+		<Metadata name="Enum.CashAccountTypes" id="d176d7b0-7db1-4939-bef1-bfcd8509aa6a" configVersion="a5eac75cb4439c45aeac3167f8a2104e00000000">
 			<Metadata name="Enum.CashAccountTypes.EnumValue.BankAccount" id="2589c38a-da29-4594-b7b5-22f6f71cbe58"/>
 			<Metadata name="Enum.CashAccountTypes.EnumValue.Cash" id="40ce2171-72f1-4feb-a1d8-0fed5a913379"/>
 		</Metadata>
-		<Metadata name="Enum.CashClassificationMethod" id="ff889bce-abaf-484b-a985-a1addf88abd4" configVersion="6832808437da3743ab1eb9b18f18b90a00000000">
+		<Metadata name="Enum.CashClassificationMethod" id="ff889bce-abaf-484b-a985-a1addf88abd4" configVersion="dc4d4f2e6e31a4449e0b0fecc60476a300000000">
 			<Metadata name="Enum.CashClassificationMethod.EnumValue.Manual" id="68852184-52e9-4e63-abdd-ec60a7c9e3a5"/>
 			<Metadata name="Enum.CashClassificationMethod.EnumValue.Automatic" id="6e92a653-0d25-4576-982a-a91efd1132ca"/>
 		</Metadata>
-		<Metadata name="Enum.CashFlowType" id="774a9978-06e5-4934-ac33-e2cac8813f8a" configVersion="75d3f00e96d1024ba3d54084a45c115100000000">
+		<Metadata name="Enum.CashFlowType" id="774a9978-06e5-4934-ac33-e2cac8813f8a" configVersion="b896c03629287445ba3d82d3b67e15e300000000">
 			<Metadata name="Enum.CashFlowType.EnumValue.Outflow" id="08c60f64-31d4-47d3-9f65-6dfbfc34f94c"/>
 			<Metadata name="Enum.CashFlowType.EnumValue.Inflow" id="90fbf2d2-e99f-4dab-b039-0a1c44ed98a7"/>
 		</Metadata>
-		<Metadata name="Enum.Gender" id="c7678422-f004-453d-837f-1ef39f5410d8" configVersion="22dc01f327aca044a36251577e7f2f5900000000">
+		<Metadata name="Enum.Gender" id="c7678422-f004-453d-837f-1ef39f5410d8" configVersion="de1b1c6393215d448cadcbccfb4f2cbe00000000">
 			<Metadata name="Enum.Gender.EnumValue.Male" id="1704785d-743e-4827-8a11-63d4e6b808af"/>
 			<Metadata name="Enum.Gender.EnumValue.Female" id="6f784661-ccf0-479d-b250-884ed0ef5551"/>
 		</Metadata>
-		<Metadata name="Enum.ProductTypes" id="a345a550-eeb4-4ee0-8787-87ee8bac3ecb" configVersion="b675604fad094d49a6bf7233cf9a937900000000">
+		<Metadata name="Enum.ProductTypes" id="a345a550-eeb4-4ee0-8787-87ee8bac3ecb" configVersion="669bd2fee227bc4fa098e747e38db82500000000">
 			<Metadata name="Enum.ProductTypes.EnumValue.FruitJuice" id="0c07e1e1-0513-4f4b-bfb9-c4ce8c188e74"/>
 			<Metadata name="Enum.ProductTypes.EnumValue.FastFood" id="3df2de41-1519-42cf-a5ef-1c4e66443fb5"/>
 			<Metadata name="Enum.ProductTypes.EnumValue.SweetCake" id="a4621eb4-dbbc-44a1-b085-0ab8f5015712"/>
 			<Metadata name="Enum.ProductTypes.EnumValue.Bread" id="ad348ab5-746e-489f-a1e2-142cf10e5c4f"/>
 			<Metadata name="Enum.ProductTypes.EnumValue.FruitCake" id="b714047c-0ddc-4712-9cbc-74344db444d1"/>
 		</Metadata>
-		<Metadata name="Enum.Units" id="14d2511a-6d36-4622-bff9-510feeba1d9c" configVersion="ef09f3374f8b554799a569a7d6c19b4d00000000">
+		<Metadata name="Enum.Units" id="14d2511a-6d36-4622-bff9-510feeba1d9c" configVersion="14c1cdbea0f5204d98964be24dc7fa4900000000">
 			<Metadata name="Enum.Units.EnumValue.Bộ" id="245dc473-a1dc-4d2d-a8f8-bdb88d51c2b9"/>
 			<Metadata name="Enum.Units.EnumValue.Cái" id="6caed03a-809d-45c3-89db-166bf0281a60"/>
 			<Metadata name="Enum.Units.EnumValue.Kg" id="8199d1b7-dbc3-485e-90ed-2b809aaab61d"/>
@@ -165,22 +169,22 @@
 			<Metadata name="Enum.Units.EnumValue.gam" id="cef2af60-26bf-4cb8-9288-7cdfcfc44872"/>
 			<Metadata name="Enum.Units.EnumValue.L" id="f26e0d65-56b3-4c7a-b400-87c234177a22"/>
 		</Metadata>
-		<Metadata name="InformationRegister.PriceHistory" id="70ecea6a-a4ef-4f1c-9df8-fb527d273878" configVersion="e0ebc8d7cba2b24890af6ed93ad3952d00000000">
+		<Metadata name="InformationRegister.PriceHistory" id="70ecea6a-a4ef-4f1c-9df8-fb527d273878" configVersion="010cb5c527793f43afc3fd47de5d2bf000000000">
 			<Metadata name="InformationRegister.PriceHistory.Resource.Price" id="16c43f95-faf0-4f7d-85ae-eefab1f10d29"/>
 			<Metadata name="InformationRegister.PriceHistory.Dimension.Product" id="3060e8ce-8a37-417d-85c6-78d04ff8c5a0"/>
 		</Metadata>
-		<Metadata name="InformationRegister.PriceHistory.Form.ListForm" id="95fb9936-7058-4480-8980-c5e7141ad5b0" configVersion="3837f32779cd2140ab6da8419c76899300000000"/>
-		<Metadata name="InformationRegister.PriceHistory.Form.ListForm.Form" id="95fb9936-7058-4480-8980-c5e7141ad5b0.0" configVersion="55de22ba4357b2478588b98f915a8fbd00000000"/>
-		<Metadata name="Language.English" id="b4fedf97-23b7-4732-8389-65c43d34cfac" configVersion="a005d44aae5e2744b34592813acfb60800000000"/>
-		<Metadata name="Subsystem.AccountsPayable" id="7a57aa7d-a6bf-4ae5-a507-6133e0ad0acc" configVersion="aa1397dce9f44a488fa048b3ebc071c300000000"/>
-		<Metadata name="Subsystem.InventoryTransfer" id="de798d6b-efff-4029-9dba-cff080030056" configVersion="58699deb5ee0224bb68e3facd83460dc00000000"/>
-		<Metadata name="Subsystem.InventoryTransfer.CommandInterface" id="de798d6b-efff-4029-9dba-cff080030056.1" configVersion="c190fe4a7d697f498349e277e2e612c500000000"/>
-		<Metadata name="Subsystem.Products" id="c803e9a2-cd7d-440c-8531-3d3da28252d2" configVersion="0e3c20afb1653542b105f7ed07ec0f1200000000"/>
-		<Metadata name="Subsystem.Products.CommandInterface" id="c803e9a2-cd7d-440c-8531-3d3da28252d2.1" configVersion="661f509698dcec47bcb48d09419f584500000000"/>
-		<Metadata name="Subsystem.Purchase" id="6af86196-e3f9-4a86-8917-8b610e1beff5" configVersion="7109da3eec191a4baef07054967301ca00000000"/>
-		<Metadata name="Subsystem.Purchase.CommandInterface" id="6af86196-e3f9-4a86-8917-8b610e1beff5.1" configVersion="a53ae484d522f7499d4e132be5ea37f200000000"/>
-		<Metadata name="Subsystem.Sale" id="4dd7e81f-09f4-45ac-8a64-dfda28aaf552" configVersion="383a5d5334104644bb11413b6739f9b100000000"/>
-		<Metadata name="Subsystem.Sale.CommandInterface" id="4dd7e81f-09f4-45ac-8a64-dfda28aaf552.1" configVersion="353202ae4a20f14bb5411bc1155152ca00000000"/>
-		<Metadata name="Subsystem.Staffs" id="087c619d-7160-4e56-8dc6-1ff49e97d8e3" configVersion="9906199f0c9cc143a121b5d64247748400000000"/>
+		<Metadata name="InformationRegister.PriceHistory.Form.ListForm" id="95fb9936-7058-4480-8980-c5e7141ad5b0" configVersion="d6cba06d33767c4fb61b5dab663f820e00000000"/>
+		<Metadata name="InformationRegister.PriceHistory.Form.ListForm.Form" id="95fb9936-7058-4480-8980-c5e7141ad5b0.0" configVersion="8903ea56f0ae174a933b49865c81269b00000000"/>
+		<Metadata name="Language.English" id="b4fedf97-23b7-4732-8389-65c43d34cfac" configVersion="d701f42268da1f4cb45fe9385d70cf9400000000"/>
+		<Metadata name="Subsystem.AccountsPayable" id="7a57aa7d-a6bf-4ae5-a507-6133e0ad0acc" configVersion="8dc69ed6f705494fbb67bc355e75573a00000000"/>
+		<Metadata name="Subsystem.InventoryTransfer" id="de798d6b-efff-4029-9dba-cff080030056" configVersion="ba3e7c816e6ea34d9a762d8e3616d6ef00000000"/>
+		<Metadata name="Subsystem.InventoryTransfer.CommandInterface" id="de798d6b-efff-4029-9dba-cff080030056.1" configVersion="ac0d334fd30d3b45a6b4fd20b3c985e900000000"/>
+		<Metadata name="Subsystem.Products" id="c803e9a2-cd7d-440c-8531-3d3da28252d2" configVersion="49bf46b2b671634e847ce1704a9cbd6d00000000"/>
+		<Metadata name="Subsystem.Products.CommandInterface" id="c803e9a2-cd7d-440c-8531-3d3da28252d2.1" configVersion="c993985ab131e9409d198d6eac81568300000000"/>
+		<Metadata name="Subsystem.Purchase" id="6af86196-e3f9-4a86-8917-8b610e1beff5" configVersion="114c9c657defca45b8d686e41ce1493e00000000"/>
+		<Metadata name="Subsystem.Purchase.CommandInterface" id="6af86196-e3f9-4a86-8917-8b610e1beff5.1" configVersion="109014f6d8415142b9dd4f18b21d8c2a00000000"/>
+		<Metadata name="Subsystem.Sale" id="4dd7e81f-09f4-45ac-8a64-dfda28aaf552" configVersion="68c15cc3fdc1fc4ea6a3915d8449eeba00000000"/>
+		<Metadata name="Subsystem.Sale.CommandInterface" id="4dd7e81f-09f4-45ac-8a64-dfda28aaf552.1" configVersion="b038dd0bb27b41409c0b52be2a57400400000000"/>
+		<Metadata name="Subsystem.Staffs" id="087c619d-7160-4e56-8dc6-1ff49e97d8e3" configVersion="59f26defc3c1c349be58d041896a6b2a00000000"/>
 	</ConfigVersions>
 </ConfigDumpInfo>

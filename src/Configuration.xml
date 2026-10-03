@@ -245,6 +245,8 @@
 			<Enum>CashAccountTypes</Enum>
 			<InformationRegister>PriceHistory</InformationRegister>
 			<AccumulationRegister>Inventory</AccumulationRegister>
+			<ChartOfAccounts>Main</ChartOfAccounts>
+			<AccountingRegister>GeneralLedger</AccountingRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>
