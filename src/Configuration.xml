@@ -220,6 +220,7 @@
 			<Subsystem>Purchase</Subsystem>
 			<Subsystem>Sale</Subsystem>
 			<Subsystem>Staffs</Subsystem>
+			<Subsystem>AccountsPayable</Subsystem>
 			<Catalog>Warehouses</Catalog>
 			<Catalog>Departments</Catalog>
 			<Catalog>Staffs</Catalog>
@@ -229,6 +230,9 @@
 			<Catalog>Nations</Catalog>
 			<Catalog>ProductTypes</Catalog>
 			<Catalog>Positions</Catalog>
+			<Catalog>Contracts</Catalog>
+			<Catalog>CashAccounts</Catalog>
+			<Catalog>CashFlowItems</Catalog>
 			<Document>ReceiveAndImportProducts</Document>
 			<Document>SendAndExportProducts</Document>
 			<Document>InventoryTransfer</Document>
@@ -236,6 +240,9 @@
 			<Enum>Gender</Enum>
 			<Enum>ProductTypes</Enum>
 			<Enum>Units</Enum>
+			<Enum>CashFlowType</Enum>
+			<Enum>CashClassificationMethod</Enum>
+			<Enum>CashAccountTypes</Enum>
 			<InformationRegister>PriceHistory</InformationRegister>
 			<AccumulationRegister>Inventory</AccumulationRegister>
 		</ChildObjects>
