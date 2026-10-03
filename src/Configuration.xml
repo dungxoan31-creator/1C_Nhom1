@@ -238,6 +238,7 @@
 			<Document>InventoryTransfer</Document>
 			<Document>ProductsPricePlan</Document>
 			<Document>VendorInvoice</Document>
+			<Document>CashPayment</Document>
 			<Enum>Gender</Enum>
 			<Enum>ProductTypes</Enum>
 			<Enum>Units</Enum>
