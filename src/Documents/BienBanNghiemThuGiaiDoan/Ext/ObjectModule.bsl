@@ -1,0 +1,142 @@
+// Document: BienBanNghiemThuGiaiDoan
+// Du an: VinSmart Future - AR & AP Management
+// Nen tang: 1C:Enterprise 8.3 (BSL)
+// Muc tieu: Xu ly su kien ghi so (Posting) bien ban nghiem thu giai doan dich vu CNTT (Task 3.1):
+//           - Kiem tra dieu kien trang thai: Chi cho phep ghi so khi TrangThai = DaGhiSo hoac DaDuyetNoiBo.
+//             Khi duoc ghi so tu trang thai DaDuyetNoiBo, tu dong chuyen sang DaGhiSo.
+//           - Ghi So cai SoCaiKeToan:
+//             + No TK 1312 (Doi tac noi bo Vingroup) hoac No TK 1311 (Doi tac ngoai)
+//             + Co TK 5113 (Doanh thu cung cap dich vu CNTT)
+//             + So tien = GiaTriNghiemThuChuaVAT (200.000.000 VND)
+//           - Ghi So tich luy CongNoPhaiThu:
+//             + RecordType: Receipt (Tang cong no phai thu)
+//             + So tien = GiaTriNghiemThuChuaVAT (200.000.000 VND)
+//           - P0.1 Invariant: CHUA phat sinh thue VAT dau ra o buoc nghiem thu (se phat sinh o Task 3.2).
+
+#Region EventHandlers
+
+Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
+	// Tu dong tinh toan TienVAT va TongGiaTri neu can thiet
+	If GiaTriNghiemThuChuaVAT > 0 Then
+		If TienVAT = 0 And TyLeVAT > 0 Then
+			TienVAT = Round(GiaTriNghiemThuChuaVAT * TyLeVAT / 100, 2);
+		EndIf;
+		If TongGiaTri = 0 Then
+			TongGiaTri = GiaTriNghiemThuChuaVAT + TienVAT;
+		EndIf;
+	EndIf;
+	
+	If Not ValueIsFilled(NgayNghiemThu) Then
+		NgayNghiemThu = BegOfDay(Date);
+	EndIf;
+EndProcedure
+
+Procedure Posting(Cancel, Mode)
+	// 1. Kiem tra trang thai chung tu
+	TrangThaiDaGhiSo = Enums.TrangThaiNghiemThuAR.DaGhiSo;
+	TrangThaiDaDuyet = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo;
+	
+	If TrangThai <> TrangThaiDaGhiSo And TrangThai <> TrangThaiDaDuyet Then
+		Cancel = True;
+		Message = StrTemplate("Chứng từ nghiệm thu %1 chưa đủ điều kiện ghi sổ! Chỉ ghi sổ khi ở trạng thái Đã duyệt nội bộ hoặc Đã ghi sổ. Trạng thái hiện tại: %2",
+			Number, TrangThai);
+		Raise Message;
+		Return;
+	EndIf;
+	
+	// Cap nhat trang thai len DaGhiSo neu dang o buoc DaDuyetNoiBo
+	If TrangThai = TrangThaiDaDuyet Then
+		TrangThai = TrangThaiDaGhiSo;
+	EndIf;
+	
+	// Xac dinh so tien ghi so doanh thu thuan
+	SoTienDoanhThu = GiaTriNghiemThuChuaVAT;
+	If SoTienDoanhThu <= 0 Then
+		Cancel = True;
+		Raise StrTemplate("Chứng từ %1 có Giá trị nghiệm thu chưa VAT phải lớn hơn 0!", Number);
+		Return;
+	EndIf;
+	
+	// 2. Ghi Sổ tích lũy Công nợ phải thu (AccumulationRegister.CongNoPhaiThu - Receipt)
+	RegisterRecords.CongNoPhaiThu.Write = True;
+	
+	RecordAR = RegisterRecords.CongNoPhaiThu.Add();
+	RecordAR.RecordType = AccumulationRecordType.Receipt;
+	RecordAR.Period = Date;
+	RecordAR.PhapNhan = PhapNhan;
+	RecordAR.DoiTac = DoiTac;
+	RecordAR.HopDong = HopDong;
+	RecordAR.ChungTuGoc = Ref;
+	RecordAR.SoTien = SoTienDoanhThu;
+	RecordAR.SoTienNgoaiTe = 0;
+	
+	// 3. Ghi Sổ cái kế toán (AccountingRegister.SoCaiKeToan)
+	RegisterRecords.SoCaiKeToan.Write = True;
+	
+	// Xac dinh Tai khoan No theo tinh chat doi tac:
+	// - Doi tac noi bo Vingroup (LaBenLienKet = True hoac LoaiDoiTac = NoiBoVingroup / NoiBoTapDoan) -> TK 1312
+	// - Doi tac ngoai tap doan -> TK 1311
+	IsNoiBo = False;
+	If ValueIsFilled(DoiTac) Then
+		Try
+			If DoiTac.LaBenLienKet Then
+				IsNoiBo = True;
+			ElsIf DoiTac.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoVingroup Or DoiTac.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoTapDoan Then
+				IsNoiBo = True;
+			EndIf;
+		Except
+		EndTry;
+	EndIf;
+	
+	If IsNoiBo Then
+		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+	Else
+		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+	EndIf;
+	
+	AccountCr = ChartsOfAccounts.HeThongTaiKhoan.TK5113;
+	
+	RecordGL = RegisterRecords.SoCaiKeToan.Add();
+	RecordGL.Period = Date;
+	RecordGL.AccountDr = AccountDr;
+	RecordGL.AccountCr = AccountCr;
+	RecordGL.SoTien = SoTienDoanhThu;
+	RecordGL.SoTienNgoaiTe = 0;
+	RecordGL.PhapNhan = PhapNhan;
+	RecordGL.ChungTuGoc = Ref;
+	
+	// Gan dong tien thanh toan
+	If ValueIsFilled(HopDong) Then
+		Try
+			RecordGL.TienTe = HopDong.DongTienThanhToan;
+		Except
+		EndTry;
+	EndIf;
+	If Not ValueIsFilled(RecordGL.TienTe) Then
+		Try
+			RecordGL.TienTe = Catalogs.TienTe.FindByCode("VND");
+		Except
+		EndTry;
+	EndIf;
+	
+	NoiDungDienGiai = DienGiai;
+	If Not ValueIsFilled(NoiDungDienGiai) Then
+		NoiDungDienGiai = StrTemplate("Ghi nhận doanh thu thuần nghiệm thu giai đoạn %1", Number);
+	EndIf;
+	RecordGL.DienGiai = Left(NoiDungDienGiai, 250);
+	
+	// 4. Kiem tra can doi SoCaiKeToan (GL Invariant: Sum Dr = Sum Cr)
+	EntriesGL = New Array;
+	EntriesGL.Add(New Structure("AmountDr,AmountCr", SoTienDoanhThu, SoTienDoanhThu));
+	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(EntriesGL);
+EndProcedure
+
+Procedure UndoPosting(Cancel)
+	// He thong 1C tu dong xoa cac ban ghi so theo co che AutoDeleteOnUnpost
+EndProcedure
+
+#EndRegion

@@ -150,6 +150,10 @@
 			<InformationRegister>KeHoachChiTien</InformationRegister>
 			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
 			<CommonModule>PheDuyetDaCapServer</CommonModule>
+			<Document>BienBanNghiemThuGiaiDoan</Document>
+			<Document>HoaDonGTGTDauRa</Document>
+			<AccumulationRegister>CongNoPhaiThu</AccumulationRegister>
+			<AccountingRegister>SoCaiKeToan</AccountingRegister>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>
