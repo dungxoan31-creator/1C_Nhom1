@@ -71,9 +71,9 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	If IsNgoaiTe Or SoTienNgoaiTe > 0 Then
-		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.TK1122; // Tien gui ngan hang Ngoai te
+		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1122"); // Tien gui ngan hang Ngoai te
 	Else
-		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.TK1121; // Tien gui ngan hang VND
+		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121"); // Tien gui ngan hang VND
 	EndIf;
 	
 	// 3. Xac dinh Tai khoan Co (Noi bo Vingroup -> TK 1312; Ngoai tap doan -> TK 1311)
@@ -90,9 +90,9 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	If IsNoiBo Then
-		AccountCr = ChartsOfAccounts.HeThongTaiKhoan.TK1312; // Phai thu khach hang noi bo Vingroup
+		AccountCr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312"); // Phai thu khach hang noi bo Vingroup
 	Else
-		AccountCr = ChartsOfAccounts.HeThongTaiKhoan.TK1311; // Phai thu khach hang ngoai
+		AccountCr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311"); // Phai thu khach hang ngoai
 	EndIf;
 	
 	// -------------------------------------------------------------------------
@@ -176,14 +176,14 @@ Function LayTaiKhoanCongNoTheoDoiTac(Val DoiTacRef) Export
 	If ValueIsFilled(DoiTacRef) Then
 		Try
 			If DoiTacRef.LaBenLienKet Then
-				Return ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+				Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 			ElsIf DoiTacRef.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoVingroup Or DoiTacRef.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoTapDoan Then
-				Return ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+				Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 			EndIf;
 		Except
 		EndTry;
 	EndIf;
-	Return ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+	Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311");
 EndFunction
 
 // Ham ho tro xac dinh tai khoan tien gui theo loai tien te
@@ -191,18 +191,18 @@ Function LayTaiKhoanTienGuiTheoTienTe(Val TienTeRef, Val SoTienNgoaiTeVal = 0) E
 	If ValueIsFilled(TienTeRef) Then
 		Try
 			If TrimAll(Upper(TienTeRef.Code)) <> "VND" Then
-				Return ChartsOfAccounts.HeThongTaiKhoan.TK1122;
+				Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1122");
 			EndIf;
 		Except
 			If TrimAll(Upper(String(TienTeRef))) <> "VND" And TrimAll(String(TienTeRef)) <> "" Then
-				Return ChartsOfAccounts.HeThongTaiKhoan.TK1122;
+				Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1122");
 			EndIf;
 		EndTry;
 	EndIf;
 	If SoTienNgoaiTeVal > 0 Then
-		Return ChartsOfAccounts.HeThongTaiKhoan.TK1122;
+		Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1122");
 	EndIf;
-	Return ChartsOfAccounts.HeThongTaiKhoan.TK1121;
+	Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
 EndFunction
 
 #EndRegion

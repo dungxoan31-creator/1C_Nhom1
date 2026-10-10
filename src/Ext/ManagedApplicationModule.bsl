@@ -1,5 +1,8 @@
 Procedure OnStart()
-	If LaunchParameter = "SeedCleanMasterData" Then
+	If LaunchParameter = "SeedFullTestData" Then
+		SeedFullTestDataServer.ThucThiNapFullTestData();
+		Exit(False);
+	ElsIf LaunchParameter = "SeedCleanMasterData" Then
 		SeedDataCleanServer.ThucThiNapMasterData();
 		Exit(False);
 	ElsIf LaunchParameter = "RunUnitTests" Then

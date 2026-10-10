@@ -118,6 +118,7 @@
 			<Enum>LoaiDoiTac</Enum>
 			<CommonModule>CatalogsCoreTest</CommonModule>
 			<CommonModule>SeedDataCleanServer</CommonModule>
+			<CommonModule>SeedFullTestDataServer</CommonModule>
 			<CommonModule>EnumsConstantsTest</CommonModule>
 			<Enum>TrangThaiNghiemThuAR</Enum>
 			<Enum>TrangThaiHoaDonAP</Enum>

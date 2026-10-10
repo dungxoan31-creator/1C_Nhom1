@@ -91,12 +91,12 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	If IsNoiBo Then
-		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	Else
-		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+		AccountDr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311");
 	EndIf;
 	
-	AccountCr = ChartsOfAccounts.HeThongTaiKhoan.TK5113;
+	AccountCr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("5113");
 	
 	RecordGL = RegisterRecords.SoCaiKeToan.Add();
 	RecordGL.Period = Date;

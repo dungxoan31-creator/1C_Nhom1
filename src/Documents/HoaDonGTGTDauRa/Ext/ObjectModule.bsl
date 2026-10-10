@@ -55,12 +55,12 @@ Procedure Posting(Cancel, Mode)
 	// Xac dinh Tai khoan Cong no Phai thu:
 	// - DoiTac la ben lien ket (LaBenLienKet = True) -> TK 1312 (Noi bo Vingroup)
 	// - DoiTac ben ngoai (LaBenLienKet = False)     -> TK 1311 (Khach hang ngoai)
-	TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+	TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311");
 	If ValueIsFilled(DoiTac) And DoiTac.LaBenLienKet Then
-		TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+		TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	EndIf;
 	
-	TKThueVAT = ChartsOfAccounts.HeThongTaiKhoan.TK33311;
+	TKThueVAT = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("33311");
 	
 	// -------------------------------------------------------------------------
 	// 1. Ghi Sổ Tích Lũy CongNoPhaiThu (AR Subledger)
@@ -131,9 +131,9 @@ EndProcedure
 // Ham ho tro danh cho Unit Test va Logic kiem thu doc lap
 Function LayTaiKhoanCongNoTheoDoiTac(Val DoiTacRef) Export
 	If ValueIsFilled(DoiTacRef) And DoiTacRef.LaBenLienKet Then
-		Return ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+		Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	EndIf;
-	Return ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+	Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311");
 EndFunction
 
 #EndRegion

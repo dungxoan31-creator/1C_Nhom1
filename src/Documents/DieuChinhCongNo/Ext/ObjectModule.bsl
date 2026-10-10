@@ -66,13 +66,13 @@ Procedure Posting(Cancel, Mode)
 	// 2. Xac dinh tai khoan ke toan
 	// - DoiTac noi bo Vingroup (LaBenLienKet = True) -> TK 1312
 	// - DoiTac ben ngoai (LaBenLienKet = False)     -> TK 1311
-	TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+	TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311");
 	If ValueIsFilled(DoiTac) And DoiTac.LaBenLienKet Then
-		TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+		TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	EndIf;
 	
-	TKDoanhThu = ChartsOfAccounts.HeThongTaiKhoan.TK5113;
-	TKThueVAT = ChartsOfAccounts.HeThongTaiKhoan.TK33311;
+	TKDoanhThu = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("5113");
+	TKThueVAT = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("33311");
 	
 	// Xac dinh dong tien hach toan
 	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.TienTe) Then
@@ -167,9 +167,9 @@ EndProcedure
 // Ham ho tro lay tai khoan cong no theo phan loai doi tac
 Function LayTaiKhoanCongNoTheoDoiTac(Val DoiTacRef) Export
 	If ValueIsFilled(DoiTacRef) And DoiTacRef.LaBenLienKet Then
-		Return ChartsOfAccounts.HeThongTaiKhoan.TK1312;
+		Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	EndIf;
-	Return ChartsOfAccounts.HeThongTaiKhoan.TK1311;
+	Return ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1311");
 EndFunction
 
 // Ham ho tro tinh toan boc tach doanh thu va thue VAT tu tong so tien giam
