@@ -150,11 +150,17 @@
 			<InformationRegister>KeHoachChiTien</InformationRegister>
 			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
 			<CommonModule>PheDuyetDaCapServer</CommonModule>
+			<CommonModule>QuyTrinhPheDuyetAPServer</CommonModule>
 			<Document>BienBanNghiemThuGiaiDoan</Document>
 			<Document>HoaDonGTGTDauRa</Document>
 			<Document>DieuChinhCongNo</Document>
 			<Document>PhieuThuTienKhachHang</Document>
+			<Document>HoaDonNhaCungCap</Document>
+			<Document>UyNhiemChi</Document>
+			<Document>NghiemThuThauPhu</Document>
+			<Document>DeNghiThanhToanDichVu</Document>
 			<AccumulationRegister>CongNoPhaiThu</AccumulationRegister>
+			<AccumulationRegister>CongNoPhaiTra</AccumulationRegister>
 			<AccumulationRegister>DongTien</AccumulationRegister>
 			<AccountingRegister>SoCaiKeToan</AccountingRegister>
 		</ChildObjects>
