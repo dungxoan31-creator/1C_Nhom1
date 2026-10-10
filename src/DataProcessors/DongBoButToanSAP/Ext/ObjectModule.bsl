@@ -11,7 +11,7 @@
 Function DongGoiPayloadSAP(Val DanhSachButToan) Export
 	Payload = New Structure;
 	Payload.Insert("CompanyCode", "1000"); // VinSmart Future
-	Payload.Insert("PostingDate", CurrentDate());
+	Payload.Insert("PostingDate", CurrentSessionDate());
 	Payload.Insert("Currency", "VND");
 	Payload.Insert("Lines", New Array);
 	
@@ -38,7 +38,7 @@ Function GuiBatchSangSAP(Val BatchId, Val Payload, Val MaxRetry = 3) Export
 		Try
 			// Goi SAP OData HTTP Request
 			KetQua.ThanhCong = True;
-			KetQua.SAPDocNumber = "SAP-" + Format(CurrentDate(), "DF=yyyyMMdd") + "-" + String(LanThu);
+			KetQua.SAPDocNumber = "SAP-" + Format(CurrentSessionDate(), "DF=yyyyMMdd") + "-" + String(LanThu);
 			KetQua.TrangThai = "ThanhCong";
 			Break;
 		Except

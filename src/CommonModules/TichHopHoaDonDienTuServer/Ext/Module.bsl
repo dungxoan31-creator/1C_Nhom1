@@ -19,7 +19,7 @@ Function KySoHoaDonHSM(Val HoaDonRef) Export
 	// Goi HSM Cloud Service
 	Try
 		KetQua.ThanhCong = True;
-		KetQua.MaCuaCQT = "0026ABC" + Format(CurrentDate(), "DF=yyyyMMddHHmmss") + "0001";
+		KetQua.MaCuaCQT = "0026ABC" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss") + "0001";
 		KetQua.ChuKySoHSM = "HSM_SIG_CERT_VINSMART_2026";
 	Except
 		KetQua.ThanhCong = False;

@@ -30,7 +30,7 @@ Function RunAllTests() Export
 	TestLog = TestResults.Log;
 	TestLog.Add("=================================================================");
 	TestLog.Add("   VINSMART FUTURE - CATALOGS CORE UNIT TEST (TASK 1.1)          ");
-	TestLog.Add("   Thoi gian chay: " + CurrentDate());
+	TestLog.Add("   Thoi gian chay: " + CurrentSessionDate());
 	TestLog.Add("=================================================================");
 	
 	// Test 1: Khoi tao ban ghi tren 10 Catalogs
@@ -259,7 +259,7 @@ Procedure Test03_TaiKhoanAoNemLoiKhiTrungSoTaiKhoanAo() Export
 		RefDT = ObjDT.Ref;
 	EndIf;
 	
-	UniqueSoTK = "VA-UNIQUE-" + String(CurrentDate());
+	UniqueSoTK = "VA-UNIQUE-" + String(CurrentSessionDate());
 	UniqueSoTK = Left(UniqueSoTK, 30);
 	
 	// Ban ghi 1: Tao thanh cong

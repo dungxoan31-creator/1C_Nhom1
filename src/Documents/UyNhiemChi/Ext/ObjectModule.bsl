@@ -37,14 +37,15 @@ EndProcedure
 
 Procedure Posting(Cancel, Mode)
 	// 1. Kiem tra P0.2 Invariant State Machine:
-	// Chi ghi so khi Ngan hang da xac nhan thanh cong (TrangThai = DaGhiSo)
+	// Xoa movement cu neu trang thai khong con la DaGhiSo (Quy tac P2 / #std603)
+	RegisterRecords.CongNoPhaiTra.Write = True;
+	RegisterRecords.DongTien.Write = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
+	
 	TrangThaiDaGhiSo = Enums.TrangThaiLenhThanhToan.DaGhiSo;
 	
 	If TrangThai <> TrangThaiDaGhiSo Then
-		// KHONG GHI SO GL VA SUBLEDGER!
-		RegisterRecords.CongNoPhaiTra.Write = False;
-		RegisterRecords.DongTien.Write = False;
-		RegisterRecords.SoCaiKeToan.Write = False;
+		// KHONG GHI SO GL VA SUBLEDGER! (Ghi de record set rong de xoa movement cu neu co)
 		Return;
 	EndIf;
 	
@@ -52,22 +53,18 @@ Procedure Posting(Cancel, Mode)
 	If Not ValueIsFilled(PhapNhan) Then
 		Cancel = True;
 		Raise "Trường 'Pháp nhân' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(DoiTac) Then
 		Cancel = True;
 		Raise "Trường 'Nhà cung cấp' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(HopDong) Then
 		Cancel = True;
 		Raise "Trường 'Hợp đồng' chưa được điền!";
-		Return;
 	EndIf;
 	If SoTien <= 0 Then
 		Cancel = True;
 		Raise "Số tiền lệnh chi phải lớn hơn 0!";
-		Return;
 	EndIf;
 	
 	// 3. Xac dinh tai khoan ke toan

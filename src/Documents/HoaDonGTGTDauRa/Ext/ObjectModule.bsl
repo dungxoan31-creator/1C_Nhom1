@@ -9,6 +9,10 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
 	// Tu dong tinh tien thue VAT neu chua co
 	If TienThueVAT = 0 And TienChuaThue > 0 And ThueSuatVAT > 0 Then
 		TienThueVAT = Round(TienChuaThue * ThueSuatVAT / 100, 2);
@@ -26,11 +30,14 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Xoa movement cu neu chuyen trang thai sang khong ghi so (Quy tac P2 / #std603)
+	RegisterRecords.CongNoPhaiThu.Write = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
+	
 	// Kiem tra trang thai HDDT:
 	// - DaDieuChinh: Hoa don dieu chinh la chung tu phap ly dien tu, khong sinh but toan ke toan (Task 3.3 invariant)
 	// - DaHuy: Hoa don da huy khong phat sinh nghia vu ke toan
 	If TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaDieuChinh Then
-		// Non-posting: Return ma khong sinh ban ghi
 		Return;
 	EndIf;
 	

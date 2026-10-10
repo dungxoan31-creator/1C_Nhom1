@@ -45,7 +45,6 @@ Procedure Posting(Cancel, Mode)
 		Message = StrTemplate("Chứng từ nghiệm thu %1 chưa đủ điều kiện ghi sổ! Chỉ ghi sổ khi ở trạng thái Đã duyệt nội bộ hoặc Đã ghi sổ. Trạng thái hiện tại: %2",
 			Number, TrangThai);
 		Raise Message;
-		Return;
 	EndIf;
 	
 	// Cap nhat trang thai len DaGhiSo neu dang o buoc DaDuyetNoiBo
@@ -58,11 +57,13 @@ Procedure Posting(Cancel, Mode)
 	If SoTienDoanhThu <= 0 Then
 		Cancel = True;
 		Raise StrTemplate("Chứng từ %1 có Giá trị nghiệm thu chưa VAT phải lớn hơn 0!", Number);
-		Return;
 	EndIf;
 	
 	// 2. Ghi Sổ tích lũy Công nợ phải thu (AccumulationRegister.CongNoPhaiThu - Receipt)
+	RegisterRecords.CongNoPhaiThu.LockForUpdate = True;
 	RegisterRecords.CongNoPhaiThu.Write = True;
+	RegisterRecords.SoCaiKeToan.LockForUpdate = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
 	
 	RecordAR = RegisterRecords.CongNoPhaiThu.Add();
 	RecordAR.RecordType = AccumulationRecordType.Receipt;
@@ -82,14 +83,11 @@ Procedure Posting(Cancel, Mode)
 	// - Doi tac ngoai tap doan -> TK 1311
 	IsNoiBo = False;
 	If ValueIsFilled(DoiTac) Then
-		Try
-			If DoiTac.LaBenLienKet Then
-				IsNoiBo = True;
-			ElsIf DoiTac.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoVingroup Or DoiTac.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoTapDoan Then
-				IsNoiBo = True;
-			EndIf;
-		Except
-		EndTry;
+		If DoiTac.LaBenLienKet Then
+			IsNoiBo = True;
+		ElsIf DoiTac.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoVingroup Or DoiTac.LoaiDoiTac = Enums.LoaiDoiTac.NoiBoTapDoan Then
+			IsNoiBo = True;
+		EndIf;
 	EndIf;
 	
 	If IsNoiBo Then
@@ -110,17 +108,10 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.ChungTuGoc = Ref;
 	
 	// Gan dong tien thanh toan
-	If ValueIsFilled(HopDong) Then
-		Try
-			RecordGL.TienTe = HopDong.DongTienThanhToan;
-		Except
-		EndTry;
-	EndIf;
-	If Not ValueIsFilled(RecordGL.TienTe) Then
-		Try
-			RecordGL.TienTe = Catalogs.TienTe.FindByCode("VND");
-		Except
-		EndTry;
+	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.DongTienThanhToan) Then
+		RecordGL.TienTe = HopDong.DongTienThanhToan;
+	ElsIf ValueIsFilled(Catalogs.TienTe.FindByCode("VND")) Then
+		RecordGL.TienTe = Catalogs.TienTe.FindByCode("VND");
 	EndIf;
 	
 	NoiDungDienGiai = DienGiai;

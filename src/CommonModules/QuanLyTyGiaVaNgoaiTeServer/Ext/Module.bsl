@@ -22,7 +22,7 @@ Var MoPhongSoDuDongTien;
 Function TinhTyGiaXuatQuyBQGQ(Val PhapNhan, Val TaiKhoanTien, Val TienTe, Val ThoiDiem) Export
 	ThoiDiemChuan = ThoiDiem;
 	If Not ValueIsFilled(ThoiDiemChuan) Then
-		ThoiDiemChuan = CurrentDate();
+		ThoiDiemChuan = CurrentSessionDate();
 	EndIf;
 	
 	// Neu la VND, ty gia luon mac dinh bang 1
@@ -141,7 +141,7 @@ Function LayTyGiaHachToanHieuLuc(Val TienTe, Val ThoiDiem) Export
 	
 	ThoiDiemChuan = ThoiDiem;
 	If Not ValueIsFilled(ThoiDiemChuan) Then
-		ThoiDiemChuan = CurrentDate();
+		ThoiDiemChuan = CurrentSessionDate();
 	EndIf;
 	
 	RefTT = LayThamChieu(TienTe);
@@ -217,7 +217,7 @@ Procedure CapNhatTyGiaTuDong() Export
 		TienTeUSD = Catalogs.TienTe.FindByCode("USD");
 		If ValueIsFilled(TienTeUSD) Then
 			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
-			Record.Period = BegOfDay(CurrentDate());
+			Record.Period = BegOfDay(CurrentSessionDate());
 			Record.TienTe = TienTeUSD;
 			Record.TyGia = 25450;
 			Record.Write(True);
@@ -292,7 +292,7 @@ Procedure CapNhatTyGiaTuDong() Export
 		TienTeUSD = Catalogs.TienTe.FindByCode("USD");
 		If ValueIsFilled(TienTeUSD) Then
 			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
-			Record.Period = BegOfDay(CurrentDate());
+			Record.Period = BegOfDay(CurrentSessionDate());
 			Record.TienTe = TienTeUSD;
 			Record.TyGia = 25450;
 			Record.Write(True);

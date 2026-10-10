@@ -28,7 +28,6 @@ Procedure Posting(Cancel, Mode)
 	If SoTien <= 0 Then
 		Cancel = True;
 		Raise "Số tiền báo có phải lớn hơn 0!";
-		Return;
 	EndIf;
 	
 	// 1. Xac dinh tai khoan ke toan

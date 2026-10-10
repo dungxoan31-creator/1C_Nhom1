@@ -29,7 +29,7 @@ Function RunAllTests() Export
 	TestLog = TestResults.Log;
 	TestLog.Add("=================================================================");
 	TestLog.Add("   VINSMART FUTURE - CHART OF ACCOUNTS & GL UNIT TEST (TASK 1.3) ");
-	TestLog.Add("   Thoi gian chay: " + CurrentDate());
+	TestLog.Add("   Thoi gian chay: " + CurrentSessionDate());
 	TestLog.Add("=================================================================");
 	
 	// Test 1: Anh xa thanh cong MaLogic = "1312" (AR Noi bo) va MaLogic = "33318" (Thue VAT Nha thau)

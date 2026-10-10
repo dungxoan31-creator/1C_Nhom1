@@ -1,4 +1,8 @@
 Procedure BeforeWrite(Cancel)
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
 	// Bat trung lap ma SoTaiKhoanAo (Unique constraint)
 	If ValueIsFilled(SoTaiKhoanAo) Then
 		Query = New Query;

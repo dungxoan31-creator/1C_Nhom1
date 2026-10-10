@@ -32,10 +32,12 @@ EndProcedure
 
 Procedure Posting(Cancel, Mode)
 	// Chi ghi so khi da duyet hoac da ghi so
+	// Xoa movement cu neu trang thai khong con du dieu kien ghi so (Quy tac P2 / #std603)
+	RegisterRecords.CongNoPhaiThu.Write = True;
+	RegisterRecords.CongNoPhaiTra.Write = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
+	
 	If TrangThai <> "DaDuyet" And TrangThai <> "DaGhiSo" Then
-		RegisterRecords.CongNoPhaiThu.Write = False;
-		RegisterRecords.CongNoPhaiTra.Write = False;
-		RegisterRecords.SoCaiKeToan.Write = False;
 		Return;
 	EndIf;
 	
@@ -43,17 +45,14 @@ Procedure Posting(Cancel, Mode)
 	If Not ValueIsFilled(PhapNhan) Then
 		Cancel = True;
 		Raise "Trường 'Pháp nhân' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(DoiTacNoiBo) Then
 		Cancel = True;
 		Raise "Trường 'Đối tác nội bộ' chưa được điền!";
-		Return;
 	EndIf;
 	If SoTienCanTru <= 0 Then
 		Cancel = True;
 		Raise "Số tiền cấn trừ phải lớn hơn 0!";
-		Return;
 	EndIf;
 	
 	NgayHachToan = BegOfDay(Date);

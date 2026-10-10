@@ -76,22 +76,18 @@ Procedure Posting(Cancel, Mode)
 	If Not ValueIsFilled(PhapNhan) Then
 		Cancel = True;
 		Raise "Trường 'Pháp nhân' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(DoiTac) Then
 		Cancel = True;
 		Raise "Trường 'Nhà cung cấp' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(HopDong) Then
 		Cancel = True;
 		Raise "Trường 'Hợp đồng' chưa được điền!";
-		Return;
 	EndIf;
 	If TongTien <= 0 Then
 		Cancel = True;
 		Raise "Tổng tiền hóa đơn phải lớn hơn 0!";
-		Return;
 	EndIf;
 	
 	// 2. Xac dinh tai khoan ke toan
@@ -105,7 +101,10 @@ Procedure Posting(Cancel, Mode)
 	TKThueTNDNNhaThau = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3338");
 	
 	// 3. Ghi So tich luy CongNoPhaiTra (AccumulationRegister.CongNoPhaiTra - Receipt)
+	RegisterRecords.CongNoPhaiTra.LockForUpdate = True;
 	RegisterRecords.CongNoPhaiTra.Write = True;
+	RegisterRecords.SoCaiKeToan.LockForUpdate = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
 	RecordAP = RegisterRecords.CongNoPhaiTra.Add();
 	RecordAP.RecordType = AccumulationRecordType.Receipt;
 	RecordAP.Period = Date;

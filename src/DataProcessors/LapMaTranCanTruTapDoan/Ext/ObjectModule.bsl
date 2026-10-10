@@ -22,7 +22,7 @@ EndFunction
 // Tuyet doi khong giu DB locks
 Function XuLyWatchdogTimeout(DanhSachChungTuKhoa, Val TimeoutPhut = 120) Export
 	SoChungTuGiaiPhong = 0;
-	ThoiDiemHienTai = CurrentDate();
+	ThoiDiemHienTai = CurrentSessionDate();
 	
 	For Each Item In DanhSachChungTuKhoa Do
 		SoPhutDaTroiQua = (ThoiDiemHienTai - Item.ThoiDiemKhoa) / 60;

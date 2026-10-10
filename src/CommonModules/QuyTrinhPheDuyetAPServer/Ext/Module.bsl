@@ -79,7 +79,7 @@ Function TuChoiPheDuyet(Val TrangThaiHienTai, Val LyDoTuChoi) Export
 	KetQua.Insert("TrangThaiMoi", "TuChoi");
 	KetQua.Insert("TrangThaiTruocDo", String(TrangThaiHienTai));
 	KetQua.Insert("LyDo", TrimAll(LyDoTuChoi));
-	KetQua.Insert("ThoiDiem", CurrentDate());
+	KetQua.Insert("ThoiDiem", CurrentSessionDate());
 	
 	Return KetQua;
 EndFunction

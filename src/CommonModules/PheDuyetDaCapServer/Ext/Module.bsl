@@ -43,13 +43,13 @@ EndFunction
 // Tham so:
 //   PhapNhan - CatalogRef.PhapNhan, String, Structure - Phap nhan thuc hien chi tra
 //   DoiTac   - CatalogRef.DoiTac, String, Structure   - Nha cung cap dich vu
-//   ThoiDiem - Date                                    - Thoi diem can xac dinh (mac dinh CurrentDate())
+//   ThoiDiem - Date                                    - Thoi diem can xac dinh (mac dinh CurrentSessionDate())
 //
 // Gia tri tra ve:
 //   Number - Tong gia tri cac hoa don trong cung thang duong lich (VND)
 //
 Function TinhTongLuyKeTrongThang(Val PhapNhan, Val DoiTac, Val ThoiDiem) Export
-	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentDate());
+	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate());
 	DauThang = BegOfMonth(ThoiDiemChuan);
 	CuoiThang = EndOfMonth(ThoiDiemChuan);
 	
@@ -139,7 +139,7 @@ EndFunction
 //
 Function XacDinhCapPheDuyetHoaDon(Val PhapNhan, Val DoiTac, Val SoTien, Val ThoiDiem) Export
 	SoTienHoaDon = Number(SoTien);
-	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentDate());
+	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate());
 	
 	// 1. Tinh tong luy ke cua NCC trong thang truoc hoa don hien tai
 	TongLuyKeTruoc = TinhTongLuyKeTrongThang(PhapNhan, DoiTac, ThoiDiemChuan);
@@ -175,7 +175,7 @@ EndFunction
 //
 Function KiemTraYeuCauDuyetCFO(Val PhapNhan, Val DuAn, Val KhoanMucDongTien, Val ThoiDiem, Val SoTienChi) Export
 	SoTienChiChuan = Number(SoTienChi);
-	ThangChuan = BegOfMonth(?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentDate()));
+	ThangChuan = BegOfMonth(?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate()));
 	
 	NganSach = 0;
 	DaDuyet = 0;
@@ -288,7 +288,7 @@ Function LayThongTinChiTietPheDuyet(Val PhapNhan, Val DoiTac, Val SoTien, Val Th
 	Val DuAn = Undefined, Val KhoanMucDongTien = Undefined) Export
 	
 	SoTienChuan = Number(SoTien);
-	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentDate());
+	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate());
 	
 	TongLuyKeTruoc = TinhTongLuyKeTrongThang(PhapNhan, DoiTac, ThoiDiemChuan);
 	TongLuyKeSauHoaDon = TongLuyKeTruoc + SoTienChuan;
@@ -333,7 +333,7 @@ Procedure DangKyHoaDon(Val PhapNhan, Val DoiTac, Val SoTien, Val ThoiDiem, Val S
 	Record.Insert("PhapNhan", PhapNhan);
 	Record.Insert("DoiTac", DoiTac);
 	Record.Insert("SoTien", Number(SoTien));
-	Record.Insert("ThoiDiem", ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentDate()));
+	Record.Insert("ThoiDiem", ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate()));
 	Record.Insert("SoHoaDon", SoHoaDon);
 	
 	BangHoaDonMoPhong.Add(Record);

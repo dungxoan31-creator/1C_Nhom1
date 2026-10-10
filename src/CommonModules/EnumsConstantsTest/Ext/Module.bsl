@@ -29,7 +29,7 @@ Function RunAllTests() Export
 	TestLog = TestResults.Log;
 	TestLog.Add("=================================================================");
 	TestLog.Add("   VINSMART FUTURE - ENUMS & CONSTANTS UNIT TEST (TASK 1.2)      ");
-	TestLog.Add("   Thoi gian chay: " + CurrentDate());
+	TestLog.Add("   Thoi gian chay: " + CurrentSessionDate());
 	TestLog.Add("=================================================================");
 	
 	// Khoi tao gia tri mac dinh cho 12 Constants truoc khi chay cac test

@@ -86,15 +86,15 @@ Function WebhookPOST(Request)
 		RecordManager.IdempotencyKey = IdempotencyKey;
 		RecordManager.PayloadHash = PayloadHash;
 		RecordManager.MaGiaoDichNganHang = ?(PayloadData.Property("MaGiaoDich"), PayloadData.MaGiaoDich, IdempotencyKey);
-		RecordManager.NgayGiaoDich = CurrentDate();
+		RecordManager.NgayGiaoDich = CurrentSessionDate();
 		RecordManager.SoTien = ?(PayloadData.Property("SoTien"), PayloadData.SoTien, 0);
 		RecordManager.TrangThaiXuLy = "ThanhCong";
 		RecordManager.Write(True);
 		
 		// Tao chung tu BaoCoNganHang
 		DocObj = Documents.BaoCoNganHang.CreateDocument();
-		DocObj.Date = CurrentDate();
-		DocObj.NgayGiaoDich = CurrentDate();
+		DocObj.Date = CurrentSessionDate();
+		DocObj.NgayGiaoDich = CurrentSessionDate();
 		DocObj.MaGiaoDichNganHang = RecordManager.MaGiaoDichNganHang;
 		DocObj.SoTien = RecordManager.SoTien;
 		

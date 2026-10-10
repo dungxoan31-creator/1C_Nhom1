@@ -49,22 +49,18 @@ Procedure Posting(Cancel, Mode)
 	If Not ValueIsFilled(PhapNhan) Then
 		Cancel = True;
 		Raise "Trường 'Pháp nhân' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(KenhThanhToan) Then
 		Cancel = True;
 		Raise "Trường 'Kênh thanh toán' chưa được điền!";
-		Return;
 	EndIf;
 	If Not ValueIsFilled(TaiKhoanNganHang) Then
 		Cancel = True;
 		Raise "Trường 'Tài khoản ngân hàng' chưa được điền!";
-		Return;
 	EndIf;
 	If TongTienGiaoDich <= 0 Then
 		Cancel = True;
 		Raise "Tổng tiền giao dịch đối soát phải lớn hơn 0!";
-		Return;
 	EndIf;
 	
 	NgayHachToan = BegOfDay(Date);
