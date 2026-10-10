@@ -6,4 +6,6 @@ setupt/
 *.cab
 *.msi
 *.exe
+*.cfl
+scratch/
 .superpowers/
