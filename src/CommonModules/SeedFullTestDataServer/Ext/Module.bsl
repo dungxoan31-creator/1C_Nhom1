@@ -10,6 +10,12 @@ Procedure ThucThiNapFullTestData() Export
 	Log.Add("   Thoi gian chay: " + CurrentSessionDate());
 	Log.Add("=================================================================");
 	
+	// 0. Khoi tao He thong tai khoan ke toan
+	KhoiTaoHeThongTaiKhoan(Log);
+
+	// Don dep chung tu test cu neu co de dam bao tinh idempotent
+	XoaChungTuCu();
+
 	Now = CurrentSessionDate();
 	RefPN = Catalogs.PhapNhan.FindByCode("PN-VSF");
 	RefPN_VIC = Catalogs.PhapNhan.FindByCode("PN-VIC");
@@ -65,10 +71,12 @@ Procedure ThucThiNapFullTestData() Export
 	Idx = 1;
 	For Each ItemAR In DanhSachAR Do
 		DocDate = Now - ItemAR.Days * 86400;
+		NumStr = Right("0000" + String(Idx), 4);
+		HDNumStr = "HD26E" + Right("0000000" + String(Idx), 7);
 		
 		// Tao BienBanNghiemThuGiaiDoan
 		BB = Documents.BienBanNghiemThuGiaiDoan.CreateDocument();
-		BB.Number = "BB" + Format(Idx, "ND=4; NLZ=");
+		BB.Number = "BB" + NumStr;
 		BB.Date = DocDate;
 		BB.PhapNhan = RefPN;
 		BB.DoiTac = ItemAR.DT;
@@ -87,13 +95,13 @@ Procedure ThucThiNapFullTestData() Export
 		
 		// Tao HoaDonGTGTDauRa
 		HD = Documents.HoaDonGTGTDauRa.CreateDocument();
-		HD.Number = "HD26E" + Format(Idx, "ND=7; NLZ=");
+		HD.Number = HDNumStr;
 		HD.Date = DocDate + 3600;
 		HD.PhapNhan = RefPN;
 		HD.DoiTac = ItemAR.DT;
 		HD.HopDong = ItemAR.HD;
 		HD.BienBanNghiemThu = BB.Ref;
-		HD.SoHoaDon = "HD26E" + Format(Idx, "ND=7; NLZ=");
+		HD.SoHoaDon = HDNumStr;
 		HD.KyHieu = "1C26TVE";
 		HD.NgayHoaDon = BegOfDay(DocDate);
 		HD.TienChuaThue = ItemAR.Tien;
@@ -101,7 +109,7 @@ Procedure ThucThiNapFullTestData() Export
 		HD.TienThueVAT = Round(ItemAR.Tien * 0.1, 2);
 		HD.TongTienThanhToan = ItemAR.Tien + HD.TienThueVAT;
 		HD.TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaPhatHanh;
-		HD.MaCQT = "CQT-2026-" + Format(Idx, "ND=8; NLZ=");
+		HD.MaCQT = "CQT-2026-" + Right("00000000" + String(Idx), 8);
 		HD.DienGiai = "Hoa don GTGT dien tu cho " + ItemAR.Note;
 		HD.Write(DocumentWriteMode.Posting);
 		HoaDonARRefs.Insert(ItemAR.Code, HD.Ref);
@@ -128,7 +136,7 @@ Procedure ThucThiNapFullTestData() Export
 	For Each ItemThu In DanhSachThu Do
 		DocDate = Now - ItemThu.Days * 86400;
 		PT = Documents.PhieuThuTienKhachHang.CreateDocument();
-		PT.Number = "PT" + Format(IdxPT, "ND=4; NLZ=");
+		PT.Number = "PT" + Right("0000" + String(IdxPT), 4);
 		PT.Date = DocDate;
 		PT.PhapNhan = RefPN;
 		PT.DoiTac = ItemThu.DT;
@@ -154,14 +162,11 @@ Procedure ThucThiNapFullTestData() Export
 	Log.Add("--- 3. Sinh 8 Hoa don nha cung cap (AP Invoices with FCT) ---");
 	
 	DanhSachAP = New Array;
-	// AWS USD: Co FCT 10%
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-AWS-01", RefDT_AWS, RefHD_AWS, 12000, 25400, True, 80, "AWS Cloud Services Thang 7/2026 (12k USD, FCT 10%)"));
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-AWS-02", RefDT_AWS, RefHD_AWS, 15000, 25400, True, 52, "AWS Cloud Services Thang 8/2026 (15k USD, FCT 10%)"));
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-AWS-03", RefDT_AWS, RefHD_AWS, 18000, 25400, True, 18, "AWS Cloud Services Thang 9/2026 (18k USD, FCT 10%)"));
-	// Qualcomm USD: Khong FCT
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-QCOM-01", RefDT_QCOM, RefHD_QCOM, 10000, 25400, False, 70, "Qualcomm Snapdragon AI Chipset License (10k USD)"));
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-QCOM-02", RefDT_QCOM, RefHD_QCOM, 8000, 25400, False, 28, "Qualcomm 5G Modem Royalty (8k USD)"));
-	// Trong nuoc VND: VinFast noi bo & FPT ngoai
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-VFS-01", RefDT_VFS, RefHD_VFS, 0, 1, False, 60, "VinFast - Thue san bai va tram thu nghiem xe AI (80tr VND)"));
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-FPT-01", RefDT_FPT, RefHD_FPT, 0, 1, False, 42, "FPT Telecom - Thue kenh truyen so lieu chuyen dung (45tr VND)"));
 	DanhSachAP.Add(New Structure("Code,DT,HD,USD,VNDRate,FCT,Days,Note", "AP-FPT-02", RefDT_FPT, RefHD_FPT, 0, 1, False, 12, "FPT Telecom - Thue cho dat may chu Data Center (55tr VND)"));
@@ -171,12 +176,12 @@ Procedure ThucThiNapFullTestData() Export
 	For Each ItemAP In DanhSachAP Do
 		DocDate = Now - ItemAP.Days * 86400;
 		HDNCC = Documents.HoaDonNhaCungCap.CreateDocument();
-		HDNCC.Number = "AP" + Format(IdxAP, "ND=4; NLZ=");
+		HDNCC.Number = "AP" + Right("0000" + String(IdxAP), 4);
 		HDNCC.Date = DocDate;
 		HDNCC.PhapNhan = RefPN;
 		HDNCC.DoiTac = ItemAP.DT;
 		HDNCC.HopDong = ItemAP.HD;
-		HDNCC.SoHoaDon = "INV-2026-" + Format(IdxAP, "ND=5; NLZ=");
+		HDNCC.SoHoaDon = "INV-2026-" + Right("00000" + String(IdxAP), 5);
 		HDNCC.NgayHoaDon = BegOfDay(DocDate);
 		
 		If ItemAP.USD > 0 Then
@@ -216,7 +221,7 @@ Procedure ThucThiNapFullTestData() Export
 		EndIf;
 		
 		HDNCC.TrangThai = Enums.TrangThaiHoaDonAP.DaGhiSo;
-		HDNCC.TaiKhoanChiPhi = ChartsOfAccounts.HeThongTaiKhoan.TK627;
+		HDNCC.TaiKhoanChiPhi = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("627");
 		HDNCC.DienGiai = ItemAP.Note;
 		HDNCC.Write(DocumentWriteMode.Posting);
 		HoaDonAPRefs.Insert(ItemAP.Code, HDNCC.Ref);
@@ -242,7 +247,7 @@ Procedure ThucThiNapFullTestData() Export
 	For Each ItemUNC In DanhSachUNC Do
 		DocDate = Now - ItemUNC.Days * 86400;
 		UNC = Documents.UyNhiemChi.CreateDocument();
-		UNC.Number = "UNC" + Format(IdxUNC, "ND=4; NLZ=");
+		UNC.Number = "UNC" + Right("0000" + String(IdxUNC), 4);
 		UNC.Date = DocDate;
 		UNC.PhapNhan = RefPN;
 		UNC.DoiTac = ItemUNC.DT;
@@ -340,7 +345,7 @@ Procedure ThucThiNapFullTestData() Export
 	CT1.TrangThai = "DaGhiSo";
 	CT1.NguoiLap = "KeToanNoiBo";
 	CT1.NguoiDuyet = "CFO";
-	CT1.GhiChu = "Can tru song phuong 2 ben VSF ban phan mem & VinFast cho thue mat bang";
+	CT1.GhiChu = "Can tru song phuong 2 ben VSF ban phan mem va VinFast cho thue mat bang";
 	CT1.Write(DocumentWriteMode.Posting);
 	Log.Add("[+] CanTru " + CT1.Number + ": Song phuong VSF - VinFast 40tr VND");
 	
@@ -377,4 +382,88 @@ Procedure ThucThiNapFullTestData() Export
 		TW.Close();
 	Except
 	EndTry;
+EndProcedure
+
+Procedure KhoiTaoHeThongTaiKhoan(Log)
+	DanhSachTK = QuanLyVongDoiChungTuServer.BangAnhXaTaiKhoanMacDinh();
+	For Each KeyVal In DanhSachTK Do
+		TKRef = ChartsOfAccounts.HeThongTaiKhoan.FindByCode(KeyVal.Key);
+		If TKRef.IsEmpty() Then
+			TKObj = ChartsOfAccounts.HeThongTaiKhoan.CreateAccount();
+			TKObj.Code = KeyVal.Value.Code;
+			TKObj.Description = KeyVal.Value.TenTaiKhoan;
+			TKObj.MaLogic = KeyVal.Value.MaLogic;
+			TKObj.TenTaiKhoan = KeyVal.Value.TenTaiKhoan;
+			TKObj.TinhChat = KeyVal.Value.TinhChat;
+			If KeyVal.Value.TinhChat = "Active" Then
+				TKObj.Type = AccountType.Active;
+			ElsIf KeyVal.Value.TinhChat = "Passive" Then
+				TKObj.Type = AccountType.Passive;
+			Else
+				TKObj.Type = AccountType.ActivePassive;
+			EndIf;
+			If KeyVal.Key = "000" Then
+				TKObj.OffBalance = True;
+			EndIf;
+			Try
+				TKObj.Write();
+				Log.Add("[+] Tao Tai khoan ke toan: " + KeyVal.Key + " - " + KeyVal.Value.TenTaiKhoan);
+			Except
+				Log.Add("[!] Khong the tao TK " + KeyVal.Key + ": " + ErrorDescription());
+			EndTry;
+		Else
+			Log.Add("[.] TK da ton tai: " + KeyVal.Key);
+		EndIf;
+	EndDo;
+EndProcedure
+
+Procedure XoaChungTuCu()
+	// 1. Can tru cong no noi bo
+	Sel = Documents.CanTruCongNoNoiBo.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
+	
+	// 2. Bang ke doi soat
+	Sel = Documents.BangKeDoiSoatKenhThanhToan.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
+	
+	// 3. Uy nhiem chi
+	Sel = Documents.UyNhiemChi.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
+	
+	// 4. Hoa don AP
+	Sel = Documents.HoaDonNhaCungCap.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
+	
+	// 5. Phieu thu
+	Sel = Documents.PhieuThuTienKhachHang.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
+	
+	// 6. Hoa don AR
+	Sel = Documents.HoaDonGTGTDauRa.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
+	
+	// 7. Bien ban nghiem thu
+	Sel = Documents.BienBanNghiemThuGiaiDoan.Select();
+	While Sel.Next() Do
+		Obj = Sel.GetObject();
+		Obj.Delete();
+	EndDo;
 EndProcedure

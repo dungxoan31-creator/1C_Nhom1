@@ -1,0 +1,41 @@
+﻿=== BAT DAU NAP MASTER DATA SACH VA NGUOI DUNG ADMIN ===
+[.] TienTe da ton tai: VND
+[.] TienTe da ton tai: USD
+[.] TienTe da ton tai: EUR
+[+] Cap nhat Ty gia: US Dollar = 25,400
+[+] Cap nhat Ty gia: Euro = 27,500
+[.] PhapNhan da ton tai: PN-VSF
+[.] PhapNhan da ton tai: PN-VIC
+[.] PhapNhan da ton tai: PN-VFS
+[.] DoiTac da ton tai: DT-AWS
+[.] DoiTac da ton tai: DT-QCOM
+[.] DoiTac da ton tai: DT-VTS
+[.] DoiTac da ton tai: DT-FPT
+[.] DoiTac da ton tai: DT-VIC
+[.] DoiTac da ton tai: DT-VFS
+[.] DoiTac da ton tai: DT-B2C
+[.] TaiKhoanTien da ton tai: TK-TCB-VND
+[.] TaiKhoanTien da ton tai: TK-VCB-USD
+[.] TaiKhoanTien da ton tai: TK-VPB-VA
+[.] TaiKhoanAo da ton tai: VA-TCB-FPT
+[.] TaiKhoanAo da ton tai: VA-TCB-VIC
+[.] TaiKhoanAo da ton tai: VA-VPB-VTS
+[.] HopDong da ton tai: HD-AWS-2026
+[.] HopDong da ton tai: HD-QCOM-2026
+[.] HopDong da ton tai: HD-VFS-2026
+[.] HopDong da ton tai: HD-VIC-2026
+[.] HopDong da ton tai: HD-FPT-2026
+[.] KenhThanhToan da ton tai: KTT-VNPAY
+[.] KenhThanhToan da ton tai: KTT-ONEPAY
+[.] DichVuCNTT da ton tai: DV-AWS-EC2
+[.] DichVuCNTT da ton tai: DV-AWS-S3
+[.] DichVuCNTT da ton tai: DV-AI-INFER
+[.] DuAn da ton tai: DA-SMARTLIFE
+[.] DuAn da ton tai: DA-AUTONOMOUS
+[.] KhoanMucDongTien da ton tai: KM-THU-BH
+[.] KhoanMucDongTien da ton tai: KM-CHI-CLOUD
+[.] KhoanMucDongTien da ton tai: KM-CHI-THUE
+[.] KhoanMucDongTien da ton tai: KM-CHI-PHI-NH
+[+] Thiet lap thanh cong tat ca 12 Hang so he thong!
+[+] Tao thanh cong nguoi dung Admin (Toan quyen QuanTriHeThong, khong mat khau).
+=== HOAN TAT NAP TOAN BO MASTER DATA SACH VA NGUOI DUNG! ===

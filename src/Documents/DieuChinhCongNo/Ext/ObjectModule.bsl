@@ -75,8 +75,8 @@ Procedure Posting(Cancel, Mode)
 	TKThueVAT = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("33311");
 	
 	// Xac dinh dong tien hach toan
-	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.TienTe) Then
-		TienTeHachToan = HopDong.TienTe;
+	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.DongTienThanhToan) Then
+		TienTeHachToan = HopDong.DongTienThanhToan;
 	Else
 		TienTeHachToan = Catalogs.TienTe.FindByCode("VND");
 	EndIf;

@@ -90,8 +90,8 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.AccountCr = TKThueVAT;
 	RecordGL.PhapNhan = PhapNhan;
 	
-	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.TienTe) Then
-		RecordGL.TienTe = HopDong.TienTe;
+	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.DongTienThanhToan) Then
+		RecordGL.TienTe = HopDong.DongTienThanhToan;
 	Else
 		RecordGL.TienTe = Catalogs.TienTe.FindByCode("VND");
 	EndIf;

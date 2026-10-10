@@ -93,8 +93,8 @@ Function LayTaiKhoanTheoMaLogic(MaLogic) Export
 	MaLogicTrim = TrimAll(String(MaLogic));
 	BangAnhXa = BangAnhXaTaiKhoanMacDinh();
 	
-	AccountInfo = Undefined;
-	If BangAnhXa.Property(MaLogicTrim, AccountInfo) Then
+	AccountInfo = BangAnhXa.Get(MaLogicTrim);
+	If AccountInfo <> Undefined Then
 		// Neu co trong database runtime, tim Ref tuong ung
 		Try
 			Query = New Query;
@@ -125,7 +125,7 @@ EndFunction
 
 // Bang anh xa mac dinh MaLogic -> SoHieuTK theo TT 99/2025/TT-BTC & TT 200
 Function BangAnhXaTaiKhoanMacDinh() Export
-	Map = New Structure;
+	Map = New Map;
 	Map.Insert("1311", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "1311", "Phải thu khách hàng ngoài", "ActivePassive", "1311"));
 	Map.Insert("1312", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "1312", "Phải thu khách hàng nội bộ Vingroup", "ActivePassive", "1312"));
 	Map.Insert("3311", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "3311", "Phải trả người bán bên ngoài", "ActivePassive", "3311"));
