@@ -162,8 +162,14 @@
 			<Document>BaoCoNganHang</Document>
 			<Document>BangKeDoiSoatKenhThanhToan</Document>
 			<Document>YeuCauHoanTienChiHo</Document>
+			<Document>CanTruCongNoNoiBo</Document>
 			<HTTPService>WebhookNganHang</HTTPService>
 			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
+			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
+			<Report>BaoCaoTuoiNoPhanTachNoiBo</Report>
+			<Report>MaTranCanTruNoiBoTapDoan</Report>
+			<Report>DoiSoatKenhThanhToanVaDongTienAo</Report>
+			<Report>CanhBaoHanMucVaGiaHanCloud</Report>
 			<AccumulationRegister>CongNoPhaiThu</AccumulationRegister>
 			<AccumulationRegister>CongNoPhaiTra</AccumulationRegister>
 			<AccumulationRegister>DongTien</AccumulationRegister>

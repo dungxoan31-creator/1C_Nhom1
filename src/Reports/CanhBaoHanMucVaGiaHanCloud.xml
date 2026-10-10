@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Report uuid="8b416cb1-e3f2-495f-98d0-21d9c9ad4252">
+		<InternalInfo>
+			<xr:GeneratedType name="ReportObject.CanhBaoHanMucVaGiaHanCloud" category="Object">
+				<xr:TypeId>83fa18f5-0c0e-4178-9104-462ac9dacc7c</xr:TypeId>
+				<xr:ValueId>c16642c8-8956-4e63-bba7-8b3324d2b7c0</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ReportManager.CanhBaoHanMucVaGiaHanCloud" category="Manager">
+				<xr:TypeId>ff10bdfe-8e24-4e0c-b4c7-ea2be774f4f4</xr:TypeId>
+				<xr:ValueId>f7346a0f-51e9-4b2c-af75-0e481b3dd659</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>CanhBaoHanMucVaGiaHanCloud</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Cảnh báo hạn mức và gia hạn Cloud</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cloud Quota and Renewal Warning Report</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Cảnh báo thời hạn gói Cloud và hạn mức sử dụng theo 3 cấp độ (Task 6.3)</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<MainDataCompositionSchema/>
+			<DefaultSettingsForm/>
+			<AuxiliarySettingsForm/>
+			<DefaultVariantForm/>
+			<VariantsStorage/>
+			<SettingsStorage/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects/>
+	</Report>
+</MetaDataObject>

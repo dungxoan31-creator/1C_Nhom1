@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Report uuid="03b2b4d2-7011-4bb7-bfb6-63783880ac4a">
+		<InternalInfo>
+			<xr:GeneratedType name="ReportObject.BaoCaoTuoiNoPhanTachNoiBo" category="Object">
+				<xr:TypeId>8e6134cb-50f9-46b4-aea9-d0356ae7fcc7</xr:TypeId>
+				<xr:ValueId>f15bcb3f-9701-430e-8ee7-162e8703b5ad</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ReportManager.BaoCaoTuoiNoPhanTachNoiBo" category="Manager">
+				<xr:TypeId>002854b5-541a-462c-99f6-7de9674f5007</xr:TypeId>
+				<xr:ValueId>79533ae7-2c62-4f46-a913-d2aaf18587b0</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>BaoCaoTuoiNoPhanTachNoiBo</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Báo cáo tuổi nợ phân tách nội bộ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Aging Report with Intercompany Segregation</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Báo cáo phân tích tuổi nợ và Operational Safety Gate (Task 6.2)</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<MainDataCompositionSchema/>
+			<DefaultSettingsForm/>
+			<AuxiliarySettingsForm/>
+			<DefaultVariantForm/>
+			<VariantsStorage/>
+			<SettingsStorage/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects/>
+	</Report>
+</MetaDataObject>
