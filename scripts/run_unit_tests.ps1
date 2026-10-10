@@ -16,7 +16,7 @@ $ib = "C:\Users\Dung\Documents\1C_Enterprise\Infobase"
 Remove-Item "tests/unit/test_result.log" -Force -ErrorAction SilentlyContinue
 
 Write-Host "Launching 1C Enterprise with RunUnitTests..."
-$proc = Start-Process -FilePath $exe -ArgumentList "ENTERPRISE", "/F", $ib, "/C", "RunUnitTests", "/DisableStartupDialogs", "/DisableStartupMessages" -PassThru
+$proc = Start-Process -FilePath $exe -ArgumentList "ENTERPRISE", "/F", $ib, "/N", "Admin", "/C", "RunUnitTests", "/DisableStartupDialogs", "/DisableStartupMessages" -PassThru
 
 $wshell = New-Object -ComObject WScript.Shell
 

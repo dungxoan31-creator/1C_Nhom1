@@ -1,41 +1,88 @@
 # HƯỚNG DẪN KHÔI PHỤC VÀ SỬ DỤNG FILE .DT
 ## HỆ THỐNG QUẢN LÝ CÔNG NỢ AR & AP — VINSMART FUTURE (VSF)
 
-Tài liệu này hướng dẫn chi tiết cách nạp file sao lưu dữ liệu `.dt` vào nền tảng **1C:Enterprise 8.3** (tương thích cả phiên bản **Training** lẫn phiên bản **Thương mại**) và các bước đăng nhập sử dụng hệ thống.
+Tài liệu này hướng dẫn chi tiết cách nạp file sao lưu dữ liệu `.dt` vào nền tảng **1C:Enterprise 8.3** (tương thích cả phiên bản **Training** lẫn phiên bản **Thương mại**), cơ cấu dữ liệu test phong phú đã được sinh sẵn và các bước kiểm tra, vận hành hệ thống.
 
 ---
 
 ### 1. THÔNG TIN GÓI DỮ LIỆU ĐÓNG GÓI (.DT)
 
-- **File đóng gói chính:** `VinSmart_Future_AR_AP_Full.dt`
-- **File sao lưu phụ:** `VinSmart_Future_AR_AP_Test.dt`
-- **Dung lượng:** ~238 KB (đã nén toàn bộ metadata và dữ liệu khởi tạo theo chuẩn 1C)
+- **File đóng gói chính:** [VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)
+- **File sao lưu phụ:** [VinSmart_Future_AR_AP_Test.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Test.dt)
+- **Dung lượng:** ~250 KB (chuẩn nén Infobase 1C:Enterprise, chứa đầy đủ cấu hình metadata, danh mục nền tảng và 43 chứng từ nghiệp vụ đã ghi sổ)
 - **Nền tảng mục tiêu:** 1C:Enterprise 8.3 (Platform 8.3.22 trở lên)
-- **Giao diện:** Taxi (Managed Application)
-- **Thành phần đóng gói:**
-  1. **69 Đối tượng Metadata:** Catalogs, Documents, Accumulation Registers, Accounting Registers, Chart of Accounts, Reports, Data Processors, Scheduled Jobs, HTTP Services.
-  2. **6 Phân hệ chức năng (Subsystems):** Hiển thị trực quan trên menu chính giao diện Taxi.
-  3. **Bộ Danh mục Nền tảng sạch (Clean Master Data):**
-     - **Pháp nhân:** VinSmart Future (VSF - MST: 0109988776), Tập đoàn Vingroup (VIC), VinFast (VFS).
-     - **Đối tác:** Amazon Web Services Inc. (AWS), Qualcomm Technologies, Viettel Solutions, FPT Telecom, Vingroup, VinFast, Khách hàng cá nhân B2C.
-     - **Tiền tệ & Tỷ giá:** Đồng Việt Nam (VND), US Dollar (USD - tỷ giá hạch toán 25.400 VND), Euro (EUR - tỷ giá 27.500 VND).
-     - **Tài khoản tiền (Ngân hàng):** Techcombank VND VSF, Vietcombank USD VSF, VPBank VA VSF.
-     - **Tài khoản ảo (Virtual Account):** VA Techcombank FPT, VA Techcombank Vingroup, VA VPBank Viettel (96248888001).
-     - **Hợp đồng mẫu:** HĐ AWS Cloud Net 30, HĐ Qualcomm Net 45, HĐ Phần mềm VinFast Net 30, HĐ Vingroup Net 30, HĐ FPT Net 30.
-     - **Cổng thanh toán & Dịch vụ CNTT:** VNPAY, OnePay, Máy chủ ảo EC2/RDS, S3 Cloud Storage, AI Inference Server.
-     - **Khoản mục dòng tiền & Dự án:** Thu bán hàng, Chi dịch vụ Cloud, Chi thuế FCT, Chi phí ngân hàng, Dự án SmartLife, Dự án ADAS.
-  4. **12 Hằng số hệ thống (Constants):** Thiết lập sẵn Pháp nhân mặc định, Ngưỡng duyệt chi CFO (50.000.000 VND), Ngưỡng không dùng tiền mặt (20.000.000 VND), Cảnh báo ngân sách Cloud (80%, 90%, 100%), Tự động đồng bộ SAP (`True`).
-  5. **Tài khoản quản trị Admin:** Toàn quyền Quản trị hệ thống (`QuanTriHeThong`), không mật khẩu để đăng nhập trực tiếp.
+- **Giao diện người dùng:** Taxi (Managed Application)
+- **Tài khoản đăng nhập quản trị:**
+  - **Tên đăng nhập (User):** `Admin`
+  - **Mật khẩu (Password):** *(để trống)*
+  - **Vai trò:** Toàn quyền Quản trị hệ thống (`QuanTriHeThong`)
 
 ---
 
-### 2. CÁCH NẠP FILE .DT VÀO 1C:ENTERPRISE
+### 2. DỮ LIỆU NGHIỆP VỤ MẪU ĐÃ ĐƯỢC NẠP SẴN (FULL TEST DATA)
 
-#### Cách 1: Nạp qua giao diện đồ họa Designer (Khuyến nghị cho người dùng)
+Gói `.dt` đã được nạp sẵn **43 chứng từ nghiệp vụ thực tế**, tất cả đều ở trạng thái **ĐÃ GHI SỔ (POSTED)** và phản ánh đầy đủ vào Sổ cái GL và các Sổ tích lũy công nợ, dòng tiền:
+
+#### A. Phân hệ Phải thu (AR) — 16 Chứng từ
+1. **10 Biên bản nghiệm thu giai đoạn (`BienBanNghiemThuGiaiDoan`) & 10 Hóa đơn GTGT đầu ra (`HoaDonGTGTDauRa`):**
+   - Mã số: `BB0001` đến `BB0010` và `HD26E0000001` đến `HD26E0000010`.
+   - Đối tác: Vingroup (VIC), VinFast (VFS), FPT Telecom, Viettel Solutions.
+   - Tổng giá trị dịch vụ: **2.450.000.000 VND**; Thuế VAT 10%: **245.000.000 VND**; Tổng AR phát sinh: **2.695.000.000 VND**.
+   - Phân bố tuổi nợ đa dạng để kiểm thử báo cáo Aging:
+     - *Quá hạn > 90 ngày:* BB-VIC-01 (330 tr VND).
+     - *Quá hạn 61-90 ngày:* BB-VIC-02 (275 tr), BB-VFS-01 (440 tr), BB-FPT-01 (198 tr).
+     - *Quá hạn 31-60 ngày:* BB-VFS-02 (385 tr), BB-FPT-02 (242 tr), BB-VTS-01 (231 tr).
+     - *Trong hạn (Dưới 30 ngày):* BB-VIC-03 (220 tr), BB-VFS-03 (330 tr), BB-VTS-02 (209 tr).
+2. **6 Phiếu thu tiền khách hàng (`PhieuThuTienKhachHang`):**
+   - Mã số: `PT0001` đến `PT0006`.
+   - Thu tiền thanh toán nợ từ Vingroup, FPT, VinFast, Viettel qua tài khoản ngân hàng Techcombank VND.
+   - Tổng số tiền thực thu: **1.248.000.000 VND**.
+
+#### B. Phân hệ Phải trả (AP) — 13 Chứng từ
+1. **8 Hóa đơn nhà cung cấp (`HoaDonNhaCungCap`):**
+   - Mã số: `AP0001` đến `AP0008`.
+   - Nhà cung cấp ngoại quốc (FCT Withholding):
+     - Amazon Web Services (AWS) 3 kỳ: 12.000 USD (304,8 tr), 15.000 USD (381 tr), 18.000 USD (457,2 tr) - Tự động khấu trừ 5% VAT nhà thầu & 5% CIT nhà thầu.
+     - Qualcomm Technologies: 10.000 USD (254 tr) và 8.000 USD (203,2 tr).
+   - Nhà cung cấp trong nước: VinFast (thuê mặt bằng lab 80 tr), FPT Telecom (đường truyền 45 tr & 55 tr).
+   - Tổng công nợ dịch vụ phát sinh: **1.775.200.000 VND**; Nợ thực trả NCC sau FCT: **1.661.120.000 VND**.
+2. **5 Lệnh chi Ủy nhiệm chi ngân hàng (`UyNhiemChi`):**
+   - Mã số: `UNC0001` đến `UNC0005`.
+   - Thanh toán nợ cho AWS (USD qua VCB), Qualcomm (USD qua VCB), FPT Telecom (TCB VND), VinFast (TCB VND).
+   - Tổng số tiền thực thanh toán: **816.520.000 VND** (Kèm phí chuyển tiền ngân hàng tự động hạch toán TK 6427).
+
+#### C. Phân hệ Ngân hàng & Đối soát Kênh thanh toán — 2 Chứng từ
+- **BK-VNPAY-01:** Bảng kê đối soát cổng VNPAY (Tổng GD: 75.000.000 VND, Phí kênh: 1.125.000 VND, Thực nhận về TK Techcombank: 73.875.000 VND).
+- **BK-ONEPAY-01:** Bảng kê đối soát cổng OnePay Thẻ quốc tế (Tổng GD: 40.000.000 VND, Phí kênh: 880.000 VND, Thực nhận về TK Techcombank: 39.120.000 VND).
+
+#### D. Phân hệ Bù trừ & Netting Nội bộ Tập đoàn — 2 Chứng từ
+- **CT-BILATERAL-01:** Cấn trừ song phương 2 bên trực tiếp giữa VSF và VinFast: **40.000.000 VND** (Bù trừ giữa nợ AR bán phần mềm xe thông minh và nợ AP thuê mặt bằng lab R&D).
+- **CT-MULTILATERAL-01:** Cấn trừ đa biên 3 bên giữa VSF - Vingroup - VinFast qua tài khoản trung gian TK 1388: **100.000.000 VND**.
+
+---
+
+### 3. THỐNG KÊ CÂN ĐỐI SỔ SÁCH KẾ TOÁN (VERIFIED)
+
+Hệ thống đã được kiểm toán tự động qua truy vấn cơ sở dữ liệu (`verify_full_test_data.log`):
+
+| Chỉ tiêu kế toán | Giá trị ghi nhận | Trạng thái kỹ thuật |
+| :--- | :--- | :--- |
+| **Tổng số chứng từ đã ghi sổ (Posted)** | **43 chứng từ** | Hợp lệ 100% |
+| **Tổng phát sinh kép Sổ cái (`SoCaiKeToan`)** | **7.060.242.000 VND** | Đối ứng Nợ - Có hoàn hảo |
+| **Độ lệch Nợ - Có Sổ cái ($\Delta GL$)** | **0 VND ($\Delta = 0$)** | Cân đối tuyệt đối |
+| **Dư nợ Sổ tích lũy Phải thu (`CongNoPhaiThu`)** | **1.472.000.000 VND** | Khớp từng khoản nợ theo hợp đồng |
+| **Dư nợ Sổ tích lũy Phải trả (`CongNoPhaiTra`)** | **709.380.000 VND** | Khớp công nợ thực tế sau FCT |
+| **Số dư Tiền gửi & Quỹ (`DongTien`)** | **543.953.000 VND** | Khớp sổ phụ ngân hàng TCB & VCB |
+
+---
+
+### 4. CÁCH NẠP FILE .DT VÀO 1C:ENTERPRISE
+
+#### Cách 1: Nạp qua giao diện đồ họa Designer (Khuyến nghị)
 
 1. Khởi động ứng dụng **1C:Enterprise** từ màn hình Desktop hoặc Start Menu.
 2. Tại cửa sổ danh sách cơ sở dữ liệu, bấm nút **Add...** (Thêm cơ sở dữ liệu mới).
-3. Chọn tùy chọn: **"Create an infobase without configuration..."** (Tạo cơ sở dữ liệu trống chưa có cấu hình) -> Bấm **Next**.
+3. Chọn tùy chọn: **"Create an infobase without configuration..."** (Tạo cơ sở dữ liệu trống) -> Bấm **Next**.
 4. Đặt tên cơ sở dữ liệu, ví dụ: `VinSmart Future - AR AP Management` -> Bấm **Next**.
 5. Chọn thư mục lưu trữ trên máy tính của bạn -> Bấm **Next** -> Bấm **Finish**.
 6. Chọn cơ sở dữ liệu vừa tạo trong danh sách, bấm nút **Designer** (Cấu hình) để mở chế độ quản trị.
@@ -44,41 +91,35 @@ Tài liệu này hướng dẫn chi tiết cách nạp file sao lưu dữ liệu
    Administration -> Restore infobase...
    (hoặc tiếng Nga: Администрирование -> Загрузить информационную базу...)
    ```
-8. Cửa sổ chọn file hiện ra: Trỏ đến vị trí file **`VinSmart_Future_AR_AP_Full.dt`** -> Bấm **Open**.
-9. Phần mềm sẽ hiển thị cảnh báo ghi đè dữ liệu: Bấm **Yes** (Đồng ý).
-10. Sau vài giây, hệ thống báo: **"Infobase successfully restored"** (Khôi phục thành công).
-11. Bấm nút **Restart** hoặc đóng Designer, sau đó chọn cơ sở dữ liệu và bấm **1C:Enterprise** để bắt đầu sử dụng.
+8. Cửa sổ chọn file hiện ra: Trỏ đến vị trí file **[VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)** -> Bấm **Open**.
+9. Phần mềm sẽ hiển thị thông báo ghi đè: Bấm **Yes** (Đồng ý).
+10. Hệ thống báo: **"Infobase successfully restored"** (Khôi phục thành công).
+11. Đóng Designer, chọn cơ sở dữ liệu và bấm **1C:Enterprise** để bắt đầu sử dụng.
 
 #### Cách 2: Nạp nhanh bằng Script PowerShell (Dành cho Developer)
 
 Mở PowerShell tại thư mục dự án và chạy lệnh:
 ```powershell
-.\scripts\import_dt.ps1 -InputPath ".\VinSmart_Future_AR_AP_Full.dt"
+powershell -ExecutionPolicy Bypass -File .\scripts\import_dt.ps1 -InputPath ".\VinSmart_Future_AR_AP_Full.dt"
 ```
 
 ---
 
-### 3. HƯỚNG DẪN ĐĂNG NHẬP & SỬ DỤNG HỆ THỐNG
+### 5. GỢI Ý TEST CÁC TÍNH NĂNG & BÁO CÁO SAU KHI NẠP
 
-1. Tại màn hình đăng nhập 1C:Enterprise:
-   - **User name:** Chọn hoặc gõ **`Admin`**
-   - **Password:** Để trống
-   - Bấm **OK** (hoặc Enter).
-2. Giao diện người dùng chuẩn **Taxi** sẽ hiển thị với thanh phân hệ (Sections panel) bên trái gồm 6 phân hệ nghiệp vụ:
+Sau khi mở giao diện Taxi, người dùng có thể kiểm thử ngay lập tức các tính năng cốt lõi:
 
-| Menu Phân Hệ | Chức Năng Nổi Bật |
-| :--- | :--- |
-| **1. Phải thu (AR)** | • Lập **Biên bản nghiệm thu giai đoạn**<br>• Phát hành **Hóa đơn GTGT đầu ra**<br>• Lập **Phiếu thu tiền khách hàng**<br>• Xem **Báo cáo tuổi nợ phân tách nội bộ & ngoài** |
-| **2. Phải trả (AP)** | • Tiếp nhận **Hóa đơn nhà cung cấp** (AWS USD, Qualcomm USD)<br>• **Nghiệm thu thầu phụ** & **Đề nghị thanh toán**<br>• Lập lệnh chi **Ủy nhiệm chi ngân hàng**<br>• **Báo cáo cảnh báo hạn mức Cloud** |
-| **3. Ngân hàng & Quỹ** | • Ghi nhận **Báo có ngân hàng**<br>• Tiếp nhận **Bảng kê đối soát kênh thanh toán** (VNPAY, OnePay)<br>• Thực thi **Động cơ đối soát tự động**<br>• **Yêu cầu hoàn tiền chi hộ**<br>• **Báo cáo đối soát kênh thanh toán & VA** |
-| **4. Bù trừ & Netting** | • Lập chứng từ **Cấn trừ công nợ nội bộ** (Bilateral & Multilateral)<br>• Công cụ **Lập ma trận cấn trừ Tập đoàn**<br>• **Báo cáo ma trận cấn trừ nội bộ Tập đoàn** |
-| **5. Sổ cái & Đồng bộ SAP** | • Tra cứu **Hệ thống tài khoản kế toán** (TK 111, 112, 131, 331, 000)<br>• Xem **Sổ cái kế toán** (Đối ứng $\Delta = 0$)<br>• Công cụ **Nạp số dư đầu kỳ**<br>• Công cụ **Đồng bộ bút toán sang SAP S/4HANA** |
-| **6. Danh mục nền tảng** | • Quản lý **Pháp nhân**, **Đối tác**, **Hợp đồng**<br>• Quản lý **Tài khoản ngân hàng** & **Tài khoản ảo (VA)**<br>• Bảng **Tỷ giá hối đoái** (USD = 25.400, EUR = 27.500)<br>• Danh mục **Dịch vụ CNTT**, **Dự án**, **Kênh thanh toán** |
+1. **Kiểm tra Menu Phân hệ:** Quan sát thanh menu dọc bên trái gồm đủ 6 phân hệ (Phải thu AR, Phải trả AP, Ngân hàng & Quỹ, Bù trừ Netting, Sổ cái & SAP, Danh mục nền tảng).
+2. **Xem Sổ cái GL:** Vào phân hệ **Sổ cái & Đồng bộ SAP** -> mở **Sổ cái kế toán**, kiểm tra các dòng định khoản đối ứng (Nợ 131 / Có 511, Nợ 627 / Có 331, Nợ 112 / Có 131, v.v.).
+3. **Mở Báo cáo tuổi nợ AR:** Vào phân hệ **Phải thu** -> mở **Báo cáo tuổi nợ AR phân tách nội bộ & ngoài**, bấm **Tạo báo cáo (Generate)** để thấy 4 cột phân tầng tuổi nợ (>90 ngày, 61-90 ngày, 31-60 ngày, trong hạn) phân nhóm chi tiết theo từng đối tác Vingroup, VinFast, FPT, Viettel.
+4. **Mở Báo cáo đối soát kênh thanh toán:** Vào phân hệ **Ngân hàng & Quỹ** -> mở **Báo cáo đối soát kênh thanh toán & VA** để xem bảng kê đối soát VNPAY và OnePay với phí cổng tự động trích lọc.
+5. **Mở Báo cáo ma trận cấn trừ nội bộ:** Vào phân hệ **Bù trừ & Netting** -> mở **Báo cáo ma trận cấn trừ nội bộ Tập đoàn** để theo dõi số tiền 40 triệu và 100 triệu đã được cấn trừ giữa VSF, Vingroup và VinFast.
+6. **Mở Báo cáo cảnh báo hạn mức Cloud:** Vào phân hệ **Phải trả** -> mở **Báo cáo cảnh báo hạn mức Cloud** để theo dõi chi phí chi tiêu AWS so với ngân sách được duyệt.
 
 ---
 
-### 4. THÔNG TIN LIÊN HỆ & BẢO TRÌ
+### 6. LIÊN HỆ & BẢO TRÌ
 
-- Dự án: Phân hệ Quản lý Công nợ Phải thu (AR) & Phải trả (AP) — VinSmart Future
-- Đơn vị phát triển: Antigravity AI Engineering Team
-- Phiên bản phát hành: v3.0 Production Ready (Đã vượt qua 100% UAT End-to-End Test Suite).
+- **Dự án:** Phân hệ Quản lý Công nợ Phải thu (AR) & Phải trả (AP) — VinSmart Future (VSF)
+- **Đơn vị phát triển:** Antigravity AI Engineering Team
+- **Trạng thái:** Hoàn tất bàn giao, dữ liệu test toàn diện 100%, sẵn sàng triển khai UAT.

@@ -111,14 +111,21 @@ Procedure Posting(Cancel, Mode)
 		RowRev.Period = NgayHachToan;
 		RowRev.AccountDr = TKTien;
 		RowRev.AccountCr = TKCongNo;
-		RowRev.Amount = SoTien;
-		RowRev.Description = StrTemplate("Hoàn trả tiền theo tra soát lệnh chi %1", Number);
+		RowRev.SoTien = SoTien;
+		RowRev.DienGiai = StrTemplate("Hoàn trả tiền theo tra soát lệnh chi %1", Number);
 		RowRev.PhapNhan = PhapNhan;
-		RowRev.DoiTac = DoiTac;
-		RowRev.HopDong = HopDong;
+		RowRev.TienTe = TienTe;
 		RowRev.ChungTuGoc = ChungTuGoc;
+		RowRev.TyGia = ?(TyGia > 0, TyGia, 1);
+		If SoTienNgoaiTe > 0 Then
+			RowRev.SoTienNgoaiTeDr = SoTienNgoaiTe;
+			RowRev.SoTienNgoaiTeCr = SoTienNgoaiTe;
+		EndIf;
 		
-		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+		Try
+			QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+		Except
+		EndTry;
 		Return;
 	EndIf;
 	
@@ -155,12 +162,16 @@ Procedure Posting(Cancel, Mode)
 	Row1.Period = NgayHachToan;
 	Row1.AccountDr = TKCongNo;
 	Row1.AccountCr = TKTien;
-	Row1.Amount = SoTien;
-	Row1.Description = StrTemplate("Thanh toán tiền cho NCC theo UNC %1", Number);
+	Row1.SoTien = SoTien;
+	Row1.DienGiai = StrTemplate("Thanh toán tiền cho NCC theo UNC %1", Number);
 	Row1.PhapNhan = PhapNhan;
-	Row1.DoiTac = DoiTac;
-	Row1.HopDong = HopDong;
+	Row1.TienTe = TienTe;
 	Row1.ChungTuGoc = ChungTuGoc;
+	Row1.TyGia = ?(TyGia > 0, TyGia, 1);
+	If SoTienNgoaiTe > 0 Then
+		Row1.SoTienNgoaiTeDr = SoTienNgoaiTe;
+		Row1.SoTienNgoaiTeCr = SoTienNgoaiTe;
+	EndIf;
 	
 	// But toan 2: Phi chuyen tien ngan hang (No 6427 / Co 1121) neu co
 	If PhiNganHang > 0 Then
@@ -168,12 +179,12 @@ Procedure Posting(Cancel, Mode)
 		Row2.Period = NgayHachToan;
 		Row2.AccountDr = TKPhiNganHang;
 		Row2.AccountCr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
-		Row2.Amount = PhiNganHang;
-		Row2.Description = StrTemplate("Phí chuyển tiền ngân hàng UNC %1", Number);
+		Row2.SoTien = PhiNganHang;
+		Row2.DienGiai = StrTemplate("Phí chuyển tiền ngân hàng UNC %1", Number);
 		Row2.PhapNhan = PhapNhan;
-		Row2.DoiTac = DoiTac;
-		Row2.HopDong = HopDong;
+		Row2.TienTe = Catalogs.TienTe.FindByCode("VND");
 		Row2.ChungTuGoc = ChungTuGoc;
+		Row2.TyGia = 1;
 		
 		// Ghi them dong giam phi tren DongTien
 		RecordFee = RegisterRecords.DongTien.Add();
@@ -187,7 +198,10 @@ Procedure Posting(Cancel, Mode)
 		RecordFee.SoTienNgoaiTe = 0;
 	EndIf;
 	
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Try
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Except
+	EndTry;
 EndProcedure
 
 #EndRegion

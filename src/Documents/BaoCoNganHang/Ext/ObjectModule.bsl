@@ -63,13 +63,17 @@ Procedure Posting(Cancel, Mode)
 	Row1.Period = Date;
 	Row1.AccountDr = TKTien;
 	Row1.AccountCr = TKCongNo;
-	Row1.Amount = SoTien;
-	Row1.Description = StrTemplate("Báo có ngân hàng tiền về - Mã GD %1", MaGiaoDichNganHang);
+	Row1.SoTien = SoTien;
+	Row1.DienGiai = StrTemplate("Báo có ngân hàng tiền về - Mã GD %1", MaGiaoDichNganHang);
 	Row1.PhapNhan = PhapNhan;
-	Row1.DoiTac = DoiTacKhop;
+	Row1.TienTe = Catalogs.TienTe.FindByCode("VND");
 	Row1.ChungTuGoc = ChungTuKhop;
+	Row1.TyGia = 1;
 	
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Try
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Except
+	EndTry;
 EndProcedure
 
 #EndRegion

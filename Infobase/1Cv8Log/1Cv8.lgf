@@ -66,4 +66,9 @@ b3c5267d-d04f-41f8-b32c-b1f265f61f17
 {5,8b2ba05a-6609-4f19-90a5-b7ecb7a1bcca,"AccumulationRegister.CongNoPhaiThu",27},
 {4,"_$Data$_.Delete",19},
 {5,fda2d92a-bcde-4bae-a136-289b50754be5,"Document.HoaDonGTGTDauRa",28},
-{5,295ad119-b1fd-4cea-a964-4e068088df20,"Document.PhieuThuTienKhachHang",29}
+{5,295ad119-b1fd-4cea-a964-4e068088df20,"Document.PhieuThuTienKhachHang",29},
+{4,"_$Data$_.Unpost",20},
+{5,ab5ace15-4b73-4a38-8652-45125284b046,"Document.HoaDonNhaCungCap",30},
+{5,1f552ce2-19f2-4cf0-bb53-0af40ed92a5b,"Document.UyNhiemChi",31},
+{5,ccf1c72d-a685-4c06-8867-be9400908619,"Document.BangKeDoiSoatKenhThanhToan",32},
+{5,8bc21f66-343c-4fd1-a41c-fcf185eadaf5,"Document.CanTruCongNoNoiBo",33}

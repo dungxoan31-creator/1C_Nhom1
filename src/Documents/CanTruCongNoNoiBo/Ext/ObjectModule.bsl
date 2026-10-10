@@ -65,6 +65,7 @@ Procedure Posting(Cancel, Mode)
 	RecAR.PhapNhan = PhapNhan;
 	RecAR.DoiTac = DoiTacNoiBo;
 	RecAR.HopDong = HopDongAR;
+	RecAR.ChungTuGoc = ChungTuGocAR;
 	RecAR.SoTien = SoTienCanTru;
 	
 	// 2. Ghi giam no phai tra tren CongNoPhaiTra (Expense)
@@ -73,8 +74,9 @@ Procedure Posting(Cancel, Mode)
 	RecAP.RecordType = AccumulationRecordType.Expense;
 	RecAP.Period = NgayHachToan;
 	RecAP.PhapNhan = PhapNhan;
-	RecAP.DoiTac = DoiTacNoiBo;
+	RecAP.DoiTac = ?(LaCanTruBacCau And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, DoiTacNoiBo);
 	RecAP.HopDong = HopDongAP;
+	RecAP.ChungTuGoc = ChungTuGocAP;
 	RecAP.SoTien = SoTienCanTru;
 	
 	// 3. Ghi so cai SoCaiKeToan
@@ -83,6 +85,7 @@ Procedure Posting(Cancel, Mode)
 	TK3312 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3312");
 	TK1312 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	TK1388 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1388");
+	RefVND = Catalogs.TienTe.FindByCode("VND");
 	
 	If LaCanTruBacCau Then
 		// Can tru bac cau da ben qua TK 1388
@@ -91,36 +94,43 @@ Procedure Posting(Cancel, Mode)
 		Row1.Period = NgayHachToan;
 		Row1.AccountDr = TK3312;
 		Row1.AccountCr = TK1388;
-		Row1.Amount = SoTienCanTru;
-		Row1.Description = StrTemplate("Cấn trừ nợ phải trả nội bộ qua TK trung gian theo lệnh %1", Number);
+		Row1.SoTien = SoTienCanTru;
+		Row1.DienGiai = StrTemplate("Cấn trừ nợ phải trả nội bộ qua TK trung gian theo lệnh %1", Number);
 		Row1.PhapNhan = PhapNhan;
-		Row1.DoiTac = DoiTacNoiBo;
-		Row1.HopDong = HopDongAP;
+		Row1.TienTe = RefVND;
+		Row1.ChungTuGoc = Ref;
+		Row1.TyGia = 1;
 		
 		// But toan 2: Giam AR: No 1388 / Co 1312
 		Row2 = RegisterRecords.SoCaiKeToan.Add();
 		Row2.Period = NgayHachToan;
 		Row2.AccountDr = TK1388;
 		Row2.AccountCr = TK1312;
-		Row2.Amount = SoTienCanTru;
-		Row2.Description = StrTemplate("Cấn trừ nợ phải thu nội bộ qua TK trung gian theo lệnh %1", Number);
+		Row2.SoTien = SoTienCanTru;
+		Row2.DienGiai = StrTemplate("Cấn trừ nợ phải thu nội bộ qua TK trung gian theo lệnh %1", Number);
 		Row2.PhapNhan = PhapNhan;
-		Row2.DoiTac = DoiTacNoiBo;
-		Row2.HopDong = HopDongAR;
+		Row2.TienTe = RefVND;
+		Row2.ChungTuGoc = Ref;
+		Row2.TyGia = 1;
 	Else
 		// Can tru tay doi truc tiep: No TK 3312 / Co TK 1312
 		Row1 = RegisterRecords.SoCaiKeToan.Add();
 		Row1.Period = NgayHachToan;
 		Row1.AccountDr = TK3312;
 		Row1.AccountCr = TK1312;
-		Row1.Amount = SoTienCanTru;
-		Row1.Description = StrTemplate("Cấn trừ công nợ nội bộ 2 bên theo chứng từ %1", Number);
+		Row1.SoTien = SoTienCanTru;
+		Row1.DienGiai = StrTemplate("Cấn trừ công nợ nội bộ 2 bên theo chứng từ %1", Number);
 		Row1.PhapNhan = PhapNhan;
-		Row1.DoiTac = DoiTacNoiBo;
+		Row1.TienTe = RefVND;
+		Row1.ChungTuGoc = Ref;
+		Row1.TyGia = 1;
 	EndIf;
 	
 	// Invariant Check
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Try
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Except
+	EndTry;
 	
 	TrangThai = "DaGhiSo";
 EndProcedure

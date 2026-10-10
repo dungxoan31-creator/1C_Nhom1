@@ -156,23 +156,33 @@ Function KiemTraCanDoiSoCai(RecordSetOrArray) Export
 	TongCo = 0;
 	
 	For Each Line In RecordSetOrArray Do
-		If Line.Property("AmountDr") And Line.Property("AmountCr") Then
-			TongNo = TongNo + Line.AmountDr;
-			TongCo = TongCo + Line.AmountCr;
-		ElsIf Line.Property("SoTienNo") And Line.Property("SoTienCo") Then
-			TongNo = TongNo + Line.SoTienNo;
-			TongCo = TongCo + Line.SoTienCo;
-		ElsIf Line.Property("AccountDr") And Line.Property("AccountCr") And Line.Property("SoTien") Then
-			TongNo = TongNo + Line.SoTien;
-			TongCo = TongCo + Line.SoTien;
-		ElsIf Line.Property("SoTien") Then
-			If Line.Property("LoaiPhatSinh") Then
-				If Line.LoaiPhatSinh = "No" Or Line.LoaiPhatSinh = "Dr" Then
-					TongNo = TongNo + Line.SoTien;
-				ElsIf Line.LoaiPhatSinh = "Co" Or Line.LoaiPhatSinh = "Cr" Then
-					TongCo = TongCo + Line.SoTien;
+		If TypeOf(Line) = Type("Structure") Then
+			If Line.Property("AmountDr") And Line.Property("AmountCr") Then
+				TongNo = TongNo + Line.AmountDr;
+				TongCo = TongCo + Line.AmountCr;
+			ElsIf Line.Property("SoTienNo") And Line.Property("SoTienCo") Then
+				TongNo = TongNo + Line.SoTienNo;
+				TongCo = TongCo + Line.SoTienCo;
+			ElsIf Line.Property("AccountDr") And Line.Property("AccountCr") And Line.Property("SoTien") Then
+				TongNo = TongNo + Line.SoTien;
+				TongCo = TongCo + Line.SoTien;
+			ElsIf Line.Property("SoTien") Then
+				If Line.Property("LoaiPhatSinh") Then
+					If Line.LoaiPhatSinh = "No" Or Line.LoaiPhatSinh = "Dr" Then
+						TongNo = TongNo + Line.SoTien;
+					ElsIf Line.LoaiPhatSinh = "Co" Or Line.LoaiPhatSinh = "Cr" Then
+						TongCo = TongCo + Line.SoTien;
+					EndIf;
 				EndIf;
 			EndIf;
+		Else
+			// AccountingRegisterRecord (so cai correspondence Dr/Cr)
+			Try
+				TienLine = Line.SoTien;
+				TongNo = TongNo + TienLine;
+				TongCo = TongCo + TienLine;
+			Except
+			EndTry;
 		EndIf;
 	EndDo;
 	

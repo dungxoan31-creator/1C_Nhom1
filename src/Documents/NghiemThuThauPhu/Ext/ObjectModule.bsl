@@ -68,45 +68,49 @@ Procedure Posting(Cancel, Mode)
 	// 4. Ghi So cai SoCaiKeToan
 	RegisterRecords.SoCaiKeToan.Write = True;
 	
+	RefVND = Catalogs.TienTe.FindByCode("VND");
 	If TienVAT > 0 Then
 		// No 627 / Co 3311: GiaTriNghiemThu
 		Row1 = RegisterRecords.SoCaiKeToan.Add();
 		Row1.Period = Date;
 		Row1.AccountDr = TKChiPhi;
 		Row1.AccountCr = TKCongNo;
-		Row1.Amount = GiaTriNghiemThu;
-		Row1.Description = StrTemplate("Chi phí nghiệm thu thầu phụ %1", Number);
+		Row1.SoTien = GiaTriNghiemThu;
+		Row1.DienGiai = StrTemplate("Chi phí nghiệm thu thầu phụ %1", Number);
 		Row1.PhapNhan = PhapNhan;
-		Row1.DoiTac = DoiTac;
-		Row1.HopDong = HopDong;
+		Row1.TienTe = RefVND;
 		Row1.ChungTuGoc = Ref;
+		Row1.TyGia = 1;
 		
 		// No 1331 / Co 3311: TienVAT
 		Row2 = RegisterRecords.SoCaiKeToan.Add();
 		Row2.Period = Date;
 		Row2.AccountDr = TKThueVAT;
 		Row2.AccountCr = TKCongNo;
-		Row2.Amount = TienVAT;
-		Row2.Description = StrTemplate("Thuế VAT nghiệm thu thầu phụ %1", Number);
+		Row2.SoTien = TienVAT;
+		Row2.DienGiai = StrTemplate("Thuế VAT nghiệm thu thầu phụ %1", Number);
 		Row2.PhapNhan = PhapNhan;
-		Row2.DoiTac = DoiTac;
-		Row2.HopDong = HopDong;
+		Row2.TienTe = RefVND;
 		Row2.ChungTuGoc = Ref;
+		Row2.TyGia = 1;
 	Else
 		// No 627 / Co 3311: SoTienGhiSo
 		Row1 = RegisterRecords.SoCaiKeToan.Add();
 		Row1.Period = Date;
 		Row1.AccountDr = TKChiPhi;
 		Row1.AccountCr = TKCongNo;
-		Row1.Amount = SoTienGhiSo;
-		Row1.Description = StrTemplate("Chi phí nghiệm thu thầu phụ %1", Number);
+		Row1.SoTien = SoTienGhiSo;
+		Row1.DienGiai = StrTemplate("Chi phí nghiệm thu thầu phụ %1", Number);
 		Row1.PhapNhan = PhapNhan;
-		Row1.DoiTac = DoiTac;
-		Row1.HopDong = HopDong;
+		Row1.TienTe = RefVND;
 		Row1.ChungTuGoc = Ref;
+		Row1.TyGia = 1;
 	EndIf;
 	
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Try
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Except
+	EndTry;
 EndProcedure
 
 #EndRegion

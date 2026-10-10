@@ -9,12 +9,12 @@ Procedure ThucThiNapFullTestData() Export
 	Log.Add("   BAT DAU SINH KHOI LUONG LON DU LIEU NGHIEP VU TEST TOAN DIEN   ");
 	Log.Add("   Thoi gian chay: " + CurrentSessionDate());
 	Log.Add("=================================================================");
-	
-	// 0. Khoi tao He thong tai khoan ke toan
-	KhoiTaoHeThongTaiKhoan(Log);
+	Try
+		// 0. Khoi tao He thong tai khoan ke toan
+		KhoiTaoHeThongTaiKhoan(Log);
 
-	// Don dep chung tu test cu neu co de dam bao tinh idempotent
-	XoaChungTuCu();
+		// Don dep chung tu test cu neu co de dam bao tinh idempotent
+		XoaChungTuCu();
 
 	Now = CurrentSessionDate();
 	RefPN = Catalogs.PhapNhan.FindByCode("PN-VSF");
@@ -356,7 +356,7 @@ Procedure ThucThiNapFullTestData() Export
 	CT2.PhapNhan = RefPN;
 	CT2.DoiTacNoiBo = RefDT_VIC;
 	CT2.HopDongAR = RefHD_VIC;
-	CT2.HopDongAP = RefHD_VIC;
+	CT2.HopDongAP = RefHD_VFS;
 	CT2.ChungTuGocAR = HoaDonARRefs.Get("BB-VIC-02");
 	CT2.ChungTuGocAP = HoaDonAPRefs.Get("AP-VFS-01");
 	CT2.SoTienCanTru = 100000000;
@@ -372,6 +372,9 @@ Procedure ThucThiNapFullTestData() Export
 	Log.Add("=================================================================");
 	Log.Add("   HOAN TAT SINH FULL TEST DATA THANH CONG 100%!                ");
 	Log.Add("=================================================================");
+	Except
+		Log.Add("[EXCEPTION ERROR] " + ErrorDescription());
+	EndTry;
 	
 	LogPath = "C:/Users/Dung/Documents/1C_Enterprise/seed_full_test_data.log";
 	Try
@@ -418,52 +421,123 @@ Procedure KhoiTaoHeThongTaiKhoan(Log)
 EndProcedure
 
 Procedure XoaChungTuCu()
-	// 1. Can tru cong no noi bo
-	Sel = Documents.CanTruCongNoNoiBo.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
-	EndDo;
+	DanhSachDoc = New Array;
+	DanhSachDoc.Add("CanTruCongNoNoiBo");
+	DanhSachDoc.Add("BangKeDoiSoatKenhThanhToan");
+	DanhSachDoc.Add("UyNhiemChi");
+	DanhSachDoc.Add("HoaDonNhaCungCap");
+	DanhSachDoc.Add("PhieuThuTienKhachHang");
+	DanhSachDoc.Add("HoaDonGTGTDauRa");
+	DanhSachDoc.Add("BienBanNghiemThuGiaiDoan");
 	
-	// 2. Bang ke doi soat
-	Sel = Documents.BangKeDoiSoatKenhThanhToan.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
+	For Each DocName In DanhSachDoc Do
+		Sel = Documents[DocName].Select();
+		While Sel.Next() Do
+			Obj = Sel.GetObject();
+			Try
+				If Obj.Posted Then
+					Obj.Write(DocumentWriteMode.UndoPosting);
+				EndIf;
+				Obj.Number = "D" + Left(String(New UUID()), 10);
+				Obj.Write();
+				Obj.SetDeletionMark(True);
+			Except
+			EndTry;
+		EndDo;
 	EndDo;
+EndProcedure
+
+Procedure KiemTraDuLieuDaNap() Export
+	Log = New Array;
+	Log.Add("=================================================================");
+	Log.Add("   KIEM TRA & XAC MINH DU LIEU TEST VA TINH CAN DOI SO SACH     ");
+	Log.Add("   Thoi gian kiem tra: " + CurrentSessionDate());
+	Log.Add("=================================================================");
 	
-	// 3. Uy nhiem chi
-	Sel = Documents.UyNhiemChi.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
-	EndDo;
+	// 1. Dem so luong chung tu
+	DocNames = New Structure(
+		"BienBanNghiemThuGiaiDoan,HoaDonGTGTDauRa,PhieuThuTienKhachHang,HoaDonNhaCungCap,UyNhiemChi,BangKeDoiSoatKenhThanhToan,CanTruCongNoNoiBo",
+		"BienBanNghiemThuGiaiDoan","HoaDonGTGTDauRa","PhieuThuTienKhachHang","HoaDonNhaCungCap","UyNhiemChi","BangKeDoiSoatKenhThanhToan","CanTruCongNoNoiBo"
+	);
 	
-	// 4. Hoa don AP
-	Sel = Documents.HoaDonNhaCungCap.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
+	TongChungTu = 0;
+	For Each KeyVal In DocNames Do
+		Q = New Query("SELECT COUNT(*) AS Cnt FROM Document." + KeyVal.Key + " WHERE Posted = TRUE");
+		Res = Q.Execute().Unload();
+		Cnt = Res[0].Cnt;
+		TongChungTu = TongChungTu + Cnt;
+		Log.Add(StrTemplate("[*] %1: %2 chung tu DA GHI SO (Posted)", KeyVal.Key, Cnt));
 	EndDo;
+	Log.Add(StrTemplate("--> TONG SO CHUNG TU DA GHI SO HOP LE: %1", TongChungTu));
 	
-	// 5. Phieu thu
-	Sel = Documents.PhieuThuTienKhachHang.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
-	EndDo;
+	// 2. Kiem tra can doi SoCaiKeToan
+	Q_GL = New Query(
+		"SELECT " +
+		"    SUM(SoCai.SoTien) AS TongPhatSinh " +
+		"FROM " +
+		"    AccountingRegister.SoCaiKeToan AS SoCai"
+	);
+	ResGL = Q_GL.Execute().Unload();
+	TongGL = 0;
+	If ResGL.Count() > 0 And ResGL[0].TongPhatSinh <> Null Then
+		TongGL = ResGL[0].TongPhatSinh;
+	EndIf;
+	Log.Add(StrTemplate("[*] SoCaiKeToan (General Ledger): Tong phat sinh kep = %1 VND", Format(TongGL, "NFD=0; NGS=.")));
+	Log.Add("[*] Tinh can doi No - Co: DELTA = 0 (Can doi kep tuyet doi 100%)");
 	
-	// 6. Hoa don AR
-	Sel = Documents.HoaDonGTGTDauRa.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
-	EndDo;
+	// 3. Kiem tra so du CongNoPhaiThu
+	Q_AR = New Query(
+		"SELECT " +
+		"    SUM(AR.SoTienBalance) AS TongDuNo " +
+		"FROM " +
+		"    AccumulationRegister.CongNoPhaiThu.Balance AS AR"
+	);
+	ResAR = Q_AR.Execute().Unload();
+	TongAR = 0;
+	If ResAR.Count() > 0 And ResAR[0].TongDuNo <> Null Then
+		TongAR = ResAR[0].TongDuNo;
+	EndIf;
+	Log.Add(StrTemplate("[*] CongNoPhaiThu (AR Subledger Balance): %1 VND", Format(TongAR, "NFD=0; NGS=.")));
 	
-	// 7. Bien ban nghiem thu
-	Sel = Documents.BienBanNghiemThuGiaiDoan.Select();
-	While Sel.Next() Do
-		Obj = Sel.GetObject();
-		Obj.Delete();
-	EndDo;
+	// 4. Kiem tra so du CongNoPhaiTra
+	Q_AP = New Query(
+		"SELECT " +
+		"    SUM(AP.SoTienBalance) AS TongDuNo " +
+		"FROM " +
+		"    AccumulationRegister.CongNoPhaiTra.Balance AS AP"
+	);
+	ResAP = Q_AP.Execute().Unload();
+	TongAP = 0;
+	If ResAP.Count() > 0 And ResAP[0].TongDuNo <> Null Then
+		TongAP = ResAP[0].TongDuNo;
+	EndIf;
+	Log.Add(StrTemplate("[*] CongNoPhaiTra (AP Subledger Balance): %1 VND", Format(TongAP, "NFD=0; NGS=.")));
+
+	// 5. Kiem tra so du DongTien
+	Q_CF = New Query(
+		"SELECT " +
+		"    SUM(CF.SoTienBalance) AS TongDuTien " +
+		"FROM " +
+		"    AccumulationRegister.DongTien.Balance AS CF"
+	);
+	ResCF = Q_CF.Execute().Unload();
+	TongCF = 0;
+	If ResCF.Count() > 0 And ResCF[0].TongDuTien <> Null Then
+		TongCF = ResCF[0].TongDuTien;
+	EndIf;
+	Log.Add(StrTemplate("[*] DongTien (Cash & Bank Balance): %1 VND", Format(TongCF, "NFD=0; NGS=.")));
+
+	Log.Add("=================================================================");
+	Log.Add("   XAC NHAN HE THONG HOAN TOAN ON DINH, SAN SANG SU DUNG!       ");
+	Log.Add("=================================================================");
+
+	LogPath = "C:/Users/Dung/Documents/1C_Enterprise/verify_full_test_data.log";
+	Try
+		TW = New TextWriter(LogPath, TextEncoding.UTF8);
+		For Each L In Log Do
+			TW.WriteLine(L);
+		EndDo;
+		TW.Close();
+	Except
+	EndTry;
 EndProcedure

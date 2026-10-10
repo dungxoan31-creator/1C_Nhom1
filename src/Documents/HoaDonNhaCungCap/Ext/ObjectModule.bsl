@@ -130,12 +130,16 @@ Procedure Posting(Cancel, Mode)
 		Row1.Period = Date;
 		Row1.AccountDr = TKChiPhi;
 		Row1.AccountCr = TKCongNo;
-		Row1.Amount = NoThucTraNCC;
-		Row1.Description = StrTemplate("Chi phí dịch vụ Cloud VSF (Net) - HĐ %1", SoHoaDon);
+		Row1.SoTien = NoThucTraNCC;
+		Row1.DienGiai = StrTemplate("Chi phí dịch vụ Cloud VSF (Net) - HĐ %1", SoHoaDon);
 		Row1.PhapNhan = PhapNhan;
-		Row1.DoiTac = DoiTac;
-		Row1.HopDong = HopDong;
+		Row1.TienTe = TienTe;
 		Row1.ChungTuGoc = Ref;
+		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
+		If TongTienNgoaiTe > 0 And TyGia > 0 Then
+			Row1.SoTienNgoaiTeDr = Round(NoThucTraNCC / TyGia, 2);
+			Row1.SoTienNgoaiTeCr = Round(NoThucTraNCC / TyGia, 2);
+		EndIf;
 		
 		// But toan 2: Thue TNDN nha thau tinh vao chi phi VSF
 		// No TK 627 / Co TK 3338: TienThueTNDNNhaThau (12.5tr)
@@ -144,12 +148,16 @@ Procedure Posting(Cancel, Mode)
 		Row2.Period = Date;
 		Row2.AccountDr = TKChiPhi;
 		Row2.AccountCr = TKThueTNDNNhaThau;
-		Row2.Amount = TienThueTNDNNhaThau;
-		Row2.Description = StrTemplate("Thuế TNDN nhà thầu tính vào chi phí - HĐ %1", SoHoaDon);
+		Row2.SoTien = TienThueTNDNNhaThau;
+		Row2.DienGiai = StrTemplate("Thuế TNDN nhà thầu tính vào chi phí - HĐ %1", SoHoaDon);
 		Row2.PhapNhan = PhapNhan;
-		Row2.DoiTac = DoiTac;
-		Row2.HopDong = HopDong;
+		Row2.TienTe = TienTe;
 		Row2.ChungTuGoc = Ref;
+		Row2.TyGia = ?(TyGia > 0, TyGia, 1);
+		If TongTienNgoaiTe > 0 And TyGia > 0 Then
+			Row2.SoTienNgoaiTeDr = Round(TienThueTNDNNhaThau / TyGia, 2);
+			Row2.SoTienNgoaiTeCr = Round(TienThueTNDNNhaThau / TyGia, 2);
+		EndIf;
 		
 		// But toan 3: Thue VAT nha thau duoc khau tru dau vao
 		// No TK 1331 / Co TK 33318: TienThueVATNhaThau (12.5tr)
@@ -157,12 +165,16 @@ Procedure Posting(Cancel, Mode)
 		Row3.Period = Date;
 		Row3.AccountDr = TKThueVATDauVao;
 		Row3.AccountCr = TKThueVATNhaThau;
-		Row3.Amount = TienThueVATNhaThau;
-		Row3.Description = StrTemplate("Thuế GTGT nhà thầu khấu trừ đầu vào - HĐ %1", SoHoaDon);
+		Row3.SoTien = TienThueVATNhaThau;
+		Row3.DienGiai = StrTemplate("Thuế GTGT nhà thầu khấu trừ đầu vào - HĐ %1", SoHoaDon);
 		Row3.PhapNhan = PhapNhan;
-		Row3.DoiTac = DoiTac;
-		Row3.HopDong = HopDong;
+		Row3.TienTe = TienTe;
 		Row3.ChungTuGoc = Ref;
+		Row3.TyGia = ?(TyGia > 0, TyGia, 1);
+		If TongTienNgoaiTe > 0 And TyGia > 0 Then
+			Row3.SoTienNgoaiTeDr = Round(TienThueVATNhaThau / TyGia, 2);
+			Row3.SoTienNgoaiTeCr = Round(TienThueVATNhaThau / TyGia, 2);
+		EndIf;
 	Else
 		// Khong co FCT
 		// But toan 1: Chi phi dich vu (No 627 / Co 3311 hoac 3312)
@@ -171,12 +183,16 @@ Procedure Posting(Cancel, Mode)
 		Row1.Period = Date;
 		Row1.AccountDr = TKChiPhi;
 		Row1.AccountCr = TKCongNo;
-		Row1.Amount = TienChiPhi;
-		Row1.Description = StrTemplate("Chi phí dịch vụ mua ngoài - HĐ %1", SoHoaDon);
+		Row1.SoTien = TienChiPhi;
+		Row1.DienGiai = StrTemplate("Chi phí dịch vụ mua ngoài - HĐ %1", SoHoaDon);
 		Row1.PhapNhan = PhapNhan;
-		Row1.DoiTac = DoiTac;
-		Row1.HopDong = HopDong;
+		Row1.TienTe = TienTe;
 		Row1.ChungTuGoc = Ref;
+		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
+		If TongTienNgoaiTe > 0 And TyGia > 0 Then
+			Row1.SoTienNgoaiTeDr = Round(TienChiPhi / TyGia, 2);
+			Row1.SoTienNgoaiTeCr = Round(TienChiPhi / TyGia, 2);
+		EndIf;
 		
 		// But toan 2: Thue VAT dau vao neu co (No 1331 / Co 3311 hoac 3312)
 		If TienThueVAT > 0 Then
@@ -184,17 +200,24 @@ Procedure Posting(Cancel, Mode)
 			Row2.Period = Date;
 			Row2.AccountDr = TKThueVATDauVao;
 			Row2.AccountCr = TKCongNo;
-			Row2.Amount = TienThueVAT;
-			Row2.Description = StrTemplate("Thuế GTGT đầu vào được khấu trừ - HĐ %1", SoHoaDon);
+			Row2.SoTien = TienThueVAT;
+			Row2.DienGiai = StrTemplate("Thuế GTGT đầu vào được khấu trừ - HĐ %1", SoHoaDon);
 			Row2.PhapNhan = PhapNhan;
-			Row2.DoiTac = DoiTac;
-			Row2.HopDong = HopDong;
+			Row2.TienTe = TienTe;
 			Row2.ChungTuGoc = Ref;
+			Row2.TyGia = ?(TyGia > 0, TyGia, 1);
+			If TongTienNgoaiTe > 0 And TyGia > 0 Then
+				Row2.SoTienNgoaiTeDr = Round(TienThueVAT / TyGia, 2);
+				Row2.SoTienNgoaiTeCr = Round(TienThueVAT / TyGia, 2);
+			EndIf;
 		EndIf;
 	EndIf;
 	
 	// 5. Kiem tra can doi tong the So cai
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Try
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Except
+	EndTry;
 EndProcedure
 
 #EndRegion

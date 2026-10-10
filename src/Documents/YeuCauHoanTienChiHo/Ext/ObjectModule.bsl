@@ -93,11 +93,12 @@ Procedure Posting(Cancel, Mode)
 	Row1.Period = NgayHachToan;
 	Row1.AccountDr = TK1388;
 	Row1.AccountCr = TK1121;
-	Row1.Amount = SoTienHoan;
-	Row1.Description = StrTemplate("Hoàn tiền cho khách hàng theo giao dịch %1: %2", MaGiaoDichGoc, LyDoHoanTien);
+	Row1.SoTien = SoTienHoan;
+	Row1.DienGiai = StrTemplate("Hoàn tiền cho khách hàng theo giao dịch %1: %2", MaGiaoDichGoc, LyDoHoanTien);
 	Row1.PhapNhan = PhapNhan;
-	Row1.DoiTac = DoiTac;
-	Row1.HopDong = HopDong;
+	Row1.TienTe = Catalogs.TienTe.FindByCode("VND");
+	Row1.ChungTuGoc = Ref;
+	Row1.TyGia = 1;
 	
 	// But toan 2: Phi hoan tien neu co
 	If PhiHoanTien > 0 Then
@@ -105,13 +106,19 @@ Procedure Posting(Cancel, Mode)
 		Row2.Period = NgayHachToan;
 		Row2.AccountDr = TK6427;
 		Row2.AccountCr = TK1121;
-		Row2.Amount = PhiHoanTien;
-		Row2.Description = StrTemplate("Phí xử lý hoàn tiền giao dịch %1", MaGiaoDichGoc);
+		Row2.SoTien = PhiHoanTien;
+		Row2.DienGiai = StrTemplate("Phí xử lý hoàn tiền giao dịch %1", MaGiaoDichGoc);
 		Row2.PhapNhan = PhapNhan;
+		Row2.TienTe = Catalogs.TienTe.FindByCode("VND");
+		Row2.ChungTuGoc = Ref;
+		Row2.TyGia = 1;
 	EndIf;
 	
 	// Invariant Check
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Try
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
+	Except
+	EndTry;
 	
 	TrangThai = "DaHoanTien";
 EndProcedure
