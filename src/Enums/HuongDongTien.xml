@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Enum uuid="0e0a2369-1b53-4187-b42c-5612342d0930">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.HuongDongTien" category="Ref">
+				<xr:TypeId>f676038d-d584-4a15-8821-e5c795bb7e10</xr:TypeId>
+				<xr:ValueId>915abc37-38b5-41c1-a165-f403fa200d76</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.HuongDongTien" category="Manager">
+				<xr:TypeId>a6b1a607-76d1-4467-9040-d7d1b8e2bba2</xr:TypeId>
+				<xr:ValueId>2695c9c2-5c6c-49b3-8f34-546cc590100b</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.HuongDongTien" category="List">
+				<xr:TypeId>304c355c-54ba-46f5-a5c9-d31f00363660</xr:TypeId>
+				<xr:ValueId>5c8c77ed-b432-467f-911a-45caa3ac80bb</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>HuongDongTien</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash Flow Direction</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="fe8108b6-598b-4b02-83fe-594295da0157">
+				<Properties>
+					<Name>Thu</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Thu</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="0d3e1ef3-f2ce-4f16-8186-ff4acc00d398">
+				<Properties>
+					<Name>Chi</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Chi</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

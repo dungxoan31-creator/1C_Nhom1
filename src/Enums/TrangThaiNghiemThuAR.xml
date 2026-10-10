@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Enum uuid="7ac3c3ba-8b49-41ca-a455-95dd12f789b5">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.TrangThaiNghiemThuAR" category="Ref">
+				<xr:TypeId>fac7ab79-99a1-4444-aa54-ff8beb61dd92</xr:TypeId>
+				<xr:ValueId>9bc90418-9805-46bf-ac52-8f0eb0eab4bb</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.TrangThaiNghiemThuAR" category="Manager">
+				<xr:TypeId>d99ad90d-cd72-492e-b829-65214260f9dd</xr:TypeId>
+				<xr:ValueId>c90e540c-eb1b-431f-9c22-233ff2f26ae2</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.TrangThaiNghiemThuAR" category="List">
+				<xr:TypeId>87ef1c12-3697-4c9b-a67d-9a3d8bfa99cd</xr:TypeId>
+				<xr:ValueId>a3ff66f3-ac51-4dae-a4f0-bdbeceab2d40</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>TrangThaiNghiemThuAR</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AR Acceptance Status</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="399ce570-f28b-445e-87dc-f8cd9d89d6f2">
+				<Properties>
+					<Name>DuThao</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dự thảo</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="7d2ba293-a8e2-461d-85d3-64fed028d3a4">
+				<Properties>
+					<Name>ChoDuyetNoiBo</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Chờ duyệt nội bộ</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="6956cce1-2e4c-44d7-ab40-f55cd5235f4f">
+				<Properties>
+					<Name>DaDuyetNoiBo</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Đã duyệt nội bộ</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="937c1073-356b-4c75-9dd1-9b9af9cad35d">
+				<Properties>
+					<Name>ChoDoiTacKy</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Chờ đối tác ký</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="7625cdb2-6735-4f2a-92b7-4789746c74cd">
+				<Properties>
+					<Name>DaGhiSo</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Đã ghi sổ</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="8bc6b565-80ad-4b77-80ca-0f0002202de9">
+				<Properties>
+					<Name>DaThanhToanMotPhan</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Đã thanh toán một phần</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="fed40eae-67f3-473b-bf19-b288a76bf078">
+				<Properties>
+					<Name>DaTatToan</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Đã tất toán</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="4ae32aa9-ce77-4ded-855d-f6099bfa6424">
+				<Properties>
+					<Name>TranhChap</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tranh chấp</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

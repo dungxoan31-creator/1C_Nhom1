@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Enum uuid="76ae9f90-5308-4088-a150-dd7296ce6c06">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.TrangThaiCanTru" category="Ref">
+				<xr:TypeId>4cc9dae7-fe7f-4ce8-aa0f-1673afe96791</xr:TypeId>
+				<xr:ValueId>75f02a74-8d1a-49e4-8c0f-562445a42b24</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.TrangThaiCanTru" category="Manager">
+				<xr:TypeId>59d8a473-6936-4642-bc2b-e7c66e8ba769</xr:TypeId>
+				<xr:ValueId>360cb32e-cfe2-45f8-96f9-296c10f738ec</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.TrangThaiCanTru" category="List">
+				<xr:TypeId>d005f92b-2379-455d-ba70-0ed7946c6b01</xr:TypeId>
+				<xr:ValueId>ae938427-09a6-4d9d-89a7-1367e1aceba6</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>TrangThaiCanTru</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Netting Status</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="cc56d9ae-a640-4e22-a81a-70c6dd779682">
+				<Properties>
+					<Name>DuThao</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dự thảo</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c2b966a8-f45a-44f7-9710-10399af9a226">
+				<Properties>
+					<Name>ChoDuyetNoiBo</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Chờ duyệt nội bộ</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="1e4b8766-f59d-4495-acfa-aaef794b1f0b">
+				<Properties>
+					<Name>ChoTapDoanDuyet</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Chờ tập đoàn duyệt</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="395325da-14da-4c79-8a2f-f96248701645">
+				<Properties>
+					<Name>ChoCanTru</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Chờ cấn trừ</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="6691e428-d378-4f86-ab2a-4964b5c56ff9">
+				<Properties>
+					<Name>DaTatToan</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Đã tất toán</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c1931894-74a5-4853-9a08-5f53abb6c3a3">
+				<Properties>
+					<Name>HuyBo</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Hủy bỏ</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

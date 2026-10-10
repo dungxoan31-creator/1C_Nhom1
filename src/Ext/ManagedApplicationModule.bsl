@@ -1,13 +1,10 @@
-﻿Procedure BeforeStart(Cancel)
-	If LaunchParameter = "RunDoD" Then
-		APVerification.RunVerification();
-		Cancel = True;
-	EndIf;
-EndProcedure
-
 Procedure OnStart()
-	If LaunchParameter = "RunDoD" Then
-		APVerification.RunVerification();
+	If LaunchParameter = "RunUnitTests" Then
+		CatalogsCoreTest.RunVerification();
+		EnumsConstantsTest.RunVerification();
+		Exit(False);
+	ElsIf LaunchParameter = "RunEnumsConstantsTests" Then
+		EnumsConstantsTest.RunVerification();
 		Exit(False);
 	EndIf;
 EndProcedure

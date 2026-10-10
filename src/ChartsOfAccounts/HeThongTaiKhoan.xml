@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<ChartOfAccounts uuid="1fea0e7d-bde2-4096-89f5-9d1f34cbe37d">
+		<InternalInfo>
+			<xr:GeneratedType name="ChartOfAccountsObject.HeThongTaiKhoan" category="Object">
+				<xr:TypeId>e3c7f2b2-4416-4c84-9f15-c60e6dbbc39b</xr:TypeId>
+				<xr:ValueId>64f29eb2-49d3-4a63-943d-f156cba4ccef</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ChartOfAccountsRef.HeThongTaiKhoan" category="Ref">
+				<xr:TypeId>2cd39e14-5657-4c53-a139-2428080e3525</xr:TypeId>
+				<xr:ValueId>33f7560e-c0fa-4051-bb56-f258bb8a7734</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ChartOfAccountsSelection.HeThongTaiKhoan" category="Selection">
+				<xr:TypeId>ba0183b7-2e25-4ba8-a513-5d78293dee36</xr:TypeId>
+				<xr:ValueId>348a9199-5bdb-4bbf-969e-d3b81b11db7a</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ChartOfAccountsList.HeThongTaiKhoan" category="List">
+				<xr:TypeId>d9002118-5c79-4c50-8b36-378a1815905d</xr:TypeId>
+				<xr:ValueId>0b583d8f-bc6b-4d1c-92d3-56963723d10e</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ChartOfAccountsManager.HeThongTaiKhoan" category="Manager">
+				<xr:TypeId>71987056-9795-491c-9c1a-80d11710819f</xr:TypeId>
+				<xr:ValueId>620f0749-8315-4810-9239-e2074828c1da</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ChartOfAccountsExtDimensionTypes.HeThongTaiKhoan" category="ExtDimensionTypes">
+				<xr:TypeId>2c4d1f77-8e0e-43f4-8a83-376bdb36c4a7</xr:TypeId>
+				<xr:ValueId>707a13fc-21bb-4127-a957-c4d840f343d4</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="ChartOfAccountsExtDimensionTypesRow.HeThongTaiKhoan" category="ExtDimensionTypesRow">
+				<xr:TypeId>46c2ee72-3390-488e-92f1-2d9b66f9ebc3</xr:TypeId>
+				<xr:ValueId>122227a4-0e70-458d-bb42-634451bf6dd3</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>HeThongTaiKhoan</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Hệ thống tài khoản</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chart of Accounts</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Hệ thống tài khoản kế toán doanh nghiệp VinSmart Future</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<BasedOn/>
+			<ExtDimensionTypes/>
+			<MaxExtDimensionCount>0</MaxExtDimensionCount>
+			<CodeMask/>
+			<CodeLength>20</CodeLength>
+			<DescriptionLength>150</DescriptionLength>
+			<CodeSeries>WholeChartOfAccounts</CodeSeries>
+			<CheckUnique>true</CheckUnique>
+			<DefaultPresentation>AsDescription</DefaultPresentation>
+			<Characteristics/>
+			<PredefinedDataUpdate>Auto</PredefinedDataUpdate>
+			<EditType>InDialog</EditType>
+			<QuickChoice>false</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<InputByString>
+				<xr:Field>ChartOfAccounts.HeThongTaiKhoan.StandardAttribute.Description</xr:Field>
+				<xr:Field>ChartOfAccounts.HeThongTaiKhoan.StandardAttribute.Code</xr:Field>
+			</InputByString>
+			<SearchStringModeOnInputByString>Begin</SearchStringModeOnInputByString>
+			<FullTextSearchOnInputByString>DontUse</FullTextSearchOnInputByString>
+			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
+			<CreateOnInput>DontUse</CreateOnInput>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+			<DefaultObjectForm/>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryObjectForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<AutoOrderByCode>true</AutoOrderByCode>
+			<OrderLength>20</OrderLength>
+			<DataLockFields/>
+			<DataLockControlMode>Managed</DataLockControlMode>
+			<FullTextSearch>DontUse</FullTextSearch>
+			<DataHistory>DontUse</DataHistory>
+			<UpdateDataHistoryImmediatelyAfterWrite>false</UpdateDataHistoryImmediatelyAfterWrite>
+			<ExecuteAfterWriteDataHistoryVersionProcessing>false</ExecuteAfterWriteDataHistoryVersionProcessing>
+			<ObjectPresentation/>
+			<ExtendedObjectPresentation/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<Predefined>
+				<Item id="573f07d2-e2ec-44f7-92e0-bab5c5d2d5ea">
+					<Name>TK1311</Name>
+					<Code>1311</Code>
+					<Description>Phải thu khách hàng ngoài</Description>
+					<Order>1311</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="143a64f9-f0b8-497e-9375-21f5d8c8f44c">
+					<Name>TK1312</Name>
+					<Code>1312</Code>
+					<Description>Phải thu khách hàng nội bộ Vingroup</Description>
+					<Order>1312</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="c2a36ce3-70d5-4ba6-9521-0ee91378cda8">
+					<Name>TK3311</Name>
+					<Code>3311</Code>
+					<Description>Phải trả người bán bên ngoài</Description>
+					<Order>3311</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="62f6d7f7-d851-47dc-8742-ff6c53ce3f11">
+					<Name>TK3312</Name>
+					<Code>3312</Code>
+					<Description>Phải trả người bán nội bộ Vingroup</Description>
+					<Order>3312</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="6bebfeb2-11b2-44b1-ac10-1f8cb0b15fdc">
+					<Name>TK1121</Name>
+					<Code>1121</Code>
+					<Description>Tiền gửi ngân hàng VND</Description>
+					<Order>1121</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="7caeca16-1363-40aa-bab9-043c75181096">
+					<Name>TK1122</Name>
+					<Code>1122</Code>
+					<Description>Tiền gửi ngân hàng Ngoại tệ</Description>
+					<Order>1122</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="29767330-27c4-4090-b726-7e514b327fd4">
+					<Name>TK1331</Name>
+					<Code>1331</Code>
+					<Description>Thuế GTGT được khấu trừ của hàng hóa, dịch vụ</Description>
+					<Order>1331</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="3a711b4f-1808-4384-a1ea-ec94bfd77d51">
+					<Name>TK33311</Name>
+					<Code>33311</Code>
+					<Description>Thuế GTGT đầu ra</Description>
+					<Order>33311</Order>
+					<Type>Passive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="3741840a-4011-4e3a-b4d8-e2550a0ab4f1">
+					<Name>TK33318</Name>
+					<Code>33318</Code>
+					<Description>Thuế GTGT nhà thầu (FCT VAT)</Description>
+					<Order>33318</Order>
+					<Type>Passive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="2eb69e61-55ea-44db-aa98-9e642569b9ea">
+					<Name>TK3338</Name>
+					<Code>3338</Code>
+					<Description>Thuế và các khoản phải nộp nhà nước khác (FCT CIT)</Description>
+					<Order>3338</Order>
+					<Type>Passive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="dc8778ee-94d4-48b4-8b43-db25be234737">
+					<Name>TK5113</Name>
+					<Code>5113</Code>
+					<Description>Doanh thu cung cấp dịch vụ</Description>
+					<Order>5113</Order>
+					<Type>Passive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="94611453-4a96-430a-aa8e-5deb7048c2c9">
+					<Name>TK627</Name>
+					<Code>627</Code>
+					<Description>Chi phí sản xuất chung / Chi phí dịch vụ Cloud</Description>
+					<Order>627</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="bc6b61b5-1fb0-4ee1-93d4-3006de62f8ea">
+					<Name>TK642</Name>
+					<Code>642</Code>
+					<Description>Chi phí quản lý doanh nghiệp</Description>
+					<Order>642</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="f9a696f7-98e4-4439-b03d-795f556fd89f">
+					<Name>TK6427</Name>
+					<Code>6427</Code>
+					<Description>Chi phí dịch vụ mua ngoài / Phí ngân hàng</Description>
+					<Order>6427</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="c1618de1-de76-4822-aaef-fcd5b102210f">
+					<Name>TK635</Name>
+					<Code>635</Code>
+					<Description>Chi phí tài chính / Lỗ tỷ giá</Description>
+					<Order>635</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="9b2109bc-1699-42fc-a3b1-c009a44a7a13">
+					<Name>TK515</Name>
+					<Code>515</Code>
+					<Description>Doanh thu hoạt động tài chính / Lãi tỷ giá</Description>
+					<Order>515</Order>
+					<Type>Passive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="7cf33177-f7d8-4ff7-9ab1-37d219946acd">
+					<Name>TK4131</Name>
+					<Code>4131</Code>
+					<Description>Chênh lệch tỷ giá hối đoái</Description>
+					<Order>4131</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="4883a18c-8ddb-49b5-93be-c25e54634e1e">
+					<Name>TK711</Name>
+					<Code>711</Code>
+					<Description>Thu nhập khác</Description>
+					<Order>711</Order>
+					<Type>Passive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+			</Predefined>
+		</Properties>
+		<ChildObjects>
+			<Attribute uuid="cbcf9c94-5a0a-40a7-850c-97a42fed7a1e">
+				<Properties>
+					<Name>MaLogic</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Mã logic</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Logical Code</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Mã logic ánh xạ tài khoản kế toán</Comment>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>20</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip/>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>Index</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="e149ce72-59fd-4ee6-ad4e-d740ec7b5bb1">
+				<Properties>
+					<Name>TenTaiKhoan</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Tên tài khoản</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Account Name</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Tên chi tiết tài khoản kế toán</Comment>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip/>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="6b9b0f73-f980-4208-8e8d-c4b97f8d3b72">
+				<Properties>
+					<Name>TinhChat</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Tính chất</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Nature</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Tính chất tài khoản: Active / Passive / ActivePassive</Comment>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>20</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip/>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+		</ChildObjects>
+	</ChartOfAccounts>
+</MetaDataObject>
