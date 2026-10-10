@@ -148,6 +148,8 @@
 			<InformationRegister>TrangThaiDongBoSAP</InformationRegister>
 			<InformationRegister>LichSuGiaoDichNganHang</InformationRegister>
 			<InformationRegister>KeHoachChiTien</InformationRegister>
+			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
+			<CommonModule>PheDuyetDaCapServer</CommonModule>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>
