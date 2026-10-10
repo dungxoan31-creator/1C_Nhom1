@@ -99,7 +99,6 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.ChungTuGoc = BienBanNghiemThu;
 	RecordGL.TyGia = 1;
 	RecordGL.SoTien = TienThueVAT;
-	RecordGL.SoTienNgoaiTe = 0;
 	
 	If Not IsBlankString(DienGiai) Then
 		RecordGL.DienGiai = DienGiai;

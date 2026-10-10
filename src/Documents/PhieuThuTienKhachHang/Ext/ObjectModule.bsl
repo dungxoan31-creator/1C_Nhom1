@@ -141,7 +141,10 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.ChungTuGoc = ChungTuGoc;
 	RecordGL.TyGia = ?(TyGia > 0, TyGia, 1);
 	RecordGL.SoTien = SoTien;
-	RecordGL.SoTienNgoaiTe = SoTienNgoaiTe;
+	If SoTienNgoaiTe > 0 Then
+		RecordGL.SoTienNgoaiTeDr = SoTienNgoaiTe;
+		RecordGL.SoTienNgoaiTeCr = SoTienNgoaiTe;
+	EndIf;
 	
 	NoiDungDienGiai = DienGiai;
 	If Not ValueIsFilled(NoiDungDienGiai) Then

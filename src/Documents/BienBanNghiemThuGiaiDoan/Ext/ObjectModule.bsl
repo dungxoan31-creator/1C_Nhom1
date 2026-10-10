@@ -103,7 +103,6 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.AccountDr = AccountDr;
 	RecordGL.AccountCr = AccountCr;
 	RecordGL.SoTien = SoTienDoanhThu;
-	RecordGL.SoTienNgoaiTe = 0;
 	RecordGL.PhapNhan = PhapNhan;
 	RecordGL.ChungTuGoc = Ref;
 	
