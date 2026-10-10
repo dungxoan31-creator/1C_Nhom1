@@ -105,7 +105,7 @@ EndFunction
 
 Procedure NapTyGia(Val TienTeRef, Val TyGia, Log)
 	RegRecord = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
-	RegRecord.Period = BegOfDay(CurrentDate());
+	RegRecord.Period = BegOfDay(CurrentSessionDate());
 	RegRecord.TienTe = TienTeRef;
 	RegRecord.TyGiaMua = TyGia;
 	RegRecord.TyGiaBan = TyGia;
