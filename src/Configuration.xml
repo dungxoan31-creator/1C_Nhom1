@@ -151,6 +151,8 @@
 			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
 			<CommonModule>PheDuyetDaCapServer</CommonModule>
 			<CommonModule>QuyTrinhPheDuyetAPServer</CommonModule>
+			<CommonModule>TichHopNganHangServer</CommonModule>
+			<CommonModule>TichHopHoaDonDienTuServer</CommonModule>
 			<Document>BienBanNghiemThuGiaiDoan</Document>
 			<Document>HoaDonGTGTDauRa</Document>
 			<Document>DieuChinhCongNo</Document>
@@ -166,6 +168,7 @@
 			<HTTPService>WebhookNganHang</HTTPService>
 			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
 			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
+			<DataProcessor>DongBoButToanSAP</DataProcessor>
 			<Report>BaoCaoTuoiNoPhanTachNoiBo</Report>
 			<Report>MaTranCanTruNoiBoTapDoan</Report>
 			<Report>DoiSoatKenhThanhToanVaDongTienAo</Report>
@@ -175,6 +178,8 @@
 			<AccumulationRegister>DongTien</AccumulationRegister>
 			<AccumulationRegister>GiaoDichDienTuTamGiu</AccumulationRegister>
 			<AccountingRegister>SoCaiKeToan</AccountingRegister>
+					<ScheduledJob>CapNhatTyGiaNgoaiTeTuDong</ScheduledJob>
+			<ScheduledJob>DongBoSAPHangNgay</ScheduledJob>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

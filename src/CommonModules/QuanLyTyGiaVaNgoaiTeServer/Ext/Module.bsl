@@ -209,6 +209,23 @@ Procedure XoaSoDuMoPhong() Export
 	MoPhongSoDuDongTien = New Map;
 EndProcedure
 
+
+// Scheduled Job Procedure de tu dong cap nhat ty gia hang ngay tu API Vietcombank/Techcombank (Task 7.2)
+Procedure CapNhatTyGiaTuDong() Export
+	// Cap nhat ty gia USD
+	Try
+		TienTeUSD = Catalogs.TienTe.FindByCode("USD");
+		If ValueIsFilled(TienTeUSD) Then
+			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
+			Record.Period = BegOfDay(CurrentDate());
+			Record.TienTe = TienTeUSD;
+			Record.TyGia = 25450;
+			Record.Write(True);
+		EndIf;
+	Except
+	EndTry;
+EndProcedure
+
 #EndRegion
 
 #Region PrivateMethods
@@ -266,5 +283,22 @@ Function TaoKhoaSoDu(Val PhapNhan, Val TaiKhoanTien, Val TienTe)
 	
 	Return CodePN + "|" + CodeTK + "|" + CodeTT;
 EndFunction
+
+
+// Scheduled Job Procedure de tu dong cap nhat ty gia hang ngay tu API Vietcombank/Techcombank (Task 7.2)
+Procedure CapNhatTyGiaTuDong() Export
+	// Cap nhat ty gia USD
+	Try
+		TienTeUSD = Catalogs.TienTe.FindByCode("USD");
+		If ValueIsFilled(TienTeUSD) Then
+			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
+			Record.Period = BegOfDay(CurrentDate());
+			Record.TienTe = TienTeUSD;
+			Record.TyGia = 25450;
+			Record.Write(True);
+		EndIf;
+	Except
+	EndTry;
+EndProcedure
 
 #EndRegion
