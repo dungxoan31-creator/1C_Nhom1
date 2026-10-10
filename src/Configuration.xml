@@ -116,10 +116,8 @@
 			<Catalog>DichVuCNTT</Catalog>
 			<Catalog>KenhThanhToan</Catalog>
 			<Enum>LoaiDoiTac</Enum>
-			<CommonModule>CatalogsCoreTest</CommonModule>
 			<CommonModule>SeedDataCleanServer</CommonModule>
 			<CommonModule>SeedFullTestDataServer</CommonModule>
-			<CommonModule>EnumsConstantsTest</CommonModule>
 			<Enum>TrangThaiNghiemThuAR</Enum>
 			<Enum>TrangThaiHoaDonAP</Enum>
 			<Enum>TrangThaiLenhThanhToan</Enum>
@@ -150,7 +148,6 @@
 			<Role>ProjectManager_QuanLyDuAn</Role>
 			<Role>ITDirector_GiamDocHaTang</Role>
 			<CommonModule>QuanLyVongDoiChungTuServer</CommonModule>
-			<CommonModule>ChartOfAccountsTest</CommonModule>
 			<InformationRegister>TyGiaHoiDoai</InformationRegister>
 			<InformationRegister>HanMucVaChanXuatDichVu</InformationRegister>
 			<InformationRegister>TrangThaiDongBoSAP</InformationRegister>

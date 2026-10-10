@@ -9,13 +9,17 @@ Tài liệu này hướng dẫn chi tiết cách nạp file sao lưu dữ liệu
 
 - **File đóng gói chính:** [VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)
 - **File sao lưu phụ:** [VinSmart_Future_AR_AP_Test.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Test.dt)
-- **Dung lượng:** ~250 KB (chuẩn nén Infobase 1C:Enterprise, chứa đầy đủ cấu hình metadata, danh mục nền tảng và 43 chứng từ nghiệp vụ đã ghi sổ)
+- **Dung lượng:** ~243 KB (đã tinh gọn, loại bỏ module test khỏi cấu hình production, chứa 43 chứng từ đã ghi sổ)
 - **Nền tảng mục tiêu:** 1C:Enterprise 8.3 (Platform 8.3.22 trở lên)
 - **Giao diện người dùng:** Taxi (Managed Application)
 - **Tài khoản đăng nhập quản trị:**
   - **Tên đăng nhập (User):** `Admin`
   - **Mật khẩu (Password):** *(để trống)*
   - **Vai trò:** Toàn quyền Quản trị hệ thống (`QuanTriHeThong`)
+- **Kiến trúc phân định phạm vi (Scoped Architecture):**
+  - **1C:Enterprise (Hệ thống Subledger chuyên sâu):** Quản lý chi tiết từng biên bản nghiệm thu, hóa đơn đầu ra, thu tiền, hóa đơn AP (khấu trừ FCT), cấn trừ nội bộ Tập đoàn, sổ cái kế toán kép đối ứng ($\Delta = 0$).
+  - **Tích hợp SAP & Webhook [Hoãn - Phase 2]:** ScheduledJob `DongBoSAPHangNgay` đã tắt mặc định; 1C đối chiếu sổ sách định kỳ với SAP.
+  - **Mã kiểm thử:** Tách biệt độc lập tại thư mục `tests/unit/`, không gây phình to cấu hình sản xuất.
 
 ---
 

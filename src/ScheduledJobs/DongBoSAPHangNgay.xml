@@ -15,9 +15,9 @@
 			</Synonym>
 			<Comment>Scheduled Job đồng bộ bút toán 1C sang SAP ERP lúc 22:00 hàng ngày (Task 7.3)</Comment>
 			<MethodName>DataProcessor.DongBoButToanSAP.ThucHienDongBoBatchHangNgay</MethodName>
-			<Description>Đồng bộ bút toán sang SAP ERP lúc 22:00</Description>
+			<Description>Đồng bộ bút toán sang SAP ERP lúc 22:00 [Hoãn - Phase 2]</Description>
 			<Key>DongBoSAPHangNgay</Key>
-			<Use>true</Use>
+			<Use>false</Use>
 			<Predefined>true</Predefined>
 			<RestartCountOnFailure>3</RestartCountOnFailure>
 			<RestartIntervalOnFailure>60</RestartIntervalOnFailure>
