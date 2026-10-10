@@ -144,6 +144,7 @@ Function BangAnhXaTaiKhoanMacDinh() Export
 	Map.Insert("515", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "515", "Doanh thu hoạt động tài chính / Lãi tỷ giá", "Passive", "515"));
 	Map.Insert("4131", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "4131", "Chênh lệch tỷ giá hối đoái", "ActivePassive", "4131"));
 	Map.Insert("711", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "711", "Thu nhập khác", "Passive", "711"));
+	Map.Insert("1388", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "1388", "Phải thu khác / Tiền tạm giữ cổng thanh toán", "ActivePassive", "1388"));
 	Return Map;
 EndFunction
 

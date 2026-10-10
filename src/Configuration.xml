@@ -159,9 +159,15 @@
 			<Document>UyNhiemChi</Document>
 			<Document>NghiemThuThauPhu</Document>
 			<Document>DeNghiThanhToanDichVu</Document>
+			<Document>BaoCoNganHang</Document>
+			<Document>BangKeDoiSoatKenhThanhToan</Document>
+			<Document>YeuCauHoanTienChiHo</Document>
+			<HTTPService>WebhookNganHang</HTTPService>
+			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
 			<AccumulationRegister>CongNoPhaiThu</AccumulationRegister>
 			<AccumulationRegister>CongNoPhaiTra</AccumulationRegister>
 			<AccumulationRegister>DongTien</AccumulationRegister>
+			<AccumulationRegister>GiaoDichDienTuTamGiu</AccumulationRegister>
 			<AccountingRegister>SoCaiKeToan</AccountingRegister>
 		</ChildObjects>
 	</Configuration>

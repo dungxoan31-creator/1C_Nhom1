@@ -145,6 +145,14 @@
 					<Type>Active</Type>
 					<OffBalance>false</OffBalance>
 				</Item>
+				<Item id="e1a49c73-45ef-4890-8b17-024564789012">
+					<Name>TK1388</Name>
+					<Code>1388</Code>
+					<Description>Phải thu khác (Giao dịch điện tử tạm giữ)</Description>
+					<Order>1388</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
 				<Item id="3a711b4f-1808-4384-a1ea-ec94bfd77d51">
 					<Name>TK33311</Name>
 					<Code>33311</Code>
