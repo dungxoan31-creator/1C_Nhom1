@@ -89,6 +89,14 @@
 			<ExtendedListPresentation/>
 			<Explanation/>
 			<Predefined>
+				<Item id="f0000000-0000-4000-8000-000000000000">
+					<Name>TK000</Name>
+					<Code>000</Code>
+					<Description>Tài khoản đối ứng số dư đầu kỳ</Description>
+					<Order>000</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>true</OffBalance>
+				</Item>
 				<Item id="573f07d2-e2ec-44f7-92e0-bab5c5d2d5ea">
 					<Name>TK1311</Name>
 					<Code>1311</Code>

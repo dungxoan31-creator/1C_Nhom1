@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<DataProcessor uuid="39752546-b2db-41d0-aca5-dccb654d23ea">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.NapSoDuDauKy" category="Object">
+				<xr:TypeId>6a4654f8-b751-4a48-89f6-864fa090fc2f</xr:TypeId>
+				<xr:ValueId>7d8ea7d7-2a2b-42b1-b341-9c60c085f067</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.NapSoDuDauKy" category="Manager">
+				<xr:TypeId>451c44a8-f7b9-4fea-a29a-38027cca5663</xr:TypeId>
+				<xr:ValueId>b17829c1-1470-46d6-8f87-3ce4a800022e</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>NapSoDuDauKy</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Nạp số dư đầu kỳ</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Opening Balance Migration</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Công cụ nạp số dư đầu kỳ AR, AP, Tiền mặt và Quỹ ngoại tệ (Task 8.1)</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects/>
+	</DataProcessor>
+</MetaDataObject>

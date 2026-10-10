@@ -169,6 +169,7 @@
 			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
 			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
 			<DataProcessor>DongBoButToanSAP</DataProcessor>
+			<DataProcessor>NapSoDuDauKy</DataProcessor>
 			<Report>BaoCaoTuoiNoPhanTachNoiBo</Report>
 			<Report>MaTranCanTruNoiBoTapDoan</Report>
 			<Report>DoiSoatKenhThanhToanVaDongTienAo</Report>
