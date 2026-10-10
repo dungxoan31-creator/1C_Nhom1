@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Subsystem uuid="9224f2b2-4500-4b18-a53d-9f398ee28e72">
+		<Properties>
+			<Name>PhanHeDanhMuc</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>6. Danh mục nền tảng</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Master Data</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>true</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.PhapNhan</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DoiTac</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.HopDong</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.TaiKhoanTien</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.TaiKhoanAo</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.KenhThanhToan</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DichVuCNTT</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DuAn</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.KhoanMucDongTien</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.TienTe</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.TyGiaHoiDoai</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.HanMucVaChanXuatDichVu</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.KeHoachChiTien</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

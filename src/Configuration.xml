@@ -98,6 +98,12 @@
 			<DefaultConstantsForm/>
 		</Properties>
 		<ChildObjects>
+			<Subsystem>PhanHeDanhMuc</Subsystem>
+			<Subsystem>PhanHeSoCaiVaDongBo</Subsystem>
+			<Subsystem>PhanHeCanTruNetting</Subsystem>
+			<Subsystem>PhanHeNganHangVaQuy</Subsystem>
+			<Subsystem>PhanHePhaiTra</Subsystem>
+			<Subsystem>PhanHePhaiThu</Subsystem>
 			<Language>English</Language>
 			<Catalog>PhapNhan</Catalog>
 			<Catalog>DoiTac</Catalog>
@@ -111,6 +117,7 @@
 			<Catalog>KenhThanhToan</Catalog>
 			<Enum>LoaiDoiTac</Enum>
 			<CommonModule>CatalogsCoreTest</CommonModule>
+			<CommonModule>SeedDataCleanServer</CommonModule>
 			<CommonModule>EnumsConstantsTest</CommonModule>
 			<Enum>TrangThaiNghiemThuAR</Enum>
 			<Enum>TrangThaiHoaDonAP</Enum>

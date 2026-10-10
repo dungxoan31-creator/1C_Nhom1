@@ -1,5 +1,7 @@
 param(
-    [string]$OutputPath = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.dt"
+    [string]$OutputPath = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.dt",
+    [string]$User = "Admin",
+    [string]$Password = ""
 )
 
 $exePath = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
@@ -8,8 +10,17 @@ $logPath = "dump_last.log"
 
 Remove-Item $logPath -Force -ErrorAction SilentlyContinue
 
+$userArg = ""
+if ($User) {
+    $userArg = "/N `"$User`""
+    if ($Password) {
+        $userArg += " /P `"$Password`""
+    }
+}
+
 Write-Host "Xuat du lieu Infobase sang file DT: $OutputPath ..."
-$p = Start-Process -FilePath $exePath -ArgumentList "DESIGNER", "/F", $ibPath, "/DumpIB", $OutputPath, "/DisableStartupDialogs", "/DisableStartupMessages", "/OUT", $logPath -PassThru -Wait
+$cmd = "DESIGNER /F `"$ibPath`" $userArg /DumpIB `"$OutputPath`" /DisableStartupDialogs /DisableStartupMessages /OUT `"$logPath`""
+$p = Start-Process -FilePath $exePath -ArgumentList $cmd -PassThru -Wait
 
 Write-Host ("Ma thoat: " + $p.ExitCode)
 if (Test-Path $logPath) { Get-Content $logPath }

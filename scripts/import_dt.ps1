@@ -1,5 +1,7 @@
 param(
-    [string]$InputPath = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.dt"
+    [string]$InputPath = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Full.dt",
+    [string]$User = "Admin",
+    [string]$Password = ""
 )
 
 $exePath = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
@@ -13,8 +15,14 @@ if (-not (Test-Path $InputPath)) {
 
 Remove-Item $logPath -Force -ErrorAction SilentlyContinue
 
-Write-Host "Nap du lieu Infobase tu file DT: $InputPath ..."
-$p = Start-Process -FilePath $exePath -ArgumentList "DESIGNER", "/F", $ibPath, "/RestoreIB", $InputPath, "/DisableStartupDialogs", "/DisableStartupMessages", "/OUT", $logPath -PassThru -Wait
+$argStr = "DESIGNER /F `"$ibPath`" /N `"$User`""
+if ($Password -ne "") {
+    $argStr += " /P `"$Password`""
+}
+$argStr += " /RestoreIB `"$InputPath`" /DisableStartupDialogs /DisableStartupMessages /OUT `"$logPath`""
+
+Write-Host "Nap du lieu Infobase tu file DT: $InputPath (User: $User)..."
+$p = Start-Process -FilePath $exePath -ArgumentList $argStr -PassThru -Wait
 
 Write-Host ("Ma thoat: " + $p.ExitCode)
 if (Test-Path $logPath) { Get-Content $logPath }

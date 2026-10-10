@@ -1,5 +1,8 @@
 Procedure OnStart()
-	If LaunchParameter = "RunUnitTests" Then
+	If LaunchParameter = "SeedCleanMasterData" Then
+		SeedDataCleanServer.ThucThiNapMasterData();
+		Exit(False);
+	ElsIf LaunchParameter = "RunUnitTests" Then
 		CatalogsCoreTest.RunVerification();
 		EnumsConstantsTest.RunVerification();
 		Exit(False);
