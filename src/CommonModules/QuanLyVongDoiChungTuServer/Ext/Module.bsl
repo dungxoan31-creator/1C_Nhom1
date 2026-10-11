@@ -5,6 +5,28 @@
 
 #Region PublicInterface
 
+// So du phai thu con lai cua mot chung tu goc tai thoi diem chi dinh.
+Function LaySoDuARTheoChungTu(Val PhapNhan, Val DoiTac, Val ChungTuGoc, Val ThoiDiem) Export
+	Query = New Query;
+	Query.Text =
+		"SELECT
+		|	ISNULL(SUM(AR.SoTienBalance), 0) AS SoDuAR
+		|FROM
+		|	AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem,
+		|		PhapNhan = &PhapNhan
+		|		AND DoiTac = &DoiTac
+		|		AND ChungTuGoc = &ChungTuGoc) AS AR";
+	Query.SetParameter("ThoiDiem", ThoiDiem);
+	Query.SetParameter("PhapNhan", PhapNhan);
+	Query.SetParameter("DoiTac", DoiTac);
+	Query.SetParameter("ChungTuGoc", ChungTuGoc);
+	Selection = Query.Execute().Select();
+	If Selection.Next() Then
+		Return Selection.SoDuAR;
+	EndIf;
+	Return 0;
+EndFunction
+
 // Kiem tra chuyen trang thai chung tu theo nguyen tac Maker-Checker
 // 
 // Tham so:
@@ -194,5 +216,11 @@ Function KiemTraCanDoiSoCai(RecordSetOrArray) Export
 	
 	Return True;
 EndFunction
+
+// Thu tuc chay Scheduled Job dong bo SAP hang ngay
+Procedure ThucHienDongBoBatchHangNgay() Export
+	Processor = DataProcessors.DongBoButToanSAP.Create();
+	Processor.ThucHienDongBoBatchHangNgay();
+EndProcedure
 
 #EndRegion
