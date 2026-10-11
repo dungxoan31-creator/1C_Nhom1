@@ -3,8 +3,6 @@
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Tinh ty gia xuat quy BQGQ di dong va quan ly ty gia ngoai te tap trung (Task 2.3)
 
-Var MoPhongSoDuDongTien;
-
 #Region PublicInterface
 
 // Tinh ty gia xuat quy binh quan gia quyen (BQGQ) di dong tai mot thoi diem
@@ -77,19 +75,6 @@ Function TinhTyGiaXuatQuyBQGQ(Val PhapNhan, Val TaiKhoanTien, Val TienTe, Val Th
 				If SoTienNgoaiTe > 0 Then
 					CoSoDuThucTe = True;
 				EndIf;
-			EndIf;
-		EndIf;
-	EndIf;
-	
-	// 3. Kiem tra bang so du mo phong trong phien runtime (ho tro unit test va giao dich chua commit)
-	If Not CoSoDuThucTe And MoPhongSoDuDongTien <> Undefined Then
-		Key = TaoKhoaSoDu(PhapNhan, TaiKhoanTien, TienTe);
-		EntryMoPhong = MoPhongSoDuDongTien.Get(Key);
-		If EntryMoPhong <> Undefined Then
-			SoTienVND = EntryMoPhong.SoTienVND;
-			SoTienNgoaiTe = EntryMoPhong.SoTienNgoaiTe;
-			If SoTienNgoaiTe > 0 Then
-				CoSoDuThucTe = True;
 			EndIf;
 		EndIf;
 	EndIf;
@@ -195,22 +180,13 @@ EndFunction
 //   SoTienNgoaiTe - Number - So du nguyen te ngoai te
 //
 Procedure DatSoDuMoPhong(Val PhapNhan, Val TaiKhoanTien, Val TienTe, Val SoTienVND, Val SoTienNgoaiTe) Export
-	If MoPhongSoDuDongTien = Undefined Then
-		MoPhongSoDuDongTien = New Map;
-	EndIf;
-	
-	Key = TaoKhoaSoDu(PhapNhan, TaiKhoanTien, TienTe);
-	MoPhongSoDuDongTien.Insert(Key, New Structure("SoTienVND, SoTienNgoaiTe", Number(SoTienVND), Number(SoTienNgoaiTe)));
 EndProcedure
 
-// Xoa toan bo so du mo phong trong phien
-//
 Procedure XoaSoDuMoPhong() Export
-	MoPhongSoDuDongTien = New Map;
 EndProcedure
 
 
-// Scheduled Job Procedure de tu dong cap nhat ty gia hang ngay tu API Vietcombank/Techcombank (Task 7.2)
+// [Hoan - Phase 2] Scheduled Job Procedure cap nhat ty gia tu API Vietcombank/Techcombank (Task 7.2)
 Procedure CapNhatTyGiaTuDong() Export
 	// Cap nhat ty gia USD
 	Try
@@ -219,7 +195,7 @@ Procedure CapNhatTyGiaTuDong() Export
 			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
 			Record.Period = BegOfDay(CurrentSessionDate());
 			Record.TienTe = TienTeUSD;
-			Record.TyGia = 25450;
+			Record.TyGiaHachToan = 25450;
 			Record.Write(True);
 		EndIf;
 	Except
@@ -284,21 +260,5 @@ Function TaoKhoaSoDu(Val PhapNhan, Val TaiKhoanTien, Val TienTe)
 	Return CodePN + "|" + CodeTK + "|" + CodeTT;
 EndFunction
 
-
-// Scheduled Job Procedure de tu dong cap nhat ty gia hang ngay tu API Vietcombank/Techcombank (Task 7.2)
-Procedure CapNhatTyGiaTuDong() Export
-	// Cap nhat ty gia USD
-	Try
-		TienTeUSD = Catalogs.TienTe.FindByCode("USD");
-		If ValueIsFilled(TienTeUSD) Then
-			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
-			Record.Period = BegOfDay(CurrentSessionDate());
-			Record.TienTe = TienTeUSD;
-			Record.TyGia = 25450;
-			Record.Write(True);
-		EndIf;
-	Except
-	EndTry;
-EndProcedure
 
 #EndRegion

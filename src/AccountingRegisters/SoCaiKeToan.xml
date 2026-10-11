@@ -147,7 +147,7 @@
 					<ChoiceForm/>
 					<LinkByType/>
 					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Balance>false</Balance>
+					<Balance>true</Balance>
 					<AccountingFlag/>
 					<ExtDimensionAccountingFlag/>
 					<FullTextSearch>Use</FullTextSearch>
