@@ -3,6 +3,7 @@ Procedure BeforeStart(Cancel)
 EndProcedure
 
 Procedure OnStart()
+	WriteLogEvent("App.OnStart", EventLogLevel.Information,,, "LaunchParameter: " + LaunchParameter);
 	If LaunchParameter = "SeedFullTestData" Then
 		SeedFullTestDataServer.ThucThiNapFullTestData();
 		Exit(False);
@@ -17,6 +18,24 @@ Procedure OnStart()
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyMasterData" Then
 		GeneratorMasterDataServer.KiemTraMasterData();
+		Exit(False);
+	ElsIf LaunchParameter = "SeedARData" Then
+		GeneratorARServer.KhoiTaoChungTuAR();
+		Exit(False);
+	ElsIf LaunchParameter = "VerifyARData" Then
+		GeneratorARServer.KiemTraChungTuAR();
+		Exit(False);
+	ElsIf LaunchParameter = "SeedAPData" Then
+		GeneratorAPServer.KhoiTaoChungTuAP();
+		Exit(False);
+	ElsIf LaunchParameter = "VerifyAPData" Then
+		GeneratorAPServer.KiemTraChungTuAP();
+		Exit(False);
+	ElsIf LaunchParameter = "SeedNettingData" Then
+		GeneratorNettingReconcileServer.KhoiTaoChungTuNetting();
+		Exit(False);
+	ElsIf LaunchParameter = "VerifyNettingData" Then
+		GeneratorNettingReconcileServer.KiemTraChungTuNetting();
 		Exit(False);
 	EndIf;
 EndProcedure

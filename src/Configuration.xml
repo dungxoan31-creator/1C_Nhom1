@@ -144,6 +144,9 @@
 			<CommonModule>SeedDataCleanServer</CommonModule>
 			<CommonModule>SeedFullTestDataServer</CommonModule>
 			<CommonModule>GeneratorMasterDataServer</CommonModule>
+			<CommonModule>GeneratorARServer</CommonModule>
+			<CommonModule>GeneratorAPServer</CommonModule>
+			<CommonModule>GeneratorNettingReconcileServer</CommonModule>
 			<Enum>TrangThaiNghiemThuAR</Enum>
 			<Enum>TrangThaiHoaDonAP</Enum>
 			<Enum>TrangThaiLenhThanhToan</Enum>
