@@ -33,7 +33,16 @@
 		</InternalInfo>
 		<Properties>
 			<Name>Configuration</Name>
-			<Synonym/>
+			<Synonym>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>VINSMART FUTURE - Hệ Thống Tài Chính &amp; Kế Toán</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VINSMART FUTURE - Finance &amp; Accounting System</v8:content>
+				</v8:item>
+			</Synonym>
 			<Comment/>
 			<NamePrefix/>
 			<ConfigurationExtensionCompatibilityMode>Version8_3_22</ConfigurationExtensionCompatibilityMode>
@@ -104,6 +113,22 @@
 			<Subsystem>PhanHeNganHangVaQuy</Subsystem>
 			<Subsystem>PhanHePhaiTra</Subsystem>
 			<Subsystem>PhanHePhaiThu</Subsystem>
+			<CommonPicture>LogoVSF</CommonPicture>
+			<CommonPicture>PhanHePhaiThu</CommonPicture>
+			<CommonPicture>PhanHePhaiTra</CommonPicture>
+			<CommonPicture>PhanHeNganHangVaQuy</CommonPicture>
+			<CommonPicture>PhanHeCanTruNetting</CommonPicture>
+			<CommonPicture>PhanHeSoCaiVaDongBo</CommonPicture>
+			<CommonPicture>PhanHeDanhMuc</CommonPicture>
+			<StyleItem>MauChuDaoVSF</StyleItem>
+			<StyleItem>MauChuDaoDamVSF</StyleItem>
+			<StyleItem>MauNenChinhVSF</StyleItem>
+			<StyleItem>MauNenPhuVSF</StyleItem>
+			<StyleItem>MauVanBanChinhVSF</StyleItem>
+			<StyleItem>MauVanBanTrangVSF</StyleItem>
+			<StyleItem>MauCanhBaoDoVSF</StyleItem>
+			<StyleItem>MauVienChinhVSF</StyleItem>
+			<StyleItem>FunctionsPanelSectionColor</StyleItem>
 			<Language>English</Language>
 			<Catalog>PhapNhan</Catalog>
 			<Catalog>DoiTac</Catalog>
@@ -118,6 +143,7 @@
 			<Enum>LoaiDoiTac</Enum>
 			<CommonModule>SeedDataCleanServer</CommonModule>
 			<CommonModule>SeedFullTestDataServer</CommonModule>
+			<CommonModule>GeneratorMasterDataServer</CommonModule>
 			<Enum>TrangThaiNghiemThuAR</Enum>
 			<Enum>TrangThaiHoaDonAP</Enum>
 			<Enum>TrangThaiLenhThanhToan</Enum>
@@ -129,6 +155,7 @@
 			<Constant>NguongPheDuyetChiTienCFO</Constant>
 			<Constant>TaiKhoanTrungGianCanTru</Constant>
 			<Constant>TuDongDongBoSAP</Constant>
+			<Constant>KichHoatWebhookNganHang</Constant>
 			<Constant>NguongThanhToanKhongDungTienMat</Constant>
 			<Constant>TaiKhoanPhiNganHang</Constant>
 			<Constant>SoLuongHoaDonFIFOMax</Constant>

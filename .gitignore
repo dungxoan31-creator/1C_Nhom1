@@ -1,4 +1,5 @@
 Infobase/
+Infobase_FullData/
 setupt/
 *.zip
 *.log
@@ -9,3 +10,17 @@ setupt/
 *.cfl
 scratch/
 .superpowers/
+
+# Temporary & backup files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# OS & Editor artifacts
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
