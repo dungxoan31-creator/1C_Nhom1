@@ -21,7 +21,12 @@ Procedure BeforeWrite(Cancel)
 		QueryResult = Query.Execute();
 		If Not QueryResult.IsEmpty() Then
 			Cancel = True;
-			Raise "Số tài khoản ảo đã được cấp phát cho đối tác khác!";
+			Msg = New UserMessage;
+			Msg.Text = NStr("vi = 'Số tài khoản ảo đã được cấp phát cho đối tác khác!'; en = 'Virtual account number already assigned to another counterparty!'");
+			Msg.SetData(ThisObject);
+			Msg.Field = "SoTaiKhoanAo";
+			Msg.Message();
+			Return;
 		EndIf;
 	EndIf;
 EndProcedure

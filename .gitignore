@@ -4,6 +4,9 @@ setupt/
 *.zip
 *.log
 *.dt
+!VinSmart_Future_AR_AP_Test.dt
+!VinSmart_Future_AR_AP_Test.ORIGINAL.dt
+!VinSmart_Future_AR_AP_Test_FULLDATA.dt
 *.cab
 *.msi
 *.exe

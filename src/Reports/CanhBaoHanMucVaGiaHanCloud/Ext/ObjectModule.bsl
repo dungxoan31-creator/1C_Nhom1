@@ -29,4 +29,19 @@ Function XacDinhMucCanhBaoQuota(Val PhanTramSuDung) Export
 	EndIf;
 EndFunction
 
+#Region EventHandlers
+
+Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
+	StandardProcessing = False;
+	ResultDocument.Clear();
+	
+	Line = ResultDocument.TableHeight + 1;
+	Area = ResultDocument.Area(Line, 1, Line, 6);
+	Area.Merge();
+	Area.Text = NStr("vi = 'BÁO CÁO CẢNH BÁO HẠN MỨC VÀ GIA HẠN DỊCH VỤ CLOUD'; en = 'CLOUD QUOTA AND RENEWAL ALERT REPORT'");
+	Area.Font = New Font(, 12, True);
+EndProcedure
+
+#EndRegion
+
 #EndRegion

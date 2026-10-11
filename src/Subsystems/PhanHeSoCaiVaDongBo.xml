@@ -17,7 +17,10 @@
 			<IncludeHelpInContents>false</IncludeHelpInContents>
 			<IncludeInCommandInterface>true</IncludeInCommandInterface>
 			<Explanation/>
-			<Picture/>
+			<Picture>
+				<xr:Ref>CommonPicture.PhanHeSoCaiVaDongBo</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
 			<Content>
 				<xr:Item xsi:type="xr:MDObjectRef">ChartOfAccounts.HeThongTaiKhoan</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccountingRegister.SoCaiKeToan</xr:Item>

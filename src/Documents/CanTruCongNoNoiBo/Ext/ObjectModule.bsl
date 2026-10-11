@@ -21,12 +21,21 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// Kiem tra Maker-Checker: Chan tuyet doi nguoi lap tu duyet
 	If ValueIsFilled(NguoiLap) And ValueIsFilled(NguoiDuyet) And NguoiLap = NguoiDuyet Then
 		Cancel = True;
-		Raise "CẤM TUYỆT ĐỐI: Người lập chứng từ cấn trừ không được phép tự phê duyệt!";
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'CẤM TUYỆT ĐỐI: Người lập chứng từ cấn trừ không được phép tự phê duyệt!'; en = 'Maker-Checker violation: Submitter cannot approve their own netting document!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "NguoiDuyet";
+		Msg.Message();
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(TrangThai) Then
 		TrangThai = "DuThao";
+	EndIf;
+	
+	// Cap nhat trang thai DaGhiSo trong BeforeWrite de luu vao CSDL
+	If WriteMode = DocumentWriteMode.Posting Then
+		TrangThai = "DaGhiSo";
 	EndIf;
 EndProcedure
 
@@ -42,17 +51,35 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	// Kiem tra hop le
+	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
-		Cancel = True;
-		Raise "Trường 'Pháp nhân' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "PhapNhan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(DoiTacNoiBo) Then
-		Cancel = True;
-		Raise "Trường 'Đối tác nội bộ' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Đối tác nội bộ chưa được điền!'; en = 'Internal counterparty is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "DoiTacNoiBo";
+		Msg.Message();
 	EndIf;
 	If SoTienCanTru <= 0 Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Số tiền cấn trừ phải lớn hơn 0!'; en = 'Netting amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "SoTienCanTru";
+		Msg.Message();
+	EndIf;
+	
+	If HasError Then
 		Cancel = True;
-		Raise "Số tiền cấn trừ phải lớn hơn 0!";
+		Return;
 	EndIf;
 	
 	NgayHachToan = BegOfDay(Date);
@@ -130,9 +157,9 @@ Procedure Posting(Cancel, Mode)
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.CanTruCongNoNoiBo", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
-	
-	TrangThai = "DaGhiSo";
 EndProcedure
 
 #EndRegion

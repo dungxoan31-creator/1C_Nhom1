@@ -273,11 +273,7 @@
 					</Synonym>
 					<Comment>Hóa đơn hoặc biên bản nghiệm thu</Comment>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>100</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -320,11 +316,7 @@
 					</Synonym>
 					<Comment>Hóa đơn NCC hoặc nghiệm thu thầu phụ</Comment>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>100</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>

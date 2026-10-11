@@ -6,6 +6,13 @@
 #Region EventHandlers
 
 Function WebhookPOST(Request)
+	// [Hoan - Phase 2] Chi bat sau khi co HMAC va idempotency nguyen tu dung chuan.
+	If Not Constants.KichHoatWebhookNganHang.Get() Then
+		Response = New HTTPServiceResponse(503);
+		Response.SetBodyFromString("Bank webhook is deferred to Phase 2.");
+		Return Response;
+	EndIf;
+
 	// 1. Doc header Idempotency-Key
 	Headers = Request.Headers;
 	IdempotencyKey = "";

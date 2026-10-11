@@ -13,7 +13,7 @@
 					<v8:content>Banking Webhook</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Tiếp nhận biến động số dư và thông báo thanh toán ngân hàng (Task 5.1)</Comment>
+			<Comment>[Hoãn - Phase 2] Tiếp nhận biến động số dư và thông báo thanh toán ngân hàng (Task 5.1)</Comment>
 			<RootURL>banking</RootURL>
 			<ReuseSessions>DontUse</ReuseSessions>
 			<SessionMaxAge>20</SessionMaxAge>

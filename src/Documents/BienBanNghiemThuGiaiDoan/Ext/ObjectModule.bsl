@@ -33,6 +33,13 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	If Not ValueIsFilled(NgayNghiemThu) Then
 		NgayNghiemThu = BegOfDay(Date);
 	EndIf;
+	
+	// Cap nhat trang thai DaGhiSo trong BeforeWrite de luu vao CSDL
+	If WriteMode = DocumentWriteMode.Posting Then
+		If TrangThai = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo Then
+			TrangThai = Enums.TrangThaiNghiemThuAR.DaGhiSo;
+		EndIf;
+	EndIf;
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
@@ -42,21 +49,25 @@ Procedure Posting(Cancel, Mode)
 	
 	If TrangThai <> TrangThaiDaGhiSo And TrangThai <> TrangThaiDaDuyet Then
 		Cancel = True;
-		Message = StrTemplate("Chứng từ nghiệm thu %1 chưa đủ điều kiện ghi sổ! Chỉ ghi sổ khi ở trạng thái Đã duyệt nội bộ hoặc Đã ghi sổ. Trạng thái hiện tại: %2",
+		Msg = New UserMessage;
+		Msg.Text = StrTemplate(NStr("vi = 'Chứng từ nghiệm thu %1 chưa đủ điều kiện ghi sổ! Chỉ ghi sổ khi ở trạng thái Đã duyệt nội bộ hoặc Đã ghi sổ. Trạng thái hiện tại: %2'; en = 'Acceptance certificate %1 not eligible for posting! Current status: %2'"),
 			Number, TrangThai);
-		Raise Message;
-	EndIf;
-	
-	// Cap nhat trang thai len DaGhiSo neu dang o buoc DaDuyetNoiBo
-	If TrangThai = TrangThaiDaDuyet Then
-		TrangThai = TrangThaiDaGhiSo;
+		Msg.SetData(ThisObject);
+		Msg.Field = "TrangThai";
+		Msg.Message();
+		Return;
 	EndIf;
 	
 	// Xac dinh so tien ghi so doanh thu thuan
 	SoTienDoanhThu = GiaTriNghiemThuChuaVAT;
 	If SoTienDoanhThu <= 0 Then
 		Cancel = True;
-		Raise StrTemplate("Chứng từ %1 có Giá trị nghiệm thu chưa VAT phải lớn hơn 0!", Number);
+		Msg = New UserMessage;
+		Msg.Text = StrTemplate(NStr("vi = 'Chứng từ %1 có Giá trị nghiệm thu chưa VAT phải lớn hơn 0!'; en = 'Certificate %1 pre-VAT amount must be greater than 0!'"), Number);
+		Msg.SetData(ThisObject);
+		Msg.Field = "GiaTriNghiemThuChuaVAT";
+		Msg.Message();
+		Return;
 	EndIf;
 	
 	// 2. Ghi Sổ tích lũy Công nợ phải thu (AccumulationRegister.CongNoPhaiThu - Receipt)
@@ -120,9 +131,14 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.DienGiai = Left(NoiDungDienGiai, 250);
 	
 	// 4. Kiem tra can doi SoCaiKeToan (GL Invariant: Sum Dr = Sum Cr)
-	EntriesGL = New Array;
-	EntriesGL.Add(New Structure("AmountDr,AmountCr", SoTienDoanhThu, SoTienDoanhThu));
-	QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(EntriesGL);
+	Try
+		EntriesGL = New Array;
+		EntriesGL.Add(New Structure("AmountDr,AmountCr", SoTienDoanhThu, SoTienDoanhThu));
+		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(EntriesGL);
+	Except
+		Cancel = True;
+		WriteLogEvent("Posting.BienBanNghiemThuGiaiDoan", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+	EndTry;
 EndProcedure
 
 Procedure UndoPosting(Cancel)

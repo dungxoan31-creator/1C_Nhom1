@@ -17,7 +17,10 @@
 			<IncludeHelpInContents>false</IncludeHelpInContents>
 			<IncludeInCommandInterface>true</IncludeInCommandInterface>
 			<Explanation/>
-			<Picture/>
+			<Picture>
+				<xr:Ref>CommonPicture.PhanHePhaiThu</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
 			<Content>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.BienBanNghiemThuGiaiDoan</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.HoaDonGTGTDauRa</xr:Item>

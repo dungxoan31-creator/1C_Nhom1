@@ -461,7 +461,7 @@
 					</Synonym>
 					<Comment>Trạng thái biên bản</Comment>
 					<Type>
-						<v8:Type>cfg:EnumRef.TrangThaiNghiemThuAR</v8:Type>
+						<v8:Type>cfg:EnumRef.TrangThaiHoaDonAP</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>

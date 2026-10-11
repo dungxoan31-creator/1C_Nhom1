@@ -53,6 +53,8 @@ EndFunction
 Procedure ThucHienDongBoBatchHangNgay() Export
 	// Entry point cho Scheduled Job 22:00
 	// Quet cac but toan ChuaDongBo tren SoCaiKeToan va gui sang SAP ERP
+	WriteLogEvent("DongBoSAP.BatchHangNgay", EventLogLevel.Information,,, 
+		StrTemplate("Khởi chạy đồng bộ batch hàng ngày sang SAP ERP lúc %1", CurrentSessionDate()));
 EndProcedure
 
 #EndRegion

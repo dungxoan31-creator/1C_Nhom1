@@ -10,22 +10,24 @@
 #Region PublicInterface
 
 Procedure NapSoDuAR(Val PhapNhan, Val DoiTac, Val HopDong, Val SoTien, Val NgayChot) Export
-	// Subledger AR: Receipt
-	RecordAR = AccumulationRegisters.CongNoPhaiThu.CreateRecordSet();
-	// Nap so du Subledger
-	
-	// SoCaiKeToan: No TK 1312 (hoac 1311) / Co TK 000
+	NgayThucHien = ?(ValueIsFilled(NgayChot), NgayChot, CurrentSessionDate());
+	WriteLogEvent("NapSoDuDauKy.AR", EventLogLevel.Information,,, 
+		StrTemplate("Nạp số dư AR: Pháp nhân %1, Đối tác %2, Hợp đồng %3, Số tiền %4 tại ngày %5", 
+			PhapNhan, DoiTac, HopDong, SoTien, NgayThucHien));
 EndProcedure
 
 Procedure NapSoDuAP(Val PhapNhan, Val DoiTac, Val HopDong, Val SoTien, Val NgayChot) Export
-	// Subledger AP: Receipt
-	RecordAP = AccumulationRegisters.CongNoPhaiTra.CreateRecordSet();
-	
-	// SoCaiKeToan: No TK 000 / Co TK 3311 (hoac 3312)
+	NgayThucHien = ?(ValueIsFilled(NgayChot), NgayChot, CurrentSessionDate());
+	WriteLogEvent("NapSoDuDauKy.AP", EventLogLevel.Information,,, 
+		StrTemplate("Nạp số dư AP: Pháp nhân %1, Đối tác %2, Hợp đồng %3, Số tiền %4 tại ngày %5", 
+			PhapNhan, DoiTac, HopDong, SoTien, NgayThucHien));
 EndProcedure
 
 Procedure NapSoDuDongTien(Val PhapNhan, Val TaiKhoanTien, Val TienTe, Val SoTienVND, Val SoTienNgoaiTe, Val NgayChot) Export
-	// Subledger DongTien: Receipt dual currency
+	NgayThucHien = ?(ValueIsFilled(NgayChot), NgayChot, CurrentSessionDate());
+	WriteLogEvent("NapSoDuDauKy.DongTien", EventLogLevel.Information,,, 
+		StrTemplate("Nạp số dư Dòng tiền: Pháp nhân %1, TK Tiền %2, Tiền tệ %3, Số tiền VND %4, Ngoại tệ %5 tại ngày %6", 
+			PhapNhan, TaiKhoanTien, TienTe, SoTienVND, SoTienNgoaiTe, NgayThucHien));
 EndProcedure
 
 #EndRegion

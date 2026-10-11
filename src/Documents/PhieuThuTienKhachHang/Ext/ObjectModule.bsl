@@ -41,18 +41,36 @@ EndProcedure
 
 Procedure Posting(Cancel, Mode)
 	// 1. Kiem tra tinh day du cua cac truong du lieu bat buoc
-	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(TaiKhoanTien) Or Not ValueIsFilled(TienTe) Then
+	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(ChungTuGoc) Or Not ValueIsFilled(TaiKhoanTien) Or Not ValueIsFilled(TienTe) Then
 		Cancel = True;
-		MessageText = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng, Tài khoản tiền hoặc Tiền tệ!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, Cash Account, or Currency!'");
-		Raise MessageText;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng, Tài khoản tiền hoặc Tiền tệ!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, Cash Account, or Currency!'");
+		Msg.SetData(ThisObject);
+		Msg.Message();
 		Return;
 	EndIf;
 	
 	// Kiem tra so tien thu phai > 0
 	If SoTien <= 0 Then
 		Cancel = True;
-		MessageText = NStr("vi = 'Số tiền thu phải lớn hơn 0!'; en = 'Payment amount must be greater than 0!'");
-		Raise MessageText;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Số tiền thu phải lớn hơn 0!'; en = 'Payment amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Message();
+		Return;
+	EndIf;
+
+	// Xoa record cu de tinh so du chinh xac khi repost
+	RegisterRecords.CongNoPhaiThu.Write = True;
+	RegisterRecords.CongNoPhaiThu.Clear();
+	
+	SoDuAR = QuanLyVongDoiChungTuServer.LaySoDuARTheoChungTu(PhapNhan, DoiTac, ChungTuGoc, New PointInTime(Date, Ref));
+	If SoTien > SoDuAR Then
+		Cancel = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Số tiền thu vượt quá số dư phải thu còn lại của chứng từ gốc!'; en = 'Receipt amount exceeds remaining AR balance of source document!'");
+		Msg.SetData(ThisObject);
+		Msg.Message();
 		Return;
 	EndIf;
 	
@@ -142,8 +160,7 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.TyGia = ?(TyGia > 0, TyGia, 1);
 	RecordGL.SoTien = SoTien;
 	If SoTienNgoaiTe > 0 Then
-		RecordGL.SoTienNgoaiTeDr = SoTienNgoaiTe;
-		RecordGL.SoTienNgoaiTeCr = SoTienNgoaiTe;
+		RecordGL.SoTienNgoaiTe = SoTienNgoaiTe;
 	EndIf;
 	
 	NoiDungDienGiai = DienGiai;
@@ -160,6 +177,8 @@ Procedure Posting(Cancel, Mode)
 		EntriesGL.Add(New Structure("AmountDr,AmountCr", SoTien, SoTien));
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(EntriesGL);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.PhieuThuTienKhachHang", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
 EndProcedure
 

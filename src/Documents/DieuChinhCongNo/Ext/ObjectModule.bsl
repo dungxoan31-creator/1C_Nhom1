@@ -51,15 +51,20 @@ Procedure Posting(Cancel, Mode)
 	// 1. Kiem tra tinh hop le cua du lieu bat buoc
 	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(BienBanNghiemThu) Then
 		Cancel = True;
-		MessageText = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng hoặc Biên bản nghiệm thu!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, or Acceptance Report!'");
-		Raise MessageText;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng hoặc Biên bản nghiệm thu!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, or Acceptance Report!'");
+		Msg.SetData(ThisObject);
+		Msg.Message();
 		Return;
 	EndIf;
 	
 	If TongTienGiam <= 0 Then
 		Cancel = True;
-		MessageText = NStr("vi = 'Tổng tiền giảm công nợ phải lớn hơn 0!'; en = 'Total reduction amount must be greater than 0!'");
-		Raise MessageText;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Tổng tiền giảm công nợ phải lớn hơn 0!'; en = 'Total reduction amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TongTienGiam";
+		Msg.Message();
 		Return;
 	EndIf;
 	

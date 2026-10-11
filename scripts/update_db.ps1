@@ -1,10 +1,11 @@
 param(
     [string]$User = "Admin",
-    [string]$Password = ""
+    [string]$Password = "",
+    [string]$IBPath = "C:\Users\Dung\Documents\1C_Enterprise\Infobase_FullData"
 )
 
 $exePath = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
-$ibPath = "C:\Users\Dung\Documents\1C_Enterprise\Infobase"
+$ibPath = $IBPath
 $srcPath = "C:\Users\Dung\Documents\1C_Enterprise\src"
 
 Remove-Item "load_last.log" -Force -ErrorAction SilentlyContinue

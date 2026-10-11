@@ -23,24 +23,42 @@ EndProcedure
 
 Procedure Posting(Cancel, Mode)
 	// 1. Kiem tra rang buoc bat buoc
+	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
-		Cancel = True;
-		Raise "Trường 'Pháp nhân' chưa được điền!";
-		Return;
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "PhapNhan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(DoiTac) Then
-		Cancel = True;
-		Raise "Trường 'Thầu phụ' chưa được điền!";
-		Return;
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Thầu phụ chưa được điền!'; en = 'Subcontractor is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "DoiTac";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(HopDong) Then
-		Cancel = True;
-		Raise "Trường 'Hợp đồng' chưa được điền!";
-		Return;
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Hợp đồng chưa được điền!'; en = 'Contract is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "HopDong";
+		Msg.Message();
 	EndIf;
 	If GiaTriNghiemThu <= 0 And TongGiaTri <= 0 Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Giá trị nghiệm thu phải lớn hơn 0!'; en = 'Acceptance amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "GiaTriNghiemThu";
+		Msg.Message();
+	EndIf;
+	
+	If HasError Then
 		Cancel = True;
-		Raise "Giá trị nghiệm thu phải lớn hơn 0!";
 		Return;
 	EndIf;
 	
@@ -110,6 +128,8 @@ Procedure Posting(Cancel, Mode)
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.NghiemThuThauPhu", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
 EndProcedure
 

@@ -22,7 +22,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// 1. Kiem tra Maker-Checker chan nguoi lap tu duyet
 	If ValueIsFilled(NguoiLap) And ValueIsFilled(NguoiDuyet) And NguoiLap = NguoiDuyet Then
 		Cancel = True;
-		Raise "CẤM TUYỆT ĐỐI: Người lập lệnh chi tiền không được phép tham gia phê duyệt!";
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'CẤM TUYỆT ĐỐI: Người lập lệnh chi tiền không được phép tham gia phê duyệt!'; en = 'Maker-Checker violation: Submitter cannot approve their own payment order!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "NguoiDuyet";
+		Msg.Message();
 		Return;
 	EndIf;
 	
@@ -50,21 +54,43 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	// 2. Kiem tra cac truong bat buoc khi da ghi so
+	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
-		Cancel = True;
-		Raise "Trường 'Pháp nhân' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "PhapNhan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(DoiTac) Then
-		Cancel = True;
-		Raise "Trường 'Nhà cung cấp' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Nhà cung cấp chưa được điền!'; en = 'Counterparty is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "DoiTac";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(HopDong) Then
-		Cancel = True;
-		Raise "Trường 'Hợp đồng' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Hợp đồng chưa được điền!'; en = 'Contract is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "HopDong";
+		Msg.Message();
 	EndIf;
 	If SoTien <= 0 Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Số tiền lệnh chi phải lớn hơn 0!'; en = 'Payment amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "SoTien";
+		Msg.Message();
+	EndIf;
+	
+	If HasError Then
 		Cancel = True;
-		Raise "Số tiền lệnh chi phải lớn hơn 0!";
+		Return;
 	EndIf;
 	
 	// 3. Xac dinh tai khoan ke toan
@@ -118,13 +144,14 @@ Procedure Posting(Cancel, Mode)
 		RowRev.ChungTuGoc = ChungTuGoc;
 		RowRev.TyGia = ?(TyGia > 0, TyGia, 1);
 		If SoTienNgoaiTe > 0 Then
-			RowRev.SoTienNgoaiTeDr = SoTienNgoaiTe;
-			RowRev.SoTienNgoaiTeCr = SoTienNgoaiTe;
+			RowRev.SoTienNgoaiTe = SoTienNgoaiTe;
 		EndIf;
 		
 		Try
 			QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 		Except
+			Cancel = True;
+			WriteLogEvent("Posting.UyNhiemChi", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Return;
 	EndIf;
@@ -169,12 +196,12 @@ Procedure Posting(Cancel, Mode)
 	Row1.ChungTuGoc = ChungTuGoc;
 	Row1.TyGia = ?(TyGia > 0, TyGia, 1);
 	If SoTienNgoaiTe > 0 Then
-		Row1.SoTienNgoaiTeDr = SoTienNgoaiTe;
-		Row1.SoTienNgoaiTeCr = SoTienNgoaiTe;
+		Row1.SoTienNgoaiTe = SoTienNgoaiTe;
 	EndIf;
 	
 	// But toan 2: Phi chuyen tien ngan hang (No 6427 / Co 1121) neu co
 	If PhiNganHang > 0 Then
+		TienTeVND = Catalogs.TienTe.FindByCode("VND");
 		Row2 = RegisterRecords.SoCaiKeToan.Add();
 		Row2.Period = NgayHachToan;
 		Row2.AccountDr = TKPhiNganHang;
@@ -182,7 +209,7 @@ Procedure Posting(Cancel, Mode)
 		Row2.SoTien = PhiNganHang;
 		Row2.DienGiai = StrTemplate("Phí chuyển tiền ngân hàng UNC %1", Number);
 		Row2.PhapNhan = PhapNhan;
-		Row2.TienTe = Catalogs.TienTe.FindByCode("VND");
+		Row2.TienTe = TienTeVND;
 		Row2.ChungTuGoc = ChungTuGoc;
 		Row2.TyGia = 1;
 		
@@ -193,7 +220,7 @@ Procedure Posting(Cancel, Mode)
 		RecordFee.PhapNhan = PhapNhan;
 		RecordFee.TaiKhoanTien = TaiKhoanTien;
 		RecordFee.KhoanMucDongTien = KhoanMucDongTien;
-		RecordFee.TienTe = TienTe;
+		RecordFee.TienTe = TienTeVND;
 		RecordFee.SoTien = PhiNganHang;
 		RecordFee.SoTienNgoaiTe = 0;
 	EndIf;
@@ -201,6 +228,8 @@ Procedure Posting(Cancel, Mode)
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.UyNhiemChi", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
 EndProcedure
 

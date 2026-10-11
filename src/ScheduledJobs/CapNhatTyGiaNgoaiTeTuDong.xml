@@ -13,11 +13,11 @@
 					<v8:content>Automatic FX Rate Update</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Scheduled Job nạp tỷ giá ngoại tệ tự động từ API ngân hàng (Task 7.2)</Comment>
+			<Comment>[Hoãn - Phase 2] Scheduled Job nạp tỷ giá ngoại tệ từ API ngân hàng (Task 7.2)</Comment>
 			<MethodName>CommonModule.QuanLyTyGiaVaNgoaiTeServer.CapNhatTyGiaTuDong</MethodName>
 			<Description>Cập nhật tỷ giá ngoại tệ hàng ngày</Description>
 			<Key>CapNhatTyGiaNgoaiTeTuDong</Key>
-			<Use>true</Use>
+			<Use>false</Use>
 			<Predefined>true</Predefined>
 			<RestartCountOnFailure>3</RestartCountOnFailure>
 			<RestartIntervalOnFailure>60</RestartIntervalOnFailure>

@@ -42,28 +42,56 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 			TongThucNhan = TongTienGiaoDich - TongPhiKenh;
 		EndIf;
 	EndIf;
+	
+	// Cap nhat trang thai HoanTat trong BeforeWrite de luu vao CSDL
+	If WriteMode = DocumentWriteMode.Posting Then
+		TrangThai = "HoanTat";
+	EndIf;
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
 	// 1. Kiem tra tinh hop le
+	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
-		Cancel = True;
-		Raise "Trường 'Pháp nhân' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "PhapNhan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(KenhThanhToan) Then
-		Cancel = True;
-		Raise "Trường 'Kênh thanh toán' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Kênh thanh toán chưa được điền!'; en = 'Payment Gateway is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "KenhThanhToan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(TaiKhoanNganHang) Then
-		Cancel = True;
-		Raise "Trường 'Tài khoản ngân hàng' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Tài khoản ngân hàng chưa được điền!'; en = 'Bank Account is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TaiKhoanNganHang";
+		Msg.Message();
 	EndIf;
 	If TongTienGiaoDich <= 0 Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Tổng tiền giao dịch đối soát phải lớn hơn 0!'; en = 'Reconciliation transaction amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TongTienGiaoDich";
+		Msg.Message();
+	EndIf;
+	
+	If HasError Then
 		Cancel = True;
-		Raise "Tổng tiền giao dịch đối soát phải lớn hơn 0!";
+		Return;
 	EndIf;
 	
 	NgayHachToan = BegOfDay(Date);
+	TienTeVND = Catalogs.TienTe.FindByCode("VND");
 	
 	// 2. Ghi giam so du tren GiaoDichDienTuTamGiu (Expense)
 	RegisterRecords.GiaoDichDienTuTamGiu.Write = True;
@@ -97,7 +125,9 @@ Procedure Posting(Cancel, Mode)
 	RecDT.PhapNhan = PhapNhan;
 	RecDT.TaiKhoanTien = TaiKhoanNganHang;
 	RecDT.KhoanMucDongTien = KhoanMucDongTien;
+	RecDT.TienTe = TienTeVND;
 	RecDT.SoTien = TongThucNhan;
+	RecDT.SoTienNgoaiTe = 0;
 	
 	// 4. Ghi so cai SoCaiKeToan
 	RegisterRecords.SoCaiKeToan.Write = True;
@@ -115,7 +145,7 @@ Procedure Posting(Cancel, Mode)
 	Row1.SoTien = TongThucNhan;
 	Row1.DienGiai = StrTemplate("Thu tiền cổng thanh toán %1 theo bảng kê %2", KenhThanhToan, Number);
 	Row1.PhapNhan = PhapNhan;
-	Row1.TienTe = Catalogs.TienTe.FindByCode("VND");
+	Row1.TienTe = TienTeVND;
 	Row1.ChungTuGoc = Ref;
 	Row1.TyGia = 1;
 	
@@ -129,7 +159,7 @@ Procedure Posting(Cancel, Mode)
 		Row2.SoTien = TongPhiKenh;
 		Row2.DienGiai = StrTemplate("Phí dịch vụ cổng thanh toán %1 theo bảng kê %2", KenhThanhToan, Number);
 		Row2.PhapNhan = PhapNhan;
-		Row2.TienTe = Catalogs.TienTe.FindByCode("VND");
+		Row2.TienTe = TienTeVND;
 		Row2.ChungTuGoc = Ref;
 		Row2.TyGia = 1;
 	EndIf;
@@ -138,9 +168,9 @@ Procedure Posting(Cancel, Mode)
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.BangKeDoiSoatKenhThanhToan", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
-	
-	TrangThai = "HoanTat";
 EndProcedure
 
 #EndRegion

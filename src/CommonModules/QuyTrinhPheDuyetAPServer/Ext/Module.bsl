@@ -76,8 +76,8 @@ Function TuChoiPheDuyet(Val TrangThaiHienTai, Val LyDoTuChoi) Export
 	EndIf;
 	
 	KetQua = New Structure;
-	KetQua.Insert("TrangThaiMoi", "TuChoi");
-	KetQua.Insert("TrangThaiTruocDo", String(TrangThaiHienTai));
+	KetQua.Insert("TrangThaiMoi", Enums.TrangThaiHoaDonAP.TuChoi);
+	KetQua.Insert("TrangThaiTruocDo", TrangThaiHienTai);
 	KetQua.Insert("LyDo", TrimAll(LyDoTuChoi));
 	KetQua.Insert("ThoiDiem", CurrentSessionDate());
 	

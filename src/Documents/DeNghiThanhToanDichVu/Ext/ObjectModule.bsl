@@ -13,7 +13,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// 1. Kiem tra Maker-Checker
 	If ValueIsFilled(NguoiDeNghi) And ValueIsFilled(NguoiDuyet) And NguoiDeNghi = NguoiDuyet Then
 		Cancel = True;
-		Raise "Vi phạm nguyên tắc Maker-Checker: Người đề nghị không thể tự phê duyệt!";
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Vi phạm nguyên tắc Maker-Checker: Người đề nghị không thể tự phê duyệt!'; en = 'Maker-Checker violation: Requisitioner cannot approve their own request!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "NguoiDuyet";
+		Msg.Message();
 		Return;
 	EndIf;
 	
@@ -24,11 +28,15 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
-	// Chung tu de nghi thanh toan la chung tu quy trinh noi bo (Non-accounting posting)
-	// Hoan tat phe duyet cho phep can cu lap UyNhiemChi
+	// Chung tu quy trinh noi bo; phe duyet phai duoc hoan tat truoc khi ghi.
 	TrangThaiDaDuyet = Enums.TrangThaiLenhThanhToan.DaDuyet;
 	If TrangThai <> TrangThaiDaDuyet Then
-		TrangThai = TrangThaiDaDuyet;
+		Cancel = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Chỉ được ghi sổ đề nghị thanh toán sau khi đã được phê duyệt!'; en = 'Payment requisition can only be posted after approval!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TrangThai";
+		Msg.Message();
 	EndIf;
 EndProcedure
 

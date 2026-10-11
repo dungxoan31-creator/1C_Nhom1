@@ -22,42 +22,71 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// Kiem tra Maker-Checker chan nguoi lap tu duyet
 	If ValueIsFilled(NguoiLap) And ValueIsFilled(NguoiDuyet) And NguoiLap = NguoiDuyet Then
 		Cancel = True;
-		Raise "CẤM TUYỆT ĐỐI: Người lập yêu cầu hoàn tiền không được phép tự phê duyệt!";
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'CẤM TUYỆT ĐỐI: Người lập yêu cầu hoàn tiền không được phép tự phê duyệt!'; en = 'Maker-Checker violation: Submitter cannot approve their own refund request!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "NguoiDuyet";
+		Msg.Message();
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(TrangThai) Then
 		TrangThai = "ChoDuyet";
 	EndIf;
+	
+	// Cap nhat trang thai sang DaHoanTien trong BeforeWrite de luu vao CSDL
+	If WriteMode = DocumentWriteMode.Posting Then
+		If TrangThai = "DaDuyet" Then
+			TrangThai = "DaHoanTien";
+		EndIf;
+	EndIf;
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Dam bao xoa movement cu neu trang thai khong con hop le de ghi so (#std603)
+	RegisterRecords.GiaoDichDienTuTamGiu.Write = True;
+	RegisterRecords.DongTien.Write = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
+	
 	// Chi ghi so khi da duyet hoac da hoan tien
 	If TrangThai <> "DaDuyet" And TrangThai <> "DaHoanTien" Then
-		RegisterRecords.GiaoDichDienTuTamGiu.Write = False;
-		RegisterRecords.DongTien.Write = False;
-		RegisterRecords.SoCaiKeToan.Write = False;
 		Return;
 	EndIf;
 	
 	// Kiem tra truong bat buoc
+	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
-		Cancel = True;
-		Raise "Trường 'Pháp nhân' chưa được điền!";
-		Return;
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "PhapNhan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(TaiKhoanNganHangChi) Then
-		Cancel = True;
-		Raise "Trường 'Tài khoản ngân hàng chi' chưa được điền!";
-		Return;
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Tài khoản ngân hàng chi chưa được điền!'; en = 'Disbursement cash account is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TaiKhoanNganHangChi";
+		Msg.Message();
 	EndIf;
 	If SoTienHoan <= 0 Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Số tiền hoàn phải lớn hơn 0!'; en = 'Refund amount must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "SoTienHoan";
+		Msg.Message();
+	EndIf;
+	
+	If HasError Then
 		Cancel = True;
-		Raise "Số tiền hoàn phải lớn hơn 0!";
 		Return;
 	EndIf;
 	
 	NgayHachToan = BegOfDay(Date);
+	TienTeVND = Catalogs.TienTe.FindByCode("VND");
 	
 	// 1. Giam so du tren GiaoDichDienTuTamGiu
 	RegisterRecords.GiaoDichDienTuTamGiu.Write = True;
@@ -78,7 +107,9 @@ Procedure Posting(Cancel, Mode)
 	RecDT.PhapNhan = PhapNhan;
 	RecDT.TaiKhoanTien = TaiKhoanNganHangChi;
 	RecDT.KhoanMucDongTien = KhoanMucDongTien;
+	RecDT.TienTe = TienTeVND;
 	RecDT.SoTien = SoTienHoan + PhiHoanTien;
+	RecDT.SoTienNgoaiTe = 0;
 	
 	// 3. Ghi so cai SoCaiKeToan
 	RegisterRecords.SoCaiKeToan.Write = True;
@@ -96,7 +127,7 @@ Procedure Posting(Cancel, Mode)
 	Row1.SoTien = SoTienHoan;
 	Row1.DienGiai = StrTemplate("Hoàn tiền cho khách hàng theo giao dịch %1: %2", MaGiaoDichGoc, LyDoHoanTien);
 	Row1.PhapNhan = PhapNhan;
-	Row1.TienTe = Catalogs.TienTe.FindByCode("VND");
+	Row1.TienTe = TienTeVND;
 	Row1.ChungTuGoc = Ref;
 	Row1.TyGia = 1;
 	
@@ -109,7 +140,7 @@ Procedure Posting(Cancel, Mode)
 		Row2.SoTien = PhiHoanTien;
 		Row2.DienGiai = StrTemplate("Phí xử lý hoàn tiền giao dịch %1", MaGiaoDichGoc);
 		Row2.PhapNhan = PhapNhan;
-		Row2.TienTe = Catalogs.TienTe.FindByCode("VND");
+		Row2.TienTe = TienTeVND;
 		Row2.ChungTuGoc = Ref;
 		Row2.TyGia = 1;
 	EndIf;
@@ -118,9 +149,9 @@ Procedure Posting(Cancel, Mode)
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.YeuCauHoanTienChiHo", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
-	
-	TrangThai = "DaHoanTien";
 EndProcedure
 
 #EndRegion

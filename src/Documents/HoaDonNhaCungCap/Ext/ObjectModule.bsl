@@ -72,22 +72,54 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
-	// 1. Kiem tra rang buoc bat buoc
-	If Not ValueIsFilled(PhapNhan) Then
+	If TrangThai <> Enums.TrangThaiHoaDonAP.DaGhiSo Then
 		Cancel = True;
-		Raise "Trường 'Pháp nhân' chưa được điền!";
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Hóa đơn nhà cung cấp chỉ được ghi sổ sau khi hoàn tất phê duyệt AP!'; en = 'Vendor invoice can only be posted after AP approval!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TrangThai";
+		Msg.Message();
+		Return;
+	EndIf;
+
+	// 1. Kiem tra rang buoc bat buoc
+	HasError = False;
+	If Not ValueIsFilled(PhapNhan) Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "PhapNhan";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(DoiTac) Then
-		Cancel = True;
-		Raise "Trường 'Nhà cung cấp' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Nhà cung cấp chưa được điền!'; en = 'Vendor is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "DoiTac";
+		Msg.Message();
 	EndIf;
 	If Not ValueIsFilled(HopDong) Then
-		Cancel = True;
-		Raise "Trường 'Hợp đồng' chưa được điền!";
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Trường Hợp đồng chưa được điền!'; en = 'Contract is required!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "HopDong";
+		Msg.Message();
 	EndIf;
 	If TongTien <= 0 Then
+		HasError = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Tổng tiền hóa đơn phải lớn hơn 0!'; en = 'Invoice total must be greater than 0!'");
+		Msg.SetData(ThisObject);
+		Msg.Field = "TongTien";
+		Msg.Message();
+	EndIf;
+	
+	If HasError Then
 		Cancel = True;
-		Raise "Tổng tiền hóa đơn phải lớn hơn 0!";
+		Return;
 	EndIf;
 	
 	// 2. Xac dinh tai khoan ke toan
@@ -137,8 +169,7 @@ Procedure Posting(Cancel, Mode)
 		Row1.ChungTuGoc = Ref;
 		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
 		If TongTienNgoaiTe > 0 And TyGia > 0 Then
-			Row1.SoTienNgoaiTeDr = Round(NoThucTraNCC / TyGia, 2);
-			Row1.SoTienNgoaiTeCr = Round(NoThucTraNCC / TyGia, 2);
+			Row1.SoTienNgoaiTe = Round(NoThucTraNCC / TyGia, 2);
 		EndIf;
 		
 		// But toan 2: Thue TNDN nha thau tinh vao chi phi VSF
@@ -155,8 +186,7 @@ Procedure Posting(Cancel, Mode)
 		Row2.ChungTuGoc = Ref;
 		Row2.TyGia = ?(TyGia > 0, TyGia, 1);
 		If TongTienNgoaiTe > 0 And TyGia > 0 Then
-			Row2.SoTienNgoaiTeDr = Round(TienThueTNDNNhaThau / TyGia, 2);
-			Row2.SoTienNgoaiTeCr = Round(TienThueTNDNNhaThau / TyGia, 2);
+			Row2.SoTienNgoaiTe = Round(TienThueTNDNNhaThau / TyGia, 2);
 		EndIf;
 		
 		// But toan 3: Thue VAT nha thau duoc khau tru dau vao
@@ -172,8 +202,7 @@ Procedure Posting(Cancel, Mode)
 		Row3.ChungTuGoc = Ref;
 		Row3.TyGia = ?(TyGia > 0, TyGia, 1);
 		If TongTienNgoaiTe > 0 And TyGia > 0 Then
-			Row3.SoTienNgoaiTeDr = Round(TienThueVATNhaThau / TyGia, 2);
-			Row3.SoTienNgoaiTeCr = Round(TienThueVATNhaThau / TyGia, 2);
+			Row3.SoTienNgoaiTe = Round(TienThueVATNhaThau / TyGia, 2);
 		EndIf;
 	Else
 		// Khong co FCT
@@ -190,8 +219,7 @@ Procedure Posting(Cancel, Mode)
 		Row1.ChungTuGoc = Ref;
 		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
 		If TongTienNgoaiTe > 0 And TyGia > 0 Then
-			Row1.SoTienNgoaiTeDr = Round(TienChiPhi / TyGia, 2);
-			Row1.SoTienNgoaiTeCr = Round(TienChiPhi / TyGia, 2);
+			Row1.SoTienNgoaiTe = Round(TienChiPhi / TyGia, 2);
 		EndIf;
 		
 		// But toan 2: Thue VAT dau vao neu co (No 1331 / Co 3311 hoac 3312)
@@ -207,8 +235,7 @@ Procedure Posting(Cancel, Mode)
 			Row2.ChungTuGoc = Ref;
 			Row2.TyGia = ?(TyGia > 0, TyGia, 1);
 			If TongTienNgoaiTe > 0 And TyGia > 0 Then
-				Row2.SoTienNgoaiTeDr = Round(TienThueVAT / TyGia, 2);
-				Row2.SoTienNgoaiTeCr = Round(TienThueVAT / TyGia, 2);
+				Row2.SoTienNgoaiTe = Round(TienThueVAT / TyGia, 2);
 			EndIf;
 		EndIf;
 	EndIf;
@@ -217,6 +244,8 @@ Procedure Posting(Cancel, Mode)
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
+		Cancel = True;
+		WriteLogEvent("Posting.HoaDonNhaCungCap", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
 EndProcedure
 

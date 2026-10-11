@@ -74,16 +74,8 @@ Procedure ThucThiNapMasterData() Export
 	
 	Log.Add("=== HOAN TAT NAP TOAN BO MASTER DATA SACH VA NGUOI DUNG! ===");
 	
-	// Ghi log ra file
-	LogPath = "C:/Users/Dung/Documents/1C_Enterprise/seed_clean_data.log";
-	Try
-		TW = New TextWriter(LogPath, TextEncoding.UTF8);
-		For Each L In Log Do
-			TW.WriteLine(L);
-		EndDo;
-		TW.Close();
-	Except
-	EndTry;
+	// Ghi log vao Nhat ky su kien (Event Log) chuan cua nen tang 1C
+	WriteLogEvent("SeedData.Clean", EventLogLevel.Information,,, StrConcat(Log, Chars.LF));
 EndProcedure
 
 Function NapTienTe(Val Code, Val Ten, Val MaISO, Log)

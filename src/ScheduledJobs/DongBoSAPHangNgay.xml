@@ -13,8 +13,8 @@
 					<v8:content>Daily SAP Batch Synchronization</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Scheduled Job đồng bộ bút toán 1C sang SAP ERP lúc 22:00 hàng ngày (Task 7.3)</Comment>
-			<MethodName>DataProcessor.DongBoButToanSAP.ThucHienDongBoBatchHangNgay</MethodName>
+			<Comment>[Hoãn - Phase 2] Scheduled Job đồng bộ bút toán 1C sang SAP ERP (Task 7.3)</Comment>
+			<MethodName>CommonModule.QuanLyVongDoiChungTuServer.ThucHienDongBoBatchHangNgay</MethodName>
 			<Description>Đồng bộ bút toán sang SAP ERP lúc 22:00 [Hoãn - Phase 2]</Description>
 			<Key>DongBoSAPHangNgay</Key>
 			<Use>false</Use>

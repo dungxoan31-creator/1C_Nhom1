@@ -1,4 +1,5 @@
 // CommonModule: TichHopNganHangServer
+// [Hoan - Phase 2] Khong bat webhook cho den khi xac thuc HMAC duoc trien khai dung chuan.
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly xac thuc bao mat Open Banking & Webhook (Task 7.1):

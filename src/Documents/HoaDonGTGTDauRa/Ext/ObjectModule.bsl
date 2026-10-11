@@ -48,8 +48,11 @@ Procedure Posting(Cancel, Mode)
 	// Kiem tra du lieu bat buoc
 	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(BienBanNghiemThu) Then
 		Cancel = True;
-		MessageText = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng hoặc Biên bản nghiệm thu!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, or Acceptance Report!'");
-		Raise MessageText;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng hoặc Biên bản nghiệm thu!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, or Acceptance Report!'");
+		Msg.SetData(ThisObject);
+		Msg.Message();
+		Return;
 	EndIf;
 	
 	// Xac dinh Tai khoan Cong no Phai thu:

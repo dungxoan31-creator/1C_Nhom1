@@ -55,38 +55,7 @@ Function TinhTongLuyKeTrongThang(Val PhapNhan, Val DoiTac, Val ThoiDiem) Export
 	
 	TongLuyKe = 0;
 	
-	// 1. Quet tu AccumulationRegister.CongNoPhaiTra (neu ton tai trong metadata database)
-	Try
-		If Metadata.AccumulationRegisters.Find("CongNoPhaiTra") <> Undefined Then
-			QueryReg = New Query;
-			QueryReg.Text = 
-				"SELECT
-				|	ISNULL(SUM(Reg.SoTien), 0) AS TongTien
-				|FROM
-				|	AccumulationRegister.CongNoPhaiTra AS Reg
-				|WHERE
-				|	Reg.RecordType = VALUE(AccumulationRecordType.Receipt)
-				|	AND Reg.Period >= &DauThang
-				|	AND Reg.Period <= &CuoiThang
-				|	AND Reg.PhapNhan = &PhapNhan
-				|	AND Reg.DoiTac = &DoiTac";
-			
-			ParamPN = LayRefPhapNhan(PhapNhan);
-			ParamDT = LayRefDoiTac(DoiTac);
-			
-			QueryReg.SetParameter("DauThang", DauThang);
-			QueryReg.SetParameter("CuoiThang", CuoiThang);
-			QueryReg.SetParameter("PhapNhan", ParamPN);
-			QueryReg.SetParameter("DoiTac", ParamDT);
-			
-			ResReg = QueryReg.Execute().Unload();
-			If ResReg.Count() > 0 Then
-				TongLuyKe = TongLuyKe + ResReg[0].TongTien;
-			EndIf;
-		EndIf;
-	Except
-	EndTry;
-	
+	// Hoa don NCC la nguon duy nhat cho Anti-Split; sổ AP da chua movement cua cung hoa don.
 	// 2. Quet tu Document.HoaDonNhaCungCap (neu ton tai trong metadata database)
 	Try
 		If Metadata.Documents.Find("HoaDonNhaCungCap") <> Undefined Then
