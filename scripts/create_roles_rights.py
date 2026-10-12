@@ -27,6 +27,14 @@ content = """<?xml version="1.0" encoding="UTF-8"?>
 \t\t\t<value>true</value>
 \t\t</right>
 \t\t<right>
+\t\t\t<name>ThickClient</name>
+\t\t\t<value>true</value>
+\t\t</right>
+\t\t<right>
+\t\t\t<name>ExternalConnection</name>
+\t\t\t<value>true</value>
+\t\t</right>
+\t\t<right>
 \t\t\t<name>MainWindowModeNormal</name>
 \t\t\t<value>true</value>
 \t\t</right>
@@ -36,6 +44,10 @@ content = """<?xml version="1.0" encoding="UTF-8"?>
 \t\t</right>
 \t\t<right>
 \t\t\t<name>Output</name>
+\t\t\t<value>true</value>
+\t\t</right>
+\t\t<right>
+\t\t\t<name>EventLog</name>
 \t\t\t<value>true</value>
 \t\t</right>
 \t</object>

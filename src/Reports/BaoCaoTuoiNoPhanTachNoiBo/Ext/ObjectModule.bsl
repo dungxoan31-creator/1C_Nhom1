@@ -8,8 +8,23 @@
 
 #Region PublicInterface
 
-// Ham xac dinh nhom tuoi no theo so ngay qua han
+// Ham xac dinh nhom tuoi no theo so ngay qua han (5 buckets chuan)
 Function LayNhomTuoiNo(Val SoNgayQuaHan) Export
+	If SoNgayQuaHan <= 0 Then
+		Return "TrongHan";
+	ElsIf SoNgayQuaHan <= 30 Then
+		Return "QuaHan1_30";
+	ElsIf SoNgayQuaHan <= 60 Then
+		Return "QuaHan31_60";
+	ElsIf SoNgayQuaHan <= 90 Then
+		Return "QuaHan61_90";
+	Else
+		Return "QuaHanTren90";
+	EndIf;
+EndFunction
+
+// Ho tro tuong thich nguoc 4 buckets
+Function LayNhomTuoiNo4Nhom(Val SoNgayQuaHan) Export
 	If SoNgayQuaHan <= 0 Then
 		Return "TrongHan";
 	ElsIf SoNgayQuaHan <= 30 Then
@@ -58,6 +73,8 @@ Function PhanTichTuoiNoDanhSach(DanhSachKhoanNo) Export
 	KetQua.Insert("TongTrongHan", 0);
 	KetQua.Insert("TongQuaHan1_30", 0);
 	KetQua.Insert("TongQuaHan31_60", 0);
+	KetQua.Insert("TongQuaHan61_90", 0);
+	KetQua.Insert("TongQuaHanTren90", 0);
 	KetQua.Insert("TongQuaHanTren60", 0);
 	KetQua.Insert("TongDuNo", 0);
 	
@@ -69,13 +86,22 @@ Function PhanTichTuoiNoDanhSach(DanhSachKhoanNo) Export
 			KetQua.TongQuaHan1_30 = KetQua.TongQuaHan1_30 + Row.SoTien;
 		ElsIf Nhom = "QuaHan31_60" Then
 			KetQua.TongQuaHan31_60 = KetQua.TongQuaHan31_60 + Row.SoTien;
-		ElsIf Nhom = "QuaHanTren60" Then
+		ElsIf Nhom = "QuaHan61_90" Then
+			KetQua.TongQuaHan61_90 = KetQua.TongQuaHan61_90 + Row.SoTien;
+			KetQua.TongQuaHanTren60 = KetQua.TongQuaHanTren60 + Row.SoTien;
+		ElsIf Nhom = "QuaHanTren90" Then
+			KetQua.TongQuaHanTren90 = KetQua.TongQuaHanTren90 + Row.SoTien;
 			KetQua.TongQuaHanTren60 = KetQua.TongQuaHanTren60 + Row.SoTien;
 		EndIf;
 	EndDo;
 	
-	KetQua.TongDuNo = KetQua.TongTrongHan + KetQua.TongQuaHan1_30 + KetQua.TongQuaHan31_60 + KetQua.TongQuaHanTren60;
+	KetQua.TongDuNo = KetQua.TongTrongHan + KetQua.TongQuaHan1_30 + KetQua.TongQuaHan31_60 + KetQua.TongQuaHan61_90 + KetQua.TongQuaHanTren90;
 	Return KetQua;
+EndFunction
+
+// Tao bao cao tuoi no toan dien tu co so du lieu thuc te
+Function TaoBaoCaoTuoiNo(Val NgayChot = Undefined) Export
+	Return BaoCaoQuanTriServer.TinhBaoCaoTuoiNo(NgayChot);
 EndFunction
 
 #Region EventHandlers
@@ -85,10 +111,16 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 	ResultDocument.Clear();
 	
 	Line = ResultDocument.TableHeight + 1;
-	Area = ResultDocument.Area(Line, 1, Line, 6);
+	Area = ResultDocument.Area(Line, 1, Line, 8);
 	Area.Merge();
 	Area.Text = NStr("vi = 'BÁO CÁO PHÂN TÍCH TUỔI NỢ VÀ CỔNG AN TOÀN VẬN HÀNH'; en = 'AGING ANALYSIS & OPERATIONAL SAFETY GATE REPORT'");
 	Area.Font = New Font(, 12, True);
+	
+	Data = TaoBaoCaoTuoiNo();
+	Line = Line + 2;
+	AreaHead = ResultDocument.Area(Line, 1, Line, 8);
+	AreaHead.Text = "TỔNG HỢP TUỔI NỢ PHẢI THU (AR): " + Format(Data.AR_Buckets.TongCong, "NFD=0; NGS=.") + " VND";
+	AreaHead.Font = New Font(, 10, True);
 EndProcedure
 
 #EndRegion

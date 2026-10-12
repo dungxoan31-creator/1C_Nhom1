@@ -27,6 +27,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.NapSoDuDauKy</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DongBoButToanSAP</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.TrangThaiDongBoSAP</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DashboardLanhDaoCFO</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.DongBoSAPHangNgay</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.CapNhatTyGiaNgoaiTeTuDong</xr:Item>
 			</Content>

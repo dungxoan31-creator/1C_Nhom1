@@ -113,3 +113,122 @@ Procedure KiemTraDuLieuDaNap() Export
 	// Ghi log vao Nhat ky su kien (Event Log) chuan cua nen tang 1C
 	WriteLogEvent("SeedData.Verify", EventLogLevel.Information,,, StrConcat(Log, Chars.LF));
 EndProcedure
+
+Procedure KiemTraDashboardVaSAP() Export
+	Log = New Array;
+	Log.Add("=================================================================");
+	Log.Add("   KIỂM THỬ EXECUTIVE DASHBOARD CFO & TÍCH HỢP ĐỒNG BỘ SAP ERP  ");
+	Log.Add("   Thời gian thực hiện: " + CurrentSessionDate());
+	Log.Add("=================================================================");
+	
+	// -------------------------------------------------------------
+	// 1. KIỂM THỬ BÀN LÀM VIỆC LÃNH ĐẠO CFO (DashboardLanhDaoCFO)
+	// -------------------------------------------------------------
+	Try
+		ProcDashboard = DataProcessors.DashboardLanhDaoCFO.Create();
+		Data = ProcDashboard.LaySoLieuDashboard();
+		
+		// 1.1. Kiểm tra 4 Khối kinh doanh + Khối BO
+		If Data.CacKhoiKinhDoanh.Count() <> 5 Then
+			Raise StrTemplate("Số lượng khối kinh doanh không đúng! Yêu cầu 5 khối, thực tế: %1", Data.CacKhoiKinhDoanh.Count());
+		EndIf;
+		
+		Log.Add("[*] 1. Kiểm tra 4 Khối kinh doanh & Khối BO:");
+		For Each Khoi In Data.CacKhoiKinhDoanh Do
+			Log.Add(StrTemplate("    + %1: Doanh thu = %2 VND, Chi phí = %3 VND, Dự án = %4",
+				Khoi.MaKhoi, Format(Khoi.DoanhThu, "NFD=0; NGS=."), Format(Khoi.ChiPhi, "NFD=0; NGS=."), Khoi.SoLuongDuAn));
+		EndDo;
+		
+		TongDT = Data.TongHopKinhDoanh.TongDoanhThu;
+		TongCP = Data.TongHopKinhDoanh.TongChiPhi;
+		Log.Add("    ==> Tổng Doanh thu toàn VSF: " + Format(TongDT, "NFD=0; NGS=.") + " VND, Tổng Chi phí: " + Format(TongCP, "NFD=0; NGS=.") + " VND");
+		
+		If TongDT <= 0 Then
+			Raise "Tổng doanh thu VSF phải lớn hơn 0!";
+		EndIf;
+		
+		// 1.2. Kiểm tra công nợ AR / AP
+		AR_Tong = Data.CongNo.AR.TongAR;
+		AP_Tong = Data.CongNo.AP.TongAP;
+		Log.Add("[*] 2. Công nợ AR / AP: Tổng AR = " + Format(AR_Tong, "NFD=0; NGS=.") + " VND (Nội bộ: " + String(Data.CongNo.AR.TyLeNoiBoAR) + "%), Tổng AP = " + Format(AP_Tong, "NFD=0; NGS=.") + " VND (Nội bộ: " + String(Data.CongNo.AP.TyLeNoiBoAP) + "%)");
+		
+		// 1.3. Kiểm tra dòng tiền ngân hàng
+		Log.Add("[*] 3. Dòng tiền ngân hàng: TCB = " + Format(Data.DongTien.Techcombank_VND, "NFD=0; NGS=.") + " VND, VCB = " + Format(Data.DongTien.Vietcombank_USD.SoTienUSD, "NFD=2; NGS=.") + " USD (~" + Format(Data.DongTien.Vietcombank_USD.QuyDoiVND, "NFD=0; NGS=.") + " VND), VPB VA = " + Format(Data.DongTien.VPBank_VA, "NFD=0; NGS=.") + " VND, Tổng = " + Format(Data.DongTien.TongTienMatKhaDung, "NFD=0; NGS=.") + " VND");
+			
+		// 1.4. Kiểm tra chỉ số tài chính & Netting
+		Log.Add("[*] 4. Chỉ số tài chính: DSO = " + String(Data.ChiSoTaiChinh.DSO) + " ngày, DPO = " + String(Data.ChiSoTaiChinh.DPO) + " ngày, Chu kỳ tiền mặt = " + String(Data.ChiSoTaiChinh.VongQuayTienMat) + " ngày");
+		Log.Add("    + Netting: Tổng cấn trừ = " + Format(Data.ChiSoTaiChinh.Netting.TongTienCanTru, "NFD=0; NGS=.") + " VND (" + String(Data.ChiSoTaiChinh.Netting.SoLuongGiaoDichCanTru) + " chứng từ), Tiết kiệm = " + Format(Data.ChiSoTaiChinh.Netting.TienTietKiemThanhKhoan, "NFD=0; NGS=.") + " VND (Tỷ lệ: " + String(Data.ChiSoTaiChinh.Netting.TyLeTietKiemThanhKhoan) + "%)");
+			
+		Log.Add("DASHBOARD_VERIFY_SUCCESS: Bàn làm việc CFO truy vấn số liệu thời gian thực thành công 100%!");
+	Except
+		Log.Add("DASHBOARD_VERIFY_FAILED: " + DetailErrorDescription(ErrorInfo()));
+		WriteLogEvent("Dashboard.Verify", EventLogLevel.Error,,, StrConcat(Log, Chars.LF));
+		Raise;
+	EndTry;
+	
+	// -------------------------------------------------------------
+	// 2. KIỂM THỬ ĐỒNG BỘ BÚT TOÁN SAP (DongBoButToanSAP)
+	// -------------------------------------------------------------
+	Try
+		ProcSAP = DataProcessors.DongBoButToanSAP.Create();
+		
+		// 2.1. Trích xuất bút toán từ Sổ Cái SoCaiKeToan
+		DSButToan = ProcSAP.TrichXuatButToanSoCai(,,, 30);
+		If DSButToan.Count() = 0 Then
+			Raise "Không trích xuất được bút toán nào từ Sổ Cái SoCaiKeToan!";
+		EndIf;
+		Log.Add("[*] 5. Trích xuất Sổ Cái: " + String(DSButToan.Count()) + " bút toán sẵn sàng đồng bộ");
+		
+		// 2.2. Đóng gói Payload SAP FI-GL IDoc/RFC
+		Payload = ProcSAP.DongGoiPayloadSAP(DSButToan);
+		
+		If Payload.CompanyCode <> "1000" Or Payload.Currency <> "VND" Then
+			Raise "Payload SAP không đúng CompanyCode hoặc Currency chuẩn!";
+		EndIf;
+		If Not Payload.CanDoi Or Payload.TotalDebit <> Payload.TotalCredit Then
+			Raise "Payload SAP vi phạm nguyên tắc cân đối Debit = Credit!";
+		EndIf;
+		If Payload.Items.Count() <> DSButToan.Count() * 2 Then
+			Raise StrTemplate("Số lượng dòng Items SAP không khớp! Yêu cầu: %1, Thực tế: %2", 
+				DSButToan.Count() * 2, Payload.Items.Count());
+		EndIf;
+		Log.Add("[*] 6. Đóng gói SAP FI-GL Payload: TotalDebit = TotalCredit = " + Format(Payload.TotalDebit, "NFD=0; NGS=.") + " VND, Lines = " + String(Payload.Lines.Count()) + ", Items = " + String(Payload.Items.Count()));
+			
+		// 2.3. Kiểm tra chốt an toàn chống lệch sổ (Unbalanced Payload rejection)
+		TestUnbalanced = New Array;
+		BadRow = New Structure;
+		BadRow.Insert("DrCr", "S");
+		BadRow.Insert("Amount", 500000000);
+		TestUnbalanced.Add(BadRow);
+		
+		BiChan = False;
+		Try
+			ProcSAP.KiemTraCanDoiDebitCredit(TestUnbalanced);
+		Except
+			BiChan = True;
+		EndTry;
+		If Not BiChan Then
+			Raise "LỖI BẢO MẬT: Hệ thống không chặn bút toán mất cân đối Debit <> Credit!";
+		EndIf;
+		Log.Add("[*] 7. Kiểm tra chốt an toàn cân đối Debit = Credit: CHẶN THÀNH CÔNG bút toán lệch sổ!");
+		
+		// 2.4. Kiểm tra gửi batch sang SAP ERP
+		BatchId = "TEST-BATCH-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
+		KQ_Gui = ProcSAP.GuiBatchSangSAP(BatchId, Payload, 3);
+		If Not KQ_Gui.ThanhCong Or Left(KQ_Gui.SAPDocNumber, 4) <> "SAP-" Then
+			Raise "Gửi batch sang SAP ERP thất bại!";
+		EndIf;
+		Log.Add("[*] 8. Gửi batch sang SAP ERP thành công: SAPDocNumber = " + KQ_Gui.SAPDocNumber + ", Trạng thái = " + KQ_Gui.TrangThai);
+			
+		Log.Add("SAP_SYNC_VERIFY_SUCCESS: Module tích hợp SAP ERP FI-GL hoạt động chính xác 100%!");
+	Except
+		Log.Add("SAP_SYNC_VERIFY_FAILED: " + DetailErrorDescription(ErrorInfo()));
+		WriteLogEvent("SAP.Verify", EventLogLevel.Error,,, StrConcat(Log, Chars.LF));
+		Raise;
+	EndTry;
+	
+	Log.Add("=================================================================");
+	Log.Add("   DASHBOARD_AND_SAP_ALL_TESTS_PASS: 100% KIỂM THỬ THÀNH CÔNG!   ");
+	Log.Add("=================================================================");
+	WriteLogEvent("DashboardAndSAP.Verify", EventLogLevel.Information,,, StrConcat(Log, Chars.LF));
+EndProcedure

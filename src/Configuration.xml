@@ -147,6 +147,9 @@
 			<CommonModule>GeneratorARServer</CommonModule>
 			<CommonModule>GeneratorAPServer</CommonModule>
 			<CommonModule>GeneratorNettingReconcileServer</CommonModule>
+			<CommonModule>UserProvisioningServer</CommonModule>
+			<CommonModule>PhanQuyenBaoMatServer</CommonModule>
+			<CommonModule>BaoCaoQuanTriServer</CommonModule>
 			<Enum>TrangThaiNghiemThuAR</Enum>
 			<Enum>TrangThaiHoaDonAP</Enum>
 			<Enum>TrangThaiLenhThanhToan</Enum>
@@ -205,6 +208,7 @@
 			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
 			<DataProcessor>DongBoButToanSAP</DataProcessor>
 			<DataProcessor>NapSoDuDauKy</DataProcessor>
+			<DataProcessor>DashboardLanhDaoCFO</DataProcessor>
 			<Report>BaoCaoTuoiNoPhanTachNoiBo</Report>
 			<Report>MaTranCanTruNoiBoTapDoan</Report>
 			<Report>DoiSoatKenhThanhToanVaDongTienAo</Report>

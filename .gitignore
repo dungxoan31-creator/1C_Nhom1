@@ -13,6 +13,7 @@ setupt/
 *.cfl
 scratch/
 .superpowers/
+build/
 
 # Temporary & backup files
 *.tmp

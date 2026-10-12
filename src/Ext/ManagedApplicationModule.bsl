@@ -3,7 +3,10 @@ Procedure BeforeStart(Cancel)
 EndProcedure
 
 Procedure OnStart()
-	WriteLogEvent("App.OnStart", EventLogLevel.Information,,, "LaunchParameter: " + LaunchParameter);
+	Try
+		WriteLogEvent("App.OnStart", EventLogLevel.Information,,, "LaunchParameter: " + LaunchParameter);
+	Except
+	EndTry;
 	If LaunchParameter = "SeedFullTestData" Then
 		SeedFullTestDataServer.ThucThiNapFullTestData();
 		Exit(False);
@@ -36,6 +39,35 @@ Procedure OnStart()
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyNettingData" Then
 		GeneratorNettingReconcileServer.KiemTraChungTuNetting();
+		Exit(False);
+	ElsIf LaunchParameter = "SetupSampleUsers" Then
+		UserProvisioningServer.KhoiTaoDanhSachNguoiDung();
+		Exit(False);
+	ElsIf LaunchParameter = "VerifySampleUsers" Then
+		UserProvisioningServer.KiemTraNguoiDungDaKhoiTao();
+		Exit(False);
+	ElsIf LaunchParameter = "RunSecurityTests" Then
+		PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien();
+		Exit(False);
+	ElsIf LaunchParameter = "TestUserLogin" Then
+		Try
+			WriteLogEvent("UserLogin.Success", EventLogLevel.Information,,, "Dang nhap thanh cong: " + UserName());
+		Except
+		EndTry;
+		Exit(False);
+	ElsIf LaunchParameter = "ExportExecutiveReports" Then
+		Try
+			BaoCaoQuanTriServer.XuatDuLieuVaKiemTraBaoCao();
+		Except
+			WriteLogEvent("ExecutiveReports.Error", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
+	ElsIf LaunchParameter = "TestDashboardAndSAP" Then
+		Try
+			SeedFullTestDataServer.KiemTraDashboardVaSAP();
+		Except
+			WriteLogEvent("DashboardAndSAP.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	EndIf;
 EndProcedure
