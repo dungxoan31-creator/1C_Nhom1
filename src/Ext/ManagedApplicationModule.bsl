@@ -62,11 +62,11 @@ Procedure OnStart()
 			WriteLogEvent("ExecutiveReports.Error", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
-	ElsIf LaunchParameter = "TestDashboardAndSAP" Then
+	ElsIf LaunchParameter = "TestDashboardCFO" Then
 		Try
-			SeedFullTestDataServer.KiemTraDashboardVaSAP();
+			SeedFullTestDataServer.KiemTraDashboardCFO();
 		Except
-			WriteLogEvent("DashboardAndSAP.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			WriteLogEvent("DashboardCFO.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	EndIf;

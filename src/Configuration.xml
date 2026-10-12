@@ -156,11 +156,9 @@
 			<Enum>TrangThaiCanTru</Enum>
 			<Enum>TrangThaiHoaDonDienTu</Enum>
 			<Enum>HuongDongTien</Enum>
-			<Enum>TrangThaiDongBo</Enum>
 			<Constant>PhapNhanMacDinh</Constant>
 			<Constant>NguongPheDuyetChiTienCFO</Constant>
 			<Constant>TaiKhoanTrungGianCanTru</Constant>
-			<Constant>TuDongDongBoSAP</Constant>
 			<Constant>KichHoatWebhookNganHang</Constant>
 			<Constant>NguongThanhToanKhongDungTienMat</Constant>
 			<Constant>TaiKhoanPhiNganHang</Constant>
@@ -183,7 +181,6 @@
 			<CommonModule>QuanLyVongDoiChungTuServer</CommonModule>
 			<InformationRegister>TyGiaHoiDoai</InformationRegister>
 			<InformationRegister>HanMucVaChanXuatDichVu</InformationRegister>
-			<InformationRegister>TrangThaiDongBoSAP</InformationRegister>
 			<InformationRegister>LichSuGiaoDichNganHang</InformationRegister>
 			<InformationRegister>KeHoachChiTien</InformationRegister>
 			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
@@ -206,7 +203,6 @@
 			<HTTPService>WebhookNganHang</HTTPService>
 			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
 			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
-			<DataProcessor>DongBoButToanSAP</DataProcessor>
 			<DataProcessor>NapSoDuDauKy</DataProcessor>
 			<DataProcessor>DashboardLanhDaoCFO</DataProcessor>
 			<Report>BaoCaoTuoiNoPhanTachNoiBo</Report>
@@ -219,7 +215,6 @@
 			<AccumulationRegister>GiaoDichDienTuTamGiu</AccumulationRegister>
 			<AccountingRegister>SoCaiKeToan</AccountingRegister>
 					<ScheduledJob>CapNhatTyGiaNgoaiTeTuDong</ScheduledJob>
-			<ScheduledJob>DongBoSAPHangNgay</ScheduledJob>
 		</ChildObjects>
 	</Configuration>
 </MetaDataObject>

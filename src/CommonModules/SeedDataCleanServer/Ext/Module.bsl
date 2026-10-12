@@ -262,7 +262,6 @@ Procedure ThiLapHangSo(Val PhapNhanCode, Log)
 	Try
 		Constants.PhapNhanMacDinh.Set(PhapNhanCode);
 		Constants.NguongPheDuyetChiTienCFO.Set(50000000);
-		Constants.TuDongDongBoSAP.Set(False); // [Hoan - Phase 2: Dong bo thu cong]
 		Constants.NguongThanhToanKhongDungTienMat.Set(20000000);
 		Constants.SoLuongHoaDonFIFOMax.Set(50);
 		Constants.GiaTriFIFOMax.Set(5000000000);

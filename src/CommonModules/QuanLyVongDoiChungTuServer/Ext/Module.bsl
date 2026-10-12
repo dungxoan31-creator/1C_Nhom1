@@ -217,10 +217,4 @@ Function KiemTraCanDoiSoCai(RecordSetOrArray) Export
 	Return True;
 EndFunction
 
-// Thu tuc chay Scheduled Job dong bo SAP hang ngay
-Procedure ThucHienDongBoBatchHangNgay() Export
-	Processor = DataProcessors.DongBoButToanSAP.Create();
-	Processor.ThucHienDongBoBatchHangNgay();
-EndProcedure
-
 #EndRegion

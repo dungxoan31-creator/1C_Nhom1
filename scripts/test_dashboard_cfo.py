@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Test Suite: test_dashboard_and_sap.py
-Dự án: VinSmart Future - AR & AP Management
+Test Suite: test_dashboard_cfo.py
+Dự án: VinSmart Future - AR & AP Management (Hệ thống tập trung 1C thuần nhất)
 Mục tiêu:
-    1. Kiểm thử DataProcessor.DashboardLanhDaoCFO:
-       - Truy vấn số liệu thời gian thực cho Ban Giám đốc & CFO.
-       - Tổng hợp KPI Doanh thu & Chi phí theo 4 Khối kinh doanh VSF (Khối I, II, III, IV) và Khối BO.
-       - Tổng hợp Số dư công nợ AR (TK 131: 1311, 1312) và AP (TK 331: 3311, 3312).
-       - Tổng hợp Dòng tiền tài khoản Techcombank VND, Vietcombank USD, VPBank Virtual Account.
-       - Tính toán chỉ số tài chính: DSO, DPO, Chu kỳ tiền mặt (CCC), Tỷ lệ tiết kiệm thanh khoản qua Netting.
-    2. Kiểm thử DataProcessor.DongBoButToanSAP:
-       - Trích xuất bút toán từ Sổ Cái SoCaiKeToan.
-       - Đóng gói chuẩn SAP FI-GL IDoc/RFC/BAPI (Header, Items, Tax, Currency).
-       - Kiểm tra Invariant cân đối tuyệt đối Debit = Credit (chặn 100% bút toán lệch sổ).
-       - Mô phỏng đồng bộ batch sang SAP ERP thành công có Audit Trail.
+    Kiểm thử DataProcessor.DashboardLanhDaoCFO:
+    - Truy vấn số liệu thời gian thực cho Ban Giám đốc & CFO độc lập trên 1C.
+    - Tổng hợp KPI Doanh thu & Chi phí theo 4 Khối kinh doanh VSF (Khối I, II, III, IV) và Khối BO.
+    - Tổng hợp Số dư công nợ AR (TK 131: 1311, 1312) và AP (TK 331: 3311, 3312).
+    - Tổng hợp Dòng tiền tài khoản Techcombank VND, Vietcombank USD, VPBank Virtual Account.
+    - Tính toán chỉ số tài chính: DSO, DPO, Chu kỳ tiền mặt (CCC), Tỷ lệ tiết kiệm thanh khoản qua Netting.
 """
 
 import os
@@ -25,7 +20,7 @@ import glob
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-def test_dashboard_and_sap():
+def test_dashboard_cfo():
     exe = r"C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
     ib = r"C:\Users\Dung\Documents\1C_Enterprise\Infobase_FullData"
     
@@ -33,15 +28,15 @@ def test_dashboard_and_sap():
     assert os.path.exists(ib), f"Infobase không tồn tại: {ib}"
 
     print("=================================================================")
-    print("   CHẠY KIỂM THỬ: EXECUTIVE DASHBOARD CFO & TÍCH HỢP SAP ERP    ")
+    print("   CHẠY KIỂM THỬ: EXECUTIVE DASHBOARD CFO (1C DUY NHẤT TẬP TRUNG)")
     print("=================================================================")
     
-    # Chạy 1C Enterprise với LaunchParameter = TestDashboardAndSAP
+    # Chạy 1C Enterprise với LaunchParameter = TestDashboardCFO
     p = subprocess.run([
         exe, "ENTERPRISE",
         "/F", ib,
         "/N", "Admin",
-        "/C", "TestDashboardAndSAP",
+        "/C", "TestDashboardCFO",
         "/DisableStartupDialogs", "/DisableStartupMessages"
     ], capture_output=True, timeout=90)
 
@@ -58,17 +53,14 @@ def test_dashboard_and_sap():
     # Trích xuất các dòng log liên quan
     lines = log_content.splitlines()
     relevant_lines = [l for l in lines if any(k in l for k in [
-        "DASHBOARD_VERIFY", "SAP_SYNC_VERIFY", "DASHBOARD_AND_SAP_ALL_TESTS_PASS",
-        "Khối kinh doanh", "Công nợ AR", "Dòng tiền ngân hàng", "Chỉ số tài chính",
-        "Đóng gói SAP", "chốt an toàn", "Gửi batch sang SAP"
+        "DASHBOARD_VERIFY", "DASHBOARD_CFO_ALL_TESTS_PASS",
+        "Khối kinh doanh", "Công nợ AR", "Dòng tiền ngân hàng", "Chỉ số tài chính"
     ])]
 
     print("\n[*] Chi tiết kết quả kiểm thử từ Nhật ký sự kiện 1C:")
-    for line in relevant_lines[-20:]:
-        # Format log line cleanly
+    for line in relevant_lines[-15:]:
         clean_line = line.strip().strip('"')
         if clean_line.startswith('{'):
-            # Skip raw lgp event header if present
             comma_idx = clean_line.find(',"')
             if comma_idx != -1:
                 clean_line = clean_line[comma_idx+2:]
@@ -81,21 +73,15 @@ def test_dashboard_and_sap():
     )
     print("\n[+] PASS 1: Dashboard CFO tổng hợp thành công 4 Khối kinh doanh VSF & Khối BO, AR/AP, Dòng tiền và Chỉ số DSO/DPO/Netting!")
 
-    assert "SAP_SYNC_VERIFY_SUCCESS" in log_content, (
-        "FAIL: Đồng bộ SAP ERP không thành công! Chi tiết:\n" +
-        "\n".join([l for l in lines if "SAP" in l or "SAP_SYNC" in l][-10:])
+    assert "DASHBOARD_CFO_ALL_TESTS_PASS" in log_content, (
+        "FAIL: Chưa đạt chứng nhận hoàn tất kiểm thử Dashboard CFO!"
     )
-    print("[+] PASS 2: Module Đồng bộ SAP trích xuất Sổ Cái, đóng gói payload FI-GL IDoc/RFC và bảo vệ cân đối Debit = Credit chuẩn 100%!")
-
-    assert "DASHBOARD_AND_SAP_ALL_TESTS_PASS" in log_content, (
-        "FAIL: Chưa đạt chứng nhận hoàn tất toàn bộ kiểm thử!"
-    )
-    print("[+] PASS 3: Xác nhận kiểm thử toàn diện Bàn làm việc CFO và Tích hợp SAP ERP PASS 100%!")
+    print("[+] PASS 2: Xác nhận kiểm thử toàn diện Bàn làm việc CFO 1C thuần nhất PASS 100%!")
     print("=================================================================\n")
 
 if __name__ == "__main__":
     try:
-        test_dashboard_and_sap()
+        test_dashboard_cfo()
     except Exception as e:
         print(f"\nFAIL: {e}")
         sys.exit(1)
