@@ -14,20 +14,14 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
-	EndIf;
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	
-	// Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
-	If WriteMode = DocumentWriteMode.Posting Or TrangThai = "DaDuyet" Or TrangThai = "DaGhiSo" Or TrangThai = "DaCanTru" Then
-		PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet);
-		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
-		
+	If WriteMode = DocumentWriteMode.Posting Then
 		If TrangThai <> "DaDuyet" And TrangThai <> "DaGhiSo" And TrangThai <> "DaCanTru" Then
 			Cancel = True;
 			Raise "CẤM GHI SỔ: Chứng từ cấn trừ công nợ phải ở trạng thái 'Đã duyệt' mới được phép ghi sổ!";
 		EndIf;
-		TrangThai = "DaGhiSo";
+		TrangThai = "DaCanTru";
 	Else
 		If Not ValueIsFilled(TrangThai) Then
 			TrangThai = "DuThao";
@@ -36,9 +30,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
-	// Xac thuc bao mat Maker-Checker & SoD truoc khi ghi so
-	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet);
-	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	// Xac thuc bao mat Maker-Checker & SoD truoc khi ghi so (100% dua tren phien UserName() that)
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
 	
 	RegisterRecords.CongNoPhaiThu.Write = True;
 	RegisterRecords.CongNoPhaiTra.Write = True;
@@ -48,111 +43,185 @@ Procedure Posting(Cancel, Mode)
 		Return;
 	EndIf;
 	
-	// Kiem tra hop le
-	HasError = False;
+	// 1. Kiem tra hop le du lieu bat buoc
 	If Not ValueIsFilled(PhapNhan) Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "PhapNhan";
-		Msg.Message();
+		Raise "Trường Pháp nhân chưa được điền!";
 	EndIf;
 	If Not ValueIsFilled(DoiTacNoiBo) Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Trường Đối tác nội bộ chưa được điền!'; en = 'Internal counterparty is required!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "DoiTacNoiBo";
-		Msg.Message();
+		Raise "Trường Đối tác nội bộ chưa được điền!";
 	EndIf;
 	If SoTienCanTru <= 0 Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Số tiền cấn trừ phải lớn hơn 0!'; en = 'Netting amount must be greater than 0!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "SoTienCanTru";
-		Msg.Message();
+		Raise "Số tiền cấn trừ phải lớn hơn 0!";
 	EndIf;
 	
-	If HasError Then
-		Cancel = True;
-		Return;
+	// Bắt buộc phải có cặp chứng từ gốc AR và AP
+	If Not ValueIsFilled(ChungTuGocAR) Then
+		Raise "LỖI CẤN TRỪ: Bắt buộc phải chọn Chứng từ gốc AR (Hóa đơn hoặc Biên bản nghiệm thu cần cấn trừ)!";
+	EndIf;
+	If Not ValueIsFilled(ChungTuGocAP) Then
+		Raise "LỖI CẤN TRỪ: Bắt buộc phải chọn Chứng từ gốc AP (Hóa đơn NCC hoặc nghiệm thu thầu phụ cần cấn trừ)!";
 	EndIf;
 	
-	// Kiem tra so du kha dung AR va AP truoc khi can tru
-	If ValueIsFilled(ChungTuGocAR) Then
-		Q_AR = New Query;
-		Q_AR.Text = 
-			"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu
-			|FROM AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, ChungTuGoc = &ChungTuGoc AND PhapNhan = &PhapNhan) AS Balance";
-		Q_AR.SetParameter("ThoiDiem", New Boundary(PointInTime(), BoundaryType.Excluding));
-		Q_AR.SetParameter("ChungTuGoc", ChungTuGocAR);
-		Q_AR.SetParameter("PhapNhan", PhapNhan);
-		ResAR = Q_AR.Execute().Unload();
-		If ResAR.Count() > 0 And ResAR[0].SoDu > 0 And ResAR[0].SoDu < SoTienCanTru Then
-			Raise StrTemplate("LỖI CẤN TRỪ: Số tiền cấn trừ (%1) vượt quá số dư nợ phải thu khả dụng (%2) của chứng từ gốc!", 
-				Format(SoTienCanTru, "NFD=0; NGS=."), Format(ResAR[0].SoDu, "NFD=0; NGS=."));
+	DoiTacAP = ?(LaCanTruBacCau And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, DoiTacNoiBo);
+	
+	// Kiem tra rang buoc can tru bac cau / da ben
+	If LaCanTruBacCau Then
+		If Not ValueIsFilled(DoiTacTrungGian) Then
+			Raise "Cấn trừ bắc cầu bắt buộc phải có Đối tác trung gian!";
+		ElsIf DoiTacTrungGian = DoiTacNoiBo Then
+			Raise "Đối tác trung gian phải khác đối tác nội bộ trong cấn trừ bắc cầu!";
+		EndIf;
+		If Not ValueIsFilled(SoVanBanThoaThuan) Then
+			Raise "LỖI CẤN TRỪ BẮC CẦU: Cấn trừ đa bên/bắc cầu bắt buộc phải có Số văn bản thỏa thuận / Hồ sơ phê duyệt ba bên hợp pháp!";
 		EndIf;
 	EndIf;
 	
-	If ValueIsFilled(ChungTuGocAP) Then
-		Q_AP = New Query;
-		Q_AP.Text = 
-			"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu
-			|FROM AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, ChungTuGoc = &ChungTuGoc AND PhapNhan = &PhapNhan) AS Balance";
-		Q_AP.SetParameter("ThoiDiem", New Boundary(PointInTime(), BoundaryType.Excluding));
-		Q_AP.SetParameter("ChungTuGoc", ChungTuGocAP);
-		Q_AP.SetParameter("PhapNhan", PhapNhan);
-		ResAP = Q_AP.Execute().Unload();
-		If ResAP.Count() > 0 And ResAP[0].SoDu > 0 And ResAP[0].SoDu < SoTienCanTru Then
-			Raise StrTemplate("LỖI CẤN TRỪ: Số tiền cấn trừ (%1) vượt quá số dư nợ phải trả khả dụng (%2) của chứng từ gốc!", 
-				Format(SoTienCanTru, "NFD=0; NGS=."), Format(ResAP[0].SoDu, "NFD=0; NGS=."));
-		EndIf;
+	// 2. Kiem tra tinh nhat quan cua doi tac va hop dong tren chung tu goc
+	HopDongAR_Chuan = HopDongAR;
+	If Not ValueIsFilled(HopDongAR_Chuan) Then
+		Try HopDongAR_Chuan = ChungTuGocAR.HopDong; Except EndTry;
+	EndIf;
+	If ValueIsFilled(HopDongAR) Then
+		Try
+			If ValueIsFilled(ChungTuGocAR.HopDong) And ChungTuGocAR.HopDong <> HopDongAR Then
+				Raise "LỖI CẤN TRỪ: Hợp đồng AR không khớp với hợp đồng trên chứng từ gốc AR!";
+			EndIf;
+		Except
+			Raise;
+		EndTry;
 	EndIf;
 	
+	HopDongAP_Chuan = HopDongAP;
+	If Not ValueIsFilled(HopDongAP_Chuan) Then
+		Try HopDongAP_Chuan = ChungTuGocAP.HopDong; Except EndTry;
+	EndIf;
+	If ValueIsFilled(HopDongAP) Then
+		Try
+			If ValueIsFilled(ChungTuGocAP.HopDong) And ChungTuGocAP.HopDong <> HopDongAP Then
+				Raise "LỖI CẤN TRỪ: Hợp đồng AP không khớp với hợp đồng trên chứng từ gốc AP!";
+			EndIf;
+		Except
+			Raise;
+		EndTry;
+	EndIf;
+	
+	Try
+		If ValueIsFilled(ChungTuGocAR.DoiTac) And ChungTuGocAR.DoiTac <> DoiTacNoiBo Then
+			Raise "LỖI CẤN TRỪ: Đối tác nội bộ không khớp với đối tác trên chứng từ gốc AR!";
+		EndIf;
+	Except
+		Raise;
+	EndTry;
+	Try
+		If ValueIsFilled(ChungTuGocAP.DoiTac) And ChungTuGocAP.DoiTac <> DoiTacAP Then
+			Raise "LỖI CẤN TRỪ: Đối tác AP không khớp với đối tác trên chứng từ gốc AP!";
+		EndIf;
+	Except
+		Raise;
+	EndTry;
+	
+	// 3. Concurrency Lock: Native 1C DataLock de ngan chan race condition hai phien cung can tru mot khoan
+	LockObj = New DataLock;
+	
+	LockAR = LockObj.Add("AccumulationRegister.CongNoPhaiThu");
+	LockAR.Mode = DataLockMode.Exclusive;
+	LockAR.SetValue("PhapNhan", PhapNhan);
+	LockAR.SetValue("DoiTac", DoiTacNoiBo);
+	LockAR.SetValue("ChungTuGoc", ChungTuGocAR);
+	
+	LockAP = LockObj.Add("AccumulationRegister.CongNoPhaiTra");
+	LockAP.Mode = DataLockMode.Exclusive;
+	LockAP.SetValue("PhapNhan", PhapNhan);
+	LockAP.SetValue("DoiTac", DoiTacAP);
+	LockAP.SetValue("ChungTuGoc", ChungTuGocAP);
+	
+	LockObj.Lock();
+	
+	// 4. Kiem tra so du kha dung tai thoi diem ghi so
+	ThoiDiemKiemTra = New Boundary(PointInTime(), BoundaryType.Excluding);
+	
+	// Doc so du AR theo dung khoa phan tich
+	Q_AR = New Query(
+		"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu
+		|FROM AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, 
+		|    PhapNhan = &PhapNhan 
+		|    AND DoiTac = &DoiTac 
+		|    AND ChungTuGoc = &ChungTuGoc) AS Balance");
+	Q_AR.SetParameter("ThoiDiem", ThoiDiemKiemTra);
+	Q_AR.SetParameter("PhapNhan", PhapNhan);
+	Q_AR.SetParameter("DoiTac", DoiTacNoiBo);
+	Q_AR.SetParameter("ChungTuGoc", ChungTuGocAR);
+	ResAR = Q_AR.Execute().Unload();
+	SoDuAR = ?(ResAR.Count() > 0, ResAR[0].SoDu, 0);
+	
+	If SoDuAR <= 0 Then
+		Raise StrTemplate("LỖI CẤN TRỪ AR: Số dư nợ phải thu khả dụng bằng 0 hoặc âm (%1) tại thời điểm ghi sổ!", SoDuAR);
+	EndIf;
+	If SoDuAR < SoTienCanTru Then
+		Raise StrTemplate("LỖI CẤN TRỪ AR: Số tiền cấn trừ (%1) vượt quá số dư nợ phải thu khả dụng (%2) tại thời điểm ghi sổ!", 
+			Format(SoTienCanTru, "NFD=0; NGS=."), Format(SoDuAR, "NFD=0; NGS=."));
+	EndIf;
+	
+	// Doc so du AP theo dung khoa phan tich
+	Q_AP = New Query(
+		"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu
+		|FROM AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, 
+		|    PhapNhan = &PhapNhan 
+		|    AND DoiTac = &DoiTac 
+		|    AND ChungTuGoc = &ChungTuGoc) AS Balance");
+	Q_AP.SetParameter("ThoiDiem", ThoiDiemKiemTra);
+	Q_AP.SetParameter("PhapNhan", PhapNhan);
+	Q_AP.SetParameter("DoiTac", DoiTacAP);
+	Q_AP.SetParameter("ChungTuGoc", ChungTuGocAP);
+	ResAP = Q_AP.Execute().Unload();
+	SoDuAP = ?(ResAP.Count() > 0, ResAP[0].SoDu, 0);
+	
+	If SoDuAP <= 0 Then
+		Raise StrTemplate("LỖI CẤN TRỪ AP: Số dư nợ phải trả khả dụng bằng 0 hoặc âm (%1) tại thời điểm ghi sổ!", SoDuAP);
+	EndIf;
+	If SoDuAP < SoTienCanTru Then
+		Raise StrTemplate("LỖI CẤN TRỪ AP: Số tiền cấn trừ (%1) vượt quá số dư nợ phải trả khả dụng (%2) tại thời điểm ghi sổ!", 
+			Format(SoTienCanTru, "NFD=0; NGS=."), Format(SoDuAP, "NFD=0; NGS=."));
+	EndIf;
+	
+	// 5. Ghi so phu (Expense)
 	NgayHachToan = BegOfDay(Date);
 	
-	// 1. Ghi giam no phai thu tren CongNoPhaiThu (Expense)
-	RegisterRecords.CongNoPhaiThu.Write = True;
+	// Ghi giam no phai thu tren CongNoPhaiThu (Expense)
 	RecAR = RegisterRecords.CongNoPhaiThu.Add();
 	RecAR.RecordType = AccumulationRecordType.Expense;
 	RecAR.Period = NgayHachToan;
 	RecAR.PhapNhan = PhapNhan;
 	RecAR.DoiTac = DoiTacNoiBo;
-	RecAR.HopDong = HopDongAR;
+	RecAR.HopDong = HopDongAR_Chuan;
 	RecAR.ChungTuGoc = ChungTuGocAR;
 	RecAR.SoTien = SoTienCanTru;
 	
-	// 2. Ghi giam no phai tra tren CongNoPhaiTra (Expense)
-	RegisterRecords.CongNoPhaiTra.Write = True;
+	// Ghi giam no phai tra tren CongNoPhaiTra (Expense)
 	RecAP = RegisterRecords.CongNoPhaiTra.Add();
 	RecAP.RecordType = AccumulationRecordType.Expense;
 	RecAP.Period = NgayHachToan;
 	RecAP.PhapNhan = PhapNhan;
-	RecAP.DoiTac = ?(LaCanTruBacCau And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, DoiTacNoiBo);
-	RecAP.HopDong = HopDongAP;
+	RecAP.DoiTac = DoiTacAP;
+	RecAP.HopDong = HopDongAP_Chuan;
 	RecAP.ChungTuGoc = ChungTuGocAP;
 	RecAP.SoTien = SoTienCanTru;
 	
-	// 3. Ghi so cai SoCaiKeToan
-	RegisterRecords.SoCaiKeToan.Write = True;
-	
+	// 6. Ghi so cai SoCaiKeToan
 	TK3312 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3312");
 	TK1312 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	TK1388 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1388");
-	TK3388 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3388");
 	RefVND = Catalogs.TienTe.FindByCode("VND");
 	
 	If LaCanTruBacCau Then
-		// Can tru bac cau da ben qua TK trung gian 1388 / 3388
-		// But toan 1: Giam AP: No 3312 / Co 3388 (Phai tra DoiTacTrungGian)
+		// Can tru bac cau da ben qua TK trung gian 1388 co can cu van ban thoa thuan
+		// But toan 1: Giam AP: No 3312 / Co 1388
 		Row1 = RegisterRecords.SoCaiKeToan.Add();
 		Row1.Period = NgayHachToan;
 		Row1.AccountDr = TK3312;
-		Row1.AccountCr = ?(ValueIsFilled(TK3388), TK3388, TK1388);
+		Row1.AccountCr = TK1388;
 		Row1.SoTien = SoTienCanTru;
-		Row1.DienGiai = StrTemplate("Cấn trừ nợ phải trả nội bộ qua TK trung gian theo lệnh %1", Number);
+		Row1.DienGiai = StrTemplate("Cấn trừ nợ AP qua TK trung gian 1388 theo VBTT %1 (Lệnh %2)", SoVanBanThoaThuan, Number);
 		Row1.PhapNhan = PhapNhan;
 		Row1.TienTe = RefVND;
 		Row1.ChungTuGoc = Ref;
@@ -164,19 +233,19 @@ Procedure Posting(Cancel, Mode)
 		Row2.AccountDr = TK1388;
 		Row2.AccountCr = TK1312;
 		Row2.SoTien = SoTienCanTru;
-		Row2.DienGiai = StrTemplate("Cấn trừ nợ phải thu nội bộ qua TK trung gian theo lệnh %1", Number);
+		Row2.DienGiai = StrTemplate("Cấn trừ nợ AR qua TK trung gian 1388 theo VBTT %1 (Lệnh %2)", SoVanBanThoaThuan, Number);
 		Row2.PhapNhan = PhapNhan;
 		Row2.TienTe = RefVND;
 		Row2.ChungTuGoc = Ref;
 		Row2.TyGia = 1;
 	Else
-		// Can tru tay doi truc tiep: No TK 3312 / Co TK 1312
+		// Can tru song phuong truc tiep: No TK 3312 / Co TK 1312
 		Row1 = RegisterRecords.SoCaiKeToan.Add();
 		Row1.Period = NgayHachToan;
 		Row1.AccountDr = TK3312;
 		Row1.AccountCr = TK1312;
 		Row1.SoTien = SoTienCanTru;
-		Row1.DienGiai = StrTemplate("Cấn trừ công nợ nội bộ 2 bên theo chứng từ %1", Number);
+		Row1.DienGiai = StrTemplate("Cấn trừ công nợ nội bộ song phương theo chứng từ %1", Number);
 		Row1.PhapNhan = PhapNhan;
 		Row1.TienTe = RefVND;
 		Row1.ChungTuGoc = Ref;
@@ -189,6 +258,7 @@ Procedure Posting(Cancel, Mode)
 	Except
 		Cancel = True;
 		WriteLogEvent("Posting.CanTruCongNoNoiBo", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		Raise;
 	EndTry;
 EndProcedure
 

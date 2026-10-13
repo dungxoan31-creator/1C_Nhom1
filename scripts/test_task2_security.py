@@ -39,8 +39,15 @@ class TestSecurityMakerChecker(unittest.TestCase):
         with open(common_mod, "r", encoding="utf-8") as f:
             code = f.read()
         self.assertIn("KiemTraMakerChecker", code, "CommonModule thiếu hàm KiemTraMakerChecker")
-        self.assertIn("NguoiLap = NguoiDuyet", code, "Thiếu kiểm tra NguoiLap trùng NguoiDuyet")
+        self.assertTrue("StrLap = StrDuyet" in code or "NguoiLap = NguoiDuyet" in code, "Thiếu kiểm tra NguoiLap trùng NguoiDuyet")
         
+        lifecycle_mod = os.path.join(REPO_ROOT, "src", "CommonModules", "QuanLyVongDoiChungTuServer", "Ext", "Module.bsl")
+        self.assertTrue(os.path.exists(lifecycle_mod), f"File không tồn tại: {lifecycle_mod}")
+        with open(lifecycle_mod, "r", encoding="utf-8") as f:
+            lifecycle_code = f.read()
+        self.assertIn("DocObject.DataExchange.Load", lifecycle_code, "QuanLyVongDoiChungTuServer thiếu kiểm soát DataExchange.Load")
+        self.assertIn("KiemTraTrangThaiVaQuyen", lifecycle_code, "QuanLyVongDoiChungTuServer thiếu KiemTraTrangThaiVaQuyen")
+
         # Kiểm tra 4 chứng từ tài chính chính
         checked_docs = [
             os.path.join(REPO_ROOT, "src", "Documents", "HoaDonGTGTDauRa", "Ext", "ObjectModule.bsl"),
@@ -53,8 +60,7 @@ class TestSecurityMakerChecker(unittest.TestCase):
             with open(obj_path, "r", encoding="utf-8") as f:
                 obj_code = f.read()
             self.assertIn("KiemTraMakerChecker", obj_code, f"{os.path.basename(os.path.dirname(obj_path))} chưa gọi KiemTraMakerChecker")
-            # Kiểm tra chặn DataExchange bypass
-            self.assertIn("DataExchange.Load", obj_code, f"{os.path.basename(os.path.dirname(obj_path))} thiếu kiểm soát DataExchange")
+            self.assertIn("KiemTraTrangThaiVaQuyen", obj_code, f"{os.path.basename(os.path.dirname(obj_path))} thiếu gọi KiemTraTrangThaiVaQuyen")
 
 
 if __name__ == "__main__":

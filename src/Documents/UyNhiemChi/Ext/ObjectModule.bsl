@@ -15,33 +15,28 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
-	EndIf;
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	
-	// 1. Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
-	If WriteMode = DocumentWriteMode.Posting Or TrangThai = Enums.TrangThaiLenhThanhToan.DaPheDuyet Or TrangThai = Enums.TrangThaiLenhThanhToan.DaGhiSo Then
-		PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet);
-		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
-	EndIf;
-	
-	// 2. Mac dinh ngay lap va ty gia
+	// 2. Mac dinh ngay lap
 	If Not ValueIsFilled(NgayLap) Then
 		NgayLap = BegOfDay(Date);
 	EndIf;
-	If TyGia <= 0 Then
-		If ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) <> "VND" Then
-			TyGia = QuanLyTyGiaVaNgoaiTeServer.LayTyGiaHachToanHieuLuc(TienTe, Date);
-		Else
-			TyGia = 1;
-		EndIf;
+	
+	// Mac dinh ty gia VND
+	If Not ValueIsFilled(TienTe) Or TrimAll(Upper(String(TienTe.Code))) = "VND" Then
+		TyGia = 1;
+	EndIf;
+	
+	If SoTien <= 0 And SoTienNgoaiTe > 0 And TyGia > 0 Then
+		SoTien = Round(SoTienNgoaiTe * TyGia, 0);
 	EndIf;
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
-	// Xac thuc bao mat Maker-Checker & SoD truoc khi ghi so
-	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet);
-	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	// Xac thuc bao mat Maker-Checker & SoD truoc khi ghi so (100% dua tren phien UserName() that)
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
 	
 	// 1. Kiem tra P0.2 Invariant State Machine:
 	// Xoa movement cu neu trang thai khong con la DaGhiSo (Quy tac P2 / #std603)
@@ -57,43 +52,42 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	// 2. Kiem tra cac truong bat buoc khi da ghi so
-	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Trường Pháp nhân chưa được điền!'; en = 'Legal Entity is required!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "PhapNhan";
-		Msg.Message();
+		Raise "Trường Pháp nhân chưa được điền!";
 	EndIf;
 	If Not ValueIsFilled(DoiTac) Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Trường Nhà cung cấp chưa được điền!'; en = 'Counterparty is required!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "DoiTac";
-		Msg.Message();
+		Raise "Trường Nhà cung cấp chưa được điền!";
 	EndIf;
 	If Not ValueIsFilled(HopDong) Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Trường Hợp đồng chưa được điền!'; en = 'Contract is required!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "HopDong";
-		Msg.Message();
-	EndIf;
-	If SoTien <= 0 Then
-		HasError = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Số tiền lệnh chi phải lớn hơn 0!'; en = 'Payment amount must be greater than 0!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "SoTien";
-		Msg.Message();
+		Raise "Trường Hợp đồng chưa được điền!";
 	EndIf;
 	
-	If HasError Then
-		Cancel = True;
-		Return;
+	If LaTraSoatHoanTra And ValueIsFilled(ChungTuGoc) And TyGia <= 0 Then
+		Try
+			TyGia = ChungTuGoc.TyGia;
+		Except
+		EndTry;
+	EndIf;
+	
+	LaNgoaiTe = (SoTienNgoaiTe > 0) Or (ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) <> "VND");
+	
+	If LaNgoaiTe Then
+		If TyGia <= 0 Then
+			Raise "Lỗi ghi sổ: Thanh toán ngoại tệ bắt buộc phải có Tỷ giá lớn hơn 0, không được suy đoán tỷ giá!";
+		EndIf;
+		If SoTienNgoaiTe <= 0 Then
+			Raise "Lỗi ghi sổ: Thanh toán ngoại tệ bắt buộc Số tiền ngoại tệ phải lớn hơn 0!";
+		EndIf;
+		If SoTien <= 0 And TyGia > 0 Then
+			SoTien = Round(SoTienNgoaiTe * TyGia, 0);
+		EndIf;
+		If SoTien <= 0 Then
+			Raise "Lỗi ghi sổ: Số tiền (VND) thực chi/quy đổi phải lớn hơn 0!";
+		EndIf;
+	Else
+		If SoTien <= 0 Then
+			Raise "Lỗi ghi sổ: Số tiền lệnh chi phải lớn hơn 0!";
+		EndIf;
 	EndIf;
 	
 	// 3. Xac dinh tai khoan ke toan
@@ -112,15 +106,86 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	LaNgoaiTe = (SoTienNgoaiTe > 0);
-	MaTKTien = ?(LaNgoaiTe, "1122", "1121");
+	
+	// Xac dinh tai khoan ngan hang: 1121 (VND) hay 1122 (USD)
+	MaTKTien = "1121";
+	If ValueIsFilled(TaiKhoanTien) Then
+		If ValueIsFilled(TaiKhoanTien.TienTe) And TrimAll(Upper(String(TaiKhoanTien.TienTe.Code))) = "USD" Then
+			MaTKTien = "1122";
+		ElsIf TrimAll(Upper(String(TaiKhoanTien.Code))) = "TK-VCB-USD" Then
+			MaTKTien = "1122";
+		Else
+			MaTKTien = "1121";
+		EndIf;
+	ElsIf LaNgoaiTe And (SoTien <= 0 Or (ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) = "USD" And TyGia <= 1)) Then
+		MaTKTien = "1122";
+	EndIf;
+	
 	TKTien = ChartsOfAccounts.HeThongTaiKhoan.FindByCode(MaTKTien);
+	If Not ValueIsFilled(TKTien) Then
+		TKTien = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
+	EndIf;
 	TKPhiNganHang = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("6427");
+	TienTeVND = Catalogs.TienTe.FindByCode("VND");
 	
 	NgayHachToan = ?(ValueIsFilled(NgayGhiSo), NgayGhiSo, Date);
 	
 	// 4. Truong hop Tra soat hoan tra sau ghi so (Reversal)
 	If LaTraSoatHoanTra Then
-		// Ghi tang lai no AP tren CongNoPhaiTra (Receipt)
+		If Not ValueIsFilled(ChungTuGoc) Then
+			Raise "Lỗi tra soát hoàn trả: Bắt buộc phải tham chiếu đến Chứng từ gốc (Lệnh chi cũ cần đảo)!";
+		EndIf;
+		
+		// Doc but toan goc tren SoCaiKeToan de dao chinh xac 100%
+		Q_Orig = New Query(
+			"SELECT
+			|	SoCai.AccountDr AS AccountDr,
+			|	SoCai.AccountCr AS AccountCr,
+			|	SoCai.SoTien AS SoTien,
+			|	SoCai.SoTienNgoaiTe AS SoTienNgoaiTe,
+			|	SoCai.TienTe AS TienTe,
+			|	SoCai.TyGia AS TyGia
+			|FROM
+			|	AccountingRegister.SoCaiKeToan AS SoCai
+			|WHERE
+			|	SoCai.Recorder = &RefOrig");
+		Q_Orig.SetParameter("RefOrig", ChungTuGoc);
+		T_Orig = Q_Orig.Execute().Unload();
+		
+		If T_Orig.Count() = 0 Then
+			Raise "Lỗi tra soát hoàn trả: Không tìm thấy bút toán gốc của chứng từ cần đảo trên Sổ cái!";
+		EndIf;
+		
+		RegisterRecords.SoCaiKeToan.Write = True;
+		For Each RowOrig In T_Orig Do
+			RowRev = RegisterRecords.SoCaiKeToan.Add();
+			RowRev.Period = NgayHachToan;
+			RowRev.AccountDr = RowOrig.AccountCr; // Dao nguoc Dr <-> Cr
+			RowRev.AccountCr = RowOrig.AccountDr;
+			RowRev.SoTien = RowOrig.SoTien;
+			RowRev.DienGiai = StrTemplate("Hoàn trả tiền theo tra soát lệnh chi %1", Number);
+			RowRev.PhapNhan = PhapNhan;
+			RowRev.TienTe = RowOrig.TienTe;
+			RowRev.ChungTuGoc = ChungTuGoc;
+			RowRev.TyGia = RowOrig.TyGia;
+			RowRev.SoTienNgoaiTe = RowOrig.SoTienNgoaiTe;
+		EndDo;
+		
+		// Doc va dao nguoc CongNoPhaiTra (Receipt)
+		Q_APOrig = New Query(
+			"SELECT
+			|	ISNULL(SUM(SoTien), 0) AS SoTien,
+			|	ISNULL(SUM(SoTienNgoaiTe), 0) AS SoTienNgoaiTe
+			|FROM
+			|	AccumulationRegister.CongNoPhaiTra
+			|WHERE
+			|	Recorder = &RefOrig AND RecordType = VALUE(AccumulationRecordType.Expense)");
+		Q_APOrig.SetParameter("RefOrig", ChungTuGoc);
+		ResAPOrig = Q_APOrig.Execute().Unload();
+		
+		TienAPGoc = ?(ResAPOrig.Count() > 0, ResAPOrig[0].SoTien, SoTien);
+		TienAPNgoaiTeGoc = ?(ResAPOrig.Count() > 0, ResAPOrig[0].SoTienNgoaiTe, SoTienNgoaiTe);
+		
 		RegisterRecords.CongNoPhaiTra.Write = True;
 		RecordAP = RegisterRecords.CongNoPhaiTra.Add();
 		RecordAP.RecordType = AccumulationRecordType.Receipt;
@@ -129,10 +194,24 @@ Procedure Posting(Cancel, Mode)
 		RecordAP.DoiTac = DoiTac;
 		RecordAP.HopDong = HopDong;
 		RecordAP.ChungTuGoc = ChungTuGoc;
-		RecordAP.SoTien = SoTien;
-		RecordAP.SoTienNgoaiTe = SoTienNgoaiTe;
+		RecordAP.SoTien = TienAPGoc;
+		RecordAP.SoTienNgoaiTe = TienAPNgoaiTeGoc;
 		
-		// Ghi tang lai tien tren DongTien (Receipt)
+		// Doc va dao nguoc DongTien (Receipt)
+		Q_DTOrig = New Query(
+			"SELECT
+			|	ISNULL(SUM(SoTien), 0) AS SoTien,
+			|	ISNULL(SUM(SoTienNgoaiTe), 0) AS SoTienNgoaiTe
+			|FROM
+			|	AccumulationRegister.DongTien
+			|WHERE
+			|	Recorder = &RefOrig AND RecordType = VALUE(AccumulationRecordType.Expense)");
+		Q_DTOrig.SetParameter("RefOrig", ChungTuGoc);
+		ResDTOrig = Q_DTOrig.Execute().Unload();
+		
+		TienDTGoc = ?(ResDTOrig.Count() > 0, ResDTOrig[0].SoTien, SoTien);
+		TienDTNgoaiTeGoc = ?(ResDTOrig.Count() > 0, ResDTOrig[0].SoTienNgoaiTe, SoTienNgoaiTe);
+		
 		RegisterRecords.DongTien.Write = True;
 		RecordDT = RegisterRecords.DongTien.Add();
 		RecordDT.RecordType = AccumulationRecordType.Receipt;
@@ -141,36 +220,93 @@ Procedure Posting(Cancel, Mode)
 		RecordDT.TaiKhoanTien = TaiKhoanTien;
 		RecordDT.KhoanMucDongTien = KhoanMucDongTien;
 		RecordDT.TienTe = TienTe;
-		RecordDT.SoTien = SoTien;
-		RecordDT.SoTienNgoaiTe = SoTienNgoaiTe;
-		
-		// But toan dao tren SoCaiKeToan: No 1121 (hoac 1122) / Co 3311 (hoac 3312)
-		RegisterRecords.SoCaiKeToan.Write = True;
-		RowRev = RegisterRecords.SoCaiKeToan.Add();
-		RowRev.Period = NgayHachToan;
-		RowRev.AccountDr = TKTien;
-		RowRev.AccountCr = TKCongNo;
-		RowRev.SoTien = SoTien;
-		RowRev.DienGiai = StrTemplate("Hoàn trả tiền theo tra soát lệnh chi %1", Number);
-		RowRev.PhapNhan = PhapNhan;
-		RowRev.TienTe = TienTe;
-		RowRev.ChungTuGoc = ChungTuGoc;
-		RowRev.TyGia = ?(TyGia > 0, TyGia, 1);
-		If SoTienNgoaiTe > 0 Then
-			RowRev.SoTienNgoaiTe = SoTienNgoaiTe;
-		EndIf;
+		RecordDT.SoTien = TienDTGoc;
+		RecordDT.SoTienNgoaiTe = TienDTNgoaiTeGoc;
 		
 		Try
 			QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 		Except
 			Cancel = True;
 			WriteLogEvent("Posting.UyNhiemChi", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			Raise;
 		EndTry;
 		Return;
 	EndIf;
 	
 	// 5. Truong hop chi tien binh thuong (Normal Payment)
-	// Ghi giam no phai tra tren CongNoPhaiTra (Expense)
+	SoTienThucTra = SoTien;
+	SoTienGhiSoAP = SoTien;
+	ChenhLech = 0;
+	CoChenhLechTyGia = False;
+	TyGiaHoaDon = TyGia;
+	
+	If LaNgoaiTe Then
+		// Review focus 2 & Task 3: Bat buoc phai co hoa don goc (ChungTuGoc) de xac dinh gia tri ghi so
+		If Not ValueIsFilled(ChungTuGoc) Then
+			Raise "Lỗi thanh toán ngoại tệ: Bắt buộc phải có hóa đơn gốc (ChungTuGoc) để xác định tỷ giá ghi sổ nợ AP!";
+		EndIf;
+		
+		TyGiaHoaDon = 0;
+		Try
+			TyGiaHoaDon = ChungTuGoc.TyGia;
+		Except
+		EndTry;
+		
+		If TyGiaHoaDon <= 0 Then
+			Raise "Lỗi thanh toán ngoại tệ: Hóa đơn gốc không có tỷ giá ghi sổ hợp lệ (> 0)!";
+		EndIf;
+		
+		// Gia tri no goc AP duoc tat toan theo ty gia tren hoa don (VND)
+		SoTienGhiSoAP = Round(SoTienNgoaiTe * TyGiaHoaDon, 0);
+		
+		If MaTKTien = "1121" Then
+			// TRUONG HOP A: Thanh toan tu tai khoan VND (1121)
+			If SoTien > 0 Then
+				SoTienThucTra = SoTien;
+			ElsIf TyGia > 0 Then
+				SoTienThucTra = Round(SoTienNgoaiTe * TyGia, 0);
+			Else
+				Raise "Lỗi thanh toán: Thiếu số tiền VND thực trừ hoặc tỷ giá thanh toán hợp lệ!";
+			EndIf;
+			
+			ChenhLech = SoTienThucTra - SoTienGhiSoAP;
+			If ChenhLech <> 0 Then
+				CoChenhLechTyGia = True;
+			EndIf;
+		Else
+			// TRUONG HOP B: Thanh toan bang USD co san trong tai khoan 1122
+			TyGiaXuat1122 = 0;
+			If ThisObject.AdditionalProperties.Property("TyGiaXuatQuy1122") Then
+				TyGiaXuat1122 = Number(ThisObject.AdditionalProperties.TyGiaXuatQuy1122);
+			EndIf;
+			If TyGiaXuat1122 <= 0 And TyGia > 0 And TyGia <> TyGiaHoaDon Then
+				TyGiaXuat1122 = TyGia;
+			EndIf;
+			If TyGiaXuat1122 <= 0 Then
+				TyGiaXuat1122 = QuanLyTyGiaVaNgoaiTeServer.TinhTyGiaXuatQuyBQGQ(PhapNhan, TaiKhoanTien, TienTe, NgayHachToan);
+			EndIf;
+			If TyGiaXuat1122 <= 0 Then
+				TyGiaXuat1122 = TyGiaHoaDon;
+			EndIf;
+			
+			SoTienThucTra = Round(SoTienNgoaiTe * TyGiaXuat1122, 0);
+			ChenhLech = SoTienThucTra - SoTienGhiSoAP;
+			If ChenhLech <> 0 Then
+				CoChenhLechTyGia = True;
+			EndIf;
+		EndIf;
+	Else
+		// Thanh toan VND
+		If SoTien <= 0 Then
+			Raise "Số tiền lệnh chi VND phải lớn hơn 0!";
+		EndIf;
+		SoTienGhiSoAP = SoTien;
+		SoTienThucTra = SoTien;
+		ChenhLech = 0;
+		CoChenhLechTyGia = False;
+	EndIf;
+	
+	// Ghi giam no AP tren CongNoPhaiTra (Expense) theo gia tri ghi so hoa don
 	RegisterRecords.CongNoPhaiTra.Write = True;
 	RecordAP = RegisterRecords.CongNoPhaiTra.Add();
 	RecordAP.RecordType = AccumulationRecordType.Expense;
@@ -178,11 +314,11 @@ Procedure Posting(Cancel, Mode)
 	RecordAP.PhapNhan = PhapNhan;
 	RecordAP.DoiTac = DoiTac;
 	RecordAP.HopDong = HopDong;
-	RecordAP.ChungTuGoc = ChungTuGoc;
-	RecordAP.SoTien = SoTien;
+	RecordAP.ChungTuGoc = ?(ValueIsFilled(ChungTuGoc), ChungTuGoc, Ref);
+	RecordAP.SoTien = SoTienGhiSoAP;
 	RecordAP.SoTienNgoaiTe = SoTienNgoaiTe;
 	
-	// Ghi giam tien tren DongTien (Expense)
+	// Ghi giam tien tren DongTien (Expense) theo so tien thuc chi tu ngan hang
 	RegisterRecords.DongTien.Write = True;
 	RecordDT = RegisterRecords.DongTien.Add();
 	RecordDT.RecordType = AccumulationRecordType.Expense;
@@ -190,35 +326,92 @@ Procedure Posting(Cancel, Mode)
 	RecordDT.PhapNhan = PhapNhan;
 	RecordDT.TaiKhoanTien = TaiKhoanTien;
 	RecordDT.KhoanMucDongTien = KhoanMucDongTien;
-	RecordDT.TienTe = TienTe;
-	RecordDT.SoTien = SoTien;
-	RecordDT.SoTienNgoaiTe = SoTienNgoaiTe;
+	RecordDT.TienTe = ?(MaTKTien = "1122", TienTe, TienTeVND);
+	RecordDT.SoTien = SoTienThucTra;
+	RecordDT.SoTienNgoaiTe = ?(MaTKTien = "1122", SoTienNgoaiTe, 0);
 	
 	// Ghi So cai SoCaiKeToan
 	RegisterRecords.SoCaiKeToan.Write = True;
 	
-	// But toan 1: Thanh toan no AP (No 3311/3312 / Co 1121/1122)
-	Row1 = RegisterRecords.SoCaiKeToan.Add();
-	Row1.Period = NgayHachToan;
-	Row1.AccountDr = TKCongNo;
-	Row1.AccountCr = TKTien;
-	Row1.SoTien = SoTien;
-	Row1.DienGiai = StrTemplate("Thanh toán tiền cho NCC theo UNC %1", Number);
-	Row1.PhapNhan = PhapNhan;
-	Row1.TienTe = TienTe;
-	Row1.ChungTuGoc = ChungTuGoc;
-	Row1.TyGia = ?(TyGia > 0, TyGia, 1);
-	If SoTienNgoaiTe > 0 Then
+	If Not CoChenhLechTyGia Then
+		Row1 = RegisterRecords.SoCaiKeToan.Add();
+		Row1.Period = NgayHachToan;
+		Row1.AccountDr = TKCongNo;
+		Row1.AccountCr = TKTien;
+		Row1.SoTien = SoTienThucTra;
+		Row1.DienGiai = StrTemplate("Thanh toán tiền cho NCC theo UNC %1", Number);
+		Row1.PhapNhan = PhapNhan;
+		Row1.TienTe = TienTe;
+		Row1.ChungTuGoc = ChungTuGoc;
+		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
+		If SoTienNgoaiTe > 0 Then
+			Row1.SoTienNgoaiTe = SoTienNgoaiTe;
+		EndIf;
+	ElsIf ChenhLech > 0 Then
+		// LO TY GIA (Vi du: No goc 2.5m, thuc tra 2.6m, lo FX 0.1m)
+		// But toan 1: Giam no AP theo ty gia hoa don: No TK 331 / Co TKTien = SoTienGhiSoAP (2.5m)
+		Row1 = RegisterRecords.SoCaiKeToan.Add();
+		Row1.Period = NgayHachToan;
+		Row1.AccountDr = TKCongNo;
+		Row1.AccountCr = TKTien;
+		Row1.SoTien = SoTienGhiSoAP;
+		Row1.DienGiai = StrTemplate("Thanh toán nợ gốc NCC theo UNC %1 (tỷ giá gốc)", Number);
+		Row1.PhapNhan = PhapNhan;
+		Row1.TienTe = TienTe;
+		Row1.ChungTuGoc = ChungTuGoc;
+		Row1.TyGia = TyGiaHoaDon;
 		Row1.SoTienNgoaiTe = SoTienNgoaiTe;
+		
+		// But toan FX: Lo ty gia thuc hien: No TK 635 / Co TKTien = ChenhLech (0.1m)
+		// Tong Co TKTien = 2.5m + 0.1m = 2.6m (SoTienThucTra)
+		TK635 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("635");
+		RowFX = RegisterRecords.SoCaiKeToan.Add();
+		RowFX.Period = NgayHachToan;
+		RowFX.AccountDr = TK635;
+		RowFX.AccountCr = TKTien;
+		RowFX.SoTien = ChenhLech;
+		RowFX.DienGiai = StrTemplate("Lỗ tỷ giá thực hiện thanh toán UNC %1", Number);
+		RowFX.PhapNhan = PhapNhan;
+		RowFX.TienTe = TienTeVND;
+		RowFX.ChungTuGoc = Ref;
+		RowFX.TyGia = 1;
+	Else
+		// LAI TY GIA (Vi du: No goc 2.5m, tien xuat quy 2.48m, lai FX 0.02m)
+		// But toan 1: No TK 331 / Co TKTien = SoTienThucTra (2.48m)
+		Row1 = RegisterRecords.SoCaiKeToan.Add();
+		Row1.Period = NgayHachToan;
+		Row1.AccountDr = TKCongNo;
+		Row1.AccountCr = TKTien;
+		Row1.SoTien = SoTienThucTra;
+		Row1.DienGiai = StrTemplate("Thanh toán tiền cho NCC theo UNC %1", Number);
+		Row1.PhapNhan = PhapNhan;
+		Row1.TienTe = TienTe;
+		Row1.ChungTuGoc = ChungTuGoc;
+		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
+		Row1.SoTienNgoaiTe = SoTienNgoaiTe;
+		
+		// But toan FX: Lai ty gia thuc hien: No TK 331 / Co TK 515 = -ChenhLech (0.02m)
+		// Tong No TK 331 = 2.48m + 0.02m = 2.50m (bang dung gia tri no goc SoTienGhiSoAP)
+		TK515 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("515");
+		RowFX = RegisterRecords.SoCaiKeToan.Add();
+		RowFX.Period = NgayHachToan;
+		RowFX.AccountDr = TKCongNo;
+		RowFX.AccountCr = TK515;
+		RowFX.SoTien = -ChenhLech;
+		RowFX.DienGiai = StrTemplate("Lãi tỷ giá thực hiện thanh toán UNC %1", Number);
+		RowFX.PhapNhan = PhapNhan;
+		RowFX.TienTe = TienTeVND;
+		RowFX.ChungTuGoc = Ref;
+		RowFX.TyGia = 1;
 	EndIf;
 	
 	// But toan 2: Phi chuyen tien ngan hang (No 6427 / Co 1121) neu co
 	If PhiNganHang > 0 Then
-		TienTeVND = Catalogs.TienTe.FindByCode("VND");
+		TK1121 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
 		Row2 = RegisterRecords.SoCaiKeToan.Add();
 		Row2.Period = NgayHachToan;
 		Row2.AccountDr = TKPhiNganHang;
-		Row2.AccountCr = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
+		Row2.AccountCr = TK1121;
 		Row2.SoTien = PhiNganHang;
 		Row2.DienGiai = StrTemplate("Phí chuyển tiền ngân hàng UNC %1", Number);
 		Row2.PhapNhan = PhapNhan;
@@ -238,50 +431,12 @@ Procedure Posting(Cancel, Mode)
 		RecordFee.SoTienNgoaiTe = 0;
 	EndIf;
 	
-	// But toan 3: Chenh lech ty gia thuc hien khi thanh toan hoa don ngoai te (TT200 / TT99)
-	If SoTienNgoaiTe > 0 And ValueIsFilled(ChungTuGoc) Then
-		Try
-			TyGiaHoaDon = ChungTuGoc.TyGia;
-			If TyGiaHoaDon > 0 And TyGiaHoaDon <> TyGia Then
-				ChenhLech = Round(SoTienNgoaiTe * (TyGia - TyGiaHoaDon), 0);
-				TienTeVND = Catalogs.TienTe.FindByCode("VND");
-				If ChenhLech > 0 Then
-					// Lo ty gia: No TK 635 / Co TK TKTien
-					TK635 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("635");
-					RowFX = RegisterRecords.SoCaiKeToan.Add();
-					RowFX.Period = NgayHachToan;
-					RowFX.AccountDr = TK635;
-					RowFX.AccountCr = TKTien;
-					RowFX.SoTien = ChenhLech;
-					RowFX.DienGiai = StrTemplate("Lỗ tỷ giá thực hiện thanh toán UNC %1", Number);
-					RowFX.PhapNhan = PhapNhan;
-					RowFX.TienTe = TienTeVND;
-					RowFX.ChungTuGoc = Ref;
-					RowFX.TyGia = 1;
-				ElsIf ChenhLech < 0 Then
-					// Lai ty gia: No TK CongNo / Co TK 515
-					TK515 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("515");
-					RowFX = RegisterRecords.SoCaiKeToan.Add();
-					RowFX.Period = NgayHachToan;
-					RowFX.AccountDr = TKCongNo;
-					RowFX.AccountCr = TK515;
-					RowFX.SoTien = -ChenhLech;
-					RowFX.DienGiai = StrTemplate("Lãi tỷ giá thực hiện thanh toán UNC %1", Number);
-					RowFX.PhapNhan = PhapNhan;
-					RowFX.TienTe = TienTeVND;
-					RowFX.ChungTuGoc = Ref;
-					RowFX.TyGia = 1;
-				EndIf;
-			EndIf;
-		Except
-		EndTry;
-	EndIf;
-	
 	Try
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
 		Cancel = True;
 		WriteLogEvent("Posting.UyNhiemChi", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		Raise;
 	EndTry;
 EndProcedure
 

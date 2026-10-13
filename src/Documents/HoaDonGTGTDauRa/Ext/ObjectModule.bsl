@@ -9,14 +9,7 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
-	EndIf;
-	
-	// Kiem tra phan quyen SoD khi ghi so
-	If WriteMode = DocumentWriteMode.Posting Then
-		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
-	EndIf;
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	
 	// Tu dong tinh tien thue VAT neu chua co
 	If TienThueVAT = 0 And TienChuaThue > 0 And ThueSuatVAT > 0 Then
@@ -35,10 +28,6 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
-	// Xoa movement cu neu chuyen trang thai sang khong ghi so (Quy tac P2 / #std603)
-	RegisterRecords.CongNoPhaiThu.Write = True;
-	RegisterRecords.SoCaiKeToan.Write = True;
-	
 	// Kiem tra trang thai HDDT:
 	// - DaDieuChinh: Hoa don dieu chinh la chung tu phap ly dien tu, khong sinh but toan ke toan (Task 3.3 invariant)
 	// - DaHuy: Hoa don da huy khong phat sinh nghia vu ke toan
@@ -49,6 +38,14 @@ Procedure Posting(Cancel, Mode)
 	If TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaHuy Then
 		Return;
 	EndIf;
+
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThaiHDDT, UserName(), DocumentWriteMode.Posting);
+	
+	// Xoa movement cu neu chuyen trang thai sang khong ghi so (Quy tac P2 / #std603)
+	RegisterRecords.CongNoPhaiThu.Write = True;
+	RegisterRecords.SoCaiKeToan.Write = True;
 	
 	// Kiem tra du lieu bat buoc
 	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(BienBanNghiemThu) Then

@@ -29,14 +29,7 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
-	EndIf;
-	
-	// Kiem tra phan quyen SoD khi phe duyet hoac ghi so
-	If WriteMode = DocumentWriteMode.Posting Or TrangThai = "DaPheDuyet" Or TrangThai = "DaGhiSo" Then
-		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
-	EndIf;
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	
 	// Xac dinh ty gia ngoai te
 	If TyGia <= 0 Then
@@ -81,6 +74,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Kiem tra Maker-Checker va SoD khi ghi so (100% dua tren phien UserName() that)
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
+	
 	If TrangThai <> Enums.TrangThaiHoaDonAP.DaGhiSo Then
 		Cancel = True;
 		Msg = New UserMessage;

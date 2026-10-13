@@ -16,17 +16,7 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
-	EndIf;
-	
-	// Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
-	If WriteMode = DocumentWriteMode.Posting Or TrangThai = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo Or TrangThai = Enums.TrangThaiNghiemThuAR.DaGhiSo Then
-		If ValueIsFilled(NguoiTao) Or ValueIsFilled(NguoiDuyet) Then
-			PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiTao, NguoiDuyet);
-		EndIf;
-		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
-	EndIf;
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	
 	// Tu dong tinh toan TienVAT va TongGiaTri neu can thiet
 	If GiaTriNghiemThuChuaVAT > 0 Then
@@ -51,6 +41,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Bat buoc kiem tra Maker-Checker va SoD khi ghi so (100% dua tren phien UserName() that)
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiTao, NguoiDuyet, UserName());
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
+	
 	// 1. Kiem tra trang thai chung tu
 	TrangThaiDaGhiSo = Enums.TrangThaiNghiemThuAR.DaGhiSo;
 	TrangThaiDaDuyet = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo;
