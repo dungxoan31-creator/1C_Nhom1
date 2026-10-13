@@ -1,24 +1,41 @@
+# 1C Enterprise Databases & Runtime
 Infobase/
 Infobase_FullData/
+Infobase_TestClone/
 setupt/
-*.zip
+
+# Logs & Build artifacts
 *.log
+build/
+scratch/
+.superpowers/
+_to_delete/
+
+# Data dump packages (.dt whitelist)
 *.dt
 !VinSmart_Future_AR_AP_Full.dt
 !VinSmart_Future_AR_AP_Test.dt
+
+# Archive & Binary formats
+*.zip
 *.cab
 *.msi
 *.exe
-*.cfl
-scratch/
-.superpowers/
-build/
 
-# Temporary & backup files
+# 1C internal lock & temporary files
+*.cfl
+*.1cl
+*.lck
+
+# Office temporary & lock files
+~$*
+
+# Temporary & backup editor files
 *.tmp
 *.temp
 *.bak
 *.swp
+*.orig
 *~
 
 # OS & Editor artifacts
