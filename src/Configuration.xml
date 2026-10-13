@@ -196,6 +196,7 @@
 			<Document>BangKeDoiSoatKenhThanhToan</Document>
 			<Document>YeuCauHoanTienChiHo</Document>
 			<Document>CanTruCongNoNoiBo</Document>
+			<Document>DanhGiaLaiNgoaiTe</Document>
 			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
 			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
 			<DataProcessor>NapSoDuDauKy</DataProcessor>
