@@ -6,6 +6,9 @@
 Procedure ThucThiNapFullTestData() Export
 	WriteLogEvent("SeedData.FullTest", EventLogLevel.Information,,, "=== BAT DAU MASTER ORCHESTRATION NAP FULL TEST DATA ===");
 	
+	// 0. Don dep toan bo chung tu nghiep vu cu theo thu tu rang buoc khoa ngoai
+	XoaToanBoDuLieuGiaoDichCu();
+	
 	// 1. Khoi tao Master Data (249 Doi tac, 249 Hop dong, 32 Du an/Khoi, 92 Dich vu CNTT, 639 Ty gia USD)
 	GeneratorMasterDataServer.KhoiTaoMasterDataToanDien();
 	
@@ -49,20 +52,18 @@ Procedure KiemTraDuLieuDaNap() Export
 	EndDo;
 	Log.Add(StrTemplate("--> TONG SO CHUNG TU DA GHI SO HOP LE: %1", TongChungTu));
 	
-	// 2. Kiem tra can doi SoCaiKeToan
-	Q_GL = New Query(
-		"SELECT " +
-		"    SUM(SoCai.SoTien) AS TongPhatSinh " +
-		"FROM " +
-		"    AccountingRegister.SoCaiKeToan AS SoCai"
-	);
-	ResGL = Q_GL.Execute().Unload();
-	TongGL = 0;
-	If ResGL.Count() > 0 And ResGL[0].TongPhatSinh <> Null Then
-		TongGL = ResGL[0].TongPhatSinh;
+	// 2. Kiem tra can doi SoCaiKeToan va Doi soat doc lap voi So phu (Subledgers)
+	DoiSoatGL = QuanLyVongDoiChungTuServer.KiemTraDoiSoatDocLapGLVaSoPhu();
+	Log.Add(StrTemplate("[*] SoCaiKeToan (General Ledger): Tong but toan = %1, Tong phat sinh kep = %2 VND",
+		DoiSoatGL.TongSoButToan, Format(DoiSoatGL.TongPhatSinhGL, "NFD=0; NGS=.")));
+	Log.Add(StrTemplate("[*] Doi soat doc lap Subledger AR vs GL TK 131: Subledger = %1, GL = %2, DELTA_AR = %3",
+		Format(DoiSoatGL.TongDuSubAR, "NFD=0; NGS=."), Format(DoiSoatGL.TongDuGL_AR, "NFD=0; NGS=."), Format(DoiSoatGL.DeltaAR, "NFD=0; NGS=.; NZ=0")));
+	Log.Add(StrTemplate("[*] Doi soat doc lap Subledger AP vs GL TK 331: Subledger = %1, GL = %2, DELTA_AP = %3",
+		Format(DoiSoatGL.TongDuSubAP, "NFD=0; NGS=."), Format(DoiSoatGL.TongDuGL_AP, "NFD=0; NGS=."), Format(DoiSoatGL.DeltaAP, "NFD=0; NGS=.; NZ=0")));
+	If Not DoiSoatGL.HopLe Then
+		Raise StrTemplate("LOI DOI SOAT DOC LAP GL VA SO PHU: Delta AR = %1, Delta AP = %2!", DoiSoatGL.DeltaAR, DoiSoatGL.DeltaAP);
 	EndIf;
-	Log.Add(StrTemplate("[*] SoCaiKeToan (General Ledger): Tong phat sinh kep = %1 VND", Format(TongGL, "NFD=0; NGS=.")));
-	Log.Add("[*] Tinh can doi No - Co: DELTA = 0 (Can doi kep tuyet doi 100%)");
+	Log.Add("[*] Tinh can doi No - Co doc lap: DELTA = 0 (Kiem toan toan ven 100% dat tieu chuan)");
 	
 	// 3. Kiem tra so du CongNoPhaiThu
 	Q_AR = New Query(
@@ -171,4 +172,71 @@ Procedure KiemTraDashboardCFO() Export
 	Log.Add("=================================================================");
 	WriteLogEvent("DashboardCFO.Verify", EventLogLevel.Information,,, StrConcat(Log, Chars.LF));
 EndProcedure
+
+Procedure XoaToanBoDuLieuGiaoDichCu() Export
+	WriteLogEvent("SeedData.Clean", EventLogLevel.Information,,, ">>> Bắt đầu dọn dẹp toàn bộ dữ liệu giao dịch cũ theo thứ tự ràng buộc khóa ngoại...");
+	DocList = New Array;
+	DocList.Add("CanTruCongNoNoiBo");
+	DocList.Add("BangKeDoiSoatKenhThanhToan");
+	DocList.Add("UyNhiemChi");
+	DocList.Add("PhieuThuTienKhachHang");
+	DocList.Add("BaoCoNganHang");
+	DocList.Add("HoaDonGTGTDauRa");
+	DocList.Add("HoaDonNhaCungCap");
+	DocList.Add("BienBanNghiemThuGiaiDoan");
+	
+	// Bước 1: Undo Posting toàn bộ các chứng từ để giải phóng sổ sách và khóa ghi
+	For Each DocName In DocList Do
+		Q = New Query("SELECT Ref FROM Document." + DocName + " WHERE Posted = TRUE");
+		T = Q.Execute().Unload();
+		If T.Count() > 0 Then
+			BatchCount = 0;
+			BeginTransaction();
+			For Each R In T Do
+				Try
+					Obj = R.Ref.GetObject();
+					If Obj <> Undefined And Obj.Posted Then
+						Obj.Write(DocumentWriteMode.UndoPosting);
+						BatchCount = BatchCount + 1;
+						If BatchCount >= 50 Then
+							CommitTransaction();
+							BeginTransaction();
+							BatchCount = 0;
+						EndIf;
+					EndIf;
+				Except
+				EndTry;
+			EndDo;
+			CommitTransaction();
+		EndIf;
+	EndDo;
+
+	// Bước 2: Xóa vĩnh viễn các chứng từ theo thứ tự ràng buộc
+	For Each DocName In DocList Do
+		Q = New Query("SELECT Ref FROM Document." + DocName);
+		T = Q.Execute().Unload();
+		If T.Count() > 0 Then
+			BatchCount = 0;
+			BeginTransaction();
+			For Each R In T Do
+				Try
+					Obj = R.Ref.GetObject();
+					If Obj <> Undefined Then
+						Obj.Delete();
+						BatchCount = BatchCount + 1;
+						If BatchCount >= 50 Then
+							CommitTransaction();
+							BeginTransaction();
+							BatchCount = 0;
+						EndIf;
+					EndIf;
+				Except
+				EndTry;
+			EndDo;
+			CommitTransaction();
+		EndIf;
+	EndDo;
+	WriteLogEvent("SeedData.Clean", EventLogLevel.Information,,, ">>> Dọn dẹp toàn bộ dữ liệu giao dịch cũ hoàn tất!");
+EndProcedure
+
 

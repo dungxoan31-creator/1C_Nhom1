@@ -176,8 +176,14 @@ Procedure KhoiTaoChungTuAP() Export
 				DocDate = Date(CurYear, CurMonth, DayVal, HourVal, MinVal, 0);
 				
 				// 8.1. Tao Hoa don nha cung cap
-				DocHD = Documents.HoaDonNhaCungCap.CreateDocument();
-				DocHD.Number = "HD" + Format(DocDate, "DF=yyyyMM") + Right("0000" + String(InvIdx), 4);
+				DocNumHD = "HD" + Format(DocDate, "DF=yyyyMM") + Right("0000" + String(InvIdx), 4);
+				RefExistingHD = Documents.HoaDonNhaCungCap.FindByNumber(DocNumHD, DocDate);
+				If ValueIsFilled(RefExistingHD) Then
+					DocHD = RefExistingHD.GetObject();
+				Else
+					DocHD = Documents.HoaDonNhaCungCap.CreateDocument();
+					DocHD.Number = DocNumHD;
+				EndIf;
 				DocHD.Date = DocDate;
 				DocHD.NgayHoaDon = BegOfDay(DocDate);
 				DocHD.SoHoaDon = "INV-" + TrimAll(Partner.Code) + "-" + Format(DocDate, "DF=yyyyMM") + "-" + Right("000" + String(InvIdx), 3);
@@ -225,11 +231,38 @@ Procedure KhoiTaoChungTuAP() Export
 					DocBatchCount = 0;
 				EndIf;
 				
-				// 8.2. Tao Uy nhiem chi (50 tren 60 hoa don moi thang -> 21 thang x 50 = 1,050 UNC)
-				If InvIdx <= 50 Then
+				// 8.2. Tao Uy nhiem chi theo ty le tuoi no chuan doanh nghiep:
+				// Thang 1-16 (16 thang): 59/60 hoa don duoc chi tra (1 hoa don tranh chap/giu lai >90d)
+				// Thang 17 (05/2026): 58/60 hoa don duoc chi tra (2 hoa don >90d -> tong >90d = 18 hoa don)
+				// Thang 18 (06/2026): 56/60 hoa don duoc chi tra (4 hoa don qua han 61-90d)
+				// Thang 19 (07/2026): 52/60 hoa don duoc chi tra (8 hoa don qua han 31-60d)
+				// Thang 20 (08/2026): 48/60 hoa don duoc chi tra (12 hoa don qua han 1-30d)
+				// Thang 21 (09/2026): 30/60 hoa don duoc chi tra (30 hoa don trong han)
+				PaidAPCount = 59;
+				If MonthNum <= 16 Then
+					PaidAPCount = 59;
+				ElsIf MonthNum = 17 Then
+					PaidAPCount = 58;
+				ElsIf MonthNum = 18 Then
+					PaidAPCount = 56;
+				ElsIf MonthNum = 19 Then
+					PaidAPCount = 52;
+				ElsIf MonthNum = 20 Then
+					PaidAPCount = 48;
+				Else
+					PaidAPCount = 30;
+				EndIf;
+				
+				If InvIdx <= PaidAPCount Then
 					PayDate = DocHD.Date + 86400 * 10;
-					DocUNC = Documents.UyNhiemChi.CreateDocument();
-					DocUNC.Number = "UNC" + Format(DocDate, "DF=yyyyMM") + Right("0000" + String(InvIdx), 4);
+					DocNumUNC = "UNC" + Format(DocDate, "DF=yyyyMM") + Right("0000" + String(InvIdx), 4);
+					RefExistingUNC = Documents.UyNhiemChi.FindByNumber(DocNumUNC, PayDate);
+					If ValueIsFilled(RefExistingUNC) Then
+						DocUNC = RefExistingUNC.GetObject();
+					Else
+						DocUNC = Documents.UyNhiemChi.CreateDocument();
+						DocUNC.Number = DocNumUNC;
+					EndIf;
 					DocUNC.Date = PayDate;
 					DocUNC.NgayLap = PayDate;
 					DocUNC.NgayGhiSo = PayDate;

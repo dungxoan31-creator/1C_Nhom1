@@ -80,7 +80,7 @@ Function TinhBaoCaoTuoiNo(Val NgayChot = Undefined) Export
 		|	AR.ChungTuGoc AS ChungTuGoc,
 		|	SUM(AR.SoTienBalance) AS SoDuNo
 		|FROM
-		|	AccumulationRegister.CongNoPhaiThu.Balance AS AR
+		|	AccumulationRegister.CongNoPhaiThu.Balance(&NgayChot, ) AS AR
 		|GROUP BY
 		|	AR.DoiTac.Code,
 		|	AR.DoiTac.Description,
@@ -90,6 +90,7 @@ Function TinhBaoCaoTuoiNo(Val NgayChot = Undefined) Export
 		|	AR.ChungTuGoc
 		|HAVING
 		|	SUM(AR.SoTienBalance) > 0";
+	Q_AR.SetParameter("NgayChot", NgayChot);
 	T_AR = Q_AR.Execute().Unload();
 	
 	For Each Row In T_AR Do
@@ -160,7 +161,7 @@ Function TinhBaoCaoTuoiNo(Val NgayChot = Undefined) Export
 		|	AP.ChungTuGoc AS ChungTuGoc,
 		|	SUM(AP.SoTienBalance) AS SoDuNo
 		|FROM
-		|	AccumulationRegister.CongNoPhaiTra.Balance AS AP
+		|	AccumulationRegister.CongNoPhaiTra.Balance(&NgayChot, ) AS AP
 		|GROUP BY
 		|	AP.DoiTac.Code,
 		|	AP.DoiTac.Description,
@@ -170,6 +171,7 @@ Function TinhBaoCaoTuoiNo(Val NgayChot = Undefined) Export
 		|	AP.ChungTuGoc
 		|HAVING
 		|	SUM(AP.SoTienBalance) > 0";
+	Q_AP.SetParameter("NgayChot", NgayChot);
 	T_AP = Q_AP.Execute().Unload();
 	
 	For Each Row In T_AP Do

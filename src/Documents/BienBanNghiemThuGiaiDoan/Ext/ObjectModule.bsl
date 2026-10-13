@@ -20,6 +20,14 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
+	// Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
+	If WriteMode = DocumentWriteMode.Posting Or TrangThai = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo Or TrangThai = Enums.TrangThaiNghiemThuAR.DaGhiSo Then
+		If ValueIsFilled(NguoiTao) Or ValueIsFilled(NguoiDuyet) Then
+			PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiTao, NguoiDuyet);
+		EndIf;
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	EndIf;
+	
 	// Tu dong tinh toan TienVAT va TongGiaTri neu can thiet
 	If GiaTriNghiemThuChuaVAT > 0 Then
 		If TienVAT = 0 And TyLeVAT > 0 Then

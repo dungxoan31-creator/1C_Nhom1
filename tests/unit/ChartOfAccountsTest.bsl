@@ -39,7 +39,7 @@ Function RunAllTests() Export
 		TestLog.Add("[FAIL] Test 2: Invariant can doi SoCaiKeToan that bai - " + ErrorDescription());
 	EndTry;
 	
-	// Test 3: Maker-Checker chan nguoi tao tu ky duyet (ke ca Admin), cho phep SA_BankingIntegration bypass
+	// Test 3: Maker-Checker chan nguoi tao tu ky duyet (ke ca Admin)
 	Try
 		Test03_MakerCheckerChanNguoiTaoTuKyDuyet();
 		TestResults.Passed = TestResults.Passed + 1;
@@ -105,6 +105,19 @@ Procedure Test01_AnhXaMaLogicSangSoHieuTK() Export
 	Acc627 = QuanLyVongDoiChungTuServer.LayTaiKhoanTheoMaLogic("627");
 	AssertEquals("627", Acc627.Code, "So hieu tai khoan 627 phai la '627'");
 	
+	// Kiem tra cac tai khoan quan tri va ngoai te moi them
+	Acc3313 = QuanLyVongDoiChungTuServer.LayTaiKhoanTheoMaLogic("3313");
+	AssertEquals("3313", Acc3313.Code, "So hieu tai khoan 3313 phai la '3313'");
+	
+	Acc3318 = QuanLyVongDoiChungTuServer.LayTaiKhoanTheoMaLogic("3318");
+	AssertEquals("3318", Acc3318.Code, "So hieu tai khoan 3318 phai la '3318'");
+	
+	Acc3388 = QuanLyVongDoiChungTuServer.LayTaiKhoanTheoMaLogic("3388");
+	AssertEquals("3388", Acc3388.Code, "So hieu tai khoan 3388 phai la '3388'");
+	
+	Acc641 = QuanLyVongDoiChungTuServer.LayTaiKhoanTheoMaLogic("641");
+	AssertEquals("641", Acc641.Code, "So hieu tai khoan 641 phai la '641'");
+	
 	// 1d. Kiem tra MaLogic khong hop le -> phai nem loi
 	ErrorThrown = False;
 	Try
@@ -156,7 +169,7 @@ Procedure Test02_InvariantCanDoiTienTeSoCaiKeToan() Export
 		"Thong diep loi phai canh bao vi pham Invariant can doi tien te");
 EndProcedure
 
-// Test 3: Maker-Checker chan nguoi tao tu ky duyet (ke ca Admin), cho phep SA_BankingIntegration bypass
+// Test 3: Maker-Checker chan nguoi tao tu ky duyet (ke ca Admin)
 Procedure Test03_MakerCheckerChanNguoiTaoTuKyDuyet() Export
 	// Case 3a: Nguoi dung thuong NguyenVanA lap chung tu BienBanNghiemThu, co tinh tu phe duyet
 	DocMock1 = New Structure;
@@ -201,19 +214,6 @@ Procedure Test03_MakerCheckerChanNguoiTaoTuKyDuyet() Export
 	EndTry;
 	AssertTrue(ApprovedSuccess, "Nguoi duyet khac voi nguoi tao phai duoc phep thuc hien phe duyet");
 	
-	// Case 3d: Tai khoan he thong SA_BankingIntegration duoc bypass kiem tra nguoi dung
-	DocSystem = New Structure;
-	DocSystem.Insert("Author", "SA_BankingIntegration");
-	DocSystem.Insert("DocumentType", "BaoCoNganHang");
-	DocSystem.Insert("Number", "BC-WEBHOOK-01");
-	
-	BypassSuccess = True;
-	Try
-		QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(DocSystem, "DaGhiSo", "SA_BankingIntegration");
-	Except
-		BypassSuccess = False;
-	EndTry;
-	AssertTrue(BypassSuccess, "Tai khoan he thong SA_BankingIntegration phai duoc bypass de tu dong ghi so BaoCoNganHang");
 EndProcedure
 
 // Test 4: Maker-Checker cam tuyet doi nguoi tao ky lenh chi tien UyNhiemChi

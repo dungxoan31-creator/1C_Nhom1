@@ -36,11 +36,7 @@ EndFunction
 //
 Procedure KiemTraChuyenTrangThai(ChungTuRef, TrangThaiMoi, CurrentUser) Export
 	
-	// 1. Cho phep tai khoan he thong SA_BankingIntegration (tu dong ghi so BaoCoNganHang) bypass kiem tra nguoi dung
 	UserNameStr = TrimAll(String(CurrentUser));
-	If UserNameStr = "SA_BankingIntegration" Then
-		Return;
-	EndIf;
 	
 	// Xac dinh nguoi lap chung tu (Author)
 	AuthorVal = Undefined;
@@ -65,9 +61,9 @@ Procedure KiemTraChuyenTrangThai(ChungTuRef, TrangThaiMoi, CurrentUser) Export
 	
 	AuthorStr = TrimAll(String(AuthorVal));
 	
-	// Neu khong co thong tin nguoi tao (chua xac dinh duoc author), tiep tuc
+	// Bat buoc phai co thong tin nguoi tao khi phe duyet / ghi so
 	If Not ValueIsFilled(AuthorVal) Then
-		Return;
+		Raise "Vi phạm nguyên tắc Maker-Checker: Không thể phê duyệt/ghi sổ chứng từ khi thiếu thông tin Người lập (Author)!";
 	EndIf;
 	
 	// Xac dinh loai chung tu co phai la UyNhiemChi hay khong
@@ -167,12 +163,16 @@ Function BangAnhXaTaiKhoanMacDinh() Export
 	Map.Insert("4131", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "4131", "Chênh lệch tỷ giá hối đoái", "ActivePassive", "4131"));
 	Map.Insert("711", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "711", "Thu nhập khác", "Passive", "711"));
 	Map.Insert("1388", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "1388", "Phải thu khác / Tiền tạm giữ cổng thanh toán", "ActivePassive", "1388"));
+	Map.Insert("3313", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "3313", "Phải trả người bán nước ngoài Ngoại tệ USD", "ActivePassive", "3313"));
+	Map.Insert("3318", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "3318", "Phải trả người bán khác", "ActivePassive", "3318"));
+	Map.Insert("3388", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "3388", "Phải trả khác / Cấn trừ bắc cầu đa phương", "ActivePassive", "3388"));
+	Map.Insert("641", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "641", "Chi phí bán hàng", "Active", "641"));
 	Map.Insert("000", New Structure("Code,TenTaiKhoan,TinhChat,MaLogic", "000", "Tài khoản đối ứng số dư đầu kỳ", "ActivePassive", "000"));
 	Return Map;
 EndFunction
 
 // Kiem tra Invariant can doi tien te tren SoCaiKeToan
-// Invariant: Tong phat sinh No = Tong phat sinh Co (Delta Dr - Delta Cr = 0)
+// Invariant: Tai khoan hop le, So tien > 0, Tai khoan No <> Tai khoan Co
 Function KiemTraCanDoiSoCai(RecordSetOrArray) Export
 	TongNo = 0;
 	TongCo = 0;
@@ -180,41 +180,144 @@ Function KiemTraCanDoiSoCai(RecordSetOrArray) Export
 	For Each Line In RecordSetOrArray Do
 		If TypeOf(Line) = Type("Structure") Then
 			If Line.Property("AmountDr") And Line.Property("AmountCr") Then
+				If Line.AmountDr <= 0 Or Line.AmountCr <= 0 Then
+					Raise "Số tiền ghi sổ kế toán phải lớn hơn 0!";
+				EndIf;
 				TongNo = TongNo + Line.AmountDr;
 				TongCo = TongCo + Line.AmountCr;
-			ElsIf Line.Property("SoTienNo") And Line.Property("SoTienCo") Then
-				TongNo = TongNo + Line.SoTienNo;
-				TongCo = TongCo + Line.SoTienCo;
 			ElsIf Line.Property("AccountDr") And Line.Property("AccountCr") And Line.Property("SoTien") Then
+				If Not ValueIsFilled(Line.AccountDr) Or Not ValueIsFilled(Line.AccountCr) Then
+					Raise "Tài khoản Nợ hoặc Tài khoản Có bị rỗng!";
+				EndIf;
+				If Line.AccountDr = Line.AccountCr Then
+					Raise "Tài khoản Nợ không được trùng Tài khoản Có!";
+				EndIf;
+				If Line.SoTien <= 0 Then
+					Raise "Số tiền bút toán phải lớn hơn 0!";
+				EndIf;
 				TongNo = TongNo + Line.SoTien;
 				TongCo = TongCo + Line.SoTien;
-			ElsIf Line.Property("SoTien") Then
-				If Line.Property("LoaiPhatSinh") Then
-					If Line.LoaiPhatSinh = "No" Or Line.LoaiPhatSinh = "Dr" Then
-						TongNo = TongNo + Line.SoTien;
-					ElsIf Line.LoaiPhatSinh = "Co" Or Line.LoaiPhatSinh = "Cr" Then
-						TongCo = TongCo + Line.SoTien;
-					EndIf;
-				EndIf;
 			EndIf;
 		Else
-			// AccountingRegisterRecord (so cai correspondence Dr/Cr)
-			Try
-				TienLine = Line.SoTien;
-				TongNo = TongNo + TienLine;
-				TongCo = TongCo + TienLine;
-			Except
-			EndTry;
+			// AccountingRegisterRecord (SoCaiKeToan)
+			If Not ValueIsFilled(Line.AccountDr) Then
+				Raise StrTemplate("Bút toán thiếu Tài khoản Nợ tại ngày %1!", Line.Period);
+			EndIf;
+			If Not ValueIsFilled(Line.AccountCr) Then
+				Raise StrTemplate("Bút toán thiếu Tài khoản Có tại ngày %1!", Line.Period);
+			EndIf;
+			If Line.AccountDr = Line.AccountCr Then
+				Raise StrTemplate("Tài khoản Nợ trùng Tài khoản Có (%1) tại ngày %2!", Line.AccountDr, Line.Period);
+			EndIf;
+			If Line.SoTien <= 0 Then
+				Raise StrTemplate("Số tiền bút toán kế toán phải lớn hơn 0 (thực tế: %1)!", Line.SoTien);
+			EndIf;
+			TongNo = TongNo + Line.SoTien;
+			TongCo = TongCo + Line.SoTien;
 		EndIf;
 	EndDo;
-	
-	Variance = TongNo - TongCo;
-	If Variance <> 0 Then
-		Raise StrTemplate("Vi phạm Invariant cân đối tiền tệ Sổ cái: Tổng Nợ (%1) khác Tổng Có (%2), Chênh lệch: %3!", 
-			TongNo, TongCo, Variance);
-	EndIf;
 	
 	Return True;
 EndFunction
 
+// Kiem tra doi soat doc lap toan bo So Cai GL voi cac So phu (Subledgers AR/AP/Cash)
+// Khong phai tautology, thuc hien truy van truc tiep tren CSDL
+Function KiemTraDoiSoatDocLapGLVaSoPhu(Val ThoiDiem = Undefined) Export
+	ThoiDiemChuan = ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate());
+	
+	// 1. Kiem tra can doi tong phat sinh So Cai SoCaiKeToan
+	Q_GL = New Query;
+	Q_GL.Text = 
+		"SELECT
+		|	COUNT(*) AS TongSoButToan,
+		|	ISNULL(SUM(CASE WHEN SoCai.AccountDr IS NULL OR SoCai.AccountCr IS NULL THEN 1 ELSE 0 END), 0) AS SoDongThieuTK,
+		|	ISNULL(SUM(CASE WHEN SoCai.AccountDr = SoCai.AccountCr THEN 1 ELSE 0 END), 0) AS SoDongTrungTK,
+		|	ISNULL(SUM(CASE WHEN SoCai.SoTien <= 0 THEN 1 ELSE 0 END), 0) AS SoDongTienSai,
+		|	ISNULL(SUM(SoCai.SoTien), 0) AS TongPhatSinhGL
+		|FROM
+		|	AccountingRegister.SoCaiKeToan AS SoCai";
+	
+	ResGL = Q_GL.Execute().Unload();
+	If ResGL.Count() > 0 Then
+		If ResGL[0].SoDongThieuTK > 0 Then
+			Raise StrTemplate("Phát hiện %1 dòng Sổ Cái thiếu Tài khoản Nợ hoặc Có!", ResGL[0].SoDongThieuTK);
+		EndIf;
+		If ResGL[0].SoDongTrungTK > 0 Then
+			Raise StrTemplate("Phát hiện %1 dòng Sổ Cái có Tài khoản Nợ trùng Có!", ResGL[0].SoDongTrungTK);
+		EndIf;
+		If ResGL[0].SoDongTienSai > 0 Then
+			Raise StrTemplate("Phát hiện %1 dòng Sổ Cái có số tiền <= 0!", ResGL[0].SoDongTienSai);
+		EndIf;
+	EndIf;
+	
+	// 2. Kiem tra doi chieu so du Subledger CongNoPhaiThu voi GL TK 131
+	Q_SubAR = New Query;
+	Q_SubAR.Text = 
+		"SELECT
+		|	ISNULL(SUM(AR.SoTienBalance), 0) AS TongDuSubledgerAR
+		|FROM
+		|	AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, ) AS AR";
+	Q_SubAR.SetParameter("ThoiDiem", ThoiDiemChuan);
+	ResSubAR = Q_SubAR.Execute().Unload();
+	TongDuSubAR = ?(ResSubAR.Count() > 0, ResSubAR[0].TongDuSubledgerAR, 0);
+	
+	// GL Du No TK 131 (1311, 1312)
+	Q_GL_AR = New Query;
+	Q_GL_AR.Text = 
+		"SELECT
+		|	ISNULL(SUM(CASE WHEN GL.AccountDr.Code IN (""131"", ""1311"", ""1312"") THEN GL.SoTien ELSE 0 END), 0) -
+		|	ISNULL(SUM(CASE WHEN GL.AccountCr.Code IN (""131"", ""1311"", ""1312"") THEN GL.SoTien ELSE 0 END), 0) AS TongDuGL_AR
+		|FROM
+		|	AccountingRegister.SoCaiKeToan AS GL
+		|WHERE
+		|	GL.Period <= &ThoiDiem
+		|	AND (GL.AccountDr.Code IN (""131"", ""1311"", ""1312"") OR GL.AccountCr.Code IN (""131"", ""1311"", ""1312""))";
+	Q_GL_AR.SetParameter("ThoiDiem", ThoiDiemChuan);
+	ResGL_AR = Q_GL_AR.Execute().Unload();
+	TongDuGL_AR = ?(ResGL_AR.Count() > 0, ResGL_AR[0].TongDuGL_AR, 0);
+	
+	DeltaAR = Round(?(TongDuSubAR > TongDuGL_AR, TongDuSubAR - TongDuGL_AR, TongDuGL_AR - TongDuSubAR), 2);
+	
+	// 3. Kiem tra doi chieu so du Subledger CongNoPhaiTra voi GL TK 331
+	Q_SubAP = New Query;
+	Q_SubAP.Text = 
+		"SELECT
+		|	ISNULL(SUM(AP.SoTienBalance), 0) AS TongDuSubledgerAP
+		|FROM
+		|	AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, ) AS AP";
+	Q_SubAP.SetParameter("ThoiDiem", ThoiDiemChuan);
+	ResSubAP = Q_SubAP.Execute().Unload();
+	TongDuSubAP = ?(ResSubAP.Count() > 0, ResSubAP[0].TongDuSubledgerAP, 0);
+	
+	Q_GL_AP = New Query;
+	Q_GL_AP.Text = 
+		"SELECT
+		|	ISNULL(SUM(CASE WHEN GL.AccountCr.Code IN (""331"", ""3311"", ""3312"", ""3313"", ""3318"") THEN GL.SoTien ELSE 0 END), 0) -
+		|	ISNULL(SUM(CASE WHEN GL.AccountDr.Code IN (""331"", ""3311"", ""3312"", ""3313"", ""3318"") THEN GL.SoTien ELSE 0 END), 0) AS TongDuGL_AP
+		|FROM
+		|	AccountingRegister.SoCaiKeToan AS GL
+		|WHERE
+		|	GL.Period <= &ThoiDiem
+		|	AND (GL.AccountCr.Code IN (""331"", ""3311"", ""3312"", ""3313"", ""3318"") OR GL.AccountDr.Code IN (""331"", ""3311"", ""3312"", ""3313"", ""3318""))";
+	Q_GL_AP.SetParameter("ThoiDiem", ThoiDiemChuan);
+	ResGL_AP = Q_GL_AP.Execute().Unload();
+	TongDuGL_AP = ?(ResGL_AP.Count() > 0, ResGL_AP[0].TongDuGL_AP, 0);
+	
+	DeltaAP = Round(?(TongDuSubAP > TongDuGL_AP, TongDuSubAP - TongDuGL_AP, TongDuGL_AP - TongDuSubAP), 2);
+	
+	KQ = New Structure;
+	KQ.Insert("TongSoButToan", ?(ResGL.Count() > 0, ResGL[0].TongSoButToan, 0));
+	KQ.Insert("TongPhatSinhGL", ?(ResGL.Count() > 0, ResGL[0].TongPhatSinhGL, 0));
+	KQ.Insert("TongDuSubAR", TongDuSubAR);
+	KQ.Insert("TongDuGL_AR", TongDuGL_AR);
+	KQ.Insert("DeltaAR", DeltaAR);
+	KQ.Insert("TongDuSubAP", TongDuSubAP);
+	KQ.Insert("TongDuGL_AP", TongDuGL_AP);
+	KQ.Insert("DeltaAP", DeltaAP);
+	KQ.Insert("HopLe", (DeltaAR = 0 And DeltaAP = 0));
+	
+	Return KQ;
+EndFunction
+
 #EndRegion
+

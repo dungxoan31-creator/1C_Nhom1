@@ -8,46 +8,102 @@ Procedure OnStart()
 	Except
 	EndTry;
 	If LaunchParameter = "SeedFullTestData" Then
-		SeedFullTestDataServer.ThucThiNapFullTestData();
+		Try
+			SeedFullTestDataServer.ThucThiNapFullTestData();
+		Except
+			WriteLogEvent("SeedData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyFullTestData" Then
-		SeedFullTestDataServer.KiemTraDuLieuDaNap();
+		Try
+			SeedFullTestDataServer.KiemTraDuLieuDaNap();
+		Except
+			WriteLogEvent("VerifyData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "SeedCleanMasterData" Then
-		SeedDataCleanServer.ThucThiNapMasterData();
+		Try
+			SeedDataCleanServer.ThucThiNapMasterData();
+		Except
+			WriteLogEvent("MasterData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "SeedMasterData" Then
-		GeneratorMasterDataServer.KhoiTaoMasterDataToanDien();
+		Try
+			GeneratorMasterDataServer.KhoiTaoMasterDataToanDien();
+		Except
+			WriteLogEvent("MasterData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyMasterData" Then
-		GeneratorMasterDataServer.KiemTraMasterData();
+		Try
+			GeneratorMasterDataServer.KiemTraMasterData();
+		Except
+			WriteLogEvent("MasterData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "SeedARData" Then
-		GeneratorARServer.KhoiTaoChungTuAR();
+		Try
+			GeneratorARServer.KhoiTaoChungTuAR();
+		Except
+			WriteLogEvent("AR.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyARData" Then
-		GeneratorARServer.KiemTraChungTuAR();
+		Try
+			GeneratorARServer.KiemTraChungTuAR();
+		Except
+			WriteLogEvent("AR.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "SeedAPData" Then
-		GeneratorAPServer.KhoiTaoChungTuAP();
+		Try
+			GeneratorAPServer.KhoiTaoChungTuAP();
+		Except
+			WriteLogEvent("AP.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyAPData" Then
-		GeneratorAPServer.KiemTraChungTuAP();
+		Try
+			GeneratorAPServer.KiemTraChungTuAP();
+		Except
+			WriteLogEvent("AP.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "SeedNettingData" Then
-		GeneratorNettingReconcileServer.KhoiTaoChungTuNetting();
+		Try
+			GeneratorNettingReconcileServer.KhoiTaoChungTuNetting();
+		Except
+			WriteLogEvent("Netting.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "VerifyNettingData" Then
-		GeneratorNettingReconcileServer.KiemTraChungTuNetting();
+		Try
+			GeneratorNettingReconcileServer.KiemTraChungTuNetting();
+		Except
+			WriteLogEvent("Netting.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "SetupSampleUsers" Then
-		UserProvisioningServer.KhoiTaoDanhSachNguoiDung();
+		Try
+			UserProvisioningServer.KhoiTaoDanhSachNguoiDung();
+		Except
+			WriteLogEvent("UserProv.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "VerifySampleUsers" Then
-		UserProvisioningServer.KiemTraNguoiDungDaKhoiTao();
+		Try
+			UserProvisioningServer.KiemTraNguoiDungDaKhoiTao();
+		Except
+			WriteLogEvent("UserProv.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "RunSecurityTests" Then
-		PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien();
+		Try
+			PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien();
+		Except
+			WriteLogEvent("Security.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
 		Exit(False);
 	ElsIf LaunchParameter = "TestUserLogin" Then
 		Try
@@ -67,6 +123,17 @@ Procedure OnStart()
 			SeedFullTestDataServer.KiemTraDashboardCFO();
 		Except
 			WriteLogEvent("DashboardCFO.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
+	ElsIf LaunchParameter = "TestAccounts" Then
+		Try
+			Q = New Query("SELECT Code, Description, PredefinedDataName FROM ChartOfAccounts.HeThongTaiKhoan");
+			T = Q.Execute().Unload();
+			For Each R In T Do
+				WriteLogEvent("Account.List", EventLogLevel.Information,,, "Acc: " + R.Code + " - " + R.Description + " (Predef: " + R.PredefinedDataName + ")");
+			EndDo;
+		Except
+			WriteLogEvent("Account.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	EndIf;

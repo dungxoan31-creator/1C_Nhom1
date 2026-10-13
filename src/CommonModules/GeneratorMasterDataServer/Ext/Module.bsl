@@ -26,6 +26,9 @@ Procedure KhoiTaoMasterDataToanDien() Export
 		// 0. Don dep du lieu TEST cu neu co
 		XoaDuLieuTestCu();
 
+		// 0.1. Khoi tao cac tai khoan ke toan con thieu (3313, 3318, 3388, 641)
+		KhoiTaoCacTaiKhoanConThieu();
+
 		// 1. Khoi tao 28 Bo phan / Du an (4 Khoi kinh doanh + Khoi BO) trong Catalog.DuAn
 		KhoiTaoCacKhoiVaDuAn(RefPN_VSF);
 
@@ -393,6 +396,26 @@ Procedure TaoDoiTac(Code, Name, LaBenLienKet, LoaiDoiTac)
 		ObjDT.DaDangKyThueTrucTiep = False;
 		ObjDT.Write();
 	EndIf;
+EndProcedure
+
+Procedure KhoiTaoCacTaiKhoanConThieu() Export
+	DanhSachTK = New Array;
+	DanhSachTK.Add(New Structure("Code,Description,Type", "3313", "Phải trả người bán nước ngoài (Ngoại tệ USD)", AccountType.ActivePassive));
+	DanhSachTK.Add(New Structure("Code,Description,Type", "3318", "Phải trả người bán khác", AccountType.ActivePassive));
+	DanhSachTK.Add(New Structure("Code,Description,Type", "3388", "Phải trả khác (Cấn trừ bắc cầu)", AccountType.ActivePassive));
+	DanhSachTK.Add(New Structure("Code,Description,Type", "641", "Chi phí bán hàng", AccountType.Active));
+	
+	For Each Item In DanhSachTK Do
+		RefAcc = ChartsOfAccounts.HeThongTaiKhoan.FindByCode(Item.Code);
+		If Not ValueIsFilled(RefAcc) Then
+			ObjAcc = ChartsOfAccounts.HeThongTaiKhoan.CreateAccount();
+			ObjAcc.Code = Item.Code;
+			ObjAcc.Description = Item.Description;
+			ObjAcc.Type = Item.Type;
+			ObjAcc.Write();
+			WriteLogEvent("Account.Init", EventLogLevel.Information,,, "Đã khởi tạo tài khoản mới: " + Item.Code + " - " + Item.Description);
+		EndIf;
+	EndDo;
 EndProcedure
 
 #EndRegion

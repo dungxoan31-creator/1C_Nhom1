@@ -24,19 +24,24 @@ IB_PATH = os.path.join(ROOT_DIR, "Infobase_FullData")
 class TestExecutiveReports(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Dam bao file JSON ton tai hoac xuat moi bang 1C
-        if not os.path.exists(JSON_PATH):
-            print("[*] File JSON chua co san, thuc thi 1C Enterprise de xuat...")
-            assert os.path.exists(EXE_PATH), f"Khong tim thay 1C: {EXE_PATH}"
-            assert os.path.exists(IB_PATH), f"Khong tim thay Infobase: {IB_PATH}"
-            res = subprocess.run([
-                EXE_PATH, "ENTERPRISE",
-                "/F", IB_PATH,
-                "/N", "Admin",
-                "/C", "ExportExecutiveReports",
-                "/DisableStartupDialogs", "/DisableStartupMessages"
-            ], capture_output=True, timeout=90)
-            assert res.returncode == 0, f"1C export that bai voi code {res.returncode}"
+        # Luon xuat moi truc tiep tu Infobase_FullData de dam bao tinh xac thuc kiem toan doc lap
+        if os.path.exists(JSON_PATH):
+            try:
+                os.remove(JSON_PATH)
+            except:
+                pass
+        
+        print("[*] Khoi chay 1C Enterprise de trich xuat truc tiep 4 bao cao quan tri...")
+        assert os.path.exists(EXE_PATH), f"Khong tim thay 1C: {EXE_PATH}"
+        assert os.path.exists(IB_PATH), f"Khong tim thay Infobase: {IB_PATH}"
+        res = subprocess.run([
+            EXE_PATH, "ENTERPRISE",
+            "/F", IB_PATH,
+            "/N", "Admin",
+            "/C", "ExportExecutiveReports",
+            "/DisableStartupDialogs", "/DisableStartupMessages"
+        ], capture_output=True, timeout=90)
+        assert res.returncode == 0, f"1C export that bai voi code {res.returncode}"
 
         assert os.path.exists(JSON_PATH), f"Khong tim thay file JSON sau xuat: {JSON_PATH}"
         with open(JSON_PATH, "r", encoding="utf-8") as f:

@@ -2,7 +2,7 @@
 **Dự án:** Phân hệ Quản lý Công nợ Phải thu (AR) & Phải trả (AP) — VinSmart Future (VSF), Tập đoàn Vingroup  
 **Nền tảng:** 1C:Enterprise 8.3 (Platform Build 8.3.22.2243 / Managed Application / Taxi / BSL)  
 **Hệ quản trị CSDL:** PostgreSQL 15 / MS SQL Server 2022 Enterprise  
-**Kiến trúc:** Dual Subledger of Record (1C:Enterprise) tích hợp General Ledger of Record (SAP S/4HANA)  
+**Kiến trúc lịch sử, không còn áp dụng từ 12/10/2026:** Thiết kế 1C/SAP đã được thay bằng hệ thống kế toán tập trung duy nhất trong 1C. Xem [báo cáo kiểm toán](../../ERP_AUDIT_2026-10-12.md).
 **Ngày cập nhật:** 10/10/2026  
 **Trạng thái tài liệu:** Kiến Trúc Đã Kiểm Toán — Sẵn Sàng Triển Khai Sau Khi Rà Soát Nhóm Nghiệp Vụ Chờ Sign-off  
 

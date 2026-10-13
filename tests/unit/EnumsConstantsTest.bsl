@@ -1,7 +1,7 @@
 // Unit Test Suite: EnumsConstantsTest
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL / BUnit / Vanessa)
-// Muc tieu: Kiem thu doc du 8 Enums va 12 Constants he thong theo Spec v5.0 va Task 1.2 Brief.
+// Muc tieu: Kiem thu doc du 7 Enums va 11 Constants he thong theo Spec v5.0 va Task 1.2 Brief.
 
 #Region TestExecution
 
@@ -18,10 +18,10 @@ Function RunAllTests() Export
 	TestLog.Add("   Thoi gian chay: " + CurrentDate());
 	TestLog.Add("=================================================================");
 	
-	// Khoi tao gia tri mac dinh cho 12 Constants truoc khi chay cac test
+	// Khoi tao gia tri mac dinh cho 11 Constants truoc khi chay cac test
 	Try
 		KhoiTaoGiaTriMacDinhConstants();
-		TestLog.Add("[INIT] Khoi tao gia tri mac dinh cho 12 Constants thanh cong.");
+		TestLog.Add("[INIT] Khoi tao gia tri mac dinh cho 11 Constants thanh cong.");
 	Except
 		TestLog.Add("[INIT_WARN] Khoi tao gia tri Constants: " + ErrorDescription());
 	EndTry;
@@ -36,21 +36,21 @@ Function RunAllTests() Export
 		TestLog.Add("[FAIL] Test 1: Kiem tra 8 Enums that bai - " + ErrorDescription());
 	EndTry;
 	
-	// Test 2: Kiem tra doc du 12 Constants va khong tra ve gia tri rong / Null
+	// Test 2: Kiem tra doc du 11 Constants va khong tra ve gia tri rong / Null
 	Try
 		Test02_KiemTraDoc12ConstantsKhongRong();
 		TestResults.Passed = TestResults.Passed + 1;
-		TestLog.Add("[PASS] Test 2: Doc du 12 Constants thanh cong, khong co hang so nao bi Null hoac chua khoi tao.");
+		TestLog.Add("[PASS] Test 2: Doc du 11 Constants thanh cong, khong co hang so nao bi Null hoac chua khoi tao.");
 	Except
 		TestResults.Failed = TestResults.Failed + 1;
-		TestLog.Add("[FAIL] Test 2: Kiem tra doc 12 Constants that bai - " + ErrorDescription());
+		TestLog.Add("[FAIL] Test 2: Kiem tra doc 11 Constants that bai - " + ErrorDescription());
 	EndTry;
 	
-	// Test 3: Kiem tra gia tri mac dinh chuan xac cua 12 Constants
+	// Test 3: Kiem tra gia tri mac dinh chuan xac cua 11 Constants
 	Try
 		Test03_KiemTraGiaTriChinhXac12Constants();
 		TestResults.Passed = TestResults.Passed + 1;
-		TestLog.Add("[PASS] Test 3: Gia tri mac dinh 12 Constants khop 100% yeu cau Task 1.2 Brief.");
+		TestLog.Add("[PASS] Test 3: Gia tri mac dinh 11 Constants khop 100% yeu cau Task 1.2 Brief.");
 	Except
 		TestResults.Failed = TestResults.Failed + 1;
 		TestLog.Add("[FAIL] Test 3: Kiem tra gia tri mac dinh Constants that bai - " + ErrorDescription());
@@ -87,9 +87,6 @@ Procedure KhoiTaoGiaTriMacDinhConstants() Export
 	
 	// 3. TaiKhoanTrungGianCanTru = "1388"
 	Constants.TaiKhoanTrungGianCanTru.Set("1388");
-	
-	// 4. TuDongDongBoSAP = True
-	Constants.TuDongDongBoSAP.Set(True);
 	
 	// 5. NguongThanhToanKhongDungTienMat = 5,000,000 VND
 	Constants.NguongThanhToanKhongDungTienMat.Set(5000000);
@@ -178,14 +175,9 @@ Procedure Test01_KiemTra8Enums() Export
 	AssertTrue(ValueIsFilled(Enums.HuongDongTien.Thu), "HuongDongTien.Thu phai ton tai");
 	AssertTrue(ValueIsFilled(Enums.HuongDongTien.Chi), "HuongDongTien.Chi phai ton tai");
 	
-	// 8. Enum.TrangThaiDongBo (4 gia tri)
-	AssertTrue(ValueIsFilled(Enums.TrangThaiDongBo.ChuaDongBo), "TrangThaiDongBo.ChuaDongBo phai ton tai");
-	AssertTrue(ValueIsFilled(Enums.TrangThaiDongBo.ChoDongBo), "TrangThaiDongBo.ChoDongBo phai ton tai");
-	AssertTrue(ValueIsFilled(Enums.TrangThaiDongBo.ThanhCong), "TrangThaiDongBo.ThanhCong phai ton tai");
-	AssertTrue(ValueIsFilled(Enums.TrangThaiDongBo.LoiDongBo), "TrangThaiDongBo.LoiDongBo phai ton tai");
 EndProcedure
 
-// Test 2: Kiem tra doc du 12 Constants va khong tra ve gia tri rong / Null
+// Test 2: Kiem tra doc du 11 Constants va khong tra ve gia tri rong / Null
 Procedure Test02_KiemTraDoc12ConstantsKhongRong() Export
 	Val_PhapNhanMacDinh = Constants.PhapNhanMacDinh.Get();
 	AssertTrue(ValueIsFilled(Val_PhapNhanMacDinh), "Constant PhapNhanMacDinh khong duoc rong hoac Null");
@@ -195,9 +187,6 @@ Procedure Test02_KiemTraDoc12ConstantsKhongRong() Export
 	
 	Val_TaiKhoanTrungGianCanTru = Constants.TaiKhoanTrungGianCanTru.Get();
 	AssertTrue(ValueIsFilled(Val_TaiKhoanTrungGianCanTru), "Constant TaiKhoanTrungGianCanTru khong duoc rong");
-	
-	Val_TuDongDongBoSAP = Constants.TuDongDongBoSAP.Get();
-	AssertTrue(Val_TuDongDongBoSAP = True Or Val_TuDongDongBoSAP = False, "Constant TuDongDongBoSAP phai la Boolean hop le");
 	
 	Val_NguongThanhToanKhongDungTienMat = Constants.NguongThanhToanKhongDungTienMat.Get();
 	AssertTrue(Val_NguongThanhToanKhongDungTienMat > 0, "Constant NguongThanhToanKhongDungTienMat phai lon hon 0");
@@ -224,7 +213,7 @@ Procedure Test02_KiemTraDoc12ConstantsKhongRong() Export
 	AssertTrue(Val_CanhBaoCloudMucDo > 0, "Constant CanhBaoCloudMucDo phai lon hon 0");
 EndProcedure
 
-// Test 3: Kiem tra gia tri mac dinh chuan xac cua 12 Constants
+// Test 3: Kiem tra gia tri mac dinh chuan xac cua 11 Constants
 Procedure Test03_KiemTraGiaTriChinhXac12Constants() Export
 	AssertEquals(Constants.PhapNhanMacDinh.Get(), "VSF_CORP", 
 		"Constant PhapNhanMacDinh phai bang 'VSF_CORP'");
@@ -234,9 +223,6 @@ Procedure Test03_KiemTraGiaTriChinhXac12Constants() Export
 	
 	AssertEquals(Constants.TaiKhoanTrungGianCanTru.Get(), "1388", 
 		"Constant TaiKhoanTrungGianCanTru phai bang '1388'");
-	
-	AssertEquals(Constants.TuDongDongBoSAP.Get(), True, 
-		"Constant TuDongDongBoSAP phai bang True");
 	
 	AssertEquals(Constants.NguongThanhToanKhongDungTienMat.Get(), 5000000, 
 		"Constant NguongThanhToanKhongDungTienMat phai bang 5,000,000 VND");

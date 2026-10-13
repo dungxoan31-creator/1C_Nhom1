@@ -11,7 +11,9 @@
 Procedure KhoiTaoChungTuAR() Export
 	RefPN_VSF = LayPhapNhanVSF();
 	RefVND = LayTienTe("VND", "Việt Nam Đồng");
+	RefUSD = LayTienTe("USD", "Đô la Mỹ");
 	RefTK_TCB = LayTaiKhoanTienTCB(RefVND);
+	RefTK_VCB = LayTaiKhoanTienVCB(RefUSD);
 	RefKM_01 = LayKhoanMucDongTien();
 	
 	// Xoa du lieu AR cu neu co de dam bao tinh idempotent
@@ -25,28 +27,28 @@ Procedure KhoiTaoChungTuAR() Export
 		Raise "Thiếu Master Data đối tác TEST_VG hoặc TEST_KH!";
 	EndIf;
 	
-	// Cac muc gia nghiem thu dinh san theo yeu cau
+	// Cac muc gia nghiem thu dinh san can doi ty le ~74% Noi bo / ~26% Khach ngoai
 	BaseAmountsVG = New Array;
-	BaseAmountsVG.Add(250000000);
-	BaseAmountsVG.Add(450000000);
-	BaseAmountsVG.Add(700000000);
-	BaseAmountsVG.Add(1200000000);
-	BaseAmountsVG.Add(1800000000);
-	BaseAmountsVG.Add(2500000000);
-	BaseAmountsVG.Add(3200000000);
+	BaseAmountsVG.Add(350000000);
+	BaseAmountsVG.Add(600000000);
+	BaseAmountsVG.Add(950000000);
+	BaseAmountsVG.Add(1400000000);
+	BaseAmountsVG.Add(1850000000);
+	BaseAmountsVG.Add(2300000000);
+	BaseAmountsVG.Add(2800000000);
+	BaseAmountsVG.Add(3400000000);
 	BaseAmountsVG.Add(4100000000);
-	BaseAmountsVG.Add(4800000000);
 	
 	BaseAmountsKH = New Array;
-	BaseAmountsKH.Add(15000000);
-	BaseAmountsKH.Add(30000000);
-	BaseAmountsKH.Add(55000000);
-	BaseAmountsKH.Add(85000000);
-	BaseAmountsKH.Add(120000000);
-	BaseAmountsKH.Add(165000000);
-	BaseAmountsKH.Add(210000000);
-	BaseAmountsKH.Add(260000000);
-	BaseAmountsKH.Add(290000000);
+	BaseAmountsKH.Add(80000000);
+	BaseAmountsKH.Add(130000000);
+	BaseAmountsKH.Add(190000000);
+	BaseAmountsKH.Add(250000000);
+	BaseAmountsKH.Add(310000000);
+	BaseAmountsKH.Add(360000000);
+	BaseAmountsKH.Add(420000000);
+	BaseAmountsKH.Add(490000000);
+	BaseAmountsKH.Add(550000000);
 	
 	GlobalDocIndex = 0;
 	GlobalBCIndex = 0;
@@ -69,23 +71,31 @@ Procedure KhoiTaoChungTuAR() Export
 			EndIf;
 			YearSuffix = Right(Format(Y, "NG=0"), 2);
 			
-			// Phan bo ty le thanh toan theo tuoi no tai thoi diem 30/09/2026:
-			// Thang 1-14: 57 bo tra tien (3 bo qua han >90 ngay)
-			// Thang 15-17: 18 bo tra tien (42 bo qua han 61-90 ngay)
-			// Thang 18-19: 15 bo tra tien (45 bo qua han 31-60 ngay)
-			// Thang 20-21: 10 bo tra tien (50 bo qua han 1-30 ngay)
-			If MonthIdx <= 14 Then
-				PaidCountInMonth = 57;
+			// Phan bo ty le thanh toan theo tuoi no tai thoi diem 30/09/2026 chuan doanh nghiep:
+			// Thang 1-16 (16 thang): 59/60 bo tra tien (1 bo qua han >90 ngay/thang -> 16 bo)
+			// Thang 17 (05/2026): 58/60 bo tra tien (2 bo qua han >90 ngay -> tong >90d = 18 bo)
+			// Thang 18 (06/2026): 52/60 bo tra tien (8 bo qua han 61-90 ngay)
+			// Thang 19 (07/2026): 46/60 bo tra tien (14 bo qua han 31-60 ngay)
+			// Thang 20 (08/2026): 40/60 bo tra tien (20 bo qua han 1-30 ngay)
+			// Thang 21 (09/2026): 22/60 bo tra tien (38 bo trong han)
+			If MonthIdx <= 16 Then
+				PaidCountInMonth = 59;
 				PaidVGCount = 18;
-			ElsIf MonthIdx <= 17 Then
-				PaidCountInMonth = 18;
-				PaidVGCount = 10;
-			ElsIf MonthIdx <= 19 Then
-				PaidCountInMonth = 15;
-				PaidVGCount = 8;
+			ElsIf MonthIdx = 17 Then
+				PaidCountInMonth = 58;
+				PaidVGCount = 17; // 1 bo VG qua han >90d kich hoat CanhBaoCFOVaNetting
+			ElsIf MonthIdx = 18 Then
+				PaidCountInMonth = 52;
+				PaidVGCount = 17; // 1 bo VG qua han 61-90d kich hoat CanhBaoCFOVaNetting
+			ElsIf MonthIdx = 19 Then
+				PaidCountInMonth = 46;
+				PaidVGCount = 16; // 2 bo VG qua han 31-60d kich hoat DoiChieuNoiBo
+			ElsIf MonthIdx = 20 Then
+				PaidCountInMonth = 40;
+				PaidVGCount = 15; // 3 bo VG qua han 1-30d kich hoat DoiChieuNoiBo
 			Else
-				PaidCountInMonth = 10;
-				PaidVGCount = 5;
+				PaidCountInMonth = 22;
+				PaidVGCount = 8;  // 10 bo VG trong han
 			EndIf;
 			
 			// Moi thang sinh dung 60 bo chung tu (tong 21 thang = 1,260 bo)
@@ -118,9 +128,15 @@ Procedure KhoiTaoChungTuAR() Export
 				// -------------------------------------------------------------
 				// 1. BienBanNghiemThuGiaiDoan
 				// -------------------------------------------------------------
-				DocBB = Documents.BienBanNghiemThuGiaiDoan.CreateDocument();
+				DocNumBB = "BB-" + YearSuffix + "-" + DinhDangSo(GlobalDocIndex, 6);
+				RefExistingBB = Documents.BienBanNghiemThuGiaiDoan.FindByNumber(DocNumBB, DocDate);
+				If ValueIsFilled(RefExistingBB) Then
+					DocBB = RefExistingBB.GetObject();
+				Else
+					DocBB = Documents.BienBanNghiemThuGiaiDoan.CreateDocument();
+					DocBB.Number = DocNumBB;
+				EndIf;
 				DocBB.Date = DocDate;
-				DocBB.Number = "BB-" + YearSuffix + "-" + DinhDangSo(GlobalDocIndex, 6);
 				DocBB.PhapNhan = RefPN_VSF;
 				DocBB.DoiTac = PartnerInfo.DoiTac;
 				DocBB.HopDong = PartnerInfo.HopDong;
@@ -140,9 +156,15 @@ Procedure KhoiTaoChungTuAR() Export
 				// -------------------------------------------------------------
 				// 2. HoaDonGTGTDauRa
 				// -------------------------------------------------------------
-				DocHD = Documents.HoaDonGTGTDauRa.CreateDocument();
+				DocNumHD = "HD-" + YearSuffix + "-" + DinhDangSo(GlobalDocIndex, 6);
+				RefExistingHD = Documents.HoaDonGTGTDauRa.FindByNumber(DocNumHD, DocDate + 3600);
+				If ValueIsFilled(RefExistingHD) Then
+					DocHD = RefExistingHD.GetObject();
+				Else
+					DocHD = Documents.HoaDonGTGTDauRa.CreateDocument();
+					DocHD.Number = DocNumHD;
+				EndIf;
 				DocHD.Date = DocDate + 3600;
-				DocHD.Number = "HD-" + YearSuffix + "-" + DinhDangSo(GlobalDocIndex, 6);
 				DocHD.SoHoaDon = DinhDangSo(GlobalDocIndex, 7);
 				DocHD.KyHieu = "1C" + YearSuffix + "TVN";
 				DocHD.PhapNhan = RefPN_VSF;
@@ -171,9 +193,15 @@ Procedure KhoiTaoChungTuAR() Export
 							PayDate = Date(2026, 9, 30, 17, MinVal, 0);
 						EndIf;
 						
-						DocBC = Documents.BaoCoNganHang.CreateDocument();
+						DocNumBC = "BC-" + YearSuffix + "-" + DinhDangSo(GlobalBCIndex, 6);
+						RefExistingBC = Documents.BaoCoNganHang.FindByNumber(DocNumBC, PayDate);
+						If ValueIsFilled(RefExistingBC) Then
+							DocBC = RefExistingBC.GetObject();
+						Else
+							DocBC = Documents.BaoCoNganHang.CreateDocument();
+							DocBC.Number = DocNumBC;
+						EndIf;
 						DocBC.Date = PayDate;
-						DocBC.Number = "BC-" + YearSuffix + "-" + DinhDangSo(GlobalBCIndex, 6);
 						DocBC.PhapNhan = RefPN_VSF;
 						DocBC.TaiKhoanTien = RefTK_TCB;
 						DocBC.SoTien = TotalAmount;
@@ -194,21 +222,39 @@ Procedure KhoiTaoChungTuAR() Export
 							PayDate = Date(2026, 9, 30, 16, MinVal, 0);
 						EndIf;
 						
-						DocPT = Documents.PhieuThuTienKhachHang.CreateDocument();
+						DocNumPT = "PT-" + YearSuffix + "-" + DinhDangSo(GlobalPTIndex, 6);
+						RefExistingPT = Documents.PhieuThuTienKhachHang.FindByNumber(DocNumPT, PayDate);
+						If ValueIsFilled(RefExistingPT) Then
+							DocPT = RefExistingPT.GetObject();
+						Else
+							DocPT = Documents.PhieuThuTienKhachHang.CreateDocument();
+							DocPT.Number = DocNumPT;
+						EndIf;
 						DocPT.Date = PayDate;
-						DocPT.Number = "PT-" + YearSuffix + "-" + DinhDangSo(GlobalPTIndex, 6);
 						DocPT.PhapNhan = RefPN_VSF;
 						DocPT.DoiTac = PartnerInfo.DoiTac;
 						DocPT.HopDong = PartnerInfo.HopDong;
 						DocPT.ChungTuGoc = DocBB.Ref;
-						DocPT.TaiKhoanTien = RefTK_TCB;
-						DocPT.TienTe = RefVND;
 						DocPT.KhoanMucDongTien = RefKM_01;
-						DocPT.SoTien = TotalAmount;
-						DocPT.SoTienNgoaiTe = 0;
-						DocPT.TyGia = 1;
 						DocPT.NgayThu = BegOfDay(PayDate);
 						DocPT.DienGiai = "Thu tiền khách hàng theo BB nghiệm thu " + DocBB.Number;
+						
+						// Thu tien USD cho mot so hop dong cong nghe ngoai de dam bao thanh khoan Vietcombank USD luon duong
+						IsUSD_Collection = (Not IsVG And PartnerIndex < 12 And (GlobalPTIndex % 2 = 0));
+						If IsUSD_Collection Then
+							DocPT.TaiKhoanTien = RefTK_VCB;
+							DocPT.TienTe = RefUSD;
+							DocPT.TyGia = 25450;
+							DocPT.SoTien = TotalAmount;
+							DocPT.SoTienNgoaiTe = Round(TotalAmount / 25450, 2);
+						Else
+							DocPT.TaiKhoanTien = RefTK_TCB;
+							DocPT.TienTe = RefVND;
+							DocPT.TyGia = 1;
+							DocPT.SoTien = TotalAmount;
+							DocPT.SoTienNgoaiTe = 0;
+						EndIf;
+						
 						DocPT.Write(DocumentWriteMode.Posting);
 						BatchDocCount = BatchDocCount + 1;
 					EndIf;
@@ -324,6 +370,25 @@ Function LayTaiKhoanTienTCB(RefVND)
 		ObjTK.SoTaiKhoan = "1903889988001";
 		ObjTK.NganHang = "Techcombank - Hoi so chinh";
 		ObjTK.TienTe = RefVND;
+		ObjTK.Write();
+		RefTK = ObjTK.Ref;
+	EndIf;
+	Return RefTK;
+EndFunction
+
+// Lay hoac khoi tao TaiKhoanTien Vietcombank USD
+Function LayTaiKhoanTienVCB(RefUSD)
+	RefTK = Catalogs.TaiKhoanTien.FindByCode("TK-VCB-USD");
+	If Not ValueIsFilled(RefTK) Then
+		RefTK = Catalogs.TaiKhoanTien.FindByCode("VCB-USD");
+	EndIf;
+	If Not ValueIsFilled(RefTK) Then
+		ObjTK = Catalogs.TaiKhoanTien.CreateItem();
+		ObjTK.Code = "TK-VCB-USD";
+		ObjTK.Description = "Vietcombank USD - So Giao Dich";
+		ObjTK.SoTaiKhoan = "0011004455667";
+		ObjTK.NganHang = "Vietcombank - So Giao Dich";
+		ObjTK.TienTe = RefUSD;
 		ObjTK.Write();
 		RefTK = ObjTK.Ref;
 	EndIf;

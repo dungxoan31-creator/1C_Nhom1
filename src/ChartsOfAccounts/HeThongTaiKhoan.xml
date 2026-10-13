@@ -249,6 +249,38 @@
 					<Type>Passive</Type>
 					<OffBalance>false</OffBalance>
 				</Item>
+				<Item id="df990b3e-0cb8-4b8b-8739-c5dfb83dccd7">
+					<Name>TK3313</Name>
+					<Code>3313</Code>
+					<Description>Phải trả người bán nước ngoài (Ngoại tệ USD)</Description>
+					<Order>3313</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="157ac8ad-84dc-41dd-bcf1-82f0bfc83fb6">
+					<Name>TK3318</Name>
+					<Code>3318</Code>
+					<Description>Phải trả người bán khác</Description>
+					<Order>3318</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="832795d7-6784-4623-8d76-d74d39647482">
+					<Name>TK3388</Name>
+					<Code>3388</Code>
+					<Description>Phải trả khác (Cấn trừ bắc cầu đa phương)</Description>
+					<Order>3388</Order>
+					<Type>ActivePassive</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
+				<Item id="1440e991-91e3-4adb-9ed7-7cc8e7852052">
+					<Name>TK641</Name>
+					<Code>641</Code>
+					<Description>Chi phí bán hàng</Description>
+					<Order>641</Order>
+					<Type>Active</Type>
+					<OffBalance>false</OffBalance>
+				</Item>
 			</Predefined>
 		</Properties>
 		<ChildObjects>

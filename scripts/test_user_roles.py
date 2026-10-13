@@ -45,14 +45,19 @@ def test_1_user_provisioning_and_roles():
     print("\n--- TEST SUITE 1: XÁC THỰC KHỞI TẠO 8 NGƯỜI DÙNG & GÁN ROLE CHUẨN XÁC ---")
     verify_log_path = os.path.join(ROOT_DIR, "verify_sample_users.log")
     
-    # Neu chua co log hoac can lam moi, chay setup_sample_users.ps1
-    if not os.path.exists(verify_log_path):
-        print("[*] Đang chạy scripts/setup_sample_users.ps1 để khởi tạo người dùng...")
-        p = subprocess.run([
-            "powershell", "-ExecutionPolicy", "Bypass",
-            "-File", os.path.join(ROOT_DIR, "scripts", "setup_sample_users.ps1")
-        ], capture_output=True, text=True)
-        assert p.returncode == 0, f"Khởi tạo người dùng thất bại: {p.stderr}"
+    # Luon chay moi de kiem tra truc tiep tren Infobase, khong dung log cu
+    if os.path.exists(verify_log_path):
+        try:
+            os.remove(verify_log_path)
+        except:
+            pass
+            
+    print("[*] Đang chạy scripts/setup_sample_users.ps1 để kiểm tra và cập nhật người dùng...")
+    p = subprocess.run([
+        "powershell", "-ExecutionPolicy", "Bypass",
+        "-File", os.path.join(ROOT_DIR, "scripts", "setup_sample_users.ps1")
+    ], capture_output=True, text=True, encoding="utf-8", errors="ignore")
+    assert p.returncode == 0, f"Khởi tạo người dùng thất bại: {p.stderr}"
     
     assert os.path.exists(verify_log_path), f"Không tìm thấy {verify_log_path}"
     with open(verify_log_path, "r", encoding="utf-8") as f:
@@ -83,7 +88,7 @@ def test_2_authentication_and_logins():
             "powershell", "-ExecutionPolicy", "Bypass",
             "-File", login_script,
             "-User", name
-        ], capture_output=True, text=True, timeout=30)
+        ], capture_output=True, text=True, encoding="utf-8", errors="ignore", timeout=30)
         
         assert p.returncode == 0, f"Đăng nhập tài khoản '{name}' thất bại (ExitCode: {p.returncode})! Stderr: {p.stderr}"
         
@@ -106,7 +111,7 @@ def test_3_invalid_login_rejected():
         "powershell", "-ExecutionPolicy", "Bypass",
         "-File", login_script,
         "-User", fake_user
-    ], capture_output=True, text=True, timeout=20)
+    ], capture_output=True, text=True, encoding="utf-8", errors="ignore", timeout=20)
     
     # 1C tu choi voi ExitCode != 0 hoac bi huy
     assert p.returncode != 0, f"Hệ thống cho phép tài khoản không tồn tại '{fake_user}' đăng nhập!"
@@ -117,12 +122,17 @@ def test_4_maker_checker_invariant():
     print("\n--- TEST SUITE 4: KIỂM THỬ MAKER-CHECKER INVARIANT (NGƯỜI LẬP KHÔNG ĐƯỢC TỰ DUYỆT) ---")
     sec_log_path = os.path.join(ROOT_DIR, "security_test_results.log")
     
-    # Chay bo test engine 1C neu can
-    if not os.path.exists(sec_log_path):
-        subprocess.run([
-            "powershell", "-ExecutionPolicy", "Bypass",
-            "-File", os.path.join(ROOT_DIR, "scripts", "run_security_tests.ps1")
-        ], timeout=40)
+    # Luon chay moi test engine 1C de kiem tra live
+    if os.path.exists(sec_log_path):
+        try:
+            os.remove(sec_log_path)
+        except:
+            pass
+            
+    subprocess.run([
+        "powershell", "-ExecutionPolicy", "Bypass",
+        "-File", os.path.join(ROOT_DIR, "scripts", "run_security_tests.ps1")
+    ], timeout=60)
         
     assert os.path.exists(sec_log_path), f"Không tìm thấy file {sec_log_path}"
     with open(sec_log_path, "r", encoding="utf-8") as f:
@@ -186,7 +196,7 @@ def test_7_full_in_engine_security_verification():
     p = subprocess.run([
         "powershell", "-ExecutionPolicy", "Bypass",
         "-File", os.path.join(ROOT_DIR, "scripts", "run_security_tests.ps1")
-    ], capture_output=True, text=True, timeout=60)
+    ], capture_output=True, text=True, encoding="utf-8", errors="ignore", timeout=60)
     
     assert p.returncode == 0, f"Chạy run_security_tests.ps1 thất bại: {p.stderr}"
     

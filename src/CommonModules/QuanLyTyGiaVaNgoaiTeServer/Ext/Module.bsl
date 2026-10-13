@@ -167,7 +167,7 @@ Function LayTyGiaHachToanHieuLuc(Val TienTe, Val ThoiDiem) Export
 		EndIf;
 	EndIf;
 	
-	Return 1;
+	Raise "LỖI TỶ GIÁ: Không tìm thấy tỷ giá hạch toán hợp lệ cho ngoại tệ tại thời điểm " + String(ThoiDiemChuan);
 EndFunction
 
 // Dang ky hoac cap nhat so du mo phong (phuc vu Unit Test va giao dich trong phien chua commit)
@@ -185,22 +185,6 @@ EndProcedure
 Procedure XoaSoDuMoPhong() Export
 EndProcedure
 
-
-// [Hoan - Phase 2] Scheduled Job Procedure cap nhat ty gia tu API Vietcombank/Techcombank (Task 7.2)
-Procedure CapNhatTyGiaTuDong() Export
-	// Cap nhat ty gia USD
-	Try
-		TienTeUSD = Catalogs.TienTe.FindByCode("USD");
-		If ValueIsFilled(TienTeUSD) Then
-			Record = InformationRegisters.TyGiaHoiDoai.CreateRecordManager();
-			Record.Period = BegOfDay(CurrentSessionDate());
-			Record.TienTe = TienTeUSD;
-			Record.TyGiaHachToan = 25450;
-			Record.Write(True);
-		EndIf;
-	Except
-	EndTry;
-EndProcedure
 
 #EndRegion
 

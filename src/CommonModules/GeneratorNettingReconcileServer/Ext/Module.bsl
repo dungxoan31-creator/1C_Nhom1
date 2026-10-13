@@ -163,12 +163,19 @@ Procedure SinhChungTuCanTruCongNo(RefPN_VSF, DanhSachDoiTacVG, MapHopDong, MapDo
 			BeginTransaction();
 		EndIf;
 		
-		DocCT = Documents.CanTruCongNoNoiBo.CreateDocument();
-		DocCT.Number = "CT-TEST-" + Right("00000" + String(i), 5);
-		
+		DocNumCT = "CT-TEST-" + Right("00000" + String(i), 5);
 		// Phan bo ngay trong khoang 01/2025 - 09/2026 (~620 ngay)
 		NgayLech = ((i - 1) * 3 + (i % 5)) % 620;
 		DocDate = '20250105083000' + NgayLech * 86400;
+		RefExistingCT = Documents.CanTruCongNoNoiBo.FindByNumber(DocNumCT, DocDate);
+		If ValueIsFilled(RefExistingCT) Then
+			DocCT = RefExistingCT.GetObject();
+			DocCT.ChungTuAR.Clear();
+			DocCT.ChungTuAP.Clear();
+		Else
+			DocCT = Documents.CanTruCongNoNoiBo.CreateDocument();
+			DocCT.Number = DocNumCT;
+		EndIf;
 		DocCT.Date = DocDate;
 		
 		DocCT.PhapNhan = RefPN_VSF;
@@ -208,7 +215,7 @@ Procedure SinhChungTuCanTruCongNo(RefPN_VSF, DanhSachDoiTacVG, MapHopDong, MapDo
 			DocCT.LaCanTruBacCau = False;
 		EndIf;
 		
-		DocCT.TrangThai = "DaCanTru";
+		DocCT.TrangThai = "DaDuyet";
 		
 		// Maker-Checker: NguoiLap khac NguoiDuyet
 		DocCT.NguoiLap = "ChuyenVienNetting";
@@ -249,12 +256,18 @@ Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB
 			BeginTransaction();
 		EndIf;
 		
-		DocDS = Documents.BangKeDoiSoatKenhThanhToan.CreateDocument();
-		DocDS.Number = "DS-TEST-" + Right("00000" + String(j), 5);
-		
+		DocNumDS = "DS-TEST-" + Right("00000" + String(j), 5);
 		// Phan bo ngay trong khoang 01/2025 - 09/2026
 		NgayLech = ((j - 1) * 3 + (j % 7) + 1) % 620;
 		DocDate = '20250108150000' + NgayLech * 86400;
+		RefExistingDS = Documents.BangKeDoiSoatKenhThanhToan.FindByNumber(DocNumDS, DocDate);
+		If ValueIsFilled(RefExistingDS) Then
+			DocDS = RefExistingDS.GetObject();
+			DocDS.ChiTietDoiSoat.Clear();
+		Else
+			DocDS = Documents.BangKeDoiSoatKenhThanhToan.CreateDocument();
+			DocDS.Number = DocNumDS;
+		EndIf;
 		DocDS.Date = DocDate;
 		DocDS.NgayBatDau = BegOfDay(DocDate - 86400 * 7);
 		DocDS.NgayKetThuc = EndOfDay(DocDate);
@@ -286,10 +299,19 @@ Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB
 		
 		TongPhi = 0;
 		TongNhan = 0;
+		// Ty le phi theo hop dong tung kenh thanh toan (OnePay 2.2%, VPB VA 0.5%, VNPAY 1.5%)
+		MaKenh = ?(ValueIsFilled(DocDS.KenhThanhToan), TrimAll(DocDS.KenhThanhToan.Code), "");
+		If StrFind(MaKenh, "ONEPAY") > 0 Then
+			TyLePhi = 0.022; // OnePay 2.2% theo vi du HUONG_DAN_SU_DUNG_FILE_DT
+		ElsIf StrFind(MaKenh, "VPB") > 0 Or StrFind(MaKenh, "VA") > 0 Then
+			TyLePhi = 0.005; // Virtual Account dinh danh chuyen khoan 0.5%
+		Else
+			TyLePhi = 0.015; // VNPAY QR mac dinh 1.5%
+		EndIf;
 		
 		For k = 1 To 4 Do
 			TienDong = CacKhoanTien[k - 1];
-			PhiDong = Round(TienDong * 0.015, 2);
+			PhiDong = Round(TienDong * TyLePhi, 2);
 			NhanDong = TienDong - PhiDong;
 			
 			DongCT = DocDS.ChiTietGiaoDich.Add();

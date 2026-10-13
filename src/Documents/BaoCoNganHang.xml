@@ -35,7 +35,7 @@
 					<v8:content>Bank Credit Advice</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>Báo có biến động số dư tiền về qua webhook ngân hàng (Task 5.1)</Comment>
+			<Comment>Báo có ngân hàng nhập và kiểm tra trực tiếp trong 1C</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
 			<Numerator/>
 			<NumberType>String</NumberType>

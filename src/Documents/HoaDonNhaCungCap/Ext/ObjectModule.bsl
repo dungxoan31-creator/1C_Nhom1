@@ -33,9 +33,18 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
-	// Mac dinh ty gia
+	// Kiem tra phan quyen SoD khi phe duyet hoac ghi so
+	If WriteMode = DocumentWriteMode.Posting Or TrangThai = "DaPheDuyet" Or TrangThai = "DaGhiSo" Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	EndIf;
+	
+	// Xac dinh ty gia ngoai te
 	If TyGia <= 0 Then
-		TyGia = 1;
+		If ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) <> "VND" Then
+			TyGia = QuanLyTyGiaVaNgoaiTeServer.LayTyGiaHachToanHieuLuc(TienTe, Date);
+		Else
+			TyGia = 1;
+		EndIf;
 	EndIf;
 	
 	// Mac dinh ngay hoa don
@@ -124,8 +133,18 @@ Procedure Posting(Cancel, Mode)
 	
 	// 2. Xac dinh tai khoan ke toan
 	LaNoiBo = DoiTac.LaBenLienKet;
-	MaTKCongNo = ?(LaNoiBo, "3312", "3311");
+	LaNgoaiTe = (TongTienNgoaiTe > 0) Or (ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) <> "VND");
+	If LaNoiBo Then
+		MaTKCongNo = "3312";
+	ElsIf LaNgoaiTe Then
+		MaTKCongNo = "3313";
+	Else
+		MaTKCongNo = "3311";
+	EndIf;
 	TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode(MaTKCongNo);
+	If Not ValueIsFilled(TKCongNo) Then
+		TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3311");
+	EndIf;
 	
 	TKChiPhi = ?(ValueIsFilled(TaiKhoanChiPhi), TaiKhoanChiPhi, ChartsOfAccounts.HeThongTaiKhoan.FindByCode("627"));
 	TKThueVATDauVao = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1331");

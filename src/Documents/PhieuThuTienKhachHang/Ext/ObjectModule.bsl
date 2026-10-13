@@ -18,6 +18,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
+	// Kiem tra phan quyen SoD khi ghi so
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	EndIf;
+	
 	// Mac dinh NgayThu neu chua nhap
 	If Not ValueIsFilled(NgayThu) Then
 		NgayThu = BegOfDay(Date);

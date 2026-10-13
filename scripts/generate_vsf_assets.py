@@ -129,7 +129,7 @@ def make_icon_can_tru():
     draw.polygon([(76, 152), (116, 152), (108, 140), (84, 140)], fill=WHITE)
     return img.resize((48, 48), Image.Resampling.LANCZOS)
 
-# Icon 5: PhanHeSoCaiVaDongBo (General Ledger & SAP sync)
+# Icon 5: PhanHeSoCaiVaDongBo (General Ledger & CFO Dashboard)
 def make_icon_so_cai():
     img, draw = draw_base_badge()
     # Ledger book
@@ -161,7 +161,7 @@ icons = {
     'PhanHePhaiTra': (make_icon_phai_tra(), '2. Phải trả (AP)', 'Accounts Payable (AP)'),
     'PhanHeNganHangVaQuy': (make_icon_ngan_hang(), '3. Ngân hàng & Quỹ', 'Banking & Treasury'),
     'PhanHeCanTruNetting': (make_icon_can_tru(), '4. Cấn trừ nợ (Netting)', 'Intercompany Netting'),
-    'PhanHeSoCaiVaDongBo': (make_icon_so_cai(), '5. Sổ cái & Đồng bộ SAP', 'General Ledger & SAP Sync'),
+    'PhanHeSoCaiVaDongBo': (make_icon_so_cai(), '5. Sổ cái & Bàn làm việc CFO', 'General Ledger & CFO Dashboard'),
     'PhanHeDanhMuc': (make_icon_danh_muc(), '6. Danh mục hệ thống', 'Master Data Catalogs')
 }
 

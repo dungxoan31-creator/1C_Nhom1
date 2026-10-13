@@ -1,5 +1,7 @@
 # BÁO CÁO NGHIỆM THU: BÀN LÀM VIỆC LÃNH ĐẠO (EXECUTIVE DASHBOARD CFO) & TÍCH HỢP SAP ERP
 
+> **Lưu trữ, không còn là kiến trúc hiện hành (12/10/2026).** Các mô-đun đồng bộ SAP trong báo cáo này đã bị gỡ. Không dùng kết quả PASS lịch sử để xác nhận cấu hình hoặc file `.dt` hiện tại. Xem [báo cáo kiểm toán](../../ERP_AUDIT_2026-10-12.md).
+
 > **Dự án**: Hệ Thống Quản Trị Tài Chính & Kế Toán VinSmart Future (VSF)  
 > **Nền tảng**: 1C:Enterprise 8.3 (BSL / Metadata Version 2.15)  
 > **Cơ sở dữ liệu áp dụng**: `Infobase_FullData` (Chứa 6,061 chứng từ thực tế 2025 - 2026)  

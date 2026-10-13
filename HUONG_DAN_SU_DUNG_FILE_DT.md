@@ -7,19 +7,21 @@ Tài liệu này hướng dẫn chi tiết cách nạp file sao lưu dữ liệu
 
 ### 1. THÔNG TIN GÓI DỮ LIỆU ĐÓNG GÓI (.DT)
 
-- **File đóng gói chính:** [VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)
-- **File sao lưu phụ:** [VinSmart_Future_AR_AP_Test.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Test.dt)
-- **Dung lượng:** ~243 KB (đã tinh gọn, loại bỏ module test khỏi cấu hình production, chứa 43 chứng từ đã ghi sổ)
+- **File đóng gói dữ liệu lớn chính:** [VinSmart_Future_AR_AP_Test_FULLDATA.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Test_FULLDATA.dt)
+- **File sao lưu phát hành đầy đủ:** [VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)
+- **Dung lượng:** ~1.18 MB (đã đóng gói từ Infobase_FullData, chứa đầy đủ 6.473 chứng từ đã ghi sổ của 21 tháng nghiệp vụ từ 01/01/2025 đến 30/09/2026)
 - **Nền tảng mục tiêu:** 1C:Enterprise 8.3 (Platform 8.3.22 trở lên)
 - **Giao diện người dùng:** Taxi (Managed Application)
 - **Tài khoản đăng nhập quản trị:**
   - **Tên đăng nhập (User):** `Admin`
   - **Mật khẩu (Password):** *(để trống)*
   - **Vai trò:** Toàn quyền Quản trị hệ thống (`QuanTriHeThong`)
-- **Kiến trúc phân định phạm vi (Scoped Architecture):**
-  - **1C:Enterprise (Hệ thống Subledger chuyên sâu):** Quản lý chi tiết từng biên bản nghiệm thu, hóa đơn đầu ra, thu tiền, hóa đơn AP (khấu trừ FCT), cấn trừ nội bộ Tập đoàn, sổ cái kế toán kép đối ứng ($\Delta = 0$).
-  - **Tích hợp SAP & Webhook [Hoãn - Phase 2]:** ScheduledJob `DongBoSAPHangNgay` đã tắt mặc định; 1C đối chiếu sổ sách định kỳ với SAP.
-  - **Mã kiểm thử:** Tách biệt độc lập tại thư mục `tests/unit/`, không gây phình to cấu hình sản xuất.
+- **Tài khoản người dùng nghiệp vụ mẫu (Mật khẩu: `123`):**
+  - `ketoan_ar` (Role: `KeToanPhaiThu`), `ketoan_ap` (Role: `KeToanPhaiTra`), `chuyenvien_doisoat` (Role: `ChuyenVienDoiSoatTapDoan`), `cfo_giamdoc` (Role: `GiamDocTaiChinh_CFO`), `ketoan_truong` (Role: `KeToanTruong`), `pm_duan` (Role: `ProjectManager_QuanLyDuAn`), `techlead_kythuat` (Role: `TechLead_KiemTraKyThuat`), `it_director` (Role: `ITDirector_GiamDocHaTang`).
+- **Kiến trúc tập trung duy nhất (Standalone 1C):**
+  - Hệ thống 1C độc lập, hoàn toàn không còn bất kỳ đầu nối tích hợp SAP hay webhook bên ngoài nào.
+  - Sổ Cái kép đối ứng đạt cân đối tuyệt đối 100%: $\Delta = 0$, $\Delta_{AR} = 0$, $\Delta_{AP} = 0$.
+  - Danh mục tài khoản kế toán mở rộng đầy đủ theo chuẩn VAS: 1311, 1312, 3311, 3312, 3313, 3318, 3388, 641, 1121, 1122, 627, 5113, 515, 635, 4131.
 
 ---
 
@@ -113,8 +115,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\import_dt.ps1 -InputPath ".\V
 
 Sau khi mở giao diện Taxi, người dùng có thể kiểm thử ngay lập tức các tính năng cốt lõi:
 
-1. **Kiểm tra Menu Phân hệ:** Quan sát thanh menu dọc bên trái gồm đủ 6 phân hệ (Phải thu AR, Phải trả AP, Ngân hàng & Quỹ, Bù trừ Netting, Sổ cái & SAP, Danh mục nền tảng).
-2. **Xem Sổ cái GL:** Vào phân hệ **Sổ cái & Đồng bộ SAP** -> mở **Sổ cái kế toán**, kiểm tra các dòng định khoản đối ứng (Nợ 131 / Có 511, Nợ 627 / Có 331, Nợ 112 / Có 131, v.v.).
+1. **Kiểm tra Menu Phân hệ:** Quan sát thanh menu dọc bên trái gồm đủ 6 phân hệ (Phải thu AR, Phải trả AP, Ngân hàng & Quỹ, Bù trừ Netting, Sổ cái & Bàn làm việc CFO, Danh mục nền tảng).
+2. **Xem Sổ cái GL:** Vào phân hệ **Sổ cái & Bàn làm việc CFO** -> mở **Sổ cái kế toán**, kiểm tra các dòng định khoản đối ứng (Nợ 131 / Có 511, Nợ 627 / Có 331, Nợ 112 / Có 131, v.v.).
 3. **Mở Báo cáo tuổi nợ AR:** Vào phân hệ **Phải thu** -> mở **Báo cáo tuổi nợ AR phân tách nội bộ & ngoài**, bấm **Tạo báo cáo (Generate)** để thấy 4 cột phân tầng tuổi nợ (>90 ngày, 61-90 ngày, 31-60 ngày, trong hạn) phân nhóm chi tiết theo từng đối tác Vingroup, VinFast, FPT, Viettel.
 4. **Mở Báo cáo đối soát kênh thanh toán:** Vào phân hệ **Ngân hàng & Quỹ** -> mở **Báo cáo đối soát kênh thanh toán & VA** để xem bảng kê đối soát VNPAY và OnePay với phí cổng tự động trích lọc.
 5. **Mở Báo cáo ma trận cấn trừ nội bộ:** Vào phân hệ **Bù trừ & Netting** -> mở **Báo cáo ma trận cấn trừ nội bộ Tập đoàn** để theo dõi số tiền 40 triệu và 100 triệu đã được cấn trừ giữa VSF, Vingroup và VinFast.

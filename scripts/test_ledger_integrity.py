@@ -51,8 +51,14 @@ def test_ledger_integrity():
     
     print(f"[*] Tổng số chứng từ kế toán ghi sổ đã kiểm tra: {total_docs}")
     assert total_docs >= 5000, f"Tổng số chứng từ chưa đạt chỉ tiêu (Yêu cầu >= 5000, thực tế: {total_docs})"
+    
+    # Kiem tra doi soat doc lap GL va Subledger AR / AP
+    assert "DELTA_AR = 0" in log_content, "Phát hiện chênh lệch đối soát độc lập GL TK 131 và Subledger AR (DELTA_AR != 0)!"
+    assert "DELTA_AP = 0" in log_content, "Phát hiện chênh lệch đối soát độc lập GL TK 331 và Subledger AP (DELTA_AP != 0)!"
     assert "DELTA = 0" in log_content, "Sổ cái kế toán không cân đối (DELTA != 0)!"
     
+    print("[*] Đối soát độc lập Sổ Cái (GL TK 131) với Sổ chi tiết Phải thu AR: DELTA_AR = 0 (Khớp 100%)")
+    print("[*] Đối soát độc lập Sổ Cái (GL TK 331) với Sổ chi tiết Phải trả AP: DELTA_AP = 0 (Khớp 100%)")
     print(f"PASS: Toàn bộ hệ thống kế toán 1C cân đối tuyệt đối 100%! Tổng số chứng từ: {total_docs} (>= 5,000)")
 
 if __name__ == "__main__":

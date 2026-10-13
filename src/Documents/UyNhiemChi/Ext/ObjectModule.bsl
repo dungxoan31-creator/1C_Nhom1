@@ -19,15 +19,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
-	// 1. Kiem tra Maker-Checker chan nguoi lap tu duyet
-	If ValueIsFilled(NguoiLap) And ValueIsFilled(NguoiDuyet) And NguoiLap = NguoiDuyet Then
-		Cancel = True;
-		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'CẤM TUYỆT ĐỐI: Người lập lệnh chi tiền không được phép tham gia phê duyệt!'; en = 'Maker-Checker violation: Submitter cannot approve their own payment order!'");
-		Msg.SetData(ThisObject);
-		Msg.Field = "NguoiDuyet";
-		Msg.Message();
-		Return;
+	// 1. Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
+	If WriteMode = DocumentWriteMode.Posting Or TrangThai = Enums.TrangThaiLenhThanhToan.DaPheDuyet Or TrangThai = Enums.TrangThaiLenhThanhToan.DaGhiSo Then
+		PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet);
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
 	EndIf;
 	
 	// 2. Mac dinh ngay lap va ty gia
@@ -35,11 +30,19 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		NgayLap = BegOfDay(Date);
 	EndIf;
 	If TyGia <= 0 Then
-		TyGia = 1;
+		If ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) <> "VND" Then
+			TyGia = QuanLyTyGiaVaNgoaiTeServer.LayTyGiaHachToanHieuLuc(TienTe, Date);
+		Else
+			TyGia = 1;
+		EndIf;
 	EndIf;
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Xac thuc bao mat Maker-Checker & SoD truoc khi ghi so
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet);
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	
 	// 1. Kiem tra P0.2 Invariant State Machine:
 	// Xoa movement cu neu trang thai khong con la DaGhiSo (Quy tac P2 / #std603)
 	RegisterRecords.CongNoPhaiTra.Write = True;
@@ -95,8 +98,18 @@ Procedure Posting(Cancel, Mode)
 	
 	// 3. Xac dinh tai khoan ke toan
 	LaNoiBo = DoiTac.LaBenLienKet;
-	MaTKCongNo = ?(LaNoiBo, "3312", "3311");
+	LaNgoaiTe = (SoTienNgoaiTe > 0) Or (ValueIsFilled(TienTe) And TrimAll(Upper(String(TienTe.Code))) <> "VND");
+	If LaNoiBo Then
+		MaTKCongNo = "3312";
+	ElsIf LaNgoaiTe Then
+		MaTKCongNo = "3313";
+	Else
+		MaTKCongNo = "3311";
+	EndIf;
 	TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode(MaTKCongNo);
+	If Not ValueIsFilled(TKCongNo) Then
+		TKCongNo = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3311");
+	EndIf;
 	
 	LaNgoaiTe = (SoTienNgoaiTe > 0);
 	MaTKTien = ?(LaNgoaiTe, "1122", "1121");
@@ -223,6 +236,45 @@ Procedure Posting(Cancel, Mode)
 		RecordFee.TienTe = TienTeVND;
 		RecordFee.SoTien = PhiNganHang;
 		RecordFee.SoTienNgoaiTe = 0;
+	EndIf;
+	
+	// But toan 3: Chenh lech ty gia thuc hien khi thanh toan hoa don ngoai te (TT200 / TT99)
+	If SoTienNgoaiTe > 0 And ValueIsFilled(ChungTuGoc) Then
+		Try
+			TyGiaHoaDon = ChungTuGoc.TyGia;
+			If TyGiaHoaDon > 0 And TyGiaHoaDon <> TyGia Then
+				ChenhLech = Round(SoTienNgoaiTe * (TyGia - TyGiaHoaDon), 0);
+				TienTeVND = Catalogs.TienTe.FindByCode("VND");
+				If ChenhLech > 0 Then
+					// Lo ty gia: No TK 635 / Co TK TKTien
+					TK635 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("635");
+					RowFX = RegisterRecords.SoCaiKeToan.Add();
+					RowFX.Period = NgayHachToan;
+					RowFX.AccountDr = TK635;
+					RowFX.AccountCr = TKTien;
+					RowFX.SoTien = ChenhLech;
+					RowFX.DienGiai = StrTemplate("Lỗ tỷ giá thực hiện thanh toán UNC %1", Number);
+					RowFX.PhapNhan = PhapNhan;
+					RowFX.TienTe = TienTeVND;
+					RowFX.ChungTuGoc = Ref;
+					RowFX.TyGia = 1;
+				ElsIf ChenhLech < 0 Then
+					// Lai ty gia: No TK CongNo / Co TK 515
+					TK515 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("515");
+					RowFX = RegisterRecords.SoCaiKeToan.Add();
+					RowFX.Period = NgayHachToan;
+					RowFX.AccountDr = TKCongNo;
+					RowFX.AccountCr = TK515;
+					RowFX.SoTien = -ChenhLech;
+					RowFX.DienGiai = StrTemplate("Lãi tỷ giá thực hiện thanh toán UNC %1", Number);
+					RowFX.PhapNhan = PhapNhan;
+					RowFX.TienTe = TienTeVND;
+					RowFX.ChungTuGoc = Ref;
+					RowFX.TyGia = 1;
+				EndIf;
+			EndIf;
+		Except
+		EndTry;
 	EndIf;
 	
 	Try

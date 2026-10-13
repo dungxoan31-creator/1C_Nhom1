@@ -8,8 +8,11 @@
 
 // Kiem tra Invariant Maker-Checker: Nguoi lap khong duoc phep tu duyet
 Procedure KiemTraMakerChecker(Val NguoiLap, Val NguoiDuyet) Export
+	If Not ValueIsFilled(NguoiLap) Then
+		Raise "Vi phạm nguyên tắc Maker-Checker: Thiếu thông tin Người lập/tạo chứng từ!";
+	EndIf;
 	If Not ValueIsFilled(NguoiDuyet) Then
-		Raise "Chưa xác định người dùng thực hiện phê duyệt!";
+		Raise "Vi phạm nguyên tắc Maker-Checker: Chưa xác định người dùng thực hiện phê duyệt!";
 	EndIf;
 	
 	StrLap = TrimAll(String(NguoiLap));

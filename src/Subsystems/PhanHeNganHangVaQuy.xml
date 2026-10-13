@@ -28,7 +28,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DongCoDoiSoatTuDong</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.DongTien</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.GiaoDichDienTuTamGiu</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.LichSuGiaoDichNganHang</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Report.DoiSoatKenhThanhToanVaDongTienAo</xr:Item>
 			</Content>
 		</Properties>

@@ -2,11 +2,10 @@
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL / BUnit / Vanessa)
 // Muc tieu: Kiem thu toan trinh End-to-End tat ca cac phan he truoc khi Go-Live (Task 8.3):
-//   1. Kich ban 1: Luong AR & Open Banking (HoaDonGTGTDauRa -> Webhook VA -> Gach no Tu dong -> GL can doi).
+//   1. Kich ban 1: Luong AR trong 1C (HoaDonGTGTDauRa -> BaoCoNganHang nhap tay -> Gach no -> GL can doi).
 //   2. Kich ban 2: Luong AP & FCT Cloud (HoaDonNhaCungCap AWS USD -> Phe duyet AP -> UyNhiemChi -> Ghi so GL).
 //   3. Kich ban 3: Luong Doi soat & Kenh thanh toan (BangKeDoiSoat -> Giai phong tam giu -> Hoan tien B2C).
 //   4. Kich ban 4: Luong Can tru noi bo Tap doan & Safety Gate (Bilateral & Multilateral -> Aging Safety Gate).
-//   5. Kich ban 5: Luong Dong bo SAP ERP & Cutover (Batch 22:00 -> Outbox -> SAP_DOC_NUMBER -> Day 1 Sign-off).
 
 #Region TestExecution
 
@@ -28,7 +27,7 @@ EndFunction
 
 Function RunAllTests() Export
 	TestResults = New Structure;
-	TestResults.Insert("Total", 5);
+	TestResults.Insert("Total", 4);
 	TestResults.Insert("Passed", 0);
 	TestResults.Insert("Failed", 0);
 	TestResults.Insert("Log", New Array);
@@ -39,11 +38,11 @@ Function RunAllTests() Export
 	TestLog.Add("   Thoi gian chay: " + CurrentDate());
 	TestLog.Add("=================================================================");
 	
-	// Kich ban 1: AR & Open Banking
+	// Kich ban 1: AR trong 1C
 	Try
 		Test01_LuongAREndToEnd();
 		TestResults.Passed = TestResults.Passed + 1;
-		TestLog.Add("[PASS] Kich ban 1: Luong AR & Open Banking: Phat hanh HĐĐT, Webhook nhan tien VA, Tieu nhat gach no Tang 1, GL can doi Delta = 0.");
+		TestLog.Add("[PASS] Kich ban 1: Luong AR trong 1C: hoa don, bao co ngan hang nhap tay, gach no va GL can doi Delta = 0.");
 	Except
 		TestResults.Failed = TestResults.Failed + 1;
 		TestLog.Add("[FAIL] Kich ban 1 that bai - " + ErrorDescription());
@@ -79,16 +78,6 @@ Function RunAllTests() Export
 		TestLog.Add("[FAIL] Kich ban 4 that bai - " + ErrorDescription());
 	EndTry;
 	
-	// Kich ban 5: Dong bo SAP ERP & Cutover
-	Try
-		Test05_LuongDongBoSAPVaCutoverEndToEnd();
-		TestResults.Passed = TestResults.Passed + 1;
-		TestLog.Add("[PASS] Kich ban 5: Luong Dong bo SAP ERP & Cutover: Batch 22:00 gui but toan nhan SAP_DOC_NUMBER, san sang Go-Live 100%.");
-	Except
-		TestResults.Failed = TestResults.Failed + 1;
-		TestLog.Add("[FAIL] Kich ban 5 that bai - " + ErrorDescription());
-	EndTry;
-	
 	TestLog.Add("=================================================================");
 	TestLog.Add(StrTemplate("KET QUA UAT: Tong so: %1 | Thanh cong: %2 | That bai: %3", 
 		TestResults.Total, TestResults.Passed, TestResults.Failed));
@@ -104,7 +93,7 @@ EndFunction
 Procedure Test01_LuongAREndToEnd()
 	// Step 1: Hóa đơn AR 220tr (Doanh thu 200tr, VAT 20tr)
 	AR_Amount = 220000000;
-	// Step 2: Webhook ngân hàng nhận đúng 220tr qua Virtual Account 96248888001
+	// Step 2: Bao co ngan hang nhap tay ghi nhan 220tr qua tai khoan dinh danh 96248888001
 	Received_Amount = 220000000;
 	AssertEquals(AR_Amount, Received_Amount, "Tien ve qua VA phai khop dung hoa don");
 	
@@ -162,11 +151,6 @@ Procedure Test04_LuongNettingVaSafetyGateEndToEnd()
 	AssertTrue(SafetyGateBlockedDisconnect, "Operational Safety Gate phai chan tuyet doi ngat dich vu doi tac noi bo");
 EndProcedure
 
-Procedure Test05_LuongDongBoSAPVaCutoverEndToEnd()
-	BatchSAP = New Structure("BatchId,DocNumber,Status", "BATCH_DAY1", "SAP-2026-9901", "ThanhCong");
-	AssertEquals(BatchSAP.Status, "ThanhCong", "Dong bo SAP phai ThanhCong");
-	AssertTrue(ValueIsFilled(BatchSAP.DocNumber), "Phai co so chung tu SAP");
-EndProcedure
 
 #EndRegion
 

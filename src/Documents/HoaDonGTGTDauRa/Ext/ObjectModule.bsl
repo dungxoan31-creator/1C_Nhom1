@@ -13,6 +13,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
+	// Kiem tra phan quyen SoD khi ghi so
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo");
+	EndIf;
+	
 	// Tu dong tinh tien thue VAT neu chua co
 	If TienThueVAT = 0 And TienChuaThue > 0 And ThueSuatVAT > 0 Then
 		TienThueVAT = Round(TienChuaThue * ThueSuatVAT / 100, 2);

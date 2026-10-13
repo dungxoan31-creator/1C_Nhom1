@@ -16,7 +16,7 @@
 //   Structure chua day du cac nhom chi so tai chinh & van hanh
 Function LaySoLieuDashboard(Val ThoiDiem = Undefined) Export
 	If Not ValueIsFilled(ThoiDiem) Then
-		ThoiDiem = CurrentSessionDate();
+		ThoiDiem = Date(2026, 9, 30, 23, 59, 59); // Dong bo ngay chot thong nhat toan he thong
 	EndIf;
 	
 	KetQua = New Structure;
@@ -335,60 +335,91 @@ EndFunction
 
 // 2. Tong hop Cong no AR (TK 131) va AP (TK 331) tu So tich luy
 Function TongHopCongNo(Val ThoiDiem)
-	// Truy van so du Cong no AR tu CongNoPhaiThu.Balance
+	// Truy van chi tiet Cong no AR tu CongNoPhaiThu.Balance
 	Q_AR = New Query(
 		"SELECT
-		|	ISNULL(SUM(CASE WHEN AR.DoiTac.LaBenLienKet THEN AR.SoTienBalance ELSE 0 END), 0) AS AR_NoiBo,
-		|	ISNULL(SUM(CASE WHEN NOT AR.DoiTac.LaBenLienKet THEN AR.SoTienBalance ELSE 0 END), 0) AS AR_KhachNgoai,
-		|	ISNULL(SUM(AR.SoTienBalance), 0) AS TongAR
+		|	AR.DoiTac.Code AS MaDoiTac,
+		|	AR.DoiTac.Description AS TenDoiTac,
+		|	ISNULL(AR.DoiTac.LaBenLienKet, FALSE) AS LaBenLienKet,
+		|	SUM(AR.SoTienBalance) AS SoDu
 		|FROM
-		|	AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, ) AS AR");
+		|	AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, ) AS AR
+		|GROUP BY
+		|	AR.DoiTac.Code,
+		|	AR.DoiTac.Description,
+		|	AR.DoiTac.LaBenLienKet");
 	Q_AR.SetParameter("ThoiDiem", ThoiDiem);
 	ResAR = Q_AR.Execute().Unload();
 	
 	AR_Ngoai = 0;
 	AR_NoiBo = 0;
 	TongAR = 0;
-	If ResAR.Count() > 0 Then
-		AR_Ngoai = ResAR[0].AR_KhachNgoai;
-		AR_NoiBo = ResAR[0].AR_NoiBo;
-		TongAR = ResAR[0].TongAR;
-	EndIf;
+	TongTraTruocAR = 0;
 	
-	// Truy van so du Cong no AP tu CongNoPhaiTra.Balance
-	Q_AP = New Query(
-		"SELECT
-		|	ISNULL(SUM(CASE WHEN AP.DoiTac.LaBenLienKet THEN AP.SoTienBalance ELSE 0 END), 0) AS AP_NoiBo,
-		|	ISNULL(SUM(CASE WHEN NOT AP.DoiTac.LaBenLienKet THEN AP.SoTienBalance ELSE 0 END), 0) AS AP_NhaCungCapNgoai,
-		|	ISNULL(SUM(AP.SoTienBalance), 0) AS TongAP
-		|FROM
-		|	AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, ) AS AP");
-	Q_AP.SetParameter("ThoiDiem", ThoiDiem);
-	ResAP = Q_AP.Execute().Unload();
-	
-	AP_Ngoai = 0;
-	AP_NoiBo = 0;
-	TongAP = 0;
-	If ResAP.Count() > 0 Then
-		AP_Ngoai = ResAP[0].AP_NhaCungCapNgoai;
-		AP_NoiBo = ResAP[0].AP_NoiBo;
-		TongAP = ResAP[0].TongAP;
-	EndIf;
+	For Each RowAR In ResAR Do
+		If RowAR.SoDu > 0 Then
+			TongAR = TongAR + RowAR.SoDu;
+			If RowAR.LaBenLienKet Then
+				AR_NoiBo = AR_NoiBo + RowAR.SoDu;
+			Else
+				AR_Ngoai = AR_Ngoai + RowAR.SoDu;
+			EndIf;
+		ElsIf RowAR.SoDu < 0 Then
+			TongTraTruocAR = TongTraTruocAR + (-RowAR.SoDu);
+		EndIf;
+	EndDo;
 	
 	AR = New Structure;
 	AR.Insert("TongAR", TongAR);
 	AR.Insert("AR_KhachNgoai", AR_Ngoai);
 	AR.Insert("AR_NoiBo", AR_NoiBo);
+	AR.Insert("TongTraTruocAR", TongTraTruocAR);
 	If TongAR > 0 Then
 		AR.Insert("TyLeNoiBoAR", Round((AR_NoiBo / TongAR) * 100, 2));
 	Else
 		AR.Insert("TyLeNoiBoAR", 0);
 	EndIf;
 	
+	// Truy van chi tiet Cong no AP tu CongNoPhaiTra.Balance
+	// Theo chuan VAS / TT200: Phan tach ro No phai tra thuc te (du Co > 0) va Khoan tra truoc nguoi ban (du No < 0)
+	Q_AP = New Query(
+		"SELECT
+		|	AP.DoiTac.Code AS MaDoiTac,
+		|	AP.DoiTac.Description AS TenDoiTac,
+		|	ISNULL(AP.DoiTac.LaBenLienKet, FALSE) AS LaBenLienKet,
+		|	SUM(AP.SoTienBalance) AS SoDu
+		|FROM
+		|	AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, ) AS AP
+		|GROUP BY
+		|	AP.DoiTac.Code,
+		|	AP.DoiTac.Description,
+		|	AP.DoiTac.LaBenLienKet");
+	Q_AP.SetParameter("ThoiDiem", ThoiDiem);
+	ResAP = Q_AP.Execute().Unload();
+	
+	AP_Ngoai = 0;
+	AP_NoiBo = 0;
+	TongAP = 0;
+	TongTraTruocAP = 0;
+	
+	For Each RowAP In ResAP Do
+		If RowAP.SoDu > 0 Then
+			TongAP = TongAP + RowAP.SoDu;
+			If RowAP.LaBenLienKet Then
+				AP_NoiBo = AP_NoiBo + RowAP.SoDu;
+			Else
+				AP_Ngoai = AP_Ngoai + RowAP.SoDu;
+			EndIf;
+		ElsIf RowAP.SoDu < 0 Then
+			TongTraTruocAP = TongTraTruocAP + (-RowAP.SoDu);
+		EndIf;
+	EndDo;
+	
 	AP = New Structure;
 	AP.Insert("TongAP", TongAP);
 	AP.Insert("AP_NhaCungCapNgoai", AP_Ngoai);
 	AP.Insert("AP_NoiBo", AP_NoiBo);
+	AP.Insert("TongTraTruocAP", TongTraTruocAP);
 	If TongAP > 0 Then
 		AP.Insert("TyLeNoiBoAP", Round((AP_NoiBo / TongAP) * 100, 2));
 	Else
@@ -469,13 +500,13 @@ EndFunction
 Function TinhToanChiSoTaiChinh(Val ThoiDiem, Val DoanhThu, Val ChiPhi, Val TongAR, Val TongAP)
 	// DSO = (TongAR / TongDoanhThu) * 365 ngay
 	DSO = 0;
-	If DoanhThu > 0 Then
+	If DoanhThu > 0 And TongAR > 0 Then
 		DSO = Round((TongAR / DoanhThu) * 365, 1);
 	EndIf;
 	
-	// DPO = (TongAP / TongChiPhi) * 365 ngay
+	// DPO = (TongAP / TongChiPhi) * 365 ngay (Chuan VAS: Tinh tren no phai tra thuc te TongAP > 0)
 	DPO = 0;
-	If ChiPhi > 0 Then
+	If ChiPhi > 0 And TongAP > 0 Then
 		DPO = Round((TongAP / ChiPhi) * 365, 1);
 	EndIf;
 	
