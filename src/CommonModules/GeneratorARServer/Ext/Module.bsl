@@ -217,7 +217,7 @@ Procedure KhoiTaoChungTuAR() Export
 						BatchDocCount = BatchDocCount + 1;
 					Else
 						GlobalPTIndex = GlobalPTIndex + 1;
-						PayDate = DocDate + 86400 * 15;
+						PayDate = DocDate + 86400 * 5;
 						If PayDate > Date(2026, 9, 30, 18, 0, 0) Then
 							PayDate = Date(2026, 9, 30, 16, MinVal, 0);
 						EndIf;
@@ -239,14 +239,18 @@ Procedure KhoiTaoChungTuAR() Export
 						DocPT.NgayThu = BegOfDay(PayDate);
 						DocPT.DienGiai = "Thu tiền khách hàng theo BB nghiệm thu " + DocBB.Number;
 						
-						// Thu tien USD cho mot so hop dong cong nghe ngoai de dam bao thanh khoan Vietcombank USD luon duong
-						IsUSD_Collection = (Not IsVG And PartnerIndex < 12 And (GlobalPTIndex % 2 = 0));
+						// Thu tien USD cho cac hop dong cong nghe xuat khau de dam bao thanh khoan Vietcombank USD luon duong
+						IsUSD_Collection = (Not IsVG And PartnerIndex <= 57);
 						If IsUSD_Collection Then
 							DocPT.TaiKhoanTien = RefTK_VCB;
 							DocPT.TienTe = RefUSD;
-							DocPT.TyGia = 25450;
+							RateUSD = QuanLyTyGiaVaNgoaiTeServer.LayTyGiaHachToanHieuLuc(RefUSD, BegOfDay(PayDate));
+							If RateUSD <= 1 Then
+								RateUSD = 25450;
+							EndIf;
+							DocPT.TyGia = RateUSD;
 							DocPT.SoTien = TotalAmount;
-							DocPT.SoTienNgoaiTe = Round(TotalAmount / 25450, 2);
+							DocPT.SoTienNgoaiTe = Round(TotalAmount / RateUSD, 2);
 						Else
 							DocPT.TaiKhoanTien = RefTK_TCB;
 							DocPT.TienTe = RefVND;
