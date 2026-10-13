@@ -115,39 +115,39 @@ Function DanhSachNguoiDungChuan() Export
 	
 	// 0. Quản trị hệ thống
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"Admin", "Quản trị hệ thống VSF", "", "QuanTriHeThong"));
+		"Admin", "Quản trị hệ thống VSF", "Vsf@2026!Secure", "QuanTriHeThong"));
 		
 	// 1. Kế toán Phải thu (AR)
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"ketoan_ar", "Kế toán Phải thu (AR)", "123", "KeToanPhaiThu"));
+		"ketoan_ar", "Kế toán Phải thu (AR)", "Vsf@2026!Secure", "KeToanPhaiThu"));
 		
 	// 2. Kế toán Phải trả (AP)
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"ketoan_ap", "Kế toán Phải trả (AP)", "123", "KeToanPhaiTra"));
+		"ketoan_ap", "Kế toán Phải trả (AP)", "Vsf@2026!Secure", "KeToanPhaiTra"));
 		
 	// 3. Chuyên viên Đối soát & Netting
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"chuyenvien_doisoat", "Chuyên viên Đối soát & Netting", "123", "ChuyenVienDoiSoatTapDoan"));
+		"chuyenvien_doisoat", "Chuyên viên Đối soát & Netting", "Vsf@2026!Secure", "ChuyenVienDoiSoatTapDoan"));
 		
 	// 4. Giám đốc Tài chính / CFO
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"cfo_giamdoc", "Giám đốc Tài chính / CFO", "123", "GiamDocTaiChinh_CFO"));
+		"cfo_giamdoc", "Giám đốc Tài chính / CFO", "Vsf@2026!Secure", "GiamDocTaiChinh_CFO"));
 		
 	// 5. Kế toán trưởng
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"ketoan_truong", "Kế toán trưởng", "123", "KeToanTruong"));
+		"ketoan_truong", "Kế toán trưởng", "Vsf@2026!Secure", "KeToanTruong"));
 		
 	// 6. Quản lý dự án CNTT (PM)
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"pm_duan", "Quản lý dự án CNTT (PM)", "123", "ProjectManager_QuanLyDuAn"));
+		"pm_duan", "Quản lý dự án CNTT (PM)", "Vsf@2026!Secure", "ProjectManager_QuanLyDuAn"));
 		
 	// 7. Trưởng nhóm Kỹ thuật (TechLead)
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"techlead_kythuat", "Trưởng nhóm Kỹ thuật (TechLead)", "123", "TechLead_KiemTraKyThuat"));
+		"techlead_kythuat", "Trưởng nhóm Kỹ thuật (TechLead)", "Vsf@2026!Secure", "TechLead_KiemTraKyThuat"));
 		
 	// 8. Giám đốc Hạ tầng CNTT (IT Director)
 	DanhSach.Add(New Structure("Name,FullName,Password,RoleName", 
-		"it_director", "Giám đốc Hạ tầng CNTT (IT Director)", "123", "ITDirector_GiamDocHaTang"));
+		"it_director", "Giám đốc Hạ tầng CNTT (IT Director)", "Vsf@2026!Secure", "ITDirector_GiamDocHaTang"));
 		
 	Return DanhSach;
 EndFunction
