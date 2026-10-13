@@ -6,9 +6,7 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
-	EndIf;
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	
 	If Not ValueIsFilled(NgayGiaoDich) Then
 		NgayGiaoDich = Date;
@@ -24,6 +22,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
+	
 	If TrangThai <> "DaDoiSoat" Or Not ValueIsFilled(DoiTacKhop) Or Not ValueIsFilled(ChungTuKhop) Then
 		Cancel = True;
 		Msg = New UserMessage;
@@ -75,6 +77,14 @@ Procedure Posting(Cancel, Mode)
 	TKTien = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
 	TienTeVND = Catalogs.TienTe.FindByCode("VND");
 	
+	HopDongKhop = Catalogs.HopDong.EmptyRef();
+	If ValueIsFilled(ChungTuKhop) Then
+		Try
+			HopDongKhop = ChungTuKhop.HopDong;
+		Except
+		EndTry;
+	EndIf;
+	
 	// 2. Ghi So tich luy CongNoPhaiThu (Expense - Giam AR)
 	RegisterRecords.CongNoPhaiThu.Write = True;
 	RecordAR = RegisterRecords.CongNoPhaiThu.Add();
@@ -82,6 +92,7 @@ Procedure Posting(Cancel, Mode)
 	RecordAR.Period = Date;
 	RecordAR.PhapNhan = PhapNhan;
 	RecordAR.DoiTac = DoiTacKhop;
+	RecordAR.HopDong = HopDongKhop;
 	RecordAR.ChungTuGoc = ChungTuKhop;
 	RecordAR.SoTien = SoTien;
 	RecordAR.SoTienNgoaiTe = 0;
@@ -109,6 +120,10 @@ Procedure Posting(Cancel, Mode)
 	Row1.PhapNhan = PhapNhan;
 	Row1.TienTe = TienTeVND;
 	Row1.ChungTuGoc = ChungTuKhop;
+	Row1.TaiKhoanTienNo = TaiKhoanTien;
+	Row1.DoiTacCo = DoiTacKhop;
+	Row1.HopDongCo = HopDongKhop;
+	Row1.ChungTuGocCo = ChungTuKhop;
 	Row1.TyGia = 1;
 	
 	Try
