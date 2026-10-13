@@ -38,8 +38,24 @@ def test_netting_data():
     )
     print("PASS: Toàn bộ chứng từ Netting & Đối soát kênh thanh toán đã ghi sổ thành công!")
 
+def test_bridge_clearing_zero():
+    """Kiểm tra logic tài khoản cấn trừ bắc cầu: cả 2 vế đều dùng TK 1388 để số dư bằng 0."""
+    bsl_file = os.path.join(os.path.dirname(__file__), "..", "src", "Documents", "CanTruCongNoNoiBo", "Ext", "ObjectModule.bsl")
+    with open(bsl_file, "r", encoding="utf-8") as f:
+        code = f.read()
+    assert "Row1.AccountCr = TK1388;" in code, "Vế 1 của cấn trừ bắc cầu phải dùng TK1388"
+    assert "Row2.AccountDr = TK1388;" in code, "Vế 2 của cấn trừ bắc cầu phải dùng TK1388"
+    assert "Row1.AccountCr = ?(ValueIsFilled(TK3388)" not in code, "Không được dùng lẫn lộn TK3388 gây dư thừa số dư"
+    print("PASS: Bridge netting clearing account unified to TK 1388 (zero residual)!")
+
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] in ("-k", "--filter"):
+        pattern = sys.argv[2] if len(sys.argv) > 2 else ""
+        if "test_bridge_clearing_zero" in pattern:
+            test_bridge_clearing_zero()
+            sys.exit(0)
     try:
+        test_bridge_clearing_zero()
         test_netting_data()
     except Exception as e:
         print(f"FAIL: {e}")
