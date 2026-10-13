@@ -256,6 +256,14 @@ Function TongHopKinhDoanhTheoKhoi(Val ThoiDiem)
 	TongHop = New Structure;
 	TongHop.Insert("TongDoanhThu", TongDoanhThu);
 	TongHop.Insert("TongChiPhi", TongChiPhi);
+	// Loi nhuan gop tu dich vu mua ngoai (Gross Margin from External Services)
+	TongHop.Insert("LoiNhuanGopDichVu", TongDoanhThu - TongChiPhi);
+	If TongDoanhThu > 0 Then
+		TongHop.Insert("TySuatLoiNhuanGopDichVu", Round(((TongDoanhThu - TongChiPhi) / TongDoanhThu) * 100, 2));
+	Else
+		TongHop.Insert("TySuatLoiNhuanGopDichVu", 0);
+	EndIf;
+	// Giu backward-compatibility cho cac chi so hien tai
 	TongHop.Insert("LoiNhuanTruocThue", TongDoanhThu - TongChiPhi);
 	If TongDoanhThu > 0 Then
 		TongHop.Insert("TySuatLoiNhuanRong", Round(((TongDoanhThu - TongChiPhi) / TongDoanhThu) * 100, 2));
@@ -329,26 +337,32 @@ Function PhanLoaiKhoiTheoNhaCungCap(Val MaNCC)
 		Return "KHOI_IV";
 	EndIf;
 	
-	// Khối BO: ERP SAP, CSDL Oracle, Thuê văn phòng, Tuyển dụng, Pháp lý
+	// Khối BO: Quản trị ERP 1C, CSDL Oracle, Thuê văn phòng, Tuyển dụng, Pháp lý
 	Return "KHOI_BO";
 EndFunction
 
 // 2. Tong hop Cong no AR (TK 131) va AP (TK 331) tu So tich luy
 Function TongHopCongNo(Val ThoiDiem)
 	// Truy van chi tiet Cong no AR tu CongNoPhaiThu.Balance
+	// Dong nhat dinh nghia AR mo voi Bao cao Tuoi no (Ageing): theo DoiTac, HopDong va ChungTuGoc
 	Q_AR = New Query(
 		"SELECT
 		|	AR.DoiTac.Code AS MaDoiTac,
 		|	AR.DoiTac.Description AS TenDoiTac,
 		|	ISNULL(AR.DoiTac.LaBenLienKet, FALSE) AS LaBenLienKet,
+		|	ISNULL(AR.HopDong.Code, """") AS MaHopDong,
+		|	AR.ChungTuGoc AS ChungTuGoc,
 		|	SUM(AR.SoTienBalance) AS SoDu
 		|FROM
 		|	AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, ) AS AR
 		|GROUP BY
 		|	AR.DoiTac.Code,
 		|	AR.DoiTac.Description,
-		|	AR.DoiTac.LaBenLienKet");
-	Q_AR.SetParameter("ThoiDiem", ThoiDiem);
+		|	AR.DoiTac.LaBenLienKet,
+		|	AR.HopDong.Code,
+		|	AR.ChungTuGoc");
+	BoundaryThoiDiem = ?(TypeOf(ThoiDiem) = Type("Boundary"), ThoiDiem, New Boundary(ThoiDiem, BoundaryType.Including));
+	Q_AR.SetParameter("ThoiDiem", BoundaryThoiDiem);
 	ResAR = Q_AR.Execute().Unload();
 	
 	AR_Ngoai = 0;
@@ -381,20 +395,24 @@ Function TongHopCongNo(Val ThoiDiem)
 	EndIf;
 	
 	// Truy van chi tiet Cong no AP tu CongNoPhaiTra.Balance
-	// Theo chuan VAS / TT200: Phan tach ro No phai tra thuc te (du Co > 0) va Khoan tra truoc nguoi ban (du No < 0)
+	// Theo chuan VAS / TT200 / TT99: Phan tach ro No phai tra thuc te va Khoan tra truoc nguoi ban
 	Q_AP = New Query(
 		"SELECT
 		|	AP.DoiTac.Code AS MaDoiTac,
 		|	AP.DoiTac.Description AS TenDoiTac,
 		|	ISNULL(AP.DoiTac.LaBenLienKet, FALSE) AS LaBenLienKet,
+		|	ISNULL(AP.HopDong.Code, """") AS MaHopDong,
+		|	AP.ChungTuGoc AS ChungTuGoc,
 		|	SUM(AP.SoTienBalance) AS SoDu
 		|FROM
 		|	AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, ) AS AP
 		|GROUP BY
 		|	AP.DoiTac.Code,
 		|	AP.DoiTac.Description,
-		|	AP.DoiTac.LaBenLienKet");
-	Q_AP.SetParameter("ThoiDiem", ThoiDiem);
+		|	AP.DoiTac.LaBenLienKet,
+		|	AP.HopDong.Code,
+		|	AP.ChungTuGoc");
+	Q_AP.SetParameter("ThoiDiem", BoundaryThoiDiem);
 	ResAP = Q_AP.Execute().Unload();
 	
 	AP_Ngoai = 0;
@@ -448,7 +466,8 @@ Function TongHopDongTienNganHang(Val ThoiDiem)
 		|	DongTien.TaiKhoanTien.Code,
 		|	DongTien.TaiKhoanTien.Description,
 		|	DongTien.TienTe.Code");
-	Q_Bank.SetParameter("ThoiDiem", ThoiDiem);
+	BoundaryThoiDiem = ?(TypeOf(ThoiDiem) = Type("Boundary"), ThoiDiem, New Boundary(ThoiDiem, BoundaryType.Including));
+	Q_Bank.SetParameter("ThoiDiem", BoundaryThoiDiem);
 	TableBank = Q_Bank.Execute().Unload();
 	
 	TCB_VND = 0;
@@ -498,16 +517,27 @@ EndFunction
 
 // 4. Tinh toan cac chi so tai chinh: DSO, DPO, Ty le tiet kiem thanh khoan Netting
 Function TinhToanChiSoTaiChinh(Val ThoiDiem, Val DoanhThu, Val ChiPhi, Val TongAR, Val TongAP)
-	// DSO = (TongAR / TongDoanhThu) * 365 ngay
-	DSO = 0;
-	If DoanhThu > 0 And TongAR > 0 Then
-		DSO = Round((TongAR / DoanhThu) * 365, 1);
+	// Tinh so ngay thuc te trong ky do luong (tu 01/01/2025 den ThoiDiem)
+	NgayBatDauKy = '20250101000000';
+	If ValueIsFilled(ThoiDiem) And ThoiDiem > NgayBatDauKy Then
+		SoNgayTrongKy = Round((ThoiDiem - NgayBatDauKy) / 86400, 0);
+	Else
+		SoNgayTrongKy = 365;
+	EndIf;
+	If SoNgayTrongKy <= 0 Then
+		SoNgayTrongKy = 365;
 	EndIf;
 	
-	// DPO = (TongAP / TongChiPhi) * 365 ngay (Chuan VAS: Tinh tren no phai tra thuc te TongAP > 0)
+	// DSO = (TongAR / TongDoanhThu) * SoNgayTrongKy
+	DSO = 0;
+	If DoanhThu > 0 And TongAR > 0 Then
+		DSO = Round((TongAR / DoanhThu) * SoNgayTrongKy, 1);
+	EndIf;
+	
+	// DPO = (TongAP / TongChiPhi) * SoNgayTrongKy (Chuan VAS: Tinh tren no phai tra thuc te TongAP > 0)
 	DPO = 0;
 	If ChiPhi > 0 And TongAP > 0 Then
-		DPO = Round((TongAP / ChiPhi) * 365, 1);
+		DPO = Round((TongAP / ChiPhi) * SoNgayTrongKy, 1);
 	EndIf;
 	
 	// Chu ky chuyen hoa tien te CCC (Cash Conversion Cycle)
