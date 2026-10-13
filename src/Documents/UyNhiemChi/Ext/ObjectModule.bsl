@@ -136,6 +136,16 @@ Procedure Posting(Cancel, Mode)
 			Raise "Lỗi tra soát hoàn trả: Bắt buộc phải tham chiếu đến Chứng từ gốc (Lệnh chi cũ cần đảo)!";
 		EndIf;
 		
+		// Chống hoàn hai lần cùng Ref
+		Q_DupRev = New Query(
+			"SELECT TOP 1 Ref FROM Document.UyNhiemChi 
+			|WHERE LaTraSoatHoanTra = TRUE AND ChungTuGoc = &ChungTuGoc AND Ref <> &CurrentRef AND Posted = TRUE");
+		Q_DupRev.SetParameter("ChungTuGoc", ChungTuGoc);
+		Q_DupRev.SetParameter("CurrentRef", Ref);
+		If Not Q_DupRev.Execute().IsEmpty() Then
+			Raise StrTemplate("Lỗi tra soát hoàn trả: Lệnh chi gốc %1 đã được hoàn trả trước đó! Chống hoàn trả 2 lần cùng chứng từ!", ChungTuGoc);
+		EndIf;
+		
 		// Doc but toan goc tren SoCaiKeToan de dao chinh xac 100%
 		Q_Orig = New Query(
 			"SELECT
@@ -144,7 +154,15 @@ Procedure Posting(Cancel, Mode)
 			|	SoCai.SoTien AS SoTien,
 			|	SoCai.SoTienNgoaiTe AS SoTienNgoaiTe,
 			|	SoCai.TienTe AS TienTe,
-			|	SoCai.TyGia AS TyGia
+			|	SoCai.TyGia AS TyGia,
+			|	SoCai.DoiTacNo AS DoiTacNo,
+			|	SoCai.DoiTacCo AS DoiTacCo,
+			|	SoCai.HopDongNo AS HopDongNo,
+			|	SoCai.HopDongCo AS HopDongCo,
+			|	SoCai.ChungTuGocNo AS ChungTuGocNo,
+			|	SoCai.ChungTuGocCo AS ChungTuGocCo,
+			|	SoCai.TaiKhoanTienNo AS TaiKhoanTienNo,
+			|	SoCai.TaiKhoanTienCo AS TaiKhoanTienCo
 			|FROM
 			|	AccountingRegister.SoCaiKeToan AS SoCai
 			|WHERE
@@ -167,6 +185,14 @@ Procedure Posting(Cancel, Mode)
 			RowRev.PhapNhan = PhapNhan;
 			RowRev.TienTe = RowOrig.TienTe;
 			RowRev.ChungTuGoc = ChungTuGoc;
+			RowRev.DoiTacNo = RowOrig.DoiTacCo;
+			RowRev.DoiTacCo = RowOrig.DoiTacNo;
+			RowRev.HopDongNo = RowOrig.HopDongCo;
+			RowRev.HopDongCo = RowOrig.HopDongNo;
+			RowRev.ChungTuGocNo = RowOrig.ChungTuGocCo;
+			RowRev.ChungTuGocCo = RowOrig.ChungTuGocNo;
+			RowRev.TaiKhoanTienNo = RowOrig.TaiKhoanTienCo;
+			RowRev.TaiKhoanTienCo = RowOrig.TaiKhoanTienNo;
 			RowRev.TyGia = RowOrig.TyGia;
 			RowRev.SoTienNgoaiTe = RowOrig.SoTienNgoaiTe;
 		EndDo;
@@ -241,23 +267,46 @@ Procedure Posting(Cancel, Mode)
 	TyGiaHoaDon = TyGia;
 	
 	If LaNgoaiTe Then
-		// Review focus 2 & Task 3: Bat buoc phai co hoa don goc (ChungTuGoc) de xac dinh gia tri ghi so
 		If Not ValueIsFilled(ChungTuGoc) Then
 			Raise "Lỗi thanh toán ngoại tệ: Bắt buộc phải có hóa đơn gốc (ChungTuGoc) để xác định tỷ giá ghi sổ nợ AP!";
 		EndIf;
 		
-		TyGiaHoaDon = 0;
-		Try
-			TyGiaHoaDon = ChungTuGoc.TyGia;
-		Except
-		EndTry;
+		// 1. Lay so du cong no phai tra thuc te tu so phu CongNoPhaiTra (da tinh ca danh gia lai truoc do neu co)
+		Q_AP_Bal = New Query(
+			"SELECT
+			|	ISNULL(SUM(SoTienBalance), 0) AS SoTienVND,
+			|	ISNULL(SUM(SoTienNgoaiTeBalance), 0) AS SoTienUSD
+			|FROM
+			|	AccumulationRegister.CongNoPhaiTra.Balance(&NgayHachToan,
+			|		PhapNhan = &PhapNhan AND DoiTac = &DoiTac AND HopDong = &HopDong AND ChungTuGoc = &ChungTuGoc)");
+		Q_AP_Bal.SetParameter("NgayHachToan", New PointInTime(Date, Ref));
+		Q_AP_Bal.SetParameter("PhapNhan", PhapNhan);
+		Q_AP_Bal.SetParameter("DoiTac", DoiTac);
+		Q_AP_Bal.SetParameter("HopDong", HopDong);
+		Q_AP_Bal.SetParameter("ChungTuGoc", ChungTuGoc);
+		T_AP_Bal = Q_AP_Bal.Execute().Unload();
 		
-		If TyGiaHoaDon <= 0 Then
-			Raise "Lỗi thanh toán ngoại tệ: Hóa đơn gốc không có tỷ giá ghi sổ hợp lệ (> 0)!";
+		SoDuUSD_AP = ?(T_AP_Bal.Count() > 0, T_AP_Bal[0].SoTienUSD, 0);
+		SoDuVND_AP = ?(T_AP_Bal.Count() > 0, T_AP_Bal[0].SoTienVND, 0);
+		
+		If SoDuUSD_AP <= 0 Or SoDuVND_AP <= 0 Then
+			Raise StrTemplate("Lỗi thanh toán: Không tìm thấy số dư công nợ phải trả USD mở cho hóa đơn %1!", ChungTuGoc);
 		EndIf;
 		
-		// Gia tri no goc AP duoc tat toan theo ty gia tren hoa don (VND)
-		SoTienGhiSoAP = Round(SoTienNgoaiTe * TyGiaHoaDon, 0);
+		If SoTienNgoaiTe > SoDuUSD_AP Then
+			Raise StrTemplate("Lỗi thanh toán: Số tiền ngoại tệ thanh toán (%1 USD) vượt quá số dư nợ còn lại (%2 USD)!", SoTienNgoaiTe, SoDuUSD_AP);
+		EndIf;
+		
+		// Ty gia ghi so no AP
+		TyGiaHoaDon = SoDuVND_AP / SoDuUSD_AP;
+		
+		// Neu tat toan toan bo USD con lai: lay toan bo VND con lai de tranh sai lech lam tron
+		If SoTienNgoaiTe >= SoDuUSD_AP Then
+			SoTienGhiSoAP = SoDuVND_AP;
+		Else
+			TyLeAP = SoTienNgoaiTe / SoDuUSD_AP;
+			SoTienGhiSoAP = Round(SoDuVND_AP * TyLeAP, 0);
+		EndIf;
 		
 		If MaTKTien = "1121" Then
 			// TRUONG HOP A: Thanh toan tu tai khoan VND (1121)
@@ -275,21 +324,38 @@ Procedure Posting(Cancel, Mode)
 			EndIf;
 		Else
 			// TRUONG HOP B: Thanh toan bang USD co san trong tai khoan 1122
-			TyGiaXuat1122 = 0;
-			If ThisObject.AdditionalProperties.Property("TyGiaXuatQuy1122") Then
-				TyGiaXuat1122 = Number(ThisObject.AdditionalProperties.TyGiaXuatQuy1122);
-			EndIf;
-			If TyGiaXuat1122 <= 0 And TyGia > 0 And TyGia <> TyGiaHoaDon Then
-				TyGiaXuat1122 = TyGia;
-			EndIf;
-			If TyGiaXuat1122 <= 0 Then
-				TyGiaXuat1122 = QuanLyTyGiaVaNgoaiTeServer.TinhTyGiaXuatQuyBQGQ(PhapNhan, TaiKhoanTien, TienTe, NgayHachToan);
-			EndIf;
-			If TyGiaXuat1122 <= 0 Then
-				TyGiaXuat1122 = TyGiaHoaDon;
+			// Lay gia tri ghi so thuc te tu so phu DongTien (Fail-Closed, khong dung AdditionalProperties hay fallback)
+			Q_Bank_Bal = New Query(
+				"SELECT
+				|	ISNULL(SUM(SoTienBalance), 0) AS SoTienVND,
+				|	ISNULL(SUM(SoTienNgoaiTeBalance), 0) AS SoTienUSD
+				|FROM
+				|	AccumulationRegister.DongTien.Balance(&NgayHachToan,
+				|		PhapNhan = &PhapNhan AND TaiKhoanTien = &TaiKhoanTien AND TienTe = &TienTe)");
+			Q_Bank_Bal.SetParameter("NgayHachToan", New PointInTime(Date, Ref));
+			Q_Bank_Bal.SetParameter("PhapNhan", PhapNhan);
+			Q_Bank_Bal.SetParameter("TaiKhoanTien", TaiKhoanTien);
+			Q_Bank_Bal.SetParameter("TienTe", TienTe);
+			T_Bank_Bal = Q_Bank_Bal.Execute().Unload();
+			
+			SoDuUSD_Bank = ?(T_Bank_Bal.Count() > 0, T_Bank_Bal[0].SoTienUSD, 0);
+			SoDuVND_Bank = ?(T_Bank_Bal.Count() > 0, T_Bank_Bal[0].SoTienVND, 0);
+			
+			If SoDuUSD_Bank <= 0 Or SoDuVND_Bank <= 0 Then
+				Raise StrTemplate("Lỗi thanh toán: Tài khoản USD 1122 (%1) không có số dư ghi sổ để xuất quỹ!", TaiKhoanTien);
 			EndIf;
 			
-			SoTienThucTra = Round(SoTienNgoaiTe * TyGiaXuat1122, 0);
+			If SoTienNgoaiTe > SoDuUSD_Bank Then
+				Raise StrTemplate("Lỗi thanh toán: Số tiền xuất quỹ (%1 USD) vượt quá số dư tài khoản 1122 (%2 USD)!", SoTienNgoaiTe, SoDuUSD_Bank);
+			EndIf;
+			
+			If SoTienNgoaiTe >= SoDuUSD_Bank Then
+				SoTienThucTra = SoDuVND_Bank;
+			Else
+				TyGiaXuat1122 = SoDuVND_Bank / SoDuUSD_Bank;
+				SoTienThucTra = Round(SoTienNgoaiTe * TyGiaXuat1122, 0);
+			EndIf;
+			
 			ChenhLech = SoTienThucTra - SoTienGhiSoAP;
 			If ChenhLech <> 0 Then
 				CoChenhLechTyGia = True;
@@ -343,6 +409,10 @@ Procedure Posting(Cancel, Mode)
 		Row1.PhapNhan = PhapNhan;
 		Row1.TienTe = TienTe;
 		Row1.ChungTuGoc = ChungTuGoc;
+		Row1.DoiTacNo = DoiTac;
+		Row1.HopDongNo = HopDong;
+		Row1.ChungTuGocNo = RecordAP.ChungTuGoc;
+		Row1.TaiKhoanTienCo = TaiKhoanTien;
 		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
 		If SoTienNgoaiTe > 0 Then
 			Row1.SoTienNgoaiTe = SoTienNgoaiTe;
@@ -359,6 +429,10 @@ Procedure Posting(Cancel, Mode)
 		Row1.PhapNhan = PhapNhan;
 		Row1.TienTe = TienTe;
 		Row1.ChungTuGoc = ChungTuGoc;
+		Row1.DoiTacNo = DoiTac;
+		Row1.HopDongNo = HopDong;
+		Row1.ChungTuGocNo = RecordAP.ChungTuGoc;
+		Row1.TaiKhoanTienCo = TaiKhoanTien;
 		Row1.TyGia = TyGiaHoaDon;
 		Row1.SoTienNgoaiTe = SoTienNgoaiTe;
 		
@@ -374,6 +448,7 @@ Procedure Posting(Cancel, Mode)
 		RowFX.PhapNhan = PhapNhan;
 		RowFX.TienTe = TienTeVND;
 		RowFX.ChungTuGoc = Ref;
+		RowFX.TaiKhoanTienCo = TaiKhoanTien;
 		RowFX.TyGia = 1;
 	Else
 		// LAI TY GIA (Vi du: No goc 2.5m, tien xuat quy 2.48m, lai FX 0.02m)
@@ -387,6 +462,10 @@ Procedure Posting(Cancel, Mode)
 		Row1.PhapNhan = PhapNhan;
 		Row1.TienTe = TienTe;
 		Row1.ChungTuGoc = ChungTuGoc;
+		Row1.DoiTacNo = DoiTac;
+		Row1.HopDongNo = HopDong;
+		Row1.ChungTuGocNo = RecordAP.ChungTuGoc;
+		Row1.TaiKhoanTienCo = TaiKhoanTien;
 		Row1.TyGia = ?(TyGia > 0, TyGia, 1);
 		Row1.SoTienNgoaiTe = SoTienNgoaiTe;
 		
@@ -402,6 +481,9 @@ Procedure Posting(Cancel, Mode)
 		RowFX.PhapNhan = PhapNhan;
 		RowFX.TienTe = TienTeVND;
 		RowFX.ChungTuGoc = Ref;
+		RowFX.DoiTacNo = DoiTac;
+		RowFX.HopDongNo = HopDong;
+		RowFX.ChungTuGocNo = RecordAP.ChungTuGoc;
 		RowFX.TyGia = 1;
 	EndIf;
 	
@@ -420,11 +502,31 @@ Procedure Posting(Cancel, Mode)
 		Row2.TyGia = 1;
 		
 		// Ghi them dong giam phi tren DongTien
+		// Xac dinh tai khoan tien VND nguon cho phi (Fail-closed: khong ghi VND len so USD 1122)
+		TaiKhoanTienPhi = Catalogs.TaiKhoanTien.EmptyRef();
+		If MaTKTien = "1121" Then
+			TaiKhoanTienPhi = TaiKhoanTien;
+		Else
+			Q_TK_VND = New Query(
+				"SELECT TOP 1 Ref FROM Catalog.TaiKhoanTien 
+				|WHERE PhapNhan = &PhapNhan AND TienTe.Code = ""VND"" AND DeletionMark = FALSE");
+			Q_TK_VND.SetParameter("PhapNhan", PhapNhan);
+			T_TK_VND = Q_TK_VND.Execute().Unload();
+			If T_TK_VND.Count() > 0 Then
+				TaiKhoanTienPhi = T_TK_VND[0].Ref;
+			EndIf;
+		EndIf;
+		
+		If Not ValueIsFilled(TaiKhoanTienPhi) Then
+			Raise "Lỗi thanh toán: Phí chuyển tiền VND bắt buộc phải có tài khoản tiền VND để hạch toán!";
+		EndIf;
+		
 		RecordFee = RegisterRecords.DongTien.Add();
 		RecordFee.RecordType = AccumulationRecordType.Expense;
 		RecordFee.Period = NgayHachToan;
 		RecordFee.PhapNhan = PhapNhan;
-		RecordFee.TaiKhoanTien = TaiKhoanTien;
+		RecordFee.TaiKhoanTien = TaiKhoanTienPhi;
+		Row2.TaiKhoanTienCo = TaiKhoanTienPhi;
 		RecordFee.KhoanMucDongTien = KhoanMucDongTien;
 		RecordFee.TienTe = TienTeVND;
 		RecordFee.SoTien = PhiNganHang;

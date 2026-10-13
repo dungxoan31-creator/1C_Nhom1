@@ -230,6 +230,7 @@
 					<Comment>Hóa đơn thanh toán</Comment>
 					<Type>
 						<v8:Type>cfg:DocumentRef.HoaDonNhaCungCap</v8:Type>
+						<v8:Type>cfg:DocumentRef.UyNhiemChi</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
