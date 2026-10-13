@@ -7,8 +7,7 @@ Tài liệu này hướng dẫn chi tiết cách nạp file sao lưu dữ liệu
 
 ### 1. THÔNG TIN GÓI DỮ LIỆU ĐÓNG GÓI (.DT)
 
-- **File đóng gói dữ liệu lớn chính:** [VinSmart_Future_AR_AP_Test_FULLDATA.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Test_FULLDATA.dt)
-- **File sao lưu phát hành đầy đủ:** [VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)
+- **File dữ liệu lớn phát hành đầy đủ:** [VinSmart_Future_AR_AP_Full.dt](file:///C:/Users/Dung/Documents/1C_Enterprise/VinSmart_Future_AR_AP_Full.dt)
 - **Dung lượng:** ~1.18 MB (đã đóng gói từ Infobase_FullData, chứa đầy đủ 6.473 chứng từ đã ghi sổ của 21 tháng nghiệp vụ từ 01/01/2025 đến 30/09/2026)
 - **Nền tảng mục tiêu:** 1C:Enterprise 8.3 (Platform 8.3.22 trở lên)
 - **Giao diện người dùng:** Taxi (Managed Application)

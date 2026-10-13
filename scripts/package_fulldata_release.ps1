@@ -1,6 +1,6 @@
 $exe = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
 $ib = "C:\Users\Dung\Documents\1C_Enterprise\Infobase_FullData"
-$outDt = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test_FULLDATA.dt"
+$outDt = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Full.dt"
 $logPath = "C:\Users\Dung\Documents\1C_Enterprise\dump_fulldata.log"
 
 Remove-Item $logPath -Force -ErrorAction SilentlyContinue
