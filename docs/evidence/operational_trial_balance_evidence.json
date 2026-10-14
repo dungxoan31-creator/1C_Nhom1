@@ -1,0 +1,121 @@
+{
+"Provenance": {
+"Database": "Infobase_FullData",
+"Standard": "VAS (TT200/2014/TT-BTC, TT99/2025/TT-BTC, VAS 10)",
+"Period": "2025-01-01 - 2026-09-30",
+"PeriodDays": 638,
+"PolicyDoc": "CSKT-VSF-2026/01",
+"PolicyApproved": true,
+"ExtractorUser": "ketoan_truong",
+"ExportTime": "2026-10-14 08:34:59",
+"TotalGLRecords": 8412
+},
+"TrialBalance": {
+"TongPhatSinhNo": 3087498695648,
+"TongPhatSinhCo": 3087498695648,
+"DeltaTrialBalance": 0,
+"CanDoi": true,
+"ChiTietTaiKhoan": [
+{
+"MaTaiKhoan": "6427",
+"TenTaiKhoan": "Chi phí dịch vụ mua ngoài / Phí ngân hàng",
+"TongPhatSinhNo": 1165378500,
+"TongPhatSinhCo": 0
+},
+{
+"MaTaiKhoan": "627",
+"TenTaiKhoan": "Chi phí sản xuất chung / Chi phí dịch vụ Cloud",
+"TongPhatSinhNo": 379649753535,
+"TongPhatSinhCo": 0
+},
+{
+"MaTaiKhoan": "5113",
+"TenTaiKhoan": "Doanh thu cung cấp dịch vụ",
+"TongPhatSinhNo": 0,
+"TongPhatSinhCo": 1053136000000
+},
+{
+"MaTaiKhoan": "1388",
+"TenTaiKhoan": "Phải thu khác / Tiền tạm giữ cổng thanh toán",
+"TongPhatSinhNo": 1010300000,
+"TongPhatSinhCo": 68475300000
+},
+{
+"MaTaiKhoan": "1311",
+"TenTaiKhoan": "Phải thu khách hàng ngoài",
+"TongPhatSinhNo": 320657000000,
+"TongPhatSinhCo": 283652600000
+},
+{
+"MaTaiKhoan": "1312",
+"TenTaiKhoan": "Phải thu khách hàng nội bộ Vingroup",
+"TongPhatSinhNo": 837721500000,
+"TongPhatSinhCo": 835176700000
+},
+{
+"MaTaiKhoan": "3311",
+"TenTaiKhoan": "Phải trả người bán bên ngoài",
+"TongPhatSinhNo": 185934100000,
+"TongPhatSinhCo": 203130400000
+},
+{
+"MaTaiKhoan": "3312",
+"TenTaiKhoan": "Phải trả người bán nội bộ Vingroup",
+"TongPhatSinhNo": 27870200000,
+"TongPhatSinhCo": 43386200000
+},
+{
+"MaTaiKhoan": "3313",
+"TenTaiKhoan": "Phải trả người bán nước ngoài (Ngoại tệ USD)",
+"TongPhatSinhNo": 153815515613,
+"TongPhatSinhCo": 155543753535
+},
+{
+"MaTaiKhoan": "33311",
+"TenTaiKhoan": "Thuế GTGT đầu ra",
+"TongPhatSinhNo": 0,
+"TongPhatSinhCo": 105242500000
+},
+{
+"MaTaiKhoan": "1331",
+"TenTaiKhoan": "Thuế GTGT được khấu trừ của hàng hóa, dịch vụ",
+"TongPhatSinhNo": 22410600000,
+"TongPhatSinhCo": 0
+},
+{
+"MaTaiKhoan": "1122",
+"TenTaiKhoan": "Tiền gửi ngân hàng Ngoại tệ",
+"TongPhatSinhNo": 158379100000,
+"TongPhatSinhCo": 153815515613
+},
+{
+"MaTaiKhoan": "1121",
+"TenTaiKhoan": "Tiền gửi ngân hàng VND",
+"TongPhatSinhNo": 998885248000,
+"TongPhatSinhCo": 185939726500
+}
+]
+},
+"Reconciliation": {
+"TongDuSubAR": 39549200000,
+"TongDuGL_AR": 39549200000,
+"DeltaAR": 0,
+"TongDuSubAP": 34440537922,
+"TongDuGL_AP": 34440537922,
+"DeltaAP": 0,
+"TongDuSubBank": 817509105887,
+"TongDuGL_Bank": 817509105887,
+"DeltaBank": 0,
+"ExceptionsCount": 0,
+"HopLe": true
+},
+"ForeignExchangeEvidence": {
+"SoLuongGiaoDichUSD": 1060,
+"TongNguyenTeUSD": 18536239.83,
+"TongQuyDoiVND": 467738369148,
+"LaiTyGia515": 0,
+"LoTyGia635": 0,
+"DanhGiaLai4131": 0,
+"TyGiaApDung": "25450 / 25500 VND/USD (Thuc te BIDV/Vietcombank)"
+}
+}

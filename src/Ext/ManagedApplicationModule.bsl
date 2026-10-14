@@ -206,6 +206,13 @@ Procedure OnStart()
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("PostingLifecycle.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
+	ElsIf Cmd = "ExportTrialBalanceEvidence" Then
+		Try
+			BaoCaoQuanTriServer.XuatOperationalTrialBalanceEvidenceServer();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("OperationalEvidence.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
 	ElsIf Cmd = "TestAccounts" Then
 		Try
 			SeedFullTestDataServer.KiemTraDanhSachTaiKhoan();

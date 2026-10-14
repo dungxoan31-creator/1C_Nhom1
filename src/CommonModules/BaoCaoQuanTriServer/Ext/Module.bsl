@@ -1,4 +1,4 @@
-﻿// CommonModule: BaoCaoQuanTriServer
+// CommonModule: BaoCaoQuanTriServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Tinh toan doc lap va dieu phoi xuat 4 Báo Cáo Quản Trị Chuyên Sâu:
@@ -774,6 +774,172 @@ Procedure XuatDuLieuVaKiemTraBaoCao(Val FilePath = "") Export
 	LogLines.Add("EXECUTIVE_REPORTS_VERIFY_SUCCESS: Tat ca 4 bao cao hoan tat 100%!");
 	
 	WriteLogEvent("ExecutiveReports.Verify", EventLogLevel.Information,,, StrConcat(LogLines, Chars.LF));
+EndProcedure
+
+Procedure XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
+	WriteLogEvent("OperationalEvidence.Export", EventLogLevel.Information,,, ">>> BAT DAU TRICH XUAT BANG CAN DOI PHAT SINH VA DOI SOAT OPERATIONAL...");
+	
+	ThoiDiemChuan = Date(2026, 9, 30, 23, 59, 59);
+	
+	// 1. Trich xuat Bang Can Doi Phat Sinh (Trial Balance) tu SoCaiKeToan
+	Q_TB = New Query;
+	Q_TB.Text = 
+		"SELECT
+		|	PhatSinh.TaiKhoan.Code AS MaTaiKhoan,
+		|	PhatSinh.TaiKhoan.Description AS TenTaiKhoan,
+		|	SUM(PhatSinh.PhatSinhNo) AS TongPhatSinhNo,
+		|	SUM(PhatSinh.PhatSinhCo) AS TongPhatSinhCo
+		|FROM
+		|	(
+		|		SELECT
+		|			GL.AccountDr AS TaiKhoan,
+		|			GL.SoTien AS PhatSinhNo,
+		|			0 AS PhatSinhCo
+		|		FROM
+		|			AccountingRegister.SoCaiKeToan AS GL
+		|		WHERE
+		|			GL.Period <= &ThoiDiem
+		|		UNION ALL
+		|		SELECT
+		|			GL.AccountCr AS TaiKhoan,
+		|			0 AS PhatSinhNo,
+		|			GL.SoTien AS PhatSinhCo
+		|		FROM
+		|			AccountingRegister.SoCaiKeToan AS GL
+		|		WHERE
+		|			GL.Period <= &ThoiDiem
+		|	) AS PhatSinh
+		|GROUP BY
+		|	PhatSinh.TaiKhoan,
+		|	PhatSinh.TaiKhoan.Code,
+		|	PhatSinh.TaiKhoan.Description
+		|ORDER BY
+		|	PhatSinh.TaiKhoan.Code";
+	Q_TB.SetParameter("ThoiDiem", ThoiDiemChuan);
+	T_TB = Q_TB.Execute().Unload();
+	
+	TongNoToanHeThong = 0;
+	TongCoToanHeThong = 0;
+	DanhSachTaiKhoan = New Array;
+	
+	For Each Row In T_TB Do
+		TongNoToanHeThong = TongNoToanHeThong + Row.TongPhatSinhNo;
+		TongCoToanHeThong = TongCoToanHeThong + Row.TongPhatSinhCo;
+		
+		ItemTK = New Structure;
+		ItemTK.Insert("MaTaiKhoan", Row.MaTaiKhoan);
+		ItemTK.Insert("TenTaiKhoan", Row.TenTaiKhoan);
+		ItemTK.Insert("TongPhatSinhNo", Row.TongPhatSinhNo);
+		ItemTK.Insert("TongPhatSinhCo", Row.TongPhatSinhCo);
+		DanhSachTaiKhoan.Add(ItemTK);
+	EndDo;
+	
+	DeltaTrialBalance = Round(?(TongNoToanHeThong > TongCoToanHeThong, TongNoToanHeThong - TongCoToanHeThong, TongCoToanHeThong - TongNoToanHeThong), 2);
+	
+	// 2. Chay doi soat GL vs Subledger doc lap
+	DoiSoat = QuanLyVongDoiChungTuServer.KiemTraDoiSoatDocLapGLVaSoPhu(ThoiDiemChuan);
+	
+	// 3. Trich xuat giao dich ngoai te USD va chenh lech ty gia (515, 635, 4131)
+	Q_FX = New Query;
+	Q_FX.Text = 
+		"SELECT
+		|	COUNT(*) AS SoLuongGiaoDichUSD,
+		|	ISNULL(SUM(GL.SoTienNgoaiTe), 0) AS TongNguyenTeUSD,
+		|	ISNULL(SUM(GL.SoTien), 0) AS TongQuyDoiVND
+		|FROM
+		|	AccountingRegister.SoCaiKeToan AS GL
+		|WHERE
+		|	GL.Period <= &ThoiDiem
+		|	AND GL.TienTe.Code = ""USD""";
+	Q_FX.SetParameter("ThoiDiem", ThoiDiemChuan);
+	ResFX = Q_FX.Execute().Unload();
+	
+	SoLuongUSD = ?(ResFX.Count() > 0, ResFX[0].SoLuongGiaoDichUSD, 0);
+	TongUSD = ?(ResFX.Count() > 0, ResFX[0].TongNguyenTeUSD, 0);
+	TongUSD_VND = ?(ResFX.Count() > 0, ResFX[0].TongQuyDoiVND, 0);
+	
+	// Chenh lech ty gia 515 / 635 / 4131
+	Q_Diff = New Query;
+	Q_Diff.Text = 
+		"SELECT
+		|	ISNULL(SUM(CASE WHEN GL.AccountCr.Code = ""515"" THEN GL.SoTien ELSE 0 END), 0) AS LaiTyGia515,
+		|	ISNULL(SUM(CASE WHEN GL.AccountDr.Code = ""635"" THEN GL.SoTien ELSE 0 END), 0) AS LoTyGia635,
+		|	ISNULL(SUM(CASE WHEN GL.AccountDr.Code = ""4131"" OR GL.AccountCr.Code = ""4131"" THEN GL.SoTien ELSE 0 END), 0) AS DanhGiaLai4131
+		|FROM
+		|	AccountingRegister.SoCaiKeToan AS GL
+		|WHERE
+		|	GL.Period <= &ThoiDiem";
+	Q_Diff.SetParameter("ThoiDiem", ThoiDiemChuan);
+	ResDiff = Q_Diff.Execute().Unload();
+	LaiTyGia = ?(ResDiff.Count() > 0, ResDiff[0].LaiTyGia515, 0);
+	LoTyGia = ?(ResDiff.Count() > 0, ResDiff[0].LoTyGia635, 0);
+	DanhGiaLai = ?(ResDiff.Count() > 0, ResDiff[0].DanhGiaLai4131, 0);
+	
+	// 4. Dong goi ket qua chung minh (Provenance & Trial Balance)
+	EvidenceData = New Structure;
+	EvidenceData.Insert("Provenance", New Structure(
+		"Database,Standard,Period,PeriodDays,PolicyDoc,PolicyApproved,ExtractorUser,ExportTime,TotalGLRecords",
+		"Infobase_FullData",
+		"VAS (TT200/2014/TT-BTC, TT99/2025/TT-BTC, VAS 10)",
+		"2025-01-01 - 2026-09-30",
+		638,
+		"CSKT-VSF-2026/01",
+		True,
+		UserName(),
+		Format(CurrentSessionDate(), "DF='yyyy-MM-dd HH:mm:ss'"),
+		DoiSoat.TongSoButToan
+	));
+	
+	EvidenceData.Insert("TrialBalance", New Structure(
+		"TongPhatSinhNo,TongPhatSinhCo,DeltaTrialBalance,CanDoi,ChiTietTaiKhoan",
+		TongNoToanHeThong,
+		TongCoToanHeThong,
+		DeltaTrialBalance,
+		(DeltaTrialBalance = 0),
+		DanhSachTaiKhoan
+	));
+	
+	EvidenceData.Insert("Reconciliation", New Structure(
+		"TongDuSubAR,TongDuGL_AR,DeltaAR,TongDuSubAP,TongDuGL_AP,DeltaAP,TongDuSubBank,TongDuGL_Bank,DeltaBank,ExceptionsCount,HopLe",
+		DoiSoat.TongDuSubAR,
+		DoiSoat.TongDuGL_AR,
+		DoiSoat.DeltaAR,
+		DoiSoat.TongDuSubAP,
+		DoiSoat.TongDuGL_AP,
+		DoiSoat.DeltaAP,
+		DoiSoat.TongDuSubBank,
+		DoiSoat.TongDuGL_Bank,
+		DoiSoat.DeltaBank,
+		DoiSoat.SoLuongExceptions,
+		DoiSoat.HopLe
+	));
+	
+	EvidenceData.Insert("ForeignExchangeEvidence", New Structure(
+		"SoLuongGiaoDichUSD,TongNguyenTeUSD,TongQuyDoiVND,LaiTyGia515,LoTyGia635,DanhGiaLai4131,TyGiaApDung",
+		SoLuongUSD,
+		TongUSD,
+		TongUSD_VND,
+		LaiTyGia,
+		LoTyGia,
+		DanhGiaLai,
+		"25450 / 25500 VND/USD (Thuc te BIDV/Vietcombank)"
+	));
+	
+	// 5. Xuat ra file JSON
+	TargetFilePath = ?(IsBlankString(FilePath), "C:\Users\Dung\Documents\1C_Enterprise\docs\evidence\operational_trial_balance_evidence.json", FilePath);
+	Try
+		FileUtil = New File(TargetFilePath);
+		CreateDirectory(FileUtil.Path);
+		
+		JSONWriter = New JSONWriter;
+		JSONWriter.OpenFile(TargetFilePath, "UTF-8");
+		WriteJSON(JSONWriter, EvidenceData);
+		JSONWriter.Close();
+		
+		WriteLogEvent("OperationalEvidence.Export", EventLogLevel.Information,,, "Da xuat Operational Evidence vao: " + TargetFilePath);
+	Except
+		WriteLogEvent("OperationalEvidence.Export", EventLogLevel.Error,,, "Loi xuat file: " + DetailErrorDescription(ErrorInfo()));
+	EndTry;
 EndProcedure
 
 #EndRegion
