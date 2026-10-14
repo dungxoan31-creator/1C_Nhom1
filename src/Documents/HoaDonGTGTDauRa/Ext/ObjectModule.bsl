@@ -10,6 +10,7 @@
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThaiHDDT, UserName(), WriteMode);
 	
 	// Tu dong tinh tien thue VAT neu chua co
 	If TienThueVAT = 0 And TienChuaThue > 0 And ThueSuatVAT > 0 Then

@@ -178,12 +178,35 @@ Procedure KiemTraChuyenTrangThai(ChungTuRef, TrangThaiMoi, CurrentUser, Val Writ
 	AuthorStr = TrimAll(String(AuthorVal));
 	TrangThaiMoiStr = TrimAll(String(TrangThaiMoi));
 	
-	// Cam nhay coc trang thai tu CSDL
+	// 1. Chặn Maker tự phê duyệt (Không cho phép người lập chuyển sang Đã duyệt)
+	LaChuyenSangPheDuyet = (TrangThaiMoiStr = "DaDuyet" Or TrangThaiMoiStr = "Đã duyệt" 
+		Or TrangThaiMoiStr = "DaPheDuyet" Or TrangThaiMoiStr = "Đã phê duyệt"
+		Or TrangThaiMoiStr = "DaDuyetNoiBo" Or TrangThaiMoiStr = "Đã duyệt nội bộ");
+		
+	If LaChuyenSangPheDuyet Then
+		If ValueIsFilled(AuthorStr) And ValueIsFilled(SessionUser) And (SessionUser = AuthorStr Or Upper(SessionUser) = Upper(AuthorStr)) Then
+			WriteLogEvent("Security.MakerChecker", EventLogLevel.Warning,,, 
+				StrTemplate("Người lập '%1' cố gắng tự phê duyệt chứng từ!", AuthorStr));
+			Raise "Vi phạm nguyên tắc Maker-Checker: Người lập không thể tự phê duyệt chuyển trạng thái sang Đã duyệt!";
+		EndIf;
+	EndIf;
+	
+	// 2. Chặn nhảy cóc trạng thái từ CSDL sang Ghi sổ / Cấn trừ
 	If TrangThaiMoiStr = "DaCanTru" Or TrangThaiMoiStr = "Đã cấn trừ" Or TrangThaiMoiStr = "DaGhiSo" Or TrangThaiMoiStr = "Đã ghi sổ" Then
 		If ValueIsFilled(TrangThaiHienTai) And (TrangThaiHienTai = "ChoDuyet" Or TrangThaiHienTai = "Chờ duyệt" Or TrangThaiHienTai = "MoiTao" Or TrangThaiHienTai = "Mới tạo" Or TrangThaiHienTai = "Draft" Or TrangThaiHienTai = "DuThao" Or TrangThaiHienTai = "Dự thảo") Then
 			WriteLogEvent("Workflow.InvalidTransition", EventLogLevel.Warning,,, 
 				StrTemplate("Chuyển trạng thái bất hợp lệ từ %1 sang %2!", TrangThaiHienTai, TrangThaiMoiStr));
 			Raise StrTemplate("Quy trình phê duyệt không hợp lệ: Chứng từ phải ở trạng thái Đã duyệt trước khi ghi sổ/cấn trừ (trạng thái đã lưu trong CSDL: %1)!", TrangThaiHienTai);
+		EndIf;
+	EndIf;
+	
+	// 3. Chặn sửa trực tiếp trạng thái trên chứng từ đã ghi sổ
+	LaDaGhiSoCu = (TrangThaiHienTai = "DaGhiSo" Or TrangThaiHienTai = "Đã ghi sổ" Or TrangThaiHienTai = "DaCanTru" Or TrangThaiHienTai = "Đã cấn trừ");
+	If LaDaGhiSoCu And DaLuuInfo.Posted And WriteMode <> DocumentWriteMode.UndoPosting Then
+		If TrangThaiMoiStr <> TrangThaiHienTai Then
+			WriteLogEvent("Workflow.DirectStateEdit", EventLogLevel.Warning,,, 
+				StrTemplate("Từ chối sửa trực tiếp trạng thái từ %1 sang %2 trên chứng từ đã ghi sổ!", TrangThaiHienTai, TrangThaiMoiStr));
+			Raise StrTemplate("CẤM SỬA TRỰC TIẾP: Chứng từ đã ghi sổ không được phép sửa trực tiếp trạng thái (từ '%1' sang '%2') khi chưa hủy ghi sổ!", TrangThaiHienTai, TrangThaiMoiStr);
 		EndIf;
 	EndIf;
 EndProcedure

@@ -15,6 +15,7 @@
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), WriteMode);
 	
 	If WriteMode = DocumentWriteMode.Posting Then
 		If TrangThai <> "DaDuyet" And TrangThai <> "DaGhiSo" And TrangThai <> "DaCanTru" Then

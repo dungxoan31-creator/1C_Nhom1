@@ -16,6 +16,7 @@
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), WriteMode);
 	
 	// 2. Mac dinh ngay lap
 	If Not ValueIsFilled(NgayLap) Then

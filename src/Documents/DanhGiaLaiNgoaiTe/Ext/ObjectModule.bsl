@@ -9,6 +9,7 @@
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
+	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), WriteMode);
 	
 	If Not ValueIsFilled(NgayChot) Then
 		NgayChot = EndOfDay(Date);
