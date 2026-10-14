@@ -293,6 +293,15 @@ Procedure OnStart()
 		EndTry;
 		Exit(False);
 	EndIf;
+	
+	// Tu dong mo Dashboard Lanh dao CFO khi nguoi dung khoi dong giao dien tuong tac
+	If IsBlankString(LaunchParameter) Then
+		Try
+			OpenForm("DataProcessor.DashboardLanhDaoCFO.Form");
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("DashboardCFO.OpenError", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+	EndIf;
 EndProcedure
 
 Procedure GhiKetQuaRuntime(RunID, OutputPath, Cases)
