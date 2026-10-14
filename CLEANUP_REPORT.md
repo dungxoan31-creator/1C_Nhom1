@@ -23,7 +23,7 @@ Tất cả các file duyệt bỏ đã được di chuyển an toàn (không xó
 - Chặn các file rác và build: `*.log`, `build/`, `scratch/`, `.superpowers/`, `_to_delete/`.
 - Chặn các file khóa của 1C và Office: `*.cfl`, `*.1cl`, `*.lck`, `~$*`.
 - Chặn file tạm của trình soạn thảo: `*.tmp`, `*.temp`, `*.bak`, `*.swp`, `*.orig`, `*~`.
-- Whitelist bảo vệ 2 gói dữ liệu `.dt` chuẩn: `!VinSmart_Future_AR_AP_Full.dt`, `!VinSmart_Future_AR_AP_Test.dt`.
+- Whitelist bảo vệ gói dữ liệu `.dt` chuẩn duy nhất: `!VinSmart_Future_AR_AP_Full.dt`.
 
 ### C. Viết lại `README.md`
 `README.md` đã được viết lại tinh gọn, chính xác:

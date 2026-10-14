@@ -6,7 +6,7 @@ if sys.stdout.encoding != 'utf-8':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def test_isolation():
-    orig_dt = r"C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.dt"
+    orig_dt = r"C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Full.dt"
     full_ib = r"C:\Users\Dung\Documents\1C_Enterprise\Infobase_FullData"
     ib_file = os.path.join(full_ib, "1Cv8.1CD")
 

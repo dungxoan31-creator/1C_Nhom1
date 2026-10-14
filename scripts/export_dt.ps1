@@ -1,5 +1,5 @@
 param(
-    [string]$OutputPath = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.dt",
+    [string]$OutputPath = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Full.dt",
     [string]$User = "Admin",
     [string]$Password = ""
 )

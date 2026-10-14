@@ -1,24 +1,24 @@
 {
-"ThoiDiemXuat": "2026-10-13T23:25:55",
+"ThoiDiemXuat": "2026-10-14T16:36:15",
 "NgayChotBaoCao": "2026-09-30T23:59:59",
 "TrangThai": "EXECUTIVE_REPORTS_SUCCESS_100",
 "Report1_TuoiNo": {
 "NgayChot": "2026-09-30T23:59:59",
 "AR_Buckets": {
-"TrongHan": 37972000000,
+"TrongHan": 37900900000,
 "QuaHan1_30": 9179500000,
 "QuaHan31_60": 6080800000,
 "QuaHan61_90": 7452500000,
 "QuaHanTren90": 6805700000,
-"TongCong": 67490500000
+"TongCong": 67419400000
 },
 "AP_Buckets": {
-"TrongHan": 13770957059,
+"TrongHan": 13480557059,
 "QuaHan1_30": 5714500000,
 "QuaHan31_60": 321200000,
 "QuaHan61_90": 5691400000,
-"QuaHanTren90": 10137000000,
-"TongCong": 35635057059
+"QuaHanTren90": 10578180863,
+"TongCong": 35785837922
 },
 "ChiTietAR": [
 {
@@ -241,7 +241,7 @@
 "MaDoiTac": "TEST_KH_CORP_36",
 "TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 36",
 "LaBenLienKet": false,
-"SoDuNo": 649000000,
+"SoDuNo": 590000000,
 "NgayDaoHan": "2026-10-27T00:00:00",
 "SoNgayQuaHan": -27,
 "NhomTuoiNo": "TrongHan",
@@ -1333,7 +1333,7 @@
 "MaDoiTac": "TEST_KH_CORP_37",
 "TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 37",
 "LaBenLienKet": false,
-"SoDuNo": 133100000,
+"SoDuNo": 121000000,
 "NgayDaoHan": "2026-10-27T00:00:00",
 "SoNgayQuaHan": -27,
 "NhomTuoiNo": "TrongHan",
@@ -1578,6 +1578,15 @@
 "MaDoiTac": "TEST_VG_VINPEARL",
 "TenDoiTac": "Công ty CP Vinpearl",
 "LaBenLienKet": true,
+"SoDuNo": 227700000,
+"NgayDaoHan": "2025-04-30T00:00:00",
+"SoNgayQuaHan": 518,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"TenDoiTac": "Công ty CP Vinpearl",
+"LaBenLienKet": true,
 "SoDuNo": 366500000,
 "NgayDaoHan": "2026-04-05T00:00:00",
 "SoNgayQuaHan": 178,
@@ -1618,15 +1627,6 @@
 "NgayDaoHan": "2026-07-09T00:00:00",
 "SoNgayQuaHan": 83,
 "NhomTuoiNo": "QuaHan61_90"
-},
-{
-"MaDoiTac": "TEST_NCC_VN_077",
-"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 77",
-"LaBenLienKet": false,
-"SoDuNo": 290400000,
-"NgayDaoHan": "2026-10-19T00:00:00",
-"SoNgayQuaHan": -19,
-"NhomTuoiNo": "TrongHan"
 },
 {
 "MaDoiTac": "TEST_VG_VINWONDERS",
@@ -1947,6 +1947,15 @@
 "MaDoiTac": "TEST_VG_VINROBOTICS",
 "TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
 "LaBenLienKet": true,
+"SoDuNo": 28600000,
+"NgayDaoHan": "2025-05-03T00:00:00",
+"SoNgayQuaHan": 515,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaBenLienKet": true,
 "SoDuNo": 290400000,
 "NgayDaoHan": "2026-04-08T00:00:00",
 "SoNgayQuaHan": 175,
@@ -2124,6 +2133,24 @@
 "NhomTuoiNo": "QuaHan31_60"
 },
 {
+"MaDoiTac": "TEST_NCC_AWS",
+"TenDoiTac": "Amazon Web Services Inc",
+"LaBenLienKet": false,
+"SoDuNo": 101618275,
+"NgayDaoHan": "2025-02-06T00:00:00",
+"SoNgayQuaHan": 601,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_074",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 74",
+"LaBenLienKet": false,
+"SoDuNo": 392700000,
+"NgayDaoHan": "2026-10-10T00:00:00",
+"SoNgayQuaHan": -10,
+"NhomTuoiNo": "TrongHan"
+},
+{
 "MaDoiTac": "TEST_NCC_VN_053",
 "TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 53",
 "LaBenLienKet": false,
@@ -2133,21 +2160,30 @@
 "NhomTuoiNo": "TrongHan"
 },
 {
-"MaDoiTac": "TEST_NCC_VN_010",
-"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 10",
-"LaBenLienKet": false,
-"SoDuNo": 177100000,
-"NgayDaoHan": "2026-03-21T00:00:00",
-"SoNgayQuaHan": 193,
-"NhomTuoiNo": "QuaHanTren90"
-},
-{
 "MaDoiTac": "TEST_NCC_VN_011",
 "TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 11",
 "LaBenLienKet": false,
 "SoDuNo": 211200000,
 "NgayDaoHan": "2025-04-18T00:00:00",
 "SoNgayQuaHan": 530,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_ATLASSIAN",
+"TenDoiTac": "Atlassian Pty Ltd",
+"LaBenLienKet": false,
+"SoDuNo": 83262588,
+"NgayDaoHan": "2025-02-03T00:00:00",
+"SoNgayQuaHan": 604,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_010",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 10",
+"LaBenLienKet": false,
+"SoDuNo": 177100000,
+"NgayDaoHan": "2026-03-21T00:00:00",
+"SoNgayQuaHan": 193,
 "NhomTuoiNo": "QuaHanTren90"
 },
 {
@@ -2547,15 +2583,6 @@
 "NhomTuoiNo": "TrongHan"
 },
 {
-"MaDoiTac": "TEST_NCC_VN_074",
-"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 74",
-"LaBenLienKet": false,
-"SoDuNo": 392700000,
-"NgayDaoHan": "2026-10-10T00:00:00",
-"SoNgayQuaHan": -10,
-"NhomTuoiNo": "TrongHan"
-},
-{
 "MaDoiTac": "TEST_NCC_VN_075",
 "TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 75",
 "LaBenLienKet": false,
@@ -2673,13 +2700,13 @@
 }
 },
 "Report2_MaTranNetting": {
-"TongCanTruSongPhuong": 27516200000,
-"TongCanTruBacCau": 1130300000,
-"TongGiaTriCanTru": 28646500000,
-"TongGiamAR": 28646500000,
-"TongGiamAP": 28646500000,
+"TongCanTruSongPhuong": 27259900000,
+"TongCanTruBacCau": 1100300000,
+"TongGiaTriCanTru": 28360200000,
+"TongGiamAR": 28360200000,
+"TongGiamAP": 28360200000,
 "DeltaCanDoi": 0,
-"TongSoChungTu": 151,
+"TongSoChungTu": 148,
 "ChiTietTheoDoiTac": [
 {
 "MaDoiTac": "TEST_VG_VINWONDERS",
@@ -2687,11 +2714,11 @@
 },
 {
 "MaDoiTac": "TEST_VG_VINROBOTICS",
-"SoTienCanTru": 1477800000
+"SoTienCanTru": 1449200000
 },
 {
 "MaDoiTac": "TEST_VG_VINPEARL",
-"SoTienCanTru": 752200000
+"SoTienCanTru": 524500000
 },
 {
 "MaDoiTac": "TEST_VG_VINMEC",
@@ -2699,7 +2726,7 @@
 },
 {
 "MaDoiTac": "TEST_VG_VINHOMES",
-"SoTienCanTru": 1649700000
+"SoTienCanTru": 1619700000
 },
 {
 "MaDoiTac": "TEST_VG_VINCOM_RETAIL",
@@ -2992,8 +3019,8 @@
 "LaCanTruBacCau": true,
 "MaTrungGian": "TEST_VG_VINFAST_VN",
 "TenTrungGian": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
-"SoChungTu": 4,
-"SoTienCanTru": 120000000
+"SoChungTu": 3,
+"SoTienCanTru": 90000000
 },
 {
 "MaDoiTac": "TEST_VG_VINMEC",
@@ -3019,8 +3046,8 @@
 "LaCanTruBacCau": false,
 "MaTrungGian": "",
 "TenTrungGian": "",
-"SoChungTu": 5,
-"SoTienCanTru": 752200000
+"SoChungTu": 4,
+"SoTienCanTru": 524500000
 },
 {
 "MaDoiTac": "TEST_VG_VINROBOTICS",
@@ -3028,8 +3055,8 @@
 "LaCanTruBacCau": false,
 "MaTrungGian": "",
 "TenTrungGian": "",
-"SoChungTu": 4,
-"SoTienCanTru": 1317800000
+"SoChungTu": 3,
+"SoTienCanTru": 1289200000
 },
 {
 "MaDoiTac": "TEST_VG_VINROBOTICS",
@@ -3082,21 +3109,28 @@
 "VinFastProd": 541000000,
 "VinFastTrading": 808800000,
 "GSM": 1445400000,
-"Vinhomes": 1649700000,
+"Vinhomes": 1619700000,
 "Vinmec": 1619200000,
-"Vinpearl": 752200000,
+"Vinpearl": 524500000,
 "VGreen": 1793900000,
 "VIC": 1014800000
 }
 },
 "Report3_DoiSoatKenh": {
 "TongGross": 67465000000,
-"TongPhiKenh": 1159752000,
-"TongNetThucNhan": 66305248000,
+"TongPhiKenh": 851844650,
+"TongNetThucNhan": 66613155350,
 "DeltaCanDoi": 0,
-"TyLePhiTrungBinh": 1.72,
+"TyLePhiTrungBinh": 1.26,
 "TongSoBangKe": 180,
 "ChiTietTheoKenh": [
+{
+"MaKenh": "KTT-VPB-VA",
+"TenKenh": "Virtual Account VPBank",
+"Gross": 22663000000,
+"Phi": 113315000,
+"Net": 22549685000
+},
 {
 "MaKenh": "KTT-VNPAY",
 "TenKenh": "Cong thanh toan VNPAY",
@@ -3108,48 +3142,41 @@
 "MaKenh": "KTT-ONEPAY",
 "TenKenh": "Cong thanh toan OnePay",
 "Gross": 21111000000,
-"Phi": 464442000,
-"Net": 20646558000
-},
-{
-"MaKenh": "KP-TEST1",
-"TenKenh": "Cong thanh toan VNPAY QR",
-"Gross": 22663000000,
-"Phi": 339945000,
-"Net": 22323055000
+"Phi": 383164650,
+"Net": 20727835350
 }
 ],
 "ChiTietTheoNganHang": [
 {
-"MaTaiKhoan": "TK-TCB-VN",
-"TenTaiKhoan": "Techcombank VND - Hoi so chinh",
-"Gross": 44802000000,
-"Phi": 819807000,
-"Net": 43982193000
-},
-{
 "MaTaiKhoan": "TK-VPB-VA",
 "TenTaiKhoan": "VPBank Chuyen thu Virtual Account",
 "Gross": 22663000000,
-"Phi": 339945000,
-"Net": 22323055000
+"Phi": 113315000,
+"Net": 22549685000
+},
+{
+"MaTaiKhoan": "TK-TCB-VN",
+"TenTaiKhoan": "Techcombank VND - Hoi so chinh",
+"Gross": 44802000000,
+"Phi": 738529650,
+"Net": 44063470350
 }
 ],
 "SoDuNganHangDongTien": [
 {
 "MaTaiKhoan": "TK-TCB-VN",
 "TenTaiKhoan": "Techcombank VND - Hoi so chinh",
-"SoDuTien": 789549519200
+"SoDuTien": 789620561781.81
 },
 {
 "MaTaiKhoan": "TK-VCB-US",
 "TenTaiKhoan": "Vietcombank USD - So giao dich",
-"SoDuTien": 2821213965
+"SoDuTien": 3079952140.16
 },
 {
 "MaTaiKhoan": "TK-VPB-VA",
 "TenTaiKhoan": "VPBank Chuyen thu Virtual Account",
-"SoDuTien": 22323055000
+"SoDuTien": 22549685000
 }
 ]
 },

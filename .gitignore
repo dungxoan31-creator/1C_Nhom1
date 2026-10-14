@@ -15,7 +15,6 @@ _to_delete/
 # Data dump packages (.dt whitelist)
 *.dt
 !VinSmart_Future_AR_AP_Full.dt
-!VinSmart_Future_AR_AP_Test.dt
 
 # Archive & Binary formats
 *.zip

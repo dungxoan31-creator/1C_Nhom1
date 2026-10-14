@@ -12,8 +12,7 @@ Cấu hình 1C quản lý phải thu, phải trả, cấn trừ nội bộ và b
 | [docs/](docs/) | Đặc tả, kế hoạch, báo cáo và bằng chứng. |
 | [Lessons/](Lessons/) và [Bài thực hành/](Bài%20thực%20hành/) | Tài liệu đào tạo 1C. |
 | [1C-Mentor-Skill-Gemini/](1C-Mentor-Skill-Gemini/) | Tài nguyên hướng dẫn lập trình. |
-| [VinSmart_Future_AR_AP_Full.dt](VinSmart_Future_AR_AP_Full.dt) | Backup snapshot dữ liệu mẫu; số lượng chứng từ trong tài liệu cũ cần kiểm kê lại theo lần chạy. |
-| [VinSmart_Future_AR_AP_Test.dt](VinSmart_Future_AR_AP_Test.dt) | Backup dành cho thử nghiệm; vẫn phải restore vào clone riêng. |
+| [VinSmart_Future_AR_AP_Full.dt](VinSmart_Future_AR_AP_Full.dt) | Gói CSDL chuẩn duy nhất (Full standalone package) chứa toàn bộ cấu hình 1C và dữ liệu giao dịch 100% kiểm toán. |
 
 ## Kiểm tra offline
 
