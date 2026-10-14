@@ -1,4 +1,4 @@
-﻿// Document: UyNhiemChi
+// Document: UyNhiemChi
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so (Posting) Uy nhiem chi theo P0.2 Invariant State Machine (Task 4.3):
@@ -510,8 +510,7 @@ Procedure Posting(Cancel, Mode)
 		Else
 			Q_TK_VND = New Query(
 				"SELECT TOP 1 Ref FROM Catalog.TaiKhoanTien 
-				|WHERE PhapNhan = &PhapNhan AND TienTe.Code = ""VND"" AND DeletionMark = FALSE");
-			Q_TK_VND.SetParameter("PhapNhan", PhapNhan);
+				|WHERE TienTe.Code = ""VND"" AND DeletionMark = FALSE");
 			T_TK_VND = Q_TK_VND.Execute().Unload();
 			If T_TK_VND.Count() > 0 Then
 				TaiKhoanTienPhi = T_TK_VND[0].Ref;

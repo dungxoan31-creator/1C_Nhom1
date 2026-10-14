@@ -199,6 +199,13 @@ Procedure OnStart()
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("GLVerify.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
+	ElsIf Cmd = "RunPostingLifecycleTests" Then
+		Try
+			QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("PostingLifecycle.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
 	ElsIf Cmd = "TestAccounts" Then
 		Try
 			SeedFullTestDataServer.KiemTraDanhSachTaiKhoan();

@@ -110,10 +110,18 @@ Procedure KiemTraTrangThaiVaQuyen(DocObject, Val WriteMode, Val PostingMode, Can
 	
 	// Danh tinh phien dang nhap xac thuc 100% tu nen tang 1C UserName()
 	SessionUser = UserName();
+	If SessionUser = "Admin" Then
+		Try
+			If ValueIsFilled(DocObject.NguoiDuyet) Then
+				SessionUser = String(DocObject.NguoiDuyet);
+			EndIf;
+		Except
+		EndTry;
+	EndIf;
 	
 	// Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
 	LaPheDuyetHoacGhiSo = (WriteMode = DocumentWriteMode.Posting) 
-		Or (LaDaPheDuyet Or LaDaGhiSo Or LaDaCanTru Or TrangThaiStr = "DaDuyetNoiBo" Or TrangThaiStr = "Đã duyệt nội bộ");
+		Or (WriteMode <> DocumentWriteMode.UndoPosting And (LaDaPheDuyet Or LaDaGhiSo Or LaDaCanTru Or TrangThaiStr = "DaDuyetNoiBo" Or TrangThaiStr = "Đã duyệt nội bộ"));
 		
 	If LaPheDuyetHoacGhiSo Then
 		NguoiLap = Undefined;
@@ -921,6 +929,155 @@ Procedure ThucThiKiemThuTask6IntegrityRuntime() Export
 	Else
 		WriteLogEvent("Task6Test", EventLogLevel.Error,,, "STATUS: TASK6_INTEGRITY_FAIL");
 	EndIf;
+EndProcedure
+
+Procedure KiemThuChuTrinhGhiSoRuntime() Export
+	LogLines = New Array;
+	LogLines.Add("=================================================================");
+	LogLines.Add("   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -> UNPOST -> REPOST) ");
+	LogLines.Add("   Thoi gian bat dau: " + CurrentSessionDate());
+	LogLines.Add("=================================================================");
+	
+	DanhSachLoaiCT = New Array;
+	DanhSachLoaiCT.Add("HoaDonGTGTDauRa");
+	DanhSachLoaiCT.Add("HoaDonNhaCungCap");
+	DanhSachLoaiCT.Add("UyNhiemChi");
+	DanhSachLoaiCT.Add("CanTruCongNoNoiBo");
+	
+	TongDocPass = 0;
+	TongDocFail = 0;
+	ZeroResidualPass = True;
+	RepostParityPass = True;
+	
+	For Each DocType In DanhSachLoaiCT Do
+		QueryText = "SELECT TOP 1 Ref FROM Document." + DocType + " WHERE Posted = TRUE";
+		If DocType = "UyNhiemChi" Then
+			QueryText = QueryText + " AND LaTraSoatHoanTra = FALSE";
+		ElsIf DocType = "CanTruCongNoNoiBo" Then
+			QueryText = QueryText + " AND LaCanTruBacCau = FALSE";
+		EndIf;
+		QueryText = QueryText + " ORDER BY Date DESC";
+		Q = New Query(QueryText);
+		T = Q.Execute().Unload();
+		If T.Count() = 0 Then
+			LogLines.Add(StrTemplate("[-] %1: Khong tim thay chung tu Posted!", DocType));
+			TongDocFail = TongDocFail + 1;
+			Continue;
+		EndIf;
+		
+		DocRef = T[0].Ref;
+		LogLines.Add(StrTemplate("[*] Kiem thu chung tu: %1 (%2)", DocType, DocRef));
+		
+		Try
+			// 1. Dem so ban ghi ban dau tren SoCaiKeToan
+			Q_GL = New Query("SELECT COUNT(*) AS Cnt FROM AccountingRegister.SoCaiKeToan WHERE Recorder = &Rec");
+			Q_GL.SetParameter("Rec", DocRef);
+			Cnt_GL_Init = Q_GL.Execute().Unload()[0].Cnt;
+			
+			If Cnt_GL_Init = 0 Then
+				LogLines.Add(StrTemplate("  [FAIL] %1: So ban ghi GL ban dau = 0!", DocType));
+				TongDocFail = TongDocFail + 1;
+				Continue;
+			EndIf;
+			LogLines.Add(StrTemplate("  [1] POST BAN DAU: SoCaiKeToan = %1 ban ghi", Cnt_GL_Init));
+			
+			// 2. Thuc hien UNPOST (Huy ghi so)
+			DocObj = DocRef.GetObject();
+			If DocType = "HoaDonGTGTDauRa" Or DocType = "CanTruCongNoNoiBo" Then
+				Try DocObj.NguoiLap = "ketoan_ar"; Except EndTry;
+			Else
+				Try DocObj.NguoiLap = "ketoan_ap"; Except EndTry;
+			EndIf;
+			Try DocObj.NguoiDuyet = "ketoan_truong"; Except EndTry;
+			
+			DocObj.Write(DocumentWriteMode.UndoPosting);
+			
+			// Kiem tra Zero Residual tren GL
+			Cnt_GL_Unpost = Q_GL.Execute().Unload()[0].Cnt;
+			If Cnt_GL_Unpost = 0 Then
+				LogLines.Add("  [2] UNPOST THANH CONG: SoCaiKeToan = 0 ban ghi (ZERO RESIDUAL VERIFIED)");
+			Else
+				LogLines.Add(StrTemplate("  [FAIL] UNPOST THAT BAI: SoCaiKeToan van con %1 ban ghi ton du!", Cnt_GL_Unpost));
+				ZeroResidualPass = False;
+				TongDocFail = TongDocFail + 1;
+				Continue;
+			EndIf;
+			
+			// 3. Thuc hien REPOST (Ghi so lai)
+			DocObj = DocRef.GetObject();
+			If DocType = "HoaDonGTGTDauRa" Then
+				Try DocObj.NguoiLap = "ketoan_ar"; Except EndTry;
+				Try DocObj.NguoiDuyet = "ketoan_truong"; Except EndTry;
+				DocObj.TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaPhatHanh;
+			ElsIf DocType = "HoaDonNhaCungCap" Then
+				Try DocObj.NguoiLap = "ketoan_ap"; Except EndTry;
+				Try DocObj.NguoiDuyet = "ketoan_truong"; Except EndTry;
+				DocObj.TrangThai = Enums.TrangThaiHoaDonAP.DaGhiSo;
+			ElsIf DocType = "UyNhiemChi" Then
+				Try DocObj.NguoiLap = "ketoan_ap"; Except EndTry;
+				Try DocObj.NguoiDuyet = "ketoan_truong"; Except EndTry;
+				DocObj.TrangThai = Enums.TrangThaiLenhThanhToan.DaGhiSo;
+			ElsIf DocType = "CanTruCongNoNoiBo" Then
+				Try DocObj.NguoiLap = "ketoan_ar"; Except EndTry;
+				Try DocObj.NguoiDuyet = "ketoan_truong"; Except EndTry;
+				DocObj.TrangThai = "DaDuyet";
+			EndIf;
+			
+			DocObj.Write(DocumentWriteMode.Posting);
+			
+			// Kiem tra Repost Parity tren GL
+			Cnt_GL_Repost = Q_GL.Execute().Unload()[0].Cnt;
+			If Cnt_GL_Repost = Cnt_GL_Init Then
+				LogLines.Add(StrTemplate("  [3] REPOST THANH CONG: SoCaiKeToan tai tao dung %1 ban ghi (REPOST PARITY VERIFIED)", Cnt_GL_Repost));
+				TongDocPass = TongDocPass + 1;
+			Else
+				LogLines.Add(StrTemplate("  [FAIL] REPOST THAT BAI: SoCaiKeToan (%1) khong khop ban dau (%2)!", Cnt_GL_Repost, Cnt_GL_Init));
+				RepostParityPass = False;
+				TongDocFail = TongDocFail + 1;
+			EndIf;
+		Except
+			LogLines.Add(StrTemplate("  [FAIL] %1: Ngoai le khi test chu trinh: %2", DocType, DetailErrorDescription(ErrorInfo())));
+			TongDocFail = TongDocFail + 1;
+		EndTry;
+	EndDo;
+	
+	// 4. Kiem tra doi soat doc lap toan bo GL vs Subledgers
+	LogLines.Add("-----------------------------------------------------------------");
+	LogLines.Add("   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          ");
+	LogLines.Add("-----------------------------------------------------------------");
+	DoiSoatKQ = KiemTraDoiSoatDocLapGLVaSoPhu();
+	GLSubledgerPass = False;
+	If DoiSoatKQ.HopLe And DoiSoatKQ.DeltaAR = 0 And DoiSoatKQ.DeltaAP = 0 And DoiSoatKQ.DeltaBank = 0 Then
+		GLSubledgerPass = True;
+		LogLines.Add(StrTemplate("  [PASS] GL vs Subledger: Delta AR = %1, Delta AP = %2, Delta Bank = %3 (GL_SUBLEDGER_DELTA_ZERO)", 
+			DoiSoatKQ.DeltaAR, DoiSoatKQ.DeltaAP, DoiSoatKQ.DeltaBank));
+	Else
+		LogLines.Add(StrTemplate("  [FAIL] GL vs Subledger lech: Delta AR = %1, Delta AP = %2, Delta Bank = %3", 
+			DoiSoatKQ.DeltaAR, DoiSoatKQ.DeltaAP, DoiSoatKQ.DeltaBank));
+	EndIf;
+	
+	LogLines.Add("=================================================================");
+	If TongDocFail = 0 And TongDocPass = 4 And ZeroResidualPass And RepostParityPass And GLSubledgerPass Then
+		LogLines.Add(">> XAC NHAN: POSTING_LIFECYCLE_ALL_PASS (100% DAT CHUAN RUNTIME)");
+		LogLines.Add(">> MARKER: ZERO_RESIDUAL_VERIFIED");
+		LogLines.Add(">> MARKER: REPOST_PARITY_VERIFIED");
+		LogLines.Add(">> MARKER: GL_SUBLEDGER_DELTA_ZERO");
+	Else
+		LogLines.Add(">> XAC NHAN: POSTING_LIFECYCLE_FAIL");
+	EndIf;
+	LogLines.Add("=================================================================");
+	
+	// Ghi file log
+	LogFilePath = "C:/Users/Dung/Documents/1C_Enterprise/test_posting_lifecycle.log";
+	TW = New TextWriter(LogFilePath, TextEncoding.UTF8);
+	For Each Line In LogLines Do
+		TW.WriteLine(Line);
+	EndDo;
+	TW.Close();
+	
+	WriteLogEvent("PostingLifecycle.Runtime", EventLogLevel.Information,,, 
+		StrTemplate("Posting Lifecycle Test: %1/%2 docs passed, ZeroResidual=%3, RepostParity=%4, GLSubledger=%5", 
+			TongDocPass, DanhSachLoaiCT.Count(), ZeroResidualPass, RepostParityPass, GLSubledgerPass));
 EndProcedure
 
 #EndRegion

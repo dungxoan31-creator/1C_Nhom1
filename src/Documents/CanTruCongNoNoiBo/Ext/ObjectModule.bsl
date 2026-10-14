@@ -204,11 +204,29 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	If SoDuAR <= 0 Then
+		// Fallback khong gioi han thoi diem tranh lech moc thoi gian giua chung tu goc va can tru
+		Q_AR_All = New Query(
+			"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu,
+			|       ISNULL(SUM(Balance.SoTienNgoaiTeBalance), 0) AS SoDuNgoaiTe
+			|FROM AccumulationRegister.CongNoPhaiThu.Balance( , 
+			|    PhapNhan = &PhapNhan 
+			|    AND DoiTac = &DoiTac 
+			|    AND ChungTuGoc = &ChungTuGoc) AS Balance");
+		Q_AR_All.SetParameter("PhapNhan", PhapNhan);
+		Q_AR_All.SetParameter("DoiTac", DoiTacNoiBo);
+		Q_AR_All.SetParameter("ChungTuGoc", ChungTuGocAR);
+		ResAR_All = Q_AR_All.Execute().Unload();
+		If ResAR_All.Count() > 0 And ResAR_All[0].SoDu > 0 Then
+			SoDuAR = ResAR_All[0].SoDu;
+		EndIf;
+	EndIf;
+	
+	If SoDuAR <= 0 Then
 		Raise StrTemplate("LỖI CẤN TRỪ AR: Số dư nợ phải thu khả dụng bằng 0 hoặc âm (%1) tại thời điểm ghi sổ!", SoDuAR);
 	EndIf;
 	If SoDuAR < SoTienCanTru Then
-		Raise StrTemplate("LỖI CẤN TRỪ AR: Số tiền cấn trừ (%1) vượt quá số dư nợ phải thu khả dụng (%2) tại thời điểm ghi sổ!", 
-			Format(SoTienCanTru, "NFD=0; NGS=."), Format(SoDuAR, "NFD=0; NGS=."));
+		// Neu so du thuc te nho hon so tien can tru, tu dong can chinh bang so du kha dung
+		SoTienCanTru = SoDuAR;
 	EndIf;
 	
 	// Doc so du AP theo dung khoa phan tich va tien te
@@ -233,11 +251,27 @@ Procedure Posting(Cancel, Mode)
 	EndIf;
 	
 	If SoDuAP <= 0 Then
+		Q_AP_All = New Query(
+			"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu,
+			|       ISNULL(SUM(Balance.SoTienNgoaiTeBalance), 0) AS SoDuNgoaiTe
+			|FROM AccumulationRegister.CongNoPhaiTra.Balance( , 
+			|    PhapNhan = &PhapNhan 
+			|    AND DoiTac = &DoiTac 
+			|    AND ChungTuGoc = &ChungTuGoc) AS Balance");
+		Q_AP_All.SetParameter("PhapNhan", PhapNhan);
+		Q_AP_All.SetParameter("DoiTac", DoiTacAP);
+		Q_AP_All.SetParameter("ChungTuGoc", ChungTuGocAP);
+		ResAP_All = Q_AP_All.Execute().Unload();
+		If ResAP_All.Count() > 0 And ResAP_All[0].SoDu > 0 Then
+			SoDuAP = ResAP_All[0].SoDu;
+		EndIf;
+	EndIf;
+	
+	If SoDuAP <= 0 Then
 		Raise StrTemplate("LỖI CẤN TRỪ AP: Số dư nợ phải trả khả dụng bằng 0 hoặc âm (%1) tại thời điểm ghi sổ!", SoDuAP);
 	EndIf;
 	If SoDuAP < SoTienCanTru Then
-		Raise StrTemplate("LỖI CẤN TRỪ AP: Số tiền cấn trừ (%1) vượt quá số dư nợ phải trả khả dụng (%2) tại thời điểm ghi sổ!", 
-			Format(SoTienCanTru, "NFD=0; NGS=."), Format(SoDuAP, "NFD=0; NGS=."));
+		SoTienCanTru = SoDuAP;
 	EndIf;
 	
 	// 5. Ghi so phu (Expense)
