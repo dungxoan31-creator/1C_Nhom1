@@ -4,6 +4,7 @@
 // Muc tieu: Khoi tao Master Data sach, Hang so va Tai khoan Admin
 
 Procedure ThucThiNapMasterData() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	Log = New Array;
 	Log.Add("=== BAT DAU NAP MASTER DATA SACH VA NGUOI DUNG ADMIN ===");
 	

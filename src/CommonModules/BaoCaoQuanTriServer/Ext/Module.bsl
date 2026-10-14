@@ -776,7 +776,10 @@ Procedure XuatDuLieuVaKiemTraBaoCao(Val FilePath = "") Export
 	WriteLogEvent("ExecutiveReports.Verify", EventLogLevel.Information,,, StrConcat(LogLines, Chars.LF));
 EndProcedure
 
-Procedure XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
+Function XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
+	If IsBlankString(FilePath) Then
+		Raise "Evidence export requires an explicit output path.";
+	EndIf;
 	WriteLogEvent("OperationalEvidence.Export", EventLogLevel.Information,,, ">>> BAT DAU TRICH XUAT BANG CAN DOI PHAT SINH VA DOI SOAT OPERATIONAL...");
 	
 	ThoiDiemChuan = Date(2026, 9, 30, 23, 59, 59);
@@ -879,12 +882,12 @@ Procedure XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
 	EvidenceData = New Structure;
 	EvidenceData.Insert("Provenance", New Structure(
 		"Database,Standard,Period,PeriodDays,PolicyDoc,PolicyApproved,ExtractorUser,ExportTime,TotalGLRecords",
-		"Infobase_FullData",
+		InfoBaseConnectionString(),
 		"VAS (TT200/2014/TT-BTC, TT99/2025/TT-BTC, VAS 10)",
 		"2025-01-01 - 2026-09-30",
 		638,
 		"CSKT-VSF-2026/01",
-		True,
+		False,
 		UserName(),
 		Format(CurrentSessionDate(), "DF='yyyy-MM-dd HH:mm:ss'"),
 		DoiSoat.TongSoButToan
@@ -922,11 +925,11 @@ Procedure XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
 		LaiTyGia,
 		LoTyGia,
 		DanhGiaLai,
-		"25450 / 25500 VND/USD (Thuc te BIDV/Vietcombank)"
+		"Snapshot rates; external provenance has not been verified"
 	));
 	
 	// 5. Xuat ra file JSON
-	TargetFilePath = ?(IsBlankString(FilePath), "C:\Users\Dung\Documents\1C_Enterprise\docs\evidence\operational_trial_balance_evidence.json", FilePath);
+	TargetFilePath = FilePath;
 	Try
 		FileUtil = New File(TargetFilePath);
 		CreateDirectory(FileUtil.Path);
@@ -939,7 +942,9 @@ Procedure XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
 		WriteLogEvent("OperationalEvidence.Export", EventLogLevel.Information,,, "Da xuat Operational Evidence vao: " + TargetFilePath);
 	Except
 		WriteLogEvent("OperationalEvidence.Export", EventLogLevel.Error,,, "Loi xuat file: " + DetailErrorDescription(ErrorInfo()));
+		Raise;
 	EndTry;
-EndProcedure
+	Return EvidenceData;
+EndFunction
 
 #EndRegion

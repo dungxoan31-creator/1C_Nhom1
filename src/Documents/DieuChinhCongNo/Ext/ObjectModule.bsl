@@ -16,6 +16,15 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "Write", UserName());
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	EndIf;
+	StoredState = QuanLyVongDoiChungTuServer.LayTrangThaiDaLuu(ThisObject);
+	If TrangThai = Enums.TrangThaiNghiemThuAR.DaGhiSo
+		And WriteMode <> DocumentWriteMode.Posting And Not StoredState.Posted Then
+		Raise "Cannot store DaGhiSo while Posted = False.";
+	EndIf;
 	If DataExchange.Load Then
 		Return;
 	EndIf;
@@ -48,6 +57,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// 1. Kiem tra tinh hop le cua du lieu bat buoc
 	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(BienBanNghiemThu) Then
 		Cancel = True;

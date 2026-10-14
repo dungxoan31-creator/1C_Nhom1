@@ -1,4 +1,30 @@
-$exe = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
-$ib = "C:\Users\Dung\Documents\1C_Enterprise\Infobase_FullData"
-$p = Start-Process -FilePath $exe -ArgumentList "ENTERPRISE", "/F", $ib, "/N", "Admin", "/C", "SeedNettingData", "/DisableStartupDialogs", "/DisableStartupMessages" -PassThru -Wait
-Write-Host ("SeedNettingData ExitCode: " + $p.ExitCode)
+param(
+    [Parameter(Mandatory = $true)][string]$IBPath,
+    [string]$User = "Admin",
+    [string]$ExePath = "",
+    [double]$Timeout = 90,
+    [string]$PythonPath = "python",
+    [switch]$Smoke,
+    [switch]$BoundedWorkflow,
+    [switch]$MetadataOnly
+)
+
+$ErrorActionPreference = "Stop"
+try {
+    if (-not $BoundedWorkflow) {
+        $runtimeArgs = @("-B", (Join-Path $PSScriptRoot "onec_runtime.py"), "SeedNettingData",
+            "--ib-path", $IBPath, "--user", $User, "--timeout", [string]$Timeout)
+        if ($ExePath) { $runtimeArgs += @("--exe-path", $ExePath) }
+        & $PythonPath @runtimeArgs
+        exit $LASTEXITCODE
+    }
+    $runtimeArgs = @("-B", (Join-Path $PSScriptRoot "seed_workflow.py"), "netting",
+        "--ib-path", $IBPath, "--user", $User, "--timeout", [string]$Timeout)
+    if ($ExePath) { $runtimeArgs += @("--exe-path", $ExePath) }
+    if ($Smoke) { $runtimeArgs += "--smoke" }
+    & $PythonPath @runtimeArgs
+    exit $LASTEXITCODE
+} catch {
+    Write-Error ("FAIL: " + $_.Exception.Message) -ErrorAction Continue
+    exit 1
+}

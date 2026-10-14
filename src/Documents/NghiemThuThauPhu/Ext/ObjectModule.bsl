@@ -8,6 +8,10 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "Write", UserName());
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	EndIf;
 	If DataExchange.Load Then
 		Return;
 	EndIf;
@@ -22,6 +26,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// 1. Kiem tra rang buoc bat buoc
 	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then

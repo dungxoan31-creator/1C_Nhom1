@@ -1,20 +1,20 @@
-# PowerShell script to execute GL Analytic Keys backfill on 1C runtime
+param(
+    [Parameter(Mandatory = $true)][string]$IBPath,
+    [string]$User = "Admin",
+    [string]$ExePath = "",
+    [double]$Timeout = 90,
+    [string]$PythonPath = "python"
+)
+
 $ErrorActionPreference = "Stop"
-
-$Root = Split-Path -Parent $PSScriptRoot
-$1CExe = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
-$IB = Join-Path $Root "Infobase_FullData"
-
-Stop-Process -Name "1cv8*" -Force -ErrorAction SilentlyContinue
-Start-Sleep -Seconds 1
-
-Write-Host "Executing BackfillGLAnalyticKeys in 1C..." -ForegroundColor Cyan
-
-# Try with password first, then without password if needed
-$proc = Start-Process -FilePath $1CExe -ArgumentList "ENTERPRISE /F `"$IB`" /N `"Admin`" /P `"Vsf@2026!Secure`" /C `"BackfillGLAnalyticKeys`" /DisableStartupDialogs /DisableStartupMessages" -Wait -PassThru -NoNewWindow
-if ($proc.ExitCode -ne 0) {
-    Write-Host "Retrying with empty password..." -ForegroundColor Yellow
-    $proc = Start-Process -FilePath $1CExe -ArgumentList "ENTERPRISE /F `"$IB`" /N `"Admin`" /C `"BackfillGLAnalyticKeys`" /DisableStartupDialogs /DisableStartupMessages" -Wait -PassThru -NoNewWindow
+try {
+    # Backfill has no registered structured result contract; the CLI fails closed.
+    $runtimeArgs = @("-B", (Join-Path $PSScriptRoot "onec_runtime.py"), "BackfillGLAnalyticKeys",
+        "--ib-path", $IBPath, "--user", $User, "--timeout", [string]$Timeout)
+    if ($ExePath) { $runtimeArgs += @("--exe-path", $ExePath) }
+    & $PythonPath @runtimeArgs
+    exit $LASTEXITCODE
+} catch {
+    Write-Error ("FAIL: " + $_.Exception.Message) -ErrorAction Continue
+    exit 1
 }
-
-Write-Host "Backfill process finished with ExitCode $($proc.ExitCode)." -ForegroundColor Green

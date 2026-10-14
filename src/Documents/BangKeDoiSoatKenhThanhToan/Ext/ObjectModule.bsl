@@ -14,6 +14,11 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "Write", UserName());
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	EndIf;
 	If DataExchange.Load Then
 		Return;
 	EndIf;
@@ -50,6 +55,18 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.GiaoDichDienTuTamGiu.Clear();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
+	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
+	Gross = ChiTietGiaoDich.Total("SoTien");
+	Fees = ChiTietGiaoDich.Total("PhiKenh");
+	Net = ChiTietGiaoDich.Total("ThucNhan");
+	If Gross <> TongTienGiaoDich Or Fees <> TongPhiKenh Or Net <> TongThucNhan
+		Or Gross <> Fees + Net Then
+		Raise "RECONCILIATION_TOTALS_INVALID: document totals must match actual detail rows.";
+	EndIf;
 	// 1. Kiem tra tinh hop le
 	HasError = False;
 	If Not ValueIsFilled(PhapNhan) Then
@@ -136,45 +153,27 @@ Procedure Posting(Cancel, Mode)
 	TK6427 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("6427");
 	TK1388 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1388");
 	
-	DoiTacDS = Catalogs.DoiTac.EmptyRef();
-	If ChiTietGiaoDich.Count() > 0 And ValueIsFilled(ChiTietGiaoDich[0].DoiTac) Then
-		DoiTacDS = ChiTietGiaoDich[0].DoiTac;
-	ElsIf ValueIsFilled(KenhThanhToan) Then
-		DoiTacDS = Catalogs.DoiTac.FindByDescription(String(KenhThanhToan));
-		If Not ValueIsFilled(DoiTacDS) Then
-			DoiTacDS = Catalogs.DoiTac.FindByCode("DT-ONEPAY");
+	// Preserve each transaction's actual partner and contract; a multi-party
+	// statement must not charge its entire total to the first detail row.
+	If ChiTietGiaoDich.Count() = 0 Then
+		Raise "GL_ANALYTICS_REQUIRED: reconciliation needs partner/contract detail rows.";
+	EndIf;
+	For Each Detail In ChiTietGiaoDich Do
+		If Detail.SoTien < 0 Or Detail.PhiKenh < 0 Or Detail.ThucNhan < 0
+			Or Detail.SoTien <> Detail.ThucNhan + Detail.PhiKenh Then
+			Raise "RECONCILIATION_AMOUNTS_INVALID: gross must equal net plus fee.";
 		EndIf;
-	EndIf;
-	
-	// But toan 1: Thuc nhan tien ve ngan hang
-	// No 1121 / Co 1388: TongThucNhan
-	Row1 = RegisterRecords.SoCaiKeToan.Add();
-	Row1.Period = NgayHachToan;
-	Row1.AccountDr = TK1121;
-	Row1.AccountCr = TK1388;
-	Row1.SoTien = TongThucNhan;
-	Row1.DienGiai = StrTemplate("Thu tiền cổng thanh toán %1 theo bảng kê %2", KenhThanhToan, Number);
-	Row1.PhapNhan = PhapNhan;
-	Row1.TienTe = TienTeVND;
-	Row1.ChungTuGoc = Ref;
-	Row1.DoiTacCo = DoiTacDS;
-	Row1.TyGia = 1;
-	
-	// But toan 2: Phi kenh thanh toan
-	// No 6427 / Co 1388: TongPhiKenh
-	If TongPhiKenh > 0 Then
-		Row2 = RegisterRecords.SoCaiKeToan.Add();
-		Row2.Period = NgayHachToan;
-		Row2.AccountDr = TK6427;
-		Row2.AccountCr = TK1388;
-		Row2.SoTien = TongPhiKenh;
-		Row2.DienGiai = StrTemplate("Phí dịch vụ cổng thanh toán %1 theo bảng kê %2", KenhThanhToan, Number);
-		Row2.PhapNhan = PhapNhan;
-		Row2.TienTe = TienTeVND;
-		Row2.ChungTuGoc = Ref;
-		Row2.DoiTacCo = DoiTacDS;
-		Row2.TyGia = 1;
-	EndIf;
+		If Not ValueIsFilled(Detail.DoiTac) Or Not ValueIsFilled(Detail.HopDong)
+			Or Detail.HopDong.ChuSoHuu <> Detail.DoiTac Then
+			Raise "GL_ANALYTICS_REQUIRED: each reconciliation row needs its own partner's contract.";
+		EndIf;
+		If Detail.ThucNhan > 0 Then
+			AddReconciliationGL(TK1121, TK1388, Detail.ThucNhan, Detail.DoiTac, Detail.HopDong, TienTeVND);
+		EndIf;
+		If Detail.PhiKenh > 0 Then
+			AddReconciliationGL(TK6427, TK1388, Detail.PhiKenh, Detail.DoiTac, Detail.HopDong, TienTeVND);
+		EndIf;
+	EndDo;
 	
 	// Invariant Check
 	Try
@@ -186,3 +185,18 @@ Procedure Posting(Cancel, Mode)
 EndProcedure
 
 #EndRegion
+
+Procedure AddReconciliationGL(DebitAccount, CreditAccount, Amount, Partner, Contract, Currency)
+	Entry = RegisterRecords.SoCaiKeToan.Add();
+	Entry.Period = BegOfDay(Date);
+	Entry.AccountDr = DebitAccount;
+	Entry.AccountCr = CreditAccount;
+	Entry.SoTien = Amount;
+	Entry.DienGiai = StrTemplate("Reconciliation %1, partner %2", Number, Partner);
+	Entry.PhapNhan = PhapNhan;
+	Entry.TienTe = Currency;
+	Entry.ChungTuGoc = Ref;
+	Entry.DoiTacCo = Partner;
+	Entry.HopDongCo = Contract;
+	Entry.TyGia = 1;
+EndProcedure

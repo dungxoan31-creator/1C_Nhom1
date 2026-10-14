@@ -7,6 +7,7 @@
 #Region PublicInterface
 
 Procedure KhoiTaoMasterDataToanDien() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	RefPN_VSF = Catalogs.PhapNhan.FindByCode("PN-VSF");
 	If Not ValueIsFilled(RefPN_VSF) Then
 		ObjPN = Catalogs.PhapNhan.CreateItem();
@@ -21,10 +22,10 @@ Procedure KhoiTaoMasterDataToanDien() Export
 	RefVND = Catalogs.TienTe.FindByCode("VND");
 	RefUSD = Catalogs.TienTe.FindByCode("USD");
 
-	BeginTransaction();
 	Try
+		BeginTransaction();
 		// 0. Don dep du lieu TEST cu neu co
-		XoaDuLieuTestCu();
+	// Seed uses a fresh disposable clone; existing records are retained.
 
 		// 0.1. Khoi tao cac tai khoan ke toan con thieu (3313, 3318, 3388, 641)
 		KhoiTaoCacTaiKhoanConThieu();
@@ -87,25 +88,7 @@ EndProcedure
 
 #Region InternalProcedures
 
-Procedure XoaDuLieuTestCu()
-	Q = New Query("SELECT Ref FROM Catalog.HopDong WHERE Code LIKE ""HD-%""");
-	T = Q.Execute().Unload();
-	For Each R In T Do
-		Try
-			R.Ref.GetObject().Delete();
-		Except
-		EndTry;
-	EndDo;
-	
-	Q = New Query("SELECT Ref FROM Catalog.DoiTac WHERE Code LIKE ""TEST_%""");
-	T = Q.Execute().Unload();
-	For Each R In T Do
-		Try
-			R.Ref.GetObject().Delete();
-		Except
-		EndTry;
-	EndDo;
-EndProcedure
+// Bulk cleanup removed: restore a fresh UAT clone instead.
 
 Procedure KhoiTaoCacKhoiVaDuAn(RefPN_VSF)
 	CacKhoi = New Array;
@@ -399,6 +382,7 @@ Procedure TaoDoiTac(Code, Name, LaBenLienKet, LoaiDoiTac)
 EndProcedure
 
 Procedure KhoiTaoCacTaiKhoanConThieu() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	DanhSachTK = New Array;
 	DanhSachTK.Add(New Structure("Code,Description,Type", "3313", "Phải trả người bán nước ngoài (Ngoại tệ USD)", AccountType.ActivePassive));
 	DanhSachTK.Add(New Structure("Code,Description,Type", "3318", "Phải trả người bán khác", AccountType.ActivePassive));

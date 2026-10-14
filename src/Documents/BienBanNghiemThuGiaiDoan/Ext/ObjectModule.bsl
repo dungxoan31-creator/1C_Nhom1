@@ -42,6 +42,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// Bat buoc kiem tra Maker-Checker va SoD khi ghi so (100% dua tren phien UserName() that)
 	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiTao, NguoiDuyet, UserName());
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
@@ -117,6 +120,8 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.Period = Date;
 	RecordGL.AccountDr = AccountDr;
 	RecordGL.AccountCr = AccountCr;
+	RecordGL.DoiTacNo = DoiTac;
+	RecordGL.HopDongNo = HopDong;
 	RecordGL.SoTien = SoTienDoanhThu;
 	RecordGL.PhapNhan = PhapNhan;
 	RecordGL.ChungTuGoc = Ref;

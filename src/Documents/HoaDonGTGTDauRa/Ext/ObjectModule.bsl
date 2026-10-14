@@ -29,6 +29,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// Kiem tra trang thai HDDT:
 	// - DaDieuChinh: Hoa don dieu chinh la chung tu phap ly dien tu, khong sinh but toan ke toan (Task 3.3 invariant)
 	// - DaHuy: Hoa don da huy khong phat sinh nghia vu ke toan
@@ -94,6 +97,8 @@ Procedure Posting(Cancel, Mode)
 	RecordGL.Period = Date;
 	RecordGL.AccountDr = TKCongNo;
 	RecordGL.AccountCr = TKThueVAT;
+	RecordGL.DoiTacNo = DoiTac;
+	RecordGL.HopDongNo = HopDong;
 	RecordGL.PhapNhan = PhapNhan;
 	
 	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.DongTienThanhToan) Then

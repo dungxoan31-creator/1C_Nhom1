@@ -9,10 +9,11 @@
 
 // Khoi tao toan bo chung tu Netting va Doi soat kenh thanh toan
 Procedure KhoiTaoChungTuNetting() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	WriteLogEvent("Netting.Seed", EventLogLevel.Information,,, "Bắt đầu sinh dữ liệu Netting & Đối soát kênh thanh toán...");
 	
 	// 0. Don dep du lieu test cu (neu co)
-	XoaDuLieuTestCu();
+	// Seed uses a fresh disposable clone; existing records are retained.
 	
 	// 1. Lay Phap nhan mac dinh (VSF)
 	RefPN_VSF = Catalogs.PhapNhan.FindByCode("VSF");
@@ -91,6 +92,7 @@ Procedure KiemTraChungTuNetting() Export
 EndProcedure
 
 Procedure CapNhatBieuPhiHopDongRuntime() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	WriteLogEvent("ContractFees.Update", EventLogLevel.Information,,, ">>> Cap nhat bieu phi hop dong OnePay (1.5% & 2.2%) va Virtual Account (0.5%)...");
 	
 	// 1. Dam bao Kenh Virtual Account ton tai
@@ -117,7 +119,10 @@ Procedure CapNhatBieuPhiHopDongRuntime() Export
 	T = Q.Execute().Unload();
 	
 	CountUpdated = 0;
-	BeginTransaction();
+	InTransaction = False;
+	Try
+		BeginTransaction();
+		InTransaction = True;
 	For Each R In T Do
 		DocObj = R.Ref.GetObject();
 		If DocObj <> Undefined Then
@@ -155,12 +160,23 @@ Procedure CapNhatBieuPhiHopDongRuntime() Export
 			CountUpdated = CountUpdated + 1;
 			If (CountUpdated % 30) = 0 Then
 				CommitTransaction();
+		InTransaction = False;
 				BeginTransaction();
+				InTransaction = True;
 			EndIf;
 		EndIf;
 	EndDo;
 	CommitTransaction();
+		InTransaction = False;
 	WriteLogEvent("ContractFees.Update", EventLogLevel.Information,,, StrTemplate("Da cap nhat bieu phi cho %1 chung tu.", CountUpdated));
+	Except
+		If InTransaction Then
+			RollbackTransaction();
+			InTransaction = False;
+		EndIf;
+		WriteLogEvent("Netting.Seed", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		Raise;
+	EndTry;
 EndProcedure
 
 Procedure KiemTraHopDongPhiVaKenhThanhToan() Export
@@ -255,73 +271,18 @@ EndProcedure
 
 #Region InternalProcedures
 
-Procedure XoaDuLieuTestCu()
-	// 1. CanTruCongNoNoiBo
-	Q = New Query("SELECT Ref FROM Document.CanTruCongNoNoiBo WHERE Number LIKE ""CT-TEST-%""");
-	T = Q.Execute().Unload();
-	BatchCount = 0;
-	For Each R In T Do
-		If BatchCount = 0 Then
-			BeginTransaction();
-		EndIf;
-		Try
-			Obj = R.Ref.GetObject();
-			If Obj <> Undefined Then
-				If Obj.Posted Then
-					Obj.Write(DocumentWriteMode.UndoPosting);
-				EndIf;
-				Obj.Delete();
-			EndIf;
-		Except
-		EndTry;
-		BatchCount = BatchCount + 1;
-		If BatchCount >= 50 Then
-			CommitTransaction();
-			BatchCount = 0;
-		EndIf;
-	EndDo;
-	If BatchCount > 0 Then
-		CommitTransaction();
-		BatchCount = 0;
-	EndIf;
-	
-	// 2. BangKeDoiSoatKenhThanhToan
-	Q2 = New Query("SELECT Ref FROM Document.BangKeDoiSoatKenhThanhToan WHERE Number LIKE ""DS-TEST-%""");
-	T2 = Q2.Execute().Unload();
-	BatchCount = 0;
-	For Each R In T2 Do
-		If BatchCount = 0 Then
-			BeginTransaction();
-		EndIf;
-		Try
-			Obj = R.Ref.GetObject();
-			If Obj <> Undefined Then
-				If Obj.Posted Then
-					Obj.Write(DocumentWriteMode.UndoPosting);
-				EndIf;
-				Obj.Delete();
-			EndIf;
-		Except
-		EndTry;
-		BatchCount = BatchCount + 1;
-		If BatchCount >= 50 Then
-			CommitTransaction();
-			BatchCount = 0;
-		EndIf;
-	EndDo;
-	If BatchCount > 0 Then
-		CommitTransaction();
-		BatchCount = 0;
-	EndIf;
-EndProcedure
+// Bulk cleanup removed: restore a fresh UAT clone instead.
 
 Procedure SinhChungTuCanTruCongNo(RefPN_VSF, DanhSachDoiTacVG, MapHopDong, MapDocAR, MapDocAP)
 	TongSoChungTu = 180;
 	SoTrongMe = 0;
+	InTransaction = False;
+	Try
 	
 	For i = 1 To TongSoChungTu Do
 		If SoTrongMe = 0 Then
 			BeginTransaction();
+			InTransaction = True;
 		EndIf;
 		
 		DocNumCT = "CT-TEST-" + Right("00000" + String(i), 5);
@@ -330,9 +291,7 @@ Procedure SinhChungTuCanTruCongNo(RefPN_VSF, DanhSachDoiTacVG, MapHopDong, MapDo
 		DocDate = '20250105083000' + NgayLech * 86400;
 		RefExistingCT = Documents.CanTruCongNoNoiBo.FindByNumber(DocNumCT, DocDate);
 		If ValueIsFilled(RefExistingCT) Then
-			DocCT = RefExistingCT.GetObject();
-			DocCT.ChungTuAR.Clear();
-			DocCT.ChungTuAP.Clear();
+			Raise "SEED_NUMBER_COLLISION: " + String(RefExistingCT);
 		Else
 			DocCT = Documents.CanTruCongNoNoiBo.CreateDocument();
 			DocCT.Number = DocNumCT;
@@ -395,26 +354,39 @@ Procedure SinhChungTuCanTruCongNo(RefPN_VSF, DanhSachDoiTacVG, MapHopDong, MapDo
 		SoTrongMe = SoTrongMe + 1;
 		If SoTrongMe >= 50 Then
 			CommitTransaction();
+		InTransaction = False;
 			SoTrongMe = 0;
 		EndIf;
 	EndDo;
 	
 	If SoTrongMe > 0 Then
 		CommitTransaction();
+		InTransaction = False;
 		SoTrongMe = 0;
 	EndIf;
 	
 	WriteLogEvent("Netting.Seed", EventLogLevel.Information,,, 
 		StrTemplate("Đã sinh thành công %1 chứng từ CanTruCongNoNoiBo.", TongSoChungTu));
+	Except
+		If InTransaction Then
+			RollbackTransaction();
+			InTransaction = False;
+		EndIf;
+		WriteLogEvent("Netting.Seed", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		Raise;
+	EndTry;
 EndProcedure
 
 Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB, RefKM_Thu, DanhSachKH)
 	TongSoChungTu = 180;
 	SoTrongMe = 0;
+	InTransaction = False;
+	Try
 	
 	For j = 1 To TongSoChungTu Do
 		If SoTrongMe = 0 Then
 			BeginTransaction();
+			InTransaction = True;
 		EndIf;
 		
 		DocNumDS = "DS-TEST-" + Right("00000" + String(j), 5);
@@ -423,8 +395,7 @@ Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB
 		DocDate = '20250108150000' + NgayLech * 86400;
 		RefExistingDS = Documents.BangKeDoiSoatKenhThanhToan.FindByNumber(DocNumDS, DocDate);
 		If ValueIsFilled(RefExistingDS) Then
-			DocDS = RefExistingDS.GetObject();
-			DocDS.ChiTietGiaoDich.Clear();
+			Raise "SEED_NUMBER_COLLISION: " + String(RefExistingDS);
 		Else
 			DocDS = Documents.BangKeDoiSoatKenhThanhToan.CreateDocument();
 			DocDS.Number = DocNumDS;
@@ -519,17 +490,27 @@ Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB
 		SoTrongMe = SoTrongMe + 1;
 		If SoTrongMe >= 50 Then
 			CommitTransaction();
+		InTransaction = False;
 			SoTrongMe = 0;
 		EndIf;
 	EndDo;
 	
 	If SoTrongMe > 0 Then
 		CommitTransaction();
+		InTransaction = False;
 		SoTrongMe = 0;
 	EndIf;
 	
 	WriteLogEvent("Netting.Seed", EventLogLevel.Information,,, 
 		StrTemplate("Đã sinh thành công %1 chứng từ BangKeDoiSoatKenhThanhToan.", TongSoChungTu));
+	Except
+		If InTransaction Then
+			RollbackTransaction();
+			InTransaction = False;
+		EndIf;
+		WriteLogEvent("Netting.Seed", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+		Raise;
+	EndTry;
 EndProcedure
 
 Function LayDanhSachKenhThanhToan()
@@ -737,3 +718,50 @@ Function LayDanhSachKhachHang()
 EndFunction
 
 #EndRegion
+
+// Actual reconciliation maker; only this run's exact posted AR/AP sources.
+Procedure SinhMauUAT(Refs, Val Months, Val RunId, SourceAR, SourceAP) Export
+	SeedWorkflowServer.RequireMaker("netting");
+	SeedWorkflowServer.ValidateMonths(Months, Refs, RunId);
+	If SourceAR = Undefined Or SourceAP = Undefined Then Raise "SEED_SOURCE_MANIFEST_REQUIRED"; EndIf;
+	PN = SeedWorkflowServer.RequiredCatalog("PhapNhan", "PN-VSF");
+	VND = SeedWorkflowServer.RequiredCatalog("TienTe", "VND");
+	Bank = SeedWorkflowServer.RequiredCatalog("TaiKhoanTien", "TK-TCB-VND");
+	Channel = SeedWorkflowServer.RequiredCatalog("KenhThanhToan", "KTT-ONEPAY");
+	CashItem = SeedWorkflowServer.RequiredCatalog("KhoanMucDongTien", "KM-THU-BH");
+	For MonthIndex = 1 To Months Do
+		AR = SeedWorkflowServer.SourceDocument(SourceAR, "BienBanNghiemThuGiaiDoan", MonthIndex, 1);
+		AP = SeedWorkflowServer.SourceDocument(SourceAP, "HoaDonNhaCungCap", MonthIndex, 1);
+		If AR.DoiTac <> AP.DoiTac Or AR.HopDong <> AP.HopDong Then Raise "SEED_SOURCE_PAIR_MISMATCH"; EndIf;
+		CT = SeedWorkflowServer.NewSample("CanTruCongNoNoiBo", RunId, MonthIndex, 1, 10);
+		CT.PhapNhan = PN;
+		CT.DoiTacNoiBo = AR.DoiTac;
+		CT.HopDongAR = AR.HopDong;
+		CT.HopDongAP = AP.HopDong;
+		CT.ChungTuGocAR = AR;
+		CT.ChungTuGocAP = AP;
+		CT.TienTe = VND;
+		CT.SoTienCanTru = 11000000;
+		CT.LaCanTruBacCau = False;
+		SeedWorkflowServer.SavePending(CT, Refs);
+		DS = SeedWorkflowServer.NewSample("BangKeDoiSoatKenhThanhToan", RunId, MonthIndex, 1, 12);
+		DS.PhapNhan = PN;
+		DS.KenhThanhToan = Channel;
+		DS.TaiKhoanNganHang = Bank;
+		DS.KhoanMucDongTien = CashItem;
+		DS.NgayBatDau = BegOfDay(DS.Date - 86400);
+		DS.NgayKetThuc = EndOfDay(DS.Date);
+		For RowIndex = 1 To 2 Do
+			Row = DS.ChiTietGiaoDich.Add();
+			Row.MaGiaoDichKenh = DS.Number + "-" + String(RowIndex);
+			Row.NgayGiaoDich = DS.NgayBatDau;
+			Row.SoTien = 1000000;
+			Row.PhiKenh = ?(RowIndex = 1, 15000, 22000);
+			Row.ThucNhan = Row.SoTien - Row.PhiKenh;
+			Row.TrangThaiKhop = True;
+			Row.DoiTac = AR.DoiTac;
+			Row.HopDong = AR.HopDong;
+		EndDo;
+		SeedWorkflowServer.SavePending(DS, Refs);
+	EndDo;
+EndProcedure

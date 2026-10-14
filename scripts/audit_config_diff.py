@@ -1,100 +1,101 @@
-# -*- coding: utf-8 -*-
-"""
-Audit Script: Đối chiếu cấu hình CSDL 1CD với mã nguồn src/ (Hash Parity 0-diff)
-Nhiệm vụ:
-1. Đọc toàn bộ file trong src/ và thư mục dump scratch/dumped_config/
-2. Chuẩn hóa line endings (CRLF -> LF) để tính hash nội dung chính xác
-3. So sánh 100% file tồn tại và hash SHA-256
-4. Báo cáo 0 khác biệt (0-diff) để nghiệm thu kiến trúc
+"""Compare explicit source/dump trees; binary hashes are byte-for-byte exact.
+
+Known UTF-8 text formats normalize one leading BOM and CRLF only. Unknown
+formats (including binary assets) retain every byte. ConfigDumpInfo.xml is
+dump metadata and excluded. A matching dump alone does not prove freshness
+or identify the infobase that produced it; the runtime runner owns that evidence.
 """
 
-import os
-import sys
-import io
+import argparse
 import hashlib
+import os
+from pathlib import Path
 
-if sys.stdout.encoding != 'utf-8':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC_DIR = os.path.join(ROOT_DIR, "src")
-DUMP_DIR = os.path.join(ROOT_DIR, "scratch", "dumped_config")
+TEXT_SUFFIXES = {'.bsl', '.xml', '.txt', '.json', '.html', '.css', '.js', '.svg'}
+
 
 def compute_content_sha256(file_path):
-    with open(file_path, "rb") as f:
-        data = f.read()
-    # Loại bỏ UTF-8 BOM và chuẩn hóa line-ending CRLF -> LF
-    data = data.lstrip(b"\xef\xbb\xbf")
-    normalized = data.replace(b"\r\n", b"\n").strip()
-    return hashlib.sha256(normalized).hexdigest()
+    file_path = Path(file_path)
+    data = file_path.read_bytes()
+    if file_path.suffix.lower() in TEXT_SUFFIXES and b'\x00' not in data:
+        # Invalid UTF-8 is compared exactly, never decoded with ignored errors.
+        try:
+            data.decode('utf-8')
+        except UnicodeDecodeError:
+            pass
+        else:
+            data = data.removeprefix(b'\xef\xbb\xbf').replace(b'\r\n', b'\n')
+    return hashlib.sha256(data).hexdigest()
+
 
 def get_relative_files(base_dir):
+    base_dir = Path(base_dir)
+    if not base_dir.is_dir():
+        raise ValueError(f'Directory does not exist: {base_dir}')
     rel_files = {}
-    for root, dirs, files in os.walk(base_dir):
-        for f in files:
-            # Bỏ qua manifest tự sinh của 1C khi dump
-            if f == "ConfigDumpInfo.xml":
+
+    def on_error(exc):
+        raise exc
+
+    for root, _, files in os.walk(base_dir, onerror=on_error):
+        for name in sorted(files):
+            if name == 'ConfigDumpInfo.xml':
                 continue
-            full_path = os.path.join(root, f)
-            rel_path = os.path.relpath(full_path, base_dir).replace("\\", "/")
-            rel_files[rel_path] = full_path
+            path = Path(root) / name
+            rel_files[path.relative_to(base_dir).as_posix()] = path
     return rel_files
 
-def run_parity_audit():
-    print(f"\n--- ĐỐI CHIẾU MÃ NGUỒN VỚI CSDL 1C (DUMP PARITY AUDIT) ---")
-    print(f"  Source dir: {SRC_DIR}")
-    print(f"  Dumped dir: {DUMP_DIR}")
-    
-    assert os.path.exists(SRC_DIR), f"Không tìm thấy thư mục src: {SRC_DIR}"
-    assert os.path.exists(DUMP_DIR), f"Không tìm thấy thư mục dump cấu hình: {DUMP_DIR}"
-    
-    src_files = get_relative_files(SRC_DIR)
-    dump_files = get_relative_files(DUMP_DIR)
-    
-    print(f"  [i] Tổng số file trong src/: {len(src_files)}")
-    print(f"  [i] Tổng số file trong dump/: {len(dump_files)}")
-    
-    missing_in_dump = []
-    extra_in_dump = []
-    hash_mismatches = []
-    
-    for rel_path, src_full in src_files.items():
-        if rel_path not in dump_files:
-            missing_in_dump.append(rel_path)
-        else:
-            h_src = compute_content_sha256(src_full)
-            h_dump = compute_content_sha256(dump_files[rel_path])
-            if h_src != h_dump:
-                hash_mismatches.append((rel_path, h_src, h_dump))
-                
-    for rel_path in dump_files:
-        if rel_path not in src_files:
-            extra_in_dump.append(rel_path)
-            
-    if missing_in_dump:
-        print(f"  [!] Missing in dump ({len(missing_in_dump)} files):")
-        for f in missing_in_dump[:10]:
-            print(f"      - {f}")
-            
-    if extra_in_dump:
-        print(f"  [!] Extra in dump ({len(extra_in_dump)} files):")
-        for f in extra_in_dump[:10]:
-            print(f"      + {f}")
-            
-    if hash_mismatches:
-        print(f"  [!] Hash mismatches ({len(hash_mismatches)} files):")
-        for path, h1, h2 in hash_mismatches[:10]:
-            print(f"      * {path} (src: {h1[:8]} vs dump: {h2[:8]})")
-            
-    total_diff = len(missing_in_dump) + len(extra_in_dump) + len(hash_mismatches)
-    print(f"\n>> Tổng số sai lệch: {total_diff}")
-    
-    assert total_diff == 0, f"Cấu hình CSDL không khớp 100% với mã nguồn src/ (Diff = {total_diff})!"
-    print(">> PASS: Cấu hình trong CSDL 1CD khớp 100% với mã nguồn src/ (0-diff, Hash Parity Verified)!\n")
 
-if __name__ == "__main__":
+def compare_trees(src_dir, dump_dir):
+    """Return deterministic differences; no prints, assertions or default dump."""
+    src_files = get_relative_files(src_dir)
+    dump_files = get_relative_files(dump_dir)
+    if not src_files or not dump_files:
+        raise ValueError('Source and dump must both contain configuration files.')
+    mismatches = []
+    for name in sorted(src_files.keys() & dump_files.keys()):
+        src_hash = compute_content_sha256(src_files[name])
+        dump_hash = compute_content_sha256(dump_files[name])
+        if src_hash != dump_hash:
+            mismatches.append((name, src_hash, dump_hash))
+    return {
+        'source_count': len(src_files),
+        'dump_count': len(dump_files),
+        'missing_in_dump': sorted(src_files.keys() - dump_files.keys()),
+        'extra_in_dump': sorted(dump_files.keys() - src_files.keys()),
+        'hash_mismatches': mismatches,
+    }
+
+
+def run_parity_audit(src_dir, dump_dir):
+    """Print the comparison and return the number of differences."""
+    result = compare_trees(src_dir, dump_dir)
+    print(f'Source dir: {Path(src_dir).resolve()} ({result["source_count"]} files)')
+    print(f'Dump dir: {Path(dump_dir).resolve()} ({result["dump_count"]} files)')
+    for label in ('missing_in_dump', 'extra_in_dump', 'hash_mismatches'):
+        items = result[label]
+        if items:
+            print(f'{label}: {len(items)}')
+            for item in items:
+                print(f'  {item}')
+    total = sum(len(result[key]) for key in ('missing_in_dump', 'extra_in_dump', 'hash_mismatches'))
+    print(f'Total differences: {total}')
+    print('FAIL: source/dump differ.' if total else 'PASS: supplied source/dump trees match.')
+    return total
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--src', type=Path, required=True)
+    parser.add_argument('--dump', type=Path, required=True)
+    args = parser.parse_args(argv)
     try:
-        run_parity_audit()
-    except AssertionError as e:
-        print(f"FAILED: {e}")
-        sys.exit(1)
+        return 1 if run_parity_audit(args.src, args.dump) else 0
+    except (OSError, ValueError) as exc:
+        print(f'FAILED: {exc}')
+        return 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

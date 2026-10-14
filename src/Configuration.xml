@@ -265,10 +265,16 @@
 			<CommonModule>PhanQuyenBaoMatServer</CommonModule>
 			<CommonModule>BaoCaoQuanTriServer</CommonModule>
 			<CommonModule>QuanLyVongDoiChungTuServer</CommonModule>
+			<CommonModule>HardeningTestsServer</CommonModule>
+			<CommonModule>ConcurrencyTestsServer</CommonModule>
+			<CommonModule>NettingReversalTestsServer</CommonModule>
+			<CommonModule>SeedWorkflowServer</CommonModule>
+			<CommonModule>SeedBoundaryTestsServer</CommonModule>
 			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
 			<CommonModule>PheDuyetDaCapServer</CommonModule>
 			<CommonModule>QuyTrinhPheDuyetAPServer</CommonModule>
 			<Constant>PhapNhanMacDinh</Constant>
+			<Constant>ChoPhepSinhDuLieuMau</Constant>
 			<Constant>NguongPheDuyetChiTienCFO</Constant>
 			<Constant>TaiKhoanTrungGianCanTru</Constant>
 			<Constant>NguongThanhToanKhongDungTienMat</Constant>

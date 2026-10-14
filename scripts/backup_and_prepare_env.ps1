@@ -1,34 +1,24 @@
 param(
-    [string]$SourceDT = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.dt",
-    [string]$BackupDT = "C:\Users\Dung\Documents\1C_Enterprise\VinSmart_Future_AR_AP_Test.ORIGINAL.dt",
-    [string]$TargetIB = "C:\Users\Dung\Documents\1C_Enterprise\Infobase_FullData"
+    [Parameter(Mandatory = $true)][string]$SourceDT,
+    [Alias("TargetPath")][string]$TargetIB = "",
+    [string]$RunId = "",
+    [string]$ExePath = "",
+    [double]$Timeout = 90,
+    [string]$PythonPath = "python"
 )
 
-$exe = "C:\Program Files (x86)\1cv8t\8.3.22.1704\bin\1cv8t.exe"
-
-Write-Host "1. Sao lưu file DT gốc thành bản sao an toàn..."
-Copy-Item -Path $SourceDT -Destination $BackupDT -Force
-Write-Host "Đã tạo bản sao an toàn tại: $BackupDT"
-
-Write-Host "2. Khởi tạo thư mục CSDL thử nghiệm cô lập: $TargetIB ..."
-if (Test-Path $TargetIB) {
-    Remove-Item -Path $TargetIB -Recurse -Force -ErrorAction SilentlyContinue
+# Restore directly from SourceDT into a new UAT clone; never overwrite a backup.
+# Omitting TargetIB chooses a new UUID run directory under workspace/scratch/uat.
+$ErrorActionPreference = "Stop"
+try {
+    $cloneArgs = @("-B", (Join-Path $PSScriptRoot "create_uat_clone.py"),
+        "--source-dt", $SourceDT, "--timeout", [string]$Timeout)
+    if ($TargetIB) { $cloneArgs += @("--target-path", $TargetIB) }
+    if ($RunId) { $cloneArgs += @("--run-id", $RunId) }
+    if ($ExePath) { $cloneArgs += @("--exe-path", $ExePath) }
+    & $PythonPath @cloneArgs
+    exit $LASTEXITCODE
+} catch {
+    Write-Error ("FAIL: " + $_.Exception.Message) -ErrorAction Continue
+    exit 1
 }
-New-Item -ItemType Directory -Path $TargetIB -Force | Out-Null
-
-Write-Host "3. Khởi tạo Infobase rỗng..."
-$pCreate = Start-Process -FilePath $exe -ArgumentList "CREATEINFOBASE", "File=`"$TargetIB`"", "/DisableStartupDialogs", "/DisableStartupMessages" -PassThru -Wait
-Write-Host ("CreateIB ExitCode: " + $pCreate.ExitCode)
-
-Write-Host "4. Nạp dữ liệu từ bản sao vào CSDL thử nghiệm..."
-$logRestore = "restore_env.log"
-$argRestore = "DESIGNER /F `"$TargetIB`" /RestoreIB `"$BackupDT`" /DisableStartupDialogs /DisableStartupMessages /OUT `"$logRestore`""
-$pRestore = Start-Process -FilePath $exe -ArgumentList $argRestore -PassThru -Wait
-Write-Host ("RestoreIB ExitCode: " + $pRestore.ExitCode)
-
-if (Test-Path $logRestore) {
-    Get-Content $logRestore
-    Remove-Item $logRestore -Force -ErrorAction SilentlyContinue
-}
-
-Write-Host "Hoàn tất chuẩn bị môi trường thử nghiệm cô lập!"

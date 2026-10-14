@@ -12,10 +12,11 @@ Procedure KiemTraDanhSachTaiKhoan() Export
 EndProcedure
 
 Procedure ThucThiNapFullTestData() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	WriteLogEvent("SeedData.FullTest", EventLogLevel.Information,,, "=== BAT DAU MASTER ORCHESTRATION NAP FULL TEST DATA ===");
 	
 	// 0. Don dep toan bo chung tu nghiep vu cu theo thu tu rang buoc khoa ngoai
-	XoaToanBoDuLieuGiaoDichCu();
+	// Seed uses a fresh disposable clone; existing records are retained.
 	
 	// 1. Khoi tao Master Data (249 Doi tac, 249 Hop dong, 32 Du an/Khoi, 92 Dich vu CNTT, 639 Ty gia USD)
 	GeneratorMasterDataServer.KhoiTaoMasterDataToanDien();
@@ -182,72 +183,12 @@ Procedure KiemTraDashboardCFO() Export
 EndProcedure
 
 Procedure XoaToanBoDuLieuGiaoDichCu() Export
-	WriteLogEvent("SeedData.Clean", EventLogLevel.Information,,, ">>> Bắt đầu dọn dẹp toàn bộ dữ liệu giao dịch cũ theo thứ tự ràng buộc khóa ngoại...");
-	DocList = New Array;
-	DocList.Add("CanTruCongNoNoiBo");
-	DocList.Add("BangKeDoiSoatKenhThanhToan");
-	DocList.Add("UyNhiemChi");
-	DocList.Add("PhieuThuTienKhachHang");
-	DocList.Add("BaoCoNganHang");
-	DocList.Add("HoaDonGTGTDauRa");
-	DocList.Add("HoaDonNhaCungCap");
-	DocList.Add("BienBanNghiemThuGiaiDoan");
-	
-	// Bước 1: Undo Posting toàn bộ các chứng từ để giải phóng sổ sách và khóa ghi
-	For Each DocName In DocList Do
-		Q = New Query("SELECT Ref FROM Document." + DocName + " WHERE Posted = TRUE");
-		T = Q.Execute().Unload();
-		If T.Count() > 0 Then
-			BatchCount = 0;
-			BeginTransaction();
-			For Each R In T Do
-				Try
-					Obj = R.Ref.GetObject();
-					If Obj <> Undefined And Obj.Posted Then
-						Obj.Write(DocumentWriteMode.UndoPosting);
-						BatchCount = BatchCount + 1;
-						If BatchCount >= 50 Then
-							CommitTransaction();
-							BeginTransaction();
-							BatchCount = 0;
-						EndIf;
-					EndIf;
-				Except
-				EndTry;
-			EndDo;
-			CommitTransaction();
-		EndIf;
-	EndDo;
-
-	// Bước 2: Xóa vĩnh viễn các chứng từ theo thứ tự ràng buộc
-	For Each DocName In DocList Do
-		Q = New Query("SELECT Ref FROM Document." + DocName);
-		T = Q.Execute().Unload();
-		If T.Count() > 0 Then
-			BatchCount = 0;
-			BeginTransaction();
-			For Each R In T Do
-				Try
-					Obj = R.Ref.GetObject();
-					If Obj <> Undefined Then
-						Obj.Delete();
-						BatchCount = BatchCount + 1;
-						If BatchCount >= 50 Then
-							CommitTransaction();
-							BeginTransaction();
-							BatchCount = 0;
-						EndIf;
-					EndIf;
-				Except
-				EndTry;
-			EndDo;
-			CommitTransaction();
-		EndIf;
-	EndDo;
-	WriteLogEvent("SeedData.Clean", EventLogLevel.Information,,, ">>> Dọn dẹp toàn bộ dữ liệu giao dịch cũ hoàn tất!");
+	Raise "SEED_CLEANUP_DISABLED: restore a fresh UAT clone; bulk document deletion is unavailable.";
 EndProcedure
 
 Procedure BackfillSoCaiAnalyticKeysServer() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	WriteLogEvent("GL.Backfill", EventLogLevel.Information,,, "=== BAT DAU BACKFILL ANALYTIC KEYS SO CAI ===");
 	
 	Q = New Query(
@@ -489,12 +430,12 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 		StrTemplate("HOAN TAT BACKFILL ANALYTIC KEYS: Da cap nhat %1 / %2 chung tu", UpdatedCount, Total));
 EndProcedure
 
-Procedure KiemTraGLAnalyticKeysServer() Export
+Function KiemTraGLAnalyticKeysServer() Export
 	Q = New Query(
 		"SELECT
 		|	COUNT(*) AS TongBanGhi,
-		|	SUM(CASE WHEN (TKDr.Code IN (""1311"", ""1312"", ""1388"", ""3311"", ""3312"", ""3313"", ""3388"") AND (SC.DoiTacNo IS NULL OR SC.DoiTacNo = VALUE(Catalog.DoiTac.EmptyRef)))
-		|              OR (TKCr.Code IN (""1311"", ""1312"", ""1388"", ""3311"", ""3312"", ""3313"", ""3388"") AND (SC.DoiTacCo IS NULL OR SC.DoiTacCo = VALUE(Catalog.DoiTac.EmptyRef))) THEN 1 ELSE 0 END) AS SoBanGhiThieuKey
+		|	SUM(CASE WHEN (TKDr.Code IN (""1311"", ""1312"", ""1388"", ""3311"", ""3312"", ""3313"", ""3388"") AND (SC.DoiTacNo IS NULL OR SC.DoiTacNo = VALUE(Catalog.DoiTac.EmptyRef) OR SC.HopDongNo IS NULL OR SC.HopDongNo = VALUE(Catalog.HopDong.EmptyRef)))
+		|              OR (TKCr.Code IN (""1311"", ""1312"", ""1388"", ""3311"", ""3312"", ""3313"", ""3388"") AND (SC.DoiTacCo IS NULL OR SC.DoiTacCo = VALUE(Catalog.DoiTac.EmptyRef) OR SC.HopDongCo IS NULL OR SC.HopDongCo = VALUE(Catalog.HopDong.EmptyRef))) THEN 1 ELSE 0 END) AS SoBanGhiThieuKey
 		|FROM
 		|	AccountingRegister.SoCaiKeToan AS SC
 		|	LEFT JOIN ChartOfAccounts.HeThongTaiKhoan AS TKDr ON SC.AccountDr = TKDr.Ref
@@ -504,7 +445,7 @@ Procedure KiemTraGLAnalyticKeysServer() Export
 	Tong = ?(Res.Count() > 0, Res[0].TongBanGhi, 0);
 	Thieu = ?(Res.Count() > 0, Res[0].SoBanGhiThieuKey, 0);
 	Co = Tong - Thieu;
-	TyLe = ?(Tong > 0, Round(Co / Tong * 100, 1), 100);
+	TyLe = ?(Tong > 0, Round(Co / Tong * 100, 1), 0);
 	
 	LogText = New Array;
 	LogText.Add("=================================================================");
@@ -514,18 +455,13 @@ Procedure KiemTraGLAnalyticKeysServer() Export
 	LogText.Add(StrTemplate("So ban ghi co du Analytic Keys: %1", Co));
 	LogText.Add(StrTemplate("So ban ghi thieu Analytic Keys: %1", Thieu));
 	LogText.Add("TY LE HOAN TAT: " + Format(TyLe, "NFD=1; NGS=.") + "%");
-	If Thieu = 0 Then
+	If Tong > 0 And Thieu = 0 Then
 		LogText.Add(">> XAC NHAN: 100.0% ANALYTIC KEYS POPULATED [DAT CHUAN KIEM TOAN]");
 	EndIf;
 	LogText.Add("=================================================================");
 	
-	LogFilePath = "C:/Users/Dung/Documents/1C_Enterprise/verify_gl_keys.log";
-	TW = New TextWriter(LogFilePath, TextEncoding.UTF8);
-	For Each Line In LogText Do
-		TW.WriteLine(Line);
-	EndDo;
-	TW.Close();
 	WriteLogEvent("GL.Verify", EventLogLevel.Information,,, "Kiem ke GL Keys: " + Co + "/" + Tong + " hop le (" + TyLe + "%)");
-EndProcedure
+	Return Tong > 0 And Thieu = 0;
+EndFunction
 
 

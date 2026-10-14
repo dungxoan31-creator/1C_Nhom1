@@ -75,6 +75,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// Kiem tra Maker-Checker va SoD khi ghi so (100% dua tren phien UserName() that)
 	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
@@ -260,6 +263,12 @@ Procedure Posting(Cancel, Mode)
 	
 	// 5. Kiem tra can doi tong the So cai
 	Try
+		For Each Entry In RegisterRecords.SoCaiKeToan Do
+			If Entry.AccountCr = TKCongNo Then
+				Entry.DoiTacCo = DoiTac;
+				Entry.HopDongCo = HopDong;
+			EndIf;
+		EndDo;
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(RegisterRecords.SoCaiKeToan);
 	Except
 		Cancel = True;

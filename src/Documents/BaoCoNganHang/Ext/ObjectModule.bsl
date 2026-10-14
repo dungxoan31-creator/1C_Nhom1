@@ -23,6 +23,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
@@ -60,7 +64,7 @@ Procedure Posting(Cancel, Mode)
 	RegisterRecords.CongNoPhaiThu.Write = True;
 	RegisterRecords.CongNoPhaiThu.Clear();
 	
-	SoDuAR = QuanLyVongDoiChungTuServer.LaySoDuARTheoChungTu(PhapNhan, DoiTacKhop, ChungTuKhop, New PointInTime(Date, Ref));
+	SoDuAR = QuanLyVongDoiChungTuServer.LaySoDuARTheoChungTu(PhapNhan, DoiTacKhop, ChungTuKhop, New PointInTime(Date, Ref), Ref);
 	If SoTien > SoDuAR Then
 		Cancel = True;
 		Msg = New UserMessage;

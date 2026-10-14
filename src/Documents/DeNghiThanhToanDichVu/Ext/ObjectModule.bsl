@@ -6,8 +6,9 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "Write", UserName());
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	EndIf;
 	
 	// 1. Kiem tra Maker-Checker
@@ -21,6 +22,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
+	If DataExchange.Load Then Return; EndIf;
 	// 2. Kiem tra han thanh toan
 	If Not ValueIsFilled(HanThanhToan) Then
 		HanThanhToan = BegOfDay(Date) + 30 * 86400; // Net 30 mac dinh

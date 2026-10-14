@@ -9,6 +9,7 @@
 
 // Khoi tao day chuyen chung tu AR toan dien tu 01/2025 den 09/2026
 Procedure KhoiTaoChungTuAR() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	RefPN_VSF = LayPhapNhanVSF();
 	RefVND = LayTienTe("VND", "Việt Nam Đồng");
 	RefUSD = LayTienTe("USD", "Đô la Mỹ");
@@ -17,7 +18,7 @@ Procedure KhoiTaoChungTuAR() Export
 	RefKM_01 = LayKhoanMucDongTien();
 	
 	// Xoa du lieu AR cu neu co de dam bao tinh idempotent
-	XoaDuLieuARCu();
+	// Seed uses a fresh disposable clone; existing records are retained.
 	
 	DanhSachVG = LayDanhSachDoiTac("TEST_VG", RefPN_VSF, RefVND);
 	DanhSachKH = LayDanhSachDoiTac("TEST_KH", RefPN_VSF, RefVND);
@@ -56,10 +57,9 @@ Procedure KhoiTaoChungTuAR() Export
 	BatchDocCount = 0;
 	IsInTransaction = False;
 	
-	BeginTransaction();
-	IsInTransaction = True;
-	
 	Try
+		BeginTransaction();
+		IsInTransaction = True;
 		// Vong lap 21 thang tu 01/2025 den 09/2026
 		For MonthIdx = 1 To 21 Do
 			If MonthIdx <= 12 Then
@@ -131,7 +131,7 @@ Procedure KhoiTaoChungTuAR() Export
 				DocNumBB = "BB-" + YearSuffix + "-" + DinhDangSo(GlobalDocIndex, 6);
 				RefExistingBB = Documents.BienBanNghiemThuGiaiDoan.FindByNumber(DocNumBB, DocDate);
 				If ValueIsFilled(RefExistingBB) Then
-					DocBB = RefExistingBB.GetObject();
+					Raise "SEED_NUMBER_COLLISION: " + String(RefExistingBB);
 				Else
 					DocBB = Documents.BienBanNghiemThuGiaiDoan.CreateDocument();
 					DocBB.Number = DocNumBB;
@@ -152,6 +152,13 @@ Procedure KhoiTaoChungTuAR() Export
 					DinhDangSo(M, 2), Format(Y, "NG=0"), PartnerInfo.TenDoiTac);
 				DocBB.Write(DocumentWriteMode.Posting);
 				BatchDocCount = BatchDocCount + 1;
+				If BatchDocCount >= 50 Then
+					CommitTransaction();
+					IsInTransaction = False;
+					BeginTransaction();
+					IsInTransaction = True;
+					BatchDocCount = 0;
+				EndIf;
 				
 				// -------------------------------------------------------------
 				// 2. HoaDonGTGTDauRa
@@ -159,7 +166,7 @@ Procedure KhoiTaoChungTuAR() Export
 				DocNumHD = "HD-" + YearSuffix + "-" + DinhDangSo(GlobalDocIndex, 6);
 				RefExistingHD = Documents.HoaDonGTGTDauRa.FindByNumber(DocNumHD, DocDate + 3600);
 				If ValueIsFilled(RefExistingHD) Then
-					DocHD = RefExistingHD.GetObject();
+					Raise "SEED_NUMBER_COLLISION: " + String(RefExistingHD);
 				Else
 					DocHD = Documents.HoaDonGTGTDauRa.CreateDocument();
 					DocHD.Number = DocNumHD;
@@ -181,6 +188,13 @@ Procedure KhoiTaoChungTuAR() Export
 				DocHD.DienGiai = "Hóa đơn GTGT dịch vụ CNTT theo BB nghiệm thu " + DocBB.Number;
 				DocHD.Write(DocumentWriteMode.Posting);
 				BatchDocCount = BatchDocCount + 1;
+				If BatchDocCount >= 50 Then
+					CommitTransaction();
+					IsInTransaction = False;
+					BeginTransaction();
+					IsInTransaction = True;
+					BatchDocCount = 0;
+				EndIf;
 				
 				// -------------------------------------------------------------
 				// 3. Chung tu Thu tien (Thanh toan)
@@ -196,7 +210,7 @@ Procedure KhoiTaoChungTuAR() Export
 						DocNumBC = "BC-" + YearSuffix + "-" + DinhDangSo(GlobalBCIndex, 6);
 						RefExistingBC = Documents.BaoCoNganHang.FindByNumber(DocNumBC, PayDate);
 						If ValueIsFilled(RefExistingBC) Then
-							DocBC = RefExistingBC.GetObject();
+							Raise "SEED_NUMBER_COLLISION: " + String(RefExistingBC);
 						Else
 							DocBC = Documents.BaoCoNganHang.CreateDocument();
 							DocBC.Number = DocNumBC;
@@ -215,6 +229,13 @@ Procedure KhoiTaoChungTuAR() Export
 						DocBC.DienGiai = "Báo có Techcombank khớp tự động với " + DocBB.Number;
 						DocBC.Write(DocumentWriteMode.Posting);
 						BatchDocCount = BatchDocCount + 1;
+						If BatchDocCount >= 50 Then
+							CommitTransaction();
+							IsInTransaction = False;
+							BeginTransaction();
+							IsInTransaction = True;
+							BatchDocCount = 0;
+						EndIf;
 					Else
 						GlobalPTIndex = GlobalPTIndex + 1;
 						PayDate = DocDate + 86400 * 5;
@@ -225,7 +246,7 @@ Procedure KhoiTaoChungTuAR() Export
 						DocNumPT = "PT-" + YearSuffix + "-" + DinhDangSo(GlobalPTIndex, 6);
 						RefExistingPT = Documents.PhieuThuTienKhachHang.FindByNumber(DocNumPT, PayDate);
 						If ValueIsFilled(RefExistingPT) Then
-							DocPT = RefExistingPT.GetObject();
+							Raise "SEED_NUMBER_COLLISION: " + String(RefExistingPT);
 						Else
 							DocPT = Documents.PhieuThuTienKhachHang.CreateDocument();
 							DocPT.Number = DocNumPT;
@@ -261,17 +282,17 @@ Procedure KhoiTaoChungTuAR() Export
 						
 						DocPT.Write(DocumentWriteMode.Posting);
 						BatchDocCount = BatchDocCount + 1;
+						If BatchDocCount >= 50 Then
+							CommitTransaction();
+							IsInTransaction = False;
+							BeginTransaction();
+							IsInTransaction = True;
+							BatchDocCount = 0;
+						EndIf;
 					EndIf;
 				EndIf;
 				
-				// Phan me giao dich: cu 50 chung tu commit va bat dau me moi
-				If BatchDocCount >= 50 Then
-					CommitTransaction();
-					IsInTransaction = False;
-					BeginTransaction();
-					IsInTransaction = True;
-					BatchDocCount = 0;
-				EndIf;
+				// Each document write below commits at the 50-document boundary.
 			EndDo;
 		EndDo;
 		
@@ -475,40 +496,61 @@ Function LayDanhSachDoiTac(MaPrefix, RefPN_VSF, RefVND)
 EndFunction
 
 // Don dep cac chung tu AR cu neu co
-Procedure XoaDuLieuARCu()
-	DanhSachDoc = New Array;
-	DanhSachDoc.Add("PhieuThuTienKhachHang");
-	DanhSachDoc.Add("BaoCoNganHang");
-	DanhSachDoc.Add("HoaDonGTGTDauRa");
-	DanhSachDoc.Add("BienBanNghiemThuGiaiDoan");
-	
-	For Each TenDoc In DanhSachDoc Do
-		Q = New Query("SELECT Ref FROM Document." + TenDoc);
-		T = Q.Execute().Unload();
-		If T.Count() > 0 Then
-			BeginTransaction();
-			DelCount = 0;
-			For Each R In T Do
-				Try
-					Obj = R.Ref.GetObject();
-					If Obj <> Undefined Then
-						If Obj.Posted Then
-							Obj.Write(DocumentWriteMode.UndoPosting);
-						EndIf;
-						Obj.Delete();
-						DelCount = DelCount + 1;
-						If DelCount >= 100 Then
-							CommitTransaction();
-							BeginTransaction();
-							DelCount = 0;
-						EndIf;
-					EndIf;
-				Except
-				EndTry;
-			EndDo;
-			CommitTransaction();
-		EndIf;
-	EndDo;
-EndProcedure
+// Bulk cleanup removed: restore a fresh UAT clone instead.
 
 #EndRegion
+
+// Bounded positive VND sample: actual AR maker writes drafts only.
+Procedure SinhMauUAT(Refs, Val Months, Val RunId) Export
+	SeedWorkflowServer.RequireMaker("ar");
+	SeedWorkflowServer.ValidateMonths(Months, Refs, RunId);
+	PN = SeedWorkflowServer.RequiredCatalog("PhapNhan", "PN-VSF");
+	InternalPartner = SeedWorkflowServer.RequiredCatalog("DoiTac", "DT-VIC");
+	ExternalPartner = SeedWorkflowServer.RequiredCatalog("DoiTac", "DT-FPT");
+	Bank = SeedWorkflowServer.RequiredCatalog("TaiKhoanTien", "TK-TCB-VND");
+	For MonthIndex = 1 To Months Do
+		For ItemIndex = 1 To 2 Do
+			Partner = ?(ItemIndex = 1, InternalPartner, ExternalPartner);
+			Contract = SeedWorkflowServer.PartnerContract(Partner);
+			PreVAT = ?(ItemIndex = 1, 10000000, 100000000);
+			BB = SeedWorkflowServer.NewSample("BienBanNghiemThuGiaiDoan", RunId, MonthIndex, ItemIndex, 2);
+			BB.PhapNhan = PN;
+			BB.DoiTac = Partner;
+			BB.HopDong = Contract;
+			BB.NgayNghiemThu = BegOfDay(BB.Date);
+			BB.GiaTriNghiemThuChuaVAT = PreVAT;
+			BB.TyLeVAT = 10;
+			BB.TienVAT = PreVAT * 0.1;
+			BB.TongGiaTri = PreVAT + BB.TienVAT;
+			SeedWorkflowServer.SavePending(BB, Refs);
+			HD = SeedWorkflowServer.NewSample("HoaDonGTGTDauRa", RunId, MonthIndex, ItemIndex, 3);
+			HD.PhapNhan = PN;
+			HD.DoiTac = Partner;
+			HD.HopDong = Contract;
+			HD.BienBanNghiemThu = BB.Ref;
+			HD.NgayHoaDon = BegOfDay(HD.Date);
+			HD.SoHoaDon = HD.Number;
+			HD.KyHieu = "1C" + Right(String(Year(HD.Date)), 2) + "TVN";
+			HD.TienChuaThue = PreVAT;
+			HD.ThueSuatVAT = 10;
+			HD.TienThueVAT = BB.TienVAT;
+			HD.TongTienThanhToan = BB.TongGiaTri;
+			HD.MaCQT = "SAMPLE-" + Left(RunId, 8);
+			SeedWorkflowServer.SavePending(HD, Refs);
+			If ItemIndex = 2 Then
+				// Real external receipt funds the later VND AP payment.
+				BC = SeedWorkflowServer.NewSample("BaoCoNganHang", RunId, MonthIndex, 1, 5);
+				BC.PhapNhan = PN;
+				BC.TaiKhoanTien = Bank;
+				BC.SoTien = BB.TongGiaTri;
+				BC.NgayGiaoDich = BC.Date;
+				BC.MaGiaoDichNganHang = BC.Number;
+				BC.NoiDungChuyenKhoan = "SEED_RUN:" + RunId;
+				BC.DoiTacKhop = Partner;
+				BC.ChungTuKhop = BB.Ref;
+				BC.TuDongGhiSo = False;
+				SeedWorkflowServer.SavePending(BC, Refs);
+			EndIf;
+		EndDo;
+	EndDo;
+EndProcedure

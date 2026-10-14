@@ -81,6 +81,8 @@ Procedure KiemTraQuyenChungTu(Val ChungTu, Val ThaoTac, Val TenNguoiDung = "") E
 	LaChungTuAR = (DocTypeName = "BienBanNghiemThuGiaiDoan" 
 		Or DocTypeName = "HoaDonGTGTDauRa" 
 		Or DocTypeName = "PhieuThuTienKhachHang"
+		Or DocTypeName = "BaoCoNganHang"
+		Or DocTypeName = "DieuChinhCongNo"
 		Or DocTypeName = "CongNoPhaiThu");
 		
 	// Danh sach chung tu AP
@@ -113,7 +115,7 @@ Procedure KiemTraQuyenChungTu(Val ChungTu, Val ThaoTac, Val TenNguoiDung = "") E
 	
 	// 3. Chuyen vien doi soat khong duoc truc tiep xuat chung tu AR/AP ma phai thong qua chung tu netting
 	If CurrentUserStr = "chuyenvien_doisoat" Or NguoiDungCoRole(CurrentUserStr, "ChuyenVienDoiSoatTapDoan") Then
-		If ThaoTac = "GhiSo" And (LaChungTuAR Or LaChungTuAP) And Not LaChungTuNetting Then
+		If (ThaoTac = "GhiSo" Or ThaoTac = "Write") And (LaChungTuAR Or LaChungTuAP) And Not LaChungTuNetting Then
 			WriteLogEvent("Security.SoD", EventLogLevel.Warning,,, StrTemplate("Vi phạm SoD: Chuyên viên đối soát (%1) cố ghi sổ trực tiếp AR/AP (%2)!", CurrentUserStr, DocTypeName));
 			Raise "Chuyên viên Đối soát chỉ có quyền thao tác trên Chứng từ Cấn trừ và Bảng kê đối soát!";
 		EndIf;
@@ -629,10 +631,10 @@ Procedure KiemTraMakerSessionRuntime() Export
 	EndDo;
 
 	Doc3 = Documents.HoaDonNhaCungCap.CreateDocument();
-	Doc3.Date = CurrentDate();
+	Doc3.Date = CurrentSessionDate();
 	Doc3.Number = "T2-WORKFLOW-TEST";
 	Doc3.SoHoaDon = "INV-T2-001";
-	Doc3.NgayHoaDon = BegOfDay(CurrentDate());
+	Doc3.NgayHoaDon = BegOfDay(CurrentSessionDate());
 	Doc3.NguoiLap = "ketoan_ap";
 	Doc3.NguoiDuyet = "ketoan_truong";
 	DienThongTinAPMau(Doc3);
@@ -691,10 +693,10 @@ Procedure KiemTraAdminSessionRuntime() Export
 	BiChan4 = False;
 	Try
 		Doc4 = Documents.HoaDonNhaCungCap.CreateDocument();
-		Doc4.Date = CurrentDate();
-		Doc4.Number = "T2-FAKEUSER-" + Format(CurrentDate(), "DF=yyyyMMddHHmmss");
+		Doc4.Date = CurrentSessionDate();
+		Doc4.Number = "T2-FAKEUSER-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
 		Doc4.SoHoaDon = "INV-T2-004";
-		Doc4.NgayHoaDon = BegOfDay(CurrentDate());
+		Doc4.NgayHoaDon = BegOfDay(CurrentSessionDate());
 		Doc4.NguoiLap = "ketoan_ap";
 		Doc4.NguoiDuyet = "ketoan_truong";
 		DienThongTinAPMau(Doc4);
@@ -714,10 +716,10 @@ Procedure KiemTraAdminSessionRuntime() Export
 	BiChan5 = False;
 	Try
 		Doc5 = Documents.HoaDonNhaCungCap.CreateDocument();
-		Doc5.Date = CurrentDate();
-		Doc5.Number = "T2-TESTFLAG-" + Format(CurrentDate(), "DF=yyyyMMddHHmmss");
+		Doc5.Date = CurrentSessionDate();
+		Doc5.Number = "T2-TESTFLAG-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
 		Doc5.SoHoaDon = "INV-T2-005";
-		Doc5.NgayHoaDon = BegOfDay(CurrentDate());
+		Doc5.NgayHoaDon = BegOfDay(CurrentSessionDate());
 		Doc5.NguoiLap = "ketoan_ap";
 		Doc5.NguoiDuyet = "ketoan_ap";
 		DienThongTinAPMau(Doc5);
@@ -762,10 +764,10 @@ EndProcedure
 
 Procedure KiemTraNhayCocTrangThaiRuntime() Export
 	Doc = Documents.HoaDonNhaCungCap.CreateDocument();
-	Doc.Date = CurrentDate();
-	Doc.Number = "T2-JUMP-" + Format(CurrentDate(), "DF=yyyyMMddHHmmss");
+	Doc.Date = CurrentSessionDate();
+	Doc.Number = "T2-JUMP-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
 	Doc.SoHoaDon = "INV-T2-JUMP";
-	Doc.NgayHoaDon = BegOfDay(CurrentDate());
+	Doc.NgayHoaDon = BegOfDay(CurrentSessionDate());
 	Doc.NguoiLap = "ketoan_ap";
 	Doc.NguoiDuyet = "ketoan_truong";
 	DienThongTinAPMau(Doc);
@@ -797,10 +799,10 @@ Procedure KiemTraDataExchangeLoadBypassRuntime() Export
 	BiChan = False;
 	Try
 		Doc = Documents.HoaDonNhaCungCap.CreateDocument();
-		Doc.Date = CurrentDate();
-		Doc.Number = "T2-DX-" + Format(CurrentDate(), "DF=yyyyMMddHHmmss");
+		Doc.Date = CurrentSessionDate();
+		Doc.Number = "T2-DX-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
 		Doc.SoHoaDon = "INV-T2-DX";
-		Doc.NgayHoaDon = BegOfDay(CurrentDate());
+		Doc.NgayHoaDon = BegOfDay(CurrentSessionDate());
 		Doc.NguoiLap = "ketoan_ap";
 		Doc.NguoiDuyet = "ketoan_truong";
 		DienThongTinAPMau(Doc);
@@ -821,10 +823,10 @@ Procedure KiemTraLuuDaGhiSoUnpostedRuntime() Export
 	BiChan = False;
 	Try
 		Doc = Documents.HoaDonNhaCungCap.CreateDocument();
-		Doc.Date = CurrentDate();
-		Doc.Number = "T2-UNP-" + Format(CurrentDate(), "DF=yyyyMMddHHmmss");
+		Doc.Date = CurrentSessionDate();
+		Doc.Number = "T2-UNP-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
 		Doc.SoHoaDon = "INV-T2-UNP";
-		Doc.NgayHoaDon = BegOfDay(CurrentDate());
+		Doc.NgayHoaDon = BegOfDay(CurrentSessionDate());
 		Doc.NguoiLap = "ketoan_ap";
 		Doc.NguoiDuyet = "ketoan_truong";
 		DienThongTinAPMau(Doc);
@@ -842,8 +844,8 @@ EndProcedure
 
 Procedure KiemTraQuyTrinhTuanTuHopLeRuntime() Export
 	Doc = Documents.HoaDonNhaCungCap.CreateDocument();
-	Doc.Date = CurrentDate();
-	Doc.Number = "T2-SEQ-" + Format(CurrentDate(), "DF=yyyyMMddHHmmss");
+	Doc.Date = CurrentSessionDate();
+	Doc.Number = "T2-SEQ-" + Format(CurrentSessionDate(), "DF=yyyyMMddHHmmss");
 	Doc.NguoiLap = "ketoan_ap";
 	Doc.NguoiDuyet = "ketoan_truong";
 	Doc.PhapNhan = Catalogs.PhapNhan.FindByCode("PN-VSF");
@@ -958,16 +960,7 @@ Function NguoiDungCoRole(Val TenNguoiDung, Val TenRole)
 EndFunction
 
 Procedure GhiLogRaFile(Val FileName, Val Lines)
-	Try
-		DocDir = "C:\Users\Dung\Documents\1C_Enterprise\";
-		FilePath = DocDir + FileName;
-		Writer = New TextWriter(FilePath, "UTF-8");
-		For Each Line In Lines Do
-			Writer.WriteLine(Line);
-		EndDo;
-		Writer.Close();
-	Except
-	EndTry;
+	WriteLogEvent("SecurityTests.Detail", EventLogLevel.Information,,, FileName + Chars.LF + StrConcat(Lines, Chars.LF));
 EndProcedure
 
 #EndRegion

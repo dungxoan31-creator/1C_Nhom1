@@ -39,6 +39,11 @@ Procedure Posting(Cancel, Mode)
 	RegisterRecords.CongNoPhaiThu.Write = True;
 	RegisterRecords.CongNoPhaiTra.Write = True;
 	RegisterRecords.SoCaiKeToan.Write = True;
+	// Rebuild cached movement sets when the same object is posted again.
+	// Database replacement of this recorder remains under AR -> AP locks below.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	
 	If TrangThai <> "DaDuyet" And TrangThai <> "DaGhiSo" And TrangThai <> "DaCanTru" Then
 		Return;
@@ -169,57 +174,48 @@ Procedure Posting(Cancel, Mode)
 	LockAR.Mode = DataLockMode.Exclusive;
 	LockAR.SetValue("PhapNhan", PhapNhan);
 	LockAR.SetValue("DoiTac", DoiTacNoiBo);
+	LockAR.SetValue("HopDong", HopDongAR_Chuan);
 	LockAR.SetValue("ChungTuGoc", ChungTuGocAR);
+	LockObj.Lock();
 	
-	LockAP = LockObj.Add("AccumulationRegister.CongNoPhaiTra");
+	LockObjAP = New DataLock;
+	LockAP = LockObjAP.Add("AccumulationRegister.CongNoPhaiTra");
 	LockAP.Mode = DataLockMode.Exclusive;
 	LockAP.SetValue("PhapNhan", PhapNhan);
 	LockAP.SetValue("DoiTac", DoiTacAP);
+	LockAP.SetValue("HopDong", HopDongAP_Chuan);
 	LockAP.SetValue("ChungTuGoc", ChungTuGocAP);
 	
-	LockObj.Lock();
+	LockObjAP.Lock();
 	
-	// 4. Kiem tra so du kha dung tai thoi diem ghi so co loc TienTe
-	ThoiDiemKiemTra = New Boundary(PointInTime(), BoundaryType.Excluding);
+	// Replace only this recorder under AR -> AP locks before reading current
+	// totals. A later-dated payment must reduce availability of earlier netting.
+	// The posting transaction restores the old movements if validation fails.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.CongNoPhaiThu.Write();
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.CongNoPhaiTra.Write();
+
+	// SoTienCanTru and the written SoTien resources are VND, including on
+	// foreign-currency contracts. Never compare them with SoTienNgoaiTe.
 	
 	// Doc so du AR theo dung khoa phan tich va tien te
 	Q_AR = New Query(
-		"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu,
-		|       ISNULL(SUM(Balance.SoTienNgoaiTeBalance), 0) AS SoDuNgoaiTe
-		|FROM AccumulationRegister.CongNoPhaiThu.Balance(&ThoiDiem, 
+		"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu
+		|FROM AccumulationRegister.CongNoPhaiThu.Balance(,
 		|    PhapNhan = &PhapNhan 
 		|    AND DoiTac = &DoiTac 
+		|    AND HopDong = &HopDong
 		|    AND ChungTuGoc = &ChungTuGoc
 		|    AND (HopDong.DongTienThanhToan = &TienTe OR &LaVND)) AS Balance");
-	Q_AR.SetParameter("ThoiDiem", ThoiDiemKiemTra);
 	Q_AR.SetParameter("PhapNhan", PhapNhan);
 	Q_AR.SetParameter("DoiTac", DoiTacNoiBo);
+	Q_AR.SetParameter("HopDong", HopDongAR_Chuan);
 	Q_AR.SetParameter("ChungTuGoc", ChungTuGocAR);
 	Q_AR.SetParameter("TienTe", TienTe);
 	Q_AR.SetParameter("LaVND", (TienTe = Catalogs.TienTe.FindByCode("VND")));
 	ResAR = Q_AR.Execute().Unload();
-	SoDuAR = ?(ResAR.Count() > 0, ?(TienTe = Catalogs.TienTe.FindByCode("VND"), ResAR[0].SoDu, ResAR[0].SoDuNgoaiTe), 0);
-	If SoDuAR = 0 And ResAR.Count() > 0 And ResAR[0].SoDu > 0 Then
-		SoDuAR = ResAR[0].SoDu;
-	EndIf;
-	
-	If SoDuAR <= 0 Then
-		// Fallback khong gioi han thoi diem tranh lech moc thoi gian giua chung tu goc va can tru
-		Q_AR_All = New Query(
-			"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu,
-			|       ISNULL(SUM(Balance.SoTienNgoaiTeBalance), 0) AS SoDuNgoaiTe
-			|FROM AccumulationRegister.CongNoPhaiThu.Balance( , 
-			|    PhapNhan = &PhapNhan 
-			|    AND DoiTac = &DoiTac 
-			|    AND ChungTuGoc = &ChungTuGoc) AS Balance");
-		Q_AR_All.SetParameter("PhapNhan", PhapNhan);
-		Q_AR_All.SetParameter("DoiTac", DoiTacNoiBo);
-		Q_AR_All.SetParameter("ChungTuGoc", ChungTuGocAR);
-		ResAR_All = Q_AR_All.Execute().Unload();
-		If ResAR_All.Count() > 0 And ResAR_All[0].SoDu > 0 Then
-			SoDuAR = ResAR_All[0].SoDu;
-		EndIf;
-	EndIf;
+	SoDuAR = ?(ResAR.Count() > 0, ResAR[0].SoDu, 0);
 	
 	If SoDuAR <= 0 Then
 		Raise StrTemplate("LỖI CẤN TRỪ AR: Số dư nợ phải thu khả dụng bằng 0 hoặc âm (%1) tại thời điểm ghi sổ!", SoDuAR);
@@ -231,41 +227,21 @@ Procedure Posting(Cancel, Mode)
 	
 	// Doc so du AP theo dung khoa phan tich va tien te
 	Q_AP = New Query(
-		"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu,
-		|       ISNULL(SUM(Balance.SoTienNgoaiTeBalance), 0) AS SoDuNgoaiTe
-		|FROM AccumulationRegister.CongNoPhaiTra.Balance(&ThoiDiem, 
+		"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu
+		|FROM AccumulationRegister.CongNoPhaiTra.Balance(,
 		|    PhapNhan = &PhapNhan 
 		|    AND DoiTac = &DoiTac 
+		|    AND HopDong = &HopDong
 		|    AND ChungTuGoc = &ChungTuGoc
 		|    AND (HopDong.DongTienThanhToan = &TienTe OR &LaVND)) AS Balance");
-	Q_AP.SetParameter("ThoiDiem", ThoiDiemKiemTra);
 	Q_AP.SetParameter("PhapNhan", PhapNhan);
 	Q_AP.SetParameter("DoiTac", DoiTacAP);
+	Q_AP.SetParameter("HopDong", HopDongAP_Chuan);
 	Q_AP.SetParameter("ChungTuGoc", ChungTuGocAP);
 	Q_AP.SetParameter("TienTe", TienTe);
 	Q_AP.SetParameter("LaVND", (TienTe = Catalogs.TienTe.FindByCode("VND")));
 	ResAP = Q_AP.Execute().Unload();
-	SoDuAP = ?(ResAP.Count() > 0, ?(TienTe = Catalogs.TienTe.FindByCode("VND"), ResAP[0].SoDu, ResAP[0].SoDuNgoaiTe), 0);
-	If SoDuAP = 0 And ResAP.Count() > 0 And ResAP[0].SoDu > 0 Then
-		SoDuAP = ResAP[0].SoDu;
-	EndIf;
-	
-	If SoDuAP <= 0 Then
-		Q_AP_All = New Query(
-			"SELECT ISNULL(SUM(Balance.SoTienBalance), 0) AS SoDu,
-			|       ISNULL(SUM(Balance.SoTienNgoaiTeBalance), 0) AS SoDuNgoaiTe
-			|FROM AccumulationRegister.CongNoPhaiTra.Balance( , 
-			|    PhapNhan = &PhapNhan 
-			|    AND DoiTac = &DoiTac 
-			|    AND ChungTuGoc = &ChungTuGoc) AS Balance");
-		Q_AP_All.SetParameter("PhapNhan", PhapNhan);
-		Q_AP_All.SetParameter("DoiTac", DoiTacAP);
-		Q_AP_All.SetParameter("ChungTuGoc", ChungTuGocAP);
-		ResAP_All = Q_AP_All.Execute().Unload();
-		If ResAP_All.Count() > 0 And ResAP_All[0].SoDu > 0 Then
-			SoDuAP = ResAP_All[0].SoDu;
-		EndIf;
-	EndIf;
+	SoDuAP = ?(ResAP.Count() > 0, ResAP[0].SoDu, 0);
 	
 	If SoDuAP <= 0 Then
 		Raise StrTemplate("LỖI CẤN TRỪ AP: Số dư nợ phải trả khả dụng bằng 0 hoặc âm (%1) tại thời điểm ghi sổ!", SoDuAP);

@@ -14,9 +14,56 @@ EndProcedure
 
 #Region PublicInterface
 
+Procedure KiemTraChoPhepSinhDuLieuMau(Val ExpectedRole = "QuanTriHeThong") Export
+	Connection = Lower(StrReplace(InfoBaseConnectionString(), "\", "/"));
+	If StrFind(Connection, "/scratch/uat/") = 0 Or StrFind(Connection, "infobase_fulldata") > 0 Then
+		Raise "SEED_DISABLED: sample data generation is restricted to a disposable scratch/uat clone.";
+	EndIf;
+	If Not Constants.ChoPhepSinhDuLieuMau.Get() Then
+		Raise "SEED_DISABLED: sample data generation is disabled; restore and enable a disposable UAT clone.";
+	EndIf;
+	If Not IsInRole(ExpectedRole) Then
+		Raise "SEED_FORBIDDEN: authenticated session does not have the required UAT seed role.";
+	EndIf;
+EndProcedure
+
 // Danh tinh nguoi dung va quyen han luon duoc xac thuc 100% tu phien he thong UserName()
 
 // Lay trang thai va co Posted da luu trong CSDL
+// Current availability under the same key lock as netting; exclude this
+// recorder's old movements on repost. Historical PointInTime is retained
+// in the interface only: later committed receipts must reduce availability.
+Function LaySoDuARTheoChungTu(Val PN, Val Partner, Val SourceDoc, Val HistoricalPoint = Undefined, Val OwnRecorder = Undefined) Export
+	Contract = SourceDoc.HopDong;
+	LockObj = New DataLock;
+	ARLockKey = LockObj.Add("AccumulationRegister.CongNoPhaiThu");
+	ARLockKey.Mode = DataLockMode.Exclusive;
+	ARLockKey.SetValue("PhapNhan", PN);
+	ARLockKey.SetValue("DoiTac", Partner);
+	ARLockKey.SetValue("HopDong", Contract);
+	ARLockKey.SetValue("ChungTuGoc", SourceDoc);
+	LockObj.Lock();
+	Q = New Query("SELECT ISNULL(SUM(SoTienBalance), 0) AS Amount
+		|FROM AccumulationRegister.CongNoPhaiThu.Balance(,
+		| PhapNhan = &PN AND DoiTac = &Partner AND HopDong = &Contract AND ChungTuGoc = &Source)");
+	Q.SetParameter("PN", PN);
+	Q.SetParameter("Partner", Partner);
+	Q.SetParameter("Contract", Contract);
+	Q.SetParameter("Source", SourceDoc);
+	Available = Q.Execute().Unload()[0].Amount;
+	If ValueIsFilled(OwnRecorder) Then
+		Old = AccumulationRegisters.CongNoPhaiThu.CreateRecordSet();
+		Old.Filter.Recorder.Set(OwnRecorder);
+		Old.Read();
+		For Each R In Old Do
+			If R.Active And R.PhapNhan = PN And R.DoiTac = Partner And R.HopDong = Contract And R.ChungTuGoc = SourceDoc Then
+				Available = Available - ?(R.RecordType = AccumulationRecordType.Receipt, R.SoTien, -R.SoTien);
+			EndIf;
+		EndDo;
+	EndIf;
+	Return Available;
+EndFunction
+
 Function LayTrangThaiDaLuu(DocObject) Export
 	Result = New Structure("DaLuu, TrangThai, Posted", False, "", False);
 	If TypeOf(DocObject) = Type("Structure") Then
@@ -68,6 +115,8 @@ EndFunction
 
 // Kiem tra hop nhat quyen va trang thai cho moi loai chung tu
 Procedure KiemTraTrangThaiVaQuyen(DocObject, Val WriteMode, Val PostingMode, Cancel) Export
+	// Enforce cross-domain write permissions before draft/import early returns.
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(DocObject, "Write", UserName());
 	TrangThaiStr = "";
 	TrangThaiName = "";
 	Try
@@ -110,14 +159,6 @@ Procedure KiemTraTrangThaiVaQuyen(DocObject, Val WriteMode, Val PostingMode, Can
 	
 	// Danh tinh phien dang nhap xac thuc 100% tu nen tang 1C UserName()
 	SessionUser = UserName();
-	If SessionUser = "Admin" Then
-		Try
-			If ValueIsFilled(DocObject.NguoiDuyet) Then
-				SessionUser = String(DocObject.NguoiDuyet);
-			EndIf;
-		Except
-		EndTry;
-	EndIf;
 	
 	// Kiem tra Maker-Checker va SoD khi phe duyet hoac ghi so
 	LaPheDuyetHoacGhiSo = (WriteMode = DocumentWriteMode.Posting) 
@@ -931,7 +972,7 @@ Procedure ThucThiKiemThuTask6IntegrityRuntime() Export
 	EndIf;
 EndProcedure
 
-Procedure KiemThuChuTrinhGhiSoRuntime() Export
+Function KiemThuChuTrinhGhiSoRuntime() Export
 	LogLines = New Array;
 	LogLines.Add("=================================================================");
 	LogLines.Add("   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -> UNPOST -> REPOST) ");
@@ -962,6 +1003,7 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 		If T.Count() = 0 Then
 			LogLines.Add(StrTemplate("[-] %1: Khong tim thay chung tu Posted!", DocType));
 			TongDocFail = TongDocFail + 1;
+			If TransactionActive() Then RollbackTransaction(); EndIf;
 			Continue;
 		EndIf;
 		
@@ -969,6 +1011,24 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 		LogLines.Add(StrTemplate("[*] Kiem thu chung tu: %1 (%2)", DocType, DocRef));
 		
 		Try
+			BeginTransaction();
+			// Establish this build's POST baseline inside the rollback-only test.
+			// Legacy missing-key migration is a separate failing data-quality gate;
+			// lifecycle parity compares POST/UNPOST/REPOST under the same code.
+			BaselineDoc = DocRef.GetObject();
+			If DocType = "HoaDonGTGTDauRa" Or DocType = "CanTruCongNoNoiBo" Then
+				BaselineDoc.NguoiLap = "ketoan_ar";
+			Else
+				BaselineDoc.NguoiLap = "ketoan_ap";
+			EndIf;
+			BaselineDoc.NguoiDuyet = UserName();
+			BaselineDoc.Write(DocumentWriteMode.Posting);
+			OriginalMovements = LayDauVanMovements(DocRef);
+			BaselineDoc.Write(DocumentWriteMode.Posting);
+			If LayDauVanMovements(DocRef) <> OriginalMovements Then
+				RepostParityPass = False;
+				LogLines.Add("[FAIL] Same-instance repost changed movement rows: " + DocType);
+			EndIf;
 			// 1. Dem so ban ghi ban dau tren SoCaiKeToan
 			Q_GL = New Query("SELECT COUNT(*) AS Cnt FROM AccountingRegister.SoCaiKeToan WHERE Recorder = &Rec");
 			Q_GL.SetParameter("Rec", DocRef);
@@ -977,6 +1037,7 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 			If Cnt_GL_Init = 0 Then
 				LogLines.Add(StrTemplate("  [FAIL] %1: So ban ghi GL ban dau = 0!", DocType));
 				TongDocFail = TongDocFail + 1;
+				If TransactionActive() Then RollbackTransaction(); EndIf;
 				Continue;
 			EndIf;
 			LogLines.Add(StrTemplate("  [1] POST BAN DAU: SoCaiKeToan = %1 ban ghi", Cnt_GL_Init));
@@ -994,12 +1055,13 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 			
 			// Kiem tra Zero Residual tren GL
 			Cnt_GL_Unpost = Q_GL.Execute().Unload()[0].Cnt;
-			If Cnt_GL_Unpost = 0 Then
+			If Cnt_GL_Unpost = 0 And LayDauVanMovements(DocRef, True) = "0;0;0;0;0;" Then
 				LogLines.Add("  [2] UNPOST THANH CONG: SoCaiKeToan = 0 ban ghi (ZERO RESIDUAL VERIFIED)");
 			Else
 				LogLines.Add(StrTemplate("  [FAIL] UNPOST THAT BAI: SoCaiKeToan van con %1 ban ghi ton du!", Cnt_GL_Unpost));
 				ZeroResidualPass = False;
 				TongDocFail = TongDocFail + 1;
+				If TransactionActive() Then RollbackTransaction(); EndIf;
 				Continue;
 			EndIf;
 			
@@ -1027,7 +1089,7 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 			
 			// Kiem tra Repost Parity tren GL
 			Cnt_GL_Repost = Q_GL.Execute().Unload()[0].Cnt;
-			If Cnt_GL_Repost = Cnt_GL_Init Then
+			If Cnt_GL_Repost = Cnt_GL_Init And LayDauVanMovements(DocRef) = OriginalMovements Then
 				LogLines.Add(StrTemplate("  [3] REPOST THANH CONG: SoCaiKeToan tai tao dung %1 ban ghi (REPOST PARITY VERIFIED)", Cnt_GL_Repost));
 				TongDocPass = TongDocPass + 1;
 			Else
@@ -1035,7 +1097,9 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 				RepostParityPass = False;
 				TongDocFail = TongDocFail + 1;
 			EndIf;
+			RollbackTransaction();
 		Except
+			If TransactionActive() Then RollbackTransaction(); EndIf;
 			LogLines.Add(StrTemplate("  [FAIL] %1: Ngoai le khi test chu trinh: %2", DocType, DetailErrorDescription(ErrorInfo())));
 			TongDocFail = TongDocFail + 1;
 		EndTry;
@@ -1067,136 +1131,37 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 	EndIf;
 	LogLines.Add("=================================================================");
 	
-	// Ghi file log
-	LogFilePath = "C:/Users/Dung/Documents/1C_Enterprise/test_posting_lifecycle.log";
-	TW = New TextWriter(LogFilePath, TextEncoding.UTF8);
-	For Each Line In LogLines Do
-		TW.WriteLine(Line);
-	EndDo;
-	TW.Close();
+	// Results are returned to the per-run JSON writer; no shared log file.
 	
 	WriteLogEvent("PostingLifecycle.Runtime", EventLogLevel.Information,,, 
 		StrTemplate("Posting Lifecycle Test: %1/%2 docs passed, ZeroResidual=%3, RepostParity=%4, GLSubledger=%5", 
 			TongDocPass, DanhSachLoaiCT.Count(), ZeroResidualPass, RepostParityPass, GLSubledgerPass));
-EndProcedure
+	Cases = New Array;
+	Cases.Add(New Structure("name,passed,error", "ZeroResidual", ZeroResidualPass And TongDocFail = 0 And TongDocPass = 4, ?(ZeroResidualPass And TongDocFail = 0, "", StrConcat(LogLines, Chars.LF))));
+	Cases.Add(New Structure("name,passed,error", "RepostParity", RepostParityPass And TongDocFail = 0 And TongDocPass = 4, ?(RepostParityPass And TongDocFail = 0, "", StrConcat(LogLines, Chars.LF))));
+	Cases.Add(New Structure("name,passed,error", "GLSubledger", GLSubledgerPass, ?(GLSubledgerPass, "", StrConcat(LogLines, Chars.LF))));
+	Return Cases;
+EndFunction
 
 Procedure KiemThuUATRollbackConcurrencyServer() Export
-	LogLines = New Array;
-	LogLines.Add("=================================================================");
-	LogLines.Add("   UAT RUNTIME VERIFICATION: ROLLBACK, CONCURRENCY & FSM GUARD    ");
-	LogLines.Add("   He thong: 1C:Enterprise 8.3 | CSDL: Infobase_FullData         ");
-	LogLines.Add("=================================================================");
-	
-	PassCount = 0;
-	
-	// -------------------------------------------------------------
-	// KICH BAN 1: TRANSACTION ROLLBACK ATOMICITY PROOF
-	// -------------------------------------------------------------
-	Q_GL = New Query("SELECT COUNT(*) AS Cnt FROM AccountingRegister.SoCaiKeToan");
-	CntBefore = Q_GL.Execute().Unload()[0].Cnt;
-	
-	RollbackSuccess = False;
-	CntDuring = 0;
-	BeginTransaction();
-	Try
-		// Tao chung tu thu nghiem trong giao dich
-		Doc = Documents.HoaDonGTGTDauRa.CreateDocument();
-		Doc.Date = CurrentSessionDate();
-		Doc.PhapNhan = Catalogs.PhapNhan.FindByCode("VSF");
-		Doc.KhachHang = Catalogs.DoiTac.FindByCode("DT-ONEPAY");
-		Doc.HopDong = Catalogs.HopDong.FindByCode("HD-ONEPAY-01");
-		Doc.TongGiaTri = 50000000;
-		Doc.TienThueVAT = 5000000;
-		Doc.NguoiTao = "ketoan_ar";
-		Doc.NguoiDuyet = "ketoan_truong";
-		Doc.TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaPhatHanh;
-		Doc.Write(DocumentWriteMode.Posting);
-		
-		// Kiem tra trong transaction so ban ghi da tang
-		CntDuring = Q_GL.Execute().Unload()[0].Cnt;
-		If CntDuring <= CntBefore Then
-			Raise "Loi tao ban ghi trong transaction!";
-		EndIf;
-		
-		// Chu dong gay ra loi de rollback toan bo giao dich
-		Raise "TEST_UAT_EXCEPTION: Kích hoạt rollback giao dịch có chủ đích!";
-	Except
-		RollbackTransaction();
-		CntAfter = Q_GL.Execute().Unload()[0].Cnt;
-		If CntAfter = CntBefore Then
-			RollbackSuccess = True;
-			LogLines.Add(StrTemplate("  [PASS] Kich ban 1: Rollback Atomic thanh cong! (Before: %1, During: %2, After: %3)",
-				CntBefore, CntDuring, CntAfter));
-			LogLines.Add("  >> MARKER: UAT_ROLLBACK_ATOMIC_VERIFIED");
-			PassCount = PassCount + 1;
-		Else
-			LogLines.Add(StrTemplate("  [FAIL] Kich ban 1: Rollback that bai! Ton du ban ghi rac (Before: %1, After: %2)",
-				CntBefore, CntAfter));
-		EndIf;
-	EndTry;
-	
-	// -------------------------------------------------------------
-	// KICH BAN 2: EXCLUSIVE DATALOCK CONCURRENCY PROTECTION
-	// -------------------------------------------------------------
-	DataLockSuccess = False;
-	BeginTransaction();
-	Try
-		KhaiBaoKhoa = New DataLock;
-		KhoaAR = KhaiBaoKhoa.Add("AccumulationRegister.CongNoPhaiThu");
-		KhoaAR.Mode = DataLockMode.Exclusive;
-		KhoaAR.SetValue("PhapNhan", Catalogs.PhapNhan.FindByCode("VSF"));
-		
-		KhoaGL = KhaiBaoKhoa.Add("AccountingRegister.SoCaiKeToan");
-		KhoaGL.Mode = DataLockMode.Exclusive;
-		
-		KhaiBaoKhoa.Lock();
-		DataLockSuccess = True;
-		CommitTransaction();
-		
-		LogLines.Add("  [PASS] Kich ban 2: DataLock che do Exclusive kich hoat thanh cong bao ve chong Race Condition!");
-		LogLines.Add("  >> MARKER: UAT_DATALOCK_CONCURRENCY_VERIFIED");
-		PassCount = PassCount + 1;
-	Except
-		RollbackTransaction();
-		LogLines.Add("  [FAIL] Kich ban 2: Loi DataLock: " + DetailErrorDescription(ErrorInfo()));
-	EndTry;
-	
-	// -------------------------------------------------------------
-	// KICH BAN 3: CHAN SUA TRUC TIEP TRANG THAI CHUNG TU DA GHI SO
-	// -------------------------------------------------------------
-	StateGuardSuccess = False;
-	Q_Find = New Query("SELECT TOP 1 Ref FROM Document.CanTruCongNoNoiBo WHERE Posted = TRUE");
-	T_Find = Q_Find.Execute().Unload();
-	If T_Find.Count() > 0 Then
-		DocRef = T_Find[0].Ref;
-		DocObj = DocRef.GetObject();
-		OldState = DocObj.TrangThai;
-		
-		Try
-			// Co tinh doi trang thai truc tiep ma khong unpost
-			DocObj.TrangThai = "ChoDuyet";
-			DocObj.Write(DocumentWriteMode.Write);
-			LogLines.Add("  [FAIL] Kich ban 3: Cho phep sua truc tiep trang thai tren chung tu da ghi so!");
-		Except
-			StateGuardSuccess = True;
-			LogLines.Add("  [PASS] Kich ban 3: BeforeWrite da chan tuyet doi sua truc tiep trang thai tren chung tu Posted!");
-			LogLines.Add("  >> MARKER: UAT_STATE_GUARD_VERIFIED");
-			PassCount = PassCount + 1;
-		EndTry;
-	Else
-		LogLines.Add("  [SKIP] Kich ban 3: Khong tim thay chung tu Posted");
-	EndIf;
-	
-	LogLines.Add("=================================================================");
-	If PassCount = 3 Then
-		LogLines.Add(">> XAC NHAN: UAT_ROLLBACK_CONCURRENCY_ALL_PASS (100% DAT CHUAN RUNTIME)");
-	Else
-		LogLines.Add(">> XAC NHAN: UAT_ROLLBACK_CONCURRENCY_FAIL");
-	EndIf;
-	LogLines.Add("=================================================================");
-	
-	WriteLogEvent("UAT.SecurityProof", EventLogLevel.Information,,, StrConcat(LogLines, Chars.LF));
+	Raise "NOT_RUN: use RunHardeningUAT for rollback/state checks and the two-session concurrency runner.";
 EndProcedure
+
+Function LayDauVanMovements(DocRef, CountOnly = False) Export
+	Result = "";
+	Tables = StrSplit("AccountingRegister.SoCaiKeToan,AccumulationRegister.CongNoPhaiThu,AccumulationRegister.CongNoPhaiTra,AccumulationRegister.DongTien,AccumulationRegister.GiaoDichDienTuTamGiu", ",");
+	For Each TableName In Tables Do
+		If CountOnly Then
+			Q = New Query("SELECT COUNT(*) AS Cnt FROM " + TableName + " WHERE Recorder = &Rec");
+		Else
+			Q = New Query("SELECT * FROM " + TableName + " WHERE Recorder = &Rec ORDER BY LineNumber");
+		EndIf;
+		Q.SetParameter("Rec", DocRef);
+		T = Q.Execute().Unload();
+		Result = Result + ?(CountOnly, String(T[0].Cnt), ValueToStringInternal(T)) + ";";
+	EndDo;
+	Return Result;
+EndFunction
 
 #EndRegion
 

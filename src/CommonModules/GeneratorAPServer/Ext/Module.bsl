@@ -8,6 +8,7 @@
 
 // Sinh toan bo chung tu nghiep vu AP (Hoa don NCC va Uy nhiem chi)
 Procedure KhoiTaoChungTuAP() Export
+	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
 	WriteLogEvent("AP.Seed", EventLogLevel.Information,,, ">>> Bắt đầu KhoiTaoChungTuAP...");
 	
 	// 1. Lay thong tin Phap nhan mac dinh VSF
@@ -134,7 +135,7 @@ Procedure KhoiTaoChungTuAP() Export
 	EndDo;
 	
 	// 7. Don dep du lieu AP cu neu co de dam bao tinh idempotent
-	XoaDuLieuAPCu();
+	// Seed uses a fresh disposable clone; existing records are retained.
 	
 	// 8. Vong lap sinh du lieu AP tu thang 01/2025 den 09/2026 (21 thang)
 	IdxUSD = 0;
@@ -144,10 +145,9 @@ Procedure KhoiTaoChungTuAP() Export
 	DocBatchCount = 0;
 	InTransaction = False;
 	
-	BeginTransaction();
-	InTransaction = True;
-	
 	Try
+		BeginTransaction();
+		InTransaction = True;
 		For MonthNum = 1 To 21 Do
 			If MonthNum <= 12 Then
 				CurYear = 2025;
@@ -179,7 +179,7 @@ Procedure KhoiTaoChungTuAP() Export
 				DocNumHD = "HD" + Format(DocDate, "DF=yyyyMM") + Right("0000" + String(InvIdx), 4);
 				RefExistingHD = Documents.HoaDonNhaCungCap.FindByNumber(DocNumHD, DocDate);
 				If ValueIsFilled(RefExistingHD) Then
-					DocHD = RefExistingHD.GetObject();
+					Raise "SEED_NUMBER_COLLISION: " + String(RefExistingHD);
 				Else
 					DocHD = Documents.HoaDonNhaCungCap.CreateDocument();
 					DocHD.Number = DocNumHD;
@@ -227,7 +227,9 @@ Procedure KhoiTaoChungTuAP() Export
 				DocBatchCount = DocBatchCount + 1;
 				If DocBatchCount >= 50 Then
 					CommitTransaction();
+					InTransaction = False;
 					BeginTransaction();
+					InTransaction = True;
 					DocBatchCount = 0;
 				EndIf;
 				
@@ -258,7 +260,7 @@ Procedure KhoiTaoChungTuAP() Export
 					DocNumUNC = "UNC" + Format(DocDate, "DF=yyyyMM") + Right("0000" + String(InvIdx), 4);
 					RefExistingUNC = Documents.UyNhiemChi.FindByNumber(DocNumUNC, PayDate);
 					If ValueIsFilled(RefExistingUNC) Then
-						DocUNC = RefExistingUNC.GetObject();
+						Raise "SEED_NUMBER_COLLISION: " + String(RefExistingUNC);
 					Else
 						DocUNC = Documents.UyNhiemChi.CreateDocument();
 						DocUNC.Number = DocNumUNC;
@@ -287,7 +289,9 @@ Procedure KhoiTaoChungTuAP() Export
 					DocBatchCount = DocBatchCount + 1;
 					If DocBatchCount >= 50 Then
 						CommitTransaction();
+						InTransaction = False;
 						BeginTransaction();
+						InTransaction = True;
 						DocBatchCount = 0;
 					EndIf;
 				EndIf;
@@ -332,58 +336,58 @@ EndProcedure
 #Region InternalProcedures
 
 // Don dep cac chung tu AP cu neu co de dam bao tinh idempotent
-Procedure XoaDuLieuAPCu()
-	Q_UNC = New Query("SELECT Ref FROM Document.UyNhiemChi WHERE DoiTac.Code LIKE ""TEST_NCC_%""");
-	T_UNC = Q_UNC.Execute().Unload();
-	If T_UNC.Count() > 0 Then
-		BatchCount = 0;
-		BeginTransaction();
-		For Each Row In T_UNC Do
-			Try
-				Obj = Row.Ref.GetObject();
-				If Obj <> Undefined Then
-					If Obj.Posted Then
-						Obj.Write(DocumentWriteMode.UndoPosting);
-					EndIf;
-					Obj.Delete();
-					BatchCount = BatchCount + 1;
-					If BatchCount >= 50 Then
-						CommitTransaction();
-						BeginTransaction();
-						BatchCount = 0;
-					EndIf;
-				EndIf;
-			Except
-			EndTry;
-		EndDo;
-		CommitTransaction();
-	EndIf;
-	
-	Q_HD = New Query("SELECT Ref FROM Document.HoaDonNhaCungCap WHERE DoiTac.Code LIKE ""TEST_NCC_%""");
-	T_HD = Q_HD.Execute().Unload();
-	If T_HD.Count() > 0 Then
-		BatchCount = 0;
-		BeginTransaction();
-		For Each Row In T_HD Do
-			Try
-				Obj = Row.Ref.GetObject();
-				If Obj <> Undefined Then
-					If Obj.Posted Then
-						Obj.Write(DocumentWriteMode.UndoPosting);
-					EndIf;
-					Obj.Delete();
-					BatchCount = BatchCount + 1;
-					If BatchCount >= 50 Then
-						CommitTransaction();
-						BeginTransaction();
-						BatchCount = 0;
-					EndIf;
-				EndIf;
-			Except
-			EndTry;
-		EndDo;
-		CommitTransaction();
-	EndIf;
-EndProcedure
+// Bulk cleanup removed: restore a fresh UAT clone instead.
 
 #EndRegion
+
+// Bounded VND sample: actual AP maker only. Internal AP remains open for netting.
+Procedure SinhMauUAT(Refs, Val Months, Val RunId) Export
+	SeedWorkflowServer.RequireMaker("ap");
+	SeedWorkflowServer.ValidateMonths(Months, Refs, RunId);
+	PN = SeedWorkflowServer.RequiredCatalog("PhapNhan", "PN-VSF");
+	VND = SeedWorkflowServer.RequiredCatalog("TienTe", "VND");
+	Bank = SeedWorkflowServer.RequiredCatalog("TaiKhoanTien", "TK-TCB-VND");
+	CashItem = SeedWorkflowServer.RequiredCatalog("KhoanMucDongTien", "KM-CHI-CLOUD");
+	InternalPartner = SeedWorkflowServer.RequiredCatalog("DoiTac", "DT-VIC");
+	ExternalPartner = SeedWorkflowServer.RequiredCatalog("DoiTac", "DT-FPT");
+	CostAccount = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("627");
+	If Not ValueIsFilled(CostAccount) Then Raise "SEED_MISSING_METADATA: account 627"; EndIf;
+	For MonthIndex = 1 To Months Do
+		For ItemIndex = 1 To 2 Do
+			Partner = ?(ItemIndex = 1, InternalPartner, ExternalPartner);
+			Contract = SeedWorkflowServer.PartnerContract(Partner);
+			HD = SeedWorkflowServer.NewSample("HoaDonNhaCungCap", RunId, MonthIndex, ItemIndex, 4);
+			HD.PhapNhan = PN;
+			HD.DoiTac = Partner;
+			HD.HopDong = Contract;
+			HD.NgayHoaDon = BegOfDay(HD.Date);
+			HD.SoHoaDon = HD.Number;
+			HD.TaiKhoanChiPhi = CostAccount;
+			HD.TienTe = VND;
+			HD.TyGia = 1;
+			HD.TienDichVu = ?(ItemIndex = 1, 10000000, 20000000);
+			HD.TienThueVAT = HD.TienDichVu * 0.1;
+			HD.TongTien = HD.TienDichVu + HD.TienThueVAT;
+			HD.NoThucTraNCC = HD.TongTien;
+			HD.ChiPhiVSF = HD.TienDichVu;
+			HD.CoKhauTruFCT = False;
+			SeedWorkflowServer.SavePending(HD, Refs);
+			If ItemIndex = 2 Then
+				UNC = SeedWorkflowServer.NewSample("UyNhiemChi", RunId, MonthIndex, 1, 8);
+				UNC.NgayLap = UNC.Date;
+				UNC.NgayGhiSo = UNC.Date;
+				UNC.PhapNhan = PN;
+				UNC.DoiTac = Partner;
+				UNC.HopDong = Contract;
+				UNC.ChungTuGoc = HD.Ref;
+				UNC.TaiKhoanTien = Bank;
+				UNC.KhoanMucDongTien = CashItem;
+				UNC.TienTe = VND;
+				UNC.TyGia = 1;
+				UNC.SoTien = HD.TongTien;
+				UNC.PhiNganHang = 5500;
+				SeedWorkflowServer.SavePending(UNC, Refs);
+			EndIf;
+		EndDo;
+	EndDo;
+EndProcedure

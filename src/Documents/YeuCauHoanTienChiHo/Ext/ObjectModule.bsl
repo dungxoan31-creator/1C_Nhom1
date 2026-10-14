@@ -15,8 +15,9 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	If DataExchange.Load Then
-		Return;
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "Write", UserName());
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	EndIf;
 	
 	// Kiem tra Maker-Checker chan nguoi lap tu duyet
@@ -31,6 +32,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	EndIf;
 	
 	If Not ValueIsFilled(TrangThai) Then
+		If DataExchange.Load Then Return; EndIf;
 		TrangThai = "ChoDuyet";
 	EndIf;
 	
@@ -43,6 +45,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.GiaoDichDienTuTamGiu.Clear();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// Dam bao xoa movement cu neu trang thai khong con hop le de ghi so (#std603)
 	RegisterRecords.GiaoDichDienTuTamGiu.Write = True;
 	RegisterRecords.DongTien.Write = True;

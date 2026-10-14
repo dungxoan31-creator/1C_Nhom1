@@ -44,6 +44,10 @@ Procedure Posting(Cancel, Mode)
 	RegisterRecords.CongNoPhaiTra.Write = True;
 	RegisterRecords.DongTien.Write = True;
 	RegisterRecords.SoCaiKeToan.Write = True;
+	// Rebuild cached record sets on every write, including reversal reposts.
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	
 	TrangThaiDaGhiSo = Enums.TrangThaiLenhThanhToan.DaGhiSo;
 	
@@ -137,6 +141,14 @@ Procedure Posting(Cancel, Mode)
 			Raise "Lỗi tra soát hoàn trả: Bắt buộc phải tham chiếu đến Chứng từ gốc (Lệnh chi cũ cần đảo)!";
 		EndIf;
 		
+		// Both reversal documents lock the same original payment Ref before
+		// checking duplicates; normal-payment balance locks are never reached here.
+		LockOriginalPayment = New DataLock;
+		OriginalPaymentKey = LockOriginalPayment.Add("Document.UyNhiemChi");
+		OriginalPaymentKey.Mode = DataLockMode.Exclusive;
+		OriginalPaymentKey.SetValue("Ref", ChungTuGoc);
+		LockOriginalPayment.Lock();
+
 		// Chống hoàn hai lần cùng Ref
 		Q_DupRev = New Query(
 			"SELECT TOP 1 Ref FROM Document.UyNhiemChi 
@@ -267,6 +279,82 @@ Procedure Posting(Cancel, Mode)
 	CoChenhLechTyGia = False;
 	TyGiaHoaDon = TyGia;
 	
+	If Not ValueIsFilled(ChungTuGoc) Then
+		Raise "Lỗi thanh toán: Bắt buộc có chứng từ gốc để kiểm tra số dư công nợ khả dụng!";
+	EndIf;
+	If Not ValueIsFilled(TaiKhoanTien) Then
+		Raise "Lỗi thanh toán: Bắt buộc có tài khoản tiền để kiểm tra số dư khả dụng!";
+	EndIf;
+
+	// Resolve the fee source before taking any balance locks.
+	TaiKhoanTienPhi = Catalogs.TaiKhoanTien.EmptyRef();
+	If PhiNganHang > 0 Then
+		If MaTKTien = "1121" Then
+			TaiKhoanTienPhi = TaiKhoanTien;
+		Else
+			Q_TK_VND = New Query(
+				"SELECT TOP 1 Ref FROM Catalog.TaiKhoanTien
+				|WHERE TienTe.Code = ""VND"" AND DeletionMark = FALSE ORDER BY Ref");
+			T_TK_VND = Q_TK_VND.Execute().Unload();
+			If T_TK_VND.Count() > 0 Then
+				TaiKhoanTienPhi = T_TK_VND[0].Ref;
+			EndIf;
+		EndIf;
+		If Not ValueIsFilled(TaiKhoanTienPhi) Then
+			Raise "Lỗi thanh toán: Phí chuyển tiền VND bắt buộc phải có tài khoản tiền VND để hạch toán!";
+		EndIf;
+	EndIf;
+
+	// Global order: CongNoPhaiThu -> CongNoPhaiTra -> DongTien -> GL.
+	// AP uses every balance dimension. Cash aggregates all KhoanMucDongTien,
+	// so that dimension must remain a wildcard, including on an empty balance.
+	CurrencyCash = ?(MaTKTien = "1122", TienTe, TienTeVND);
+	CashKeys = New ValueTable;
+	CashKeys.Columns.Add("Key");
+	CashKeys.Columns.Add("TaiKhoanTien");
+	CashKeys.Columns.Add("TienTe");
+	CashKey = CashKeys.Add();
+	CashKey.Key = String(TaiKhoanTien.UUID()) + String(CurrencyCash.UUID());
+	CashKey.TaiKhoanTien = TaiKhoanTien;
+	CashKey.TienTe = CurrencyCash;
+	If PhiNganHang > 0 And (TaiKhoanTienPhi <> TaiKhoanTien Or CurrencyCash <> TienTeVND) Then
+		CashKey = CashKeys.Add();
+		CashKey.Key = String(TaiKhoanTienPhi.UUID()) + String(TienTeVND.UUID());
+		CashKey.TaiKhoanTien = TaiKhoanTienPhi;
+		CashKey.TienTe = TienTeVND;
+	EndIf;
+	CashKeys.Sort("Key");
+	Try
+		LockAP = New DataLock;
+		KeyAP = LockAP.Add("AccumulationRegister.CongNoPhaiTra");
+		KeyAP.Mode = DataLockMode.Exclusive;
+		KeyAP.SetValue("PhapNhan", PhapNhan);
+		KeyAP.SetValue("DoiTac", DoiTac);
+		KeyAP.SetValue("HopDong", HopDong);
+		KeyAP.SetValue("ChungTuGoc", ChungTuGoc);
+		LockAP.Lock();
+		For Each CashKey In CashKeys Do
+			LockCash = New DataLock;
+			KeyCash = LockCash.Add("AccumulationRegister.DongTien");
+			KeyCash.Mode = DataLockMode.Exclusive;
+			KeyCash.SetValue("PhapNhan", PhapNhan);
+			KeyCash.SetValue("TaiKhoanTien", CashKey.TaiKhoanTien);
+			KeyCash.SetValue("TienTe", CashKey.TienTe);
+			LockCash.Lock();
+		EndDo;
+	Except
+		Cancel = True;
+		Raise "Lỗi thanh toán: Không lấy được khóa số dư; giao dịch phải thử lại. " + DetailErrorDescription(ErrorInfo());
+	EndTry;
+
+	// Current totals include every committed competing document, even one whose
+	// Date/Ref sorts after this payment. Remove only this recorder for reposting;
+	// posting transaction rolls these writes back if any later check fails.
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.CongNoPhaiTra.Write();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.DongTien.Write();
+
 	If LaNgoaiTe Then
 		If Not ValueIsFilled(ChungTuGoc) Then
 			Raise "Lỗi thanh toán ngoại tệ: Bắt buộc phải có hóa đơn gốc (ChungTuGoc) để xác định tỷ giá ghi sổ nợ AP!";
@@ -278,9 +366,8 @@ Procedure Posting(Cancel, Mode)
 			|	ISNULL(SUM(SoTienBalance), 0) AS SoTienVND,
 			|	ISNULL(SUM(SoTienNgoaiTeBalance), 0) AS SoTienUSD
 			|FROM
-			|	AccumulationRegister.CongNoPhaiTra.Balance(&NgayHachToan,
+			|	AccumulationRegister.CongNoPhaiTra.Balance(,
 			|		PhapNhan = &PhapNhan AND DoiTac = &DoiTac AND HopDong = &HopDong AND ChungTuGoc = &ChungTuGoc)");
-		Q_AP_Bal.SetParameter("NgayHachToan", New PointInTime(Date, Ref));
 		Q_AP_Bal.SetParameter("PhapNhan", PhapNhan);
 		Q_AP_Bal.SetParameter("DoiTac", DoiTac);
 		Q_AP_Bal.SetParameter("HopDong", HopDong);
@@ -291,11 +378,11 @@ Procedure Posting(Cancel, Mode)
 		SoDuVND_AP = ?(T_AP_Bal.Count() > 0, T_AP_Bal[0].SoTienVND, 0);
 		
 		If SoDuUSD_AP <= 0 Or SoDuVND_AP <= 0 Then
-			Raise StrTemplate("Lỗi thanh toán: Không tìm thấy số dư công nợ phải trả USD mở cho hóa đơn %1!", ChungTuGoc);
+			Raise StrTemplate("CONCURRENCY_OVERDRAW: Không tìm thấy số dư công nợ phải trả USD mở cho hóa đơn %1!", ChungTuGoc);
 		EndIf;
 		
 		If SoTienNgoaiTe > SoDuUSD_AP Then
-			Raise StrTemplate("Lỗi thanh toán: Số tiền ngoại tệ thanh toán (%1 USD) vượt quá số dư nợ còn lại (%2 USD)!", SoTienNgoaiTe, SoDuUSD_AP);
+			Raise StrTemplate("CONCURRENCY_OVERDRAW: Số tiền ngoại tệ thanh toán (%1 USD) vượt quá số dư nợ còn lại (%2 USD)!", SoTienNgoaiTe, SoDuUSD_AP);
 		EndIf;
 		
 		// Ty gia ghi so no AP
@@ -331,9 +418,8 @@ Procedure Posting(Cancel, Mode)
 				|	ISNULL(SUM(SoTienBalance), 0) AS SoTienVND,
 				|	ISNULL(SUM(SoTienNgoaiTeBalance), 0) AS SoTienUSD
 				|FROM
-				|	AccumulationRegister.DongTien.Balance(&NgayHachToan,
+				|	AccumulationRegister.DongTien.Balance(,
 				|		PhapNhan = &PhapNhan AND TaiKhoanTien = &TaiKhoanTien AND TienTe = &TienTe)");
-			Q_Bank_Bal.SetParameter("NgayHachToan", New PointInTime(Date, Ref));
 			Q_Bank_Bal.SetParameter("PhapNhan", PhapNhan);
 			Q_Bank_Bal.SetParameter("TaiKhoanTien", TaiKhoanTien);
 			Q_Bank_Bal.SetParameter("TienTe", TienTe);
@@ -343,11 +429,11 @@ Procedure Posting(Cancel, Mode)
 			SoDuVND_Bank = ?(T_Bank_Bal.Count() > 0, T_Bank_Bal[0].SoTienVND, 0);
 			
 			If SoDuUSD_Bank <= 0 Or SoDuVND_Bank <= 0 Then
-				Raise StrTemplate("Lỗi thanh toán: Tài khoản USD 1122 (%1) không có số dư ghi sổ để xuất quỹ!", TaiKhoanTien);
+				Raise StrTemplate("CONCURRENCY_OVERDRAW: Tài khoản USD 1122 (%1) không có số dư ghi sổ để xuất quỹ!", TaiKhoanTien);
 			EndIf;
 			
 			If SoTienNgoaiTe > SoDuUSD_Bank Then
-				Raise StrTemplate("Lỗi thanh toán: Số tiền xuất quỹ (%1 USD) vượt quá số dư tài khoản 1122 (%2 USD)!", SoTienNgoaiTe, SoDuUSD_Bank);
+				Raise StrTemplate("CONCURRENCY_OVERDRAW: Số tiền xuất quỹ (%1 USD) vượt quá số dư tài khoản 1122 (%2 USD)!", SoTienNgoaiTe, SoDuUSD_Bank);
 			EndIf;
 			
 			If SoTienNgoaiTe >= SoDuUSD_Bank Then
@@ -371,8 +457,37 @@ Procedure Posting(Cancel, Mode)
 		SoTienThucTra = SoTien;
 		ChenhLech = 0;
 		CoChenhLechTyGia = False;
+		Q_AP_VND = New Query(
+			"SELECT ISNULL(SUM(SoTienBalance), 0) AS SoDu
+			|FROM AccumulationRegister.CongNoPhaiTra.Balance(,
+			| PhapNhan = &PN AND DoiTac = &Partner AND HopDong = &Contract AND ChungTuGoc = &Invoice)");
+		Q_AP_VND.SetParameter("PN", PhapNhan);
+		Q_AP_VND.SetParameter("Partner", DoiTac);
+		Q_AP_VND.SetParameter("Contract", HopDong);
+		Q_AP_VND.SetParameter("Invoice", ChungTuGoc);
+		If Q_AP_VND.Execute().Unload()[0].SoDu < SoTienGhiSoAP Then
+			Raise "CONCURRENCY_OVERDRAW: Số tiền thanh toán vượt số dư công nợ VND còn lại!";
+		EndIf;
 	EndIf;
 	
+	// Check the main cash debit and fee together if they share the same key.
+	For Each CashKey In CashKeys Do
+		RequiredCash = ?(CashKey.TaiKhoanTien = TaiKhoanTien And CashKey.TienTe = CurrencyCash, SoTienThucTra, 0);
+		If PhiNganHang > 0 And CashKey.TaiKhoanTien = TaiKhoanTienPhi And CashKey.TienTe = TienTeVND Then
+			RequiredCash = RequiredCash + PhiNganHang;
+		EndIf;
+		Q_Cash = New Query(
+			"SELECT ISNULL(SUM(SoTienBalance), 0) AS SoDu
+			|FROM AccumulationRegister.DongTien.Balance(,
+			| PhapNhan = &PN AND TaiKhoanTien = &Bank AND TienTe = &Currency)");
+		Q_Cash.SetParameter("PN", PhapNhan);
+		Q_Cash.SetParameter("Bank", CashKey.TaiKhoanTien);
+		Q_Cash.SetParameter("Currency", CashKey.TienTe);
+		If Q_Cash.Execute().Unload()[0].SoDu < RequiredCash Then
+			Raise "CONCURRENCY_OVERDRAW: Số tiền thực chi và phí vượt số dư tài khoản tiền còn lại!";
+		EndIf;
+	EndDo;
+
 	// Ghi giam no AP tren CongNoPhaiTra (Expense) theo gia tri ghi so hoa don
 	RegisterRecords.CongNoPhaiTra.Write = True;
 	RecordAP = RegisterRecords.CongNoPhaiTra.Add();
@@ -504,22 +619,7 @@ Procedure Posting(Cancel, Mode)
 		
 		// Ghi them dong giam phi tren DongTien
 		// Xac dinh tai khoan tien VND nguon cho phi (Fail-closed: khong ghi VND len so USD 1122)
-		TaiKhoanTienPhi = Catalogs.TaiKhoanTien.EmptyRef();
-		If MaTKTien = "1121" Then
-			TaiKhoanTienPhi = TaiKhoanTien;
-		Else
-			Q_TK_VND = New Query(
-				"SELECT TOP 1 Ref FROM Catalog.TaiKhoanTien 
-				|WHERE TienTe.Code = ""VND"" AND DeletionMark = FALSE");
-			T_TK_VND = Q_TK_VND.Execute().Unload();
-			If T_TK_VND.Count() > 0 Then
-				TaiKhoanTienPhi = T_TK_VND[0].Ref;
-			EndIf;
-		EndIf;
-		
-		If Not ValueIsFilled(TaiKhoanTienPhi) Then
-			Raise "Lỗi thanh toán: Phí chuyển tiền VND bắt buộc phải có tài khoản tiền VND để hạch toán!";
-		EndIf;
+		// Fee source was resolved, locked and checked before any balance reads.
 		
 		RecordFee = RegisterRecords.DongTien.Add();
 		RecordFee.RecordType = AccumulationRecordType.Expense;

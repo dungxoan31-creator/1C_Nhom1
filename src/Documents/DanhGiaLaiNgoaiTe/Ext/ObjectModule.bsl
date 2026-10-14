@@ -40,6 +40,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
@@ -59,6 +63,35 @@ Procedure Posting(Cancel, Mode)
 	
 	BoundaryNgayChot = New Boundary(NgayChot, BoundaryType.Including);
 	
+	// Same global order as payment/netting: AR -> AP -> cash -> GL.
+	// AP's currency is a HopDong attribute, not a register dimension. Lock all
+	// DoiTac/HopDong/ChungTuGoc for this entity BEFORE discovering balances,
+	// including zero/new keys. Cash groups all accounts and KhoanMucDongTien.
+	// ponytail: entity-wide AP lock; narrow only with a stable currency dimension.
+	Try
+		LockAP = New DataLock;
+		KeyAP = LockAP.Add("AccumulationRegister.CongNoPhaiTra");
+		KeyAP.Mode = DataLockMode.Exclusive;
+		KeyAP.SetValue("PhapNhan", RefPN);
+		LockAP.Lock();
+		LockCash = New DataLock;
+		KeyCash = LockCash.Add("AccumulationRegister.DongTien");
+		KeyCash.Mode = DataLockMode.Exclusive;
+		KeyCash.SetValue("PhapNhan", RefPN);
+		KeyCash.SetValue("TienTe", RefTT);
+		LockCash.Lock();
+	Except
+		Cancel = True;
+		Raise "Lỗi đánh giá lại: Không lấy được khóa số dư; giao dịch phải thử lại. " + DetailErrorDescription(ErrorInfo());
+	EndTry;
+
+	// Exclude previous movements of this recorder on repost, under the locks.
+	// All writes remain in the platform posting transaction until it commits.
+	RegisterRecords.CongNoPhaiTra.Clear();
+	RegisterRecords.CongNoPhaiTra.Write();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.DongTien.Write();
+
 	// 1. Danh gia lai Tien gui ngan hang Ngoai te (TK 1122 / DongTien) cho MOI tai khoan ngan hang
 	Q_Bank = New Query;
 	Q_Bank.Text = 

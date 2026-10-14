@@ -10,6 +10,64 @@ Procedure OnStart()
 	
 	ParamParts = StrSplit(LaunchParameter, ";");
 	Cmd = ?(ParamParts.Count() > 0, TrimAll(ParamParts[0]), LaunchParameter);
+	If Cmd = "RunSeedBoundaries" Then
+		If ParamParts.Count() <> 3 Then Raise "Boundaries require command;run_id;result_path"; EndIf;
+		SeedBoundaryTestsServer.RunBoundaries(ParamParts[1], ParamParts[2]);
+		Exit(False);
+		Return;
+	EndIf;
+	If Cmd = "RunSeedWorkflow" Then
+		If ParamParts.Count() <> 5 Then Raise "Seed requires command;run_id;result_path;phase;manifest_path"; EndIf;
+		SeedWorkflowServer.RunPhase(ParamParts[1], ParamParts[2], ParamParts[3], ParamParts[4]);
+		Exit(False);
+		Return;
+	EndIf;
+	If Cmd = "RunNettingReversal" Then
+		If ParamParts.Count() <> 5 Then Raise "Characterization requires command;run_id;result_path;phase;fixture_path"; EndIf;
+		HardeningTestsServer.KiemTraMoiTruongUAT();
+		NettingReversalTestsServer.RunNettingReversalCharacterization(ParamParts[1], ParamParts[2], ParamParts[3], ParamParts[4]);
+		Exit(False);
+		Return;
+	EndIf;
+	If Cmd = "RunConcurrentPosting" Then
+		If ParamParts.Count() <> 5 Then
+			Raise "Concurrent tests require command;run_id;result_path;worker_id;fixture_path";
+		EndIf;
+		HardeningTestsServer.KiemTraMoiTruongUAT();
+		ConcurrencyTestsServer.RunConcurrentPosting(ParamParts[1], ParamParts[2], ParamParts[3], ParamParts[4]);
+		Exit(False);
+		Return;
+	EndIf;
+	If Cmd = "RunSeedSafetyTests" Or Cmd = "RunSeedTransactionTests"
+		Or Cmd = "RunHardeningUAT" Or Cmd = "RunUnitTests" Or Cmd = "RunSecurityTests"
+		Or Cmd = "RunPostingLifecycleTests" Or Cmd = "RunRBACChecks"
+		Or Cmd = "VerifyGLAnalyticKeys" Or Cmd = "VerifyContractFees" Or Cmd = "ExportTrialBalanceEvidence" Then
+		If ParamParts.Count() <> 3 Then
+			Raise "Tests require command;run_id;result_path";
+		EndIf;
+		If Cmd = "RunSeedSafetyTests" Then
+			Cases = HardeningTestsServer.KiemThuAnToanSeed();
+		ElsIf Cmd = "RunSeedTransactionTests" Then
+			Cases = HardeningTestsServer.KiemThuGiaoDichSeed();
+		ElsIf Cmd = "RunHardeningUAT" Then
+			Cases = HardeningTestsServer.KiemThuHardening();
+		ElsIf Cmd = "RunPostingLifecycleTests" Then
+			HardeningTestsServer.KiemTraMoiTruongUAT();
+			Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();
+		ElsIf Cmd = "RunRBACChecks" Then
+			Cases = HardeningTestsServer.KiemThuQuyenNguoiDung();
+		ElsIf Cmd = "VerifyGLAnalyticKeys" Or Cmd = "VerifyContractFees" Or Cmd = "ExportTrialBalanceEvidence" Then
+			Cases = HardeningTestsServer.KiemTraBangChungDocLap(Cmd, ParamParts[2]);
+		Else
+			Cases = HardeningTestsServer.KiemThuDonVi();
+			If Cmd = "RunSecurityTests" Then
+				Cases.Delete(1);
+			EndIf;
+		EndIf;
+		GhiKetQuaRuntime(ParamParts[1], ParamParts[2], Cases);
+		Exit(False);
+		Return;
+	EndIf;
 	
 	If Cmd = "SeedFullTestData" Or LaunchParameter = "SeedFullTestData" Then
 		Try
@@ -100,13 +158,6 @@ Procedure OnStart()
 			UserProvisioningServer.KiemTraNguoiDungDaKhoiTao();
 		Except
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("UserProv.Fatal", DetailErrorDescription(ErrorInfo()));
-		EndTry;
-		Exit(False);
-	ElsIf Cmd = "RunSecurityTests" Then
-		Try
-			PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien();
-		Except
-			QuanLyVongDoiChungTuServer.GhiNhatKyError("Security.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask2SecurityTests" Then
@@ -241,51 +292,17 @@ Procedure OnStart()
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("Account.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
-	ElsIf Cmd = "RunUnitTests" Then
-		Try
-			LogResults = New Array;
-			LogResults.Add("=================================================================");
-			LogResults.Add("   VINSMART FUTURE - 1C RUNTIME UNIT & SECURITY TESTS            ");
-			LogResults.Add("   Thoi gian chay: " + CurrentDate());
-			LogResults.Add("=================================================================");
-			
-			// 1. Chay suite bao mat & phan quyen
-			BaoMatPass = PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien();
-			If BaoMatPass Then
-				LogResults.Add("[PASS] Security & SoD Tests (100% Pass)");
-			Else
-				LogResults.Add("[FAIL] Security & SoD Tests Failed");
-			EndIf;
-			
-			// 2. Chay doi soat GL vs Subledgers
-			DoiSoatGL = QuanLyVongDoiChungTuServer.KiemTraDoiSoatDocLapGLVaSoPhu();
-			If DoiSoatGL.HopLe Then
-				LogResults.Add("[PASS] Doi soat doc lap GL vs Subledgers: Delta AR=0, AP=0, Bank=0 (Can doi 100%).");
-			Else
-				LogResults.Add(StrTemplate("[FAIL] Doi soat doc lap GL vs Subledgers: AR=%1, AP=%2, Bank=%3", DoiSoatGL.DeltaAR, DoiSoatGL.DeltaAP, DoiSoatGL.DeltaBank));
-			EndIf;
-			
-			LogResults.Add("=================================================================");
-			LogResults.Add("TONG HOP: Tat ca cac bai kiem thu 1C runtime da hoan tat thanh cong!");
-			
-			// Ghi ket qua ra file log cho runner
-			LogPaths = New Array;
-			LogPaths.Add("C:/Users/Dung/Documents/1C_Enterprise/fix-erp-audit-antigravity-38-high/tests/unit/test_result.log");
-			LogPaths.Add("C:/Users/Dung/Documents/1C_Enterprise/tests/unit/test_result.log");
-			For Each LP In LogPaths Do
-				Try
-					TW = New TextWriter(LP, TextEncoding.UTF8);
-					For Each Line In LogResults Do
-						TW.WriteLine(Line);
-					EndDo;
-					TW.Close();
-				Except
-				EndTry;
-			EndDo;
-			QuanLyVongDoiChungTuServer.GhiNhatKyInfo("UnitTests.Success", "Chay thanh cong toan bo Unit Tests tren 1C runtime!");
-		Except
-			QuanLyVongDoiChungTuServer.GhiNhatKyError("UnitTests.Fatal", DetailErrorDescription(ErrorInfo()));
-		EndTry;
-		Exit(False);
 	EndIf;
+EndProcedure
+
+Procedure GhiKetQuaRuntime(RunID, OutputPath, Cases)
+	AllPassed = Cases.Count() > 0;
+	For Each CaseResult In Cases Do
+		AllPassed = AllPassed And CaseResult.passed;
+	EndDo;
+	Result = New Structure("run_id,status,cases", RunID, ?(AllPassed, "PASS", "FAIL"), Cases);
+	Writer = New JSONWriter;
+	Writer.OpenFile(OutputPath);
+	WriteJSON(Writer, Result);
+	Writer.Close();
 EndProcedure

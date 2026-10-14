@@ -14,6 +14,10 @@
 #Region EventHandlers
 
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "Write", UserName());
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
+	EndIf;
 	If DataExchange.Load Then
 		Return;
 	EndIf;
@@ -45,6 +49,10 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
+	// Rebuild owned movements even when the same object instance is reposted.
+	RegisterRecords.CongNoPhaiThu.Clear();
+	RegisterRecords.DongTien.Clear();
+	RegisterRecords.SoCaiKeToan.Clear();
 	// 1. Kiem tra tinh day du cua cac truong du lieu bat buoc
 	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(ChungTuGoc) Or Not ValueIsFilled(TaiKhoanTien) Or Not ValueIsFilled(TienTe) Then
 		Cancel = True;
@@ -69,7 +77,7 @@ Procedure Posting(Cancel, Mode)
 	RegisterRecords.CongNoPhaiThu.Write = True;
 	RegisterRecords.CongNoPhaiThu.Clear();
 	
-	SoDuAR = QuanLyVongDoiChungTuServer.LaySoDuARTheoChungTu(PhapNhan, DoiTac, ChungTuGoc, New PointInTime(Date, Ref));
+	SoDuAR = QuanLyVongDoiChungTuServer.LaySoDuARTheoChungTu(PhapNhan, DoiTac, ChungTuGoc, New PointInTime(Date, Ref), Ref);
 	If SoTien > SoDuAR Then
 		Cancel = True;
 		Msg = New UserMessage;

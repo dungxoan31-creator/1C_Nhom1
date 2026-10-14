@@ -5,6 +5,7 @@ Infobase_TestClone/
 setupt/
 
 # Logs & Build artifacts
+__pycache__/
 *.log
 build/
 scratch/
