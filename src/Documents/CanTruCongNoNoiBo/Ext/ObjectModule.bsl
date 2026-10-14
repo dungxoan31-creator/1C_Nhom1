@@ -1,4 +1,4 @@
-﻿// Document: CanTruCongNoNoiBo
+// Document: CanTruCongNoNoiBo
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so chung tu can tru cong no noi bo (Task 6.1):
@@ -291,7 +291,9 @@ Procedure Posting(Cancel, Mode)
 		Row1.TienTe = TienTe;
 		Row1.ChungTuGoc = Ref;
 		Row1.TyGia = TyGiaHachToan;
-		Row1.DoiTacCo = DoiTacAP;
+		Row1.DoiTacNo = DoiTacAP;
+		Row1.HopDongNo = HopDongAP_Chuan;
+		Row1.DoiTacCo = DoiTacTrungGian;
 		Row1.HopDongCo = HopDongAP_Chuan;
 		
 		// But toan 2: Giam AR: No 1388 / Co 1312
@@ -305,6 +307,8 @@ Procedure Posting(Cancel, Mode)
 		Row2.TienTe = TienTe;
 		Row2.ChungTuGoc = Ref;
 		Row2.TyGia = TyGiaHachToan;
+		Row2.DoiTacNo = DoiTacTrungGian;
+		Row2.HopDongNo = HopDongAR_Chuan;
 		Row2.DoiTacCo = DoiTacNoiBo;
 		Row2.HopDongCo = HopDongAR_Chuan;
 	Else

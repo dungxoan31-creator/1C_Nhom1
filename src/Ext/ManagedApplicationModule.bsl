@@ -185,6 +185,20 @@ Procedure OnStart()
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("DashboardCFO.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
+	ElsIf Cmd = "BackfillGLAnalyticKeys" Then
+		Try
+			SeedFullTestDataServer.BackfillSoCaiAnalyticKeysServer();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("GLBackfill.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
+	ElsIf Cmd = "VerifyGLAnalyticKeys" Then
+		Try
+			SeedFullTestDataServer.KiemTraGLAnalyticKeysServer();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("GLVerify.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
 	ElsIf Cmd = "TestAccounts" Then
 		Try
 			SeedFullTestDataServer.KiemTraDanhSachTaiKhoan();

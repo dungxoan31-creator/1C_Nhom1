@@ -1,4 +1,4 @@
-﻿// Document: BangKeDoiSoatKenhThanhToan
+// Document: BangKeDoiSoatKenhThanhToan
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so Bang ke doi soat kenh thanh toan (Task 5.3):
@@ -136,6 +136,16 @@ Procedure Posting(Cancel, Mode)
 	TK6427 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("6427");
 	TK1388 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1388");
 	
+	DoiTacDS = Catalogs.DoiTac.EmptyRef();
+	If ChiTietGiaoDich.Count() > 0 And ValueIsFilled(ChiTietGiaoDich[0].DoiTac) Then
+		DoiTacDS = ChiTietGiaoDich[0].DoiTac;
+	ElsIf ValueIsFilled(KenhThanhToan) Then
+		DoiTacDS = Catalogs.DoiTac.FindByDescription(String(KenhThanhToan));
+		If Not ValueIsFilled(DoiTacDS) Then
+			DoiTacDS = Catalogs.DoiTac.FindByCode("DT-ONEPAY");
+		EndIf;
+	EndIf;
+	
 	// But toan 1: Thuc nhan tien ve ngan hang
 	// No 1121 / Co 1388: TongThucNhan
 	Row1 = RegisterRecords.SoCaiKeToan.Add();
@@ -147,6 +157,7 @@ Procedure Posting(Cancel, Mode)
 	Row1.PhapNhan = PhapNhan;
 	Row1.TienTe = TienTeVND;
 	Row1.ChungTuGoc = Ref;
+	Row1.DoiTacCo = DoiTacDS;
 	Row1.TyGia = 1;
 	
 	// But toan 2: Phi kenh thanh toan
@@ -161,6 +172,7 @@ Procedure Posting(Cancel, Mode)
 		Row2.PhapNhan = PhapNhan;
 		Row2.TienTe = TienTeVND;
 		Row2.ChungTuGoc = Ref;
+		Row2.DoiTacCo = DoiTacDS;
 		Row2.TyGia = 1;
 	EndIf;
 	

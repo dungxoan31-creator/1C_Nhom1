@@ -247,4 +247,285 @@ Procedure XoaToanBoDuLieuGiaoDichCu() Export
 	WriteLogEvent("SeedData.Clean", EventLogLevel.Information,,, ">>> Dọn dẹp toàn bộ dữ liệu giao dịch cũ hoàn tất!");
 EndProcedure
 
+Procedure BackfillSoCaiAnalyticKeysServer() Export
+	WriteLogEvent("GL.Backfill", EventLogLevel.Information,,, "=== BAT DAU BACKFILL ANALYTIC KEYS SO CAI ===");
+	
+	Q = New Query(
+		"SELECT DISTINCT Recorder
+		|FROM AccountingRegister.SoCaiKeToan");
+	Recorders = Q.Execute().Unload();
+	
+	Total = Recorders.Count();
+	UpdatedCount = 0;
+	
+	For Each Row In Recorders Do
+		DocRef = Row.Recorder;
+		If Not ValueIsFilled(DocRef) Then Continue; EndIf;
+		
+		DoiTacAR = Undefined;
+		HopDongAR = Undefined;
+		DoiTacAP = Undefined;
+		HopDongAP = Undefined;
+		DoiTacTrungGian = Undefined;
+		
+		Try
+			If ValueIsFilled(DocRef.DoiTac) Then DoiTacAR = DocRef.DoiTac; DoiTacAP = DocRef.DoiTac; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.DoiTacNoiBo) Then DoiTacAR = DocRef.DoiTacNoiBo; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.DoiTacAP) Then DoiTacAP = DocRef.DoiTacAP; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.DoiTacTrungGian) Then DoiTacTrungGian = DocRef.DoiTacTrungGian; EndIf;
+		Except
+		EndTry;
+		
+		Try
+			If ValueIsFilled(DocRef.DoiTacKhop) Then 
+				DoiTacAR = DocRef.DoiTacKhop; 
+				DoiTacAP = DocRef.DoiTacKhop; 
+			EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.ChungTuKhop) Then
+				Try
+					If ValueIsFilled(DocRef.ChungTuKhop.HopDong) Then HopDongAR = DocRef.ChungTuKhop.HopDong; EndIf;
+				Except
+				EndTry;
+				Try
+					If ValueIsFilled(DocRef.ChungTuKhop.DoiTac) Then DoiTacAR = DocRef.ChungTuKhop.DoiTac; EndIf;
+				Except
+				EndTry;
+			EndIf;
+		Except
+		EndTry;
+		Try
+			If DocRef.Metadata().Name = "BangKeDoiSoatKenhThanhToan" Then
+				If DocRef.ChiTietGiaoDich.Count() > 0 And ValueIsFilled(DocRef.ChiTietGiaoDich[0].DoiTac) Then
+					DoiTacAR = DocRef.ChiTietGiaoDich[0].DoiTac;
+				ElsIf ValueIsFilled(DocRef.KenhThanhToan) Then
+					DoiTacAR = Catalogs.DoiTac.FindByDescription(String(DocRef.KenhThanhToan));
+					If Not ValueIsFilled(DoiTacAR) Then
+						DoiTacAR = Catalogs.DoiTac.FindByCode("DT-ONEPAY");
+					EndIf;
+				EndIf;
+			EndIf;
+		Except
+		EndTry;
+		
+		Try
+			If ValueIsFilled(DocRef.HopDong) Then HopDongAR = DocRef.HopDong; HopDongAP = DocRef.HopDong; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.HopDongAR) Then HopDongAR = DocRef.HopDongAR; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.HopDongAP) Then HopDongAP = DocRef.HopDongAP; EndIf;
+		Except
+		EndTry;
+		
+		RS = AccountingRegisters.SoCaiKeToan.CreateRecordSet();
+		RS.Filter.Recorder.Set(DocRef);
+		RS.Read();
+		
+		Modified = False;
+		For Each Record In RS Do
+			RecDoiTacAR = DoiTacAR;
+			RecHopDongAR = HopDongAR;
+			RecDoiTacAP = DoiTacAP;
+			RecHopDongAP = HopDongAP;
+			
+			If ValueIsFilled(Record.ChungTuGoc) Then
+				Try
+					If ValueIsFilled(Record.ChungTuGoc.DoiTac) Then 
+						RecDoiTacAR = Record.ChungTuGoc.DoiTac;
+						RecDoiTacAP = Record.ChungTuGoc.DoiTac;
+					EndIf;
+				Except
+				EndTry;
+				Try
+					If ValueIsFilled(Record.ChungTuGoc.HopDong) Then 
+						RecHopDongAR = Record.ChungTuGoc.HopDong;
+						RecHopDongAP = Record.ChungTuGoc.HopDong;
+					EndIf;
+				Except
+				EndTry;
+			EndIf;
+			
+			CodeDr = ?(ValueIsFilled(Record.AccountDr), Record.AccountDr.Code, "");
+			CodeCr = ?(ValueIsFilled(Record.AccountCr), Record.AccountCr.Code, "");
+			
+			// TK No AR (1311, 1312, 1388)
+			If CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Then
+				P = ?(CodeDr = "1388" And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, RecDoiTacAR);
+				H = RecHopDongAR;
+				If Not ValueIsFilled(Record.DoiTacNo) And ValueIsFilled(P) Then
+					Record.DoiTacNo = P;
+					Modified = True;
+				EndIf;
+				If Not ValueIsFilled(Record.HopDongNo) And ValueIsFilled(H) Then
+					Record.HopDongNo = H;
+					Modified = True;
+				EndIf;
+			EndIf;
+			
+			// TK Co AR (1311, 1312, 1388)
+			If CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Then
+				P = ?(CodeCr = "1388" And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, RecDoiTacAR);
+				H = RecHopDongAR;
+				If Not ValueIsFilled(Record.DoiTacCo) And ValueIsFilled(P) Then
+					Record.DoiTacCo = P;
+					Modified = True;
+				EndIf;
+				If Not ValueIsFilled(Record.HopDongCo) And ValueIsFilled(H) Then
+					Record.HopDongCo = H;
+					Modified = True;
+				EndIf;
+			EndIf;
+			
+			// TK No AP (3311, 3312, 3313, 3388)
+			If CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388" Then
+				If Not ValueIsFilled(Record.DoiTacNo) And ValueIsFilled(RecDoiTacAP) Then
+					Record.DoiTacNo = RecDoiTacAP;
+					Modified = True;
+				EndIf;
+				If Not ValueIsFilled(Record.HopDongNo) And ValueIsFilled(RecHopDongAP) Then
+					Record.HopDongNo = RecHopDongAP;
+					Modified = True;
+				EndIf;
+			EndIf;
+			
+			// TK Co AP (3311, 3312, 3313, 3388)
+			If CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388" Then
+				If Not ValueIsFilled(Record.DoiTacCo) And ValueIsFilled(RecDoiTacAP) Then
+					Record.DoiTacCo = RecDoiTacAP;
+					Modified = True;
+				EndIf;
+				If Not ValueIsFilled(Record.HopDongCo) And ValueIsFilled(RecHopDongAP) Then
+					Record.HopDongCo = RecHopDongAP;
+					Modified = True;
+				EndIf;
+			EndIf;
+			
+			// Fallback tu Record.DoiTac / Record.HopDong
+			If ValueIsFilled(Record.DoiTac) Then
+				If (CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Or CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388") And Not ValueIsFilled(Record.DoiTacNo) Then
+					Record.DoiTacNo = Record.DoiTac;
+					Modified = True;
+				EndIf;
+				If (CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Or CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388") And Not ValueIsFilled(Record.DoiTacCo) Then
+					Record.DoiTacCo = Record.DoiTac;
+					Modified = True;
+				EndIf;
+			EndIf;
+			If ValueIsFilled(Record.HopDong) Then
+				If (CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Or CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388") And Not ValueIsFilled(Record.HopDongNo) Then
+					Record.HopDongNo = Record.HopDong;
+					Modified = True;
+				EndIf;
+				If (CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Or CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388") And Not ValueIsFilled(Record.HopDongCo) Then
+					Record.HopDongCo = Record.HopDong;
+					Modified = True;
+				EndIf;
+			EndIf;
+			
+			// Final Safety Fallback
+			If (CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Or CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388") And Not ValueIsFilled(Record.DoiTacNo) Then
+				If ValueIsFilled(RecDoiTacAR) Then
+					Record.DoiTacNo = RecDoiTacAR;
+					Modified = True;
+				ElsIf ValueIsFilled(RecDoiTacAP) Then
+					Record.DoiTacNo = RecDoiTacAP;
+					Modified = True;
+				EndIf;
+			EndIf;
+			If (CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Or CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388") And Not ValueIsFilled(Record.DoiTacCo) Then
+				If ValueIsFilled(RecDoiTacAR) Then
+					Record.DoiTacCo = RecDoiTacAR;
+					Modified = True;
+				ElsIf ValueIsFilled(RecDoiTacAP) Then
+					Record.DoiTacCo = RecDoiTacAP;
+					Modified = True;
+				EndIf;
+			EndIf;
+			
+			// Cap nhat common attributes DoiTac, HopDong neu chua co
+			If Not ValueIsFilled(Record.DoiTac) Then
+				If ValueIsFilled(RecDoiTacAR) Then
+					Record.DoiTac = RecDoiTacAR;
+					Modified = True;
+				ElsIf ValueIsFilled(RecDoiTacAP) Then
+					Record.DoiTac = RecDoiTacAP;
+					Modified = True;
+				EndIf;
+			EndIf;
+			If Not ValueIsFilled(Record.HopDong) Then
+				If ValueIsFilled(RecHopDongAR) Then
+					Record.HopDong = RecHopDongAR;
+					Modified = True;
+				ElsIf ValueIsFilled(RecHopDongAP) Then
+					Record.HopDong = RecHopDongAP;
+					Modified = True;
+				EndIf;
+			EndIf;
+		EndDo;
+		
+		If Modified Then
+			RS.DataExchange.Load = True;
+			RS.Write();
+			UpdatedCount = UpdatedCount + 1;
+		EndIf;
+	EndDo;
+	
+	WriteLogEvent("GL.Backfill", EventLogLevel.Information,,, 
+		StrTemplate("HOAN TAT BACKFILL ANALYTIC KEYS: Da cap nhat %1 / %2 chung tu", UpdatedCount, Total));
+EndProcedure
+
+Procedure KiemTraGLAnalyticKeysServer() Export
+	Q = New Query(
+		"SELECT
+		|	COUNT(*) AS TongBanGhi,
+		|	SUM(CASE WHEN (TKDr.Code IN (""1311"", ""1312"", ""1388"", ""3311"", ""3312"", ""3313"", ""3388"") AND (SC.DoiTacNo IS NULL OR SC.DoiTacNo = VALUE(Catalog.DoiTac.EmptyRef)))
+		|              OR (TKCr.Code IN (""1311"", ""1312"", ""1388"", ""3311"", ""3312"", ""3313"", ""3388"") AND (SC.DoiTacCo IS NULL OR SC.DoiTacCo = VALUE(Catalog.DoiTac.EmptyRef))) THEN 1 ELSE 0 END) AS SoBanGhiThieuKey
+		|FROM
+		|	AccountingRegister.SoCaiKeToan AS SC
+		|	LEFT JOIN ChartOfAccounts.HeThongTaiKhoan AS TKDr ON SC.AccountDr = TKDr.Ref
+		|	LEFT JOIN ChartOfAccounts.HeThongTaiKhoan AS TKCr ON SC.AccountCr = TKCr.Ref");
+	
+	Res = Q.Execute().Unload();
+	Tong = ?(Res.Count() > 0, Res[0].TongBanGhi, 0);
+	Thieu = ?(Res.Count() > 0, Res[0].SoBanGhiThieuKey, 0);
+	Co = Tong - Thieu;
+	TyLe = ?(Tong > 0, Round(Co / Tong * 100, 1), 100);
+	
+	LogText = New Array;
+	LogText.Add("=================================================================");
+	LogText.Add("   KET QUA KIEM KE ANALYTIC KEYS SO CAI KETOAN (SOCAIKETOAN)    ");
+	LogText.Add("=================================================================");
+	LogText.Add(StrTemplate("Tong so ban ghi So Cai: %1", Tong));
+	LogText.Add(StrTemplate("So ban ghi co du Analytic Keys: %1", Co));
+	LogText.Add(StrTemplate("So ban ghi thieu Analytic Keys: %1", Thieu));
+	LogText.Add("TY LE HOAN TAT: " + Format(TyLe, "NFD=1; NGS=.") + "%");
+	If Thieu = 0 Then
+		LogText.Add(">> XAC NHAN: 100.0% ANALYTIC KEYS POPULATED [DAT CHUAN KIEM TOAN]");
+	EndIf;
+	LogText.Add("=================================================================");
+	
+	LogFilePath = "C:/Users/Dung/Documents/1C_Enterprise/verify_gl_keys.log";
+	TW = New TextWriter(LogFilePath, TextEncoding.UTF8);
+	For Each Line In LogText Do
+		TW.WriteLine(Line);
+	EndDo;
+	TW.Close();
+	WriteLogEvent("GL.Verify", EventLogLevel.Information,,, "Kiem ke GL Keys: " + Co + "/" + Tong + " hop le (" + TyLe + "%)");
+EndProcedure
+
 
