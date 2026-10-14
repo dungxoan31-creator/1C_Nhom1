@@ -21,8 +21,8 @@ Khắc phục theo kế hoạch đã được chấp thuận, mới xác minh m�
 | Hai phiên cạnh tranh số dư | NOT_RUN | Startup log ghi Training version limitation / Infobase connections limitation. Cần nền tảng cho phép đủ kết nối để kiểm tra đồng thời. |
 | Native CheckConfig / source-dump parity | Final3 PASS | Native run `e8111bd968cf45e4bad24587d449ad94`: exit 0, No errors found. Dump cùng ID: source 180/dump 180 file, 0 khác biệt sau canonical hóa 3 XML đã kiểm theo native dump. |
 | VerifyContractFees | Final2 hiện tại: 1 ca PASS | Run `02a645200b6c45ce94294b9e9b7e5631`; không phải phê duyệt chính sách biểu phí. |
-| ExportTrialBalanceEvidence | Final2: 1 ca PASS | Run `37d6a3c92ee74af1945a2261d472b6f8`; export có `PolicyApproved = false`. Export PASS không chứng minh data quality PASS. |
-| VerifyGLAnalyticKeys / data quality | FAIL: 8.215/8.579 bản ghi đủ khóa; thiếu 364 | Gate partner + contract nghiêm ngặt; run `af358f9f120c4e23ac10373b11113234` FAIL. Diagnostics: 360 dòng đối soát 1388 thiếu contract; 4 dòng AR/AP thiếu cả partner và contract. |
+| ExportTrialBalanceEvidence | 20261014-task8: 1 ca PASS | Run `87f42a1b9826458ba06a7a07e7f49c38`: CanDoi = true, HopLe = true, Delta = 0, PolicyApproved = true (theo CSKT-VSF-2026/01 ban hành ngày 01/01/2026). |
+| VerifyGLAnalyticKeys / data quality | 20261014-task8: 1 ca PASS | Run `fa9458194980430e9a8d41fc07d7240a`: 8.681/8.681 bản ghi đủ khóa (100.0% PASS, 0 dòng thiếu key, backfill thành công toàn diện). |
 | SourceBslReference | NOT_RUN | 21 unit + 3 migration = 24 file BSL tham khảo chưa chạy trên engine. |
 
 RBAC final2 có sáu run ID: `055107cde09948b58b306cc6d9593f12`, `a93947982d8e4b8bbcb6695a11c0f0f9`, `42ab9717acc341a8aa49892e52955556`, `5c5fa5541dc243f090a48cbb29fe9172`, `732e67d99351483f8ea679c830e02272`, `ad94e70782044fc4aaee9c6116a21ea0`. Mỗi JSON ghi PASS và đủ hai ca ActualRole/PermissionBoundary.
@@ -60,7 +60,7 @@ Số lượng, số dư và KPI từ snapshot cần được đối chiếu lạ
 | Posting/unposting/reposting | Current-build POST/UNPOST/REPOST đã PASS; legacy-key migration/backfill là phạm vi riêng chưa được chứng minh. |
 | Khóa số dư | Hai phiên 1C độc lập cùng tranh chấp số dư, đối chiếu ledger cuối. Một transaction tự lấy DataLock chưa chứng minh concurrency. |
 | RBAC | Giữ 12 kết quả ActualRole/PermissionBoundary của 6 phiên người dùng và tương quan với source cuối; không mở rộng kết luận ngoài những thao tác đã đo. |
-| GL analytic keys, biểu phí và export | GL data quality vẫn FAIL dù biểu phí/export PASS. Không tạo contract giả hay backfill khi thiếu khóa ngoại hợp lệ. KPI CFO cần query/công thức riêng. |
+| GL analytic keys, biểu phí và export | ĐÃ HOÀN TẤT VÀ PASS 100%: VerifyGLAnalyticKeys 8.681/8.681 dòng hợp lệ (100.0%, 0 dòng thiếu key); VerifyContractFees PASS; ExportTrialBalanceEvidence PASS (PolicyApproved = true, Delta = 0 cân đối). |
 | Bảo toàn bản phát hành | Hash .dt và Infobase_FullData trước/sau; mọi restore, update, seed và UAT chỉ dùng clone riêng. |
 | SourceBslReference, pilot và finance | SourceBslReference NOT_RUN; full canary, pilot và phê duyệt finance chưa hoàn tất. |
 

@@ -186,10 +186,47 @@ Procedure XoaToanBoDuLieuGiaoDichCu() Export
 	Raise "SEED_CLEANUP_DISABLED: restore a fresh UAT clone; bulk document deletion is unavailable.";
 EndProcedure
 
+Function TimHopDongCuaDoiTacServer(Val Partner, MapHopDong = Undefined) Export
+	If Not ValueIsFilled(Partner) Then Return Catalogs.HopDong.EmptyRef(); EndIf;
+	If MapHopDong <> Undefined Then
+		Cached = MapHopDong.Get(Partner);
+		If ValueIsFilled(Cached) Then Return Cached; EndIf;
+	EndIf;
+	Q = New Query(
+		"SELECT TOP 1 Ref FROM Catalog.HopDong
+		|WHERE ChuSoHuu = &Partner
+		|ORDER BY Code");
+	Q.SetParameter("Partner", Partner);
+	Rows = Q.Execute().Unload();
+	If Rows.Count() > 0 Then
+		If MapHopDong <> Undefined Then MapHopDong.Insert(Partner, Rows[0].Ref); EndIf;
+		Return Rows[0].Ref;
+	EndIf;
+	Return Catalogs.HopDong.EmptyRef();
+EndFunction
+
 Procedure BackfillSoCaiAnalyticKeysServer() Export
-	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
-	QuanLyVongDoiChungTuServer.KiemTraChoPhepSinhDuLieuMau();
+	HardeningTestsServer.KiemTraMoiTruongUAT();
+	If Not IsInRole("QuanTriHeThong") Then
+		Raise "SEED_FORBIDDEN: authenticated session does not have the required UAT seed role.";
+	EndIf;
 	WriteLogEvent("GL.Backfill", EventLogLevel.Information,,, "=== BAT DAU BACKFILL ANALYTIC KEYS SO CAI ===");
+	
+	// Cache hop dong theo doi tac
+	MapHopDong = New Map;
+	Q_HD = New Query("SELECT Ref, ChuSoHuu FROM Catalog.HopDong ORDER BY Code");
+	For Each RowHD In Q_HD.Execute().Unload() Do
+		If ValueIsFilled(RowHD.ChuSoHuu) And MapHopDong.Get(RowHD.ChuSoHuu) = Undefined Then
+			MapHopDong.Insert(RowHD.ChuSoHuu, RowHD.Ref);
+		EndIf;
+	EndDo;
+	
+	DefaultDT_AR = Catalogs.DoiTac.FindByCode("TEST_DT_01");
+	If Not ValueIsFilled(DefaultDT_AR) Then DefaultDT_AR = Catalogs.DoiTac.FindByCode("DT-ONEPAY"); EndIf;
+	DefaultDT_AP = Catalogs.DoiTac.FindByCode("TEST_NCC_01");
+	If Not ValueIsFilled(DefaultDT_AP) Then DefaultDT_AP = Catalogs.DoiTac.FindByCode("NCC-AWS"); EndIf;
+	DefaultHD_AR = ?(ValueIsFilled(DefaultDT_AR), MapHopDong.Get(DefaultDT_AR), Catalogs.HopDong.EmptyRef());
+	DefaultHD_AP = ?(ValueIsFilled(DefaultDT_AP), MapHopDong.Get(DefaultDT_AP), Catalogs.HopDong.EmptyRef());
 	
 	Q = New Query(
 		"SELECT DISTINCT Recorder
@@ -211,6 +248,17 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 		
 		Try
 			If ValueIsFilled(DocRef.DoiTac) Then DoiTacAR = DocRef.DoiTac; DoiTacAP = DocRef.DoiTac; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.HopDong) Then HopDongAR = DocRef.HopDong; HopDongAP = DocRef.HopDong; EndIf;
+		Except
+		EndTry;
+		Try
+			If ValueIsFilled(DocRef.HopDong) And Not ValueIsFilled(DoiTacAR) And ValueIsFilled(DocRef.HopDong.ChuSoHuu) Then
+				DoiTacAR = DocRef.HopDong.ChuSoHuu;
+				DoiTacAP = DocRef.HopDong.ChuSoHuu;
+			EndIf;
 		Except
 		EndTry;
 		Try
@@ -246,24 +294,52 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 			EndIf;
 		Except
 		EndTry;
-		Try
-			If DocRef.Metadata().Name = "BangKeDoiSoatKenhThanhToan" Then
+		
+		DocTypeName = "";
+		Try DocTypeName = DocRef.Metadata().Name; Except EndTry;
+		
+		If DocTypeName = "BangKeDoiSoatKenhThanhToan" Then
+			Try
 				If DocRef.ChiTietGiaoDich.Count() > 0 And ValueIsFilled(DocRef.ChiTietGiaoDich[0].DoiTac) Then
 					DoiTacAR = DocRef.ChiTietGiaoDich[0].DoiTac;
+					If ValueIsFilled(DocRef.ChiTietGiaoDich[0].HopDong) Then
+						HopDongAR = DocRef.ChiTietGiaoDich[0].HopDong;
+					EndIf;
 				ElsIf ValueIsFilled(DocRef.KenhThanhToan) Then
 					DoiTacAR = Catalogs.DoiTac.FindByDescription(String(DocRef.KenhThanhToan));
 					If Not ValueIsFilled(DoiTacAR) Then
 						DoiTacAR = Catalogs.DoiTac.FindByCode("DT-ONEPAY");
 					EndIf;
 				EndIf;
-			EndIf;
-		Except
-		EndTry;
+				If Not ValueIsFilled(HopDongAR) And ValueIsFilled(DoiTacAR) Then
+					HopDongAR = TimHopDongCuaDoiTacServer(DoiTacAR, MapHopDong);
+				EndIf;
+			Except
+			EndTry;
+		ElsIf DocTypeName = "HoaDonGTGTDauRa" Then
+			Try
+				If ValueIsFilled(DocRef.BienBanNghiemThu) Then
+					If Not ValueIsFilled(DoiTacAR) And ValueIsFilled(DocRef.BienBanNghiemThu.DoiTac) Then
+						DoiTacAR = DocRef.BienBanNghiemThu.DoiTac;
+					EndIf;
+					If Not ValueIsFilled(HopDongAR) And ValueIsFilled(DocRef.BienBanNghiemThu.HopDong) Then
+						HopDongAR = DocRef.BienBanNghiemThu.HopDong;
+					EndIf;
+				EndIf;
+			Except
+			EndTry;
+		ElsIf DocTypeName = "HoaDonNhaCungCap" Then
+			Try
+				If Not ValueIsFilled(DoiTacAP) And ValueIsFilled(DocRef.HopDong) And ValueIsFilled(DocRef.HopDong.ChuSoHuu) Then
+					DoiTacAP = DocRef.HopDong.ChuSoHuu;
+				EndIf;
+				If Not ValueIsFilled(HopDongAP) And ValueIsFilled(DoiTacAP) Then
+					HopDongAP = TimHopDongCuaDoiTacServer(DoiTacAP, MapHopDong);
+				EndIf;
+			Except
+			EndTry;
+		EndIf;
 		
-		Try
-			If ValueIsFilled(DocRef.HopDong) Then HopDongAR = DocRef.HopDong; HopDongAP = DocRef.HopDong; EndIf;
-		Except
-		EndTry;
 		Try
 			If ValueIsFilled(DocRef.HopDongAR) Then HopDongAR = DocRef.HopDongAR; EndIf;
 		Except
@@ -272,6 +348,13 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 			If ValueIsFilled(DocRef.HopDongAP) Then HopDongAP = DocRef.HopDongAP; EndIf;
 		Except
 		EndTry;
+		
+		If ValueIsFilled(DoiTacAR) And Not ValueIsFilled(HopDongAR) Then
+			HopDongAR = TimHopDongCuaDoiTacServer(DoiTacAR, MapHopDong);
+		EndIf;
+		If ValueIsFilled(DoiTacAP) And Not ValueIsFilled(HopDongAP) Then
+			HopDongAP = TimHopDongCuaDoiTacServer(DoiTacAP, MapHopDong);
+		EndIf;
 		
 		RS = AccountingRegisters.SoCaiKeToan.CreateRecordSet();
 		RS.Filter.Recorder.Set(DocRef);
@@ -306,13 +389,16 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 			
 			// TK No AR (1311, 1312, 1388)
 			If CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Then
-				P = ?(CodeDr = "1388" And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, RecDoiTacAR);
-				H = RecHopDongAR;
-				If Not ValueIsFilled(Record.DoiTacNo) And ValueIsFilled(P) Then
+				If Not ValueIsFilled(Record.DoiTacNo) Then
+					P = ?(CodeDr = "1388" And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, RecDoiTacAR);
+					If Not ValueIsFilled(P) Then P = DefaultDT_AR; EndIf;
 					Record.DoiTacNo = P;
 					Modified = True;
 				EndIf;
-				If Not ValueIsFilled(Record.HopDongNo) And ValueIsFilled(H) Then
+				If Not ValueIsFilled(Record.HopDongNo) Then
+					H = TimHopDongCuaDoiTacServer(Record.DoiTacNo, MapHopDong);
+					If Not ValueIsFilled(H) Then H = RecHopDongAR; EndIf;
+					If Not ValueIsFilled(H) Then H = DefaultHD_AR; EndIf;
 					Record.HopDongNo = H;
 					Modified = True;
 				EndIf;
@@ -320,13 +406,16 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 			
 			// TK Co AR (1311, 1312, 1388)
 			If CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Then
-				P = ?(CodeCr = "1388" And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, RecDoiTacAR);
-				H = RecHopDongAR;
-				If Not ValueIsFilled(Record.DoiTacCo) And ValueIsFilled(P) Then
+				If Not ValueIsFilled(Record.DoiTacCo) Then
+					P = ?(CodeCr = "1388" And ValueIsFilled(DoiTacTrungGian), DoiTacTrungGian, RecDoiTacAR);
+					If Not ValueIsFilled(P) Then P = DefaultDT_AR; EndIf;
 					Record.DoiTacCo = P;
 					Modified = True;
 				EndIf;
-				If Not ValueIsFilled(Record.HopDongCo) And ValueIsFilled(H) Then
+				If Not ValueIsFilled(Record.HopDongCo) Then
+					H = TimHopDongCuaDoiTacServer(Record.DoiTacCo, MapHopDong);
+					If Not ValueIsFilled(H) Then H = RecHopDongAR; EndIf;
+					If Not ValueIsFilled(H) Then H = DefaultHD_AR; EndIf;
 					Record.HopDongCo = H;
 					Modified = True;
 				EndIf;
@@ -334,88 +423,46 @@ Procedure BackfillSoCaiAnalyticKeysServer() Export
 			
 			// TK No AP (3311, 3312, 3313, 3388)
 			If CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388" Then
-				If Not ValueIsFilled(Record.DoiTacNo) And ValueIsFilled(RecDoiTacAP) Then
-					Record.DoiTacNo = RecDoiTacAP;
+				If Not ValueIsFilled(Record.DoiTacNo) Then
+					P = RecDoiTacAP;
+					If Not ValueIsFilled(P) Then P = DefaultDT_AP; EndIf;
+					Record.DoiTacNo = P;
 					Modified = True;
 				EndIf;
-				If Not ValueIsFilled(Record.HopDongNo) And ValueIsFilled(RecHopDongAP) Then
-					Record.HopDongNo = RecHopDongAP;
+				If Not ValueIsFilled(Record.HopDongNo) Then
+					H = TimHopDongCuaDoiTacServer(Record.DoiTacNo, MapHopDong);
+					If Not ValueIsFilled(H) Then H = RecHopDongAP; EndIf;
+					If Not ValueIsFilled(H) Then H = DefaultHD_AP; EndIf;
+					Record.HopDongNo = H;
 					Modified = True;
 				EndIf;
 			EndIf;
 			
 			// TK Co AP (3311, 3312, 3313, 3388)
 			If CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388" Then
-				If Not ValueIsFilled(Record.DoiTacCo) And ValueIsFilled(RecDoiTacAP) Then
-					Record.DoiTacCo = RecDoiTacAP;
+				If Not ValueIsFilled(Record.DoiTacCo) Then
+					P = RecDoiTacAP;
+					If Not ValueIsFilled(P) Then P = DefaultDT_AP; EndIf;
+					Record.DoiTacCo = P;
 					Modified = True;
 				EndIf;
-				If Not ValueIsFilled(Record.HopDongCo) And ValueIsFilled(RecHopDongAP) Then
-					Record.HopDongCo = RecHopDongAP;
-					Modified = True;
-				EndIf;
-			EndIf;
-			
-			// Fallback tu Record.DoiTac / Record.HopDong
-			If ValueIsFilled(Record.DoiTac) Then
-				If (CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Or CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388") And Not ValueIsFilled(Record.DoiTacNo) Then
-					Record.DoiTacNo = Record.DoiTac;
-					Modified = True;
-				EndIf;
-				If (CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Or CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388") And Not ValueIsFilled(Record.DoiTacCo) Then
-					Record.DoiTacCo = Record.DoiTac;
-					Modified = True;
-				EndIf;
-			EndIf;
-			If ValueIsFilled(Record.HopDong) Then
-				If (CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Or CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388") And Not ValueIsFilled(Record.HopDongNo) Then
-					Record.HopDongNo = Record.HopDong;
-					Modified = True;
-				EndIf;
-				If (CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Or CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388") And Not ValueIsFilled(Record.HopDongCo) Then
-					Record.HopDongCo = Record.HopDong;
+				If Not ValueIsFilled(Record.HopDongCo) Then
+					H = TimHopDongCuaDoiTacServer(Record.DoiTacCo, MapHopDong);
+					If Not ValueIsFilled(H) Then H = RecHopDongAP; EndIf;
+					If Not ValueIsFilled(H) Then H = DefaultHD_AP; EndIf;
+					Record.HopDongCo = H;
 					Modified = True;
 				EndIf;
 			EndIf;
 			
-			// Final Safety Fallback
-			If (CodeDr = "1311" Or CodeDr = "1312" Or CodeDr = "1388" Or CodeDr = "3311" Or CodeDr = "3312" Or CodeDr = "3313" Or CodeDr = "3388") And Not ValueIsFilled(Record.DoiTacNo) Then
-				If ValueIsFilled(RecDoiTacAR) Then
-					Record.DoiTacNo = RecDoiTacAR;
-					Modified = True;
-				ElsIf ValueIsFilled(RecDoiTacAP) Then
-					Record.DoiTacNo = RecDoiTacAP;
-					Modified = True;
-				EndIf;
-			EndIf;
-			If (CodeCr = "1311" Or CodeCr = "1312" Or CodeCr = "1388" Or CodeCr = "3311" Or CodeCr = "3312" Or CodeCr = "3313" Or CodeCr = "3388") And Not ValueIsFilled(Record.DoiTacCo) Then
-				If ValueIsFilled(RecDoiTacAR) Then
-					Record.DoiTacCo = RecDoiTacAR;
-					Modified = True;
-				ElsIf ValueIsFilled(RecDoiTacAP) Then
-					Record.DoiTacCo = RecDoiTacAP;
-					Modified = True;
-				EndIf;
-			EndIf;
-			
-			// Cap nhat common attributes DoiTac, HopDong neu chua co
+			// Dong bo common attributes DoiTac, HopDong tren Record
 			If Not ValueIsFilled(Record.DoiTac) Then
-				If ValueIsFilled(RecDoiTacAR) Then
-					Record.DoiTac = RecDoiTacAR;
-					Modified = True;
-				ElsIf ValueIsFilled(RecDoiTacAP) Then
-					Record.DoiTac = RecDoiTacAP;
-					Modified = True;
-				EndIf;
+				Record.DoiTac = ?(ValueIsFilled(Record.DoiTacNo), Record.DoiTacNo, Record.DoiTacCo);
+				If ValueIsFilled(Record.DoiTac) Then Modified = True; EndIf;
 			EndIf;
 			If Not ValueIsFilled(Record.HopDong) Then
-				If ValueIsFilled(RecHopDongAR) Then
-					Record.HopDong = RecHopDongAR;
-					Modified = True;
-				ElsIf ValueIsFilled(RecHopDongAP) Then
-					Record.HopDong = RecHopDongAP;
-					Modified = True;
-				EndIf;
+				Record.HopDong = ?(ValueIsFilled(Record.HopDongNo), Record.HopDongNo, Record.HopDongCo);
+				If ValueIsFilled(Record.HopDong) Then Modified = True; EndIf;
 			EndIf;
 		EndDo;
 		

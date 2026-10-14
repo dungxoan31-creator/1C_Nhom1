@@ -887,7 +887,7 @@ Function XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
 		"2025-01-01 - 2026-09-30",
 		638,
 		"CSKT-VSF-2026/01",
-		False,
+		True,
 		UserName(),
 		Format(CurrentSessionDate(), "DF='yyyy-MM-dd HH:mm:ss'"),
 		DoiSoat.TongSoButToan
