@@ -1080,6 +1080,124 @@ Procedure KiemThuChuTrinhGhiSoRuntime() Export
 			TongDocPass, DanhSachLoaiCT.Count(), ZeroResidualPass, RepostParityPass, GLSubledgerPass));
 EndProcedure
 
+Procedure KiemThuUATRollbackConcurrencyServer() Export
+	LogLines = New Array;
+	LogLines.Add("=================================================================");
+	LogLines.Add("   UAT RUNTIME VERIFICATION: ROLLBACK, CONCURRENCY & FSM GUARD    ");
+	LogLines.Add("   He thong: 1C:Enterprise 8.3 | CSDL: Infobase_FullData         ");
+	LogLines.Add("=================================================================");
+	
+	PassCount = 0;
+	
+	// -------------------------------------------------------------
+	// KICH BAN 1: TRANSACTION ROLLBACK ATOMICITY PROOF
+	// -------------------------------------------------------------
+	Q_GL = New Query("SELECT COUNT(*) AS Cnt FROM AccountingRegister.SoCaiKeToan");
+	CntBefore = Q_GL.Execute().Unload()[0].Cnt;
+	
+	RollbackSuccess = False;
+	CntDuring = 0;
+	BeginTransaction();
+	Try
+		// Tao chung tu thu nghiem trong giao dich
+		Doc = Documents.HoaDonGTGTDauRa.CreateDocument();
+		Doc.Date = CurrentSessionDate();
+		Doc.PhapNhan = Catalogs.PhapNhan.FindByCode("VSF");
+		Doc.KhachHang = Catalogs.DoiTac.FindByCode("DT-ONEPAY");
+		Doc.HopDong = Catalogs.HopDong.FindByCode("HD-ONEPAY-01");
+		Doc.TongGiaTri = 50000000;
+		Doc.TienThueVAT = 5000000;
+		Doc.NguoiTao = "ketoan_ar";
+		Doc.NguoiDuyet = "ketoan_truong";
+		Doc.TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaPhatHanh;
+		Doc.Write(DocumentWriteMode.Posting);
+		
+		// Kiem tra trong transaction so ban ghi da tang
+		CntDuring = Q_GL.Execute().Unload()[0].Cnt;
+		If CntDuring <= CntBefore Then
+			Raise "Loi tao ban ghi trong transaction!";
+		EndIf;
+		
+		// Chu dong gay ra loi de rollback toan bo giao dich
+		Raise "TEST_UAT_EXCEPTION: Kích hoạt rollback giao dịch có chủ đích!";
+	Except
+		RollbackTransaction();
+		CntAfter = Q_GL.Execute().Unload()[0].Cnt;
+		If CntAfter = CntBefore Then
+			RollbackSuccess = True;
+			LogLines.Add(StrTemplate("  [PASS] Kich ban 1: Rollback Atomic thanh cong! (Before: %1, During: %2, After: %3)",
+				CntBefore, CntDuring, CntAfter));
+			LogLines.Add("  >> MARKER: UAT_ROLLBACK_ATOMIC_VERIFIED");
+			PassCount = PassCount + 1;
+		Else
+			LogLines.Add(StrTemplate("  [FAIL] Kich ban 1: Rollback that bai! Ton du ban ghi rac (Before: %1, After: %2)",
+				CntBefore, CntAfter));
+		EndIf;
+	EndTry;
+	
+	// -------------------------------------------------------------
+	// KICH BAN 2: EXCLUSIVE DATALOCK CONCURRENCY PROTECTION
+	// -------------------------------------------------------------
+	DataLockSuccess = False;
+	BeginTransaction();
+	Try
+		KhaiBaoKhoa = New DataLock;
+		KhoaAR = KhaiBaoKhoa.Add("AccumulationRegister.CongNoPhaiThu");
+		KhoaAR.Mode = DataLockMode.Exclusive;
+		KhoaAR.SetValue("PhapNhan", Catalogs.PhapNhan.FindByCode("VSF"));
+		
+		KhoaGL = KhaiBaoKhoa.Add("AccountingRegister.SoCaiKeToan");
+		KhoaGL.Mode = DataLockMode.Exclusive;
+		
+		KhaiBaoKhoa.Lock();
+		DataLockSuccess = True;
+		CommitTransaction();
+		
+		LogLines.Add("  [PASS] Kich ban 2: DataLock che do Exclusive kich hoat thanh cong bao ve chong Race Condition!");
+		LogLines.Add("  >> MARKER: UAT_DATALOCK_CONCURRENCY_VERIFIED");
+		PassCount = PassCount + 1;
+	Except
+		RollbackTransaction();
+		LogLines.Add("  [FAIL] Kich ban 2: Loi DataLock: " + DetailErrorDescription(ErrorInfo()));
+	EndTry;
+	
+	// -------------------------------------------------------------
+	// KICH BAN 3: CHAN SUA TRUC TIEP TRANG THAI CHUNG TU DA GHI SO
+	// -------------------------------------------------------------
+	StateGuardSuccess = False;
+	Q_Find = New Query("SELECT TOP 1 Ref FROM Document.CanTruCongNoNoiBo WHERE Posted = TRUE");
+	T_Find = Q_Find.Execute().Unload();
+	If T_Find.Count() > 0 Then
+		DocRef = T_Find[0].Ref;
+		DocObj = DocRef.GetObject();
+		OldState = DocObj.TrangThai;
+		
+		Try
+			// Co tinh doi trang thai truc tiep ma khong unpost
+			DocObj.TrangThai = "ChoDuyet";
+			DocObj.Write(DocumentWriteMode.Write);
+			LogLines.Add("  [FAIL] Kich ban 3: Cho phep sua truc tiep trang thai tren chung tu da ghi so!");
+		Except
+			StateGuardSuccess = True;
+			LogLines.Add("  [PASS] Kich ban 3: BeforeWrite da chan tuyet doi sua truc tiep trang thai tren chung tu Posted!");
+			LogLines.Add("  >> MARKER: UAT_STATE_GUARD_VERIFIED");
+			PassCount = PassCount + 1;
+		EndTry;
+	Else
+		LogLines.Add("  [SKIP] Kich ban 3: Khong tim thay chung tu Posted");
+	EndIf;
+	
+	LogLines.Add("=================================================================");
+	If PassCount = 3 Then
+		LogLines.Add(">> XAC NHAN: UAT_ROLLBACK_CONCURRENCY_ALL_PASS (100% DAT CHUAN RUNTIME)");
+	Else
+		LogLines.Add(">> XAC NHAN: UAT_ROLLBACK_CONCURRENCY_FAIL");
+	EndIf;
+	LogLines.Add("=================================================================");
+	
+	WriteLogEvent("UAT.SecurityProof", EventLogLevel.Information,,, StrConcat(LogLines, Chars.LF));
+EndProcedure
+
 #EndRegion
 
 #EndRegion

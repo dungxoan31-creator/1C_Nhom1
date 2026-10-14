@@ -227,6 +227,13 @@ Procedure OnStart()
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("ContractFees.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
+	ElsIf Cmd = "RunUATSecurityProof" Then
+		Try
+			QuanLyVongDoiChungTuServer.KiemThuUATRollbackConcurrencyServer();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("UATSecurity.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
 	ElsIf Cmd = "TestAccounts" Then
 		Try
 			SeedFullTestDataServer.KiemTraDanhSachTaiKhoan();
