@@ -1,4 +1,4 @@
-// Document: BangKeDoiSoatKenhThanhToan
+﻿// Document: BangKeDoiSoatKenhThanhToan
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so Bang ke doi soat kenh thanh toan (Task 5.3):

@@ -21,7 +21,7 @@
 			<ClientOrdinaryApplication>false</ClientOrdinaryApplication>
 			<ServerCall>true</ServerCall>
 			<Privileged>false</Privileged>
-			<ReturnValuesReuse>DontUse</ReturnValuesReuse>
+			<ReturnValuesReuse>DuringSession</ReturnValuesReuse>
 		</Properties>
 	</CommonModule>
 </MetaDataObject>

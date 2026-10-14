@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
 	<Document uuid="1f552ce2-19f2-4cf0-bb53-0af40ed92a5b">
 		<InternalInfo>
@@ -65,8 +65,8 @@
 			<RegisterRecordsWritingOnPost>WriteSelected</RegisterRecordsWritingOnPost>
 			<SequenceFilling>AutoFill</SequenceFilling>
 			<RegisterRecords>
-				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.CongNoPhaiTra</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.DongTien</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.CongNoPhaiTra</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccountingRegister.SoCaiKeToan</xr:Item>
 			</RegisterRecords>
 			<PostInPrivilegedMode>true</PostInPrivilegedMode>
@@ -83,6 +83,7 @@
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
 			<DataHistory>DontUse</DataHistory>
 			<UpdateDataHistoryImmediatelyAfterWrite>false</UpdateDataHistoryImmediatelyAfterWrite>
+			<ExecuteAfterWriteDataHistoryVersionProcessing>false</ExecuteAfterWriteDataHistoryVersionProcessing>
 		</Properties>
 		<ChildObjects>
 			<Attribute uuid="2daf49ba-24d2-4b11-8938-cd3fc751ce32">
@@ -96,7 +97,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal Entity</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Pháp nhân thực hiện chi tiền</Comment>
 					<Type>
@@ -139,7 +140,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Đơn vị thụ hưởng</Comment>
 					<Type>
@@ -182,7 +183,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Hợp đồng kinh tế</Comment>
 					<Type>
@@ -225,7 +226,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Base Document</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Hóa đơn thanh toán</Comment>
 					<Type>
@@ -269,7 +270,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank Account</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Tài khoản thanh toán ngân hàng</Comment>
 					<Type>
@@ -312,7 +313,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash Flow Item</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Khoản mục lưu chuyển tiền</Comment>
 					<Type>
@@ -355,7 +356,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Đồng tiền chi</Comment>
 					<Type>
@@ -398,7 +399,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange Rate</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Tỷ giá quy đổi</Comment>
 					<Type>
@@ -446,7 +447,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment Amount</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Số tiền thanh toán quy đổi VND</Comment>
 					<Type>
@@ -494,7 +495,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>FCY Amount</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Số tiền thanh toán nguyên tệ USD</Comment>
 					<Type>
@@ -542,7 +543,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank Fee</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Phí chuyển tiền ngân hàng (TK 6427)</Comment>
 					<Type>
@@ -590,7 +591,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Status</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Trạng thái lệnh chi P0.2</Comment>
 					<Type>
@@ -633,7 +634,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Created Date</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Ngày tạo lệnh chi</Comment>
 					<Type>
@@ -679,7 +680,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Posting Date</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Ngày ngân hàng xác nhận trừ tiền</Comment>
 					<Type>
@@ -725,7 +726,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Is Reversal Return</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Điện tra soát hoàn tiền sau ghi sổ</Comment>
 					<Type>
@@ -768,7 +769,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Created By</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Người lập lệnh chi (Maker)</Comment>
 					<Type>
@@ -815,7 +816,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Approved By</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Người ký duyệt lệnh chi (Checker)</Comment>
 					<Type>
@@ -862,7 +863,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Nội dung chuyển khoản</Comment>
 					<Type>

@@ -4,8 +4,9 @@
 // Muc tieu: Quy tac phan cap phe duyet 4 cap AP, Anti-Split quet hoa don trong thang,
 //           va nhanh phe duyet dac biet +1 CFO Unlock khi vuot ngan sach > 10% (Task 2.4).
 
-Var BangHoaDonMoPhong;
-Var BangNganSachMoPhong;
+Function LayBoNhoMoPhong() Export
+	Return New Structure("BangHoaDonMoPhong, BangNganSachMoPhong", New Array, New Map);
+EndFunction
 
 #Region PublicInterface
 
@@ -189,9 +190,10 @@ Function KiemTraYeuCauDuyetCFO(Val PhapNhan, Val DuAn, Val KhoanMucDongTien, Val
 	EndTry;
 	
 	// 2. Tra cuu tu bo nho mo phong neu chua tim thay trong database
-	If Not TimThay And BangNganSachMoPhong <> Undefined Then
+	Mem = LayBoNhoMoPhong();
+	If Not TimThay And Mem.BangNganSachMoPhong.Count() > 0 Then
 		Key = TaoKhoaNganSach(PhapNhan, DuAn, KhoanMucDongTien, ThangChuan);
-		BudgetInfo = BangNganSachMoPhong.Get(Key);
+		BudgetInfo = Mem.BangNganSachMoPhong.Get(Key);
 		If BudgetInfo <> Undefined Then
 			NganSach = Number(BudgetInfo.SoTienNganSach);
 			DaDuyet = Number(BudgetInfo.SoTienDaDuyet);
@@ -302,23 +304,22 @@ Procedure DangKyHoaDon(Val PhapNhan, Val DoiTac, Val SoTien, Val ThoiDiem, Val S
 	Record.Insert("PhapNhan", PhapNhan);
 	Record.Insert("DoiTac", DoiTac);
 	Record.Insert("SoTien", Number(SoTien));
-	Record.Insert("ThoiDiem", ?(ValueIsFilled(ThoiDiem), ThoiDiem, CurrentSessionDate()));
-	Record.Insert("SoHoaDon", SoHoaDon);
-	
-	BangHoaDonMoPhong.Add(Record);
+	Mem = LayBoNhoMoPhong();
+	Mem.BangHoaDonMoPhong.Add(Record);
 EndProcedure
 
 // Xoa toan bo du lieu hoa don va ngan sach mo phong
 Procedure XoaDuLieuLuyKeMoPhong() Export
-	BangHoaDonMoPhong = New Array;
-	BangNganSachMoPhong = New Map;
+	Mem = LayBoNhoMoPhong();
+	Mem.BangHoaDonMoPhong.Clear();
+	Mem.BangNganSachMoPhong.Clear();
 EndProcedure
 
 // Thiet lap du lieu ngan sach mo phong cho unit test
 Procedure DatNganSachMoPhong(Val PhapNhan, Val DuAn, Val KhoanMucDongTien, Val Thang, 
 	Val NganSach, Val DaDuyet = 0, Val ThucChi = 0) Export
 	
-	KhoiTaoBoNhoMoPhong();
+	Mem = LayBoNhoMoPhong();
 	
 	Key = TaoKhoaNganSach(PhapNhan, DuAn, KhoanMucDongTien, BegOfMonth(Thang));
 	BudgetInfo = New Structure;
@@ -326,7 +327,7 @@ Procedure DatNganSachMoPhong(Val PhapNhan, Val DuAn, Val KhoanMucDongTien, Val T
 	BudgetInfo.Insert("SoTienDaDuyet", Number(DaDuyet));
 	BudgetInfo.Insert("SoTienThucChi", Number(ThucChi));
 	
-	BangNganSachMoPhong.Insert(Key, BudgetInfo);
+	Mem.BangNganSachMoPhong.Insert(Key, BudgetInfo);
 EndProcedure
 
 #EndRegion
@@ -334,21 +335,14 @@ EndProcedure
 #Region PrivateHelpers
 
 Procedure KhoiTaoBoNhoMoPhong()
-	If BangHoaDonMoPhong = Undefined Then
-		BangHoaDonMoPhong = New Array;
-	EndIf;
-	If BangNganSachMoPhong = Undefined Then
-		BangNganSachMoPhong = New Map;
-	EndIf;
+	LayBoNhoMoPhong();
 EndProcedure
 
 Function TinhTongHoaDonMoPhong(Val PhapNhan, Val DoiTac, Val DauThang, Val CuoiThang)
-	If BangHoaDonMoPhong = Undefined Then
-		Return 0;
-	EndIf;
+	Mem = LayBoNhoMoPhong();
 	
 	Tong = 0;
-	For Each Record In BangHoaDonMoPhong Do
+	For Each Record In Mem.BangHoaDonMoPhong Do
 		If LaCungDoiTuong(Record.PhapNhan, PhapNhan)
 			And LaCungDoiTuong(Record.DoiTac, DoiTac)
 			And Record.ThoiDiem >= DauThang 

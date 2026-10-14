@@ -1,4 +1,4 @@
-// Report: BaoCaoTuoiNoPhanTachNoiBo
+﻿// Report: BaoCaoTuoiNoPhanTachNoiBo
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Phan tich tuoi no AR/AP va ap dung Operational Safety Gate (Task 6.2):

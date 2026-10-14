@@ -1,4 +1,4 @@
-// Common Module: QuyTrinhPheDuyetAPServer
+﻿// Common Module: QuyTrinhPheDuyetAPServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly luong chuyen trang thai 4+1 cap AP, nhanh CFO unlock va Maker-Checker (Task 4.2).

@@ -3,6 +3,15 @@
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Quan ly vong doi chung tu va kiem soat Maker-Checker tap trung (P0.4 & P1.3)
 
+// Centralized logging helpers for client modules
+Procedure GhiNhatKyInfo(Val EventName, Val Comment) Export
+	WriteLogEvent(EventName, EventLogLevel.Information,,, Comment);
+EndProcedure
+
+Procedure GhiNhatKyError(Val EventName, Val Comment) Export
+	WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
+EndProcedure
+
 #Region PublicInterface
 
 // Danh tinh nguoi dung va quyen han luon duoc xac thuc 100% tu phien he thong UserName()

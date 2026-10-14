@@ -1,4 +1,4 @@
-// CommonModule: GeneratorARServer
+﻿// CommonModule: GeneratorARServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Sinh chu trinh chung tu AR (Nghiem thu, Hoa don GTGT dau ra, Bao co ngan hang, Phieu thu tien)

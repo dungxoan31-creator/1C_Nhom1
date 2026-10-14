@@ -1,4 +1,4 @@
-// Document: NghiemThuThauPhu
+﻿// Document: NghiemThuThauPhu
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so (Posting) nghiem thu thau phu gia cong/outsource (Task 4.4):

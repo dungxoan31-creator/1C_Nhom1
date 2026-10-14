@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
 	<Document uuid="291ddc9a-e732-4d88-b13e-69e0906372e5">
 		<InternalInfo>
@@ -79,6 +79,7 @@
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
 			<DataHistory>DontUse</DataHistory>
 			<UpdateDataHistoryImmediatelyAfterWrite>false</UpdateDataHistoryImmediatelyAfterWrite>
+			<ExecuteAfterWriteDataHistoryVersionProcessing>false</ExecuteAfterWriteDataHistoryVersionProcessing>
 		</Properties>
 		<ChildObjects>
 			<Attribute uuid="3e318946-a073-44b7-a8df-261a7338b4c5">
@@ -92,7 +93,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal Entity</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Pháp nhân thanh toán</Comment>
 					<Type>
@@ -135,7 +136,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payee</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Đối tác thụ hưởng</Comment>
 					<Type>
@@ -178,7 +179,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Hợp đồng liên quan</Comment>
 					<Type>
@@ -221,7 +222,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Base Document</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Hóa đơn/Nghiệm thu gốc</Comment>
 					<Type>
@@ -264,7 +265,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Requested Amount</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Số tiền đề nghị chi</Comment>
 					<Type>
@@ -312,7 +313,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Đồng tiền chi</Comment>
 					<Type>
@@ -355,7 +356,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Due Date</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Hạn cần thanh toán</Comment>
 					<Type>
@@ -401,7 +402,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Requested By</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Người lập đề nghị chi</Comment>
 					<Type>
@@ -448,7 +449,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Approved By</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Người duyệt chi</Comment>
 					<Type>
@@ -495,7 +496,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Status</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Trạng thái phê duyệt</Comment>
 					<Type>
@@ -538,7 +539,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Over Budget</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Cờ đánh dấu vượt ngân sách chi tiêu</Comment>
 					<Type>
@@ -581,7 +582,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Mục đích thanh toán</Comment>
 					<Type>

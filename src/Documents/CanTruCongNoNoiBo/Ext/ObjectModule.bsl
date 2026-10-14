@@ -1,4 +1,4 @@
-// Document: CanTruCongNoNoiBo
+﻿// Document: CanTruCongNoNoiBo
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so chung tu can tru cong no noi bo (Task 6.1):

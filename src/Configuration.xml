@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
 	<Configuration uuid="097a612e-c834-4cc9-9bdb-b99f80e6356c">
 		<InternalInfo>
@@ -83,8 +83,124 @@
 					<app:use>true</app:use>
 				</app:functionality>
 				<app:functionality>
+					<app:functionality>Location</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>BackgroundLocation</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>BluetoothPrinters</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>WiFiPrinters</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>Contacts</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>Calendars</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>PushNotifications</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>LocalNotifications</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>InAppPurchases</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>PersonalComputerFileExchange</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>Ads</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>NumberDialing</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>CallProcessing</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>CallLog</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>AutoSendSMS</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>ReceiveSMS</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>SMSLog</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>Camera</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>Microphone</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>MusicLibrary</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>PictureAndVideoLibraries</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>AudioPlaybackAndVibration</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>BackgroundAudioPlaybackAndVibration</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>InstallPackages</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
 					<app:functionality>OSBackup</app:functionality>
 					<app:use>true</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>ApplicationUsageStatistics</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>BarcodeScanning</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>BackgroundAudioRecording</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>AllFilesAccess</app:functionality>
+					<app:use>false</app:use>
+				</app:functionality>
+				<app:functionality>
+					<app:functionality>Videoconferences</app:functionality>
+					<app:use>false</app:use>
 				</app:functionality>
 			</UsedMobileApplicationFunctionalities>
 			<StandaloneConfigurationRestrictionRoles/>
@@ -107,19 +223,13 @@
 			<DefaultConstantsForm/>
 		</Properties>
 		<ChildObjects>
+			<Language>English</Language>
 			<Subsystem>PhanHeDanhMuc</Subsystem>
 			<Subsystem>PhanHeSoCaiVaDongBo</Subsystem>
 			<Subsystem>PhanHeCanTruNetting</Subsystem>
 			<Subsystem>PhanHeNganHangVaQuy</Subsystem>
 			<Subsystem>PhanHePhaiTra</Subsystem>
 			<Subsystem>PhanHePhaiThu</Subsystem>
-			<CommonPicture>LogoVSF</CommonPicture>
-			<CommonPicture>PhanHePhaiThu</CommonPicture>
-			<CommonPicture>PhanHePhaiTra</CommonPicture>
-			<CommonPicture>PhanHeNganHangVaQuy</CommonPicture>
-			<CommonPicture>PhanHeCanTruNetting</CommonPicture>
-			<CommonPicture>PhanHeSoCaiVaDongBo</CommonPicture>
-			<CommonPicture>PhanHeDanhMuc</CommonPicture>
 			<StyleItem>MauChuDaoVSF</StyleItem>
 			<StyleItem>MauChuDaoDamVSF</StyleItem>
 			<StyleItem>MauNenChinhVSF</StyleItem>
@@ -129,18 +239,22 @@
 			<StyleItem>MauCanhBaoDoVSF</StyleItem>
 			<StyleItem>MauVienChinhVSF</StyleItem>
 			<StyleItem>FunctionsPanelSectionColor</StyleItem>
-			<Language>English</Language>
-			<Catalog>PhapNhan</Catalog>
-			<Catalog>DoiTac</Catalog>
-			<Catalog>HopDong</Catalog>
-			<Catalog>TaiKhoanAo</Catalog>
-			<Catalog>TaiKhoanTien</Catalog>
-			<Catalog>KhoanMucDongTien</Catalog>
-			<Catalog>TienTe</Catalog>
-			<Catalog>DuAn</Catalog>
-			<Catalog>DichVuCNTT</Catalog>
-			<Catalog>KenhThanhToan</Catalog>
-			<Enum>LoaiDoiTac</Enum>
+			<CommonPicture>LogoVSF</CommonPicture>
+			<CommonPicture>PhanHePhaiThu</CommonPicture>
+			<CommonPicture>PhanHePhaiTra</CommonPicture>
+			<CommonPicture>PhanHeNganHangVaQuy</CommonPicture>
+			<CommonPicture>PhanHeCanTruNetting</CommonPicture>
+			<CommonPicture>PhanHeSoCaiVaDongBo</CommonPicture>
+			<CommonPicture>PhanHeDanhMuc</CommonPicture>
+			<Role>QuanTriHeThong</Role>
+			<Role>KeToanPhaiThu</Role>
+			<Role>KeToanPhaiTra</Role>
+			<Role>ChuyenVienDoiSoatTapDoan</Role>
+			<Role>KeToanTruong</Role>
+			<Role>GiamDocTaiChinh_CFO</Role>
+			<Role>TechLead_KiemTraKyThuat</Role>
+			<Role>ProjectManager_QuanLyDuAn</Role>
+			<Role>ITDirector_GiamDocHaTang</Role>
 			<CommonModule>SeedDataCleanServer</CommonModule>
 			<CommonModule>SeedFullTestDataServer</CommonModule>
 			<CommonModule>GeneratorMasterDataServer</CommonModule>
@@ -150,12 +264,10 @@
 			<CommonModule>UserProvisioningServer</CommonModule>
 			<CommonModule>PhanQuyenBaoMatServer</CommonModule>
 			<CommonModule>BaoCaoQuanTriServer</CommonModule>
-			<Enum>TrangThaiNghiemThuAR</Enum>
-			<Enum>TrangThaiHoaDonAP</Enum>
-			<Enum>TrangThaiLenhThanhToan</Enum>
-			<Enum>TrangThaiCanTru</Enum>
-			<Enum>TrangThaiHoaDonDienTu</Enum>
-			<Enum>HuongDongTien</Enum>
+			<CommonModule>QuanLyVongDoiChungTuServer</CommonModule>
+			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
+			<CommonModule>PheDuyetDaCapServer</CommonModule>
+			<CommonModule>QuyTrinhPheDuyetAPServer</CommonModule>
 			<Constant>PhapNhanMacDinh</Constant>
 			<Constant>NguongPheDuyetChiTienCFO</Constant>
 			<Constant>TaiKhoanTrungGianCanTru</Constant>
@@ -167,23 +279,16 @@
 			<Constant>CanhBaoCloudMucVang</Constant>
 			<Constant>CanhBaoCloudMucCam</Constant>
 			<Constant>CanhBaoCloudMucDo</Constant>
-			<ChartOfAccounts>HeThongTaiKhoan</ChartOfAccounts>
-			<Role>QuanTriHeThong</Role>
-			<Role>KeToanPhaiThu</Role>
-			<Role>KeToanPhaiTra</Role>
-			<Role>ChuyenVienDoiSoatTapDoan</Role>
-			<Role>KeToanTruong</Role>
-			<Role>GiamDocTaiChinh_CFO</Role>
-			<Role>TechLead_KiemTraKyThuat</Role>
-			<Role>ProjectManager_QuanLyDuAn</Role>
-			<Role>ITDirector_GiamDocHaTang</Role>
-			<CommonModule>QuanLyVongDoiChungTuServer</CommonModule>
-			<InformationRegister>TyGiaHoiDoai</InformationRegister>
-			<InformationRegister>HanMucVaChanXuatDichVu</InformationRegister>
-			<InformationRegister>KeHoachChiTien</InformationRegister>
-			<CommonModule>QuanLyTyGiaVaNgoaiTeServer</CommonModule>
-			<CommonModule>PheDuyetDaCapServer</CommonModule>
-			<CommonModule>QuyTrinhPheDuyetAPServer</CommonModule>
+			<Catalog>PhapNhan</Catalog>
+			<Catalog>DoiTac</Catalog>
+			<Catalog>HopDong</Catalog>
+			<Catalog>TaiKhoanAo</Catalog>
+			<Catalog>TaiKhoanTien</Catalog>
+			<Catalog>KhoanMucDongTien</Catalog>
+			<Catalog>TienTe</Catalog>
+			<Catalog>DuAn</Catalog>
+			<Catalog>DichVuCNTT</Catalog>
+			<Catalog>KenhThanhToan</Catalog>
 			<Document>BienBanNghiemThuGiaiDoan</Document>
 			<Document>HoaDonGTGTDauRa</Document>
 			<Document>DieuChinhCongNo</Document>
@@ -197,18 +302,29 @@
 			<Document>YeuCauHoanTienChiHo</Document>
 			<Document>CanTruCongNoNoiBo</Document>
 			<Document>DanhGiaLaiNgoaiTe</Document>
-			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
-			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
-			<DataProcessor>NapSoDuDauKy</DataProcessor>
-			<DataProcessor>DashboardLanhDaoCFO</DataProcessor>
+			<Enum>LoaiDoiTac</Enum>
+			<Enum>TrangThaiNghiemThuAR</Enum>
+			<Enum>TrangThaiHoaDonAP</Enum>
+			<Enum>TrangThaiLenhThanhToan</Enum>
+			<Enum>TrangThaiCanTru</Enum>
+			<Enum>TrangThaiHoaDonDienTu</Enum>
+			<Enum>HuongDongTien</Enum>
 			<Report>BaoCaoTuoiNoPhanTachNoiBo</Report>
 			<Report>MaTranCanTruNoiBoTapDoan</Report>
 			<Report>DoiSoatKenhThanhToanVaDongTienAo</Report>
 			<Report>CanhBaoHanMucVaGiaHanCloud</Report>
+			<DataProcessor>DongCoDoiSoatTuDong</DataProcessor>
+			<DataProcessor>LapMaTranCanTruTapDoan</DataProcessor>
+			<DataProcessor>NapSoDuDauKy</DataProcessor>
+			<DataProcessor>DashboardLanhDaoCFO</DataProcessor>
+			<InformationRegister>TyGiaHoiDoai</InformationRegister>
+			<InformationRegister>HanMucVaChanXuatDichVu</InformationRegister>
+			<InformationRegister>KeHoachChiTien</InformationRegister>
 			<AccumulationRegister>CongNoPhaiThu</AccumulationRegister>
 			<AccumulationRegister>CongNoPhaiTra</AccumulationRegister>
 			<AccumulationRegister>DongTien</AccumulationRegister>
 			<AccumulationRegister>GiaoDichDienTuTamGiu</AccumulationRegister>
+			<ChartOfAccounts>HeThongTaiKhoan</ChartOfAccounts>
 			<AccountingRegister>SoCaiKeToan</AccountingRegister>
 		</ChildObjects>
 	</Configuration>

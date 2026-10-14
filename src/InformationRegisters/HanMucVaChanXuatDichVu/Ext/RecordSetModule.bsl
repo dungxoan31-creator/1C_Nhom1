@@ -1,4 +1,4 @@
-Procedure BeforeWrite(Cancel, Replacement)
+﻿Procedure BeforeWrite(Cancel, Replacement)
 	For Each Record In ThisObject Do
 		If Record.TrangThaiKhoa Then
 			If ValueIsFilled(Record.DoiTac) And Record.DoiTac.LaBenLienKet Then

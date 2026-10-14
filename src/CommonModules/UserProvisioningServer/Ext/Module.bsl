@@ -1,4 +1,4 @@
-// Common Module: UserProvisioningServer
+﻿// Common Module: UserProvisioningServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Khoi tao va quan ly danh sach nguoi dung mau theo ma tran 8 Roles (Huong 2).

@@ -1,4 +1,4 @@
-// Common Module: QuanLyTyGiaVaNgoaiTeServer
+﻿// Common Module: QuanLyTyGiaVaNgoaiTeServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Tinh ty gia xuat quy BQGQ di dong va quan ly ty gia ngoai te tap trung (Task 2.3)

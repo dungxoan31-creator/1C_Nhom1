@@ -1,4 +1,4 @@
-// Document: YeuCauHoanTienChiHo
+﻿// Document: YeuCauHoanTienChiHo
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly yeu cau hoan tien chi ho cho khach hang B2C (Task 5.3):

@@ -9,7 +9,7 @@
 
 // Thuc hien doi soat Tang 2
 Function ThucHienDoiSoatTang2(Val SoTienNhan, Val SoTienHoaDon, Val LaBenLienKet = False) Export
-	ChenhLech = Abs(SoTienNhan - SoTienHoaDon);
+	ChenhLech = ?(SoTienNhan > SoTienHoaDon, SoTienNhan - SoTienHoaDon, SoTienHoaDon - SoTienNhan);
 	
 	KetQua = New Structure;
 	KetQua.Insert("ThanhCong", False);

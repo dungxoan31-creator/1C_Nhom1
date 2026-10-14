@@ -1,4 +1,4 @@
-// CommonModule: GeneratorNettingReconcileServer
+﻿// CommonModule: GeneratorNettingReconcileServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Sinh du lieu chung tu Can tru cong no noi bo (CanTruCongNoNoiBo)

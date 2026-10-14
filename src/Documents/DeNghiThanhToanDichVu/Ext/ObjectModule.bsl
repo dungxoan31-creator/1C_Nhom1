@@ -1,4 +1,4 @@
-// Document: DeNghiThanhToanDichVu
+﻿// Document: DeNghiThanhToanDichVu
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Chung tu de nghi thanh toan noi bo ket noi kiem tra ngan sach chi tieu (Task 4.4).

@@ -1,4 +1,4 @@
-// Document: DanhGiaLaiNgoaiTe
+﻿// Document: DanhGiaLaiNgoaiTe
 // Du an: VinSmart Future - AR & AP Management Platform (VSF)
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Chuc nang: Danh gia lai cac khoan muc tien te co goc ngoai te cuoi ky (TK 1122, TK 3313)

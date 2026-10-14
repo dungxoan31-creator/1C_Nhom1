@@ -1,4 +1,4 @@
-// Document: BaoCoNganHang
+﻿// Document: BaoCoNganHang
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so (Posting) Bao co ngan hang, tu dong giam AR va tang DongTien (Task 5.1).

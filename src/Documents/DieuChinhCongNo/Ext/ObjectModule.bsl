@@ -1,4 +1,4 @@
-// Document: DieuChinhCongNo
+﻿// Document: DieuChinhCongNo
 // Du an: VinSmart Future - AR & AP Management
 // Nen platform: 1C:Enterprise 8.3 (BSL / Managed Application)
 // Chuc nang: Xu ly tranh chap sau ghi so va thoa thuan sai sot theo Nghi dinh 70/2025/ND-CP & ND 123/2020.

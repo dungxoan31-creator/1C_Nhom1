@@ -1,4 +1,4 @@
-// CommonModule: GeneratorMasterDataServer
+﻿// CommonModule: GeneratorMasterDataServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Sinh khoi luong lon Master Data DoiTac (P&L Vingroup tai cau truc 2026, KH ngoai, NCC),

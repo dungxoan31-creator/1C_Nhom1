@@ -1,4 +1,4 @@
-// DataProcessor: LapMaTranCanTruTapDoan
+﻿// DataProcessor: LapMaTranCanTruTapDoan
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Dong co bu tru cong no noi bo da ben & Watchdog Timeout (Task 6.1):

@@ -1,4 +1,4 @@
-// CommonModule: GeneratorAPServer
+﻿// CommonModule: GeneratorAPServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Sinh khoi luong lon chung tu nghiep vu AP (Hoa don nha cung cap & Uy nhiem chi)

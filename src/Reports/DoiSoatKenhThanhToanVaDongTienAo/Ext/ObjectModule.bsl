@@ -1,4 +1,4 @@
-// Report: DoiSoatKenhThanhToanVaDongTienAo
+﻿// Report: DoiSoatKenhThanhToanVaDongTienAo
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Doi chieu dong tien cong thanh toan, VA va phi kenh (Task 6.3)

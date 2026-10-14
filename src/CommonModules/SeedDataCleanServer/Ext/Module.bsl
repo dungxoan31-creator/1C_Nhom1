@@ -1,4 +1,4 @@
-// CommonModule: SeedDataCleanServer
+﻿// CommonModule: SeedDataCleanServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Khoi tao Master Data sach, Hang so va Tai khoan Admin

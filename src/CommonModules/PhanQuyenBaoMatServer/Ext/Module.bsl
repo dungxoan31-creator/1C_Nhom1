@@ -1,4 +1,4 @@
-// Common Module: PhanQuyenBaoMatServer
+﻿// Common Module: PhanQuyenBaoMatServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Kiem soat bao mat toan dien: Maker-Checker Invariant, Segregation of Duties (SoD),

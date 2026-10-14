@@ -1,4 +1,4 @@
-// Document: BienBanNghiemThuGiaiDoan
+﻿// Document: BienBanNghiemThuGiaiDoan
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so (Posting) bien ban nghiem thu giai doan dich vu CNTT (Task 3.1):

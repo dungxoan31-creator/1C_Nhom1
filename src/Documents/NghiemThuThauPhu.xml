@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
 	<Document uuid="48d351da-4e8b-4863-b9ef-57575bf8887b">
 		<InternalInfo>
@@ -82,6 +82,7 @@
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
 			<DataHistory>DontUse</DataHistory>
 			<UpdateDataHistoryImmediatelyAfterWrite>false</UpdateDataHistoryImmediatelyAfterWrite>
+			<ExecuteAfterWriteDataHistoryVersionProcessing>false</ExecuteAfterWriteDataHistoryVersionProcessing>
 		</Properties>
 		<ChildObjects>
 			<Attribute uuid="16dbe816-6808-4aa3-9c11-691a8cd6da46">
@@ -95,7 +96,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal Entity</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Pháp nhân quản lý</Comment>
 					<Type>
@@ -138,7 +139,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Subcontractor</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Nhà thầu phụ gia công/outsource</Comment>
 					<Type>
@@ -181,7 +182,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Hợp đồng thầu phụ</Comment>
 					<Type>
@@ -224,7 +225,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Acceptance Value</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Giá trị nghiệm thu chưa VAT</Comment>
 					<Type>
@@ -272,7 +273,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT Amount</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Tiền thuế VAT</Comment>
 					<Type>
@@ -320,7 +321,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total Value</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Tổng giá trị thanh toán</Comment>
 					<Type>
@@ -368,7 +369,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Đồng tiền thanh toán</Comment>
 					<Type>
@@ -411,7 +412,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Acceptance Date</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Ngày hoàn thành nghiệm thu</Comment>
 					<Type>
@@ -457,7 +458,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Status</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Trạng thái biên bản</Comment>
 					<Type>
@@ -500,7 +501,7 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
-					</v8:item>
+						</v8:item>
 					</Synonym>
 					<Comment>Mô tả công việc gia công/outsource</Comment>
 					<Type>

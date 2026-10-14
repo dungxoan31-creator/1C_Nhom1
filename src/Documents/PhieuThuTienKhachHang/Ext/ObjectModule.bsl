@@ -1,4 +1,4 @@
-// Document: PhieuThuTienKhachHang
+﻿// Document: PhieuThuTienKhachHang
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL / Managed Application)
 // Chuc nang: Thu tien thanh toan tu khach hang va doi tac noi bo Vingroup (Task 3.4):

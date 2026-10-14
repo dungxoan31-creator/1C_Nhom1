@@ -1,4 +1,4 @@
-// Report: MaTranCanTruNoiBoTapDoan
+﻿// Report: MaTranCanTruNoiBoTapDoan
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Truc quan hoa ma tran bu tru cong no noi bo da ben (Task 6.3)

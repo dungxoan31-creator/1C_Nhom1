@@ -1,4 +1,4 @@
-// DataProcessor: DashboardLanhDaoCFO
+﻿// DataProcessor: DashboardLanhDaoCFO
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Ban lam viec Lanh dao cap cao (Executive Dashboard CFO & Ban Dieu hanh VSF)

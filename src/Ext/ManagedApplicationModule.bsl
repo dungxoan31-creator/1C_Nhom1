@@ -4,7 +4,7 @@ EndProcedure
 
 Procedure OnStart()
 	Try
-		WriteLogEvent("App.OnStart", EventLogLevel.Information,,, "LaunchParameter: " + LaunchParameter);
+		QuanLyVongDoiChungTuServer.GhiNhatKyInfo("App.OnStart", "LaunchParameter: " + LaunchParameter);
 	Except
 	EndTry;
 	
@@ -15,159 +15,159 @@ Procedure OnStart()
 		Try
 			SeedFullTestDataServer.ThucThiNapFullTestData();
 		Except
-			WriteLogEvent("SeedData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("SeedData.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "VerifyFullTestData" Then
 		Try
 			SeedFullTestDataServer.KiemTraDuLieuDaNap();
 		Except
-			WriteLogEvent("VerifyData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("VerifyData.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "SeedCleanMasterData" Then
 		Try
 			SeedDataCleanServer.ThucThiNapMasterData();
 		Except
-			WriteLogEvent("MasterData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("MasterData.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "SeedMasterData" Then
 		Try
 			GeneratorMasterDataServer.KhoiTaoMasterDataToanDien();
 		Except
-			WriteLogEvent("MasterData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("MasterData.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "VerifyMasterData" Then
 		Try
 			GeneratorMasterDataServer.KiemTraMasterData();
 		Except
-			WriteLogEvent("MasterData.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("MasterData.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "SeedARData" Then
 		Try
 			GeneratorARServer.KhoiTaoChungTuAR();
 		Except
-			WriteLogEvent("AR.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("AR.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "VerifyARData" Then
 		Try
 			GeneratorARServer.KiemTraChungTuAR();
 		Except
-			WriteLogEvent("AR.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("AR.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "SeedAPData" Then
 		Try
 			GeneratorAPServer.KhoiTaoChungTuAP();
 		Except
-			WriteLogEvent("AP.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("AP.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "VerifyAPData" Then
 		Try
 			GeneratorAPServer.KiemTraChungTuAP();
 		Except
-			WriteLogEvent("AP.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("AP.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "SeedNettingData" Then
 		Try
 			GeneratorNettingReconcileServer.KhoiTaoChungTuNetting();
 		Except
-			WriteLogEvent("Netting.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Netting.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "VerifyNettingData" Then
 		Try
 			GeneratorNettingReconcileServer.KiemTraChungTuNetting();
 		Except
-			WriteLogEvent("Netting.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Netting.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "SetupSampleUsers" Then
 		Try
 			UserProvisioningServer.KhoiTaoDanhSachNguoiDung();
 		Except
-			WriteLogEvent("UserProv.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("UserProv.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "VerifySampleUsers" Then
 		Try
 			UserProvisioningServer.KiemTraNguoiDungDaKhoiTao();
 		Except
-			WriteLogEvent("UserProv.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("UserProv.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunSecurityTests" Then
 		Try
 			PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien();
 		Except
-			WriteLogEvent("Security.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Security.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask2SecurityTests" Then
 		Try
 			PhanQuyenBaoMatServer.ThucThiKiemThuTask2Runtime();
 		Except
-			WriteLogEvent("Task2Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task2Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask2MakerTests" Then
 		Try
 			PhanQuyenBaoMatServer.KiemTraMakerSessionRuntime();
 		Except
-			WriteLogEvent("Task2Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task2Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask2CheckerTests" Then
 		Try
 			PhanQuyenBaoMatServer.KiemTraCheckerSessionRuntime();
 		Except
-			WriteLogEvent("Task2Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task2Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask2AdminTests" Then
 		Try
 			PhanQuyenBaoMatServer.KiemTraAdminSessionRuntime();
 		Except
-			WriteLogEvent("Task2Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task2Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask3USDTests" Then
 		Try
 			QuanLyTyGiaVaNgoaiTeServer.ThucThiKiemThuTask3USDRuntime();
 		Except
-			WriteLogEvent("Task3Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task3Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask4FXTests" Then
 		Try
 			QuanLyTyGiaVaNgoaiTeServer.ThucThiKiemThuTask4FXRuntime();
 		Except
-			WriteLogEvent("Task4Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task4Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask5NettingTests" Then
 		Try
 			QuanLyTyGiaVaNgoaiTeServer.ThucThiKiemThuTask5NettingRuntime();
 		Except
-			WriteLogEvent("Task5Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task5Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunTask6IntegrityTests" Then
 		Try
 			QuanLyVongDoiChungTuServer.ThucThiKiemThuTask6IntegrityRuntime();
 		Except
-			WriteLogEvent("Task6Test.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Task6Test.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "TestUserLogin" Then
 		Try
-			WriteLogEvent("UserLogin.Success", EventLogLevel.Information,,, "Dang nhap thanh cong: " + UserName());
+			QuanLyVongDoiChungTuServer.GhiNhatKyInfo("UserLogin.Success", "Dang nhap thanh cong: " + UserName());
 		Except
 		EndTry;
 		Exit(False);
@@ -175,25 +175,21 @@ Procedure OnStart()
 		Try
 			BaoCaoQuanTriServer.XuatDuLieuVaKiemTraBaoCao();
 		Except
-			WriteLogEvent("ExecutiveReports.Error", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("ExecutiveReports.Error", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "TestDashboardCFO" Then
 		Try
 			SeedFullTestDataServer.KiemTraDashboardCFO();
 		Except
-			WriteLogEvent("DashboardCFO.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("DashboardCFO.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "TestAccounts" Then
 		Try
-			Q = New Query("SELECT Code, Description, PredefinedDataName FROM ChartOfAccounts.HeThongTaiKhoan");
-			T = Q.Execute().Unload();
-			For Each R In T Do
-				WriteLogEvent("Account.List", EventLogLevel.Information,,, "Acc: " + R.Code + " - " + R.Description + " (Predef: " + R.PredefinedDataName + ")");
-			EndDo;
+			SeedFullTestDataServer.KiemTraDanhSachTaiKhoan();
 		Except
-			WriteLogEvent("Account.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("Account.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	ElsIf Cmd = "RunUnitTests" Then
@@ -237,9 +233,9 @@ Procedure OnStart()
 				Except
 				EndTry;
 			EndDo;
-			WriteLogEvent("UnitTests.Success", EventLogLevel.Information,,, "Chay thanh cong toan bo Unit Tests tren 1C runtime!");
+			QuanLyVongDoiChungTuServer.GhiNhatKyInfo("UnitTests.Success", "Chay thanh cong toan bo Unit Tests tren 1C runtime!");
 		Except
-			WriteLogEvent("UnitTests.Fatal", EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("UnitTests.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
 	EndIf;

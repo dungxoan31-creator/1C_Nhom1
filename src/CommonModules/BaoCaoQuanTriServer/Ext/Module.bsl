@@ -1,4 +1,4 @@
-// CommonModule: BaoCaoQuanTriServer
+﻿// CommonModule: BaoCaoQuanTriServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Tinh toan doc lap va dieu phoi xuat 4 Báo Cáo Quản Trị Chuyên Sâu:

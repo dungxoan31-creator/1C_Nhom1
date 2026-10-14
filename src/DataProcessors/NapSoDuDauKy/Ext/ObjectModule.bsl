@@ -1,4 +1,4 @@
-// DataProcessor: NapSoDuDauKy
+﻿// DataProcessor: NapSoDuDauKy
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Nap so du dau ky AR, AP va DongTien (Task 8.1):

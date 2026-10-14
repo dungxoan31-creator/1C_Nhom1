@@ -1,4 +1,4 @@
-// Document: HoaDonNhaCungCap
+﻿// Document: HoaDonNhaCungCap
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so (Posting) hoa don nha cung cap / FCT withholding (Task 4.1):

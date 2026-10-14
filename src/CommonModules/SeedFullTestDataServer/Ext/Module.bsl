@@ -3,6 +3,14 @@
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Dieu phoi sinh toan bo du lieu Master Data, AR, AP, Netting va Kiem toan So cai toan dien
 
+Procedure KiemTraDanhSachTaiKhoan() Export
+	Q = New Query("SELECT Code, Description, PredefinedDataName FROM ChartOfAccounts.HeThongTaiKhoan");
+	T = Q.Execute().Unload();
+	For Each R In T Do
+		WriteLogEvent("Account.List", EventLogLevel.Information,,, "Acc: " + R.Code + " - " + R.Description + " (Predef: " + R.PredefinedDataName + ")");
+	EndDo;
+EndProcedure
+
 Procedure ThucThiNapFullTestData() Export
 	WriteLogEvent("SeedData.FullTest", EventLogLevel.Information,,, "=== BAT DAU MASTER ORCHESTRATION NAP FULL TEST DATA ===");
 	

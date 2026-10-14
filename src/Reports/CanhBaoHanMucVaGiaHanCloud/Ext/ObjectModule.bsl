@@ -1,4 +1,4 @@
-// Report: CanhBaoHanMucVaGiaHanCloud
+﻿// Report: CanhBaoHanMucVaGiaHanCloud
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Canh bao han muc va thoi han goi Cloud theo 3 cap Vang, Cam, Do (Task 6.3)

@@ -1,4 +1,4 @@
-// Document: HoaDonGTGTDauRa
+﻿// Document: HoaDonGTGTDauRa
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL / Managed Application)
 // Chuc nang: Quan ly Hoa don GTGT dien tu dau ra co ma cua CQT (ND 123/2020 & TT 78/2021)
