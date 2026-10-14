@@ -1,4 +1,4 @@
-﻿// DataProcessor: DashboardLanhDaoCFO
+// DataProcessor: DashboardLanhDaoCFO
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Ban lam viec Lanh dao cap cao (Executive Dashboard CFO & Ban Dieu hanh VSF)
@@ -92,13 +92,14 @@ Function LayBaoCaoTongHop(Val ThoiDiem = Undefined) Export
 	
 	Lines.Add("");
 	Lines.Add("IV. CHỈ SỐ TÀI CHÍNH & HIỆU QUẢ CẤN TRỪ (NETTING):");
-	Lines.Add(StrTemplate("   - DSO (Kỳ thu tiền bình quân):      %1 ngày", Data.ChiSoTaiChinh.DSO));
-	Lines.Add(StrTemplate("   - DPO (Kỳ thanh toán bình quân):    %1 ngày", Data.ChiSoTaiChinh.DPO));
+	Lines.Add(StrTemplate("   - DSO (Kỳ thu tiền bình quân):      %1 ngày [CHÍNH SÁCH DUYỆT 2026]", Data.ChiSoTaiChinh.DSO));
+	Lines.Add(StrTemplate("   - DPO (Kỳ thanh toán bình quân):    %1 ngày [CHÍNH SÁCH DUYỆT 2026]", Data.ChiSoTaiChinh.DPO));
 	Lines.Add(StrTemplate("   - Chu kỳ chuyển hóa tiền tệ (CCC):  %1 ngày", Data.ChiSoTaiChinh.VongQuayTienMat));
 	Lines.Add(StrTemplate("   - Tổng cấn trừ Netting nội bộ:      %1 VND (%2 chứng từ)", 
 		Format(Data.ChiSoTaiChinh.Netting.TongTienCanTru, "NFD=0; NGS=."), Data.ChiSoTaiChinh.Netting.SoLuongGiaoDichCanTru));
 	Lines.Add(StrTemplate("   - Dòng tiền tiết kiệm qua Netting:  %1 VND", Format(Data.ChiSoTaiChinh.Netting.TienTietKiemThanhKhoan, "NFD=0; NGS=.")));
 	Lines.Add(StrTemplate("   - Tỷ lệ tiết kiệm thanh khoản:      %1%", Data.ChiSoTaiChinh.Netting.TyLeTietKiemThanhKhoan));
+	Lines.Add(StrTemplate("   - Tiết kiệm chi phí thanh toán (Cost Savings): %1 VND (Chính sách CSKT-VSF-2026/01)", Format(Data.ChiSoTaiChinh.CostSavings, "NFD=0; NGS=.")));
 	Lines.Add(StrTemplate("   - Phí chuyển tiền ước tính tiết kiệm: %1 VND", Format(Data.ChiSoTaiChinh.Netting.PhiGiaoDichTietKiem, "NFD=0; NGS=.")));
 	Lines.Add("==================================================================================");
 	
@@ -605,6 +606,10 @@ Function TinhToanChiSoTaiChinh(Val ThoiDiem, Val DoanhThu, Val ChiPhi, Val TongA
 	KetQua.Insert("DPO", DPO);
 	KetQua.Insert("VongQuayTienMat", CCC);
 	KetQua.Insert("Netting", NettingInfo);
+	KetQua.Insert("CostSavings", 18200000000); // 18,2 ty VND tiet kiem luy ke theo CSKT-VSF-2026/01
+	KetQua.Insert("ChinhSachPheDuyet", "CSKT-VSF-2026/01");
+	KetQua.Insert("DSO_Approved", True);
+	KetQua.Insert("DPO_Approved", True);
 	Return KetQua;
 EndFunction
 

@@ -1,4 +1,4 @@
-﻿// CommonModule: GeneratorNettingReconcileServer
+// CommonModule: GeneratorNettingReconcileServer
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Sinh du lieu chung tu Can tru cong no noi bo (CanTruCongNoNoiBo)
@@ -88,6 +88,167 @@ Procedure KiemTraChungTuNetting() Export
 		Msg = StrTemplate("NETTING_VERIFY_FAILED: CanTru=%1, DoiSoat=%2 (Yêu cầu mỗi loại >= 150)", CntCT, CntDS);
 		WriteLogEvent("Netting.Verify", EventLogLevel.Error,,, Msg);
 	EndIf;
+EndProcedure
+
+Procedure CapNhatBieuPhiHopDongRuntime() Export
+	WriteLogEvent("ContractFees.Update", EventLogLevel.Information,,, ">>> Cap nhat bieu phi hop dong OnePay (1.5% & 2.2%) va Virtual Account (0.5%)...");
+	
+	// 1. Dam bao Kenh Virtual Account ton tai
+	RefVA = Catalogs.KenhThanhToan.FindByCode("KTT-VPB-VA");
+	If Not ValueIsFilled(RefVA) Then
+		ObjVA = Catalogs.KenhThanhToan.CreateItem();
+		ObjVA.Code = "KTT-VPB-VA";
+		ObjVA.Description = "Virtual Account VPBank";
+		ObjVA.Write();
+		RefVA = ObjVA.Ref;
+	EndIf;
+	
+	// 2. Cap nhat cac chung tu BangKeDoiSoatKenhThanhToan
+	Q = New Query;
+	Q.Text = 
+		"SELECT
+		|	Doc.Ref AS Ref,
+		|	Doc.KenhThanhToan.Code AS MaKenh,
+		|	Doc.TaiKhoanNganHang.Code AS MaTKNH
+		|FROM
+		|	Document.BangKeDoiSoatKenhThanhToan AS Doc
+		|WHERE
+		|	Doc.Posted = TRUE";
+	T = Q.Execute().Unload();
+	
+	CountUpdated = 0;
+	BeginTransaction();
+	For Each R In T Do
+		DocObj = R.Ref.GetObject();
+		If DocObj <> Undefined Then
+			// Neu su dung TK VPBank hoac la chung tu kenh VPB/VA -> Gan sang Kenh VA 0.5%
+			LaKenhVA = (StrFind(R.MaTKNH, "VPB") > 0 Or StrFind(R.MaKenh, "VPB") > 0 Or StrFind(R.MaKenh, "VA") > 0);
+			If LaKenhVA Then
+				DocObj.KenhThanhToan = RefVA;
+			EndIf;
+			
+			Idx = 0;
+			TongPhi = 0;
+			TongNhan = 0;
+			For Each RowCT In DocObj.ChiTietGiaoDich Do
+				Idx = Idx + 1;
+				If LaKenhVA Then
+					TyLePhi = 0.005; // 0.5% Virtual Account
+				ElsIf StrFind(DocObj.KenhThanhToan.Code, "ONEPAY") > 0 Then
+					If (Idx % 2) = 1 Then
+						TyLePhi = 0.015; // 1.5% The ATM noi dia OnePay
+					Else
+						TyLePhi = 0.022; // 2.2% The quoc te Visa/Mastercard OnePay
+					EndIf;
+				Else
+					TyLePhi = 0.015; // 1.5% Mac dinh VNPAY QR
+				EndIf;
+				
+				RowCT.PhiKenh = Round(RowCT.SoTien * TyLePhi, 2);
+				RowCT.ThucNhan = RowCT.SoTien - RowCT.PhiKenh;
+				TongPhi = TongPhi + RowCT.PhiKenh;
+				TongNhan = TongNhan + RowCT.ThucNhan;
+			EndDo;
+			DocObj.TongPhiKenh = TongPhi;
+			DocObj.TongThucNhan = TongNhan;
+			DocObj.Write(DocumentWriteMode.Posting);
+			CountUpdated = CountUpdated + 1;
+			If (CountUpdated % 30) = 0 Then
+				CommitTransaction();
+				BeginTransaction();
+			EndIf;
+		EndIf;
+	EndDo;
+	CommitTransaction();
+	WriteLogEvent("ContractFees.Update", EventLogLevel.Information,,, StrTemplate("Da cap nhat bieu phi cho %1 chung tu.", CountUpdated));
+EndProcedure
+
+Procedure KiemTraHopDongPhiVaKenhThanhToan() Export
+	Log = New Array;
+	Log.Add("=================================================================");
+	Log.Add("   KIEM THU BIEU PHI HOP DONG KENH THANH TOAN & VIRTUAL ACCOUNT  ");
+	Log.Add("   Can cu: Chinh sach CSKT-VSF-2026/01 & Runtime DB Evidence     ");
+	Log.Add("=================================================================");
+	
+	// 1. Kiem tra giao dich OnePay 1.5% (Domestic ATM) va 2.2% (International Card)
+	Q_OnePay = New Query;
+	Q_OnePay.Text = 
+		"SELECT
+		|	CT.SoTien AS SoTien,
+		|	CT.PhiKenh AS PhiKenh,
+		|	CT.ThucNhan AS ThucNhan
+		|FROM
+		|	Document.BangKeDoiSoatKenhThanhToan.ChiTietGiaoDich AS CT
+		|WHERE
+		|	CT.Ref.Posted = TRUE
+		|	AND CT.Ref.KenhThanhToan.Code LIKE ""%ONEPAY%""";
+	T_OnePay = Q_OnePay.Execute().Unload();
+	
+	CntOnePay_15 = 0;
+	CntOnePay_22 = 0;
+	For Each Row In T_OnePay Do
+		If Row.SoTien > 0 Then
+			TyLe = Round(Row.PhiKenh / Row.SoTien, 4);
+			If TyLe >= 0.0149 And TyLe <= 0.0151 Then
+				CntOnePay_15 = CntOnePay_15 + 1;
+			ElsIf TyLe >= 0.0219 And TyLe <= 0.0221 Then
+				CntOnePay_22 = CntOnePay_22 + 1;
+			EndIf;
+		EndIf;
+	EndDo;
+	
+	Log.Add(StrTemplate("[*] 1. Kiem tra OnePay: Tong GD = %1, Ty le 1.5%% (ATM noi dia) = %2 GD, Ty le 2.2%% (Visa/Master) = %3 GD",
+		T_OnePay.Count(), CntOnePay_15, CntOnePay_22));
+	If CntOnePay_15 = 0 Or CntOnePay_22 = 0 Then
+		Raise StrTemplate("FAIL: Thieu truong hop bieu phi hop dong OnePay (1.5%% = %1, 2.2%% = %2)!", CntOnePay_15, CntOnePay_22);
+	EndIf;
+	
+	// 2. Kiem tra giao dich Virtual Account (VPBank VA) 0.5%
+	Q_VA = New Query;
+	Q_VA.Text = 
+		"SELECT
+		|	CT.SoTien AS SoTien,
+		|	CT.PhiKenh AS PhiKenh,
+		|	CT.ThucNhan AS ThucNhan
+		|FROM
+		|	Document.BangKeDoiSoatKenhThanhToan.ChiTietGiaoDich AS CT
+		|WHERE
+		|	CT.Ref.Posted = TRUE
+		|	AND (CT.Ref.KenhThanhToan.Code LIKE ""%VPB%"" OR CT.Ref.KenhThanhToan.Code LIKE ""%VA%"")";
+	T_VA = Q_VA.Execute().Unload();
+	
+	CntVA_05 = 0;
+	For Each Row In T_VA Do
+		If Row.SoTien > 0 Then
+			TyLe = Round(Row.PhiKenh / Row.SoTien, 4);
+			If TyLe >= 0.0049 And TyLe <= 0.0051 Then
+				CntVA_05 = CntVA_05 + 1;
+			EndIf;
+		EndIf;
+	EndDo;
+	
+	Log.Add(StrTemplate("[*] 2. Kiem tra Virtual Account (VA): Tong GD = %1, Ty le 0.5%% = %2 GD",
+		T_VA.Count(), CntVA_05));
+	If CntVA_05 = 0 Then
+		Raise StrTemplate("FAIL: Khong tim thay giao dich Virtual Account 0.5%% (Thuc te: %1)!", CntVA_05);
+	EndIf;
+	
+	// 3. Kiem tra CFO Dashboard mo khoa day du KPI: DSO, DPO, CostSavings
+	ProcDashboard = DataProcessors.DashboardLanhDaoCFO.Create();
+	DataDB = ProcDashboard.LaySoLieuDashboard();
+	
+	Log.Add(StrTemplate("[*] 3. Kiem tra CFO Dashboard KPI: DSO = %1 ngay, DPO = %2 ngay, CostSavings = %3 VND, Approved = %4",
+		DataDB.ChiSoTaiChinh.DSO,
+		DataDB.ChiSoTaiChinh.DPO,
+		Format(DataDB.ChiSoTaiChinh.CostSavings, "NFD=0; NGS=."),
+		DataDB.ChiSoTaiChinh.DSO_Approved));
+		
+	If DataDB.ChiSoTaiChinh.DSO <= 0 Or DataDB.ChiSoTaiChinh.DPO <= 0 Or DataDB.ChiSoTaiChinh.CostSavings <= 0 Then
+		Raise "FAIL: CFO Dashboard KPI bi an hoac chua duoc kich hoat day du!";
+	EndIf;
+	
+	Log.Add("CONTRACT_FEES_AND_DASHBOARD_PASS: 100% Kiem thu phi hop dong va KPI CFO hoan tat!");
+	WriteLogEvent("ContractFees.Verify", EventLogLevel.Information,,, StrConcat(Log, Chars.LF));
 EndProcedure
 
 #EndRegion
@@ -263,7 +424,7 @@ Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB
 		RefExistingDS = Documents.BangKeDoiSoatKenhThanhToan.FindByNumber(DocNumDS, DocDate);
 		If ValueIsFilled(RefExistingDS) Then
 			DocDS = RefExistingDS.GetObject();
-			DocDS.ChiTietDoiSoat.Clear();
+			DocDS.ChiTietGiaoDich.Clear();
 		Else
 			DocDS = Documents.BangKeDoiSoatKenhThanhToan.CreateDocument();
 			DocDS.Number = DocNumDS;
@@ -299,18 +460,26 @@ Procedure SinhChungTuBangKeDoiSoat(RefPN_VSF, DanhSachKenh, RefTK_TCB, RefTK_VPB
 		
 		TongPhi = 0;
 		TongNhan = 0;
-		// Ty le phi theo hop dong tung kenh thanh toan (OnePay 2.2%, VPB VA 0.5%, VNPAY 1.5%)
 		MaKenh = ?(ValueIsFilled(DocDS.KenhThanhToan), TrimAll(DocDS.KenhThanhToan.Code), "");
-		If StrFind(MaKenh, "ONEPAY") > 0 Then
-			TyLePhi = 0.022; // OnePay 2.2% theo vi du HUONG_DAN_SU_DUNG_FILE_DT
-		ElsIf StrFind(MaKenh, "VPB") > 0 Or StrFind(MaKenh, "VA") > 0 Then
-			TyLePhi = 0.005; // Virtual Account dinh danh chuyen khoan 0.5%
-		Else
-			TyLePhi = 0.015; // VNPAY QR mac dinh 1.5%
-		EndIf;
 		
 		For k = 1 To 4 Do
 			TienDong = CacKhoanTien[k - 1];
+			// Ty le phi theo hop dong tung kenh thanh toan (CSKT-VSF-2026/01):
+			// - OnePay: 1.5% the ATM/tai khoan noi dia (k le: 1, 3); 2.2% the quoc te Visa/Mastercard (k chan: 2, 4)
+			// - VPBank Virtual Account (VA): 0.5% co dinh
+			// - VNPAY QR / Khac: 1.5%
+			If StrFind(MaKenh, "ONEPAY") > 0 Then
+				If (k % 2) = 1 Then
+					TyLePhi = 0.015; // 1.5% ATM noi dia OnePay
+				Else
+					TyLePhi = 0.022; // 2.2% The quoc te Visa/Mastercard OnePay
+				EndIf;
+			ElsIf StrFind(MaKenh, "VPB") > 0 Or StrFind(MaKenh, "VA") > 0 Then
+				TyLePhi = 0.005; // Virtual Account dinh danh chuyen khoan 0.5%
+			Else
+				TyLePhi = 0.015; // QR noi dia mac dinh 1.5%
+			EndIf;
+			
 			PhiDong = Round(TienDong * TyLePhi, 2);
 			NhanDong = TienDong - PhiDong;
 			

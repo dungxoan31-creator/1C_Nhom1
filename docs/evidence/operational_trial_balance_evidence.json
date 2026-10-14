@@ -7,7 +7,7 @@
 "PolicyDoc": "CSKT-VSF-2026/01",
 "PolicyApproved": true,
 "ExtractorUser": "ketoan_truong",
-"ExportTime": "2026-10-14 08:34:59",
+"ExportTime": "2026-10-14 08:42:35",
 "TotalGLRecords": 8412
 },
 "TrialBalance": {
@@ -19,7 +19,7 @@
 {
 "MaTaiKhoan": "6427",
 "TenTaiKhoan": "Chi phí dịch vụ mua ngoài / Phí ngân hàng",
-"TongPhatSinhNo": 1165378500,
+"TongPhatSinhNo": 857471150,
 "TongPhatSinhCo": 0
 },
 {
@@ -91,7 +91,7 @@
 {
 "MaTaiKhoan": "1121",
 "TenTaiKhoan": "Tiền gửi ngân hàng VND",
-"TongPhatSinhNo": 998885248000,
+"TongPhatSinhNo": 999193155350,
 "TongPhatSinhCo": 185939726500
 }
 ]
@@ -103,8 +103,8 @@
 "TongDuSubAP": 34440537922,
 "TongDuGL_AP": 34440537922,
 "DeltaAP": 0,
-"TongDuSubBank": 817509105887,
-"TongDuGL_Bank": 817509105887,
+"TongDuSubBank": 817817013237,
+"TongDuGL_Bank": 817817013237,
 "DeltaBank": 0,
 "ExceptionsCount": 0,
 "HopLe": true

@@ -213,6 +213,20 @@ Procedure OnStart()
 			QuanLyVongDoiChungTuServer.GhiNhatKyError("OperationalEvidence.Fatal", DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		Exit(False);
+	ElsIf Cmd = "UpdateContractFees" Then
+		Try
+			GeneratorNettingReconcileServer.CapNhatBieuPhiHopDongRuntime();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("ContractFees.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
+	ElsIf Cmd = "VerifyContractFees" Then
+		Try
+			GeneratorNettingReconcileServer.KiemTraHopDongPhiVaKenhThanhToan();
+		Except
+			QuanLyVongDoiChungTuServer.GhiNhatKyError("ContractFees.Fatal", DetailErrorDescription(ErrorInfo()));
+		EndTry;
+		Exit(False);
 	ElsIf Cmd = "TestAccounts" Then
 		Try
 			SeedFullTestDataServer.KiemTraDanhSachTaiKhoan();
