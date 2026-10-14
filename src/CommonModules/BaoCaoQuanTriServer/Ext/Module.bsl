@@ -947,4 +947,141 @@ Function XuatOperationalTrialBalanceEvidenceServer(Val FilePath = "") Export
 	Return EvidenceData;
 EndFunction
 
+// Ham sinh ma HTML5/CSS3 chuan "Modern 3D Enterprise" cho Ban lam viec CFO
+Function SinhHTMLDashboardLanhDaoCFO(Val SoLieu = Undefined) Export
+	If SoLieu = Undefined Then
+		Processor = DataProcessors.DashboardLanhDaoCFO.Create();
+		SoLieu = Processor.LaySoLieuDashboard();
+	EndIf;
+	
+	StrThoiDiem = SoLieu.ThoiDiemBaoCao;
+	StrTongAR = Format(SoLieu.CongNo.AR.TongAR, "NFD=0; NGS=.");
+	StrAR_Ngoai = Format(SoLieu.CongNo.AR.AR_KhachNgoai, "NFD=0; NGS=.");
+	StrAR_NoiBo = Format(SoLieu.CongNo.AR.AR_NoiBo, "NFD=0; NGS=.");
+	
+	StrTongAP = Format(SoLieu.CongNo.AP.TongAP, "NFD=0; NGS=.");
+	StrAP_Ngoai = Format(SoLieu.CongNo.AP.AP_NhaCungCapNgoai, "NFD=0; NGS=.");
+	StrAP_NoiBo = Format(SoLieu.CongNo.AP.AP_NoiBo, "NFD=0; NGS=.");
+	
+	StrTongTien = Format(SoLieu.DongTien.TongTienMatKhaDung, "NFD=0; NGS=.");
+	StrTCB = Format(SoLieu.DongTien.Techcombank_VND, "NFD=0; NGS=.");
+	StrVCB_USD = Format(SoLieu.DongTien.Vietcombank_USD.SoTienUSD, "NFD=2; NGS=.");
+	StrVCB_VND = Format(SoLieu.DongTien.Vietcombank_USD.QuyDoiVND, "NFD=0; NGS=.");
+	StrVPB = Format(SoLieu.DongTien.VPBank_VA, "NFD=0; NGS=.");
+	
+	StrNWC = Format(SoLieu.CongNo.NetWorkingCapital, "NFD=0; NGS=.");
+	StrCanTru = Format(SoLieu.ChiSoTaiChinh.Netting.TongTienCanTru, "NFD=0; NGS=.");
+	StrTietKiem = Format(SoLieu.ChiSoTaiChinh.Netting.TienTietKiemThanhKhoan, "NFD=0; NGS=.");
+	StrDSO = String(SoLieu.ChiSoTaiChinh.DSO);
+	StrDPO = String(SoLieu.ChiSoTaiChinh.DPO);
+	StrCCC = String(SoLieu.ChiSoTaiChinh.VongQuayTienMat);
+	
+	HTML = "<!DOCTYPE html>"
+		+ "<html lang=""vi"">"
+		+ "<head><meta charset=""utf-8""><style>"
+		+ "body { margin: 0; padding: 18px; font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #F8FAFC; color: #0F172A; }"
+		+ ".banner-3d { background: linear-gradient(135deg, #FF334B 0%, #E4202A 50%, #B80D17 100%); border-radius: 12px; padding: 22px 26px; color: white; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 14px 28px -6px rgba(228, 32, 42, 0.35); position: relative; overflow: hidden; }"
+		+ ".banner-3d::after { content: ''; position: absolute; right: -25px; top: -60px; width: 220px; height: 300px; background: rgba(255,255,255,0.12); transform: rotate(35deg); pointer-events: none; }"
+		+ ".banner-title { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }"
+		+ ".banner-sub { margin: 6px 0 0; font-size: 13px; opacity: 0.92; }"
+		+ ".badge-approved { background: rgba(0,0,0,0.22); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); text-align: right; }"
+		+ ".grid-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px; }"
+		+ ".card-3d { background: #FFFFFF; border-radius: 12px; padding: 18px 20px; border: 1px solid #E2E8F0; box-shadow: 0 8px 20px -3px rgba(15, 23, 42, 0.07); position: relative; overflow: hidden; }"
+		+ ".card-3d::before { content: ''; position: absolute; left: 0; top: 12px; bottom: 12px; width: 4px; background: #E4202A; border-radius: 0 4px 4px 0; }"
+		+ ".card-title { font-size: 12px; font-weight: 700; text-transform: uppercase; color: #64748B; letter-spacing: 0.5px; }"
+		+ ".card-value { font-size: 22px; font-weight: 800; margin: 10px 0 6px; font-variant-numeric: tabular-nums; }"
+		+ ".card-pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 9999px; font-size: 11px; font-weight: 600; }"
+		+ ".pill-success { background: #ECFDF5; color: #059669; }"
+		+ ".pill-warning { background: #FFFBEB; color: #D97706; }"
+		+ ".pill-info { background: #EFF6FF; color: #2563EB; }"
+		+ ".section-title { font-size: 15px; font-weight: 700; margin: 26px 0 14px; color: #1E293B; display: flex; align-items: center; gap: 8px; }"
+		+ ".grid-split { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; }"
+		+ ".table-clean { width: 100%; border-collapse: collapse; font-size: 13px; background: #FFFFFF; border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0; box-shadow: 0 4px 12px rgba(15,23,42,0.04); }"
+		+ ".table-clean th { text-align: left; padding: 12px 16px; background: #F8FAFC; color: #475569; font-weight: 700; border-bottom: 2px solid #E2E8F0; }"
+		+ ".table-clean td { padding: 12px 16px; border-bottom: 1px solid #F1F5F9; }"
+		+ ".table-clean tr:hover td { background: #F8FAFC; }"
+		+ ".num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }"
+		+ ".bar-wrap { width: 100%; height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden; margin-top: 6px; }"
+		+ ".bar-fill { height: 100%; background: linear-gradient(90deg, #E4202A, #FF4D5E); border-radius: 4px; }"
+		+ "</style></head><body>"
+		+ "<div class=""banner-3d"">"
+		+ "  <div>"
+		+ "    <div class=""banner-title"">VINSMART FUTURE — FINANCIAL COMMAND CENTER</div>"
+		+ "    <div class=""banner-sub"">Kỳ chốt: " + StrThoiDiem + " | Chuẩn mực VAS TT200/TT99 | Cân đối Sổ Cái: 100%</div>"
+		+ "  </div>"
+		+ "  <div class=""badge-approved"">"
+		+ "    <div>CHÍNH SÁCH KẾ TOÁN</div>"
+		+ "    <div style=""color: #34D399; font-weight: 800;"">CSKT-VSF-2026/01: ĐÃ DUYỆT</div>"
+		+ "  </div>"
+		+ "</div>"
+		+ "<div class=""grid-kpi"">"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Tổng Phải Thu (AR - TK 131)</div>"
+		+ "    <div class=""card-value"" style=""color:#0F172A;"">" + StrTongAR + " <span style=""font-size:14px; font-weight:600;"">VND</span></div>"
+		+ "    <span class=""card-pill pill-success"">Khách ngoài: " + StrAR_Ngoai + "</span>"
+		+ "  </div>"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Tổng Phải Trả (AP - TK 331)</div>"
+		+ "    <div class=""card-value"" style=""color:#0F172A;"">" + StrTongAP + " <span style=""font-size:14px; font-weight:600;"">VND</span></div>"
+		+ "    <span class=""card-pill pill-info"">NCC ngoài: " + StrAP_Ngoai + "</span>"
+		+ "  </div>"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Tiền Gửi Khả Dụng (Cash & Bank)</div>"
+		+ "    <div class=""card-value"" style=""color:#059669;"">" + StrTongTien + " <span style=""font-size:14px; font-weight:600;"">VND</span></div>"
+		+ "    <span class=""card-pill pill-success"">TCB: " + StrTCB + " | VCB: " + StrVCB_USD + " $</span>"
+		+ "  </div>"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Hiệu Quả Cấn Trừ Netting</div>"
+		+ "    <div class=""card-value"" style=""color:#2563EB;"">" + StrCanTru + " <span style=""font-size:14px; font-weight:600;"">VND</span></div>"
+		+ "    <span class=""card-pill pill-success"">Tiết kiệm thanh khoản: 100%</span>"
+		+ "  </div>"
+		+ "</div>"
+		+ "<div class=""section-title"">✦ KẾT QUẢ KINH DOANH 4 KHỐI CHIẾN LƯỢC & KHỐI BO</div>"
+		+ "<table class=""table-clean"">"
+		+ "  <tr><th>Khối Nghiệp Vụ</th><th class=""num"">Doanh Thu (VND)</th><th class=""num"">Chi Phí (VND)</th><th class=""num"">Lợi Nhuận Gộp (VND)</th><th class=""num"">Biên LN</th><th class=""num"">Số Dự Án</th></tr>";
+		
+	For Each Khoi In SoLieu.CacKhoiKinhDoanh Do
+		StrDTKhoi = Format(Khoi.DoanhThu, "NFD=0; NGS=.");
+		StrCPKhoi = Format(Khoi.ChiPhi, "NFD=0; NGS=.");
+		StrLNKhoi = Format(Khoi.LoiNhuanGop, "NFD=0; NGS=.");
+		StrTyLeKhoi = Format(Khoi.TySuatLoiNhuan, "NFD=1; NGS=.");
+		
+		HTML = HTML + "<tr>"
+			+ "<td><strong>" + Khoi.TenKhoi + "</strong></td>"
+			+ "<td class=""num"">" + StrDTKhoi + "</td>"
+			+ "<td class=""num"">" + StrCPKhoi + "</td>"
+			+ "<td class=""num"" style=""color:#059669; font-weight:700;"">" + StrLNKhoi + "</td>"
+			+ "<td class=""num"">" + StrTyLeKhoi + "%</td>"
+			+ "<td class=""num"">" + String(Khoi.SoLuongDuAn) + "</td>"
+			+ "</tr>";
+	EndDo;
+	
+	HTML = HTML + "</table>"
+		+ "<div class=""grid-kpi"" style=""margin-top:20px;"">"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Vốn Lưu Động Ròng (NWC)</div>"
+		+ "    <div class=""card-value"" style=""color:#059669;"">" + StrNWC + " VND</div>"
+		+ "    <span class=""card-pill pill-success"">Dương an toàn</span>"
+		+ "  </div>"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Kỳ Thu Tiền Bình Quân (DSO)</div>"
+		+ "    <div class=""card-value"">" + StrDSO + " <span style=""font-size:14px;"">ngày</span></div>"
+		+ "    <span class=""card-pill pill-success"">Chuẩn chính sách 2026</span>"
+		+ "  </div>"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Kỳ Thanh Toán Bình Quân (DPO)</div>"
+		+ "    <div class=""card-value"">" + StrDPO + " <span style=""font-size:14px;"">ngày</span></div>"
+		+ "    <span class=""card-pill pill-success"">Tối ưu công nợ NCC</span>"
+		+ "  </div>"
+		+ "  <div class=""card-3d"">"
+		+ "    <div class=""card-title"">Chu Kỳ Tiền Mặt (CCC)</div>"
+		+ "    <div class=""card-value"">" + StrCCC + " <span style=""font-size:14px;"">ngày</span></div>"
+		+ "    <span class=""card-pill pill-success"">Chiếm dụng vốn âm hiệu quả</span>"
+		+ "  </div>"
+		+ "</div>"
+		+ "</body></html>";
+		
+	Return HTML;
+EndFunction
+
 #EndRegion

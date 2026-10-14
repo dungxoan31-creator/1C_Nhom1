@@ -239,6 +239,11 @@
 			<StyleItem>MauCanhBaoDoVSF</StyleItem>
 			<StyleItem>MauVienChinhVSF</StyleItem>
 			<StyleItem>FunctionsPanelSectionColor</StyleItem>
+			<StyleItem>MauTrangThaiThanhCong</StyleItem>
+			<StyleItem>MauCanhBaoVangVSF</StyleItem>
+			<StyleItem>MauTrangThaiNhap</StyleItem>
+			<StyleItem>MauVanBanPhuVSF</StyleItem>
+			<StyleItem>MauThongTinVSF</StyleItem>
 			<CommonPicture>LogoVSF</CommonPicture>
 			<CommonPicture>PhanHePhaiThu</CommonPicture>
 			<CommonPicture>PhanHePhaiTra</CommonPicture>

@@ -25,12 +25,14 @@
 			</Synonym>
 			<Comment>Bàn làm việc chỉ huy tài chính thời gian thực cho Ban Lãnh đạo VSF</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
-			<DefaultForm/>
+			<DefaultForm>DataProcessor.DashboardLanhDaoCFO.Form.Form</DefaultForm>
 			<AuxiliaryForm/>
 			<IncludeHelpInContents>false</IncludeHelpInContents>
 			<ExtendedPresentation/>
 			<Explanation/>
 		</Properties>
-		<ChildObjects/>
+		<ChildObjects>
+			<Form>Form</Form>
+		</ChildObjects>
 	</DataProcessor>
 </MetaDataObject>
