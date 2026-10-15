@@ -1,4 +1,4 @@
-﻿// Document: HoaDonGTGTDauRa
+// Document: HoaDonGTGTDauRa
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL / Managed Application)
 // Chuc nang: Quan ly Hoa don GTGT dien tu dau ra co ma cua CQT (ND 123/2020 & TT 78/2021)
@@ -12,6 +12,37 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	QuanLyVongDoiChungTuServer.KiemTraTrangThaiVaQuyen(ThisObject, WriteMode, PostingMode, Cancel);
 	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThaiHDDT, UserName(), WriteMode);
 	
+	// Tự động điền MST và Địa chỉ từ thông tin Đối tác nếu trên Hóa đơn đang để trống
+	If IsBlankString(MaSoThueNguoiMua) And ValueIsFilled(DoiTac) Then
+		MaSoThueNguoiMua = DoiTac.MaSoThue;
+	EndIf;
+	If IsBlankString(DiaChiNguoiMua) And ValueIsFilled(DoiTac) Then
+		DiaChiNguoiMua = DoiTac.DiaChi;
+	EndIf;
+	
+	// Kiểm tra tính hợp lệ của Mã số thuế theo chuẩn Tổng cục Thuế (10 số hoặc 13-14 số chi nhánh)
+	If Not IsBlankString(MaSoThueNguoiMua) Then
+		DoDaiMST = StrLen(TrimAll(MaSoThueNguoiMua));
+		If DoDaiMST <> 10 And DoDaiMST <> 13 And DoDaiMST <> 14 Then
+			Cancel = True;
+			Msg = New UserMessage;
+			Msg.Text = StrTemplate(NStr("vi = 'Mã số thuế ''%1'' không hợp lệ! MST phải gồm 10 số hoặc 13-14 số theo quy định.'; en = 'Tax identification number ''%1'' is invalid! Must be 10 or 13-14 characters.'"), MaSoThueNguoiMua);
+			Msg.Field = "MaSoThueNguoiMua";
+			Msg.SetData(ThisObject);
+			Msg.Message();
+		EndIf;
+	EndIf;
+	
+	// Kiểm tra ngày hóa đơn không được lớn hơn ngày hiện tại
+	If ValueIsFilled(NgayHoaDon) And BegOfDay(NgayHoaDon) > BegOfDay(CurrentDate()) Then
+		Cancel = True;
+		Msg = New UserMessage;
+		Msg.Text = NStr("vi = 'Ngày hóa đơn không được lớn hơn ngày hiện tại!'; en = 'Invoice date cannot be in the future!'");
+		Msg.Field = "NgayHoaDon";
+		Msg.SetData(ThisObject);
+		Msg.Message();
+	EndIf;
+
 	// Tu dong tinh tien thue VAT neu chua co
 	If TienThueVAT = 0 And TienChuaThue > 0 And ThueSuatVAT > 0 Then
 		TienThueVAT = Round(TienChuaThue * ThueSuatVAT / 100, 2);
@@ -51,11 +82,11 @@ Procedure Posting(Cancel, Mode)
 	RegisterRecords.CongNoPhaiThu.Write = True;
 	RegisterRecords.SoCaiKeToan.Write = True;
 	
-	// Kiem tra du lieu bat buoc
-	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Or Not ValueIsFilled(BienBanNghiemThu) Then
+	// Kiem tra du lieu bat buoc (Bo BienBanNghiemThu de cho phep hoa don xuat truc tiep)
+	If Not ValueIsFilled(PhapNhan) Or Not ValueIsFilled(DoiTac) Or Not ValueIsFilled(HopDong) Then
 		Cancel = True;
 		Msg = New UserMessage;
-		Msg.Text = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác, Hợp đồng hoặc Biên bản nghiệm thu!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, Contract, or Acceptance Report!'");
+		Msg.Text = NStr("vi = 'Thiếu thông tin bắt buộc: Pháp nhân, Đối tác hoặc Hợp đồng!'; en = 'Mandatory attributes missing: Legal Entity, Counterparty, or Contract!'");
 		Msg.SetData(ThisObject);
 		Msg.Message();
 		Return;
@@ -71,59 +102,104 @@ Procedure Posting(Cancel, Mode)
 	
 	TKThueVAT = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("33311");
 	
-	// -------------------------------------------------------------------------
-	// 1. Ghi Sổ Tích Lũy CongNoPhaiThu (AR Subledger)
-	//    - Loai ghi so: Receipt (Ghi tang cong no phai thu)
-	//    - BẮT BUỘC ChungTuGoc = BienBanNghiemThuGiaiDoan de bao toan khop noi theo dot!
-	// -------------------------------------------------------------------------
-	RegisterRecords.CongNoPhaiThu.Write = True;
-	RecordAR = RegisterRecords.CongNoPhaiThu.Add();
-	RecordAR.RecordType = AccumulationRecordType.Receipt;
-	RecordAR.Period = Date;
-	RecordAR.PhapNhan = PhapNhan;
-	RecordAR.DoiTac = DoiTac;
-	RecordAR.HopDong = HopDong;
-	RecordAR.ChungTuGoc = BienBanNghiemThu; // Rang buoc then chot P0.1
-	RecordAR.SoTien = TienThueVAT;
-	RecordAR.SoTienNgoaiTe = 0;
-	
-	// -------------------------------------------------------------------------
-	// 2. Ghi Sổ Cái Kế Toán SoCaiKeToan (General Ledger)
-	//    - But toan kep: No TK 1312 (hoac 1311) / Co TK 33311: So tien = TienThueVAT
-	//    - ChungTuGoc = BienBanNghiemThuGiaiDoan
-	// -------------------------------------------------------------------------
-	RegisterRecords.SoCaiKeToan.Write = True;
-	RecordGL = RegisterRecords.SoCaiKeToan.Add();
-	RecordGL.Period = Date;
-	RecordGL.AccountDr = TKCongNo;
-	RecordGL.AccountCr = TKThueVAT;
-	RecordGL.DoiTacNo = DoiTac;
-	RecordGL.HopDongNo = HopDong;
-	RecordGL.PhapNhan = PhapNhan;
-	
+	RefTienTe = Catalogs.TienTe.FindByCode("VND");
 	If ValueIsFilled(HopDong) And ValueIsFilled(HopDong.DongTienThanhToan) Then
-		RecordGL.TienTe = HopDong.DongTienThanhToan;
-	Else
-		RecordGL.TienTe = Catalogs.TienTe.FindByCode("VND");
+		RefTienTe = HopDong.DongTienThanhToan;
 	EndIf;
 	
-	RecordGL.ChungTuGoc = BienBanNghiemThu;
-	RecordGL.TyGia = 1;
-	RecordGL.SoTien = TienThueVAT;
-	
-	If Not IsBlankString(DienGiai) Then
-		RecordGL.DienGiai = DienGiai;
+	If ValueIsFilled(BienBanNghiemThu) Then
+		// =========================================================================
+		// LUỒNG 1: Có BBNT - Tuân thủ Invariant P0.1 (Doanh thu đã ghi ở BBNT)
+		// Chỉ ghi nhận duy nhất nghĩa vụ thuế VAT
+		// =========================================================================
+		RecordAR = RegisterRecords.CongNoPhaiThu.Add();
+		RecordAR.RecordType = AccumulationRecordType.Receipt;
+		RecordAR.Period = Date;
+		RecordAR.PhapNhan = PhapNhan;
+		RecordAR.DoiTac = DoiTac;
+		RecordAR.HopDong = HopDong;
+		RecordAR.ChungTuGoc = BienBanNghiemThu; // Rang buoc then chot P0.1
+		RecordAR.SoTien = TienThueVAT;
+		RecordAR.SoTienNgoaiTe = 0;
+
+		RecordGL = RegisterRecords.SoCaiKeToan.Add();
+		RecordGL.Period = Date;
+		RecordGL.AccountDr = TKCongNo;
+		RecordGL.AccountCr = TKThueVAT;
+		RecordGL.DoiTacNo = DoiTac;
+		RecordGL.HopDongNo = HopDong;
+		RecordGL.PhapNhan = PhapNhan;
+		RecordGL.TienTe = RefTienTe;
+		RecordGL.ChungTuGoc = BienBanNghiemThu;
+		RecordGL.TyGia = 1;
+		RecordGL.SoTien = TienThueVAT;
+		
+		If Not IsBlankString(DienGiai) Then
+			RecordGL.DienGiai = DienGiai;
+		Else
+			RecordGL.DienGiai = StrTemplate("Thuế GTGT đầu ra theo HĐ %1 ký hiệu %2", SoHoaDon, KyHieu);
+		EndIf;
 	Else
-		RecordGL.DienGiai = StrTemplate("Thuế GTGT đầu ra theo HĐ %1 ký hiệu %2", SoHoaDon, KyHieu);
+		// =========================================================================
+		// LUỒNG 2: Hóa đơn trực tiếp - BẮT BUỘC ghi nhận toàn bộ Doanh thu + Thuế
+		// =========================================================================
+		TKDoanhThu = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("5113");
+		
+		// 1. Tăng công nợ toàn bộ (Gross) trên Sổ tích lũy
+		RecordAR = RegisterRecords.CongNoPhaiThu.Add();
+		RecordAR.RecordType = AccumulationRecordType.Receipt;
+		RecordAR.Period = Date;
+		RecordAR.PhapNhan = PhapNhan;
+		RecordAR.DoiTac = DoiTac;
+		RecordAR.HopDong = HopDong;
+		RecordAR.ChungTuGoc = Ref;
+		RecordAR.SoTien = TongTienThanhToan;
+		RecordAR.SoTienNgoaiTe = 0;
+
+		// 2. Bút toán Doanh thu: Nợ 131 / Có 5113 (Tiền chưa thuế)
+		RecordRev = RegisterRecords.SoCaiKeToan.Add();
+		RecordRev.Period = Date;
+		RecordRev.AccountDr = TKCongNo;
+		RecordRev.AccountCr = TKDoanhThu;
+		RecordRev.DoiTacNo = DoiTac;
+		RecordRev.HopDongNo = HopDong;
+		RecordRev.PhapNhan = PhapNhan;
+		RecordRev.TienTe = RefTienTe;
+		RecordRev.ChungTuGoc = Ref;
+		RecordRev.TyGia = 1;
+		RecordRev.SoTien = TienChuaThue;
+		RecordRev.DienGiai = StrTemplate("Doanh thu cung cấp dịch vụ theo HĐ %1", SoHoaDon);
+
+		// 3. Bút toán Thuế VAT: Nợ 131 / Có 33311 (Tiền thuế VAT)
+		If TienThueVAT > 0 Then
+			RecordTax = RegisterRecords.SoCaiKeToan.Add();
+			RecordTax.Period = Date;
+			RecordTax.AccountDr = TKCongNo;
+			RecordTax.AccountCr = TKThueVAT;
+			RecordTax.DoiTacNo = DoiTac;
+			RecordTax.HopDongNo = HopDong;
+			RecordTax.PhapNhan = PhapNhan;
+			RecordTax.TienTe = RefTienTe;
+			RecordTax.ChungTuGoc = Ref;
+			RecordTax.TyGia = 1;
+			RecordTax.SoTien = TienThueVAT;
+			RecordTax.DienGiai = StrTemplate("Thuế GTGT đầu ra theo HĐ %1", SoHoaDon);
+		EndIf;
 	EndIf;
 	
 	// -------------------------------------------------------------------------
 	// 3. Kiem tra Invariant can doi tien te tren but toan GL
-	//    Tong No = Tong Co = TienThueVAT (Can doi tuyet doi)
 	// -------------------------------------------------------------------------
 	Try
 		EntriesGL = New Array;
-		EntriesGL.Add(New Structure("AmountDr,AmountCr", TienThueVAT, TienThueVAT));
+		If ValueIsFilled(BienBanNghiemThu) Then
+			EntriesGL.Add(New Structure("AmountDr,AmountCr", TienThueVAT, TienThueVAT));
+		Else
+			EntriesGL.Add(New Structure("AmountDr,AmountCr", TienChuaThue, TienChuaThue));
+			If TienThueVAT > 0 Then
+				EntriesGL.Add(New Structure("AmountDr,AmountCr", TienThueVAT, TienThueVAT));
+			EndIf;
+		EndIf;
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(EntriesGL);
 	Except
 	EndTry;

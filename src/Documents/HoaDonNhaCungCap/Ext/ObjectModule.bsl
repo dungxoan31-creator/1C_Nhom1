@@ -46,6 +46,11 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		NgayHoaDon = BegOfDay(Date);
 	EndIf;
 	
+	// Tu dong tinh TongTien quy doi ra VND neu nguoi dung nhap so ngoai te
+	If TongTien = 0 And TongTienNgoaiTe > 0 And TyGia > 0 Then
+		TongTien = Round(TongTienNgoaiTe * TyGia, 0);
+	EndIf;
+	
 	// Xu ly thue nha thau FCT
 	If CoKhauTruFCT Then
 		If TyLeThueVATNhaThau = 0 Then
@@ -167,8 +172,12 @@ Procedure Posting(Cancel, Mode)
 	RecordAP.ChungTuGoc = Ref;
 	RecordAP.SoTien = NoThucTraNCC;
 	
-	If TongTienNgoaiTe > 0 And TyGia > 0 Then
-		RecordAP.SoTienNgoaiTe = Round(NoThucTraNCC / TyGia, 2);
+	If TongTienNgoaiTe > 0 Then
+		If CoKhauTruFCT And TongTien > 0 Then
+			RecordAP.SoTienNgoaiTe = Round(TongTienNgoaiTe * (NoThucTraNCC / TongTien), 2);
+		Else
+			RecordAP.SoTienNgoaiTe = TongTienNgoaiTe;
+		EndIf;
 	Else
 		RecordAP.SoTienNgoaiTe = 0;
 	EndIf;

@@ -130,7 +130,10 @@ Procedure Posting(Cancel, Mode)
 	If Not ValueIsFilled(TKTien) Then
 		TKTien = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
 	EndIf;
-	TKPhiNganHang = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("6427");
+	TKPhiNganHang = Constants.TaiKhoanPhiNganHang.Get();
+	If Not ValueIsFilled(TKPhiNganHang) Then
+		TKPhiNganHang = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("6427");
+	EndIf;
 	TienTeVND = Catalogs.TienTe.FindByCode("VND");
 	
 	NgayHachToan = ?(ValueIsFilled(NgayGhiSo), NgayGhiSo, Date);
@@ -605,11 +608,16 @@ Procedure Posting(Cancel, Mode)
 	
 	// But toan 2: Phi chuyen tien ngan hang (No 6427 / Co 1121) neu co
 	If PhiNganHang > 0 Then
-		TK1121 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
+		If MaTKTien = "1122" And LaNgoaiTe Then
+			TKCoPhi = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1122");
+		Else
+			TKCoPhi = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1121");
+		EndIf;
+		
 		Row2 = RegisterRecords.SoCaiKeToan.Add();
 		Row2.Period = NgayHachToan;
 		Row2.AccountDr = TKPhiNganHang;
-		Row2.AccountCr = TK1121;
+		Row2.AccountCr = TKCoPhi;
 		Row2.SoTien = PhiNganHang;
 		Row2.DienGiai = StrTemplate("Phí chuyển tiền ngân hàng UNC %1", Number);
 		Row2.PhapNhan = PhapNhan;

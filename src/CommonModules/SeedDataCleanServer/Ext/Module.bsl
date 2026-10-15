@@ -270,7 +270,7 @@ Procedure ThiLapHangSo(Val PhapNhanCode, Log)
 		Constants.CanhBaoCloudMucVang.Set(80);
 		Constants.CanhBaoCloudMucCam.Set(90);
 		Constants.CanhBaoCloudMucDo.Set(100);
-		Constants.TaiKhoanPhiNganHang.Set("6425");
+		Constants.TaiKhoanPhiNganHang.Set(ChartsOfAccounts.HeThongTaiKhoan.FindByCode("6427"));
 		Constants.TaiKhoanTrungGianCanTru.Set("1388");
 		Log.Add("[+] Thiet lap thanh cong tat ca 12 Hang so he thong!");
 	Except

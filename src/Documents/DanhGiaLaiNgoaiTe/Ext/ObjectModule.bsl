@@ -1,7 +1,7 @@
-﻿// Document: DanhGiaLaiNgoaiTe
+// Document: DanhGiaLaiNgoaiTe
 // Du an: VinSmart Future - AR & AP Management Platform (VSF)
 // Nen tang: 1C:Enterprise 8.3 (BSL)
-// Chuc nang: Danh gia lai cac khoan muc tien te co goc ngoai te cuoi ky (TK 1122, TK 3313)
+// Chuc nang: Danh gia lai cac khoan muc tien te co goc ngoai te cuoi ky (TK 1122, TK 3313, TK 1312)
 //            Hach toan SoCaiKeToan qua TK 4131 va ket chuyen sang TK 515 / TK 635 triet tieu TK 4131 ve 0.
 //            Cap nhat gia tri VND tren so phu DongTien / CongNoPhaiTra ma giu nguyen so du ngoai te (USD Delta = 0).
 
@@ -56,6 +56,7 @@ Procedure Posting(Cancel, Mode)
 	RefTT = TienTe;
 	
 	TK1122 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1122");
+	TK1312 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("1312");
 	TK3313 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("3313");
 	TK4131 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("4131");
 	TK515 = ChartsOfAccounts.HeThongTaiKhoan.FindByCode("515");
@@ -69,11 +70,18 @@ Procedure Posting(Cancel, Mode)
 	// including zero/new keys. Cash groups all accounts and KhoanMucDongTien.
 	// ponytail: entity-wide AP lock; narrow only with a stable currency dimension.
 	Try
+		LockAR = New DataLock;
+		KeyAR = LockAR.Add("AccumulationRegister.CongNoPhaiThu");
+		KeyAR.Mode = DataLockMode.Exclusive;
+		KeyAR.SetValue("PhapNhan", RefPN);
+		LockAR.Lock();
+		
 		LockAP = New DataLock;
 		KeyAP = LockAP.Add("AccumulationRegister.CongNoPhaiTra");
 		KeyAP.Mode = DataLockMode.Exclusive;
 		KeyAP.SetValue("PhapNhan", RefPN);
 		LockAP.Lock();
+		
 		LockCash = New DataLock;
 		KeyCash = LockCash.Add("AccumulationRegister.DongTien");
 		KeyCash.Mode = DataLockMode.Exclusive;
@@ -255,7 +263,75 @@ Procedure Posting(Cancel, Mode)
 		EndIf;
 	EndDo;
 	
-	// 3. Ket chuyen tai khoan 4131 sang TK 515 hoac TK 635 de triet tieu so du TK 4131 ve 0
+	// 3. Danh gia lai Cong no phai thu USD (TK 1312 / CongNoPhaiThu) cho MOI doi tac / hop dong
+	Q_AR = New Query;
+	Q_AR.Text = 
+		"SELECT
+		|	AR.DoiTac AS DoiTac,
+		|	AR.HopDong AS HopDong,
+		|	AR.ChungTuGoc AS ChungTuGoc,
+		|	ISNULL(SUM(AR.SoTienBalance), 0) AS SoTienVND,
+		|	ISNULL(SUM(AR.SoTienNgoaiTeBalance), 0) AS SoTienUSD
+		|FROM
+		|	AccumulationRegister.CongNoPhaiThu.Balance(&BoundaryDate, PhapNhan = &PhapNhan) AS AR
+		|WHERE
+		|	AR.SoTienNgoaiTeBalance > 0
+		|GROUP BY
+		|	AR.DoiTac,
+		|	AR.HopDong,
+		|	AR.ChungTuGoc";
+	Q_AR.SetParameter("BoundaryDate", BoundaryNgayChot);
+	Q_AR.SetParameter("PhapNhan", RefPN);
+	ResAR = Q_AR.Execute().Unload();
+	
+	For Each RowAR In ResAR Do
+		If RowAR.SoTienUSD = 0 Then
+			Continue;
+		EndIf;
+		
+		GiaTriMoiVND_AR = Round(RowAR.SoTienUSD * TyGiaDanhGia, 2);
+		ChenhLechAR = GiaTriMoiVND_AR - RowAR.SoTienVND;
+		
+		If ChenhLechAR > 0 Then
+			// Phai thu tang: Lai FX -> No 1312 / Co 4131
+			Entry = RegisterRecords.SoCaiKeToan.Add();
+			Entry.Period = Date;
+			Entry.AccountDr = TK1312;
+			Entry.AccountCr = TK4131;
+			Entry.PhapNhan = RefPN;
+			Entry.TienTe = RefTT;
+			Entry.SoTien = ChenhLechAR;
+			Entry.SoTienNgoaiTe = 0;
+			Entry.DienGiai = StrTemplate("Đánh giá lại tăng công nợ phải thu ngoại tệ theo tỷ giá %1", TyGiaDanhGia);
+			Entry.DoiTac = RowAR.DoiTac;
+			Entry.HopDong = RowAR.HopDong;
+			Entry.ChungTuGoc = RowAR.ChungTuGoc;
+			Entry.DoiTacNo = RowAR.DoiTac;
+			Entry.HopDongNo = RowAR.HopDong;
+			Entry.ChungTuGocNo = RowAR.ChungTuGoc;
+			TongLai = TongLai + ChenhLechAR;
+		ElsIf ChenhLechAR < 0 Then
+			// Phai thu giam: Lo FX -> No 4131 / Co 1312
+			Entry = RegisterRecords.SoCaiKeToan.Add();
+			Entry.Period = Date;
+			Entry.AccountDr = TK4131;
+			Entry.AccountCr = TK1312;
+			Entry.PhapNhan = RefPN;
+			Entry.TienTe = RefTT;
+			Entry.SoTien = -ChenhLechAR;
+			Entry.SoTienNgoaiTe = 0;
+			Entry.DienGiai = StrTemplate("Đánh giá lại giảm công nợ phải thu ngoại tệ theo tỷ giá %1", TyGiaDanhGia);
+			Entry.DoiTac = RowAR.DoiTac;
+			Entry.HopDong = RowAR.HopDong;
+			Entry.ChungTuGoc = RowAR.ChungTuGoc;
+			Entry.DoiTacCo = RowAR.DoiTac;
+			Entry.HopDongCo = RowAR.HopDong;
+			Entry.ChungTuGocCo = RowAR.ChungTuGoc;
+			TongLo = TongLo + (-ChenhLechAR);
+		EndIf;
+	EndDo;
+	
+	// 4. Ket chuyen tai khoan 4131 sang TK 515 hoac TK 635 de triet tieu so du TK 4131 ve 0
 	If TongLai > TongLo Then
 		NetLai = TongLai - TongLo;
 		Entry = RegisterRecords.SoCaiKeToan.Add();
@@ -283,7 +359,7 @@ Procedure Posting(Cancel, Mode)
 	TongLai515 = TongLai;
 	TongLo635 = TongLo;
 	
-	// 4. Kiem tra can doi va triet tieu so du TK 4131 tren chung tu
+	// 5. Kiem tra can doi va triet tieu so du TK 4131 tren chung tu
 	TongNo4131 = 0;
 	TongCo4131 = 0;
 	For Each RowGL In RegisterRecords.SoCaiKeToan Do

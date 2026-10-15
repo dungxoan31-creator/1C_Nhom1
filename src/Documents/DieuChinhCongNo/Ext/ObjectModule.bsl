@@ -1,4 +1,4 @@
-﻿// Document: DieuChinhCongNo
+// Document: DieuChinhCongNo
 // Du an: VinSmart Future - AR & AP Management
 // Nen platform: 1C:Enterprise 8.3 (BSL / Managed Application)
 // Chuc nang: Xu ly tranh chap sau ghi so va thoa thuan sai sot theo Nghi dinh 70/2025/ND-CP & ND 123/2020.
@@ -29,22 +29,23 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
-	// Thue suat mac dinh la 10% neu chua nhap
-	If ThueSuatVAT = 0 Then
-		ThueSuatVAT = 10;
-	EndIf;
-	
-	// Tu dong boc tach Doanh thu giam va Thue VAT giam
+	// Cho phép thuế suất 0% (Không chịu thuế hoặc Thuế 0% cho dịch vụ phần mềm/xuất khẩu)
+	// Không tự ý ép ThueSuatVAT = 10 khi người dùng nhập 0%
 	If TongTienGiam > 0 Then
 		If GiamDoanhThu = 0 Then
-			TyLeHeSo = 1 + ThueSuatVAT / 100;
-			GiamDoanhThu = Round(TongTienGiam / TyLeHeSo, 0);
+			If ThueSuatVAT > 0 Then
+				TyLeHeSo = 1 + ThueSuatVAT / 100;
+				GiamDoanhThu = Round(TongTienGiam / TyLeHeSo, 0);
+			Else
+				// Thuế suất 0% hoặc KCT -> Toàn bộ số tiền giảm là giảm doanh thu
+				GiamDoanhThu = TongTienGiam;
+			EndIf;
 		EndIf;
 		If GiamThueVAT = 0 Then
 			GiamThueVAT = TongTienGiam - GiamDoanhThu;
 		EndIf;
 	ElsIf GiamDoanhThu > 0 Then
-		If GiamThueVAT = 0 Then
+		If GiamThueVAT = 0 And ThueSuatVAT > 0 Then
 			GiamThueVAT = Round(GiamDoanhThu * ThueSuatVAT / 100, 0);
 		EndIf;
 		TongTienGiam = GiamDoanhThu + GiamThueVAT;
@@ -147,17 +148,19 @@ Procedure Posting(Cancel, Mode)
 	RecordGL1.DienGiai = DienGiaiChung + " (Giảm doanh thu dịch vụ)";
 	
 	// Dong 2: Giam Thue GTGT dau ra
-	RecordGL2 = RegisterRecords.SoCaiKeToan.Add();
-	RecordGL2.Period = Date;
-	RecordGL2.AccountDr = TKThueVAT;
-	RecordGL2.AccountCr = TKCongNo;
-	RecordGL2.PhapNhan = PhapNhan;
-	RecordGL2.TienTe = TienTeHachToan;
-	RecordGL2.ChungTuGoc = BienBanNghiemThu;
-	RecordGL2.TyGia = 1;
-	RecordGL2.SoTien = GiamThueVAT;
-	RecordGL2.SoTienNgoaiTe = 0;
-	RecordGL2.DienGiai = DienGiaiChung + " (Giảm thuế GTGT đầu ra)";
+	If GiamThueVAT > 0 Then
+		RecordGL2 = RegisterRecords.SoCaiKeToan.Add();
+		RecordGL2.Period = Date;
+		RecordGL2.AccountDr = TKThueVAT;
+		RecordGL2.AccountCr = TKCongNo;
+		RecordGL2.PhapNhan = PhapNhan;
+		RecordGL2.TienTe = TienTeHachToan;
+		RecordGL2.ChungTuGoc = BienBanNghiemThu;
+		RecordGL2.TyGia = 1;
+		RecordGL2.SoTien = GiamThueVAT;
+		RecordGL2.SoTienNgoaiTe = 0;
+		RecordGL2.DienGiai = DienGiaiChung + " (Giảm thuế GTGT đầu ra)";
+	EndIf;
 	
 	// -------------------------------------------------------------------------
 	// 5. Kiem tra can doi he thong (Invariant Checking)
@@ -166,7 +169,9 @@ Procedure Posting(Cancel, Mode)
 	Try
 		EntriesGL = New Array;
 		EntriesGL.Add(New Structure("AmountDr,AmountCr", GiamDoanhThu, GiamDoanhThu));
-		EntriesGL.Add(New Structure("AmountDr,AmountCr", GiamThueVAT, GiamThueVAT));
+		If GiamThueVAT > 0 Then
+			EntriesGL.Add(New Structure("AmountDr,AmountCr", GiamThueVAT, GiamThueVAT));
+		EndIf;
 		QuanLyVongDoiChungTuServer.KiemTraCanDoiSoCai(EntriesGL);
 	Except
 	EndTry;
@@ -193,9 +198,14 @@ EndFunction
 Function TinhToanBocTachGiamGia(Val TongTienGiam, Val ThueSuatVAT = 10) Export
 	Result = New Structure("GiamDoanhThu,GiamThueVAT,TongTienGiam", 0, 0, TongTienGiam);
 	If TongTienGiam > 0 Then
-		TyLeHeSo = 1 + ThueSuatVAT / 100;
-		Result.GiamDoanhThu = Round(TongTienGiam / TyLeHeSo, 0);
-		Result.GiamThueVAT = TongTienGiam - Result.GiamDoanhThu;
+		If ThueSuatVAT > 0 Then
+			TyLeHeSo = 1 + ThueSuatVAT / 100;
+			Result.GiamDoanhThu = Round(TongTienGiam / TyLeHeSo, 0);
+			Result.GiamThueVAT = TongTienGiam - Result.GiamDoanhThu;
+		Else
+			Result.GiamDoanhThu = TongTienGiam;
+			Result.GiamThueVAT = 0;
+		EndIf;
 	EndIf;
 	Return Result;
 EndFunction
