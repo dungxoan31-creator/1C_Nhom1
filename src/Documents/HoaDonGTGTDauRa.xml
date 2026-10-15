@@ -299,7 +299,7 @@
 					<ChoiceParameterLinks>
 						<xr:Link>
 							<xr:Name>Filter.ChuSoHuu</xr:Name>
-							<xr:DataPath xsi:type="xs:string">Object.DoiTac</xr:DataPath>
+							<xr:DataPath xsi:type="xs:string">Document.HoaDonGTGTDauRa.Attribute.DoiTac</xr:DataPath>
 							<xr:ValueChange>Clear</xr:ValueChange>
 						</xr:Link>
 					</ChoiceParameterLinks>
