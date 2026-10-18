@@ -13,18 +13,6 @@
 		<visible>true</visible>
 		<enabled>true</enabled>
 		<horizontalAlign>Left</horizontalAlign>
-		<ChildItems>
-			<Button name="FormCmdXemChungTuLienQuan">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
-				<ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip">
-					<name>FormCmdXemChungTuLienQuanExtendedTooltip</name>
-					<id>101</id>
-					<visible>true</visible>
-					<enabled>true</enabled>
-				</ExtendedTooltip>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
@@ -82,8 +70,8 @@
 										<InputField name="HopDong">
 											<DataPath>Object.HopDong</DataPath>
 										</InputField>
-										<InputField name="DuAn">
-											<DataPath>Object.DuAn</DataPath>
+										<InputField name="BienBanNghiemThu">
+											<DataPath>Object.BienBanNghiemThu</DataPath>
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
@@ -184,15 +172,4 @@
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="CmdXemChungTuLienQuan">
-			<Title>
-				<v8:item>
-					<v8:lang>vi</v8:lang>
-					<v8:content>🔗 Chứng từ liên quan</v8:content>
-				</v8:item>
-			</Title>
-			<Action>CmdXemChungTuLienQuan</Action>
-		</Command>
-	</Commands>
 </Form>

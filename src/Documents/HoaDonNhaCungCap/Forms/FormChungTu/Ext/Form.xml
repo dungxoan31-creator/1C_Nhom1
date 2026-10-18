@@ -13,18 +13,6 @@
 		<visible>true</visible>
 		<enabled>true</enabled>
 		<horizontalAlign>Left</horizontalAlign>
-		<ChildItems>
-			<Button name="FormCmdXemChungTuLienQuan">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
-				<ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip">
-					<name>FormCmdXemChungTuLienQuanExtendedTooltip</name>
-					<id>101</id>
-					<visible>true</visible>
-					<enabled>true</enabled>
-				</ExtendedTooltip>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
@@ -82,8 +70,8 @@
 										<InputField name="HopDong">
 											<DataPath>Object.HopDong</DataPath>
 										</InputField>
-										<InputField name="DuAn">
-											<DataPath>Object.DuAn</DataPath>
+										<InputField name="SoHoaDon">
+											<DataPath>Object.SoHoaDon</DataPath>
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
@@ -92,17 +80,17 @@
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ChildItems>
-										<InputField name="TienChuaThue">
-											<DataPath>Object.TienChuaThue</DataPath>
+										<InputField name="TienDichVu">
+											<DataPath>Object.TienDichVu</DataPath>
 											<Events>
-												<Event name="OnChange">TienChuaThueOnChange</Event>
+												<Event name="OnChange">TienDichVuOnChange</Event>
 											</Events>
 										</InputField>
 										<InputField name="TienThueVAT">
 											<DataPath>Object.TienThueVAT</DataPath>
 										</InputField>
-										<InputField name="TongTienThanhToan">
-											<DataPath>Object.TongTienThanhToan</DataPath>
+										<InputField name="TongTien">
+											<DataPath>Object.TongTien</DataPath>
 											<ReadOnly>true</ReadOnly>
 										</InputField>
 									</ChildItems>
@@ -119,8 +107,8 @@
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="ChiTietTienChuaThue">
-							<DataPath>Object.TienChuaThue</DataPath>
+						<InputField name="ChiTietTienDichVu">
+							<DataPath>Object.TienDichVu</DataPath>
 						</InputField>
 						<InputField name="ChiTietTienThueVAT">
 							<DataPath>Object.TienThueVAT</DataPath>
@@ -135,8 +123,8 @@
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="TrangThaiPheDuyet">
-							<DataPath>Object.TrangThaiPheDuyet</DataPath>
+						<InputField name="TrangThai">
+							<DataPath>Object.TrangThai</DataPath>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -180,15 +168,4 @@
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="CmdXemChungTuLienQuan">
-			<Title>
-				<v8:item>
-					<v8:lang>vi</v8:lang>
-					<v8:content>🔗 Chứng từ liên quan</v8:content>
-				</v8:item>
-			</Title>
-			<Action>CmdXemChungTuLienQuan</Action>
-		</Command>
-	</Commands>
 </Form>

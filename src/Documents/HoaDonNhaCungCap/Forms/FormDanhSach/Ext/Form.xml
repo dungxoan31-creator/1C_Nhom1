@@ -154,8 +154,8 @@
 						</v8:item>
 					</Title>
 				</InputField>
-				<InputField name="DanhSachTongTienThanhToan">
-					<DataPath>DanhSach.TongTienThanhToan</DataPath>
+				<InputField name="DanhSachTongTien">
+					<DataPath>DanhSach.TongTien</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
@@ -163,12 +163,12 @@
 						</v8:item>
 					</Title>
 				</InputField>
-				<InputField name="DanhSachTrangThaiPheDuyet">
-					<DataPath>DanhSach.TrangThaiPheDuyet</DataPath>
+				<InputField name="DanhSachTrangThai">
+					<DataPath>DanhSach.TrangThai</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Phê duyệt</v8:content>
+							<v8:content>Trạng thái</v8:content>
 						</v8:item>
 					</Title>
 				</InputField>

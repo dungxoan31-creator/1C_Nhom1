@@ -45,9 +45,9 @@ Procedure ApDungBoLocAtServer()
 		ItemFilter.Use = True;
 	ElsIf BoLocTrangThai = "ChoPheDuyet" Then
 		ItemFilter = DanhSach.SettingsComposer.FixedSettings.Filter.Items.Add(Type("DataCompositionFilterItem"));
-		ItemFilter.LeftValue = New DataCompositionField("TrangThaiPheDuyet");
+		ItemFilter.LeftValue = New DataCompositionField("TrangThai");
 		ItemFilter.ComparisonType = DataCompositionComparisonType.Equal;
-		ItemFilter.RightValue = Enums.TrangThaiPheDuyet.ChoPheDuyet;
+		ItemFilter.RightValue = Enums.TrangThaiHoaDonAP.ChoPheDuyet;
 		ItemFilter.Use = True;
 	ElsIf BoLocTrangThai = "BanNhap" Then
 		ItemFilter = DanhSach.SettingsComposer.FixedSettings.Filter.Items.Add(Type("DataCompositionFilterItem"));

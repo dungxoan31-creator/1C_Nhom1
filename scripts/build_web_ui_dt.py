@@ -81,12 +81,22 @@ def main():
             [str(EXE_1C), "DESIGNER", "/F", str(IB_DIR), "/CheckConfig", "-Config", "-ThinClient"],
             "4. Running CheckConfig verification")
 
+        # Step 4a: Setup standard users
+        run_step("04a_setup_users",
+            [str(EXE_1C), "ENTERPRISE", "/F", str(IB_DIR), "/C", "SetupSampleUsers"],
+            "4a. Initializing 5 standard users (Admin, ketoan_ar, ketoan_ap, ketoan_truong, cfo_giamdoc)")
+
+        # Step 4b: Initialize standard master data (including 243 TT200 accounts)
+        run_step("04b_seed_data",
+            [str(EXE_1C), "ENTERPRISE", "/F", str(IB_DIR), "/N", "Admin", "/C", "SeedMasterData"],
+            "4b. Initializing standard Master Data (PhapNhan, DoiTac, HopDong, 243 Accounts TT200)")
+
         # Step 5: Export to .dt file
         if OUT_DT.exists():
             OUT_DT.unlink()
 
         run_step("05_dump",
-            [str(EXE_1C), "DESIGNER", "/F", str(IB_DIR), "/DumpIB", str(OUT_DT)],
+            [str(EXE_1C), "DESIGNER", "/F", str(IB_DIR), "/N", "Admin", "/DumpIB", str(OUT_DT)],
             "5. Exporting Infobase to .dt package (DumpIB)")
 
         if OUT_DT.exists():

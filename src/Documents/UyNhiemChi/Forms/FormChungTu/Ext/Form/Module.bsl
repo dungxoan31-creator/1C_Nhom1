@@ -18,7 +18,7 @@ EndProcedure
 #Region FormHeaderItemsEventHandlers
 
 &AtClient
-Procedure TongTienThanhToanOnChange(Item)
+Procedure SoTienOnChange(Item)
 	CapNhatHTMLHeaderAtServer();
 EndProcedure
 
@@ -55,12 +55,12 @@ Procedure CapNhatHTMLHeader()
 		TrangThaiBg = "#E8F5E9";
 		StepIndex = 4;
 	Else
-		If Object.TrangThaiThanhToan = Enums.TrangThaiLenhThanhToan.ChoPheDuyet Then
+		If Object.TrangThai = Enums.TrangThaiLenhThanhToan.ChoPheDuyet Then
 			TrangThaiText = "CHỜ CFO DUYỆT";
 			TrangThaiColor = "#B71C1C";
 			TrangThaiBg = "#FFEBEE";
 			StepIndex = 3;
-		ElsIf Object.TrangThaiThanhToan = Enums.TrangThaiLenhThanhToan.ChoKiemSoat Then
+		ElsIf Object.TrangThai = Enums.TrangThaiLenhThanhToan.ChoKiemSoat Then
 			TrangThaiText = "CHỜ KIỂM SOÁT";
 			TrangThaiColor = "#E65100";
 			TrangThaiBg = "#FFF3E0";
@@ -68,7 +68,7 @@ Procedure CapNhatHTMLHeader()
 		EndIf;
 	EndIf;
 	
-	TongTienStr = Format(Object.TongTienThanhToan, "NFD=0; NGS='.'; NG=3") + " VND";
+	TongTienStr = Format(Object.SoTien, "NFD=0; NGS='.'; NG=3") + " VND";
 	
 	Step1Class = ?(StepIndex >= 1, "step-done", "step-pending");
 	Step2Class = ?(StepIndex >= 2, "step-done", "step-pending");

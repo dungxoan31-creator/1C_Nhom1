@@ -1,4 +1,4 @@
-// Form Module: BienBanNghiemThuGiaiDoan FormChungTu
+// Form Module: BienBanNghiemThuGiaiDoan
 
 #Region FormEventHandlers
 
@@ -10,7 +10,7 @@ EndProcedure
 &AtClient
 Procedure AfterWrite(WriteParameters)
 	CapNhatHTMLHeaderAtServer();
-	ShowUserNotification("Lưu chứng từ thành công", , "Biên bản nghiệm thu " + Object.Number + " đã được cập nhật.", PictureLib.Information);
+	ShowUserNotification("Lưu biên bản thành công", , "Biên bản nghiệm thu " + Object.Number + " đã được ghi nhận.", PictureLib.Information);
 EndProcedure
 
 #EndRegion
@@ -18,19 +18,13 @@ EndProcedure
 #Region FormHeaderItemsEventHandlers
 
 &AtClient
-Procedure TienChuaThueOnChange(Item)
+Procedure GiaTriNghiemThuChuaVATOnChange(Item)
 	TinhLaiTongClient();
 EndProcedure
 
 &AtClient
 Procedure TyLeVATOnChange(Item)
 	TinhLaiTongClient();
-EndProcedure
-
-&AtClient
-Procedure CmdXemChungTuLienQuan(Command)
-	ThongTinLienQuan = "Chuỗi chứng từ: Hợp đồng -> Biên bản nghiệm thu " + Object.Number + " -> Hóa đơn GTGT đầu ra";
-	ShowUserNotification("Chứng từ liên quan", , ThongTinLienQuan, PictureLib.Information);
 EndProcedure
 
 #EndRegion
@@ -41,8 +35,8 @@ EndProcedure
 Procedure TinhLaiTongClient()
 	// Tính toán số học nhẹ trực tiếp tại Client theo chuẩn 1C #std629
 	TyLe = ?(Object.TyLeVAT > 0, Object.TyLeVAT / 100, 0.1);
-	Object.TienVAT = Object.TienChuaThue * TyLe;
-	Object.TongGiaTriNghiemThu = Object.TienChuaThue + Object.TienVAT;
+	Object.TienVAT = Object.GiaTriNghiemThuChuaVAT * TyLe;
+	Object.TongGiaTri = Object.GiaTriNghiemThuChuaVAT + Object.TienVAT;
 	CapNhatHTMLHeaderAtServer();
 EndProcedure
 
@@ -70,12 +64,12 @@ Procedure CapNhatHTMLHeader()
 		StepIndex = 4;
 	Else
 		// Kiểm tra trạng thái nghiệm thu
-		If Object.TrangThaiNghiemThu = Enums.TrangThaiNghiemThuAR.DaNghiemThu Then
+		If Object.TrangThai = Enums.TrangThaiNghiemThuAR.DaNghiemThu Then
 			TrangThaiText = "ĐÃ NGHIỆM THU";
 			TrangThaiColor = "#1565C0";
 			TrangThaiBg = "#E3F2FD";
 			StepIndex = 3;
-		ElsIf Object.TrangThaiNghiemThu = Enums.TrangThaiNghiemThuAR.ChoDuyet Then
+		ElsIf Object.TrangThai = Enums.TrangThaiNghiemThuAR.ChoDuyet Then
 			TrangThaiText = "CHỜ DUYỆT";
 			TrangThaiColor = "#E65100";
 			TrangThaiBg = "#FFF3E0";
@@ -83,9 +77,8 @@ Procedure CapNhatHTMLHeader()
 		EndIf;
 	EndIf;
 	
-	TongTienStr = Format(Object.TongGiaTriNghiemThu, "NFD=0; NGS='.'; NG=3") + " VND";
+	TongTienStr = Format(Object.TongGiaTri, "NFD=0; NGS='.'; NG=3") + " VND";
 	
-	// WorkflowStepper 4 bước
 	Step1Class = ?(StepIndex >= 1, "step-done", "step-pending");
 	Step2Class = ?(StepIndex >= 2, "step-done", "step-pending");
 	Step3Class = ?(StepIndex >= 3, "step-done", "step-pending");
@@ -115,11 +108,11 @@ Procedure CapNhatHTMLHeader()
 		"</div>" +
 		"</div>" +
 		"<div class='stepper WorkflowStepper'>" +
-		"<span class='" + Step1Class + "'>① Lập nháp</span>" +
+		"<span class='" + Step1Class + "'>① Tiếp nhận hồ sơ</span>" +
 		"<span class='step-arrow'>➔</span>" +
-		"<span class='" + Step2Class + "'>② Soát xét kỹ thuật</span>" +
+		"<span class='" + Step2Class + "'>② Soát xét hồ sơ</span>" +
 		"<span class='step-arrow'>➔</span>" +
-		"<span class='" + Step3Class + "'>③ Ký duyệt nghiệm thu</span>" +
+		"<span class='" + Step3Class + "'>③ Nghiệm thu bàn giao</span>" +
 		"<span class='step-arrow'>➔</span>" +
 		"<span class='" + Step4Class + "'>④ Đã ghi sổ</span>" +
 		"</div>" +

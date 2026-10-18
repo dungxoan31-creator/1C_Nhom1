@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>vi</v8:lang>
-			<v8:content>Biên bản nghiệm thu giai đoạn (AR)</v8:content>
+			<v8:content>Biên bản nghiệm thu giai đoạn (AR) - VinSmart Future</v8:content>
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
@@ -13,18 +13,6 @@
 		<visible>true</visible>
 		<enabled>true</enabled>
 		<horizontalAlign>Left</horizontalAlign>
-		<ChildItems>
-			<Button name="FormCmdXemChungTuLienQuan">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
-				<ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip">
-					<name>FormCmdXemChungTuLienQuanExtendedTooltip</name>
-					<id>101</id>
-					<visible>true</visible>
-					<enabled>true</enabled>
-				</ExtendedTooltip>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
@@ -82,9 +70,6 @@
 										<InputField name="HopDong">
 											<DataPath>Object.HopDong</DataPath>
 										</InputField>
-										<InputField name="DuAn">
-											<DataPath>Object.DuAn</DataPath>
-										</InputField>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="CotPhai">
@@ -92,13 +77,10 @@
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ChildItems>
-										<InputField name="TenGiaiDoan">
-											<DataPath>Object.TenGiaiDoan</DataPath>
-										</InputField>
-										<InputField name="TienChuaThue">
-											<DataPath>Object.TienChuaThue</DataPath>
+										<InputField name="GiaTriNghiemThuChuaVAT">
+											<DataPath>Object.GiaTriNghiemThuChuaVAT</DataPath>
 											<Events>
-												<Event name="OnChange">TienChuaThueOnChange</Event>
+												<Event name="OnChange">GiaTriNghiemThuChuaVATOnChange</Event>
 											</Events>
 										</InputField>
 										<InputField name="TyLeVAT">
@@ -110,8 +92,8 @@
 										<InputField name="TienVAT">
 											<DataPath>Object.TienVAT</DataPath>
 										</InputField>
-										<InputField name="TongGiaTriNghiemThu">
-											<DataPath>Object.TongGiaTriNghiemThu</DataPath>
+										<InputField name="TongGiaTri">
+											<DataPath>Object.TongGiaTri</DataPath>
 											<ReadOnly>true</ReadOnly>
 										</InputField>
 									</ChildItems>
@@ -128,11 +110,8 @@
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="ChiTietTenGiaiDoan">
-							<DataPath>Object.TenGiaiDoan</DataPath>
-						</InputField>
-						<InputField name="ChiTietTienChuaThue">
-							<DataPath>Object.TienChuaThue</DataPath>
+						<InputField name="ChiTietGiaTriNghiemThuChuaVAT">
+							<DataPath>Object.GiaTriNghiemThuChuaVAT</DataPath>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -144,8 +123,8 @@
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="TrangThaiNghiemThu">
-							<DataPath>Object.TrangThaiNghiemThu</DataPath>
+						<InputField name="TrangThai">
+							<DataPath>Object.TrangThai</DataPath>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -189,15 +168,4 @@
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="CmdXemChungTuLienQuan">
-			<Title>
-				<v8:item>
-					<v8:lang>vi</v8:lang>
-					<v8:content>🔗 Chứng từ liên quan</v8:content>
-				</v8:item>
-			</Title>
-			<Action>CmdXemChungTuLienQuan</Action>
-		</Command>
-	</Commands>
 </Form>

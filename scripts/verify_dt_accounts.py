@@ -16,7 +16,12 @@ import subprocess
 from pathlib import Path
 
 WORKSPACE = Path(r"C:\Users\Dung\Documents\VinSmart_1C_VietHoa_Test")
-DT_PATH = WORKSPACE / "VinSmart_Future_AR_AP_Clean.dt"
+if len(sys.argv) > 1:
+    DT_PATH = Path(sys.argv[1])
+elif (WORKSPACE / "VinSmart_Future_Modern_Web_UI.dt").exists():
+    DT_PATH = WORKSPACE / "VinSmart_Future_Modern_Web_UI.dt"
+else:
+    DT_PATH = WORKSPACE / "VinSmart_Future_AR_AP_Clean.dt"
 TEST_TMP = WORKSPACE / "verify_dt_tmp"
 IB_DIR = TEST_TMP / "IB"
 

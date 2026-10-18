@@ -18,7 +18,7 @@ EndProcedure
 #Region FormHeaderItemsEventHandlers
 
 &AtClient
-Procedure TienChuaThueOnChange(Item)
+Procedure TienDichVuOnChange(Item)
 	TinhLaiTongClient();
 EndProcedure
 
@@ -35,8 +35,8 @@ EndProcedure
 &AtClient
 Procedure TinhLaiTongClient()
 	// Tính toán số học nhẹ trực tiếp tại Client theo chuẩn 1C #std629
-	Object.TienThueVAT = Object.TienChuaThue * 0.1;
-	Object.TongTienThanhToan = Object.TienChuaThue + Object.TienThueVAT;
+	Object.TienThueVAT = Object.TienDichVu * 0.1;
+	Object.TongTien = Object.TienDichVu + Object.TienThueVAT;
 	CapNhatHTMLHeaderAtServer();
 EndProcedure
 
@@ -63,12 +63,12 @@ Procedure CapNhatHTMLHeader()
 		TrangThaiBg = "#E8F5E9";
 		StepIndex = 4;
 	Else
-		If Object.TrangThaiPheDuyet = Enums.TrangThaiHoaDonAP.ChoPheDuyet Or Object.TrangThaiPheDuyet = Enums.TrangThaiHoaDonAP.ChoDuyetCFO Then
+		If Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoPheDuyet Or Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoDuyetCFO Then
 			TrangThaiText = "CHỜ CFO DUYỆT";
 			TrangThaiColor = "#B71C1C";
 			TrangThaiBg = "#FFEBEE";
 			StepIndex = 3;
-		ElsIf Object.TrangThaiPheDuyet = Enums.TrangThaiHoaDonAP.ChoSoatXet Or Object.TrangThaiPheDuyet = Enums.TrangThaiHoaDonAP.ChoKeToanAP Then
+		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoSoatXet Or Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoKeToanAP Then
 			TrangThaiText = "CHỜ SOÁT XÉT";
 			TrangThaiColor = "#E65100";
 			TrangThaiBg = "#FFF3E0";
@@ -76,7 +76,7 @@ Procedure CapNhatHTMLHeader()
 		EndIf;
 	EndIf;
 	
-	TongTienStr = Format(Object.TongTienThanhToan, "NFD=0; NGS='.'; NG=3") + " VND";
+	TongTienStr = Format(Object.TongTien, "NFD=0; NGS='.'; NG=3") + " VND";
 	
 	Step1Class = ?(StepIndex >= 1, "step-done", "step-pending");
 	Step2Class = ?(StepIndex >= 2, "step-done", "step-pending");
