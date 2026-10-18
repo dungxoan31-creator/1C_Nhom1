@@ -2,10 +2,17 @@
 
 Cấu hình 1C quản lý phải thu, phải trả, cấn trừ nội bộ và báo cáo tài chính. Khắc phục theo kế hoạch đã được chấp thuận, mới xác minh một phần; chưa đạt 100/100 hay đủ điều kiện go-live. [Báo cáo tiến độ hardening](docs/superpowers/reports/2026-10-14-hardening-progress.md) và [phạm vi kết quả](docs/ERP_AUDIT_2026-10-14_FINAL_100.md) ghi CheckConfig trên clone `20261014-final2`, hardening 3 ca, unit 2 ca, lifecycle 3 ca và RBAC rerun 6 người dùng/12 ca PASS. Payment 4 ca và FX 3 ca PASS tuần tự, chưa chứng minh concurrency. Hai phiên thật vẫn NOT_RUN do giới hạn kết nối Training Edition. GL analytic keys hiện FAIL: 8.215/8.579 bản ghi đủ khóa, 364 bản ghi thiếu theo gate partner + contract nghiêm ngặt. Manifest cuối `docs/evidence/hardening_verification.json` do người chạy tổng hợp sẽ ghi kết quả chính xác theo từng run/source.
 
+## 📌 Hướng dẫn Demo & Thuyết trình (Mới nhất)
+
+- 🌟 **[Kịch bản demo chi tiết từng thao tác, nút bấm, nhập liệu](docs/08_KICH_BAN_DEMO_CHI_TIET_THAO_TAC_NUT_BAM.md)**: Hướng dẫn thực chiến chi tiết từng cú click chuột, phím tắt, từng ô nhập liệu, ca test biên và lời thoại thuyết trình trước Hội đồng.
+- 🎯 **[Kịch bản demo 5 phút & Bản đặc tả nghiệp vụ AR/AP](docs/07_KICH_BAN_DEMO_5_PHUT.md)**: Sơ đồ nghiệp vụ Mermaid và câu trả lời chuẩn phản biện về thuế FCT.
+- 📖 **[Hướng dẫn nạp và sử dụng file .DT](HUONG_DAN_SU_DUNG_FILE_DT.md)**: Cách nạp Infobase và danh mục dữ liệu mẫu 43 chứng từ đã ghi sổ.
+
 ## Cấu trúc dự án
 
 | Đường dẫn | Nội dung |
 | :--- | :--- |
+| [docs/08_KICH_BAN_DEMO_CHI_TIET_THAO_TAC_NUT_BAM.md](docs/08_KICH_BAN_DEMO_CHI_TIET_THAO_TAC_NUT_BAM.md) | **Kịch bản demo thực chiến chi tiết từng thao tác nút bấm.** |
 | [src/](src/) | Metadata XML và mã BSL của cấu hình. |
 | [scripts/](scripts/) | Checker, runner Python và wrapper PowerShell. |
 | [tests/README.md](tests/README.md) | Inventory 21 file unit + 3 file migration BSL, tổng 24 file tham khảo; hợp đồng runtime riêng. |
