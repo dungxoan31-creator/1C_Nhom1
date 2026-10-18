@@ -54,7 +54,7 @@
 			<FullTextSearchOnInputByString>DontUse</FullTextSearchOnInputByString>
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
 			<DefaultObjectForm>Document.UyNhiemChi.Form.FormChungTu</DefaultObjectForm>
-			<DefaultListForm/>
+			<DefaultListForm>Document.UyNhiemChi.Form.FormDanhSach</DefaultListForm>
 			<DefaultChoiceForm/>
 			<AuxiliaryObjectForm/>
 			<AuxiliaryListForm/>
@@ -901,6 +901,7 @@
 			</Attribute>
 			
 				    <Form>FormChungTu</Form>
+				    <Form>FormDanhSach</Form>
 		</ChildObjects>
 	</Document>
 </MetaDataObject>
