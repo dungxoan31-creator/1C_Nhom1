@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Title>
+		<v8:item>
+			<v8:lang>vi</v8:lang>
+			<v8:content>Hoa don GTGT dau ra (AR)</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar>
+		<name>FormCommandBar</name>
+		<id>-1</id>
+		<visible>true</visible>
+		<enabled>true</enabled>
+		<horizontalAlign>Left</horizontalAlign>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<HTMLDocumentField name="TruongHTMLHeader">
+			<DataPath>NoiDungHTMLHeader</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ContextMenu name="TruongHTMLHeaderContextMenu">
+				<name>TruongHTMLHeaderContextMenu</name>
+				<id>2</id>
+				<visible>true</visible>
+				<enabled>true</enabled>
+			</ContextMenu>
+			<ExtendedTooltip name="TruongHTMLHeaderExtendedTooltip">
+				<name>TruongHTMLHeaderExtendedTooltip</name>
+				<id>3</id>
+				<visible>true</visible>
+				<enabled>true</enabled>
+			</ExtendedTooltip>
+		</HTMLDocumentField>
+		<Pages name="Pages">
+			<ChildItems>
+				<Page name="ThongTinChung">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Thong tin chung</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="Number">
+							<DataPath>Object.Number</DataPath>
+						</InputField>
+						<InputField name="Date">
+							<DataPath>Object.Date</DataPath>
+						</InputField>
+						<InputField name="DoiTac">
+							<DataPath>Object.DoiTac</DataPath>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ChiTietHangHoa">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Chi tiet hang hoa/dich vu</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="TienChuaThue">
+							<DataPath>Object.TienChuaThue</DataPath>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ThanhToanVaThue">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Thue va Thanh toan</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="TienThueVAT">
+							<DataPath>Object.TienThueVAT</DataPath>
+						</InputField>
+						<InputField name="TongTienThanhToan">
+							<DataPath>Object.TongTienThanhToan</DataPath>
+							<ReadOnly>true</ReadOnly>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object">
+			<Type>
+				<v8:Type>cfg:DocumentObject.HoaDonGTGTDauRa</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="NoiDungHTMLHeader">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Noi dung HTML Header</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

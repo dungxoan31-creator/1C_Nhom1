@@ -1,0 +1,3464 @@
+{
+"ThoiDiemXuat": "2026-10-14T22:36:34",
+"NgayChotBaoCao": "2026-09-30T23:59:59",
+"TrangThai": "EXECUTIVE_REPORTS_SUCCESS_100",
+"Report1_TuoiNo": {
+"NgayChot": "2026-09-30T23:59:59",
+"AR_Buckets": {
+"TrongHan": 37900900000,
+"QuaHan1_30": 9179500000,
+"QuaHan31_60": 6080800000,
+"QuaHan61_90": 7452500000,
+"QuaHanTren90": 6805700000,
+"TongCong": 67419400000
+},
+"AP_Buckets": {
+"TrongHan": 13480557059,
+"QuaHan1_30": 5714500000,
+"QuaHan31_60": 321200000,
+"QuaHan61_90": 5691400000,
+"QuaHanTren90": 10578180863,
+"TongCong": 35785837922
+},
+"ChiTietAR": [
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"TenDoiTac": "Công ty TNHH Vận tải Sinh thái VinBus",
+"LaBenLienKet": true,
+"SoDuNo": 3806000000,
+"NgayDaoHan": "2026-11-05T00:00:00",
+"SoNgayQuaHan": -36,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_02",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 2",
+"LaBenLienKet": false,
+"SoDuNo": 305800000,
+"NgayDaoHan": "2026-08-20T00:00:00",
+"SoNgayQuaHan": 41,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_20",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 20",
+"LaBenLienKet": false,
+"SoDuNo": 247500000,
+"NgayDaoHan": "2026-09-23T00:00:00",
+"SoNgayQuaHan": 7,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_12",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 12",
+"LaBenLienKet": false,
+"SoDuNo": 304700000,
+"NgayDaoHan": "2026-09-20T00:00:00",
+"SoNgayQuaHan": 10,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 1633500000,
+"NgayDaoHan": "2026-11-07T00:00:00",
+"SoNgayQuaHan": -38,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_08",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 8",
+"LaBenLienKet": false,
+"SoDuNo": 552200000,
+"NgayDaoHan": "2026-10-14T00:00:00",
+"SoNgayQuaHan": -14,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_25",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 25",
+"LaBenLienKet": false,
+"SoDuNo": 583000000,
+"NgayDaoHan": "2026-09-26T00:00:00",
+"SoNgayQuaHan": 4,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_12",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 12",
+"LaBenLienKet": false,
+"SoDuNo": 226600000,
+"NgayDaoHan": "2026-10-16T00:00:00",
+"SoNgayQuaHan": -16,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_27",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 27",
+"LaBenLienKet": false,
+"SoDuNo": 584100000,
+"NgayDaoHan": "2025-02-26T00:00:00",
+"SoNgayQuaHan": 581,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_03",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 3",
+"LaBenLienKet": false,
+"SoDuNo": 386100000,
+"NgayDaoHan": "2025-08-26T00:00:00",
+"SoNgayQuaHan": 400,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"TenDoiTac": "Công ty CP VinWonders",
+"LaBenLienKet": true,
+"SoDuNo": 753500000,
+"NgayDaoHan": "2026-09-06T00:00:00",
+"SoNgayQuaHan": 24,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "DoiChieuNoiBo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_33",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 33",
+"LaBenLienKet": false,
+"SoDuNo": 436700000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaBenLienKet": true,
+"SoDuNo": 473000000,
+"NgayDaoHan": "2026-09-06T00:00:00",
+"SoNgayQuaHan": 24,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "DoiChieuNoiBo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_14",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 14",
+"LaBenLienKet": false,
+"SoDuNo": 506000000,
+"NgayDaoHan": "2026-08-26T00:00:00",
+"SoNgayQuaHan": 35,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_14",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 14",
+"LaBenLienKet": false,
+"SoDuNo": 182600000,
+"NgayDaoHan": "2026-07-25T00:00:00",
+"SoNgayQuaHan": 67,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_03",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 3",
+"LaBenLienKet": false,
+"SoDuNo": 440000000,
+"NgayDaoHan": "2026-07-27T00:00:00",
+"SoNgayQuaHan": 65,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_26",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 26",
+"LaBenLienKet": false,
+"SoDuNo": 572000000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"TenDoiTac": "Công ty CP Vincom Retail",
+"LaBenLienKet": true,
+"SoDuNo": 462000000,
+"NgayDaoHan": "2026-11-06T00:00:00",
+"SoNgayQuaHan": -37,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_36",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 36",
+"LaBenLienKet": false,
+"SoDuNo": 590000000,
+"NgayDaoHan": "2026-10-27T00:00:00",
+"SoNgayQuaHan": -27,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINES",
+"TenDoiTac": "Công ty CP Giải pháp Năng lượng VinES",
+"LaBenLienKet": true,
+"SoDuNo": 1133000000,
+"NgayDaoHan": "2026-11-07T00:00:00",
+"SoNgayQuaHan": -38,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINBIGDATA",
+"TenDoiTac": "Công ty CP VinBigdata",
+"LaBenLienKet": true,
+"SoDuNo": 1138500000,
+"NgayDaoHan": "2026-10-07T00:00:00",
+"SoNgayQuaHan": -7,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINBIGDATA",
+"TenDoiTac": "Công ty CP VinBigdata",
+"LaBenLienKet": true,
+"SoDuNo": 2585000000,
+"NgayDaoHan": "2026-11-04T00:00:00",
+"SoNgayQuaHan": -35,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINAI",
+"TenDoiTac": "Viện Trí tuệ Nhân tạo VinAI",
+"LaBenLienKet": true,
+"SoDuNo": 748000000,
+"NgayDaoHan": "2026-10-07T00:00:00",
+"SoNgayQuaHan": -7,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINAI",
+"TenDoiTac": "Viện Trí tuệ Nhân tạo VinAI",
+"LaBenLienKet": true,
+"SoDuNo": 2084500000,
+"NgayDaoHan": "2026-11-04T00:00:00",
+"SoNgayQuaHan": -35,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_01",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 1",
+"LaBenLienKet": false,
+"SoDuNo": 93500000,
+"NgayDaoHan": "2026-10-11T00:00:00",
+"SoNgayQuaHan": -11,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"TenDoiTac": "Công ty CP VinBrain",
+"LaBenLienKet": true,
+"SoDuNo": 3140500000,
+"NgayDaoHan": "2026-11-04T00:00:00",
+"SoNgayQuaHan": -35,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINCSS",
+"TenDoiTac": "Công ty Dịch vụ An ninh mạng VinCSS",
+"LaBenLienKet": true,
+"SoDuNo": 742500000,
+"NgayDaoHan": "2026-11-06T00:00:00",
+"SoNgayQuaHan": -37,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_15",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 15",
+"LaBenLienKet": false,
+"SoDuNo": 609400000,
+"NgayDaoHan": "2026-10-10T00:00:00",
+"SoNgayQuaHan": -10,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VINCLUB",
+"TenDoiTac": "Chương trình Khách hàng thân thiết VinClub",
+"LaBenLienKet": true,
+"SoDuNo": 4603500000,
+"NgayDaoHan": "2026-07-07T00:00:00",
+"SoNgayQuaHan": 85,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "CanhBaoCFOVaNetting"
+},
+{
+"MaDoiTac": "TEST_VG_VINCLUB",
+"TenDoiTac": "Chương trình Khách hàng thân thiết VinClub",
+"LaBenLienKet": true,
+"SoDuNo": 4581500000,
+"NgayDaoHan": "2026-11-05T00:00:00",
+"SoNgayQuaHan": -36,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_SELLER_22",
+"TenDoiTac": "Đối tác Seller Sàn TMĐT V-App Shop 22",
+"LaBenLienKet": false,
+"SoDuNo": 386100000,
+"NgayDaoHan": "2026-05-27T00:00:00",
+"SoNgayQuaHan": 126,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_22",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 22",
+"LaBenLienKet": false,
+"SoDuNo": 303600000,
+"NgayDaoHan": "2026-10-20T00:00:00",
+"SoNgayQuaHan": -20,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_14",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 14",
+"LaBenLienKet": false,
+"SoDuNo": 441100000,
+"NgayDaoHan": "2025-09-26T00:00:00",
+"SoNgayQuaHan": 369,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_32",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 32",
+"LaBenLienKet": false,
+"SoDuNo": 650100000,
+"NgayDaoHan": "2025-12-27T00:00:00",
+"SoNgayQuaHan": 277,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaBenLienKet": true,
+"SoDuNo": 478500000,
+"NgayDaoHan": "2026-08-07T00:00:00",
+"SoNgayQuaHan": 54,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "DoiChieuNoiBo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_18",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 18",
+"LaBenLienKet": false,
+"SoDuNo": 629200000,
+"NgayDaoHan": "2026-10-19T00:00:00",
+"SoNgayQuaHan": -19,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"TenDoiTac": "Tập đoàn Vingroup - Công ty CP (Công ty mẹ)",
+"LaBenLienKet": true,
+"SoDuNo": 467500000,
+"NgayDaoHan": "2026-10-06T00:00:00",
+"SoNgayQuaHan": -6,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"TenDoiTac": "Tập đoàn Vingroup - Công ty CP (Công ty mẹ)",
+"LaBenLienKet": true,
+"SoDuNo": 1584000000,
+"NgayDaoHan": "2026-11-03T00:00:00",
+"SoNgayQuaHan": -34,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": true,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_SELLER_06",
+"TenDoiTac": "Đối tác Seller Sàn TMĐT V-App Shop 6",
+"LaBenLienKet": false,
+"SoDuNo": 254100000,
+"NgayDaoHan": "2025-06-26T00:00:00",
+"SoNgayQuaHan": 461,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_SELLER_11",
+"TenDoiTac": "Đối tác Seller Sàn TMĐT V-App Shop 11",
+"LaBenLienKet": false,
+"SoDuNo": 320100000,
+"NgayDaoHan": "2026-04-26T00:00:00",
+"SoNgayQuaHan": 157,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_07",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 7",
+"LaBenLienKet": false,
+"SoDuNo": 474100000,
+"NgayDaoHan": "2026-10-14T00:00:00",
+"SoNgayQuaHan": -14,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_SELLER_17",
+"TenDoiTac": "Đối tác Seller Sàn TMĐT V-App Shop 17",
+"LaBenLienKet": false,
+"SoDuNo": 320100000,
+"NgayDaoHan": "2025-07-27T00:00:00",
+"SoNgayQuaHan": 430,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_13",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 13",
+"LaBenLienKet": false,
+"SoDuNo": 293700000,
+"NgayDaoHan": "2026-10-16T00:00:00",
+"SoNgayQuaHan": -16,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_07",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 7",
+"LaBenLienKet": false,
+"SoDuNo": 385000000,
+"NgayDaoHan": "2026-06-26T00:00:00",
+"SoNgayQuaHan": 96,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_08",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 8",
+"LaBenLienKet": false,
+"SoDuNo": 441100000,
+"NgayDaoHan": "2026-06-26T00:00:00",
+"SoNgayQuaHan": 96,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_12",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 12",
+"LaBenLienKet": false,
+"SoDuNo": 642400000,
+"NgayDaoHan": "2026-07-24T00:00:00",
+"SoNgayQuaHan": 68,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_13",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 13",
+"LaBenLienKet": false,
+"SoDuNo": 126500000,
+"NgayDaoHan": "2026-07-24T00:00:00",
+"SoNgayQuaHan": 68,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_10",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 10",
+"LaBenLienKet": false,
+"SoDuNo": 248600000,
+"NgayDaoHan": "2026-08-24T00:00:00",
+"SoNgayQuaHan": 37,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_ADS_15",
+"TenDoiTac": "Nhà quảng cáo Brand Agency Digital 15",
+"LaBenLienKet": false,
+"SoDuNo": 249700000,
+"NgayDaoHan": "2026-07-25T00:00:00",
+"SoNgayQuaHan": 67,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_11",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 11",
+"LaBenLienKet": false,
+"SoDuNo": 315700000,
+"NgayDaoHan": "2026-08-24T00:00:00",
+"SoNgayQuaHan": 37,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_01",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 1",
+"LaBenLienKet": false,
+"SoDuNo": 316800000,
+"NgayDaoHan": "2026-07-26T00:00:00",
+"SoNgayQuaHan": 66,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_02",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 2",
+"LaBenLienKet": false,
+"SoDuNo": 383900000,
+"NgayDaoHan": "2026-07-26T00:00:00",
+"SoNgayQuaHan": 66,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_02",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 2",
+"LaBenLienKet": false,
+"SoDuNo": 149600000,
+"NgayDaoHan": "2026-10-11T00:00:00",
+"SoNgayQuaHan": -11,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_03",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 3",
+"LaBenLienKet": false,
+"SoDuNo": 372900000,
+"NgayDaoHan": "2026-08-21T00:00:00",
+"SoNgayQuaHan": 40,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_03",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 3",
+"LaBenLienKet": false,
+"SoDuNo": 216700000,
+"NgayDaoHan": "2026-10-12T00:00:00",
+"SoNgayQuaHan": -12,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_04",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 4",
+"LaBenLienKet": false,
+"SoDuNo": 507100000,
+"NgayDaoHan": "2026-07-27T00:00:00",
+"SoNgayQuaHan": 65,
+"NhomTuoiNo": "QuaHan61_90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_08",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 8",
+"LaBenLienKet": false,
+"SoDuNo": 125400000,
+"NgayDaoHan": "2026-08-23T00:00:00",
+"SoNgayQuaHan": 38,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_04",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 4",
+"LaBenLienKet": false,
+"SoDuNo": 429000000,
+"NgayDaoHan": "2026-08-21T00:00:00",
+"SoNgayQuaHan": 40,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_04",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 4",
+"LaBenLienKet": false,
+"SoDuNo": 283800000,
+"NgayDaoHan": "2026-10-12T00:00:00",
+"SoNgayQuaHan": -12,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_05",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 5",
+"LaBenLienKet": false,
+"SoDuNo": 496100000,
+"NgayDaoHan": "2026-08-22T00:00:00",
+"SoNgayQuaHan": 39,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_05",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 5",
+"LaBenLienKet": false,
+"SoDuNo": 350900000,
+"NgayDaoHan": "2026-10-13T00:00:00",
+"SoNgayQuaHan": -13,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_23",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 23",
+"LaBenLienKet": false,
+"SoDuNo": 437800000,
+"NgayDaoHan": "2026-09-25T00:00:00",
+"SoNgayQuaHan": 5,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_06",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 6",
+"LaBenLienKet": false,
+"SoDuNo": 574200000,
+"NgayDaoHan": "2026-08-22T00:00:00",
+"SoNgayQuaHan": 39,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_06",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 6",
+"LaBenLienKet": false,
+"SoDuNo": 407000000,
+"NgayDaoHan": "2026-10-13T00:00:00",
+"SoNgayQuaHan": -13,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_07",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 7",
+"LaBenLienKet": false,
+"SoDuNo": 641300000,
+"NgayDaoHan": "2026-08-22T00:00:00",
+"SoNgayQuaHan": 39,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_07",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 7",
+"LaBenLienKet": false,
+"SoDuNo": 563200000,
+"NgayDaoHan": "2026-09-18T00:00:00",
+"SoNgayQuaHan": 12,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_19",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 19",
+"LaBenLienKet": false,
+"SoDuNo": 180400000,
+"NgayDaoHan": "2026-09-23T00:00:00",
+"SoNgayQuaHan": 7,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_19",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 19",
+"LaBenLienKet": false,
+"SoDuNo": 113300000,
+"NgayDaoHan": "2026-10-19T00:00:00",
+"SoNgayQuaHan": -19,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_08",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 8",
+"LaBenLienKet": false,
+"SoDuNo": 630300000,
+"NgayDaoHan": "2026-09-18T00:00:00",
+"SoNgayQuaHan": 12,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_09",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 9",
+"LaBenLienKet": false,
+"SoDuNo": 181500000,
+"NgayDaoHan": "2026-08-23T00:00:00",
+"SoNgayQuaHan": 38,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_09",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 9",
+"LaBenLienKet": false,
+"SoDuNo": 114400000,
+"NgayDaoHan": "2026-09-18T00:00:00",
+"SoNgayQuaHan": 12,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_09",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 9",
+"LaBenLienKet": false,
+"SoDuNo": 619300000,
+"NgayDaoHan": "2026-10-14T00:00:00",
+"SoNgayQuaHan": -14,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_10",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 10",
+"LaBenLienKet": false,
+"SoDuNo": 507100000,
+"NgayDaoHan": "2025-10-27T00:00:00",
+"SoNgayQuaHan": 338,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_10",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 10",
+"LaBenLienKet": false,
+"SoDuNo": 170500000,
+"NgayDaoHan": "2026-09-19T00:00:00",
+"SoNgayQuaHan": 11,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_10",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 10",
+"LaBenLienKet": false,
+"SoDuNo": 103400000,
+"NgayDaoHan": "2026-10-15T00:00:00",
+"SoNgayQuaHan": -15,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_11",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 11",
+"LaBenLienKet": false,
+"SoDuNo": 237600000,
+"NgayDaoHan": "2026-09-19T00:00:00",
+"SoNgayQuaHan": 11,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_11",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 11",
+"LaBenLienKet": false,
+"SoDuNo": 159500000,
+"NgayDaoHan": "2026-10-15T00:00:00",
+"SoNgayQuaHan": -15,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_12",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 12",
+"LaBenLienKet": false,
+"SoDuNo": 382800000,
+"NgayDaoHan": "2026-08-25T00:00:00",
+"SoNgayQuaHan": 36,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_13",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 13",
+"LaBenLienKet": false,
+"SoDuNo": 438900000,
+"NgayDaoHan": "2026-08-25T00:00:00",
+"SoNgayQuaHan": 36,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_13",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 13",
+"LaBenLienKet": false,
+"SoDuNo": 371800000,
+"NgayDaoHan": "2026-09-20T00:00:00",
+"SoNgayQuaHan": 10,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_14",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 14",
+"LaBenLienKet": false,
+"SoDuNo": 427900000,
+"NgayDaoHan": "2026-09-21T00:00:00",
+"SoNgayQuaHan": 9,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_14",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 14",
+"LaBenLienKet": false,
+"SoDuNo": 360800000,
+"NgayDaoHan": "2026-10-17T00:00:00",
+"SoNgayQuaHan": -17,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_15",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 15",
+"LaBenLienKet": false,
+"SoDuNo": 584100000,
+"NgayDaoHan": "2026-08-26T00:00:00",
+"SoNgayQuaHan": 35,
+"NhomTuoiNo": "QuaHan31_60",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "NhacNo"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_15",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 15",
+"LaBenLienKet": false,
+"SoDuNo": 495000000,
+"NgayDaoHan": "2026-09-21T00:00:00",
+"SoNgayQuaHan": 9,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_15",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 15",
+"LaBenLienKet": false,
+"SoDuNo": 416900000,
+"NgayDaoHan": "2026-10-17T00:00:00",
+"SoNgayQuaHan": -17,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_16",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 16",
+"LaBenLienKet": false,
+"SoDuNo": 573100000,
+"NgayDaoHan": "2026-09-22T00:00:00",
+"SoNgayQuaHan": 8,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_16",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 16",
+"LaBenLienKet": false,
+"SoDuNo": 484000000,
+"NgayDaoHan": "2026-10-18T00:00:00",
+"SoNgayQuaHan": -18,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_17",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 17",
+"LaBenLienKet": false,
+"SoDuNo": 640200000,
+"NgayDaoHan": "2026-09-22T00:00:00",
+"SoNgayQuaHan": 8,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_17",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 17",
+"LaBenLienKet": false,
+"SoDuNo": 562100000,
+"NgayDaoHan": "2026-10-18T00:00:00",
+"SoNgayQuaHan": -18,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_18",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 18",
+"LaBenLienKet": false,
+"SoDuNo": 124300000,
+"NgayDaoHan": "2026-09-22T00:00:00",
+"SoNgayQuaHan": 8,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_20",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 20",
+"LaBenLienKet": false,
+"SoDuNo": 169400000,
+"NgayDaoHan": "2026-10-19T00:00:00",
+"SoNgayQuaHan": -19,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_21",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 21",
+"LaBenLienKet": false,
+"SoDuNo": 584100000,
+"NgayDaoHan": "2025-11-26T00:00:00",
+"SoNgayQuaHan": 308,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_21",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 21",
+"LaBenLienKet": false,
+"SoDuNo": 314600000,
+"NgayDaoHan": "2026-09-24T00:00:00",
+"SoNgayQuaHan": 6,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_21",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 21",
+"LaBenLienKet": false,
+"SoDuNo": 236500000,
+"NgayDaoHan": "2026-10-20T00:00:00",
+"SoNgayQuaHan": -20,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_22",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 22",
+"LaBenLienKet": false,
+"SoDuNo": 381700000,
+"NgayDaoHan": "2026-09-24T00:00:00",
+"SoNgayQuaHan": 6,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_23",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 23",
+"LaBenLienKet": false,
+"SoDuNo": 370700000,
+"NgayDaoHan": "2026-10-21T00:00:00",
+"SoNgayQuaHan": -21,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_24",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 24",
+"LaBenLienKet": false,
+"SoDuNo": 504900000,
+"NgayDaoHan": "2026-09-25T00:00:00",
+"SoNgayQuaHan": 5,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_24",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 24",
+"LaBenLienKet": false,
+"SoDuNo": 426800000,
+"NgayDaoHan": "2026-10-21T00:00:00",
+"SoNgayQuaHan": -21,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_25",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 25",
+"LaBenLienKet": false,
+"SoDuNo": 493900000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_26",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 26",
+"LaBenLienKet": false,
+"SoDuNo": 650100000,
+"NgayDaoHan": "2026-09-26T00:00:00",
+"SoNgayQuaHan": 4,
+"NhomTuoiNo": "QuaHan1_30",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "CanhBaoSom"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_27",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 27",
+"LaBenLienKet": false,
+"SoDuNo": 639100000,
+"NgayDaoHan": "2026-10-23T00:00:00",
+"SoNgayQuaHan": -23,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_28",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 28",
+"LaBenLienKet": false,
+"SoDuNo": 123200000,
+"NgayDaoHan": "2026-10-23T00:00:00",
+"SoNgayQuaHan": -23,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_29",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 29",
+"LaBenLienKet": false,
+"SoDuNo": 179300000,
+"NgayDaoHan": "2026-10-23T00:00:00",
+"SoNgayQuaHan": -23,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_30",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 30",
+"LaBenLienKet": false,
+"SoDuNo": 246400000,
+"NgayDaoHan": "2026-10-24T00:00:00",
+"SoNgayQuaHan": -24,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_65",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 65",
+"LaBenLienKet": false,
+"SoDuNo": 254100000,
+"NgayDaoHan": "2026-03-29T00:00:00",
+"SoNgayQuaHan": 185,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_31",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 31",
+"LaBenLienKet": false,
+"SoDuNo": 313500000,
+"NgayDaoHan": "2026-10-24T00:00:00",
+"SoNgayQuaHan": -24,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_32",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 32",
+"LaBenLienKet": false,
+"SoDuNo": 380600000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_34",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 34",
+"LaBenLienKet": false,
+"SoDuNo": 503800000,
+"NgayDaoHan": "2026-10-26T00:00:00",
+"SoNgayQuaHan": -26,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_35",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 35",
+"LaBenLienKet": false,
+"SoDuNo": 581900000,
+"NgayDaoHan": "2026-10-26T00:00:00",
+"SoNgayQuaHan": -26,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_37",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 37",
+"LaBenLienKet": false,
+"SoDuNo": 121000000,
+"NgayDaoHan": "2026-10-27T00:00:00",
+"SoNgayQuaHan": -27,
+"NhomTuoiNo": "TrongHan",
+"DeXuatKhoaDichVu": false,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "BinhThuong"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_38",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 38",
+"LaBenLienKet": false,
+"SoDuNo": 650100000,
+"NgayDaoHan": "2025-03-29T00:00:00",
+"SoNgayQuaHan": 550,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_43",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 43",
+"LaBenLienKet": false,
+"SoDuNo": 133100000,
+"NgayDaoHan": "2026-01-26T00:00:00",
+"SoNgayQuaHan": 247,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_49",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 49",
+"LaBenLienKet": false,
+"SoDuNo": 133100000,
+"NgayDaoHan": "2025-04-26T00:00:00",
+"SoNgayQuaHan": 522,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_54",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 54",
+"LaBenLienKet": false,
+"SoDuNo": 188100000,
+"NgayDaoHan": "2026-02-26T00:00:00",
+"SoNgayQuaHan": 216,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+},
+{
+"MaDoiTac": "TEST_KH_CORP_60",
+"TenDoiTac": "Khách hàng Doanh nghiệp Công nghệ Ngoài 60",
+"LaBenLienKet": false,
+"SoDuNo": 188100000,
+"NgayDaoHan": "2025-05-27T00:00:00",
+"SoNgayQuaHan": 491,
+"NhomTuoiNo": "QuaHanTren90",
+"DeXuatKhoaDichVu": true,
+"CamKhoaDichVu": false,
+"TrangThaiXuLy": "KhoaDichVuAPI"
+}
+],
+"ChiTietAP": [
+{
+"MaDoiTac": "TEST_VG_VINFAST_VN",
+"TenDoiTac": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+"LaBenLienKet": true,
+"SoDuNo": 320100000,
+"NgayDaoHan": "2026-01-24T00:00:00",
+"SoNgayQuaHan": 249,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_VN",
+"TenDoiTac": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+"LaBenLienKet": true,
+"SoDuNo": 295900000,
+"NgayDaoHan": "2026-04-20T00:00:00",
+"SoNgayQuaHan": 163,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_TRADING",
+"TenDoiTac": "Công ty TNHH Kinh doanh & Phân phối VinFast Trading",
+"LaBenLienKet": true,
+"SoDuNo": 24200000,
+"NgayDaoHan": "2026-01-21T00:00:00",
+"SoNgayQuaHan": 252,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_VN",
+"TenDoiTac": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+"LaBenLienKet": true,
+"SoDuNo": 271700000,
+"NgayDaoHan": "2026-07-12T00:00:00",
+"SoNgayQuaHan": 80,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_024",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 24",
+"LaBenLienKet": false,
+"SoDuNo": 311300000,
+"NgayDaoHan": "2026-09-21T00:00:00",
+"SoNgayQuaHan": 9,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_VN",
+"TenDoiTac": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+"LaBenLienKet": true,
+"SoDuNo": 247500000,
+"NgayDaoHan": "2026-10-06T00:00:00",
+"SoNgayQuaHan": -6,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 132300000,
+"NgayDaoHan": "2025-05-09T00:00:00",
+"SoNgayQuaHan": 509,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINCSS",
+"TenDoiTac": "Công ty Dịch vụ An ninh mạng VinCSS",
+"LaBenLienKet": true,
+"SoDuNo": 78100000,
+"NgayDaoHan": "2026-06-30T00:00:00",
+"SoNgayQuaHan": 92,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 167100000,
+"NgayDaoHan": "2025-08-03T00:00:00",
+"SoNgayQuaHan": 423,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 383900000,
+"NgayDaoHan": "2025-11-24T00:00:00",
+"SoNgayQuaHan": 310,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_065",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 65",
+"LaBenLienKet": false,
+"SoDuNo": 228800000,
+"NgayDaoHan": "2026-07-16T00:00:00",
+"SoNgayQuaHan": 76,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 223300000,
+"NgayDaoHan": "2026-01-18T00:00:00",
+"SoNgayQuaHan": 255,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 199100000,
+"NgayDaoHan": "2026-04-14T00:00:00",
+"SoNgayQuaHan": 169,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 174900000,
+"NgayDaoHan": "2026-07-06T00:00:00",
+"SoNgayQuaHan": 86,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaBenLienKet": true,
+"SoDuNo": 150700000,
+"NgayDaoHan": "2026-09-30T00:00:00",
+"SoNgayQuaHan": 0,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_TRADING",
+"TenDoiTac": "Công ty TNHH Kinh doanh & Phân phối VinFast Trading",
+"LaBenLienKet": true,
+"SoDuNo": 470800000,
+"NgayDaoHan": "2026-07-09T00:00:00",
+"SoNgayQuaHan": 83,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_TRADING",
+"TenDoiTac": "Công ty TNHH Kinh doanh & Phân phối VinFast Trading",
+"LaBenLienKet": true,
+"SoDuNo": 446600000,
+"NgayDaoHan": "2026-10-03T00:00:00",
+"SoNgayQuaHan": -3,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINHOMES",
+"TenDoiTac": "Công ty CP Vinhomes",
+"LaBenLienKet": true,
+"SoDuNo": 368500000,
+"NgayDaoHan": "2026-07-18T00:00:00",
+"SoNgayQuaHan": 74,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINHOMES",
+"TenDoiTac": "Công ty CP Vinhomes",
+"LaBenLienKet": true,
+"SoDuNo": 344300000,
+"NgayDaoHan": "2026-10-12T00:00:00",
+"SoNgayQuaHan": -12,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"TenDoiTac": "Công ty CP Vinpearl",
+"LaBenLienKet": true,
+"SoDuNo": 227700000,
+"NgayDaoHan": "2025-04-30T00:00:00",
+"SoNgayQuaHan": 518,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"TenDoiTac": "Công ty CP Vinpearl",
+"LaBenLienKet": true,
+"SoDuNo": 366500000,
+"NgayDaoHan": "2026-04-05T00:00:00",
+"SoNgayQuaHan": 178,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"TenDoiTac": "Công ty CP Vinpearl",
+"LaBenLienKet": true,
+"SoDuNo": 465300000,
+"NgayDaoHan": "2026-07-24T00:00:00",
+"SoNgayQuaHan": 68,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"TenDoiTac": "Công ty CP Vinpearl",
+"LaBenLienKet": true,
+"SoDuNo": 441100000,
+"NgayDaoHan": "2026-10-18T00:00:00",
+"SoNgayQuaHan": -18,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"TenDoiTac": "Công ty CP VinWonders",
+"LaBenLienKet": true,
+"SoDuNo": 188100000,
+"NgayDaoHan": "2026-04-17T00:00:00",
+"SoNgayQuaHan": 166,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"TenDoiTac": "Công ty CP VinWonders",
+"LaBenLienKet": true,
+"SoDuNo": 163900000,
+"NgayDaoHan": "2026-07-09T00:00:00",
+"SoNgayQuaHan": 83,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"TenDoiTac": "Công ty CP VinWonders",
+"LaBenLienKet": true,
+"SoDuNo": 139700000,
+"NgayDaoHan": "2026-10-03T00:00:00",
+"SoNgayQuaHan": -3,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINMEC",
+"TenDoiTac": "Công ty CP Bệnh viện ĐKQT Vinmec",
+"LaBenLienKet": true,
+"SoDuNo": 169400000,
+"NgayDaoHan": "2026-07-21T00:00:00",
+"SoNgayQuaHan": 71,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINMEC",
+"TenDoiTac": "Công ty CP Bệnh viện ĐKQT Vinmec",
+"LaBenLienKet": true,
+"SoDuNo": 145200000,
+"NgayDaoHan": "2026-10-15T00:00:00",
+"SoNgayQuaHan": -15,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_GSM",
+"TenDoiTac": "Công ty CP Di chuyển Xanh và Thông minh GSM (Xanh SM)",
+"LaBenLienKet": true,
+"SoDuNo": 288200000,
+"NgayDaoHan": "2026-07-21T00:00:00",
+"SoNgayQuaHan": 71,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_GSM",
+"TenDoiTac": "Công ty CP Di chuyển Xanh và Thông minh GSM (Xanh SM)",
+"LaBenLienKet": true,
+"SoDuNo": 127600000,
+"NgayDaoHan": "2026-09-14T00:00:00",
+"SoNgayQuaHan": 16,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"TenDoiTac": "Công ty TNHH Vận tải Sinh thái VinBus",
+"LaBenLienKet": true,
+"SoDuNo": 19800000,
+"NgayDaoHan": "2026-09-11T00:00:00",
+"SoNgayQuaHan": 19,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VGREEN",
+"TenDoiTac": "Công ty CP Phát triển Trạm sạc Toàn cầu V-Green",
+"LaBenLienKet": true,
+"SoDuNo": 188400000,
+"NgayDaoHan": "2026-01-12T00:00:00",
+"SoNgayQuaHan": 261,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VGREEN",
+"TenDoiTac": "Công ty CP Phát triển Trạm sạc Toàn cầu V-Green",
+"LaBenLienKet": true,
+"SoDuNo": 385000000,
+"NgayDaoHan": "2026-06-30T00:00:00",
+"SoNgayQuaHan": 92,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VGREEN",
+"TenDoiTac": "Công ty CP Phát triển Trạm sạc Toàn cầu V-Green",
+"LaBenLienKet": true,
+"SoDuNo": 224400000,
+"NgayDaoHan": "2026-09-20T00:00:00",
+"SoNgayQuaHan": 10,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"TenDoiTac": "Công ty CP Vincom Retail",
+"LaBenLienKet": true,
+"SoDuNo": 219800000,
+"NgayDaoHan": "2025-10-15T00:00:00",
+"SoNgayQuaHan": 350,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"TenDoiTac": "Công ty CP Vincom Retail",
+"LaBenLienKet": true,
+"SoDuNo": 58600000,
+"NgayDaoHan": "2026-01-09T00:00:00",
+"SoNgayQuaHan": 264,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"TenDoiTac": "Công ty CP Vincom Retail",
+"LaBenLienKet": true,
+"SoDuNo": 277200000,
+"NgayDaoHan": "2026-07-24T00:00:00",
+"SoNgayQuaHan": 68,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINAI",
+"TenDoiTac": "Viện Trí tuệ Nhân tạo VinAI",
+"LaBenLienKet": true,
+"SoDuNo": 282700000,
+"NgayDaoHan": "2026-07-09T00:00:00",
+"SoNgayQuaHan": 83,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"TenDoiTac": "Công ty CP Vincom Retail",
+"LaBenLienKet": true,
+"SoDuNo": 116600000,
+"NgayDaoHan": "2026-09-17T00:00:00",
+"SoNgayQuaHan": 13,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINAI",
+"TenDoiTac": "Viện Trí tuệ Nhân tạo VinAI",
+"LaBenLienKet": true,
+"SoDuNo": 122100000,
+"NgayDaoHan": "2026-09-02T00:00:00",
+"SoNgayQuaHan": 28,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaBenLienKet": true,
+"SoDuNo": 77000000,
+"NgayDaoHan": "2025-11-24T00:00:00",
+"SoNgayQuaHan": 310,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaBenLienKet": true,
+"SoDuNo": 177400000,
+"NgayDaoHan": "2026-01-18T00:00:00",
+"SoNgayQuaHan": 255,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaBenLienKet": true,
+"SoDuNo": 387200000,
+"NgayDaoHan": "2026-04-14T00:00:00",
+"SoNgayQuaHan": 169,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaBenLienKet": true,
+"SoDuNo": 363000000,
+"NgayDaoHan": "2026-07-06T00:00:00",
+"SoNgayQuaHan": 86,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaBenLienKet": true,
+"SoDuNo": 338800000,
+"NgayDaoHan": "2026-09-30T00:00:00",
+"SoNgayQuaHan": 0,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINSCHOOL",
+"TenDoiTac": "Hệ thống Giáo dục Vinschool",
+"LaBenLienKet": true,
+"SoDuNo": 42900000,
+"NgayDaoHan": "2026-10-24T00:00:00",
+"SoNgayQuaHan": -24,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINES",
+"TenDoiTac": "Công ty CP Giải pháp Năng lượng VinES",
+"LaBenLienKet": true,
+"SoDuNo": 374000000,
+"NgayDaoHan": "2026-07-03T00:00:00",
+"SoNgayQuaHan": 89,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINES",
+"TenDoiTac": "Công ty CP Giải pháp Năng lượng VinES",
+"LaBenLienKet": true,
+"SoDuNo": 349800000,
+"NgayDaoHan": "2026-10-24T00:00:00",
+"SoNgayQuaHan": -24,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINBIGDATA",
+"TenDoiTac": "Công ty CP VinBigdata",
+"LaBenLienKet": true,
+"SoDuNo": 418000000,
+"NgayDaoHan": "2026-09-05T00:00:00",
+"SoNgayQuaHan": 25,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_029",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 29",
+"LaBenLienKet": false,
+"SoDuNo": 305800000,
+"NgayDaoHan": "2026-09-09T00:00:00",
+"SoNgayQuaHan": 21,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"TenDoiTac": "Công ty CP VinBrain",
+"LaBenLienKet": true,
+"SoDuNo": 296100000,
+"NgayDaoHan": "2025-10-06T00:00:00",
+"SoNgayQuaHan": 359,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"TenDoiTac": "Công ty CP VinBrain",
+"LaBenLienKet": true,
+"SoDuNo": 403700000,
+"NgayDaoHan": "2026-04-23T00:00:00",
+"SoNgayQuaHan": 160,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"TenDoiTac": "Công ty CP VinBrain",
+"LaBenLienKet": true,
+"SoDuNo": 379500000,
+"NgayDaoHan": "2026-07-15T00:00:00",
+"SoNgayQuaHan": 77,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"TenDoiTac": "Công ty CP VinBrain",
+"LaBenLienKet": true,
+"SoDuNo": 218900000,
+"NgayDaoHan": "2026-09-08T00:00:00",
+"SoNgayQuaHan": 22,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"TenDoiTac": "Quỹ Thiện Tâm",
+"LaBenLienKet": true,
+"SoDuNo": 161700000,
+"NgayDaoHan": "2025-10-15T00:00:00",
+"SoNgayQuaHan": 350,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_062",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 62",
+"LaBenLienKet": false,
+"SoDuNo": 306900000,
+"NgayDaoHan": "2026-10-01T00:00:00",
+"SoNgayQuaHan": -1,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINCSS",
+"TenDoiTac": "Công ty Dịch vụ An ninh mạng VinCSS",
+"LaBenLienKet": true,
+"SoDuNo": 53900000,
+"NgayDaoHan": "2026-10-21T00:00:00",
+"SoNgayQuaHan": -21,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINCLUB",
+"TenDoiTac": "Chương trình Khách hàng thân thiết VinClub",
+"LaBenLienKet": true,
+"SoDuNo": 315700000,
+"NgayDaoHan": "2026-09-14T00:00:00",
+"SoNgayQuaHan": 16,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VHIZ",
+"TenDoiTac": "Khu công nghiệp Vinhomes Industrial Zone",
+"LaBenLienKet": true,
+"SoDuNo": 2100000,
+"NgayDaoHan": "2026-04-11T00:00:00",
+"SoNgayQuaHan": 172,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VHIZ",
+"TenDoiTac": "Khu công nghiệp Vinhomes Industrial Zone",
+"LaBenLienKet": true,
+"SoDuNo": 25300000,
+"NgayDaoHan": "2026-09-23T00:00:00",
+"SoNgayQuaHan": 7,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaBenLienKet": true,
+"SoDuNo": 28600000,
+"NgayDaoHan": "2025-05-03T00:00:00",
+"SoNgayQuaHan": 515,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaBenLienKet": true,
+"SoDuNo": 290400000,
+"NgayDaoHan": "2026-04-08T00:00:00",
+"SoNgayQuaHan": 175,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaBenLienKet": true,
+"SoDuNo": 266200000,
+"NgayDaoHan": "2026-06-30T00:00:00",
+"SoNgayQuaHan": 92,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaBenLienKet": true,
+"SoDuNo": 242000000,
+"NgayDaoHan": "2026-10-21T00:00:00",
+"SoNgayQuaHan": -21,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_027",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 27",
+"LaBenLienKet": false,
+"SoDuNo": 209000000,
+"NgayDaoHan": "2026-09-03T00:00:00",
+"SoNgayQuaHan": 27,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"TenDoiTac": "Công ty TNHH Vận tải Sinh thái VinBus",
+"LaBenLienKet": true,
+"SoDuNo": 111000000,
+"NgayDaoHan": "2025-10-09T00:00:00",
+"SoNgayQuaHan": 356,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"TenDoiTac": "Công ty TNHH Vận tải Sinh thái VinBus",
+"LaBenLienKet": true,
+"SoDuNo": 204600000,
+"NgayDaoHan": "2026-04-26T00:00:00",
+"SoNgayQuaHan": 157,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"TenDoiTac": "Công ty TNHH Vận tải Sinh thái VinBus",
+"LaBenLienKet": true,
+"SoDuNo": 180400000,
+"NgayDaoHan": "2026-07-18T00:00:00",
+"SoNgayQuaHan": 74,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaBenLienKet": true,
+"SoDuNo": 281600000,
+"NgayDaoHan": "2025-11-06T00:00:00",
+"SoNgayQuaHan": 328,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"TenDoiTac": "Tập đoàn Vingroup - Công ty CP (Công ty mẹ)",
+"LaBenLienKet": true,
+"SoDuNo": 481800000,
+"NgayDaoHan": "2026-07-06T00:00:00",
+"SoNgayQuaHan": 86,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaBenLienKet": true,
+"SoDuNo": 121000000,
+"NgayDaoHan": "2025-12-31T00:00:00",
+"SoNgayQuaHan": 273,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaBenLienKet": true,
+"SoDuNo": 96800000,
+"NgayDaoHan": "2026-04-23T00:00:00",
+"SoNgayQuaHan": 160,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaBenLienKet": true,
+"SoDuNo": 72600000,
+"NgayDaoHan": "2026-07-15T00:00:00",
+"SoNgayQuaHan": 77,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_067",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 67",
+"LaBenLienKet": false,
+"SoDuNo": 301400000,
+"NgayDaoHan": "2026-10-16T00:00:00",
+"SoNgayQuaHan": -16,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaBenLienKet": true,
+"SoDuNo": 48400000,
+"NgayDaoHan": "2026-10-09T00:00:00",
+"SoNgayQuaHan": -9,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"TenDoiTac": "Quỹ Thiện Tâm",
+"LaBenLienKet": true,
+"SoDuNo": 137500000,
+"NgayDaoHan": "2026-01-09T00:00:00",
+"SoNgayQuaHan": 264,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"TenDoiTac": "Quỹ Thiện Tâm",
+"LaBenLienKet": true,
+"SoDuNo": 113300000,
+"NgayDaoHan": "2026-04-05T00:00:00",
+"SoNgayQuaHan": 178,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"TenDoiTac": "Quỹ Thiện Tâm",
+"LaBenLienKet": true,
+"SoDuNo": 89100000,
+"NgayDaoHan": "2026-07-24T00:00:00",
+"SoNgayQuaHan": 68,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"TenDoiTac": "Quỹ Thiện Tâm",
+"LaBenLienKet": true,
+"SoDuNo": 423500000,
+"NgayDaoHan": "2026-09-17T00:00:00",
+"SoNgayQuaHan": 13,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"TenDoiTac": "Tập đoàn Vingroup - Công ty CP (Công ty mẹ)",
+"LaBenLienKet": true,
+"SoDuNo": 50000000,
+"NgayDaoHan": "2026-04-14T00:00:00",
+"SoNgayQuaHan": 169,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"TenDoiTac": "Tập đoàn Vingroup - Công ty CP (Công ty mẹ)",
+"LaBenLienKet": true,
+"SoDuNo": 321200000,
+"NgayDaoHan": "2026-08-30T00:00:00",
+"SoNgayQuaHan": 31,
+"NhomTuoiNo": "QuaHan31_60"
+},
+{
+"MaDoiTac": "TEST_NCC_AWS",
+"TenDoiTac": "Amazon Web Services Inc",
+"LaBenLienKet": false,
+"SoDuNo": 101618275,
+"NgayDaoHan": "2025-02-06T00:00:00",
+"SoNgayQuaHan": 601,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_074",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 74",
+"LaBenLienKet": false,
+"SoDuNo": 392700000,
+"NgayDaoHan": "2026-10-10T00:00:00",
+"SoNgayQuaHan": -10,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_053",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 53",
+"LaBenLienKet": false,
+"SoDuNo": 118800000,
+"NgayDaoHan": "2026-10-01T00:00:00",
+"SoNgayQuaHan": -1,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_011",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 11",
+"LaBenLienKet": false,
+"SoDuNo": 211200000,
+"NgayDaoHan": "2025-04-18T00:00:00",
+"SoNgayQuaHan": 530,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_ATLASSIAN",
+"TenDoiTac": "Atlassian Pty Ltd",
+"LaBenLienKet": false,
+"SoDuNo": 83262588,
+"NgayDaoHan": "2025-02-03T00:00:00",
+"SoNgayQuaHan": 604,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_010",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 10",
+"LaBenLienKet": false,
+"SoDuNo": 177100000,
+"NgayDaoHan": "2026-03-21T00:00:00",
+"SoNgayQuaHan": 193,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_020",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 20",
+"LaBenLienKet": false,
+"SoDuNo": 141900000,
+"NgayDaoHan": "2026-06-15T00:00:00",
+"SoNgayQuaHan": 107,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_050",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 50",
+"LaBenLienKet": false,
+"SoDuNo": 221100000,
+"NgayDaoHan": "2026-10-19T00:00:00",
+"SoNgayQuaHan": -19,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_021",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 21",
+"LaBenLienKet": false,
+"SoDuNo": 437800000,
+"NgayDaoHan": "2026-06-18T00:00:00",
+"SoNgayQuaHan": 104,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_051",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 51",
+"LaBenLienKet": false,
+"SoDuNo": 22000000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_021",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 21",
+"LaBenLienKet": false,
+"SoDuNo": 413600000,
+"NgayDaoHan": "2026-09-12T00:00:00",
+"SoNgayQuaHan": 18,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_022",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 22",
+"LaBenLienKet": false,
+"SoDuNo": 471900000,
+"NgayDaoHan": "2025-07-19T00:00:00",
+"SoNgayQuaHan": 438,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_022",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 22",
+"LaBenLienKet": false,
+"SoDuNo": 214500000,
+"NgayDaoHan": "2026-09-15T00:00:00",
+"SoNgayQuaHan": 15,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_023",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 23",
+"LaBenLienKet": false,
+"SoDuNo": 510400000,
+"NgayDaoHan": "2026-09-18T00:00:00",
+"SoNgayQuaHan": 12,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_025",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 25",
+"LaBenLienKet": false,
+"SoDuNo": 112200000,
+"NgayDaoHan": "2026-09-24T00:00:00",
+"SoNgayQuaHan": 6,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_026",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 26",
+"LaBenLienKet": false,
+"SoDuNo": 408100000,
+"NgayDaoHan": "2026-08-31T00:00:00",
+"SoNgayQuaHan": 30,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_028",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 28",
+"LaBenLienKet": false,
+"SoDuNo": 504900000,
+"NgayDaoHan": "2026-09-06T00:00:00",
+"SoNgayQuaHan": 24,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_030",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 30",
+"LaBenLienKet": false,
+"SoDuNo": 106700000,
+"NgayDaoHan": "2026-09-12T00:00:00",
+"SoNgayQuaHan": 18,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_031",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 31",
+"LaBenLienKet": false,
+"SoDuNo": 402600000,
+"NgayDaoHan": "2026-09-15T00:00:00",
+"SoNgayQuaHan": 15,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_032",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 32",
+"LaBenLienKet": false,
+"SoDuNo": 203500000,
+"NgayDaoHan": "2026-09-18T00:00:00",
+"SoNgayQuaHan": 12,
+"NhomTuoiNo": "QuaHan1_30"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_033",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 33",
+"LaBenLienKet": false,
+"SoDuNo": 237600000,
+"NgayDaoHan": "2025-10-19T00:00:00",
+"SoNgayQuaHan": 346,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_063",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 63",
+"LaBenLienKet": false,
+"SoDuNo": 132000000,
+"NgayDaoHan": "2026-07-10T00:00:00",
+"SoNgayQuaHan": 82,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_044",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 44",
+"LaBenLienKet": false,
+"SoDuNo": 498300000,
+"NgayDaoHan": "2026-01-18T00:00:00",
+"SoNgayQuaHan": 255,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_045",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 45",
+"LaBenLienKet": false,
+"SoDuNo": 37400000,
+"NgayDaoHan": "2025-02-18T00:00:00",
+"SoNgayQuaHan": 589,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_048",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 48",
+"LaBenLienKet": false,
+"SoDuNo": 124300000,
+"NgayDaoHan": "2026-10-13T00:00:00",
+"SoNgayQuaHan": -13,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_049",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 49",
+"LaBenLienKet": false,
+"SoDuNo": 420200000,
+"NgayDaoHan": "2026-10-16T00:00:00",
+"SoNgayQuaHan": -16,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_052",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 52",
+"LaBenLienKet": false,
+"SoDuNo": 317900000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_054",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 54",
+"LaBenLienKet": false,
+"SoDuNo": 414700000,
+"NgayDaoHan": "2026-10-04T00:00:00",
+"SoNgayQuaHan": -4,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_055",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 55",
+"LaBenLienKet": false,
+"SoDuNo": 264000000,
+"NgayDaoHan": "2026-04-18T00:00:00",
+"SoNgayQuaHan": 165,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_055",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 55",
+"LaBenLienKet": false,
+"SoDuNo": 215600000,
+"NgayDaoHan": "2026-10-07T00:00:00",
+"SoNgayQuaHan": -7,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_056",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 56",
+"LaBenLienKet": false,
+"SoDuNo": 298100000,
+"NgayDaoHan": "2025-05-19T00:00:00",
+"SoNgayQuaHan": 499,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_056",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 56",
+"LaBenLienKet": false,
+"SoDuNo": 16500000,
+"NgayDaoHan": "2026-10-10T00:00:00",
+"SoNgayQuaHan": -10,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_057",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 57",
+"LaBenLienKet": false,
+"SoDuNo": 312400000,
+"NgayDaoHan": "2026-10-13T00:00:00",
+"SoNgayQuaHan": -13,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_058",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 58",
+"LaBenLienKet": false,
+"SoDuNo": 113300000,
+"NgayDaoHan": "2026-10-16T00:00:00",
+"SoNgayQuaHan": -16,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_059",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 59",
+"LaBenLienKet": false,
+"SoDuNo": 409200000,
+"NgayDaoHan": "2026-10-19T00:00:00",
+"SoNgayQuaHan": -19,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_060",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 60",
+"LaBenLienKet": false,
+"SoDuNo": 210100000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_061",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 61",
+"LaBenLienKet": false,
+"SoDuNo": 506000000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_063",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 63",
+"LaBenLienKet": false,
+"SoDuNo": 107800000,
+"NgayDaoHan": "2026-10-04T00:00:00",
+"SoNgayQuaHan": -4,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_064",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 64",
+"LaBenLienKet": false,
+"SoDuNo": 427900000,
+"NgayDaoHan": "2026-07-13T00:00:00",
+"SoNgayQuaHan": 79,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_064",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 64",
+"LaBenLienKet": false,
+"SoDuNo": 403700000,
+"NgayDaoHan": "2026-10-07T00:00:00",
+"SoNgayQuaHan": -7,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_065",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 65",
+"LaBenLienKet": false,
+"SoDuNo": 204600000,
+"NgayDaoHan": "2026-10-10T00:00:00",
+"SoNgayQuaHan": -10,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_066",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 66",
+"LaBenLienKet": false,
+"SoDuNo": 29700000,
+"NgayDaoHan": "2026-07-19T00:00:00",
+"SoNgayQuaHan": 73,
+"NhomTuoiNo": "QuaHan61_90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_066",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 66",
+"LaBenLienKet": false,
+"SoDuNo": 500500000,
+"NgayDaoHan": "2026-10-13T00:00:00",
+"SoNgayQuaHan": -13,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_067",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 67",
+"LaBenLienKet": false,
+"SoDuNo": 63800000,
+"NgayDaoHan": "2025-08-18T00:00:00",
+"SoNgayQuaHan": 408,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_068",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 68",
+"LaBenLienKet": false,
+"SoDuNo": 102300000,
+"NgayDaoHan": "2026-10-19T00:00:00",
+"SoNgayQuaHan": -19,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_069",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 69",
+"LaBenLienKet": false,
+"SoDuNo": 398200000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_070",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 70",
+"LaBenLienKet": false,
+"SoDuNo": 199100000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_071",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 71",
+"LaBenLienKet": false,
+"SoDuNo": 495000000,
+"NgayDaoHan": "2026-10-01T00:00:00",
+"SoNgayQuaHan": -1,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_072",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 72",
+"LaBenLienKet": false,
+"SoDuNo": 295900000,
+"NgayDaoHan": "2026-10-04T00:00:00",
+"SoNgayQuaHan": -4,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_073",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 73",
+"LaBenLienKet": false,
+"SoDuNo": 96800000,
+"NgayDaoHan": "2026-10-07T00:00:00",
+"SoNgayQuaHan": -7,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_075",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 75",
+"LaBenLienKet": false,
+"SoDuNo": 193600000,
+"NgayDaoHan": "2026-10-13T00:00:00",
+"SoNgayQuaHan": -13,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_076",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 76",
+"LaBenLienKet": false,
+"SoDuNo": 489500000,
+"NgayDaoHan": "2026-10-16T00:00:00",
+"SoNgayQuaHan": -16,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_078",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 78",
+"LaBenLienKet": false,
+"SoDuNo": 324500000,
+"NgayDaoHan": "2025-11-18T00:00:00",
+"SoNgayQuaHan": 316,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_089",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 89",
+"LaBenLienKet": false,
+"SoDuNo": 90200000,
+"NgayDaoHan": "2026-02-18T00:00:00",
+"SoNgayQuaHan": 224,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_090",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 90",
+"LaBenLienKet": false,
+"SoDuNo": 124300000,
+"NgayDaoHan": "2025-03-21T00:00:00",
+"SoNgayQuaHan": 558,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_100",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 100",
+"LaBenLienKet": false,
+"SoDuNo": 350900000,
+"NgayDaoHan": "2026-05-19T00:00:00",
+"SoNgayQuaHan": 134,
+"NhomTuoiNo": "QuaHanTren90"
+},
+{
+"MaDoiTac": "TEST_NCC_GOOGLE",
+"TenDoiTac": "Google Cloud Asia Pacific",
+"LaBenLienKet": false,
+"SoDuNo": 761613600,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_033",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 33",
+"LaBenLienKet": false,
+"SoDuNo": 140800000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_042",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 42",
+"LaBenLienKet": false,
+"SoDuNo": 328900000,
+"NgayDaoHan": "2026-10-22T00:00:00",
+"SoNgayQuaHan": -22,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_HP",
+"TenDoiTac": "HP PPS Asia Pte Ltd",
+"LaBenLienKet": false,
+"SoDuNo": 781743459,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_034",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 34",
+"LaBenLienKet": false,
+"SoDuNo": 436700000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan"
+},
+{
+"MaDoiTac": "TEST_NCC_VN_043",
+"TenDoiTac": "Nhà cung cấp Dịch vụ & Hạ tầng số 43",
+"LaBenLienKet": false,
+"SoDuNo": 129800000,
+"NgayDaoHan": "2026-10-25T00:00:00",
+"SoNgayQuaHan": -25,
+"NhomTuoiNo": "TrongHan"
+}
+],
+"SafetyGateSummary": {
+"TongSoDoiTacNoiBo": 17,
+"SoNoiBoCamKhoa": 17,
+"SoNoiBoCanhBaoCFO": 1,
+"TongSoKhachNgoai": 98,
+"SoDeXuatKhoaAPI": 26
+}
+},
+"Report2_MaTranNetting": {
+"TongCanTruSongPhuong": 27259900000,
+"TongCanTruBacCau": 1100300000,
+"TongGiaTriCanTru": 28360200000,
+"TongGiamAR": 28360200000,
+"TongGiamAP": 28360200000,
+"DeltaCanDoi": 0,
+"TongSoChungTu": 148,
+"ChiTietTheoDoiTac": [
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"SoTienCanTru": 1380000000
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"SoTienCanTru": 1449200000
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"SoTienCanTru": 524500000
+},
+{
+"MaDoiTac": "TEST_VG_VINMEC",
+"SoTienCanTru": 1619200000
+},
+{
+"MaDoiTac": "TEST_VG_VINHOMES",
+"SoTienCanTru": 1619700000
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"SoTienCanTru": 1248400000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"SoTienCanTru": 541000000
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"SoTienCanTru": 460600000
+},
+{
+"MaDoiTac": "TEST_VG_VINCSS",
+"SoTienCanTru": 1521300000
+},
+{
+"MaDoiTac": "TEST_VG_VINCLUB",
+"SoTienCanTru": 1690300000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_TRADING",
+"SoTienCanTru": 808800000
+},
+{
+"MaDoiTac": "TEST_VG_VINES",
+"SoTienCanTru": 1555400000
+},
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"SoTienCanTru": 1222200000
+},
+{
+"MaDoiTac": "TEST_VG_VHIZ",
+"SoTienCanTru": 1826400000
+},
+{
+"MaDoiTac": "TEST_VG_VINAI",
+"SoTienCanTru": 749100000
+},
+{
+"MaDoiTac": "TEST_VG_VINBIGDATA",
+"SoTienCanTru": 1174600000
+},
+{
+"MaDoiTac": "TEST_VG_VINSCHOOL",
+"SoTienCanTru": 1475100000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_VN",
+"SoTienCanTru": 1019700000
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"SoTienCanTru": 843500000
+},
+{
+"MaDoiTac": "TEST_VG_GSM",
+"SoTienCanTru": 1445400000
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"SoTienCanTru": 1014800000
+},
+{
+"MaDoiTac": "TEST_VG_VGREEN",
+"SoTienCanTru": 1793900000
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"SoTienCanTru": 741300000
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"SoTienCanTru": 635800000
+}
+],
+"ChiTietTheoCap": [
+{
+"MaDoiTac": "TEST_VG_GSM",
+"TenDoiTac": "Công ty CP Di chuyển Xanh và Thông minh GSM (Xanh SM)",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 7,
+"SoTienCanTru": 1445400000
+},
+{
+"MaDoiTac": "TEST_VG_THIENTAM",
+"TenDoiTac": "Quỹ Thiện Tâm",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 4,
+"SoTienCanTru": 741300000
+},
+{
+"MaDoiTac": "TEST_VG_VGREEN",
+"TenDoiTac": "Công ty CP Phát triển Trạm sạc Toàn cầu V-Green",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 8,
+"SoTienCanTru": 1438600000
+},
+{
+"MaDoiTac": "TEST_VG_VGREEN",
+"TenDoiTac": "Công ty CP Phát triển Trạm sạc Toàn cầu V-Green",
+"LaCanTruBacCau": true,
+"MaTrungGian": "TEST_VG_VINAI",
+"TenTrungGian": "Viện Trí tuệ Nhân tạo VinAI",
+"SoChungTu": 1,
+"SoTienCanTru": 355300000
+},
+{
+"MaDoiTac": "TEST_VG_VHIZ",
+"TenDoiTac": "Khu công nghiệp Vinhomes Industrial Zone",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 11,
+"SoTienCanTru": 1826400000
+},
+{
+"MaDoiTac": "TEST_VG_VIC",
+"TenDoiTac": "Tập đoàn Vingroup - Công ty CP (Công ty mẹ)",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 5,
+"SoTienCanTru": 1014800000
+},
+{
+"MaDoiTac": "TEST_VG_VINAI",
+"TenDoiTac": "Viện Trí tuệ Nhân tạo VinAI",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 6,
+"SoTienCanTru": 749100000
+},
+{
+"MaDoiTac": "TEST_VG_VINBIGDATA",
+"TenDoiTac": "Công ty CP VinBigdata",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 7,
+"SoTienCanTru": 1137400000
+},
+{
+"MaDoiTac": "TEST_VG_VINBIGDATA",
+"TenDoiTac": "Công ty CP VinBigdata",
+"LaCanTruBacCau": false,
+"MaTrungGian": "TEST_VG_VINHOMES",
+"TenTrungGian": "Công ty CP Vinhomes",
+"SoChungTu": 1,
+"SoTienCanTru": 37200000
+},
+{
+"MaDoiTac": "TEST_VG_VINBRAIN",
+"TenDoiTac": "Công ty CP VinBrain",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 4,
+"SoTienCanTru": 843500000
+},
+{
+"MaDoiTac": "TEST_VG_VINBUS",
+"TenDoiTac": "Công ty TNHH Vận tải Sinh thái VinBus",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 5,
+"SoTienCanTru": 1222200000
+},
+{
+"MaDoiTac": "TEST_VG_VINCLUB",
+"TenDoiTac": "Chương trình Khách hàng thân thiết VinClub",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 8,
+"SoTienCanTru": 1690300000
+},
+{
+"MaDoiTac": "TEST_VG_VINCOM_RETAIL",
+"TenDoiTac": "Công ty CP Vincom Retail",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 6,
+"SoTienCanTru": 1248400000
+},
+{
+"MaDoiTac": "TEST_VG_VINCSS",
+"TenDoiTac": "Công ty Dịch vụ An ninh mạng VinCSS",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 7,
+"SoTienCanTru": 1026300000
+},
+{
+"MaDoiTac": "TEST_VG_VINCSS",
+"TenDoiTac": "Công ty Dịch vụ An ninh mạng VinCSS",
+"LaCanTruBacCau": true,
+"MaTrungGian": "TEST_VG_VINFAST_TRADING",
+"TenTrungGian": "Công ty TNHH Kinh doanh & Phân phối VinFast Trading",
+"SoChungTu": 1,
+"SoTienCanTru": 495000000
+},
+{
+"MaDoiTac": "TEST_VG_VINES",
+"TenDoiTac": "Công ty CP Giải pháp Năng lượng VinES",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 5,
+"SoTienCanTru": 1467400000
+},
+{
+"MaDoiTac": "TEST_VG_VINES",
+"TenDoiTac": "Công ty CP Giải pháp Năng lượng VinES",
+"LaCanTruBacCau": false,
+"MaTrungGian": "TEST_VG_VINCSS",
+"TenTrungGian": "Công ty Dịch vụ An ninh mạng VinCSS",
+"SoChungTu": 1,
+"SoTienCanTru": 88000000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_PROD",
+"TenDoiTac": "Công ty TNHH SX & KD VinFast (Pháp nhân cũ còn công nợ)",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 2,
+"SoTienCanTru": 541000000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_TRADING",
+"TenDoiTac": "Công ty TNHH Kinh doanh & Phân phối VinFast Trading",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 3,
+"SoTienCanTru": 582800000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_TRADING",
+"TenDoiTac": "Công ty TNHH Kinh doanh & Phân phối VinFast Trading",
+"LaCanTruBacCau": false,
+"MaTrungGian": "TEST_VG_VINWONDERS",
+"TenTrungGian": "Công ty CP VinWonders",
+"SoChungTu": 1,
+"SoTienCanTru": 226000000
+},
+{
+"MaDoiTac": "TEST_VG_VINFAST_VN",
+"TenDoiTac": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 6,
+"SoTienCanTru": 1019700000
+},
+{
+"MaDoiTac": "TEST_VG_VINFUTURE",
+"TenDoiTac": "Quỹ VinFuture",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 2,
+"SoTienCanTru": 635800000
+},
+{
+"MaDoiTac": "TEST_VG_VINHOMES",
+"TenDoiTac": "Công ty CP Vinhomes",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 14,
+"SoTienCanTru": 1529700000
+},
+{
+"MaDoiTac": "TEST_VG_VINHOMES",
+"TenDoiTac": "Công ty CP Vinhomes",
+"LaCanTruBacCau": true,
+"MaTrungGian": "TEST_VG_VINFAST_VN",
+"TenTrungGian": "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+"SoChungTu": 3,
+"SoTienCanTru": 90000000
+},
+{
+"MaDoiTac": "TEST_VG_VINMEC",
+"TenDoiTac": "Công ty CP Bệnh viện ĐKQT Vinmec",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 5,
+"SoTienCanTru": 1425600000
+},
+{
+"MaDoiTac": "TEST_VG_VINMEC",
+"TenDoiTac": "Công ty CP Bệnh viện ĐKQT Vinmec",
+"LaCanTruBacCau": false,
+"MaTrungGian": "TEST_VG_VINBUS",
+"TenTrungGian": "Công ty TNHH Vận tải Sinh thái VinBus",
+"SoChungTu": 1,
+"SoTienCanTru": 193600000
+},
+{
+"MaDoiTac": "TEST_VG_VINPEARL",
+"TenDoiTac": "Công ty CP Vinpearl",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 4,
+"SoTienCanTru": 524500000
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 3,
+"SoTienCanTru": 1289200000
+},
+{
+"MaDoiTac": "TEST_VG_VINROBOTICS",
+"TenDoiTac": "Công ty Nghiên cứu và Phát triển VinRobotics",
+"LaCanTruBacCau": true,
+"MaTrungGian": "TEST_VG_VINWONDERS",
+"TenTrungGian": "Công ty CP VinWonders",
+"SoChungTu": 1,
+"SoTienCanTru": 160000000
+},
+{
+"MaDoiTac": "TEST_VG_VINSCHOOL",
+"TenDoiTac": "Hệ thống Giáo dục Vinschool",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 8,
+"SoTienCanTru": 1475100000
+},
+{
+"MaDoiTac": "TEST_VG_VINUNI",
+"TenDoiTac": "Trường Đại học VinUni",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 3,
+"SoTienCanTru": 460600000
+},
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"TenDoiTac": "Công ty CP VinWonders",
+"LaCanTruBacCau": false,
+"MaTrungGian": "",
+"TenTrungGian": "",
+"SoChungTu": 4,
+"SoTienCanTru": 1158700000
+},
+{
+"MaDoiTac": "TEST_VG_VINWONDERS",
+"TenDoiTac": "Công ty CP VinWonders",
+"LaCanTruBacCau": false,
+"MaTrungGian": "TEST_VG_VINBUS",
+"TenTrungGian": "Công ty TNHH Vận tải Sinh thái VinBus",
+"SoChungTu": 1,
+"SoTienCanTru": 221300000
+}
+],
+"CacDoiTacChinh": {
+"VinFastVN": 1019700000,
+"VinFastProd": 541000000,
+"VinFastTrading": 808800000,
+"GSM": 1445400000,
+"Vinhomes": 1619700000,
+"Vinmec": 1619200000,
+"Vinpearl": 524500000,
+"VGreen": 1793900000,
+"VIC": 1014800000
+}
+},
+"Report3_DoiSoatKenh": {
+"TongGross": 67465000000,
+"TongPhiKenh": 851844650,
+"TongNetThucNhan": 66613155350,
+"DeltaCanDoi": 0,
+"TyLePhiTrungBinh": 1.26,
+"TongSoBangKe": 180,
+"ChiTietTheoKenh": [
+{
+"MaKenh": "KTT-VPB-VA",
+"TenKenh": "Virtual Account VPBank",
+"Gross": 22663000000,
+"Phi": 113315000,
+"Net": 22549685000
+},
+{
+"MaKenh": "KTT-VNPAY",
+"TenKenh": "Cong thanh toan VNPAY",
+"Gross": 23691000000,
+"Phi": 355365000,
+"Net": 23335635000
+},
+{
+"MaKenh": "KTT-ONEPAY",
+"TenKenh": "Cong thanh toan OnePay",
+"Gross": 21111000000,
+"Phi": 383164650,
+"Net": 20727835350
+}
+],
+"ChiTietTheoNganHang": [
+{
+"MaTaiKhoan": "TK-VPB-VA",
+"TenTaiKhoan": "VPBank Chuyen thu Virtual Account",
+"Gross": 22663000000,
+"Phi": 113315000,
+"Net": 22549685000
+},
+{
+"MaTaiKhoan": "TK-TCB-VN",
+"TenTaiKhoan": "Techcombank VND - Hoi so chinh",
+"Gross": 44802000000,
+"Phi": 738529650,
+"Net": 44063470350
+}
+],
+"SoDuNganHangDongTien": [
+{
+"MaTaiKhoan": "TK-TCB-VN",
+"TenTaiKhoan": "Techcombank VND - Hoi so chinh",
+"SoDuTien": 789620561781.81
+},
+{
+"MaTaiKhoan": "TK-VCB-US",
+"TenTaiKhoan": "Vietcombank USD - So giao dich",
+"SoDuTien": 3079952140.16
+},
+{
+"MaTaiKhoan": "TK-VPB-VA",
+"TenTaiKhoan": "VPBank Chuyen thu Virtual Account",
+"SoDuTien": 22549685000
+}
+]
+},
+"Report4_CanhBaoCloud": {
+"NgayBaoCao": "2026-09-30T23:59:59",
+"TongChiPhiUSD": 6166645,
+"TongChiPhiVND": 155651253535,
+"TyGiaUSDHienHanh": 25558,
+"TongNhaCungCapCloud": 20,
+"ChiTietNhaCungCap": [
+{
+"MaDoiTac": "TEST_NCC_REDHAT",
+"TenDoiTac": "Red Hat Asia Pacific",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 345674,
+"TongChiPhiVND": 8735140550,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 288.06,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 42,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_INTEL",
+"TenDoiTac": "Intel Semiconductor US",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 336464,
+"TongChiPhiVND": 8476049352,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 280.39,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 49,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_QUALCOMM",
+"TenDoiTac": "Qualcomm Technologies Inc",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 333946,
+"TongChiPhiVND": 8427683206,
+"HanMucQuotaUSD": 220000,
+"PhanTramQuota": 151.79,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 24,
+"MucCanhBaoThoiHan": "Vang",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_DATABRICKS",
+"TenDoiTac": "Databricks Operations",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 327254,
+"TongChiPhiVND": 8274721292,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 272.71,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 63,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_IBM",
+"TenDoiTac": "IBM Singapore Pte Ltd",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 324736,
+"TongChiPhiVND": 8184094164,
+"HanMucQuotaUSD": 150000,
+"PhanTramQuota": 216.49,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 70,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_ORACLE",
+"TenDoiTac": "Oracle Corporation APAC",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 322218,
+"TongChiPhiVND": 8157087480,
+"HanMucQuotaUSD": 180000,
+"PhanTramQuota": 179.01,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 60,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_CLOUDFLARE",
+"TenDoiTac": "Cloudflare Network US",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 315526,
+"TongChiPhiVND": 7968297270,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 262.94,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 84,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_ZOOM",
+"TenDoiTac": "Zoom Video Communications",
+"SoHoaDon": 15,
+"TongChiPhiUSD": 315435,
+"TongChiPhiVND": 7958718574,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 262.86,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 91,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_HP",
+"TenDoiTac": "HP PPS Asia Pte Ltd",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 313008,
+"TongChiPhiVND": 7883051055,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 260.84,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 38,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_NVIDIA",
+"TenDoiTac": "NVIDIA Corporation APAC",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 310490,
+"TongChiPhiVND": 7849410547,
+"HanMucQuotaUSD": 160000,
+"PhanTramQuota": 194.06,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 45,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_VMWARE",
+"TenDoiTac": "VMware International",
+"SoHoaDon": 15,
+"TongChiPhiUSD": 304440,
+"TongChiPhiVND": 7670572382,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 253.7,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 52,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_CISCO",
+"TenDoiTac": "Cisco Systems International",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 303798,
+"TongChiPhiVND": 7675686446,
+"HanMucQuotaUSD": 150000,
+"PhanTramQuota": 202.53,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 59,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_GOOGLE",
+"TenDoiTac": "Google Cloud Asia Pacific",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 301280,
+"TongChiPhiVND": 7577101092,
+"HanMucQuotaUSD": 200000,
+"PhanTramQuota": 150.64,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 45,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_MICROSOFT",
+"TenDoiTac": "Microsoft Operations Pte Ltd",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 298762,
+"TongChiPhiVND": 7542758752,
+"HanMucQuotaUSD": 250000,
+"PhanTramQuota": 119.5,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 12,
+"MucCanhBaoThoiHan": "Cam",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_AWS",
+"TenDoiTac": "Amazon Web Services Inc",
+"SoHoaDon": 59,
+"TongChiPhiUSD": 296370,
+"TongChiPhiVND": 7508844585,
+"HanMucQuotaUSD": 300000,
+"PhanTramQuota": 98.79,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 6,
+"MucCanhBaoThoiHan": "Do",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_SNOWFLAKE",
+"TenDoiTac": "Snowflake Inc APAC",
+"SoHoaDon": 15,
+"TongChiPhiUSD": 293445,
+"TongChiPhiVND": 7404790630,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 244.54,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 87,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_DELL",
+"TenDoiTac": "Dell Global B.V.",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 289552,
+"TongChiPhiVND": 7301992747,
+"HanMucQuotaUSD": 150000,
+"PhanTramQuota": 193.03,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 94,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_SAP",
+"TenDoiTac": "SAP Asia Pte Ltd",
+"SoHoaDon": 15,
+"TongChiPhiUSD": 282450,
+"TongChiPhiVND": 7118216758,
+"HanMucQuotaUSD": 180000,
+"PhanTramQuota": 156.92,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 90,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_ATLASSIAN",
+"TenDoiTac": "Atlassian Pty Ltd",
+"SoHoaDon": 16,
+"TongChiPhiUSD": 280342,
+"TongChiPhiVND": 7094717112,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 233.62,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 48,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+},
+{
+"MaDoiTac": "TEST_NCC_SALESFORCE",
+"TenDoiTac": "Salesforce Tech Singapore",
+"SoHoaDon": 15,
+"TongChiPhiUSD": 271455,
+"TongChiPhiVND": 6842319541,
+"HanMucQuotaUSD": 120000,
+"PhanTramQuota": 226.21,
+"MucCanhBaoQuota": "Do",
+"SoNgayConLai": 55,
+"MucCanhBaoThoiHan": "BinhThuong",
+"DeXuatHanhDong": "KHẨN CẤP: Phê duyệt bổ sung hạn mức & hợp đồng trước 7 ngày để tránh ngắt hệ thống"
+}
+],
+"ThongKeCanhBaoQuota": {
+"Do": 20,
+"Cam": 0,
+"Vang": 0,
+"BinhThuong": 0
+},
+"ThongKeCanhBaoThoiHan": {
+"Do": 1,
+"Cam": 1,
+"Vang": 1,
+"BinhThuong": 17
+}
+}
+}

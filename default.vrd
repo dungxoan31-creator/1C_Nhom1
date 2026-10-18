@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<point xmlns="http://v8.1c.ru/8.2/virtual-resource-system"
+       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       base="/vinsmart"
+       ib="File=&quot;C:\Users\Dung\Documents\VinSmart_1C_VietHoa_Test\Infobase&quot;;">
+	<ws enable="false"/>
+	<httpServices enable="true"/>
+	<standardOData enable="true"/>
+	<analytics enable="true"/>
+</point>

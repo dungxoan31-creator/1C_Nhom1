@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.15">
+	<ConfigVersions>
+		<Metadata name="AccountingRegister.SoCaiKeToan" id="49f5bb34-6669-4d38-9a19-edbfc9420c55" configVersion="b32878749ff76d44bcadc2382ac1793c00000000">
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.ChungTuGocNo" id="181f9381-32c3-4703-ab84-cb738295960f"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.TaiKhoanTienCo" id="2c1ee4f9-feb2-44b0-ac2f-beffe40f0475"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.DoiTacNo" id="3822a340-497f-4d39-a426-bd795b989ca1"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Resource.SoTienNgoaiTe" id="3de48df2-22fc-4642-b0c1-bf6477bd0604"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Dimension.TienTe" id="6c464901-e1a0-40e5-8012-20a2e4e418a1"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.TaiKhoanTienNo" id="6d86e618-e11c-443a-adb5-91e098078db8"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.TyGia" id="8443f9b9-7b76-430f-8c68-a94edf391cc8"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.ChungTuGoc" id="9fc91ccd-5450-4dc9-8e37-b6c46f737816"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.HopDongNo" id="a077cf6b-3858-4344-8628-75fa7518ca54"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.HopDong" id="a1b2c3d4-5678-490a-bcde-f12345678901"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.DoiTacCo" id="a35e48d0-261e-4adf-91ff-19f8eda45f8a"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.ChungTuGocCo" id="a7c017c8-b929-4f35-96c1-c31d696340ac"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.DienGiai" id="aef44f78-8adb-45c3-be38-828f6c70a0c6"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.HopDongCo" id="b20b094b-ec13-4875-82d3-c8f1149ebc82"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.TaiKhoanTien" id="b2c3d4e5-6789-401b-cdef-123456789012"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Resource.SoTien" id="d2affeb3-50a4-4695-ba6e-9de83b8fc9ac"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Dimension.PhapNhan" id="e6cd1474-742b-44f3-9a6a-761cc0a9d292"/>
+			<Metadata name="AccountingRegister.SoCaiKeToan.Attribute.DoiTac" id="f5e6b7a8-1234-4567-89ab-cdef01234567"/>
+		</Metadata>
+		<Metadata name="AccumulationRegister.CongNoPhaiThu" id="8b2ba05a-6609-4f19-90a5-b7ecb7a1bcca" configVersion="b75ed2657b51ef4692568b9e13ab399900000000">
+			<Metadata name="AccumulationRegister.CongNoPhaiThu.Dimension.PhapNhan" id="1ff5b72c-5591-432b-9b8c-1ab601bca8ea"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiThu.Dimension.HopDong" id="31e442ea-1936-4cfb-b98c-1f20cdbf7548"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiThu.Resource.SoTien" id="4a39e2b8-6f48-4569-a232-c0b00081adbd"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiThu.Dimension.DoiTac" id="7fd1b610-f501-44b7-9d72-89bd7c1427d8"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiThu.Resource.SoTienNgoaiTe" id="83d26709-bb54-44f1-bd06-7685768e1bef"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiThu.Dimension.ChungTuGoc" id="8bb2cf37-8ecb-4ed6-ba2e-4a6f5c224dea"/>
+		</Metadata>
+		<Metadata name="AccumulationRegister.CongNoPhaiTra" id="3d92fd5b-6ec2-4ccc-9935-e4b2fabfa281" configVersion="fb2abdd192d8204ab1a399316b2b118700000000">
+			<Metadata name="AccumulationRegister.CongNoPhaiTra.Dimension.HopDong" id="0c1c959f-8de3-4453-809c-f2bd8908fa58"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiTra.Dimension.DoiTac" id="3016eab8-2df8-423b-935a-cc3bcbceccc5"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiTra.Dimension.ChungTuGoc" id="78a63a15-a33e-41d0-a792-2d2ad09bf38d"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiTra.Resource.SoTienNgoaiTe" id="88ba8854-dd81-4085-aa8a-a88a3278c2e3"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiTra.Dimension.PhapNhan" id="d383ea18-77da-4e12-a2dd-a6deb71c1cf0"/>
+			<Metadata name="AccumulationRegister.CongNoPhaiTra.Resource.SoTien" id="f59b1476-6000-4193-9a25-79e53d3b9b74"/>
+		</Metadata>
+		<Metadata name="AccumulationRegister.DongTien" id="05d51326-b65f-4687-bab4-29eb3c06f791" configVersion="ed9d5c15a3fa9043b9a706ae0334553e00000000">
+			<Metadata name="AccumulationRegister.DongTien.Dimension.TaiKhoanTien" id="2a138b11-f06e-4449-9851-828d7d6659e1"/>
+			<Metadata name="AccumulationRegister.DongTien.Resource.SoTienNgoaiTe" id="781a1043-0e37-4bd7-a123-7a5038ad7f4b"/>
+			<Metadata name="AccumulationRegister.DongTien.Resource.SoTien" id="8896aaee-7767-4d80-a23b-ccaf3ad6a88d"/>
+			<Metadata name="AccumulationRegister.DongTien.Dimension.PhapNhan" id="90331297-e8a8-41a7-ae79-93d6c563c345"/>
+			<Metadata name="AccumulationRegister.DongTien.Dimension.TienTe" id="d9935702-f4db-4563-a273-32f35467786d"/>
+			<Metadata name="AccumulationRegister.DongTien.Dimension.KhoanMucDongTien" id="e6491c36-05ab-4c69-8c92-f8a7cd6a790c"/>
+		</Metadata>
+		<Metadata name="Catalog.DoiTac" id="dea467bd-cb31-4b84-84c3-b9ec17f97cb3" configVersion="5451a43f97a0314aa4ae09c9618b0e0500000000">
+			<Metadata name="Catalog.DoiTac.Attribute.LoaiDoiTac" id="42ed22f1-fff4-4688-924f-fec56e30c25c"/>
+			<Metadata name="Catalog.DoiTac.Attribute.DaDangKyThueTrucTiep" id="b286e1ff-c14a-4a91-8069-05fe6239caa9"/>
+			<Metadata name="Catalog.DoiTac.Attribute.LaBenLienKet" id="df7b77ba-8236-4568-850a-02d92439daee"/>
+		</Metadata>
+		<Metadata name="Catalog.DuAn" id="17ec36a6-dcb5-4eb0-b8cd-a95fedb80171" configVersion="374e3a5e845e514fa2ea0ef4e919e14700000000">
+			<Metadata name="Catalog.DuAn.Attribute.PhapNhan" id="00188983-053a-4cf6-ae99-49210ceb3f24"/>
+			<Metadata name="Catalog.DuAn.Attribute.MaDuAn" id="1de9de54-ddc4-4889-b2b5-1a5bd9be61ba"/>
+			<Metadata name="Catalog.DuAn.Attribute.TenDuAn" id="a2a53d0e-1eca-4285-abe2-ee4085332371"/>
+		</Metadata>
+		<Metadata name="Catalog.HopDong" id="618c3b5e-0221-4244-9102-2fe4bde169c9" configVersion="ac2dfd4123e4564aa921eaf3710f0ee500000000">
+			<Metadata name="Catalog.HopDong.Attribute.DongTienThanhToan" id="4cdb76b3-cfc1-40cc-9779-491e911bd6dd"/>
+			<Metadata name="Catalog.HopDong.Attribute.GrossUpThue" id="50470b5e-2720-4165-8096-965f1f14799c"/>
+			<Metadata name="Catalog.HopDong.Attribute.HanThanhToanNgay" id="55cd8883-a849-4fe2-808f-d25c996da5cb"/>
+			<Metadata name="Catalog.HopDong.Attribute.ChuSoHuu" id="678edd91-63f5-451a-b610-c9ed2ed32c3d"/>
+			<Metadata name="Catalog.HopDong.Attribute.PhapNhan" id="7bff0b1d-37bd-4d4c-8d01-aff465a09236"/>
+		</Metadata>
+		<Metadata name="Catalog.HopDong.ObjectModule" id="618c3b5e-0221-4244-9102-2fe4bde169c9.0" configVersion="a2413d2d1633ae47abe82f0de09fe71a00000000"/>
+		<Metadata name="Catalog.KhoanMucDongTien" id="86366d94-3601-47ae-9d54-37f5abfa75f5" configVersion="6215b85d00aaac45ba6cd3d371fe7d6000000000">
+			<Metadata name="Catalog.KhoanMucDongTien.Attribute.LoaiDongTien" id="ee2b1333-b60c-4af6-a523-eb44a5209428"/>
+		</Metadata>
+		<Metadata name="Catalog.PhapNhan" id="c91f00fd-0e30-47b9-bd9c-cc64a3e25c47" configVersion="e7cd489d2a359e4288fa8e84b772763c00000000">
+			<Metadata name="Catalog.PhapNhan.Attribute.MaSoThue" id="a8ba4608-bb67-477f-9b1d-d0697574c173"/>
+			<Metadata name="Catalog.PhapNhan.Attribute.DiaChi" id="f96ca274-8b60-4dc3-b7c1-385db7851af3"/>
+		</Metadata>
+		<Metadata name="Catalog.TienTe" id="74a480b9-b400-4959-98eb-85f2689f994b" configVersion="3aab0480865b88448ad1edfb94f7961100000000">
+			<Metadata name="Catalog.TienTe.Attribute.MaTienTe" id="34ddd0f4-ca23-4497-b167-36aec4663c7c"/>
+			<Metadata name="Catalog.TienTe.Attribute.TenDayDu" id="761ce83c-744f-4c42-b4c2-89d9156e1beb"/>
+		</Metadata>
+		<Metadata name="ChartOfAccounts.HeThongTaiKhoan" id="1fea0e7d-bde2-4096-89f5-9d1f34cbe37d" configVersion="5393b177433ebe449aa7ae506afe339500000000">
+			<Metadata name="ChartOfAccounts.HeThongTaiKhoan.Attribute.TinhChat" id="6b9b0f73-f980-4208-8e8d-c4b97f8d3b72"/>
+			<Metadata name="ChartOfAccounts.HeThongTaiKhoan.Attribute.MaLogic" id="cbcf9c94-5a0a-40a7-850c-97a42fed7a1e"/>
+			<Metadata name="ChartOfAccounts.HeThongTaiKhoan.Attribute.TenTaiKhoan" id="e149ce72-59fd-4ee6-ad4e-d740ec7b5bb1"/>
+		</Metadata>
+		<Metadata name="Document.UyNhiemChi.ObjectModule" id="1f552ce2-19f2-4cf0-bb53-0af40ed92a5b.0" configVersion="9b20ddf2453ec74b8fbece4768e0b20b00000000"/>
+		<Metadata name="Enum.LoaiDoiTac" id="259f1f22-8a3c-413e-9169-6a4d46281f65" configVersion="8cd2f96c22f0fa4fa2844807bbb59a2800000000">
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.NoiBoTapDoan" id="4699a871-e886-4e1e-bfe8-c594081c82f6"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.ThauPhuCNTT" id="4dc48dbe-00f1-4b48-8a2c-3eaac8df25d9"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.KhachHangNgoai" id="5c3ff01e-289a-448b-afe7-029c6c83bbf2"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.NhaCungCapLinhKien" id="6ccb5e51-79ab-499f-8a5a-bce171b0f873"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.NoiBoVingroup" id="742d55e9-9b8e-4560-9c06-e9b9ef36499b"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.NhaCungCap" id="8fd702a9-772e-48f3-9279-725e9b244643"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.NhaCungCapCloud" id="a9844e12-34e4-43cb-8af5-9d7eb954b36b"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.KhachHangVaNhaCungCap" id="ba598d11-85cf-4dcf-8131-7bd85390ef19"/>
+			<Metadata name="Enum.LoaiDoiTac.EnumValue.KhachHang" id="bd5ed00a-2a84-4067-9fd2-9adbd22d9b0c"/>
+		</Metadata>
+		<Metadata name="Enum.TrangThaiHoaDonAP" id="7d3cf914-fa9a-4202-8687-8a82b796b5a6" configVersion="e604268eec94e8489126842f04f3fcd800000000">
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.ChoDuyetCFO" id="17194eae-f1a5-4470-9875-933bccca0501"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.DaGhiSo" id="1b7a96ed-e50a-4368-9069-1209726ee2a6"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.ChoDuyetKyThuat" id="3821f7bd-9e1a-466b-9d89-3dcb5a75d693"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.ChoKeToanAP" id="52dbafad-b4f3-4289-b8b4-43452704dc0f"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.ChoDuyetITDirector" id="68446b9a-d907-469a-a65d-102979dabe1e"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.DuThao" id="738b271f-0f9d-41ba-b444-3aacdcc84f7f"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.ChoDuyetPM" id="75e5a475-15c6-4a8f-94f9-e21f6982631b"/>
+			<Metadata name="Enum.TrangThaiHoaDonAP.EnumValue.TuChoi" id="8935b13c-2f29-482a-9f62-e8e4c3d777cb"/>
+		</Metadata>
+		<Metadata name="Enum.TrangThaiHoaDonDienTu" id="eb57a8ae-908c-41bb-acdf-df3b98d12db5" configVersion="a11d7488761e6b4ebcb5b627f065eb3100000000">
+			<Metadata name="Enum.TrangThaiHoaDonDienTu.EnumValue.DaHuy" id="068efa9c-d987-4ee4-b866-fc486a724886"/>
+			<Metadata name="Enum.TrangThaiHoaDonDienTu.EnumValue.DaThayThe" id="22ffa238-ce54-4267-a087-975e33d4700c"/>
+			<Metadata name="Enum.TrangThaiHoaDonDienTu.EnumValue.DaPhatHanh" id="3aa026da-1cef-479e-892d-3cfc70ef111c"/>
+			<Metadata name="Enum.TrangThaiHoaDonDienTu.EnumValue.ChoKySo" id="3d2538a0-e95f-41ac-abc3-43a48050ce58"/>
+			<Metadata name="Enum.TrangThaiHoaDonDienTu.EnumValue.DaDieuChinh" id="3dd1fb47-23b1-4845-9e4a-dfb6e73e14f6"/>
+			<Metadata name="Enum.TrangThaiHoaDonDienTu.EnumValue.DuThao" id="c2639211-52ca-4aa1-a0f8-f16d13cf6b6f"/>
+		</Metadata>
+		<Metadata name="Enum.TrangThaiLenhThanhToan" id="0ec7353a-9b70-43ac-aacd-d36831f8ce57" configVersion="21ec3226a69302449e19446eaa5bd4d400000000">
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.TuChoi" id="0bc51c9c-dbd7-4153-ae0b-27d5ba560635"/>
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.HuyBo" id="1f2a79bd-086a-4c0a-aaf6-8d4914faa41c"/>
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.DaDuyet" id="4f33ca68-788a-4168-b7fe-234252dd1c79"/>
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.ChoDuyet" id="5b948435-e255-4342-8bb2-a001451c5c6c"/>
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.DaGuiNganHang" id="69b8f8d3-0c28-47d3-b9d9-7580640e7a7e"/>
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.DuThao" id="916dbd0a-b1db-46df-bd46-83e32597a950"/>
+			<Metadata name="Enum.TrangThaiLenhThanhToan.EnumValue.DaGhiSo" id="ef113e20-3b60-4958-a460-92f514aff524"/>
+		</Metadata>
+		<Metadata name="Enum.TrangThaiNghiemThuAR" id="7ac3c3ba-8b49-41ca-a455-95dd12f789b5" configVersion="b81db7ae76c6544697709f2977d8761000000000">
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.DuThao" id="399ce570-f28b-445e-87dc-f8cd9d89d6f2"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.TranhChap" id="4ae32aa9-ce77-4ded-855d-f6099bfa6424"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.DaDuyetNoiBo" id="6956cce1-2e4c-44d7-ab40-f55cd5235f4f"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.DaGhiSo" id="7625cdb2-6735-4f2a-92b7-4789746c74cd"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.ChoDuyetNoiBo" id="7d2ba293-a8e2-461d-85d3-64fed028d3a4"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.DaThanhToanMotPhan" id="8bc6b565-80ad-4b77-80ca-0f0002202de9"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.ChoDoiTacKy" id="937c1073-356b-4c75-9dd1-9b9af9cad35d"/>
+			<Metadata name="Enum.TrangThaiNghiemThuAR.EnumValue.DaTatToan" id="fed40eae-67f3-473b-bf19-b288a76bf078"/>
+		</Metadata>
+		<Metadata name="Language.English" id="b4fedf97-23b7-4732-8389-65c43d34cfac" configVersion="20a96bf48929484bbb387687a7d561b000000000"/>
+		<Metadata name="Language.TiengViet" id="dd7a64fa-6433-4b8b-bb9a-17d587b1981b" configVersion="ebb38012553942fe982a62ff0058476100000000"/>
+		<Metadata name="Role.GiamDocTaiChinh_CFO" id="d4257492-0d49-4af9-a998-1143c4334b39" configVersion="0d55d38a0ccf934e8a78312cf33f4a4b00000000"/>
+		<Metadata name="Role.GiamDocTaiChinh_CFO.Rights" id="d4257492-0d49-4af9-a998-1143c4334b39.0" configVersion="e9ca9575a050294693528af6cf02490900000000"/>
+		<Metadata name="Role.KeToanPhaiThu" id="92d8a99d-9013-4130-8970-3c76b7af0d3f" configVersion="951305458cbb8c408d493b7e4e5a4ea300000000"/>
+		<Metadata name="Role.KeToanPhaiThu.Rights" id="92d8a99d-9013-4130-8970-3c76b7af0d3f.0" configVersion="380d0900db573840a0d1b49311dbb63400000000"/>
+		<Metadata name="Role.KeToanPhaiTra" id="aadc752a-9980-42ed-bba1-b96e93c4a40e" configVersion="24bbac4f87b9344590c304aa5f81014500000000"/>
+		<Metadata name="Role.KeToanPhaiTra.Rights" id="aadc752a-9980-42ed-bba1-b96e93c4a40e.0" configVersion="1ec81b37a5bfb24281bb301036c0a5ad00000000"/>
+		<Metadata name="Role.KeToanTruong" id="dc46badf-a180-4c45-a839-40ebc2f7c942" configVersion="28b533d911fb7040a2a0fd0c7902e84900000000"/>
+		<Metadata name="Role.KeToanTruong.Rights" id="dc46badf-a180-4c45-a839-40ebc2f7c942.0" configVersion="a14da3ac9d938944817039ba2e73808b00000000"/>
+		<Metadata name="Role.QuanTriHeThong" id="bf1d0559-991f-4916-b754-753c080019a8" configVersion="1e48a190720b364b9b76b023af7c618a00000000"/>
+		<Metadata name="Role.QuanTriHeThong.Rights" id="bf1d0559-991f-4916-b754-753c080019a8.0" configVersion="bde7a448b3b5874aa9e862eb4fd6a12c00000000"/>
+		<Metadata name="StyleItem.FunctionsPanelSectionColor" id="43d8dd53-df3e-407e-a3c1-5b893cc1976c" configVersion="c38b453f1f1a4545811adca3a5e5302700000000"/>
+		<Metadata name="StyleItem.MauCanhBaoDoVSF" id="1e65ab2e-f369-4494-ac8d-4e5a9bd094ad" configVersion="2a808217bfe940489645fe16bb1e76b300000000"/>
+		<Metadata name="StyleItem.MauCanhBaoVangVSF" id="66d17e1b-2d91-4546-bf35-8d254fbca8fc" configVersion="34050a5109d3ac4db63ec0160edef45600000000"/>
+		<Metadata name="StyleItem.MauChuDaoDamVSF" id="c22d8617-0fb2-4da8-a41a-757e9b3d0371" configVersion="cf27ddc45e1dfc41926096b63de1b07800000000"/>
+		<Metadata name="StyleItem.MauChuDaoVSF" id="4315a7cc-5c01-40b1-b675-7153f3e4c80c" configVersion="e93fd698b1bcb946b84661dbdf82685400000000"/>
+		<Metadata name="StyleItem.MauNenChinhVSF" id="c214a888-cdde-4d64-a143-b3ca5c8a2549" configVersion="8d04660573b0cc408b9087e219d0893200000000"/>
+		<Metadata name="StyleItem.MauNenPhuVSF" id="d46c8ef2-b020-404d-b1b6-dd4071c9a149" configVersion="3db05d445a1fb24eb601a6eff579cdbd00000000"/>
+		<Metadata name="StyleItem.MauThongTinVSF" id="4deb6bfc-9c31-4bb1-936c-bc5b3553d458" configVersion="e6db256c578df647950464981b449a3f00000000"/>
+		<Metadata name="StyleItem.MauTrangThaiNhap" id="1484c34a-d5b2-4103-b7a6-553723fea6b2" configVersion="465c98b4909eac478bad0c34f2520b0b00000000"/>
+		<Metadata name="StyleItem.MauTrangThaiThanhCong" id="748070a0-651f-4bae-99cf-fa4b4fcaafee" configVersion="60da36353c466142aa4ea6385ce9216e00000000"/>
+		<Metadata name="StyleItem.MauVanBanChinhVSF" id="8b378c43-bb05-49a6-a86c-42b85a84db74" configVersion="a60da2f219cf3042a55654940ed9ae7800000000"/>
+		<Metadata name="StyleItem.MauVanBanPhuVSF" id="7fd6961e-aa15-4fc4-8692-0d42c486eb9c" configVersion="13b9c3a3d454864d9b2c5c52eab06c7b00000000"/>
+		<Metadata name="StyleItem.MauVanBanTrangVSF" id="8c6d19cf-d247-4218-a327-af547c6f8650" configVersion="090e667047d2ae449aa302f707f87b7700000000"/>
+		<Metadata name="StyleItem.MauVienChinhVSF" id="e0750e96-817c-4471-aa71-92140cfdf459" configVersion="ad8b62eb3b705c47b5e9b3e49525e25600000000"/>
+		<Metadata name="Subsystem.PhanHeDanhMuc" id="9224f2b2-4500-4b18-a53d-9f398ee28e72" configVersion="9e71c3a2b014da41a03355899248d48c00000000"/>
+		<Metadata name="Subsystem.PhanHeNganHangVaQuy" id="66dafa24-8987-4748-a14b-af3479d58a5d" configVersion="19c841a44f65314d83bf853386b87b8200000000"/>
+		<Metadata name="Subsystem.PhanHePhaiThu" id="cc0899cf-1be1-4f24-8c7e-4d60e1547be1" configVersion="9c7e8865f06c9849a8ebf9f0a9b93bd700000000"/>
+		<Metadata name="Subsystem.PhanHePhaiTra" id="e4391c28-4bb6-4738-9b06-2c44cbfacbe8" configVersion="adc6f96189d482439cc44a071ab5d6b600000000"/>
+		<Metadata name="Subsystem.PhanHeSoCaiVaDongBo" id="0923d7e8-5855-40d2-831c-0ce6547a3252" configVersion="0a712eec5cb1c74ba7bf6f43b3a3c41200000000"/>
+		<Metadata name="CommonModule.BangDieuKhienServer" id="b1e2c3d4-5678-490a-bcde-f12345678001" configVersion="1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d00000000"/>
+		<Metadata name="CommonTemplate.MauHTMLTrangChu" id="b1e2c3d4-5678-490a-bcde-f12345678002" configVersion="2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d00000000"/>
+		<Metadata name="CommonForm.TrangChuTongQuan" id="b1e2c3d4-5678-490a-bcde-f12345678003" configVersion="3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d00000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>
