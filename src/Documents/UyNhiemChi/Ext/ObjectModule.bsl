@@ -14,6 +14,43 @@
 
 #Region EventHandlers
 
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	If Not ValueIsFilled(Date) Then
+		Date = CurrentSessionDate();
+	EndIf;
+	If IsBlankString(NguoiLap) Then
+		NguoiLap = UserName();
+	EndIf;
+	If Not ValueIsFilled(PhapNhan) Then
+		PhapNhan = Catalogs.PhapNhan.FindByCode("PN-VSF");
+	EndIf;
+	If Not ValueIsFilled(NgayLap) Then
+		NgayLap = BegOfDay(CurrentSessionDate());
+	EndIf;
+	If Not ValueIsFilled(NgayGhiSo) Then
+		NgayGhiSo = BegOfDay(CurrentSessionDate());
+	EndIf;
+	If Not ValueIsFilled(TrangThai) Then
+		TrangThai = Enums.TrangThaiLenhThanhToan.DuThao;
+	EndIf;
+	If Not ValueIsFilled(TienTe) Then
+		TienTe = Catalogs.TienTe.FindByCode("VND");
+	EndIf;
+	If TyGia = 0 Then
+		TyGia = 1;
+	EndIf;
+	
+	// Kế thừa dữ liệu từ Hóa đơn nhà cung cấp (BasedOn)
+	If TypeOf(FillingData) = Type("DocumentRef.HoaDonNhaCungCap") Then
+		ChungTuGoc = FillingData;
+		PhapNhan = FillingData.PhapNhan;
+		DoiTac = FillingData.DoiTac;
+		HopDong = FillingData.HopDong;
+		SoTien = FillingData.TongTien;
+		DienGiai = StrTemplate("Thanh toán tiền theo Hóa đơn nhà cung cấp %1", FillingData.SoHoaDon);
+	EndIf;
+EndProcedure
+
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// [FIX B31] Huy ghi so: chi KTT/CFO, khong con chung tu phu thuoc; tra ve "Da gui ngan hang"
 	If WriteMode = DocumentWriteMode.UndoPosting Then

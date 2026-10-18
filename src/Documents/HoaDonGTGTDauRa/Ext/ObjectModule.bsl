@@ -8,6 +8,44 @@
 
 #Region EventHandlers
 
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	If Not ValueIsFilled(Date) Then
+		Date = CurrentSessionDate();
+	EndIf;
+	If IsBlankString(NguoiLap) Then
+		NguoiLap = UserName();
+	EndIf;
+	If Not ValueIsFilled(PhapNhan) Then
+		PhapNhan = Catalogs.PhapNhan.FindByCode("PN-VSF");
+	EndIf;
+	If Not ValueIsFilled(TrangThaiHDDT) Then
+		TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DuThao;
+	EndIf;
+	If Not ValueIsFilled(NgayHoaDon) Then
+		NgayHoaDon = BegOfDay(CurrentSessionDate());
+	EndIf;
+	If ThueSuatVAT = 0 Then
+		ThueSuatVAT = 10;
+	EndIf;
+	
+	// Kế thừa dữ liệu từ Biên bản nghiệm thu giai đoạn (BasedOn)
+	If TypeOf(FillingData) = Type("DocumentRef.BienBanNghiemThuGiaiDoan") Then
+		BienBanNghiemThu = FillingData;
+		PhapNhan = FillingData.PhapNhan;
+		DoiTac = FillingData.DoiTac;
+		HopDong = FillingData.HopDong;
+		TienChuaThue = FillingData.GiaTriNghiemThuChuaVAT;
+		ThueSuatVAT = FillingData.TyLeVAT;
+		TienThueVAT = FillingData.TienVAT;
+		TongTienThanhToan = FillingData.TongGiaTri;
+		DienGiai = StrTemplate("Xuất hóa đơn GTGT theo Biên bản nghiệm thu %1", FillingData.Number);
+		If ValueIsFilled(DoiTac) Then
+			MaSoThueNguoiMua = DoiTac.MaSoThue;
+			DiaChiNguoiMua = DoiTac.DiaChi;
+		EndIf;
+	EndIf;
+EndProcedure
+
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// [FIX B31] Huy ghi so: chi KTT/CFO va khong con chung tu khac tham chieu
 	If WriteMode = DocumentWriteMode.UndoPosting Then

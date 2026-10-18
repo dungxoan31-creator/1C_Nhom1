@@ -1,4 +1,4 @@
-﻿// Document: BienBanNghiemThuGiaiDoan
+// Document: BienBanNghiemThuGiaiDoan
 // Du an: VinSmart Future - AR & AP Management
 // Nen tang: 1C:Enterprise 8.3 (BSL)
 // Muc tieu: Xu ly su kien ghi so (Posting) bien ban nghiem thu giai doan dich vu CNTT (Task 3.1):
@@ -15,8 +15,28 @@
 
 #Region EventHandlers
 
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	If Not ValueIsFilled(Date) Then
+		Date = CurrentSessionDate();
+	EndIf;
+	If IsBlankString(NguoiTao) Then
+		NguoiTao = UserName();
+	EndIf;
+	If Not ValueIsFilled(PhapNhan) Then
+		PhapNhan = Catalogs.PhapNhan.FindByCode("PN-VSF");
+	EndIf;
+	If Not ValueIsFilled(TrangThai) Then
+		TrangThai = Enums.TrangThaiNghiemThuAR.DuThao;
+	EndIf;
+	If Not ValueIsFilled(NgayNghiemThu) Then
+		NgayNghiemThu = BegOfDay(CurrentSessionDate());
+	EndIf;
+	If TyLeVAT = 0 Then
+		TyLeVAT = 10;
+	EndIf;
+EndProcedure
+
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	// [FIX B31/B11] Huy ghi so: chi KTT/CFO, chan neu da co phieu thu/bao co/hoa don tham chieu;
 	// tra trang thai ve "Da duyet noi bo" (tranh ket o trang thai DaGhiSo ma Posted = False)
 	If WriteMode = DocumentWriteMode.UndoPosting Then
 		QuanLyVongDoiChungTuServer.XuLyHuyGhiSo(ThisObject, Cancel, Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo);

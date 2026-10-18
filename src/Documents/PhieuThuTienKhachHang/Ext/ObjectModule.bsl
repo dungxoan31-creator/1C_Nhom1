@@ -13,6 +13,44 @@
 
 #Region EventHandlers
 
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	If Not ValueIsFilled(Date) Then
+		Date = CurrentSessionDate();
+	EndIf;
+	If IsBlankString(NguoiLap) Then
+		NguoiLap = UserName();
+	EndIf;
+	If Not ValueIsFilled(PhapNhan) Then
+		PhapNhan = Catalogs.PhapNhan.FindByCode("PN-VSF");
+	EndIf;
+	If Not ValueIsFilled(NgayThu) Then
+		NgayThu = BegOfDay(CurrentSessionDate());
+	EndIf;
+	If Not ValueIsFilled(TienTe) Then
+		TienTe = Catalogs.TienTe.FindByCode("VND");
+	EndIf;
+	If TyGia = 0 Then
+		TyGia = 1;
+	EndIf;
+	
+	// Kế thừa dữ liệu từ Hóa đơn GTGT đầu ra hoặc Biên bản nghiệm thu (BasedOn)
+	If TypeOf(FillingData) = Type("DocumentRef.HoaDonGTGTDauRa") Then
+		ChungTuGoc = FillingData;
+		PhapNhan = FillingData.PhapNhan;
+		DoiTac = FillingData.DoiTac;
+		HopDong = FillingData.HopDong;
+		SoTien = FillingData.TongTienThanhToan;
+		DienGiai = StrTemplate("Thu tiền theo Hóa đơn GTGT %1", FillingData.SoHoaDon);
+	ElsIf TypeOf(FillingData) = Type("DocumentRef.BienBanNghiemThuGiaiDoan") Then
+		ChungTuGoc = FillingData;
+		PhapNhan = FillingData.PhapNhan;
+		DoiTac = FillingData.DoiTac;
+		HopDong = FillingData.HopDong;
+		SoTien = FillingData.TongGiaTri;
+		DienGiai = StrTemplate("Thu tiền theo Biên bản nghiệm thu %1", FillingData.Number);
+	EndIf;
+EndProcedure
+
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// [FIX B31] Huy ghi so phieu thu (lam tang lai cong no): chi KTT/CFO
 	If WriteMode = DocumentWriteMode.UndoPosting Then

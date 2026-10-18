@@ -28,6 +28,30 @@
 
 #Region EventHandlers
 
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	If Not ValueIsFilled(Date) Then
+		Date = CurrentSessionDate();
+	EndIf;
+	If IsBlankString(NguoiLap) Then
+		NguoiLap = UserName();
+	EndIf;
+	If Not ValueIsFilled(PhapNhan) Then
+		PhapNhan = Catalogs.PhapNhan.FindByCode("PN-VSF");
+	EndIf;
+	If Not ValueIsFilled(TrangThai) Then
+		TrangThai = Enums.TrangThaiHoaDonAP.DuThao;
+	EndIf;
+	If Not ValueIsFilled(NgayHoaDon) Then
+		NgayHoaDon = BegOfDay(CurrentSessionDate());
+	EndIf;
+	If Not ValueIsFilled(TienTe) Then
+		TienTe = Catalogs.TienTe.FindByCode("VND");
+	EndIf;
+	If TyGia = 0 Then
+		TyGia = 1;
+	EndIf;
+EndProcedure
+
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	// [FIX B31] Huy ghi so: chi KTT/CFO, khong con chung tu phu thuoc; tra ve buoc "Cho Kế toán trưởng duyệt"
 	If WriteMode = DocumentWriteMode.UndoPosting Then
