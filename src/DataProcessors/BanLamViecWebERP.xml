@@ -25,12 +25,15 @@
 			</Synonym>
 			<Comment>Trung tâm điều hành và bàn làm việc chuẩn Web ERP</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
-			<DefaultForm/>
+			<DefaultForm>DataProcessor.BanLamViecWebERP.Form.FormBanLamViec</DefaultForm>
 			<AuxiliaryForm/>
 			<IncludeHelpInContents>false</IncludeHelpInContents>
 			<ExtendedPresentation/>
 			<Explanation/>
 		</Properties>
-		<ChildObjects/>
+		<ChildObjects>
+			<Form>FormBanLamViec</Form>
+			<Form>FormPheDuyetHangLoat</Form>
+		</ChildObjects>
 	</DataProcessor>
 </MetaDataObject>

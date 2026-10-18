@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Title>
+		<v8:item>
+			<v8:lang>vi</v8:lang>
+			<v8:content>Bàn Duyệt Maker-Checker Hàng Loạt</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar>
+		<name>FormCommandBar</name>
+		<id>-1</id>
+		<visible>true</visible>
+		<enabled>true</enabled>
+		<ChildItems>
+			<Button name="FormPheDuyetHangLoat">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdPheDuyetHangLoat</CommandName>
+				<ExtendedTooltip name="FormPheDuyetHangLoatExtendedTooltip">
+					<name>FormPheDuyetHangLoatExtendedTooltip</name>
+					<id>101</id>
+					<visible>true</visible>
+					<enabled>true</enabled>
+				</ExtendedTooltip>
+			</Button>
+			<Button name="FormLamMoi">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdLamMoi</CommandName>
+				<ExtendedTooltip name="FormLamMoiExtendedTooltip">
+					<name>FormLamMoiExtendedTooltip</name>
+					<id>102</id>
+					<visible>true</visible>
+					<enabled>true</enabled>
+				</ExtendedTooltip>
+			</Button>
+			<Button name="FormChonTatCa">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdChonTatCa</CommandName>
+				<ExtendedTooltip name="FormChonTatCaExtendedTooltip">
+					<name>FormChonTatCaExtendedTooltip</name>
+					<id>103</id>
+					<visible>true</visible>
+					<enabled>true</enabled>
+				</ExtendedTooltip>
+			</Button>
+			<Button name="FormBoChonTatCa">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdBoChonTatCa</CommandName>
+				<ExtendedTooltip name="FormBoChonTatCaExtendedTooltip">
+					<name>FormBoChonTatCaExtendedTooltip</name>
+					<id>104</id>
+					<visible>true</visible>
+					<enabled>true</enabled>
+				</ExtendedTooltip>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="BangChungTuChoDuyet">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>false</AutoInsertNewRow>
+			<DataPath>BangChungTuChoDuyet</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="BangChungTuChoDuyetContextMenu">
+				<name>BangChungTuChoDuyetContextMenu</name>
+				<id>2</id>
+				<visible>true</visible>
+				<enabled>true</enabled>
+			</ContextMenu>
+			<ExtendedTooltip name="BangChungTuChoDuyetExtendedTooltip">
+				<name>BangChungTuChoDuyetExtendedTooltip</name>
+				<id>3</id>
+				<visible>true</visible>
+				<enabled>true</enabled>
+			</ExtendedTooltip>
+			<ChildItems>
+				<CheckBoxField name="BangChungTuChoDuyetChon">
+					<DataPath>BangChungTuChoDuyet.Chon</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Chọn</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetChonContextMenu">
+						<name>BangChungTuChoDuyetChonContextMenu</name>
+						<id>11</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetChonExtendedTooltip">
+						<name>BangChungTuChoDuyetChonExtendedTooltip</name>
+						<id>12</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</CheckBoxField>
+				<InputField name="BangChungTuChoDuyetTenLoaiChungTu">
+					<DataPath>BangChungTuChoDuyet.TenLoaiChungTu</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Loại chứng từ</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetTenLoaiChungTuContextMenu">
+						<name>BangChungTuChoDuyetTenLoaiChungTuContextMenu</name>
+						<id>13</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetTenLoaiChungTuExtendedTooltip">
+						<name>BangChungTuChoDuyetTenLoaiChungTuExtendedTooltip</name>
+						<id>14</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</InputField>
+				<InputField name="BangChungTuChoDuyetSoChungTu">
+					<DataPath>BangChungTuChoDuyet.SoChungTu</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Số CT</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetSoChungTuContextMenu">
+						<name>BangChungTuChoDuyetSoChungTuContextMenu</name>
+						<id>15</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetSoChungTuExtendedTooltip">
+						<name>BangChungTuChoDuyetSoChungTuExtendedTooltip</name>
+						<id>16</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</InputField>
+				<InputField name="BangChungTuChoDuyetNgayChungTu">
+					<DataPath>BangChungTuChoDuyet.NgayChungTu</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Ngày lập</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetNgayChungTuContextMenu">
+						<name>BangChungTuChoDuyetNgayChungTuContextMenu</name>
+						<id>17</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetNgayChungTuExtendedTooltip">
+						<name>BangChungTuChoDuyetNgayChungTuExtendedTooltip</name>
+						<id>18</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</InputField>
+				<InputField name="BangChungTuChoDuyetDoiTac">
+					<DataPath>BangChungTuChoDuyet.DoiTac</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Đối tác</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetDoiTacContextMenu">
+						<name>BangChungTuChoDuyetDoiTacContextMenu</name>
+						<id>19</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetDoiTacExtendedTooltip">
+						<name>BangChungTuChoDuyetDoiTacExtendedTooltip</name>
+						<id>20</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</InputField>
+				<InputField name="BangChungTuChoDuyetSoTien">
+					<DataPath>BangChungTuChoDuyet.SoTien</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Số tiền</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetSoTienContextMenu">
+						<name>BangChungTuChoDuyetSoTienContextMenu</name>
+						<id>21</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetSoTienExtendedTooltip">
+						<name>BangChungTuChoDuyetSoTienExtendedTooltip</name>
+						<id>22</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</InputField>
+				<InputField name="BangChungTuChoDuyetTrangThai">
+					<DataPath>BangChungTuChoDuyet.TrangThai</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Trạng thái</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BangChungTuChoDuyetTrangThaiContextMenu">
+						<name>BangChungTuChoDuyetTrangThaiContextMenu</name>
+						<id>23</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ContextMenu>
+					<ExtendedTooltip name="BangChungTuChoDuyetTrangThaiExtendedTooltip">
+						<name>BangChungTuChoDuyetTrangThaiExtendedTooltip</name>
+						<id>24</id>
+						<visible>true</visible>
+						<enabled>true</enabled>
+					</ExtendedTooltip>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.BanLamViecWebERP</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="BangChungTuChoDuyet">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Chứng từ chờ duyệt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Chon">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Chọn</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ChungTu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Chứng từ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="LoaiChungTu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Loại CT</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+					</Type>
+				</Column>
+				<Column name="TenLoaiChungTu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Tên loại CT</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SoChungTu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Số CT</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+					</Type>
+				</Column>
+				<Column name="NgayChungTu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Ngày CT</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DoiTac">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Đối tác</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SoTien">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Số tiền</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="TrangThai">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Trạng thái</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CmdPheDuyetHangLoat">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>✓ Phê duyệt các mục đã chọn</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdPheDuyetHangLoat</Action>
+		</Command>
+		<Command name="CmdLamMoi">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Làm mới</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdLamMoi</Action>
+		</Command>
+		<Command name="CmdChonTatCa">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Chọn tất cả</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdChonTatCa</Action>
+		</Command>
+		<Command name="CmdBoChonTatCa">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Bỏ chọn tất cả</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdBoChonTatCa</Action>
+		</Command>
+	</Commands>
+</Form>
