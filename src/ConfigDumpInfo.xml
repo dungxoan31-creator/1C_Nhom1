@@ -162,5 +162,8 @@
 		<Metadata name="CommonModule.BangDieuKhienServer" id="b1e2c3d4-5678-490a-bcde-f12345678001" configVersion="1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d00000000"/>
 		<Metadata name="CommonTemplate.MauHTMLTrangChu" id="b1e2c3d4-5678-490a-bcde-f12345678002" configVersion="2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d00000000"/>
 		<Metadata name="CommonForm.TrangChuTongQuan" id="b1e2c3d4-5678-490a-bcde-f12345678003" configVersion="3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d00000000"/>
+		<Metadata name="DataProcessor.BanLamViecWebERP" id="c7a8b9d0-1234-4567-89ab-cdef01234567" configVersion="4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d00000000"/>
+		<Metadata name="DataProcessor.BanLamViecWebERP.ObjectModule" id="c7a8b9d0-1234-4567-89ab-cdef01234567.0" configVersion="5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d00000000"/>
+		<Metadata name="DataProcessor.BanLamViecWebERP.ManagerModule" id="c7a8b9d0-1234-4567-89ab-cdef01234567.1" configVersion="6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d00000000"/>
 	</ConfigVersions>
 </ConfigDumpInfo>

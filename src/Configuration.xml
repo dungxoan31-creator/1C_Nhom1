@@ -289,6 +289,7 @@
 			<Enum>TrangThaiLenhThanhToan</Enum>
 			<Enum>TrangThaiHoaDonDienTu</Enum>
 			<Enum>HuongDongTien</Enum>
+			<DataProcessor>BanLamViecWebERP</DataProcessor>
 			<InformationRegister>TyGiaHoiDoai</InformationRegister>
 			<AccumulationRegister>CongNoPhaiThu</AccumulationRegister>
 			<AccumulationRegister>CongNoPhaiTra</AccumulationRegister>
