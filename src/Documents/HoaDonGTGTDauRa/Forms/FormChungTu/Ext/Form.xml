@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>vi</v8:lang>
-			<v8:content>Hoa don GTGT dau ra (AR)</v8:content>
+			<v8:content>Hóa đơn GTGT đầu ra (AR) - VinSmart Future</v8:content>
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
@@ -13,9 +13,22 @@
 		<visible>true</visible>
 		<enabled>true</enabled>
 		<horizontalAlign>Left</horizontalAlign>
+		<ChildItems>
+			<Button name="FormCmdXemChungTuLienQuan">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
+				<ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip">
+					<name>FormCmdXemChungTuLienQuanExtendedTooltip</name>
+					<id>101</id>
+					<visible>true</visible>
+					<enabled>true</enabled>
+				</ExtendedTooltip>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="AfterWrite">AfterWrite</Event>
 	</Events>
 	<ChildItems>
 		<HTMLDocumentField name="TruongHTMLHeader">
@@ -40,31 +53,77 @@
 					<Title>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Thong tin chung</v8:content>
+							<v8:content>1. Thông tin chung</v8:content>
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="Number">
-							<DataPath>Object.Number</DataPath>
-						</InputField>
-						<InputField name="Date">
-							<DataPath>Object.Date</DataPath>
-						</InputField>
-						<InputField name="DoiTac">
-							<DataPath>Object.DoiTac</DataPath>
-						</InputField>
+						<UsualGroup name="Group2Cot">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ChildItems>
+								<UsualGroup name="CotTrai">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ChildItems>
+										<InputField name="Number">
+											<DataPath>Object.Number</DataPath>
+										</InputField>
+										<InputField name="Date">
+											<DataPath>Object.Date</DataPath>
+										</InputField>
+										<InputField name="PhapNhan">
+											<DataPath>Object.PhapNhan</DataPath>
+										</InputField>
+										<InputField name="DoiTac">
+											<DataPath>Object.DoiTac</DataPath>
+										</InputField>
+										<InputField name="HopDong">
+											<DataPath>Object.HopDong</DataPath>
+										</InputField>
+										<InputField name="DuAn">
+											<DataPath>Object.DuAn</DataPath>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="CotPhai">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ChildItems>
+										<InputField name="TienChuaThue">
+											<DataPath>Object.TienChuaThue</DataPath>
+											<Events>
+												<Event name="OnChange">TienChuaThueOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="TienThueVAT">
+											<DataPath>Object.TienThueVAT</DataPath>
+										</InputField>
+										<InputField name="TongTienThanhToan">
+											<DataPath>Object.TongTienThanhToan</DataPath>
+											<ReadOnly>true</ReadOnly>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</Page>
 				<Page name="ChiTietHangHoa">
 					<Title>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Chi tiet hang hoa/dich vu</v8:content>
+							<v8:content>2. Chi tiết hàng hóa/dịch vụ</v8:content>
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="TienChuaThue">
+						<InputField name="ChiTietTienChuaThue">
 							<DataPath>Object.TienChuaThue</DataPath>
+						</InputField>
+						<InputField name="ChiTietTienThueVAT">
+							<DataPath>Object.TienThueVAT</DataPath>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -72,16 +131,29 @@
 					<Title>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Thue va Thanh toan</v8:content>
+							<v8:content>3. Thuế &amp; HĐĐT</v8:content>
 						</v8:item>
 					</Title>
 					<ChildItems>
-						<InputField name="TienThueVAT">
+						<InputField name="ThueTienThueVAT">
 							<DataPath>Object.TienThueVAT</DataPath>
 						</InputField>
-						<InputField name="TongTienThanhToan">
+						<InputField name="ThueTongTienThanhToan">
 							<DataPath>Object.TongTienThanhToan</DataPath>
 							<ReadOnly>true</ReadOnly>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="NhatKyVaGhiChu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>4. Nhật ký &amp; Phê duyệt</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="DienGiai">
+							<DataPath>Object.DienGiai</DataPath>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -100,7 +172,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>vi</v8:lang>
-					<v8:content>Noi dung HTML Header</v8:content>
+					<v8:content>Nội dung HTML Header</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -112,4 +184,15 @@
 			</Type>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="CmdXemChungTuLienQuan">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>🔗 Chứng từ liên quan</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdXemChungTuLienQuan</Action>
+		</Command>
+	</Commands>
 </Form>

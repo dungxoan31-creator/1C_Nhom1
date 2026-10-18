@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Title>
+		<v8:item>
+			<v8:lang>vi</v8:lang>
+			<v8:content>Biên bản nghiệm thu giai đoạn (AR)</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar>
+		<name>FormCommandBar</name>
+		<id>-1</id>
+		<visible>true</visible>
+		<enabled>true</enabled>
+		<horizontalAlign>Left</horizontalAlign>
+		<ChildItems>
+			<Button name="FormCmdXemChungTuLienQuan">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
+				<ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip">
+					<name>FormCmdXemChungTuLienQuanExtendedTooltip</name>
+					<id>101</id>
+					<visible>true</visible>
+					<enabled>true</enabled>
+				</ExtendedTooltip>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="AfterWrite">AfterWrite</Event>
+	</Events>
+	<ChildItems>
+		<HTMLDocumentField name="TruongHTMLHeader">
+			<DataPath>NoiDungHTMLHeader</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ContextMenu name="TruongHTMLHeaderContextMenu">
+				<name>TruongHTMLHeaderContextMenu</name>
+				<id>2</id>
+				<visible>true</visible>
+				<enabled>true</enabled>
+			</ContextMenu>
+			<ExtendedTooltip name="TruongHTMLHeaderExtendedTooltip">
+				<name>TruongHTMLHeaderExtendedTooltip</name>
+				<id>3</id>
+				<visible>true</visible>
+				<enabled>true</enabled>
+			</ExtendedTooltip>
+		</HTMLDocumentField>
+		<Pages name="Pages">
+			<ChildItems>
+				<Page name="ThongTinChung">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>1. Thông tin chung</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<UsualGroup name="Group2Cot">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ChildItems>
+								<UsualGroup name="CotTrai">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ChildItems>
+										<InputField name="Number">
+											<DataPath>Object.Number</DataPath>
+										</InputField>
+										<InputField name="Date">
+											<DataPath>Object.Date</DataPath>
+										</InputField>
+										<InputField name="PhapNhan">
+											<DataPath>Object.PhapNhan</DataPath>
+										</InputField>
+										<InputField name="DoiTac">
+											<DataPath>Object.DoiTac</DataPath>
+										</InputField>
+										<InputField name="HopDong">
+											<DataPath>Object.HopDong</DataPath>
+										</InputField>
+										<InputField name="DuAn">
+											<DataPath>Object.DuAn</DataPath>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="CotPhai">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ChildItems>
+										<InputField name="TenGiaiDoan">
+											<DataPath>Object.TenGiaiDoan</DataPath>
+										</InputField>
+										<InputField name="TienChuaThue">
+											<DataPath>Object.TienChuaThue</DataPath>
+											<Events>
+												<Event name="OnChange">TienChuaThueOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="TyLeVAT">
+											<DataPath>Object.TyLeVAT</DataPath>
+											<Events>
+												<Event name="OnChange">TyLeVATOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="TienVAT">
+											<DataPath>Object.TienVAT</DataPath>
+										</InputField>
+										<InputField name="TongGiaTriNghiemThu">
+											<DataPath>Object.TongGiaTriNghiemThu</DataPath>
+											<ReadOnly>true</ReadOnly>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ChiTietHangHoa">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>2. Chi tiết nghiệm thu</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="ChiTietTenGiaiDoan">
+							<DataPath>Object.TenGiaiDoan</DataPath>
+						</InputField>
+						<InputField name="ChiTietTienChuaThue">
+							<DataPath>Object.TienChuaThue</DataPath>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ThueVaHoaDonDienTu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>3. Thuế &amp; HĐĐT</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="TrangThaiNghiemThu">
+							<DataPath>Object.TrangThaiNghiemThu</DataPath>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="NhatKyVaGhiChu">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>4. Nhật ký &amp; Phê duyệt</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<InputField name="DienGiai">
+							<DataPath>Object.DienGiai</DataPath>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object">
+			<Type>
+				<v8:Type>cfg:DocumentObject.BienBanNghiemThuGiaiDoan</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="NoiDungHTMLHeader">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Nội dung HTML Header</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CmdXemChungTuLienQuan">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>🔗 Chứng từ liên quan</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdXemChungTuLienQuan</Action>
+		</Command>
+	</Commands>
+</Form>
