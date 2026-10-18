@@ -23,6 +23,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.BanLamViecWebERP</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.BienBanNghiemThuGiaiDoan</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.HoaDonGTGTDauRa</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PhieuThuTienKhachHang</xr:Item>
