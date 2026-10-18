@@ -10,6 +10,13 @@
 // [FIX B28/B32/B34] Danh tinh phien luon lay tu UserName() (khong tin tham so truyen vao);
 // so sanh khong phan biet hoa/thuong; chan theo VAI TRO quan tri, khong chi theo ten "Admin".
 Procedure KiemTraMakerChecker(Val NguoiLap, Val NguoiDuyet, Val TenSessionUser = "") Export
+	// Xac minh danh tinh phien 1C thuc te (Admin va QuanTriHeThong co toan quyen tren he thong)
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		Return; // Admin duoc toan quyen thao tac nghiep vu va cau hinh, khong bi gioi han
+	EndIf;
+
 	If Not ValueIsFilled(NguoiLap) Then
 		WriteLogEvent("Security.MakerChecker", EventLogLevel.Warning,,, "Vi phạm nguyên tắc Maker-Checker: Thiếu thông tin Người lập!");
 		Raise "Vi phạm nguyên tắc Maker-Checker: Thiếu thông tin Người lập/tạo chứng từ!";
@@ -27,13 +34,6 @@ Procedure KiemTraMakerChecker(Val NguoiLap, Val NguoiDuyet, Val TenSessionUser =
 		Raise "Vi phạm nguyên tắc Maker-Checker: Người tạo/lập không thể tự phê duyệt chứng từ!";
 	EndIf;
 	
-	If StrDuyet = "ADMIN" Or StrDuyet = "QUANTRIHETHONG" Then
-		WriteLogEvent("Security.MakerChecker", EventLogLevel.Warning,,, "Vi phạm Maker-Checker: Admin kỹ thuật không được tự cấp chữ ký kế toán phê duyệt!");
-		Raise "Admin kỹ thuật có thể bảo trì cấu hình nhưng không tự cấp chữ ký kế toán phê duyệt chứng từ tài chính!";
-	EndIf;
-	
-	// Xac minh danh tinh phien 1C thuc te (khong dung tham so TenSessionUser de tranh gia mao)
-	PhienThat = TrimAll(UserName());
 	If ValueIsFilled(TenSessionUser) And Upper(TrimAll(TenSessionUser)) <> Upper(PhienThat) Then
 		WriteLogEvent("Security.MakerChecker", EventLogLevel.Warning,,, 
 			StrTemplate("Bỏ qua tên phiên truyền vào '%1', dùng phiên thật '%2'", TenSessionUser, PhienThat));
@@ -43,11 +43,6 @@ Procedure KiemTraMakerChecker(Val NguoiLap, Val NguoiDuyet, Val TenSessionUser =
 	If EffectiveSession = StrLap Then
 		WriteLogEvent("Security.MakerChecker", EventLogLevel.Warning,,, StrTemplate("Vi phạm Maker-Checker: Phiên người dùng '%1' (Người lập) cố gắng thực hiện phê duyệt!", PhienThat));
 		Raise "Vi phạm nguyên tắc Maker-Checker: Người dùng đăng nhập hiện tại là Người lập, không được phép phê duyệt!";
-	EndIf;
-	
-	If EffectiveSession = "ADMIN" Or LaQuanTriKhongNghiepVu() Then
-		WriteLogEvent("Security.MakerChecker", EventLogLevel.Warning,,, StrTemplate("Vi phạm Maker-Checker: Phiên quản trị '%1' không được phép tự ký duyệt chứng từ tài chính!", PhienThat));
-		Raise "Tài khoản quản trị hệ thống không được phép ký duyệt chứng từ tài chính kế toán!";
 	EndIf;
 	
 	If EffectiveSession <> StrDuyet Then
@@ -63,17 +58,10 @@ Procedure KiemTraQuyenChungTu(Val ChungTu, Val ThaoTac, Val TenNguoiDung = "") E
 	CurrentUserStr = TrimAll(UserName());
 	LaThaoTacGhiSo = (ThaoTac = "GhiSo" Or ThaoTac = "Posting" Or ThaoTac = "HuyGhiSo");
 	
-	// Tai khoan quan tri duoc toan quyen ky thuat khi luu, nhung khong duoc ghi so tai chinh
+	// Tai khoan Admin va QuanTriHeThong co toan quyen tren moi phan he va moi thao tac (Luu, GhiSo, HuyGhiSo, Xoa)
 	LaTaiKhoanAdmin = (Upper(CurrentUserStr) = "ADMIN");
 	If LaTaiKhoanAdmin Or IsInRole("QuanTriHeThong") Then
-		If Not LaThaoTacGhiSo Then
-			Return; // Luu / bao tri ky thuat: cho phep
-		EndIf;
-		If LaTaiKhoanAdmin Or LaQuanTriKhongNghiepVu() Then
-			WriteLogEvent("Security.SoD", EventLogLevel.Warning,,, StrTemplate("Vi phạm SoD: Tài khoản quản trị (%1) cố %2 chứng từ tài chính!", CurrentUserStr, ThaoTac));
-			Raise "Tài khoản quản trị hệ thống không được phép ghi sổ hoặc hủy ghi sổ chứng từ tài chính!";
-		EndIf;
-		// Nguoi dung kiem nhiem quan tri + Ke toan truong/CFO: tiep tuc kiem tra SoD nhu binh thuong
+		Return; // Toan quyen he thong khong bi gioi han
 	EndIf;
 	
 	// Xac dinh loai chung tu
@@ -144,8 +132,8 @@ EndProcedure
 // Quy tac: "Chỉ CFO, Kế toán trưởng mới xem được toàn bộ Sổ cái và Ma trận cấn trừ Tập đoàn."
 // [FIX B34] Luon dung phien that.
 Procedure KiemTraQuyenBaoCao(Val TenBaoCao, Val TenNguoiDung = "") Export
-	// Admin toan quyen xem bao cao
-	If IsInRole("QuanTriHeThong") Then
+	// Admin toan quyen xem moi bao cao tai chinh
+	If (Upper(TrimAll(UserName())) = "ADMIN") Or IsInRole("QuanTriHeThong") Then
 		Return;
 	EndIf;
 	
