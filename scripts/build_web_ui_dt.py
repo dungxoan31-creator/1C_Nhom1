@@ -91,6 +91,18 @@ def main():
             [str(EXE_1C), "ENTERPRISE", "/F", str(IB_DIR), "/N", "Admin", "/C", "SeedMasterData"],
             "4b. Initializing standard Master Data (PhapNhan, DoiTac, HopDong, 243 Accounts TT200)")
 
+        # Step 4c: Seed AR sample data
+        run_step("04c_seed_ar",
+            [str(EXE_1C), "ENTERPRISE", "/F", str(IB_DIR), "/N", "Admin", "/C", "SeedARData"],
+            "4c. Initializing AR sample data (Invoices, Acceptance, Receipts)",
+            acceptable_codes=(0, 1))
+
+        # Step 4d: Seed AP sample data
+        run_step("04d_seed_ap",
+            [str(EXE_1C), "ENTERPRISE", "/F", str(IB_DIR), "/N", "Admin", "/C", "SeedAPData"],
+            "4d. Initializing AP sample data (Vendor Invoices, Payment Orders)",
+            acceptable_codes=(0, 1))
+
         # Step 5: Export to .dt file
         if OUT_DT.exists():
             OUT_DT.unlink()
