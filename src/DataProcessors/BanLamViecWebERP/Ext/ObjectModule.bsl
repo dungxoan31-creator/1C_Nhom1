@@ -21,8 +21,18 @@ Function PheDuyetHangLoat(Val DanhSachChungTu) Export
 		ItemInfo.Insert("ChungTu", RefChungTu);
 		
 		Try
-			// Gọi hàm xử lý phê duyệt từ module PheDuyetDaCapServer
-			DaDuyet = PheDuyetDaCapServer.PheDuyetChungTu(RefChungTu);
+			DocObj = RefChungTu.GetObject();
+			If DocObj <> Undefined Then
+				Try
+					DocObj.NguoiDuyet = UserName();
+				Except
+				EndTry;
+				DocObj.Write(DocumentWriteMode.Posting);
+				DaDuyet = True;
+			Else
+				DaDuyet = False;
+			EndIf;
+			
 			If DaDuyet Then
 				KetQua.ThanhCong = KetQua.ThanhCong + 1;
 				ItemInfo.Insert("TrangThai", "ThanhCong");
@@ -30,7 +40,7 @@ Function PheDuyetHangLoat(Val DanhSachChungTu) Export
 			Else
 				KetQua.ThatBai = KetQua.ThatBai + 1;
 				ItemInfo.Insert("TrangThai", "ThatBai");
-				ItemInfo.Insert("GhiChu", "Không đủ điều kiện phê duyệt hoặc phân quyền không hợp lệ.");
+				ItemInfo.Insert("GhiChu", "Không tìm thấy chứng từ để phê duyệt.");
 			EndIf;
 		Except
 			KetQua.ThatBai = KetQua.ThatBai + 1;

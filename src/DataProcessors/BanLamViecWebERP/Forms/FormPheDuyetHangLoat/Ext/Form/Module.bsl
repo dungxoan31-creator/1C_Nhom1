@@ -12,18 +12,23 @@ EndProcedure
 #Region FormHeaderItemsEventHandlers
 
 &AtClient
-Procedure TruongHTMLPheDuyetOnClick(Item, EventData)
-	Anchor = EventData.Anchor;
-	If Anchor = "vinsmart:action:approve-all" Then
+Procedure TruongHTMLPheDuyetOnClick(Item, EventData, StandardProcessing)
+	If EventData = Undefined Then Return; EndIf;
+	Href = ?(EventData.Href <> Undefined, EventData.Href, ?(EventData.Anchor <> Undefined, EventData.Anchor, ""));
+	
+	If StrFind(Href, "approve-all") > 0 Then
+		StandardProcessing = False;
 		KetQua = ThucHienPheDuyetTatCaAtServer();
 		ThongBao = StrTemplate("Phê duyệt hoàn tất: %1 thành công, %2 thất bại.", KetQua.ThanhCong, KetQua.ThatBai);
 		ShowUserNotification("Kết quả phê duyệt Maker-Checker", , ThongBao, PictureLib.Information);
 		TaoGiaoDienPheDuyetHTML();
-	ElsIf Anchor = "vinsmart:action:refresh" Then
+	ElsIf StrFind(Href, "refresh") > 0 Then
+		StandardProcessing = False;
 		TaoGiaoDienPheDuyetHTML();
 		ShowUserNotification("Làm mới danh sách", , "Đã cập nhật danh sách chờ duyệt.", PictureLib.Information);
-	ElsIf Left(Anchor, 11) = "e1cib/data/" Then
-		GotoURL(Anchor);
+	ElsIf StrFind(Href, "e1cib/data/") > 0 Then
+		StandardProcessing = False;
+		GotoURL(Href);
 	EndIf;
 EndProcedure
 

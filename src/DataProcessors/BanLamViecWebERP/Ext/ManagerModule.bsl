@@ -34,13 +34,12 @@ Function LayDanhSachChoPheDuyet() Export
 		|	""HoaDonNhaCungCap"" AS LoaiChungTu,
 		|	""Hóa đơn NCC"" AS TenLoaiChungTu,
 		|	Doc.DoiTac.Description AS DoiTac,
-		|	Doc.TongTienThanhToan AS SoTien,
-		|	Doc.TrangThaiPheDuyet AS TrangThai
+		|	Doc.TongTien AS SoTien,
+		|	Doc.TrangThai AS TrangThai
 		|FROM
 		|	Document.HoaDonNhaCungCap AS Doc
 		|WHERE
-		|	Doc.TrangThaiPheDuyet = VALUE(Enum.TrangThaiHoaDonAP.ChoPheDuyet)
-		|	OR Doc.TrangThaiPheDuyet = VALUE(Enum.TrangThaiHoaDonAP.ChoSoatXet)
+		|	Doc.Posted = FALSE
 		|ORDER BY
 		|	Doc.Date DESC";
 		
@@ -68,14 +67,13 @@ Function LayDanhSachChoPheDuyet() Export
 		|	Doc.Date AS NgayChungTu,
 		|	""UyNhiemChi"" AS LoaiChungTu,
 		|	""Ủy nhiệm chi"" AS TenLoaiChungTu,
-		|	Doc.NguoiThuHuong.Description AS DoiTac,
-		|	Doc.TongTienThanhToan AS SoTien,
-		|	Doc.TrangThaiThanhToan AS TrangThai
+		|	Doc.DoiTac.Description AS DoiTac,
+		|	Doc.SoTien AS SoTien,
+		|	Doc.TrangThai AS TrangThai
 		|FROM
 		|	Document.UyNhiemChi AS Doc
 		|WHERE
-		|	Doc.TrangThaiThanhToan = VALUE(Enum.TrangThaiLenhThanhToan.ChoPheDuyet)
-		|	OR Doc.TrangThaiThanhToan = VALUE(Enum.TrangThaiLenhThanhToan.ChoKiemSoat)
+		|	Doc.Posted = FALSE
 		|ORDER BY
 		|	Doc.Date DESC";
 		

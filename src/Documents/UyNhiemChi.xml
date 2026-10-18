@@ -28,14 +28,14 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>vi</v8:lang>
-					<v8:content>á»¦y nhiá»‡m chi</v8:content>
+					<v8:content>Ủy nhiệm chi</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment Order</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment>á»¦y nhiá»‡m chi ngÃ¢n hÃ ng thanh toÃ¡n ná»£ AP, P0.2 Invariant State Machine (Task 4.3)</Comment>
+			<Comment>Ủy nhiệm chi ngân hàng thanh toán nợ AP, P0.2 Invariant State Machine (Task 4.3)</Comment>
 			<UseStandardCommands>true</UseStandardCommands>
 			<Numerator/>
 			<NumberType>String</NumberType>
@@ -92,14 +92,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>PhÃ¡p nhÃ¢n</v8:content>
+							<v8:content>Pháp nhân</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal Entity</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>PhÃ¡p nhÃ¢n thá»±c hiá»‡n chi tiá»n</Comment>
+					<Comment>Pháp nhân thực hiện chi tiền</Comment>
 					<Type>
 						<v8:Type>cfg:CatalogRef.PhapNhan</v8:Type>
 					</Type>
@@ -135,14 +135,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>NhÃ  cung cáº¥p</v8:content>
+							<v8:content>Nhà cung cấp</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>ÄÆ¡n vá»‹ thá»¥ hÆ°á»Ÿng</Comment>
+					<Comment>Đơn vị thụ hưởng</Comment>
 					<Type>
 						<v8:Type>cfg:CatalogRef.DoiTac</v8:Type>
 					</Type>
@@ -178,14 +178,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Há»£p Ä‘á»“ng</v8:content>
+							<v8:content>Hợp đồng</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Há»£p Ä‘á»“ng kinh táº¿</Comment>
+					<Comment>Hợp đồng kinh tế</Comment>
 					<Type>
 						<v8:Type>cfg:CatalogRef.HopDong</v8:Type>
 					</Type>
@@ -221,14 +221,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Chá»©ng tá»« gá»‘c</v8:content>
+							<v8:content>Chứng từ gốc</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Base Document</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>HÃ³a Ä‘Æ¡n thanh toÃ¡n</Comment>
+					<Comment>Hóa đơn thanh toán</Comment>
 					<Type>
 						<v8:Type>cfg:DocumentRef.HoaDonNhaCungCap</v8:Type>
 						<v8:Type>cfg:DocumentRef.UyNhiemChi</v8:Type>
@@ -265,14 +265,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>TÃ i khoáº£n ngÃ¢n hÃ ng</v8:content>
+							<v8:content>Tài khoản ngân hàng</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank Account</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>TÃ i khoáº£n thanh toÃ¡n ngÃ¢n hÃ ng</Comment>
+					<Comment>Tài khoản thanh toán ngân hàng</Comment>
 					<Type>
 						<v8:Type>cfg:CatalogRef.TaiKhoanTien</v8:Type>
 					</Type>
@@ -308,14 +308,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Khoáº£n má»¥c dÃ²ng tiá»n</v8:content>
+							<v8:content>Khoản mục dòng tiền</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash Flow Item</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Khoáº£n má»¥c lÆ°u chuyá»ƒn tiá»n</Comment>
+					<Comment>Khoản mục lưu chuyển tiền</Comment>
 					<Type>
 						<v8:Type>cfg:CatalogRef.KhoanMucDongTien</v8:Type>
 					</Type>
@@ -351,14 +351,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Tiá»n tá»‡</v8:content>
+							<v8:content>Tiền tệ</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Äá»“ng tiá»n chi</Comment>
+					<Comment>Đồng tiền chi</Comment>
 					<Type>
 						<v8:Type>cfg:CatalogRef.TienTe</v8:Type>
 					</Type>
@@ -394,14 +394,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Tá»· giÃ¡</v8:content>
+							<v8:content>Tỷ giá</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange Rate</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Tá»· giÃ¡ quy Ä‘á»•i</Comment>
+					<Comment>Tỷ giá quy đổi</Comment>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -442,14 +442,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Sá»‘ tiá»n chi</v8:content>
+							<v8:content>Số tiền chi</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment Amount</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Sá»‘ tiá»n thanh toÃ¡n quy Ä‘á»•i VND</Comment>
+					<Comment>Số tiền thanh toán quy đổi VND</Comment>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -490,14 +490,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Sá»‘ tiá»n ngoáº¡i tá»‡</v8:content>
+							<v8:content>Số tiền ngoại tệ</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>FCY Amount</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Sá»‘ tiá»n thanh toÃ¡n nguyÃªn tá»‡ USD</Comment>
+					<Comment>Số tiền thanh toán nguyên tệ USD</Comment>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -538,14 +538,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>PhÃ­ ngÃ¢n hÃ ng</v8:content>
+							<v8:content>Phí ngân hàng</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank Fee</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>PhÃ­ chuyá»ƒn tiá»n ngÃ¢n hÃ ng (TK 6427)</Comment>
+					<Comment>Phí chuyển tiền ngân hàng (TK 6427)</Comment>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -586,14 +586,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Tráº¡ng thÃ¡i</v8:content>
+							<v8:content>Trạng thái</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Status</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Tráº¡ng thÃ¡i lá»‡nh chi P0.2</Comment>
+					<Comment>Trạng thái lệnh chi P0.2</Comment>
 					<Type>
 						<v8:Type>cfg:EnumRef.TrangThaiLenhThanhToan</v8:Type>
 					</Type>
@@ -629,14 +629,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>NgÃ y láº­p</v8:content>
+							<v8:content>Ngày lập</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Created Date</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>NgÃ y táº¡o lá»‡nh chi</Comment>
+					<Comment>Ngày tạo lệnh chi</Comment>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
 						<v8:DateQualifiers>
@@ -675,14 +675,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>NgÃ y ghi sá»•</v8:content>
+							<v8:content>Ngày ghi sổ</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Posting Date</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>NgÃ y ngÃ¢n hÃ ng xÃ¡c nháº­n trá»« tiá»n</Comment>
+					<Comment>Ngày ngân hàng xác nhận trừ tiền</Comment>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
 						<v8:DateQualifiers>
@@ -721,14 +721,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>LÃ  chá»©ng tá»« hoÃ n tráº£ (tra soÃ¡t)</v8:content>
+							<v8:content>Là chứng từ hoàn trả (tra soát)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Is Reversal Return</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Äiá»‡n tra soÃ¡t hoÃ n tiá»n sau ghi sá»•</Comment>
+					<Comment>Điện tra soát hoàn tiền sau ghi sổ</Comment>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -764,14 +764,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>NgÆ°á»i láº­p</v8:content>
+							<v8:content>Người lập</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Created By</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>NgÆ°á»i láº­p lá»‡nh chi (Maker)</Comment>
+					<Comment>Người lập lệnh chi (Maker)</Comment>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -811,14 +811,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>NgÆ°á»i duyá»‡t</v8:content>
+							<v8:content>Người duyệt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Approved By</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>NgÆ°á»i kÃ½ duyá»‡t lá»‡nh chi (Checker)</Comment>
+					<Comment>Người ký duyệt lệnh chi (Checker)</Comment>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -858,14 +858,14 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>vi</v8:lang>
-							<v8:content>Diá»…n giáº£i</v8:content>
+							<v8:content>Diễn giải</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Ná»™i dung chuyá»ƒn khoáº£n</Comment>
+					<Comment>Nội dung chuyển khoản</Comment>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>

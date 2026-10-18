@@ -11,7 +11,9 @@ Procedure OnStart()
 	Except
 	EndTry;
 	
-	If Cmd = "RunSeedBoundaries" Then
+	If IsBlankString(Cmd) Then
+		OpenForm("DataProcessor.BanLamViecWebERP.Form.FormBanLamViec");
+	ElsIf Cmd = "RunSeedBoundaries" Then
 		If ParamParts.Count() <> 3 Then Raise "Boundaries require command;run_id;result_path"; EndIf;
 		SeedBoundaryTestsServer.RunBoundaries(ParamParts[1], ParamParts[2]);
 		Exit(False);

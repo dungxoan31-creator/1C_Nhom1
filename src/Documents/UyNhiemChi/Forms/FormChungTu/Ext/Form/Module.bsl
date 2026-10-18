@@ -55,16 +55,21 @@ Procedure CapNhatHTMLHeader()
 		TrangThaiBg = "#E8F5E9";
 		StepIndex = 4;
 	Else
-		If Object.TrangThai = Enums.TrangThaiLenhThanhToan.ChoPheDuyet Then
-			TrangThaiText = "CHỜ CFO DUYỆT";
-			TrangThaiColor = "#B71C1C";
-			TrangThaiBg = "#FFEBEE";
-			StepIndex = 3;
-		ElsIf Object.TrangThai = Enums.TrangThaiLenhThanhToan.ChoKiemSoat Then
-			TrangThaiText = "CHỜ KIỂM SOÁT";
+		If Object.TrangThai = Enums.TrangThaiLenhThanhToan.ChoDuyet Then
+			TrangThaiText = "CHỜ DUYỆT";
 			TrangThaiColor = "#E65100";
 			TrangThaiBg = "#FFF3E0";
 			StepIndex = 2;
+		ElsIf Object.TrangThai = Enums.TrangThaiLenhThanhToan.DaDuyet Or Object.TrangThai = Enums.TrangThaiLenhThanhToan.DaGuiNganHang Then
+			TrangThaiText = "ĐÃ DUYỆT / GỬI NH";
+			TrangThaiColor = "#1565C0";
+			TrangThaiBg = "#E3F2FD";
+			StepIndex = 3;
+		ElsIf Object.TrangThai = Enums.TrangThaiLenhThanhToan.TuChoi Then
+			TrangThaiText = "TỪ CHỐI";
+			TrangThaiColor = "#C62828";
+			TrangThaiBg = "#FFEBEE";
+			StepIndex = 0;
 		EndIf;
 	EndIf;
 	

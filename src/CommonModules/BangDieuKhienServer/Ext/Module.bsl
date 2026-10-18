@@ -19,7 +19,7 @@ Function LayDuLieuTongQuan(Val KyBaoCao = "ThangNay") Export
 	TruyVanDoanhThu = New Query;
 	TruyVanDoanhThu.Text = 
 		"SELECT
-		|	SUM(HoaDon.TongThanhToan) AS TongDoanhThu,
+		|	SUM(HoaDon.TongTienThanhToan) AS TongDoanhThu,
 		|	COUNT(HoaDon.Ref) AS SoHoaDon
 		|FROM
 		|	Document.HoaDonGTGTDauRa AS HoaDon
@@ -109,21 +109,54 @@ Function LayDuLieuTongQuan(Val KyBaoCao = "ThangNay") Export
 	EndDo;
 	KetQua.TopNoQuaHan = DanhSachTopAR;
 	
-	// 6. Lay Top 5 chung tu chua ghi so / can duyet
+	// 6. Lay Top 5 chung tu chua ghi so / can duyet (AR, AP, UNC)
 	TruyVanChoDuyet = New Query;
 	TruyVanChoDuyet.Text = 
 		"SELECT TOP 5
-		|	""HoaDonGTGTDauRa"" AS LoaiChungTu,
-		|	""Hóa đơn GTGT đầu ra"" AS TenLoaiChungTu,
-		|	HD.Number AS SoChungTu,
-		|	HD.Date AS NgayChungTu,
-		|	HD.TongThanhToan AS SoTien
+		|	HD.LoaiChungTu AS LoaiChungTu,
+		|	HD.TenLoaiChungTu AS TenLoaiChungTu,
+		|	HD.SoChungTu AS SoChungTu,
+		|	HD.NgayChungTu AS NgayChungTu,
+		|	HD.SoTien AS SoTien
 		|FROM
-		|	Document.HoaDonGTGTDauRa AS HD
-		|WHERE
-		|	HD.Posted = FALSE
+		|	(SELECT
+		|		""HoaDonGTGTDauRa"" AS LoaiChungTu,
+		|		""Hóa đơn GTGT đầu ra"" AS TenLoaiChungTu,
+		|		HD_AR.Number AS SoChungTu,
+		|		HD_AR.Date AS NgayChungTu,
+		|		HD_AR.TongTienThanhToan AS SoTien
+		|	FROM
+		|		Document.HoaDonGTGTDauRa AS HD_AR
+		|	WHERE
+		|		HD_AR.Posted = FALSE
+		|
+		|	UNION ALL
+		|
+		|	SELECT
+		|		""HoaDonNhaCungCap"" AS LoaiChungTu,
+		|		""Hóa đơn NCC"" AS TenLoaiChungTu,
+		|		HD_AP.Number AS SoChungTu,
+		|		HD_AP.Date AS NgayChungTu,
+		|		HD_AP.TongTien AS SoTien
+		|	FROM
+		|		Document.HoaDonNhaCungCap AS HD_AP
+		|	WHERE
+		|		HD_AP.Posted = FALSE
+		|
+		|	UNION ALL
+		|
+		|	SELECT
+		|		""UyNhiemChi"" AS LoaiChungTu,
+		|		""Ủy nhiệm chi"" AS TenLoaiChungTu,
+		|		UNC.Number AS SoChungTu,
+		|		UNC.Date AS NgayChungTu,
+		|		UNC.SoTien AS SoTien
+		|	FROM
+		|		Document.UyNhiemChi AS UNC
+		|	WHERE
+		|		UNC.Posted = FALSE) AS HD
 		|ORDER BY
-		|	HD.Date DESC";
+		|	HD.NgayChungTu DESC";
 	
 	BangChoDuyet = TruyVanChoDuyet.Execute().Unload();
 	DanhSachChoDuyet = New Array;

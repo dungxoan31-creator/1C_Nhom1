@@ -63,16 +63,36 @@ Procedure CapNhatHTMLHeader()
 		TrangThaiBg = "#E8F5E9";
 		StepIndex = 4;
 	Else
-		If Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoPheDuyet Or Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoDuyetCFO Then
+		If Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoDuyetCFO Then
 			TrangThaiText = "CHỜ CFO DUYỆT";
 			TrangThaiColor = "#B71C1C";
 			TrangThaiBg = "#FFEBEE";
 			StepIndex = 3;
-		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoSoatXet Or Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoKeToanAP Then
-			TrangThaiText = "CHỜ SOÁT XÉT";
+		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoKeToanTruongDuyet Then
+			TrangThaiText = "CHỜ KTT DUYỆT";
+			TrangThaiColor = "#C2185B";
+			TrangThaiBg = "#FCE4EC";
+			StepIndex = 3;
+		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoDuyetITDirector Then
+			TrangThaiText = "CHỜ IT DIR DUYỆT";
+			TrangThaiColor = "#7B1FA2";
+			TrangThaiBg = "#F3E5F5";
+			StepIndex = 2;
+		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoDuyetPM Then
+			TrangThaiText = "CHỜ PM DUYỆT";
 			TrangThaiColor = "#E65100";
 			TrangThaiBg = "#FFF3E0";
 			StepIndex = 2;
+		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.ChoDuyetKyThuat Then
+			TrangThaiText = "CHỜ DUYỆT KỸ THUẬT";
+			TrangThaiColor = "#F57C00";
+			TrangThaiBg = "#FFF8E1";
+			StepIndex = 2;
+		ElsIf Object.TrangThai = Enums.TrangThaiHoaDonAP.TuChoi Then
+			TrangThaiText = "TỪ CHỐI";
+			TrangThaiColor = "#C62828";
+			TrangThaiBg = "#FFEBEE";
+			StepIndex = 0;
 		EndIf;
 	EndIf;
 	

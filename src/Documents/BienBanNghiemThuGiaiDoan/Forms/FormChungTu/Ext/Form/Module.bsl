@@ -64,16 +64,26 @@ Procedure CapNhatHTMLHeader()
 		StepIndex = 4;
 	Else
 		// Kiểm tra trạng thái nghiệm thu
-		If Object.TrangThai = Enums.TrangThaiNghiemThuAR.DaNghiemThu Then
-			TrangThaiText = "ĐÃ NGHIỆM THU";
+		If Object.TrangThai = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo Then
+			TrangThaiText = "ĐÃ DUYỆT NỘI BỘ";
 			TrangThaiColor = "#1565C0";
 			TrangThaiBg = "#E3F2FD";
 			StepIndex = 3;
-		ElsIf Object.TrangThai = Enums.TrangThaiNghiemThuAR.ChoDuyet Then
-			TrangThaiText = "CHỜ DUYỆT";
+		ElsIf Object.TrangThai = Enums.TrangThaiNghiemThuAR.ChoDoiTacKy Then
+			TrangThaiText = "CHỜ ĐỐI TÁC KÝ";
+			TrangThaiColor = "#0288D1";
+			TrangThaiBg = "#E1F5FE";
+			StepIndex = 3;
+		ElsIf Object.TrangThai = Enums.TrangThaiNghiemThuAR.ChoDuyetNoiBo Then
+			TrangThaiText = "CHỜ DUYỆT NỘI BỘ";
 			TrangThaiColor = "#E65100";
 			TrangThaiBg = "#FFF3E0";
 			StepIndex = 2;
+		ElsIf Object.TrangThai = Enums.TrangThaiNghiemThuAR.TranhChap Then
+			TrangThaiText = "TRANH CHẤP";
+			TrangThaiColor = "#C62828";
+			TrangThaiBg = "#FFEBEE";
+			StepIndex = 0;
 		EndIf;
 	EndIf;
 	
