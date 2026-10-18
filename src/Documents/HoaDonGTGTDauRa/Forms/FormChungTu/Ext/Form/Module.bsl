@@ -5,6 +5,27 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CapNhatHTMLHeader();
+	ThietLapTrangThaiForm();
+EndProcedure
+
+&AtServer
+Procedure OnReadAtServer(CurrentObject)
+	CapNhatHTMLHeader();
+	ThietLapTrangThaiForm();
+EndProcedure
+
+&AtServer
+Procedure ThietLapTrangThaiForm()
+	If Object.Posted Then
+		ReadOnly = True;
+	EndIf;
+	Items.Number.ReadOnly = True;
+	If Items.Find("TongTienThanhToan") <> Undefined Then
+		Items.TongTienThanhToan.ReadOnly = True;
+	EndIf;
+	If Items.Find("TienThueVAT") <> Undefined Then
+		Items.TienThueVAT.ReadOnly = True;
+	EndIf;
 EndProcedure
 
 &AtClient

@@ -57,6 +57,7 @@
 									<ChildItems>
 										<InputField name="Number">
 											<DataPath>Object.Number</DataPath>
+											<ReadOnly>true</ReadOnly>
 										</InputField>
 										<InputField name="Date">
 											<DataPath>Object.Date</DataPath>
