@@ -77,6 +77,14 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	If SoTien <= 0 And SoTienNgoaiTe > 0 And TyGia > 0 Then
 		SoTien = Round(SoTienNgoaiTe * TyGia, 0);
 	EndIf;
+	
+	If WriteMode = DocumentWriteMode.Posting Then
+		PhienThat = TrimAll(UserName());
+		LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+		If LaTaiKhoanAdmin Then
+			TrangThai = Enums.TrangThaiLenhThanhToan.DaGhiSo;
+		EndIf;
+	EndIf;
 EndProcedure
 
 Procedure Posting(Cancel, Mode)
@@ -84,6 +92,12 @@ Procedure Posting(Cancel, Mode)
 	PhanQuyenBaoMatServer.KiemTraMakerChecker(NguoiLap, NguoiDuyet, UserName());
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
+	
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		TrangThai = Enums.TrangThaiLenhThanhToan.DaGhiSo;
+	EndIf;
 	
 	// 1. Kiem tra P0.2 Invariant State Machine:
 	// Xoa movement cu neu trang thai khong con la DaGhiSo (Quy tac P2 / #std603)

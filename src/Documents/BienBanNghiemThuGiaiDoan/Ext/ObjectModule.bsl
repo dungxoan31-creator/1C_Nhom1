@@ -65,7 +65,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 	// Cap nhat trang thai DaGhiSo trong BeforeWrite de luu vao CSDL
 	If WriteMode = DocumentWriteMode.Posting Then
-		If TrangThai = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo Then
+		PhienThat = TrimAll(UserName());
+		LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+		If LaTaiKhoanAdmin Or TrangThai = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo Then
 			TrangThai = Enums.TrangThaiNghiemThuAR.DaGhiSo;
 		EndIf;
 	EndIf;
@@ -80,11 +82,14 @@ Procedure Posting(Cancel, Mode)
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
 	
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	
 	// 1. Kiem tra trang thai chung tu
 	TrangThaiDaGhiSo = Enums.TrangThaiNghiemThuAR.DaGhiSo;
 	TrangThaiDaDuyet = Enums.TrangThaiNghiemThuAR.DaDuyetNoiBo;
 	
-	If TrangThai <> TrangThaiDaGhiSo And TrangThai <> TrangThaiDaDuyet Then
+	If Not LaTaiKhoanAdmin And TrangThai <> TrangThaiDaGhiSo And TrangThai <> TrangThaiDaDuyet Then
 		Cancel = True;
 		Msg = New UserMessage;
 		Msg.Text = StrTemplate(NStr("vi = 'Chứng từ nghiệm thu %1 chưa đủ điều kiện ghi sổ! Chỉ ghi sổ khi ở trạng thái Đã duyệt nội bộ hoặc Đã ghi sổ. Trạng thái hiện tại: %2'; en = 'Acceptance certificate %1 not eligible for posting! Current status: %2'"),

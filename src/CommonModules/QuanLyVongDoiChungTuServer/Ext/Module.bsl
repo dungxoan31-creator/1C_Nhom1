@@ -262,6 +262,13 @@ EndProcedure
 Procedure KiemTraTrangThaiVaQuyen(DocObject, Val WriteMode, Val PostingMode, Cancel) Export
 	// Enforce cross-domain write permissions before draft/import early returns.
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(DocObject, "Write", UserName());
+	
+	// Admin va QuanTriHeThong co toan quyen CRUD tren moi chung tu
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		Return; // Admin duoc toan quyen thao tac nghiep vu va cau hinh, khong bi gioi han
+	EndIf;
 	// [FIX B29] Lay ten gia tri trang thai (Enum name) thay vi chuoi hien thi / Metadata().Name
 	TrangThaiStr = "";
 	Try
@@ -345,6 +352,13 @@ EndProcedure
 Procedure KiemTraChuyenTrangThai(ChungTuRef, TrangThaiMoi, CurrentUser, Val WriteMode = Undefined) Export
 	// [FIX B34] Danh tinh luon lay tu phien that, khong tin tham so truyen vao
 	SessionUser = UserName();
+	
+	// Admin va QuanTriHeThong co toan quyen chuyen moi trang thai va chinh sua
+	PhienThat = TrimAll(SessionUser);
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		Return;
+	EndIf;
 	
 	AuthorVal = Undefined;
 	DaLuuInfo = LayTrangThaiDaLuu(ChungTuRef);
@@ -438,9 +452,16 @@ Procedure GanNguoiLapKhiTaoMoi(DocObject, Val TenTruong = "NguoiLap") Export
 		Return;
 	EndIf;
 	PhienHienTai = UserName();
+	LaTaiKhoanAdmin = (Upper(TrimAll(PhienHienTai)) = "ADMIN") Or IsInRole("QuanTriHeThong");
 	If DocObject.IsNew() Then
-		DocObject[TenTruong] = PhienHienTai;
+		If Not ValueIsFilled(DocObject[TenTruong]) Or Not LaTaiKhoanAdmin Then
+			DocObject[TenTruong] = PhienHienTai;
+		EndIf;
 		Return;
+	EndIf;
+	
+	If LaTaiKhoanAdmin Then
+		Return; // Admin duoc toan quyen dieu chinh Nguoi lap
 	EndIf;
 	
 	Query = New Query;
@@ -484,7 +505,10 @@ Procedure XuLyHuyGhiSo(DocObject, Cancel, Val TrangThaiSauHuy = Undefined, Val T
 		EndIf;
 	EndDo;
 	
-	If Not (IsInRole("KeToanTruong") Or IsInRole("GiamDocTaiChinh_CFO")) Then
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	
+	If Not LaTaiKhoanAdmin And Not (IsInRole("KeToanTruong") Or IsInRole("GiamDocTaiChinh_CFO")) Then
 		WriteLogEvent("Security.UndoPosting", EventLogLevel.Warning,,, 
 			StrTemplate("Người dùng '%1' không có quyền hủy ghi sổ %2", UserName(), DocObject.Ref));
 		Cancel = True;
@@ -497,7 +521,7 @@ Procedure XuLyHuyGhiSo(DocObject, Cancel, Val TrangThaiSauHuy = Undefined, Val T
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(DocObject, "HuyGhiSo", UserName());
 	
 	DanhSach = DanhSachChungTuPhuThuoc(DocObject.Ref);
-	If DanhSach.Count() > 0 Then
+	If DanhSach.Count() > 0 And Not LaTaiKhoanAdmin Then
 		Cancel = True;
 		Msg = New UserMessage;
 		Msg.Text = StrTemplate(NStr("vi = 'Không thể hủy ghi sổ: còn %1 chứng từ khác đã ghi sổ đang tham chiếu tới chứng từ này (%2). Hãy hủy các chứng từ đó trước.'; en = 'Cannot unpost: %1 other posted documents reference this document (%2). Unpost them first.'"),

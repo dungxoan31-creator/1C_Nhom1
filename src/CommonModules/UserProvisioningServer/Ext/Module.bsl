@@ -30,6 +30,23 @@ Procedure KhoiTaoDanhSachNguoiDung(Val MatKhauMacDinh = "") Export
 		
 		User = InfoBaseUsers.FindByName(Item.Name);
 		If User <> Undefined Then
+			User.StandardAuthentication = True;
+			User.ShowInList = True;
+			If Item.Name = "Admin" Then
+				For Each OtherRole In Metadata.Roles Do
+					CoRole = False;
+					For Each R In User.Roles Do
+						If R.Name = OtherRole.Name Then
+							CoRole = True;
+							Break;
+						EndIf;
+					EndDo;
+					If Not CoRole Then
+						User.Roles.Add(OtherRole);
+					EndIf;
+				EndDo;
+			EndIf;
+			User.Write();
 			// Khong ghi de nguoi dung da co (giu nguyen mat khau va vai tro)
 			DaCapNhat = DaCapNhat + 1;
 			MsgLog = StrTemplate("[DA TON TAI - BO QUA] %1", Item.Name);
@@ -42,11 +59,28 @@ Procedure KhoiTaoDanhSachNguoiDung(Val MatKhauMacDinh = "") Export
 		
 		User.Name = Item.Name;
 		User.FullName = Item.FullName;
+		User.StandardAuthentication = True;
+		User.ShowInList = True;
 		RoleMD = Metadata.Roles.Find(Item.RoleName);
 		If RoleMD <> Undefined Then
 			User.Roles.Add(RoleMD);
 		Else
 			Raise "Khong tim thay Role trong Metadata: " + Item.RoleName;
+		EndIf;
+		
+		If Item.Name = "Admin" Then
+			For Each OtherRole In Metadata.Roles Do
+				CoRole = False;
+				For Each R In User.Roles Do
+					If R.Name = OtherRole.Name Then
+						CoRole = True;
+						Break;
+					EndIf;
+				EndDo;
+				If Not CoRole Then
+					User.Roles.Add(OtherRole);
+				EndIf;
+			EndDo;
 		EndIf;
 		
 		TrangThaiMatKhau = ?(ValueIsFilled(MatKhauMacDinh), "da dat theo tham so", "trong");

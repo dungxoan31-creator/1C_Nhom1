@@ -74,6 +74,14 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		EndIf;
 	EndIf;
 	
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If WriteMode = DocumentWriteMode.Posting Then
+		If LaTaiKhoanAdmin Then
+			TrangThai = Enums.TrangThaiHoaDonAP.DaGhiSo;
+		EndIf;
+	EndIf;
+	
 	// Cố định VND trong luồng demo để các nhánh ngoại tệ tự động bỏ qua
 	If Not ValueIsFilled(TienTe) Then
 		TienTe = Catalogs.TienTe.FindByCode("VND");
@@ -144,7 +152,11 @@ Procedure Posting(Cancel, Mode)
 	PhanQuyenBaoMatServer.KiemTraQuyenChungTu(ThisObject, "GhiSo", UserName());
 	QuanLyVongDoiChungTuServer.KiemTraChuyenTrangThai(ThisObject, TrangThai, UserName(), DocumentWriteMode.Posting);
 	
-	If TrangThai <> Enums.TrangThaiHoaDonAP.DaGhiSo Then
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		TrangThai = Enums.TrangThaiHoaDonAP.DaGhiSo;
+	ElsIf TrangThai <> Enums.TrangThaiHoaDonAP.DaGhiSo Then
 		Cancel = True;
 		Msg = New UserMessage;
 		Msg.Text = NStr("vi = 'Hóa đơn nhà cung cấp chỉ được ghi sổ sau khi hoàn tất phê duyệt AP!'; en = 'Vendor invoice can only be posted after AP approval!'");

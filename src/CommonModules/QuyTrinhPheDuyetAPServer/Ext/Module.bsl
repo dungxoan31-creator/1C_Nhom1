@@ -47,6 +47,12 @@ EndFunction
 //   NguoiDuyet         - String, CatalogRef.NguoiDung - Nguoi thuc hien thao tac duyet
 //   TrangThaiDangDuyet - String                       - Cap trang thai dang thuc hien duyet
 Procedure KiemTraQuyenDuyet(Val NguoiTao, Val NguoiDuyet, Val TrangThaiDangDuyet) Export
+	NguoiDungHienTai = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(NguoiDungHienTai) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		Return; // Admin toan quyen
+	EndIf;
+	
 	// 1. CÂM TUYỆT ĐỐI Maker-Checker
 	If String(NguoiTao) = String(NguoiDuyet) Then
 		Raise "Vi phạm nguyên tắc Maker-Checker: Người tạo không thể tự phê duyệt chứng từ!";
@@ -106,7 +112,11 @@ Procedure KiemTraBuocDuyetAP(Val TrangThaiCu, Val TrangThaiMoi, Val TongTien, Va
 		Return;
 	EndIf;
 	
-	NguoiDungHienTai = UserName();
+	NguoiDungHienTai = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(NguoiDungHienTai) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If LaTaiKhoanAdmin Then
+		Return; // Admin toan quyen phe duyet AP moi buoc
+	EndIf;
 	
 	// 1. Maker-Checker: Nguoi lap chi duoc gui duyet hoac dua ve nhap
 	LaBuocCuaNguoiLap = (TrangThaiMoi = "DuThao" Or TrangThaiMoi = "ChoKeToanTruongDuyet");

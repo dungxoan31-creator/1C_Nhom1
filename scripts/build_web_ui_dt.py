@@ -112,11 +112,14 @@ def main():
             "5. Exporting Infobase to .dt package (DumpIB)")
 
         if OUT_DT.exists():
+            full_dt = WORKSPACE / "VinSmart_Future_AR_AP_Full.dt"
+            shutil.copy2(OUT_DT, full_dt)
             size_bytes = OUT_DT.stat().st_size
             size_mb = round(size_bytes / (1024 * 1024), 2)
             print("\n" + "=" * 65)
             print(">> MODERN WEB UI PACKAGE CREATION COMPLETED SUCCESSFULLY! <<")
             print(f"Path: {OUT_DT}")
+            print(f"Full DT: {full_dt}")
             print(f"Size: {size_mb} MB ({size_bytes:,} bytes)")
             print("=" * 65)
         else:

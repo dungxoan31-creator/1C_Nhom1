@@ -101,16 +101,27 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		TongTienThanhToan = TienChuaThue + TienThueVAT;
 	EndIf;
 	
+	PhienThat = TrimAll(UserName());
+	LaTaiKhoanAdmin = (Upper(PhienThat) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	
 	// [FIX B29] Truoc day hoa don chua co trang thai bi tu gan "Da phat hanh" khi ghi so -> bo qua buoc ky so.
 	// Nay bat buoc phai di qua Cho ky so -> Da phat hanh (do nguoi duyet thuc hien) roi moi ghi so.
-	If WriteMode = DocumentWriteMode.Posting
-		And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaPhatHanh
-		And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaHuy
-		And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaThayThe
-		And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaDieuChinh Then
-		Cancel = True;
-		QuanLyVongDoiChungTuServer.ThongBaoLoiChungTu(ThisObject,
-			NStr("vi = 'Hóa đơn phải được chuyển Chờ ký số rồi Đã phát hành trước khi ghi sổ!'; en = 'Invoice must be signed and issued before posting!'"), "TrangThaiHDDT");
+	// Voi Admin va QuanTriHeThong: cho phep toan quyen ghi so va tu dong gan DaPhatHanh.
+	If WriteMode = DocumentWriteMode.Posting Then
+		If LaTaiKhoanAdmin Then
+			If TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaHuy
+				And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaThayThe
+				And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaDieuChinh Then
+				TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DaPhatHanh;
+			EndIf;
+		ElsIf TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaPhatHanh
+			And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaHuy
+			And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaThayThe
+			And TrangThaiHDDT <> Enums.TrangThaiHoaDonDienTu.DaDieuChinh Then
+			Cancel = True;
+			QuanLyVongDoiChungTuServer.ThongBaoLoiChungTu(ThisObject,
+				NStr("vi = 'Hóa đơn phải được chuyển Chờ ký số rồi Đã phát hành trước khi ghi sổ!'; en = 'Invoice must be signed and issued before posting!'"), "TrangThaiHDDT");
+		EndIf;
 	ElsIf Not ValueIsFilled(TrangThaiHDDT) Then
 		TrangThaiHDDT = Enums.TrangThaiHoaDonDienTu.DuThao;
 	EndIf;

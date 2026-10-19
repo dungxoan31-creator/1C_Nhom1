@@ -16,15 +16,18 @@ EndProcedure
 
 &AtServer
 Procedure ThietLapTrangThaiForm()
-	If Object.Posted Then
+	LaAdmin = (Upper(TrimAll(UserName())) = "ADMIN") Or IsInRole("QuanTriHeThong");
+	If Object.Posted And Not LaAdmin Then
 		ReadOnly = True;
 	EndIf;
-	Items.Number.ReadOnly = True;
-	If Items.Find("TongTienThanhToan") <> Undefined Then
-		Items.TongTienThanhToan.ReadOnly = True;
-	EndIf;
-	If Items.Find("TienThueVAT") <> Undefined Then
-		Items.TienThueVAT.ReadOnly = True;
+	If Not LaAdmin Then
+		Items.Number.ReadOnly = True;
+		If Items.Find("TongTienThanhToan") <> Undefined Then
+			Items.TongTienThanhToan.ReadOnly = True;
+		EndIf;
+		If Items.Find("TienThueVAT") <> Undefined Then
+			Items.TienThueVAT.ReadOnly = True;
+		EndIf;
 	EndIf;
 EndProcedure
 
