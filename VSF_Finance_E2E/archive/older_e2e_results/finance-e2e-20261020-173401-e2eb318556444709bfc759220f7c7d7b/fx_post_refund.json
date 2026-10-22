@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-173401-e2eb318556444709bfc759220f7c7d7b",
+"phase": "fx_post_refund",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(2849)}:Refund.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(130)}:Result.data = PostAndVerifyFinanceE2EFXRefund();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nQuy trình phê duyệt không hợp lệ: không được chuyển từ trạng thái 'ChoDuyet' (đã lưu) sang 'DaGhiSo'. Chỉ được chuyển sang 'DaGhiSo' từ: DaGuiNganHang.\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

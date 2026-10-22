@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-080535-74069655ece745038ca24672d2f34f66",
+"phase": "concurrency_setup",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(288)}:Invoice.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(46)}:Result.data = PrepareConcurrentARReceipts();\n{ManagedApplicationModule(24)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nVi phạm nguyên tắc Maker-Checker: Người lập không thể tự chuyển chứng từ sang trạng thái 'DaPhatHanh'!\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

@@ -1,0 +1,20 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-083035-bb3d6a8244be4a379cc776ff74afa094\\e2e-infobase",
+    "workflow":  "ARInvoice",
+    "flow":  "native 1C UI → Functions → AR sales invoice list → sales invoice form",
+    "verified":  [
+                     "AR invoice list rendered expected document",
+                     "AR invoice form opened from list",
+                     "document number matched",
+                     "source acceptance matched",
+                     "net/VAT/gross amounts matched"
+                 ],
+    "error":  "",
+    "document_number":  "E2E-AR001",
+    "source_acceptance":  "Biên bản nghiệm thu giai đoạn E2E-BB001 dated 10/10/2026 9:00:00 AM",
+    "net_vnd":  200000000,
+    "vat_vnd":  16000000,
+    "gross_vnd":  216000000
+}

@@ -1,0 +1,41 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_reporting-final-20261022",
+    "workflow":  "ReportSmoke",
+    "flow":  "native 1C UI → AR ledger, AP ledger, aging report",
+    "verified":  [
+                     "BaoCaoTuoiNo: opened from native menu and generated"
+                 ],
+    "error":  "",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\isolated-dateadd-aging.1c.log",
+    "report_audit":  [
+                         {
+                             "report":  "BaoCaoTuoiNo",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_edit_count":  3,
+                             "visible_fields":  [
+                                                    "Ngay chot:",
+                                                    "Loai cong no:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Nhom tuoi no:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay chot:",
+                                                             "ControlType.Text:Loai cong no:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Nhom tuoi no:"
+                                                         ],
+                             "result_screenshot":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\isolated-dateadd-aging.BaoCaoTuoiNo.report-result.png",
+                             "ui_error_count":  0
+                         }
+                     ]
+}

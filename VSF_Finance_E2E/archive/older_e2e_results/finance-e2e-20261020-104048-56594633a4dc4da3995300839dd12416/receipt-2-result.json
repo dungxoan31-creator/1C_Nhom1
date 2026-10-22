@@ -1,0 +1,14 @@
+{
+"status": "PASS",
+"receipt": "E2E-CONC-PT-2",
+"expected": "REJECTED",
+"posted": false,
+"post_error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(432)}:Receipt.Write(DocumentWriteMode.Posting);\n{ManagedApplicationModule(84)}:SeedBoundaryTestsServer.PostConcurrentARReceipt(ParamParts[1], ParamParts[2], ParamParts[3], ParamParts[4]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Phiếu thu tiền khách hàng E2E-CONC-PT-2 dated 10/18/2026 10:00:00 AM\"!\n[StoredDataError]",
+"ar_balance_vnd": 70000000,
+"ar_movements": 0,
+"cash_movements": 0,
+"gl_movements": 0,
+"error": "",
+"started_at": "2026-10-20T10:42:58",
+"finished_at": "2026-10-20T10:42:58"
+}

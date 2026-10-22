@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261021-041127-64453beb2ab74d6a8c791f87fba92a43",
+"phase": "ar_unpost_paid_invoice_rejected",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "E2E-AR001",
+"receipt": "E2E-PT001",
+"posted_dependency_count": 1,
+"rejected_due_to_posted_receipt": true,
+"write_rejection_reported": true,
+"invoice_still_posted": true,
+"receipt_still_posted": true,
+"movements_preserved": true
+}
+}

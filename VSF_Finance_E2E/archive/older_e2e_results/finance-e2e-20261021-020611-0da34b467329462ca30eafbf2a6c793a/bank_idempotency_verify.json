@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-020611-0da34b467329462ca30eafbf2a6c793a",
+"phase": "bank_idempotency_verify",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"request_id": "6312753e-ccb9-11f1-92c8-f4a475ea2b8e",
+"original_transaction_id": "BANK-17EC2F7F2D5E924D859D",
+"retry_transaction_id": "BANK-17EC2F7F2D5E924D859D",
+"idempotent": true
+}
+}

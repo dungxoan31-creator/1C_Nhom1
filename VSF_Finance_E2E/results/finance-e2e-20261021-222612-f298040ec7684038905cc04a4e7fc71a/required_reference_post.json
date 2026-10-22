@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-222612-f298040ec7684038905cc04a4e7fc71a",
+"phase": "required_reference_post",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "AR wrong-contract regression fixture is not in the expected pre-issue state.\n{CommonModule.SeedBoundaryTestsServer.Module(4395)}:Raise \"AR wrong-contract regression fixture is not in the expected pre-issue state.\";\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

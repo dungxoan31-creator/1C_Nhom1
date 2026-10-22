@@ -1,0 +1,23 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b\\e2e-infobase",
+    "workflow":  "FCTInvoiceSmoke",
+    "flow":  "native 1C UI → Functions → AR sales invoice list → sales invoice form",
+    "verified":  [
+                     "FCT checkbox persisted as checked on AP invoice form",
+                     "More opens the posted register viewer with GL and AP rows"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b\\ui-ap-fct250-smoke.1c.log",
+    "fct_invoice":  "E2E-AP-FCT250",
+    "fct_checkbox_persisted":  true,
+    "register_tabs":  [
+                          "SoCaiKeToan",
+                          "CongNoPhaiTra"
+                      ],
+    "register_row_counts":  {
+                                "CongNoPhaiTra":  1,
+                                "SoCaiKeToan":  1
+                            }
+}

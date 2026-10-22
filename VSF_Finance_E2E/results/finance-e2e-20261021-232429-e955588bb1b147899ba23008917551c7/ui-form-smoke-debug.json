@@ -1,0 +1,32 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-232429-e955588bb1b147899ba23008917551c7\\e2e-infobase",
+    "workflow":  "FormSmoke",
+    "flow":  "native 1C UI → seven document lists, seven document forms, two data processor forms",
+    "verified":  [
+
+                 ],
+    "error":  "Create did not expose a Save command for E2E-BB001. Visible state: [{\"name\":\"OK\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1135,550,47,27]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1166,633,23,23]},{\"name\":\"Functions\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[290,140,30,30]},{\"name\":\"Notifications\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1329,140,30,30]},{\"name\":\"History\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1363,140,30,30]},{\"name\":\"Favorites\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1397,140,30,30]},{\"name\":\"Quản trị hệ thống VSF\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1431,146,111,18]},{\"name\":\"Service and settings\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1546,140,30,30]},{\"name\":\"Collapse\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1580,140,30,30]},{\"name\":\"Maximize\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1614,140,30,30]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1648,140,30,30]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1648,908,23,23]},{\"name\":\"Back\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[513,179,38,25]},{\"name\":\"Forward\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[551,179,36,25]},{\"name\":\"Danh sách Biên bản nghiệm thu giai đoạn\",\"type\":\"ControlType.Pane\",\"enabled\":true,\"bounds\":[631,175,942,33]},{\"name\":\"Create\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[513,213,66,27]},{\"name\":\"Copy\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[588,213,30,27]},{\"name\":\"Find...\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[627,213,65,27]},{\"name\":\"Cancel search\",\"type\":\"ControlType.Button\",\"enabled\":false,\"bounds\":[701,213,111,27]},{\"name\":\"More actions\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1551,213,108,27]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1643,908,23,23]},{\"name\":\"Add to favorites\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[597,175,25,33]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1640,179,23,23]},{\"name\":\"Menu\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1610,179,23,23]},{\"name\":\"Get link...\",\"type\":\"ControlType.Button\",\"enabled\":true,\"bounds\":[1580,179,23,23]}]",
+    "screens":  [
+
+                ],
+    "form_audit":  [
+
+                   ],
+    "form_tab_audit":  [
+
+                       ],
+    "document_list_actions":  [
+
+                              ],
+    "form_command_actions":  [
+
+                             ],
+    "related_document_actions":  [
+
+                                 ],
+    "print_preview_actions":  [
+
+                              ]
+}

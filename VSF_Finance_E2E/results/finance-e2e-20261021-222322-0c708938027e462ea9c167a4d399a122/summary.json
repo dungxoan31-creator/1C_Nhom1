@@ -1,0 +1,66 @@
+﻿{
+    "run_id":  "finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122",
+    "status":  "FAIL",
+    "error":  "Phase batch_ui_setup failed for user ketoan_ap (1C exit 0): Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(624)}:Doc.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(385)}:CreateBulkApprovalInvoice(Context, \"E2E-BATCH-UI-ALL\", \"E2E-BATCH-UI-ALL-TAX\", 1000000, Date(2026, 10, 21, 15, 0, 0));\n{CommonModule.SeedBoundaryTestsServer.Module(93)}:Result.data = PrepareFinanceE2EBatchApprovalUI();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - \u0027BeforeWrite\u0027\n, reason:\nError calling context method (ValueIsFilled)\n[ScriptRuntimeError]\n, reason:\nMutable values filling check is unavailable",
+    "completed_phases":  [
+                             {
+                                 "run_id":  "finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122",
+                                 "phase":  "setup",
+                                 "user":  "Admin",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "legal_entity":  "PN-VSF",
+                                              "branch":  "CN-VSF-HCM",
+                                              "customer":  "TEST_VG_VINFAST_VN",
+                                              "customer_contract":  "HD-TEST_VG_VINFAST_VN-2025",
+                                              "vendor":  "E2E_AWS_VND",
+                                              "vendor_contract":  "HD-E2E-AWS-VND-2026",
+                                              "bank_account":  "TK-E2E-VND",
+                                              "opening_cash_vnd":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122",
+                                 "phase":  "approval_ui_queue_check",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "user":  "ketoan_truong",
+                                              "ktt_queue_count":  0
+                                          }
+                             }
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "branch_rls":  null,
+    "fx_refund":  null,
+    "fx_refund_ui_confirmation":  [
+                                      null,
+                                      null
+                                  ],
+    "ui_e2e":  null,
+    "catalog_list_ui_e2e":  null,
+    "list_period_ui_e2e":  null,
+    "document_forms_ui_e2e":  null,
+    "required_field_ui_e2e":  null,
+    "reference_choice_ui_e2e":  null,
+    "custom_command_coverage":  null,
+    "bank_ui_e2e":  [
+
+                    ],
+    "batch_approval_ui":  null,
+    "batch_approval_ui_state":  null,
+    "batch_approval_ui_contract":  null,
+    "bank_stub_log":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122\\bank-stub.requests.jsonl",
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122",
+    "base_infobase":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\BaseInfobase",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122"
+}

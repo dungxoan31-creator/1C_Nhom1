@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-132935-ed62f23b77d14a67a58fcc622b76ffee",
+"phase": "batch_ui_verify",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "Error calling context method (FindByCode)\n{CommonModule.SeedBoundaryTestsServer.Module(3336)}:Context.Insert(\"Customer\", Catalogs.DoiTac.FindByCode(\"TEST_VG_VINFAST_VN\"));\n{CommonModule.SeedBoundaryTestsServer.Module(288)}:Context = FinanceE2EContext();\n{CommonModule.SeedBoundaryTestsServer.Module(95)}:Result.data = VerifyFinanceE2EBatchApprovalUI();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nYou do not have enough rights to perform the database operation.\n[AccessViolation]",
+"data": {}
+}

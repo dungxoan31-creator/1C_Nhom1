@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-065159-f12f0a48b53240ebbacdada4ac1e1118",
+"phase": "bank_reject_approve",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-BANK-REJECT",
+"status": "DaDuyet",
+"approver": "ketoan_truong",
+"posted": false
+}
+}

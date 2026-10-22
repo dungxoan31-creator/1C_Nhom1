@@ -1,0 +1,39 @@
+{
+  "dataSets": [
+    {
+      "name": "SoDuTuoiNo",
+      "query": "@../report-queries/aging.sql",
+      "fields": [
+        { "field": "LoaiCongNo", "title": "Loại công nợ", "type": "string(3)" },
+        { "field": "PhapNhan", "title": "Pháp nhân", "type": "CatalogRef.PhapNhan" },
+        { "field": "DoiTac", "title": "Đối tác", "type": "CatalogRef.DoiTac" },
+        { "field": "HopDong", "title": "Hợp đồng", "type": "CatalogRef.HopDong" },
+        { "field": "ChungTuGoc", "title": "Chứng từ gốc", "type": ["DocumentRef.BienBanNghiemThuGiaiDoan", "DocumentRef.HoaDonGTGTDauRa", "DocumentRef.HoaDonNhaCungCap"] },
+        { "field": "NgayChungTu", "title": "Ngày chứng từ", "type": "date" },
+        { "field": "HanThanhToanNgay", "title": "Số ngày thanh toán", "type": "decimal(10)" },
+        { "field": "NgayDenHan", "title": "Ngày đến hạn", "type": "date" },
+        { "field": "NhomTuoiNo", "title": "Nhóm tuổi nợ", "type": "string(30)" },
+        { "field": "SoNgayDenHan", "title": "Số ngày đến hạn", "type": "decimal(10)" },
+        { "field": "SoNgayQuaHan", "title": "Số ngày quá hạn", "type": "decimal(10)" },
+        { "field": "SoDuConLai", "title": "Số dư còn lại", "type": "decimal(15,2)" },
+        { "field": "TienTe", "title": "Tiền tệ", "type": "CatalogRef.TienTe" }
+      ]
+    }
+  ],
+  "parameters": [
+    { "name": "NgayChot", "title": "Ngày chốt", "type": "date", "use": "Always", "denyIncompleteValues": true }
+  ],
+  "settingsVariants": [
+    {
+      "name": "Chinh",
+      "title": "Báo cáo tuổi nợ AR/AP",
+      "settings": {
+        "selection": ["LoaiCongNo", "PhapNhan", "DoiTac", "HopDong", "NgayChungTu", "NgayDenHan", "NhomTuoiNo", "SoNgayDenHan", "SoNgayQuaHan", "SoDuConLai", "TienTe", "ChungTuGoc"],
+        "filter": ["LoaiCongNo = _ @off @user", "PhapNhan = _ @off @user", "DoiTac = _ @off @user", "HopDong = _ @off @user", "NhomTuoiNo = _ @off @user"],
+        "dataParameters": ["NgayChot = 2026-10-22T00:00:00 @user"],
+        "order": ["NhomTuoiNo asc", "NgayChungTu asc", "Auto"],
+        "structure": "LoaiCongNo > NhomTuoiNo > DoiTac > details"
+      }
+    }
+  ]
+}

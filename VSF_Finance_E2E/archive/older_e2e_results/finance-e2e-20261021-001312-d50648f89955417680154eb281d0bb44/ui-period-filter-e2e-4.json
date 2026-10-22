@@ -1,0 +1,13 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-001312-d50648f89955417680154eb281d0bb44\\e2e-infobase",
+    "workflow":  "ListPeriods",
+    "flow":  "native 1C UI → Functions → AR sales invoice list → sales invoice form",
+    "verified":  [
+                     "E2E-BB001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document",
+                     "E2E-AR001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document",
+                     "E2E-PT001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document"
+                 ],
+    "error":  "UI element not found: ControlType.MenuItem \u0027*Hóa đơn nhà cung cấp*\u0027. Candidates: Bàn làm việc \u0026 Điều hành Web ERP | Biên bản nghiệm thu giai đoạn | Hóa đơn GTGT đầu ra | Phiếu thu tiền khách hàng | Hóa đơn đầu vào (nhà cung cấp) | Ủy nhiệm chi"
+}

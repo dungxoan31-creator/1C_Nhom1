@@ -1,0 +1,4 @@
+{"request_id":"93e54b18-cd0b-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-UNC01","status":"ACCEPTED","transaction_id":"BANK-B61169A9761E2122865E","replay":false,"amount_vnd":180000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"93e54b18-cd0b-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-UNC01","status":"ACCEPTED","transaction_id":"BANK-B61169A9761E2122865E","replay":true,"amount_vnd":180000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"9cef5329-cd0b-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-BANK-REJECT","status":"REJECTED","transaction_id":"","replay":false,"amount_vnd":1000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"9cef5329-cd0b-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-BANK-REJECT","status":"REJECTED","transaction_id":"","replay":false,"amount_vnd":1000000,"amount_foreign":0,"currency":"VND"}

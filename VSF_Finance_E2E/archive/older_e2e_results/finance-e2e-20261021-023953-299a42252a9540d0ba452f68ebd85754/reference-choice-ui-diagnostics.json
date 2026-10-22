@@ -1,0 +1,23 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-023953-299a42252a9540d0ba452f68ebd85754\\e2e-infobase",
+    "workflow":  "ReferenceChoiceDiagnostics",
+    "flow":  "native 1C UI → AR invoice partner/contract reference choice diagnostic",
+    "verified":  [
+                     "partner and contract fields exposed; F4 choice interaction captured without selecting or saving"
+                 ],
+    "error":  "",
+    "partner_field":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+    "contract_field":  "Hợp đồng dịch vụ 2025 - CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+    "visible_panes_before_choice":  [
+                                        "Hóa đơn GTGT đầu ra (AR) - VinSmart Future"
+                                    ],
+    "visible_panes_after_choice":  [
+                                       "Hóa đơn GTGT đầu ra (AR) - VinSmart Future"
+                                   ],
+    "visible_choice_candidates":  [
+
+                                  ],
+    "choice_open_detected":  false
+}

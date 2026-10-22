@@ -1,0 +1,5 @@
+{
+"status": "BLOCKED_ENVIRONMENT",
+"error": "The 1C runtime did not start both background job sessions in file mode.",
+"attempt_marker_before_release": false
+}

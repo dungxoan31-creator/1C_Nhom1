@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261020-064905-321ce992b9774ee1a090e97c6d5e0200",
+"phase": "concurrency_setup",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "Hóa đơn GTGT đầu ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+"opening_ar_vnd": 220000000,
+"receipt_1": "E2E-CONC-PT-1",
+"receipt_2": "E2E-CONC-PT-2"
+}
+}

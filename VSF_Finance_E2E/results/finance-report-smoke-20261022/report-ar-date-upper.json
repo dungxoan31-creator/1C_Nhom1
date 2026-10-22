@@ -1,0 +1,16 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_reporting-fresh-20261022-2",
+    "workflow":  "ReportSmoke",
+    "flow":  "native 1C UI → AR ledger, AP ledger, aging report",
+    "verified":  [
+
+                 ],
+    "error":  "Report form SoChiTietCongNoAR did not open. Visible panes: Bàn làm việc \u0026 Điều hành Web ERP - VinSmart Future | Sections panel. Visible elements: ControlType.Window:1C:Enterprise (training version) | ControlType.Text:Unfortunately, an unexpected error occurred.\n\nYou may retry the action.\nIf the error persists, try restarting the application or contact application administrator or technician. | ControlType.Button:OK | ControlType.Hyperlink:Generate error report | ControlType.Text:Messages: | ControlType.List:Messages: | ControlType.Button:Close | ControlType.Button:Functions | ControlType.Button:Notifications | ControlType.Button:History | ControlType.Button:Favorites | ControlType.Button:Quản trị hệ thống VSF | ControlType.Button:Service and settings | ControlType.Button:Collapse | ControlType.Button:Maximize | ControlType.Button:Back | ControlType.Button:Forward | ControlType.Pane:Bàn làm việc \u0026 Điều hành Web ERP - VinSmart Future | ControlType.Button:More actions | ControlType.Button:Add to favorites | ControlType.Button:Menu | ControlType.Button:Get link... | ControlType.Button:Print preview | ControlType.Button:Print | ControlType.Button:Save | ControlType.Edit:Search in functions | ControlType.Menu:Functions menu | ControlType.MenuItem:Bàn làm việc \u0026 Điều hành Web ERP | ControlType.MenuItem:Biên bản nghiệm thu giai đoạn | ControlType.MenuItem:Hóa đơn GTGT đầu ra | ControlType.MenuItem:Phiếu thu tiền khách hàng | ControlType.MenuItem:Hóa đơn đầu vào (nhà cung cấp) | ControlType.MenuItem:Ủy nhiệm chi | ControlType.MenuItem:Cấn trừ công nợ nội bộ | ControlType.MenuItem:Bảng kê đối soát kênh thanh toán | ControlType.MenuItem:Chi nhánh | ControlType.MenuItem:Dịch vụ CNTT | ControlType.MenuItem:Đối tác | ControlType.MenuItem:Dự án | ControlType.MenuItem:Hợp đồng | ControlType.MenuItem:Khoản mục dòng tiền | ControlType.MenuItem:Pháp nhân | ControlType.MenuItem:Tài khoản tiền | ControlType.MenuItem:Tiền tệ | ControlType.MenuItem:Sổ chi tiết công nợ phải thu (AR) | ControlType.MenuItem:Sổ chi tiết công nợ phải trả (AP) | ControlType.MenuItem:Báo cáo tuổi nợ AR/AP | ControlType.Button:Settings | ControlType.Pane:Sections panel | ControlType.TabItem:Quick menu | ControlType.TabItem:PhanHeCanTruCongNo | ControlType.TabItem:6. Danh mục | ControlType.TabItem:3. Ngân hàng  Quỹ | ControlType.TabItem:1. Công nợ phải thu (AR) | ControlType.TabItem:2. Công nợ phải trả (AP) | ControlType.TabItem:5. Sổ cái kế toán. Screenshot: .\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\report-ar-date-upper.SoChiTietCongNoAR.open-failure.png",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\report-ar-date-upper.1c.log",
+    "report_audit":  [
+
+                     ],
+    "failure_screenshot_path":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\report-ar-date-upper.unhandled-failure.png"
+}

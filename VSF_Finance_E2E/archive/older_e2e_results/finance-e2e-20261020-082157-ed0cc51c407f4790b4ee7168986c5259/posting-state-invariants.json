@@ -1,0 +1,33 @@
+{
+"run_id": "finance-e2e-20261020-082157-ed0cc51c407f4790b4ee7168986c5259",
+"phase": "posting_state_invariants",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": false,
+"error": "Draft payment invariant failed: error=Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1537)}:Payment.Write(DocumentWriteMode.Posting);\n{ManagedApplicationModule(19)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nVi phạm nguyên tắc Maker-Checker: Người tạo/lập không thể tự phê duyệt chứng từ!\n[ScriptRuntimeError, ExceptionRaisedFromScript] Posted=No AP=0 Cash=0 GL=0"
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1751)}:Invoice.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(1559)}:Invoice = CreatePostingInvariantSalesInvoice(Context, \"E2E-INV-CANCEL\", Enums.TrangThaiHoaDonDienTu.DaHuy, Undefined);\n{ManagedApplicationModule(19)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nVi phạm nguyên tắc Maker-Checker: Người lập không thể tự chuyển chứng từ sang trạng thái 'DaHuy'!\n[ScriptRuntimeError, ExceptionRaisedFromScript]"
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1597)}:Acceptance.Write(DocumentWriteMode.Posting);\n{ManagedApplicationModule(19)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nVi phạm nguyên tắc Maker-Checker: Người tạo/lập không thể tự phê duyệt chứng từ!\n[ScriptRuntimeError, ExceptionRaisedFromScript]"
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": true,
+"error": ""
+},
+{
+"name": "PostingFailureRollsBackPriorDocument",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1751)}:Invoice.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(1667)}:ValidInvoice = CreatePostingInvariantSalesInvoice(Context, \"E2E-INV-TX-GOOD\", Enums.TrangThaiHoaDonDienTu.DaPhatHanh, Undefined);\n{ManagedApplicationModule(19)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nVi phạm nguyên tắc Maker-Checker: Người lập không thể tự chuyển chứng từ sang trạng thái 'DaPhatHanh'!\n[ScriptRuntimeError, ExceptionRaisedFromScript]"
+}
+]
+}

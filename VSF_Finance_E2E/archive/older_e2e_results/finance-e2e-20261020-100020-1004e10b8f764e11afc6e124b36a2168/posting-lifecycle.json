@@ -1,0 +1,27 @@
+{
+"run_id": "finance-e2e-20261020-100020-1004e10b8f764e11afc6e124b36a2168",
+"status": "PASS",
+"user": "cfo_giamdoc",
+"cases": [
+{
+"name": "ZeroResidual",
+"passed": true,
+"error": ""
+},
+{
+"name": "RepostParity",
+"passed": true,
+"error": ""
+},
+{
+"name": "TransactionRollback",
+"passed": true,
+"error": ""
+},
+{
+"name": "GLSubledger",
+"passed": true,
+"error": ""
+}
+]
+}

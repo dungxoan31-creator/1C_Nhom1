@@ -1,0 +1,32 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c\\e2e-infobase",
+    "workflow":  "GuideSmoke",
+    "flow":  "native 1C UI → finance process guide and allowlisted native destinations",
+    "verified":  [
+                     "finance process guide opened from dashboard and rendered a visible guide page",
+                     "guide AR link opened the native acceptance document form"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c\\ui-finance-guide.1c.log",
+    "finance_guide_ui":  {
+                             "status":  "PASS",
+                             "opened_from_dashboard":  true,
+                             "dashboard_click_coordinates":  [
+                                                                 1348,
+                                                                 410
+                                                             ],
+                             "ar_route_opened_native_document":  true,
+                             "ar_route_destination":  "Biên bản nghiệm thu giai đoạn (AR) - VinSmart Future",
+                             "visible_form_bounds":  [
+                                                         631,
+                                                         175,
+                                                         852,
+                                                         33
+                                                     ],
+                             "visible_control_count":  null,
+                             "screenshot":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c\\ui-finance-guide.finance-guide.png"
+                         },
+    "screenshot_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c\\ui-finance-guide.finance-guide.png"
+}

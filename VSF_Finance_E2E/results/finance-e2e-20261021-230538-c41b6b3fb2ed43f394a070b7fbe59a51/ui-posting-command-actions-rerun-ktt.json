@@ -1,0 +1,32 @@
+﻿{
+    "status":  "PASS",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-230538-c41b6b3fb2ed43f394a070b7fbe59a51\\e2e-infobase",
+    "workflow":  "PostingCommandDiagnostics",
+    "flow":  "native 1C UI → post and undo posting for netting and reconciliation",
+    "verified":  [
+                     "E2E-NET-001: Cancel posting and Post invoked; final state posted",
+                     "E2E-BK-VNPAY-001: Cancel posting and Post invoked; final state posted"
+                 ],
+    "error":  "",
+    "posting_command_actions":  [
+                                    {
+                                        "document_number":  "E2E-NET-001",
+                                        "initial_state":  "posted",
+                                        "undo_command":  "Cancel posting",
+                                        "undo_invoked":  true,
+                                        "post_invoked_after_undo":  true,
+                                        "undo_available_after_repost":  true,
+                                        "final_state":  "posted"
+                                    },
+                                    {
+                                        "document_number":  "E2E-BK-VNPAY-001",
+                                        "initial_state":  "posted",
+                                        "undo_command":  "Cancel posting",
+                                        "undo_invoked":  true,
+                                        "post_invoked_after_undo":  true,
+                                        "undo_available_after_repost":  true,
+                                        "final_state":  "posted"
+                                    }
+                                ]
+}

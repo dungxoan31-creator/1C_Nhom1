@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261020-180914-ddfa7a0a0edf405ba00e0eed36943f5f",
+"phase": "ap_seed_PrepareInvoices",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"documents": 1260,
+"posted": 0,
+"pending_cfo": 0,
+"pending_ktt": 1260
+}
+}

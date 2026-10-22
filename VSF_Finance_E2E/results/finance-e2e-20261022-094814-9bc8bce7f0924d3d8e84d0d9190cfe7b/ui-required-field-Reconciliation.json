@@ -1,0 +1,1054 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b\\e2e-infobase",
+    "workflow":  "RequiredFieldDiagnostics",
+    "flow":  "native 1C UI → blank Reconciliation form → Save validation diagnostic",
+    "verified":  [
+                     "blank Reconciliation Save rejected, no number assigned, validation message visible; clone only"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b\\ui-required-field-Reconciliation.1c.log",
+    "document_type":  "Reconciliation",
+    "save_button_diagnostic":  {
+                                   "bounds":  [
+                                                  513,
+                                                  213,
+                                                  56,
+                                                  27
+                                              ],
+                                   "enabled":  true,
+                                   "automation_id":  "",
+                                   "locator":  {
+                                                   "name":  "Save",
+                                                   "form_is_empty":  false,
+                                                   "form_coordinates":  [
+                                                                            631,
+                                                                            175,
+                                                                            942,
+                                                                            33
+                                                                        ],
+                                                   "form_width":  942,
+                                                   "form_height":  33,
+                                                   "usable_form_bounds":  true,
+                                                   "application_bounds":  [
+                                                                              241,
+                                                                              139,
+                                                                              1438,
+                                                                              753
+                                                                          ],
+                                                   "visible_candidate_count":  1,
+                                                   "visible_candidates":  [
+                                                                              {
+                                                                                  "enabled":  true,
+                                                                                  "bounds":  [
+                                                                                                 513,
+                                                                                                 213,
+                                                                                                 56,
+                                                                                                 27
+                                                                                             ]
+                                                                              }
+                                                                          ],
+                                                   "path":  "document-form-command-row",
+                                                   "returned_count":  1
+                                               }
+                               },
+    "empty_save_before":  [
+                              {
+                                  "name":  "",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Number:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Date:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "10/22/2026 10:09:34 AM",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "PhapNhan:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "Công ty CP VinSmart Future",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "DoiTacTrungGian:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TaiKhoanTien:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "KhoanMucDongTien:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TienTe:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "Việt Nam Đồng",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "KenhThanhToan:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "VNPAY",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TongTienGiaoDich:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TongPhi:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TongTienThucNhan:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "NguoiLap:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Admin",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "NguoiDuyet:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "DienGiai:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvFileName:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvDelimiter:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  ",",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvDecimalSeparator:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  ".",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvThousandsSeparator:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  ",",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnExternalId:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "ExternalId",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnTransactionDate:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "TransactionDate",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnInvoiceNumber:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "InvoiceNumber",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnMemo:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Memo",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnGross:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Gross",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnFee:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Fee",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnNet:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Net",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvColumnCurrency:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Currency",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "CsvPreviewSummary:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              }
+                          ],
+    "empty_save_after":  [
+                             {
+                                 "name":  "",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Number:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "10/22/2026 10:09:34 AM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "PhapNhan:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "Công ty CP VinSmart Future",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "DoiTacTrungGian:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TaiKhoanTien:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "KhoanMucDongTien:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TienTe:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "Việt Nam Đồng",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "KenhThanhToan:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "VNPAY",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TongTienGiaoDich:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TongPhi:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TongTienThucNhan:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "NguoiLap:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Admin",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "NguoiDuyet:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "DienGiai:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvFileName:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvDelimiter:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  ",",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvDecimalSeparator:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  ".",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvThousandsSeparator:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  ",",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnExternalId:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "ExternalId",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnTransactionDate:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "TransactionDate",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnInvoiceNumber:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "InvoiceNumber",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnMemo:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Memo",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnGross:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Gross",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnFee:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Fee",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnNet:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Net",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvColumnCurrency:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Currency",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "CsvPreviewSummary:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             }
+                         ],
+    "document_number_before":  "",
+    "document_number_after":  "",
+    "validation_message_visible":  true,
+    "validation_message_text":  "Failed to save: \"Bảng kê đối soát kênh thanh toán\"! | Thiếu thông tin bắt buộc: Đơn vị trung gian.",
+    "success_notification_visible":  false,
+    "visible_message_controls":  [
+                                     {
+                                         "name":  "1C:Enterprise (training version)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Failed to save: \"Bảng kê đối soát kênh thanh toán\"!",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Number:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Date:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "PhapNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DoiTacTrungGian:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TaiKhoanTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KhoanMucDongTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TienTe:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KenhThanhToan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienGiaoDich:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongPhi:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienThucNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiLap:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiDuyet:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DienGiai:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvFileName:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvDelimiter:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvDecimalSeparator:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvThousandsSeparator:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnExternalId:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnTransactionDate:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnInvoiceNumber:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnMemo:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnGross:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnFee:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnNet:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnCurrency:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvPreviewSummary:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Thiếu thông tin bắt buộc: Đơn vị trung gian.",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "84°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Partly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "86°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Partly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Search",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "VINSMART FUTURE - Hệ Thống Tài Chính \u0026 Kế Toán",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1C:Enterprise (training version)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Failed to save: \"Bảng kê đối soát kênh thanh toán\"!",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Number:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Date:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "PhapNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DoiTacTrungGian:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TaiKhoanTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KhoanMucDongTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TienTe:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KenhThanhToan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienGiaoDich:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongPhi:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienThucNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiLap:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiDuyet:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DienGiai:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvFileName:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvDelimiter:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvDecimalSeparator:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvThousandsSeparator:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnExternalId:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnTransactionDate:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnInvoiceNumber:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnMemo:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnGross:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnFee:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnNet:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvColumnCurrency:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "CsvPreviewSummary:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Thiếu thông tin bắt buộc: Đơn vị trung gian.",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Orca",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Projects",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "···",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Still sized for your phone",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Still sized for your phone",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Your phone session ended. Restore to fit this window.",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Used",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "25%",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " 2h 54m",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "74%",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " 5d 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Gemini",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "0% 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "54% wk",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Claude/GPT",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "0% 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "44% wk",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "VSF TEST - File Explorer",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Status bar",
+                                         "control_type":  "ControlType.StatusBar"
+                                     },
+                                     {
+                                         "name":  "10 items",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "1 item selected  13.9 KB",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "VinSmart_Future_AdminFull_v5_SuaFont",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Prompt_cai_tien_UI_UX_1C_Enterprise_Impeccable_TasteSkill",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "VinSmart_Future_AR_AP_Presentation_Expanded_v2_DA_SUA",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Huong_dan_sua_chi_tiet_slide_AR_AP_theo_DT",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "docs",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "VSF_Finance_E2E",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  ".agents",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  ".codex",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Skill",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "references",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "VSF TEST",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Documents",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "VSF TEST",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " Search VSF TEST",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "impeccable-main - File Explorer",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "pbakaus/impeccable: The design language that makes your AI harness better at design. - Cốc Cốc",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "pbakaus",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "impeccable",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Code",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Issues (37)",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Pull requests (12)",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Agents",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Actions",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Projects",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Security and quality",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Insights",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Public",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Watch (198)",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Watch",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " (",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "198",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  ")",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Fork (5k)",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Star (84.3k)",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "main",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Add file",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Latest commit",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "and",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " · ",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "yesterday",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "History",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Folders and files",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "About",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "The design language that makes your AI harness better at design.",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Resources",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Stars",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "84.3k",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " stars",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Watchers",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "198",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " watching",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Forks",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Releases  (89)",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Deployments  (130)",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Production7 months ago",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "7 months ago",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "windows-signing2 days ago",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "2 days ago",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Packages",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "No packages published",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Contributors  (56)",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Recycle Bin - File Explorer",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "VinSmart_Future_AR_AP_Presentation_Expanded_v2_DA_SUA - PowerPoint",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Zalo",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "VSF TEST (only 19 days left to buy a license)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1c-dev-mentor-student-claude-gpt.zip (only 19 days left to buy a license)",
+                                         "control_type":  "ControlType.Window"
+                                     }
+                                 ],
+    "save_button_still_visible":  true,
+    "document_persisted":  false,
+    "blank_save_rejected":  true
+}

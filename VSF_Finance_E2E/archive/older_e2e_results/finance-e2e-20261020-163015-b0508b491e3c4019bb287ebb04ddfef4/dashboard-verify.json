@@ -1,0 +1,21 @@
+﻿{
+    "status":  "PASS",
+    "report_periods":  [
+                           "ThangNay",
+                           "QuyNay",
+                           "NamNay"
+                       ],
+    "month_revenue_vnd":  491234567,
+    "month_revenue_gl_vnd":  491234567,
+    "month_receipts_vnd":  219200000,
+    "month_invoice_count":  3,
+    "ar_balance_vnd":  271234567,
+    "ap_balance_vnd":  500000001,
+    "cash_balance_vnd":  112075000,
+    "overdue_ar_vnd":  0,
+    "due_ap_vnd":  0,
+    "revenue_chart_points":  6,
+    "aging_buckets":  5,
+    "pending_documents":  4,
+    "invalid_period_rejected":  true
+}

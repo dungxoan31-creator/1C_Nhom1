@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-084559-b671f419d0c94eabb75bd81db619c349",
+"phase": "ar_create_receipts",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"receipt_number": "E2E-PT001",
+"receipt_amount_vnd": 216000000,
+"over_receipt_number": "E2E-NEG01",
+"over_receipt_amount_vnd": 216000001,
+"source_invoice": "Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM"
+}
+}

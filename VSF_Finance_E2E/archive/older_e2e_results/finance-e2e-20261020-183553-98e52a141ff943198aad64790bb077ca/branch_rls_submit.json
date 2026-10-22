@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-183553-98e52a141ff943198aad64790bb077ca",
+"phase": "branch_rls_submit",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1295)}:Doc.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(98)}:Result.data = SubmitBranchRLSE2EAcceptance();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nYou do not have enough rights to perform the database operation.\n[AccessViolation]",
+"data": {}
+}

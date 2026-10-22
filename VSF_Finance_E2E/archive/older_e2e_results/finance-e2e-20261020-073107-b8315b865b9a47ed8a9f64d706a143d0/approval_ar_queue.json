@@ -1,0 +1,11 @@
+{
+"run_id": "finance-e2e-20261020-073107-b8315b865b9a47ed8a9f64d706a143d0",
+"phase": "approval_ar_queue",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"user": "ketoan_ar",
+"queue_count": 0
+}
+}

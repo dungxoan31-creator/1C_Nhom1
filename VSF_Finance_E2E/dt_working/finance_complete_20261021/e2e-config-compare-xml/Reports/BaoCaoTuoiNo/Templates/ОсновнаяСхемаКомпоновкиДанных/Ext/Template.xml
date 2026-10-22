@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>SoDuTuoiNo</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LoaiCongNo</dataPath>
+			<field>LoaiCongNo</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Loại công nợ</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>3</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PhapNhan</dataPath>
+			<field>PhapNhan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Pháp nhân</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.PhapNhan</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DoiTac</dataPath>
+			<field>DoiTac</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Đối tác</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.DoiTac</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>HopDong</dataPath>
+			<field>HopDong</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Hợp đồng</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.HopDong</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ChungTuGoc</dataPath>
+			<field>ChungTuGoc</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Chứng từ gốc</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.BienBanNghiemThuGiaiDoan</v8:Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.HoaDonNhaCungCap</v8:Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:DocumentRef.HoaDonGTGTDauRa</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>NgayChungTu</dataPath>
+			<field>NgayChungTu</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ngày chứng từ</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>HanThanhToanNgay</dataPath>
+			<field>HanThanhToanNgay</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Số ngày thanh toán</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>NgayDenHan</dataPath>
+			<field>NgayDenHan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ngày đến hạn</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>NhomTuoiNo</dataPath>
+			<field>NhomTuoiNo</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Nhóm tuổi nợ</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>30</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SoNgayDenHan</dataPath>
+			<field>SoNgayDenHan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Số ngày đến hạn</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SoNgayQuaHan</dataPath>
+			<field>SoNgayQuaHan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Số ngày quá hạn</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SoDuConLai</dataPath>
+			<field>SoDuConLai</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Số dư còn lại</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>TienTe</dataPath>
+			<field>TienTe</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Tiền tệ</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.TienTe</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>SELECT
+	"AR" AS LoaiCongNo,
+	AR.PhapNhan AS PhapNhan,
+	AR.DoiTac AS DoiTac,
+	AR.HopDong AS HopDong,
+	AR.ChungTuGoc AS ChungTuGoc,
+	ISNULL(BBNT.Date, ARInvoice.Date) AS NgayChungTu,
+	ContractRow.HanThanhToanNgay AS HanThanhToanNgay,
+	AR.SoTienBalance AS SoDuConLai,
+	ISNULL(ARInvoice.TienTe, VND.Ref) AS TienTe,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR ISNULL(BBNT.Date, ARInvoice.Date) IS NULL THEN NULL
+		ELSE DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay) END AS NgayDenHan,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR ISNULL(BBNT.Date, ARInvoice.Date) IS NULL THEN "ChuaXacDinhHan"
+		WHEN DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay) &gt;= BEGINOFPERIOD(&amp;NgayChot, DAY) THEN "TrongHan"
+		WHEN DATEDIFF(DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY) &lt;= 30 THEN "QuaHan1Den30"
+		WHEN DATEDIFF(DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY) &lt;= 60 THEN "QuaHan31Den60"
+		WHEN DATEDIFF(DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY) &lt;= 90 THEN "QuaHan61Den90"
+		ELSE "Tren90Ngay" END AS NhomTuoiNo,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR ISNULL(BBNT.Date, ARInvoice.Date) IS NULL THEN 0
+		WHEN DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay) &gt;= BEGINOFPERIOD(&amp;NgayChot, DAY)
+			THEN DATEDIFF(BEGINOFPERIOD(&amp;NgayChot, DAY), DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay), DAY)
+		ELSE 0 END AS SoNgayDenHan,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR ISNULL(BBNT.Date, ARInvoice.Date) IS NULL THEN 0
+		WHEN DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay) &lt; BEGINOFPERIOD(&amp;NgayChot, DAY)
+			THEN DATEDIFF(DATEADD(BEGINOFPERIOD(ISNULL(BBNT.Date, ARInvoice.Date), DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY)
+		ELSE 0 END AS SoNgayQuaHan
+FROM
+	AccumulationRegister.CongNoPhaiThu.Balance(DATEADD(&amp;NgayChot, DAY, 1), ) AS AR
+	LEFT JOIN Document.BienBanNghiemThuGiaiDoan AS BBNT ON BBNT.Ref = AR.ChungTuGoc
+	LEFT JOIN Document.HoaDonGTGTDauRa AS ARInvoice ON ARInvoice.Ref = AR.ChungTuGoc
+	LEFT JOIN Catalog.HopDong AS ContractRow ON ContractRow.Ref = AR.HopDong
+	LEFT JOIN Catalog.TienTe AS VND ON VND.Code = "VND"
+WHERE
+	AR.SoTienBalance &gt; 0
+	AND (BBNT.Ref IS NULL OR (BBNT.Posted = TRUE AND BBNT.DeletionMark = FALSE))
+	AND (ARInvoice.Ref IS NULL OR (ARInvoice.Posted = TRUE AND ARInvoice.DeletionMark = FALSE))
+
+UNION ALL
+
+SELECT
+	"AP" AS LoaiCongNo,
+	AP.PhapNhan AS PhapNhan,
+	AP.DoiTac AS DoiTac,
+	AP.HopDong AS HopDong,
+	AP.ChungTuGoc AS ChungTuGoc,
+	APInvoice.Date AS NgayChungTu,
+	ContractRow.HanThanhToanNgay AS HanThanhToanNgay,
+	AP.SoTienBalance AS SoDuConLai,
+	ISNULL(APInvoice.TienTe, VND.Ref) AS TienTe,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR APInvoice.Date IS NULL THEN NULL
+		ELSE DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay) END AS NgayDenHan,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR APInvoice.Date IS NULL THEN "ChuaXacDinhHan"
+		WHEN DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay) &gt;= BEGINOFPERIOD(&amp;NgayChot, DAY) THEN "TrongHan"
+		WHEN DATEDIFF(DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY) &lt;= 30 THEN "QuaHan1Den30"
+		WHEN DATEDIFF(DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY) &lt;= 60 THEN "QuaHan31Den60"
+		WHEN DATEDIFF(DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY) &lt;= 90 THEN "QuaHan61Den90"
+		ELSE "Tren90Ngay" END AS NhomTuoiNo,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR APInvoice.Date IS NULL THEN 0
+		WHEN DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay) &gt;= BEGINOFPERIOD(&amp;NgayChot, DAY)
+			THEN DATEDIFF(BEGINOFPERIOD(&amp;NgayChot, DAY), DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay), DAY)
+		ELSE 0 END AS SoNgayDenHan,
+	CASE WHEN ContractRow.HanThanhToanNgay IS NULL OR APInvoice.Date IS NULL THEN 0
+		WHEN DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay) &lt; BEGINOFPERIOD(&amp;NgayChot, DAY)
+			THEN DATEDIFF(DATEADD(BEGINOFPERIOD(APInvoice.Date, DAY), DAY, ContractRow.HanThanhToanNgay), BEGINOFPERIOD(&amp;NgayChot, DAY), DAY)
+		ELSE 0 END AS SoNgayQuaHan
+FROM
+	AccumulationRegister.CongNoPhaiTra.Balance(DATEADD(&amp;NgayChot, DAY, 1), ) AS AP
+	LEFT JOIN Document.HoaDonNhaCungCap AS APInvoice ON APInvoice.Ref = AP.ChungTuGoc
+	LEFT JOIN Catalog.HopDong AS ContractRow ON ContractRow.Ref = AP.HopDong
+	LEFT JOIN Catalog.TienTe AS VND ON VND.Code = "VND"
+WHERE
+	AP.SoTienBalance &gt; 0
+	AND (APInvoice.Ref IS NULL OR (APInvoice.Posted = TRUE AND APInvoice.DeletionMark = FALSE))</query>
+	</dataSet>
+	<parameter>
+		<name>NgayChot</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Ngày chốt</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Chinh</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Báo cáo tuổi nợ AR/AP</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>LoaiCongNo</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PhapNhan</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>DoiTac</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>HopDong</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>NgayChungTu</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>NgayDenHan</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>NhomTuoiNo</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>SoNgayDenHan</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>SoNgayQuaHan</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>SoDuConLai</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>TienTe</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ChungTuGoc</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">LoaiCongNo</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>d73b0d79-b84d-46b5-b888-18675230993f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">PhapNhan</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>6f7391fa-1891-4416-b048-3c3c25597542</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">DoiTac</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>20ed5ea1-47c1-4244-a803-6c7bccf4e15c</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">HopDong</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>33d1f041-ffb5-41c4-9129-5650585b4561</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">NhomTuoiNo</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>c6b81962-a168-43e5-9945-4d9eeaa6c3c2</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>NgayChot</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">2026-10-22T00:00:00</dcscor:value>
+					<dcsset:userSettingID>7f6e604b-5dc6-4baa-933f-10ca8a1dcee0</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>NhomTuoiNo</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>NgayChungTu</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>LoaiCongNo</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>NhomTuoiNo</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>DoiTac</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

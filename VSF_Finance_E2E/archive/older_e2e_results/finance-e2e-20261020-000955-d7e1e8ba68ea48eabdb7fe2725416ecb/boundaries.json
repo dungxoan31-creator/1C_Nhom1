@@ -1,0 +1,21 @@
+{
+"run_id": "finance-e2e-20261020-000955-d7e1e8ba68ea48eabdb7fe2725416ecb",
+"status": "PASS",
+"cases": [
+{
+"name": "AR_Logic_DebtTransfer",
+"passed": true,
+"error": ""
+},
+{
+"name": "AP_Logic_FCT_Split",
+"passed": true,
+"error": ""
+},
+{
+"name": "AP_Boundary_Approval_500M",
+"passed": true,
+"error": ""
+}
+]
+}

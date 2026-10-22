@@ -1,0 +1,36 @@
+[
+  {
+    "type": "CommonModule",
+    "name": "NhapSaoKeCsvServer",
+    "synonym": {
+      "vi": "Nhập sao kê CSV Server",
+      "en": "CSV Statement Import Server"
+    },
+    "comment": "Phân tích CSV, chuẩn hóa giao dịch và tạo khóa chống ghi sổ trùng.",
+    "context": "server",
+    "serverCall": true,
+    "externalConnection": true,
+    "returnValuesReuse": "DontUse"
+  },
+  {
+    "type": "InformationRegister",
+    "name": "GiaoDichSaoKeDaNhap",
+    "synonym": {
+      "vi": "Giao dịch sao kê đã ghi sổ",
+      "en": "Posted Statement Transactions"
+    },
+    "periodicity": "Nonperiodical",
+    "writeMode": "Independent",
+    "dataLockControlMode": "Managed",
+    "dimensions": [
+      "PhapNhan: CatalogRef.PhapNhan | master, mainFilter, denyIncomplete",
+      "TaiKhoanTien: CatalogRef.TaiKhoanTien | master, mainFilter, denyIncomplete",
+      "KenhThanhToan: String(20) | master, denyIncomplete",
+      "KhoaGiaoDich: String(64) | master, denyIncomplete"
+    ],
+    "resources": [
+      "ChungTu: DocumentRef.DoiSoatKenhThanhToan",
+      "SoDong: Number(10,0)"
+    ]
+  }
+]

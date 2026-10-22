@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-034136-b5c7e151c04043a88687880bcfb6174a",
+"phase": "csv_import_preview",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AR001",
+"open_ar_vnd": 216000000,
+"preview_rows": 1,
+"preview_gross_vnd": 75000000,
+"preview_fee_vnd": 1125000,
+"preview_net_vnd": 73875000,
+"amount_only_has_no_match": true,
+"manual_confirmation_required": true
+}
+}

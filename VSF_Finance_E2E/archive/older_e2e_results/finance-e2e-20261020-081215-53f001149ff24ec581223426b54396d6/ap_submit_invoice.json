@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-081215-53f001149ff24ec581223426b54396d6",
+"phase": "ap_submit_invoice",
+"user": "ketoan_ap",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1066)}:Doc.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(28)}:Result.data = SubmitFinanceE2EVendorInvoice();\n{ManagedApplicationModule(24)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nObject method not found (LaAdminToanQuyen)\n[ScriptRuntimeError, ScriptUseError]",
+"data": {}
+}

@@ -1,0 +1,69 @@
+{
+"run_id": "finance-e2e-20261022-085513-4a2cf2d295224da69299212f3cdec636",
+"phase": "aging_algorithm_verify",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"status": "PASS",
+"case_count": 9,
+"passed_count": 9,
+"all_passed": true,
+"cases": [
+{
+"name": "days_0",
+"passed": true,
+"expected": "TrongHan",
+"actual": "TrongHan"
+},
+{
+"name": "days_30",
+"passed": true,
+"expected": "QuaHan1Den30",
+"actual": "QuaHan1Den30"
+},
+{
+"name": "days_31",
+"passed": true,
+"expected": "QuaHan31Den60",
+"actual": "QuaHan31Den60"
+},
+{
+"name": "days_60",
+"passed": true,
+"expected": "QuaHan31Den60",
+"actual": "QuaHan31Den60"
+},
+{
+"name": "days_61",
+"passed": true,
+"expected": "QuaHan61Den90",
+"actual": "QuaHan61Den90"
+},
+{
+"name": "days_90",
+"passed": true,
+"expected": "QuaHan61Den90",
+"actual": "QuaHan61Den90"
+},
+{
+"name": "days_91",
+"passed": true,
+"expected": "QuaHanTren90",
+"actual": "QuaHanTren90"
+},
+{
+"name": "missing_document_date",
+"passed": true,
+"expected": "ChuaXacDinhHan",
+"actual": "ChuaXacDinhHan"
+},
+{
+"name": "missing_payment_terms",
+"passed": true,
+"expected": "ChuaXacDinhHan",
+"actual": "ChuaXacDinhHan"
+}
+]
+}
+}

@@ -1,0 +1,356 @@
+{
+    "status":  "PASS",
+    "command_definition_count":  16,
+    "toolbar_button_binding_count":  16,
+    "runtime_case_count":  18,
+    "runtime_passed_count":  18,
+    "definitions":  [
+                        {
+                            "object_name":  "BienBanNghiemThuGiaiDoan",
+                            "form_path":  "Documents\\BienBanNghiemThuGiaiDoan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "CanTruCongNoNoiBo",
+                            "form_path":  "Documents\\CanTruCongNoNoiBo\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "DoiSoatKenhThanhToan",
+                            "form_path":  "Documents\\DoiSoatKenhThanhToan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "DoiSoatKenhThanhToan",
+                            "form_path":  "Documents\\DoiSoatKenhThanhToan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "ChonTepCSV",
+                            "action_name":  "ChonTepCSV",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "DoiSoatKenhThanhToan",
+                            "form_path":  "Documents\\DoiSoatKenhThanhToan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "XemTruocCSV",
+                            "action_name":  "XemTruocCSV",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "DoiSoatKenhThanhToan",
+                            "form_path":  "Documents\\DoiSoatKenhThanhToan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "GhepHoaDonAR",
+                            "action_name":  "GhepHoaDonAR",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "HoaDonGTGTDauRa",
+                            "form_path":  "Documents\\HoaDonGTGTDauRa\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "CmdXemChungTuLienQuan",
+                            "action_name":  "CmdXemChungTuLienQuan",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "HoaDonGTGTDauRa",
+                            "form_path":  "Documents\\HoaDonGTGTDauRa\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "HoaDonNhaCungCap",
+                            "form_path":  "Documents\\HoaDonNhaCungCap\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "CmdXemChungTuLienQuan",
+                            "action_name":  "CmdXemChungTuLienQuan",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "HoaDonNhaCungCap",
+                            "form_path":  "Documents\\HoaDonNhaCungCap\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "PhieuThuTienKhachHang",
+                            "form_path":  "Documents\\PhieuThuTienKhachHang\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "CmdXemChungTuLienQuan",
+                            "action_name":  "CmdXemChungTuLienQuan",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "PhieuThuTienKhachHang",
+                            "form_path":  "Documents\\PhieuThuTienKhachHang\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "UyNhiemChi",
+                            "form_path":  "Documents\\UyNhiemChi\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "CmdXemChungTuLienQuan",
+                            "action_name":  "CmdXemChungTuLienQuan",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "UyNhiemChi",
+                            "form_path":  "Documents\\UyNhiemChi\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "CmdGuiLenhChiNganHang",
+                            "action_name":  "GuiLenhChiNganHang",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "UyNhiemChi",
+                            "form_path":  "Documents\\UyNhiemChi\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "CmdXacNhanHoanTienNganHang",
+                            "action_name":  "XacNhanHoanTienNganHang",
+                            "toolbar_button_count":  1
+                        },
+                        {
+                            "object_name":  "UyNhiemChi",
+                            "form_path":  "Documents\\UyNhiemChi\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "command_name":  "OpenRegisterRecords",
+                            "action_name":  "OpenRegisterRecords",
+                            "toolbar_button_count":  1
+                        }
+                    ],
+    "cases":  [
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "BienBanNghiemThuGiaiDoan",
+                      "document_number":  "E2E-BB001",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Công nợ phải thu"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Công nợ phải thu"
+                                               ],
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "CanTruCongNoNoiBo",
+                      "document_number":  "E2E-NET-001",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Công nợ phải thu",
+                                                     "Công nợ phải trả"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Công nợ phải thu",
+                                                   "Công nợ phải trả"
+                                               ],
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "DoiSoatKenhThanhToan",
+                      "document_number":  "E2E-BK-VNPAY-001",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Dòng tiền \u0026 ngân hàng",
+                                                     "Công nợ phải thu"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Dòng tiền \u0026 ngân hàng",
+                                                   "Công nợ phải thu"
+                                               ],
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "ChonTepCSV",
+                      "object_name":  "DoiSoatKenhThanhToan",
+                      "document_number":  "E2E-BK-VNPAY-001",
+                      "command_available":  true,
+                      "ui_page_visible":  true,
+                      "runtime_phase":  "csv_import_preview",
+                      "runtime_phase_status":  "PASS",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "XemTruocCSV",
+                      "object_name":  "DoiSoatKenhThanhToan",
+                      "document_number":  "E2E-BK-VNPAY-001",
+                      "command_available":  true,
+                      "ui_page_visible":  true,
+                      "runtime_phase":  "csv_import_preview",
+                      "runtime_phase_status":  "PASS",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "GhepHoaDonAR",
+                      "object_name":  "DoiSoatKenhThanhToan",
+                      "document_number":  "E2E-BK-VNPAY-001",
+                      "command_available":  true,
+                      "ui_page_visible":  true,
+                      "runtime_phase":  "csv_match_post",
+                      "runtime_phase_status":  "PASS",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdXemChungTuLienQuan",
+                      "object_name":  "HoaDonGTGTDauRa",
+                      "document_number":  "E2E-AR001",
+                      "invoked":  true,
+                      "outcome":  "Chứng từ liên quan Chuỗi chứng từ: Hợp đồng -\u003e Hóa đơn GTGT E2E-AR001 -\u003e Phiếu thu tiền khách hàng",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "HoaDonGTGTDauRa",
+                      "document_number":  "E2E-AR001",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Công nợ phải thu"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Công nợ phải thu"
+                                               ],
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdXemChungTuLienQuan",
+                      "object_name":  "HoaDonNhaCungCap",
+                      "document_number":  "E2E-AP001",
+                      "invoked":  true,
+                      "outcome":  "Chứng từ liên quan Chuỗi chứng từ: Hợp đồng mua -\u003e Hóa đơn NCC E2E-AP001 -\u003e Ủy nhiệm chi thanh toán",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "HoaDonNhaCungCap",
+                      "document_number":  "E2E-AP001",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Công nợ phải trả"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Công nợ phải trả"
+                                               ],
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdXemChungTuLienQuan",
+                      "object_name":  "PhieuThuTienKhachHang",
+                      "document_number":  "E2E-PT001",
+                      "invoked":  true,
+                      "outcome":  "Chứng từ liên quan Chuỗi chứng từ: Hóa đơn GTGT đầu ra -\u003e Phiếu thu tiền E2E-PT001",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "PhieuThuTienKhachHang",
+                      "document_number":  "E2E-PT001",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Công nợ phải thu",
+                                                     "Dòng tiền \u0026 ngân hàng"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Công nợ phải thu",
+                                                   "Dòng tiền \u0026 ngân hàng"
+                                               ],
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdXemChungTuLienQuan",
+                      "object_name":  "UyNhiemChi",
+                      "document_number":  "E2E-UNC01",
+                      "invoked":  true,
+                      "outcome":  "Chứng từ liên quan Chuỗi chứng từ: Hóa đơn nhà cung cấp -\u003e Ủy nhiệm chi E2E-UNC01",
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdGuiLenhChiNganHang",
+                      "object_name":  "UyNhiemChi",
+                      "document_number":  "E2E-UNC01",
+                      "workflow":  "BankSend",
+                      "expected_bank_status":  "ACCEPTED",
+                      "actual_bank_status":  "ACCEPTED",
+                      "invoked":  true,
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdGuiLenhChiNganHang",
+                      "object_name":  "UyNhiemChi",
+                      "document_number":  "E2E-BANK-REJECT",
+                      "workflow":  "BankSend",
+                      "expected_bank_status":  "HTTP_REJECTED",
+                      "actual_bank_status":  "HTTP_REJECTED",
+                      "invoked":  true,
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdXacNhanHoanTienNganHang",
+                      "object_name":  "UyNhiemChi",
+                      "document_number":  "E2E-REFUND-USD-01",
+                      "workflow":  "RefundConfirm",
+                      "expected_bank_status":  "REFUND_RECEIVED",
+                      "actual_bank_status":  "REFUND_RECEIVED",
+                      "invoked":  true,
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "CmdXacNhanHoanTienNganHang",
+                      "object_name":  "UyNhiemChi",
+                      "document_number":  "E2E-REFUND-USD-DUP",
+                      "workflow":  "RefundConfirm",
+                      "expected_bank_status":  "REFUND_RECEIVED",
+                      "actual_bank_status":  "REFUND_RECEIVED",
+                      "invoked":  true,
+                      "passed":  true
+                  },
+                  {
+                      "command_name":  "OpenRegisterRecords",
+                      "object_name":  "UyNhiemChi",
+                      "document_number":  "E2E-UNC01",
+                      "command_visible_in_more":  true,
+                      "invoked":  true,
+                      "viewer_tab_visible":  true,
+                      "expected_register_tabs":  [
+                                                     "Sổ cái kế toán",
+                                                     "Công nợ phải trả",
+                                                     "Dòng tiền \u0026 ngân hàng"
+                                                 ],
+                      "actual_register_tabs":  [
+                                                   "Sổ cái kế toán",
+                                                   "Công nợ phải trả",
+                                                   "Dòng tiền \u0026 ngân hàng"
+                                               ],
+                      "passed":  true
+                  }
+              ],
+    "failures":  [
+
+                 ],
+    "output_path":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261022-082854-5bceaa67c4124e7a8565a74a333ec852\\custom-command-coverage.json"
+}

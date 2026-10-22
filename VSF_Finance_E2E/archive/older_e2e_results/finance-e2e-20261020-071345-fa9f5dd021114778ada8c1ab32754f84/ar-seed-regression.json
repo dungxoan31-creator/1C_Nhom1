@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261020-071345-fa9f5dd021114778ada8c1ab32754f84",
+"phase": "ar_seed_regression",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"posted_acceptances": 1260,
+"posted_invoices": 1260,
+"posted_receipts": 1162,
+"expected_receipts": 1162,
+"contract_query_batch": true
+}
+}

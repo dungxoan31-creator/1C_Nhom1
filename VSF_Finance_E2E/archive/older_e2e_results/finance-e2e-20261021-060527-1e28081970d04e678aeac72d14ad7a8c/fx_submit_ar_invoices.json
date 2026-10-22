@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-060527-1e28081970d04e678aeac72d14ad7a8c",
+"phase": "fx_submit_ar_invoices",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(2618)}:Invoice.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(2579)}:GainInvoice = CreateFinanceE2EFXARInvoice(\"E2E-ARUSD-GAIN\", \"USD-GAIN-001\", Date(2026, 10, 19, 9, 0, 0), Context, USDContract, USD, 25000000, 2000000, 1080);\n{CommonModule.SeedBoundaryTestsServer.Module(118)}:Result.data = SubmitFinanceE2EFXInvoices();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save: \"Hóa đơn GTGT đầu ra\"!\n[StoredDataError]",
+"data": {}
+}

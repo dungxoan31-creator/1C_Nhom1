@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-055529-c94451c32295419d8731ea1c1d623f6c",
+"phase": "required_reference_prepare",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(3807)}:PartnerMissing.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(14)}:Result.data = PrepareRequiredReferencePostingFixtures();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save: \"Biên bản nghiệm thu giai đoạn\"!\n[StoredDataError]",
+"data": {}
+}

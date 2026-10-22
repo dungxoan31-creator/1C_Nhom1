@@ -1,0 +1,16 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-043557-c0d401bc746542f5ba96b4c2c0db2400\\e2e-infobase",
+    "workflow":  "ListPeriods",
+    "flow":  "native 1C UI → five document lists → day/month/quarter filters",
+    "verified":  [
+                     "E2E-BB001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document",
+                     "E2E-AR001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document",
+                     "E2E-PT001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document",
+                     "E2E-AP001: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document",
+                     "E2E-UNC01: HomNay excludes; ThangNay, QuyNay, and TatCa include the October document"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-043557-c0d401bc746542f5ba96b4c2c0db2400\\ui-list-periods.1c.log"
+}

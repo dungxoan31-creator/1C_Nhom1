@@ -1,0 +1,20 @@
+{
+"run_id": "finance-e2e-20261020-183553-98e52a141ff943198aad64790bb077ca",
+"status": "PASS",
+"user": "ketoan_truong",
+"cases": [
+{
+"name": "UnpostClearsMovements",
+"passed": true
+},
+{
+"name": "RepostMatchesOriginalMovements",
+"passed": true
+},
+{
+"name": "RollbackRestoresOriginalPostings",
+"passed": true
+}
+],
+"error": ""
+}

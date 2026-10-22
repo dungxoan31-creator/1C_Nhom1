@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-222416-c8207e6cca6b429fa66452fa0b0c030d",
+"phase": "required_reference_post",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "Required-reference fixture is not in the expected maker-checker draft state: E2E-REQ-NOPARTNER\n{CommonModule.SeedBoundaryTestsServer.Module(4327)}:Raise \"Required-reference fixture is not in the expected maker-checker draft state: \" + Fixture.number;\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

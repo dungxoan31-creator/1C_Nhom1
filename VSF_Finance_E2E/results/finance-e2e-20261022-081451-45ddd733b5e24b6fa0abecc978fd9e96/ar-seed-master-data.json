@@ -1,0 +1,11 @@
+{
+"run_id": "finance-e2e-20261022-081451-45ddd733b5e24b6fa0abecc978fd9e96",
+"phase": "ar_seed_master_data",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"external_customers": 105,
+"internal_partners": 24
+}
+}

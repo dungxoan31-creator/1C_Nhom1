@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-055854-b42eab5483d743f0aedfdd9496c507b1",
+"phase": "bank_submit_bulk_payment",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-BULK-PAY",
+"bank_status": "ACCEPTED",
+"transaction_id": "BANK-5FEEF5A51B56632F0186",
+"source_invoice_posted": true,
+"ap_open_vnd": 500000001
+}
+}

@@ -1,0 +1,18 @@
+{
+"run_id": "finance-e2e-20261021-133153-f5a7928d5bf949568d5b4a4212bf44bd",
+"phase": "batch_ui_verify",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"document_number": "E2E-BATCH-UI",
+"posted": true,
+"status": "Đã ghi sổ",
+"maker": "ketoan_ap",
+"approver": "ketoan_truong",
+"open_ap_vnd": 1000000,
+"gl_rows": 1,
+"cash_rows": 0,
+"ktt_queue_count": 0
+}
+}

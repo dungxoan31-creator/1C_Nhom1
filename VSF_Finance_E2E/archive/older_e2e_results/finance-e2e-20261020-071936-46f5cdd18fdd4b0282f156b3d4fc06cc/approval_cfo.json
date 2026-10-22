@@ -1,0 +1,19 @@
+{
+"run_id": "finance-e2e-20261020-071936-46f5cdd18fdd4b0282f156b3d4fc06cc",
+"phase": "approval_cfo",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"batch_success": 2,
+"batch_failure": 0,
+"high_invoice_posted": true,
+"high_invoice_ap_residual_vnd": 500000001,
+"payment_posted": true,
+"paid_invoice_ap_residual_vnd": 0,
+"bank_closing_vnd": 39000000,
+"high_invoice_gl_rows": 1,
+"payment_gl_rows": 1,
+"payment_cash_rows": 1
+}
+}

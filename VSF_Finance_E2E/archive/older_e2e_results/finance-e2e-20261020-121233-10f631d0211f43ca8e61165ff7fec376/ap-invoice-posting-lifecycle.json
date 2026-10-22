@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261020-121233-10f631d0211f43ca8e61165ff7fec376",
+"status": "FAIL",
+"user": "ketoan_truong",
+"cases": [
+{
+"name": "APInvoicePostingLifecycle",
+"passed": false,
+"error": "Object method not found (LayDauVanMovements)\n{CommonModule.SeedBoundaryTestsServer.Module(958)}:OriginalMovements = QuanLyVongDoiChungTuServer.LayDauVanMovements(InvoiceRef);\n{ManagedApplicationModule(69)}:SeedBoundaryTestsServer.RunAPInvoicePostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError, ScriptUseError]"
+}
+],
+"error": "Object method not found (LayDauVanMovements)\n{CommonModule.SeedBoundaryTestsServer.Module(958)}:OriginalMovements = QuanLyVongDoiChungTuServer.LayDauVanMovements(InvoiceRef);\n{ManagedApplicationModule(69)}:SeedBoundaryTestsServer.RunAPInvoicePostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError, ScriptUseError]"
+}

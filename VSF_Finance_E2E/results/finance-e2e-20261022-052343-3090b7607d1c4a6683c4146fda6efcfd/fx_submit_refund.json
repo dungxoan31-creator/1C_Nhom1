@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-052343-3090b7607d1c4a6683c4146fda6efcfd",
+"phase": "fx_submit_refund",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"refund": "E2E-REFUND-USD-01",
+"duplicate_refund": "E2E-REFUND-USD-DUP",
+"source_payment": "E2E-UNC-USD-01",
+"foreign_amount": 500
+}
+}

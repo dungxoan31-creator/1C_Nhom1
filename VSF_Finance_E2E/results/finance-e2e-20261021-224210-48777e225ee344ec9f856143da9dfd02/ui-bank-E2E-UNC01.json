@@ -1,0 +1,11 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-224210-48777e225ee344ec9f856143da9dfd02\\e2e-infobase",
+    "workflow":  "BankSend",
+    "flow":  "native 1C UI → approved payment order → bank submission",
+    "verified":  [
+
+                 ],
+    "error":  "UI element not found: ControlType.MenuItem \u0027*Ủy nhiệm chi*\u0027. Candidates: "
+}

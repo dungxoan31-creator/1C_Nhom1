@@ -1,0 +1,20 @@
+{
+"run_id": "finance-e2e-20261020-122633-0f2a246548464cc68dc73b7ed2b79072",
+"status": "PASS",
+"user": "Admin",
+"cases": [
+{
+"name": "CleanBaseline",
+"passed": true
+},
+{
+"name": "DetectsRealOneVNDGLSubledgerMismatch",
+"passed": true
+},
+{
+"name": "RollbackRestoresGLSubledgerIntegrity",
+"passed": true
+}
+],
+"error": ""
+}

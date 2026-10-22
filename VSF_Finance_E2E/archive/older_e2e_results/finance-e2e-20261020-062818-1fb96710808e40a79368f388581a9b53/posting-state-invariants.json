@@ -1,0 +1,28 @@
+{
+"run_id": "finance-e2e-20261020-062818-1fb96710808e40a79368f388581a9b53",
+"phase": "posting_state_invariants",
+"user": "Admin",
+"status": "PASS",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": true,
+"error": ""
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": true,
+"error": ""
+}
+]
+}

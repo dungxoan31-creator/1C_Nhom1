@@ -1,0 +1,13 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-055946-a871eda76afc49eab160f6846fcf3c95\\e2e-infobase",
+    "workflow":  "ARInvoice",
+    "flow":  "native 1C UI → Functions → AR sales invoice list → sales invoice form",
+    "verified":  [
+                     "AR invoice list rendered expected document"
+                 ],
+    "error":  "AR UI VAT mismatch: \u002716,000,000.00\u0027; expected 20,000,000.00.",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\dt_working\\finance_complete_20261021\\autofill-vat-red.1c.log",
+    "failure_screenshot_path":  ".\\VSF_Finance_E2E\\dt_working\\finance_complete_20261021\\autofill-vat-red.unhandled-failure.png"
+}

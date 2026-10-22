@@ -1,0 +1,12 @@
+{
+"run_id": "finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b",
+"phase": "posting_invariant_setup_ap",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"draft_payment": "Ủy nhiệm chi E2E-INV-DRAFT dated 10/20/2026 8:00:00 AM",
+"batch_payment": "Ủy nhiệm chi E2E-INV-BULK dated 10/20/2026 8:00:00 AM",
+"maker": "ketoan_ap"
+}
+}

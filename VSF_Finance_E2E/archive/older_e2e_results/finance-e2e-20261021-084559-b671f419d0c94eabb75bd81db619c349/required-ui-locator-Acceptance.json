@@ -1,0 +1,640 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-084559-b671f419d0c94eabb75bd81db619c349\\e2e-infobase",
+    "workflow":  "RequiredFieldDiagnostics",
+    "flow":  "native 1C UI → blank Acceptance form → Save validation diagnostic",
+    "verified":  [
+
+                 ],
+    "error":  "Blank Acceptance Save did not satisfy the required-field validation contract.",
+    "document_type":  "Acceptance",
+    "empty_save_before":  [
+                              {
+                                  "name":  "",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Number:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Date:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "10/21/2026  9:01:51 AM",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Ngày nghiệm thu:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "10/21/2026",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Pháp nhân:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "Công ty CP VinSmart Future",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Đối tác:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Hợp đồng:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Giá trị nghiệm thu chưa thuế GTGT:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Thuế suất GTGT (%):",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "10",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "ApDungGiamThueGTGT",
+                                  "control_type":  "ControlType.CheckBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Tiền thuế GTGT:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Tổng giá trị:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              }
+                          ],
+    "empty_save_after":  [
+                             {
+                                 "name":  "Name",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  ".agents",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date modified",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "‎10/‎19/‎2026 ‏‎11:46 PM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Type",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "File folder",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Size",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Name",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  ".codex",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date modified",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "‎10/‎19/‎2026 ‏‎11:46 PM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Type",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "File folder",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Size",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Name",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "docs",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date modified",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "‎10/‎20/‎2026 ‏‎11:45 PM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Type",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "File folder",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Size",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Name",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Skill",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date modified",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "‎10/‎19/‎2026 ‏‎11:46 PM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Type",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "File folder",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Size",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Name",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Tai_lieu_AR_AP_VSF",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date modified",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "‎10/‎19/‎2026 ‏‎11:43 PM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Type",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "File folder",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Size",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Name",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "VSF_Finance_E2E",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date modified",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "‎10/‎21/‎2026 ‏‎12:08 AM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Type",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "File folder",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Size",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Search Box",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Number:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "10/21/2026  9:01:51 AM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Ngày nghiệm thu:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "10/21/2026",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Pháp nhân:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "Công ty CP VinSmart Future",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Đối tác:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Hợp đồng:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Giá trị nghiệm thu chưa thuế GTGT:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Thuế suất GTGT (%):",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "10",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "ApDungGiamThueGTGT",
+                                 "control_type":  "ControlType.CheckBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Tiền thuế GTGT:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Tổng giá trị:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             }
+                         ],
+    "document_number_before":  "",
+    "document_number_after":  "",
+    "validation_message_visible":  false,
+    "validation_message_text":  "",
+    "success_notification_visible":  false,
+    "visible_message_controls":  [
+                                     {
+                                         "name":  "Save As",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  ".agents",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  ".codex",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "docs",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Skill",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Tai_lieu_AR_AP_VSF",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "VSF_Finance_E2E",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "File name:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Save as type:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Number:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Date:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Ngày nghiệm thu:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Pháp nhân:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Đối tác:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Hợp đồng:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Giá trị nghiệm thu chưa thuế GTGT:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Thuế suất GTGT (%):",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "ApDungGiamThueGTGT",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Tiền thuế GTGT:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Tổng giá trị:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "78°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "77°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Search",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "78°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "77°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Search",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "VINSMART FUTURE - Hệ Thống Tài Chính \u0026 Kế Toán",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Save As",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  ".agents",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  ".codex",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "docs",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Skill",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Tai_lieu_AR_AP_VSF",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "VSF_Finance_E2E",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "File name:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Save as type:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Number:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Date:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Ngày nghiệm thu:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Pháp nhân:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Đối tác:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Hợp đồng:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Giá trị nghiệm thu chưa thuế GTGT:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Thuế suất GTGT (%):",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "ApDungGiamThueGTGT",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Tiền thuế GTGT:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Tổng giá trị:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Orca",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Projects",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "···",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Still sized for your phone",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Still sized for your phone",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Your phone session ended. Restore to fit this window.",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Used",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "23%",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " 3h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "30%",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " 6d 6h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Gemini",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "0% 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "53% wk",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Claude/GPT",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "0% 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "44% wk",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Zalo",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "docs - File Explorer",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1C:Enterprise (training version) - VINSMART FUTURE - Hệ Thống Tài Chính \u0026 Kế Toán",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "VSF TEST (only 19 days left to buy a license)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1c-dev-mentor-student-claude-gpt.zip (only 19 days left to buy a license)",
+                                         "control_type":  "ControlType.Window"
+                                     }
+                                 ],
+    "save_button_still_visible":  true,
+    "document_persisted":  false,
+    "blank_save_rejected":  true
+}

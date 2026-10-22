@@ -1,0 +1,35 @@
+{
+    "elements":  [
+                     {
+                         "move":  [
+                                      "NguoiDuyet",
+                                      "TrangThaiHDDT",
+                                      "DienGiai"
+                                  ],
+                         "into":  "NhatKyVaGhiChu"
+                     },
+                     {
+                         "input":  "NguoiLap",
+                         "path":  "Object.NguoiLap",
+                         "into":  "NhatKyVaGhiChu",
+                         "title":  "Người tạo",
+                         "readOnly":  true
+                     },
+                     {
+                         "input":  "TrangThai",
+                         "path":  "Object.TrangThai",
+                         "title":  "Trạng thái quy trình",
+                         "into":  "NhatKyVaGhiChu"
+                     },
+                     {
+                         "move":  [
+                                      "NguoiLap",
+                                      "NguoiDuyet",
+                                      "TrangThai",
+                                      "TrangThaiHDDT",
+                                      "DienGiai"
+                                  ],
+                         "into":  "NhatKyVaGhiChu"
+                     }
+                 ]
+}

@@ -1,0 +1,6 @@
+{
+"status": "PASS",
+"error": "",
+"attempt_marker_before_release": true,
+"lock_wait_seconds": 3
+}

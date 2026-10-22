@@ -1,0 +1,6 @@
+{"request_id":"d915145b-cc71-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-UNC01","status":"ACCEPTED","transaction_id":"BANK-55CA9A299FF9C794F635","replay":false,"amount_vnd":180000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"d915145b-cc71-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-UNC01","status":"ACCEPTED","transaction_id":"BANK-55CA9A299FF9C794F635","replay":true,"amount_vnd":180000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"e37385d0-cc71-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-BANK-REJECT","status":"REJECTED","transaction_id":"","replay":false,"amount_vnd":1000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"e37385d0-cc71-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-BANK-REJECT","status":"REJECTED","transaction_id":"","replay":false,"amount_vnd":1000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"001bcfcc-cc72-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-BULK-PAY","status":"ACCEPTED","transaction_id":"BANK-C1CA53FA4055AC9A9767","replay":false,"amount_vnd":1000000,"amount_foreign":0,"currency":"VND"}
+{"request_id":"40e2b981-cc73-11f1-92c8-f4a475ea2b8e","client_reference":"E2E-UNC-USD-01","status":"ACCEPTED","transaction_id":"BANK-4738BBB50782FD5833E3","replay":false,"amount_vnd":12550000,"amount_foreign":500,"currency":"USD"}

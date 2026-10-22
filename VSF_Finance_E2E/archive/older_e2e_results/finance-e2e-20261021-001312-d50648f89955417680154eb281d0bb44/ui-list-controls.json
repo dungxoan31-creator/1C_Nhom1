@@ -1,0 +1,965 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-001312-d50648f89955417680154eb281d0bb44\\e2e-infobase",
+    "workflow":  "ListFilterDiagnostics",
+    "flow":  "native 1C UI → AR sales invoice list → accessible controls",
+    "verified":  [
+                     "AR invoice list opened and UI Automation controls enumerated"
+                 ],
+    "error":  "",
+    "controls":  [
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.ToolBar",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.ToolBar",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.ToolBar",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.ToolBar",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.ToolBar",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Functions",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Notifications",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "History",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Favorites",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Quản trị hệ thống VSF",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Service and settings",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Collapse",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Maximize",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Close",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Edit",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Messages:",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.List",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Image",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Close",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Back",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Forward",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Danh sách Hóa đơn GTGT đầu ra (AR)",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.ToolBar",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Create",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Copy",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Find...",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Cancel search",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  false,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "More actions",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Kỳ báo cáo:",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Kỳ báo cáo:",
+                         "control_type":  "ControlType.ComboBox",
+                         "value":  "TatCa",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Trạng thái:",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Trạng thái:",
+                         "control_type":  "ControlType.ComboBox",
+                         "value":  "TatCa",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Đối tác:",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Đối tác:",
+                         "control_type":  "ControlType.ComboBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Table",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-AR001 Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/10/2026 10:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "216,000,000.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-CONC-AR-INV Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/17/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "270,000,000.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-ARUSD-LOSS Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/18/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "25,100,000.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-ARUSD-GAIN Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/19/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "27,000,000.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-INV-CANCEL Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/20/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "1,234,567.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-INV-ZVAT Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/20/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "1,234,567.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-INV-TX-GOOD Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/20/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "1,234,567.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-INV-TX-BAD Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/20/2026 9:00:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "1,234,567.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "E2E-AR-NT001 Số CT",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "10/20/2026 9:30:00 AM Ngày lập",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách) Khách hàng",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "43,200,000.00 Tổng tiền",
+                         "control_type":  "ControlType.Custom",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  " Đã ghi sổ",
+                         "control_type":  "ControlType.CheckBox",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Messages:",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Messages:",
+                         "control_type":  "ControlType.List",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Image",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Close",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Add to favorites",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Close",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Menu",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "Get link...",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Pane",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Text",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     },
+                     {
+                         "name":  "",
+                         "control_type":  "ControlType.Button",
+                         "value":  "",
+                         "enabled":  true,
+                         "offscreen":  false
+                     }
+                 ]
+}

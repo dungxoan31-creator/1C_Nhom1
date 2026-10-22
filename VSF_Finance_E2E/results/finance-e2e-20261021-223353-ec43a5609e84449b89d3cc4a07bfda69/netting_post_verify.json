@@ -1,0 +1,20 @@
+{
+"run_id": "finance-e2e-20261021-223353-ec43a5609e84449b89d3cc4a07bfda69",
+"phase": "netting_post_verify",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"netting_posted": true,
+"ar_open_before_vnd": 43200000,
+"ap_open_before_vnd": 40000000,
+"ar_open_after_vnd": 3200000,
+"ap_open_after_vnd": 0,
+"gl_debit": "3312",
+"gl_credit": "1312",
+"unpost_repost": true,
+"over_available_balance_rejected": true,
+"exhausted_ap_rejected": true,
+"cash_movements": 0
+}
+}

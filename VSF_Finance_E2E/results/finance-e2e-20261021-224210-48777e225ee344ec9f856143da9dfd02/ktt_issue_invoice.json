@@ -1,0 +1,18 @@
+{
+"run_id": "finance-e2e-20261021-224210-48777e225ee344ec9f856143da9dfd02",
+"phase": "ktt_issue_invoice",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AR001",
+"sales_invoice_number": "E2EINV-001",
+"approver": "ketoan_truong",
+"missing_issue_data_rejected": true,
+"missing_issue_data_error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1823)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(39)}:Result.data = IssueFinanceE2ESalesInvoice();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM\"!\n[StoredDataError]",
+"posted": true,
+"net_vnd": 200000000,
+"vat_vnd": 16000000,
+"gross_vnd": 216000000
+}
+}

@@ -1,0 +1,19 @@
+﻿{
+    "run_id":  "finance-e2e-20261020-102155-66aaaa7e82b84d17ba694dc5ef6359de",
+    "status":  "FAIL",
+    "error":  "Phase setup produced no result JSON (1C exit -1). Log: C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-102155-66aaaa7e82b84d17ba694dc5ef6359de\\setup.log",
+    "completed_phases":  [
+
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-102155-66aaaa7e82b84d17ba694dc5ef6359de",
+    "base_infobase":  ".\\VSF_Finance_E2E\\dt_working\\restore_final_verified_20261020",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261020-102155-66aaaa7e82b84d17ba694dc5ef6359de"
+}

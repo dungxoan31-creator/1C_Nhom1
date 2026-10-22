@@ -1,0 +1,14 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-230538-c41b6b3fb2ed43f394a070b7fbe59a51\\e2e-infobase",
+    "workflow":  "PostingCommandDiagnostics",
+    "flow":  "native 1C UI → post and undo posting for netting and reconciliation",
+    "verified":  [
+
+                 ],
+    "error":  "UI element not found: ControlType.Pane \u0027*Cấn trừ công nợ nội bộ*\u0027. Candidates: Bàn làm việc \u0026 Điều hành Web ERP - VinSmart Future | Sections panel",
+    "posting_command_actions":  [
+
+                                ]
+}

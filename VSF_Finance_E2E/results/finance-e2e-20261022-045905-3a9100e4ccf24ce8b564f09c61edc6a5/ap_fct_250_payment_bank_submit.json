@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261022-045905-3a9100e4ccf24ce8b564f09c61edc6a5",
+"phase": "ap_fct_250_payment_bank_submit",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-UNC-FCT250",
+"amount_vnd": 225000000,
+"status": "DaGuiNganHang",
+"bank_status": "ACCEPTED",
+"request_id": "2369cc28-cd9b-11f1-92c8-f4a475ea2b8e"
+}
+}

@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261022-045905-3a9100e4ccf24ce8b564f09c61edc6a5",
+"phase": "concurrency_receipt_setup",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "Hóa đơn GTGT đầu ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+"opening_ar_vnd": 270000000,
+"receipt_1": "E2E-CONC-PT-1",
+"receipt_2": "E2E-CONC-PT-2",
+"maker": "ketoan_ar"
+}
+}

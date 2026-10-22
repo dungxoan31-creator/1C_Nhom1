@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+  <Title>
+    <v8:item>
+      <v8:lang>vi</v8:lang>
+      <v8:content>Ủy nhiệm chi ngân hàng (AP) - VinSmart Future</v8:content>
+    </v8:item>
+  </Title>
+  <AutoTitle>false</AutoTitle>
+  <AutoTime>CurrentOrLast</AutoTime>
+  <UsePostingMode>Auto</UsePostingMode>
+  <RepostOnWrite>true</RepostOnWrite>
+  <AutoCommandBar name="FormCommandBar" id="-1">
+    <ChildItems>
+      <Button name="FormCmdXemChungTuLienQuan" id="55">
+        <Type>CommandBarButton</Type>
+        <CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
+        <ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip" id="56" />
+      </Button>
+      <Button name="CmdGuiLenhChiNganHang" id="66">
+        <Type>CommandBarButton</Type>
+        <CommandName>Form.Command.CmdGuiLenhChiNganHang</CommandName>
+        <ExtendedTooltip name="CmdGuiLenhChiNganHangРасширеннаяПодсказка" id="67" />
+      </Button>
+      <Button name="CmdXacNhanHoanTienNganHang" id="70">
+        <Type>CommandBarButton</Type>
+        <CommandName>Form.Command.CmdXacNhanHoanTienNganHang</CommandName>
+        <ExtendedTooltip name="CmdXacNhanHoanTienNganHangExtendedTooltip" id="71" />
+      </Button>
+      <Button name="OpenRegisterRecordsButton" id="187">
+        <Type>CommandBarButton</Type>
+        <CommandName>Form.Command.OpenRegisterRecords</CommandName>
+        <Title>
+          <v8:item>
+            <v8:lang>vi</v8:lang>
+            <v8:content>Chuyển động của chứng từ theo sổ</v8:content>
+          </v8:item>
+        </Title>
+        <LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+        <ExtendedTooltip name="OpenRegisterRecordsButtonРасширеннаяПодсказка" id="188" />
+      </Button>
+    </ChildItems>
+  </AutoCommandBar>
+  <Events>
+    <Event name="AfterWrite">AfterWrite</Event>
+    <Event name="OnReadAtServer">OnReadAtServer</Event>
+    <Event name="OnCreateAtServer">OnCreateAtServer</Event>
+  </Events>
+  <ChildItems>
+    <HTMLDocumentField name="TruongHTMLHeader" id="33">
+      <DataPath>NoiDungHTMLHeader</DataPath>
+      <TitleLocation>None</TitleLocation>
+      <ContextMenu name="TruongHTMLHeaderContextMenu" id="1" />
+      <ExtendedTooltip name="TruongHTMLHeaderExtendedTooltip" id="2" />
+    </HTMLDocumentField>
+    <Pages name="Pages" id="34">
+      <ExtendedTooltip name="PagesExtendedTooltip" id="3" />
+      <ChildItems>
+        <Page name="ThongTinChung" id="35">
+          <Title>
+            <v8:item>
+              <v8:lang>vi</v8:lang>
+              <v8:content>1. Thông tin chung</v8:content>
+            </v8:item>
+          </Title>
+          <ExtendedTooltip name="ThongTinChungExtendedTooltip" id="4" />
+          <ChildItems>
+            <UsualGroup name="Group2Cot" id="36">
+              <Group>Horizontal</Group>
+              <Representation>None</Representation>
+              <ShowTitle>false</ShowTitle>
+              <ExtendedTooltip name="Group2CotExtendedTooltip" id="5" />
+              <ChildItems>
+                <UsualGroup name="CotTrai" id="37">
+                  <Group>Vertical</Group>
+                  <Representation>None</Representation>
+                  <ShowTitle>false</ShowTitle>
+                  <ExtendedTooltip name="CotTraiExtendedTooltip" id="6" />
+                  <ChildItems>
+                    <InputField name="Number" id="38">
+                      <DataPath>Object.Number</DataPath>
+                      <ReadOnly>true</ReadOnly>
+                      <ContextMenu name="NumberContextMenu" id="7" />
+                      <ExtendedTooltip name="NumberExtendedTooltip" id="8" />
+                    </InputField>
+                    <InputField name="Date" id="39">
+                      <DataPath>Object.Date</DataPath>
+                      <ContextMenu name="DateContextMenu" id="9" />
+                      <ExtendedTooltip name="DateExtendedTooltip" id="10" />
+                    </InputField>
+                    <InputField name="PhapNhan" id="40">
+                      <DataPath>Object.PhapNhan</DataPath>
+                      <ContextMenu name="PhapNhanContextMenu" id="11" />
+                      <ExtendedTooltip name="PhapNhanExtendedTooltip" id="12" />
+                    </InputField>
+                    <InputField name="DoiTac" id="41">
+                      <DataPath>Object.DoiTac</DataPath>
+                      <ContextMenu name="DoiTacContextMenu" id="13" />
+                      <ExtendedTooltip name="DoiTacExtendedTooltip" id="14" />
+                    </InputField>
+                    <InputField name="HopDong" id="42">
+                      <DataPath>Object.HopDong</DataPath>
+                      <ContextMenu name="HopDongContextMenu" id="15" />
+                      <ExtendedTooltip name="HopDongExtendedTooltip" id="16" />
+                    </InputField>
+                    <InputField name="ChungTuGoc" id="72">
+                      <DataPath>Object.ChungTuGoc</DataPath>
+                      <Title>
+                        <v8:item>
+                          <v8:lang>ru</v8:lang>
+                          <v8:content>Chứng từ gốc</v8:content>
+                        </v8:item>
+                      </Title>
+                      <ContextMenu name="ChungTuGocКонтекстноеМеню" id="73" />
+                      <ExtendedTooltip name="ChungTuGocРасширеннаяПодсказка" id="74" />
+                      <Events>
+                        <Event name="OnChange">ChungTuGocOnChange</Event>
+                      </Events>
+                    </InputField>
+                    <CheckBoxField name="LaTraSoatHoanTra" id="84">
+                      <DataPath>Object.LaTraSoatHoanTra</DataPath>
+                      <Title>
+                        <v8:item>
+                          <v8:lang>ru</v8:lang>
+                          <v8:content>Là chứng từ hoàn trả</v8:content>
+                        </v8:item>
+                      </Title>
+                      <TitleLocation>Right</TitleLocation>
+                      <CheckBoxType>Auto</CheckBoxType>
+                      <ContextMenu name="LaTraSoatHoanTraКонтекстноеМеню" id="85" />
+                      <ExtendedTooltip name="LaTraSoatHoanTraРасширеннаяПодсказка" id="86" />
+                      <Events>
+                        <Event name="OnChange">LaTraSoatHoanTraOnChange</Event>
+                      </Events>
+                    </CheckBoxField>
+                  </ChildItems>
+                </UsualGroup>
+                <UsualGroup name="CotPhai" id="43">
+                  <Group>Vertical</Group>
+                  <Representation>None</Representation>
+                  <ShowTitle>false</ShowTitle>
+                  <ExtendedTooltip name="CotPhaiExtendedTooltip" id="17" />
+                  <ChildItems>
+                    <InputField name="TaiKhoanTien" id="44">
+                      <DataPath>Object.TaiKhoanTien</DataPath>
+                      <ContextMenu name="TaiKhoanTienContextMenu" id="18" />
+                      <ExtendedTooltip name="TaiKhoanTienExtendedTooltip" id="19" />
+                    </InputField>
+                    <InputField name="KhoanMucDongTien" id="45">
+                      <DataPath>Object.KhoanMucDongTien</DataPath>
+                      <ContextMenu name="KhoanMucDongTienContextMenu" id="20" />
+                      <ExtendedTooltip name="KhoanMucDongTienExtendedTooltip" id="21" />
+                    </InputField>
+                    <InputField name="SoTien" id="46">
+                      <DataPath>Object.SoTien</DataPath>
+                      <ContextMenu name="SoTienContextMenu" id="22" />
+                      <ExtendedTooltip name="SoTienExtendedTooltip" id="23" />
+                      <Events>
+                        <Event name="OnChange">SoTienOnChange</Event>
+                      </Events>
+                    </InputField>
+                    <InputField name="TienTe" id="75">
+                      <DataPath>Object.TienTe</DataPath>
+                      <Title>
+                        <v8:item>
+                          <v8:lang>ru</v8:lang>
+                          <v8:content>Tiền tệ</v8:content>
+                        </v8:item>
+                      </Title>
+                      <ContextMenu name="TienTeКонтекстноеМеню" id="76" />
+                      <ExtendedTooltip name="TienTeРасширеннаяПодсказка" id="77" />
+                      <Events>
+                        <Event name="OnChange">TienTeOnChange</Event>
+                      </Events>
+                    </InputField>
+                    <InputField name="TyGia" id="78">
+                      <DataPath>Object.TyGia</DataPath>
+                      <Title>
+                        <v8:item>
+                          <v8:lang>ru</v8:lang>
+                          <v8:content>Tỷ giá</v8:content>
+                        </v8:item>
+                      </Title>
+                      <ContextMenu name="TyGiaКонтекстноеМеню" id="79" />
+                      <ExtendedTooltip name="TyGiaРасширеннаяПодсказка" id="80" />
+                      <Events>
+                        <Event name="OnChange">TyGiaOnChange</Event>
+                      </Events>
+                    </InputField>
+                    <InputField name="SoTienNgoaiTe" id="81">
+                      <DataPath>Object.SoTienNgoaiTe</DataPath>
+                      <Title>
+                        <v8:item>
+                          <v8:lang>ru</v8:lang>
+                          <v8:content>Số tiền ngoại tệ</v8:content>
+                        </v8:item>
+                      </Title>
+                      <ContextMenu name="SoTienNgoaiTeКонтекстноеМеню" id="82" />
+                      <ExtendedTooltip name="SoTienNgoaiTeРасширеннаяПодсказка" id="83" />
+                      <Events>
+                        <Event name="OnChange">SoTienNgoaiTeOnChange</Event>
+                      </Events>
+                    </InputField>
+                  </ChildItems>
+                </UsualGroup>
+              </ChildItems>
+            </UsualGroup>
+          </ChildItems>
+        </Page>
+        <Page name="ChiTietThanhToan" id="47">
+          <Title>
+            <v8:item>
+              <v8:lang>vi</v8:lang>
+              <v8:content>2. Chi tiết lệnh chi</v8:content>
+            </v8:item>
+          </Title>
+          <ExtendedTooltip name="ChiTietThanhToanExtendedTooltip" id="24" />
+          <ChildItems>
+            <InputField name="ChiTietSoTien" id="48">
+              <DataPath>Object.SoTien</DataPath>
+              <ContextMenu name="ChiTietSoTienContextMenu" id="25" />
+              <ExtendedTooltip name="ChiTietSoTienExtendedTooltip" id="26" />
+            </InputField>
+          </ChildItems>
+        </Page>
+        <Page name="ThueVaHoaDonDienTu" id="49">
+          <Title>
+            <v8:item>
+              <v8:lang>vi</v8:lang>
+              <v8:content>3. Trạng thái thanh toán</v8:content>
+            </v8:item>
+          </Title>
+          <ExtendedTooltip name="ThueVaHoaDonDienTuExtendedTooltip" id="27" />
+          <ChildItems>
+            <InputField name="TrangThai" id="50">
+              <DataPath>Object.TrangThai</DataPath>
+              <ContextMenu name="TrangThaiContextMenu" id="28" />
+              <ExtendedTooltip name="TrangThaiExtendedTooltip" id="29" />
+            </InputField>
+            <InputField name="TrangThaiGuiNganHangUI" id="57">
+              <DataPath>Object.TrangThaiGuiNganHang</DataPath>
+              <ReadOnly>true</ReadOnly>
+              <Title>
+                <v8:item>
+                  <v8:lang>vi</v8:lang>
+                  <v8:content>Trạng thái ngân hàng</v8:content>
+                </v8:item>
+              </Title>
+              <ContextMenu name="TrangThaiGuiNganHangUIКонтекстноеМеню" id="58" />
+              <ExtendedTooltip name="TrangThaiGuiNganHangUIРасширеннаяПодсказка" id="59" />
+            </InputField>
+            <InputField name="MaGiaoDichNganHangUI" id="60">
+              <DataPath>Object.MaGiaoDichNganHang</DataPath>
+              <ReadOnly>true</ReadOnly>
+              <Title>
+                <v8:item>
+                  <v8:lang>vi</v8:lang>
+                  <v8:content>Mã giao dịch ngân hàng</v8:content>
+                </v8:item>
+              </Title>
+              <ContextMenu name="MaGiaoDichNganHangUIКонтекстноеМеню" id="61" />
+              <ExtendedTooltip name="MaGiaoDichNganHangUIРасширеннаяПодсказка" id="62" />
+            </InputField>
+            <InputField name="ThoiDiemGuiNganHangUI" id="63">
+              <DataPath>Object.ThoiDiemGuiNganHang</DataPath>
+              <ReadOnly>true</ReadOnly>
+              <Title>
+                <v8:item>
+                  <v8:lang>vi</v8:lang>
+                  <v8:content>Thời điểm gửi ngân hàng</v8:content>
+                </v8:item>
+              </Title>
+              <ContextMenu name="ThoiDiemGuiNganHangUIКонтекстноеМеню" id="64" />
+              <ExtendedTooltip name="ThoiDiemGuiNganHangUIРасширеннаяПодсказка" id="65" />
+            </InputField>
+          </ChildItems>
+        </Page>
+        <Page name="NhatKyVaGhiChu" id="51">
+          <Title>
+            <v8:item>
+              <v8:lang>vi</v8:lang>
+              <v8:content>4. Diễn giải &amp; Nhật ký</v8:content>
+            </v8:item>
+          </Title>
+          <ExtendedTooltip name="NhatKyVaGhiChuExtendedTooltip" id="30" />
+          <ChildItems>
+            <InputField name="DienGiai" id="52">
+              <DataPath>Object.DienGiai</DataPath>
+              <ContextMenu name="DienGiaiContextMenu" id="31" />
+              <ExtendedTooltip name="DienGiaiExtendedTooltip" id="32" />
+            </InputField>
+          </ChildItems>
+        </Page>
+        <Page name="RegisterRecordsTab" id="87">
+          <Title>
+            <v8:item>
+              <v8:lang>vi</v8:lang>
+              <v8:content>Chuyển động của chứng từ theo sổ</v8:content>
+            </v8:item>
+          </Title>
+          <ExtendedTooltip name="RegisterRecordsTabРасширеннаяПодсказка" id="88" />
+          <ChildItems>
+            <Pages name="RegisterRecordPages" id="89">
+              <ExtendedTooltip name="RegisterRecordPagesРасширеннаяПодсказка" id="90" />
+              <ChildItems>
+                <Page name="RegisterPage_SoCaiKeToan" id="91">
+                  <Title>
+                    <v8:item>
+                      <v8:lang>vi</v8:lang>
+                      <v8:content>Sổ cái kế toán</v8:content>
+                    </v8:item>
+                  </Title>
+                  <ExtendedTooltip name="RegisterPage_SoCaiKeToanРасширеннаяПодсказка" id="92" />
+                  <ChildItems>
+                    <Table name="RegisterRows_SoCaiKeToan" id="93">
+                      <CommandBarLocation>None</CommandBarLocation>
+                      <ReadOnly>true</ReadOnly>
+                      <HeightInTableRows>10</HeightInTableRows>
+                      <DataPath>Object.RegisterRecords.SoCaiKeToan</DataPath>
+                      <ContextMenu name="RegisterRows_SoCaiKeToanКонтекстноеМеню" id="94" />
+                      <AutoCommandBar name="RegisterRows_SoCaiKeToanКоманднаяПанель" id="95" />
+                      <ExtendedTooltip name="RegisterRows_SoCaiKeToanРасширеннаяПодсказка" id="96" />
+                      <SearchStringAddition name="RegisterRows_SoCaiKeToanСтрокаПоиска" id="97">
+                        <AdditionSource>
+                          <Item>RegisterRows_SoCaiKeToan</Item>
+                          <Type>SearchStringRepresentation</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_SoCaiKeToanСтрокаПоискаКонтекстноеМеню" id="98" />
+                        <ExtendedTooltip name="RegisterRows_SoCaiKeToanСтрокаПоискаРасширеннаяПодсказка" id="99" />
+                      </SearchStringAddition>
+                      <ViewStatusAddition name="RegisterRows_SoCaiKeToanСостояниеПросмотра" id="100">
+                        <AdditionSource>
+                          <Item>RegisterRows_SoCaiKeToan</Item>
+                          <Type>ViewStatusRepresentation</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_SoCaiKeToanСостояниеПросмотраКонтекстноеМеню" id="101" />
+                        <ExtendedTooltip name="RegisterRows_SoCaiKeToanСостояниеПросмотраРасширеннаяПодсказка" id="102" />
+                      </ViewStatusAddition>
+                      <SearchControlAddition name="RegisterRows_SoCaiKeToanУправлениеПоиском" id="103">
+                        <AdditionSource>
+                          <Item>RegisterRows_SoCaiKeToan</Item>
+                          <Type>SearchControl</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_SoCaiKeToanУправлениеПоискомКонтекстноеМеню" id="104" />
+                        <ExtendedTooltip name="RegisterRows_SoCaiKeToanУправлениеПоискомРасширеннаяПодсказка" id="105" />
+                      </SearchControlAddition>
+                      <ChildItems>
+                        <InputField name="Register_SoCaiKeToan_Period" id="106">
+                          <DataPath>Object.RegisterRecords.SoCaiKeToan.Period</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Kỳ</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_SoCaiKeToan_PeriodКонтекстноеМеню" id="107" />
+                          <ExtendedTooltip name="Register_SoCaiKeToan_PeriodРасширеннаяПодсказка" id="108" />
+                        </InputField>
+                        <InputField name="Register_SoCaiKeToan_PhapNhan" id="109">
+                          <DataPath>Object.RegisterRecords.SoCaiKeToan.PhapNhan</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Pháp nhân</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_SoCaiKeToan_PhapNhanКонтекстноеМеню" id="110" />
+                          <ExtendedTooltip name="Register_SoCaiKeToan_PhapNhanРасширеннаяПодсказка" id="111" />
+                        </InputField>
+                        <InputField name="Register_SoCaiKeToan_DoiTacNo" id="112">
+                          <DataPath>Object.RegisterRecords.SoCaiKeToan.DoiTacNo</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Đối tác Nợ</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_SoCaiKeToan_DoiTacNoКонтекстноеМеню" id="113" />
+                          <ExtendedTooltip name="Register_SoCaiKeToan_DoiTacNoРасширеннаяПодсказка" id="114" />
+                        </InputField>
+                        <InputField name="Register_SoCaiKeToan_DoiTacCo" id="115">
+                          <DataPath>Object.RegisterRecords.SoCaiKeToan.DoiTacCo</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Đối tác Có</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_SoCaiKeToan_DoiTacCoКонтекстноеМеню" id="116" />
+                          <ExtendedTooltip name="Register_SoCaiKeToan_DoiTacCoРасширеннаяПодсказка" id="117" />
+                        </InputField>
+                        <InputField name="Register_SoCaiKeToan_SoTien" id="118">
+                          <DataPath>Object.RegisterRecords.SoCaiKeToan.SoTien</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Số tiền</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_SoCaiKeToan_SoTienКонтекстноеМеню" id="119" />
+                          <ExtendedTooltip name="Register_SoCaiKeToan_SoTienРасширеннаяПодсказка" id="120" />
+                        </InputField>
+                        <InputField name="Register_SoCaiKeToan_DienGiai" id="121">
+                          <DataPath>Object.RegisterRecords.SoCaiKeToan.DienGiai</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Diễn giải</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_SoCaiKeToan_DienGiaiКонтекстноеМеню" id="122" />
+                          <ExtendedTooltip name="Register_SoCaiKeToan_DienGiaiРасширеннаяПодсказка" id="123" />
+                        </InputField>
+                      </ChildItems>
+                    </Table>
+                  </ChildItems>
+                </Page>
+                <Page name="RegisterPage_CongNoPhaiTra" id="124">
+                  <Title>
+                    <v8:item>
+                      <v8:lang>vi</v8:lang>
+                      <v8:content>Công nợ phải trả</v8:content>
+                    </v8:item>
+                  </Title>
+                  <ExtendedTooltip name="RegisterPage_CongNoPhaiTraРасширеннаяПодсказка" id="125" />
+                  <ChildItems>
+                    <Table name="RegisterRows_CongNoPhaiTra" id="126">
+                      <CommandBarLocation>None</CommandBarLocation>
+                      <ReadOnly>true</ReadOnly>
+                      <HeightInTableRows>10</HeightInTableRows>
+                      <DataPath>Object.RegisterRecords.CongNoPhaiTra</DataPath>
+                      <ContextMenu name="RegisterRows_CongNoPhaiTraКонтекстноеМеню" id="127" />
+                      <AutoCommandBar name="RegisterRows_CongNoPhaiTraКоманднаяПанель" id="128" />
+                      <ExtendedTooltip name="RegisterRows_CongNoPhaiTraРасширеннаяПодсказка" id="129" />
+                      <SearchStringAddition name="RegisterRows_CongNoPhaiTraСтрокаПоиска" id="130">
+                        <AdditionSource>
+                          <Item>RegisterRows_CongNoPhaiTra</Item>
+                          <Type>SearchStringRepresentation</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_CongNoPhaiTraСтрокаПоискаКонтекстноеМеню" id="131" />
+                        <ExtendedTooltip name="RegisterRows_CongNoPhaiTraСтрокаПоискаРасширеннаяПодсказка" id="132" />
+                      </SearchStringAddition>
+                      <ViewStatusAddition name="RegisterRows_CongNoPhaiTraСостояниеПросмотра" id="133">
+                        <AdditionSource>
+                          <Item>RegisterRows_CongNoPhaiTra</Item>
+                          <Type>ViewStatusRepresentation</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_CongNoPhaiTraСостояниеПросмотраКонтекстноеМеню" id="134" />
+                        <ExtendedTooltip name="RegisterRows_CongNoPhaiTraСостояниеПросмотраРасширеннаяПодсказка" id="135" />
+                      </ViewStatusAddition>
+                      <SearchControlAddition name="RegisterRows_CongNoPhaiTraУправлениеПоиском" id="136">
+                        <AdditionSource>
+                          <Item>RegisterRows_CongNoPhaiTra</Item>
+                          <Type>SearchControl</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_CongNoPhaiTraУправлениеПоискомКонтекстноеМеню" id="137" />
+                        <ExtendedTooltip name="RegisterRows_CongNoPhaiTraУправлениеПоискомРасширеннаяПодсказка" id="138" />
+                      </SearchControlAddition>
+                      <ChildItems>
+                        <InputField name="Register_CongNoPhaiTra_Period" id="139">
+                          <DataPath>Object.RegisterRecords.CongNoPhaiTra.Period</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Kỳ</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_CongNoPhaiTra_PeriodКонтекстноеМеню" id="140" />
+                          <ExtendedTooltip name="Register_CongNoPhaiTra_PeriodРасширеннаяПодсказка" id="141" />
+                        </InputField>
+                        <InputField name="Register_CongNoPhaiTra_PhapNhan" id="142">
+                          <DataPath>Object.RegisterRecords.CongNoPhaiTra.PhapNhan</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Pháp nhân</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_CongNoPhaiTra_PhapNhanКонтекстноеМеню" id="143" />
+                          <ExtendedTooltip name="Register_CongNoPhaiTra_PhapNhanРасширеннаяПодсказка" id="144" />
+                        </InputField>
+                        <InputField name="Register_CongNoPhaiTra_DoiTac" id="145">
+                          <DataPath>Object.RegisterRecords.CongNoPhaiTra.DoiTac</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Đối tác</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_CongNoPhaiTra_DoiTacКонтекстноеМеню" id="146" />
+                          <ExtendedTooltip name="Register_CongNoPhaiTra_DoiTacРасширеннаяПодсказка" id="147" />
+                        </InputField>
+                        <InputField name="Register_CongNoPhaiTra_HopDong" id="148">
+                          <DataPath>Object.RegisterRecords.CongNoPhaiTra.HopDong</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Hợp đồng</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_CongNoPhaiTra_HopDongКонтекстноеМеню" id="149" />
+                          <ExtendedTooltip name="Register_CongNoPhaiTra_HopDongРасширеннаяПодсказка" id="150" />
+                        </InputField>
+                        <InputField name="Register_CongNoPhaiTra_ChungTuGoc" id="151">
+                          <DataPath>Object.RegisterRecords.CongNoPhaiTra.ChungTuGoc</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Chứng từ gốc</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_CongNoPhaiTra_ChungTuGocКонтекстноеМеню" id="152" />
+                          <ExtendedTooltip name="Register_CongNoPhaiTra_ChungTuGocРасширеннаяПодсказка" id="153" />
+                        </InputField>
+                        <InputField name="Register_CongNoPhaiTra_SoTien" id="154">
+                          <DataPath>Object.RegisterRecords.CongNoPhaiTra.SoTien</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Số tiền</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_CongNoPhaiTra_SoTienКонтекстноеМеню" id="155" />
+                          <ExtendedTooltip name="Register_CongNoPhaiTra_SoTienРасширеннаяПодсказка" id="156" />
+                        </InputField>
+                      </ChildItems>
+                    </Table>
+                  </ChildItems>
+                </Page>
+                <Page name="RegisterPage_DongTien" id="157">
+                  <Title>
+                    <v8:item>
+                      <v8:lang>vi</v8:lang>
+                      <v8:content>Dòng tiền &amp; ngân hàng</v8:content>
+                    </v8:item>
+                  </Title>
+                  <ExtendedTooltip name="RegisterPage_DongTienРасширеннаяПодсказка" id="158" />
+                  <ChildItems>
+                    <Table name="RegisterRows_DongTien" id="159">
+                      <CommandBarLocation>None</CommandBarLocation>
+                      <ReadOnly>true</ReadOnly>
+                      <HeightInTableRows>10</HeightInTableRows>
+                      <DataPath>Object.RegisterRecords.DongTien</DataPath>
+                      <ContextMenu name="RegisterRows_DongTienКонтекстноеМеню" id="160" />
+                      <AutoCommandBar name="RegisterRows_DongTienКоманднаяПанель" id="161" />
+                      <ExtendedTooltip name="RegisterRows_DongTienРасширеннаяПодсказка" id="162" />
+                      <SearchStringAddition name="RegisterRows_DongTienСтрокаПоиска" id="163">
+                        <AdditionSource>
+                          <Item>RegisterRows_DongTien</Item>
+                          <Type>SearchStringRepresentation</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_DongTienСтрокаПоискаКонтекстноеМеню" id="164" />
+                        <ExtendedTooltip name="RegisterRows_DongTienСтрокаПоискаРасширеннаяПодсказка" id="165" />
+                      </SearchStringAddition>
+                      <ViewStatusAddition name="RegisterRows_DongTienСостояниеПросмотра" id="166">
+                        <AdditionSource>
+                          <Item>RegisterRows_DongTien</Item>
+                          <Type>ViewStatusRepresentation</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_DongTienСостояниеПросмотраКонтекстноеМеню" id="167" />
+                        <ExtendedTooltip name="RegisterRows_DongTienСостояниеПросмотраРасширеннаяПодсказка" id="168" />
+                      </ViewStatusAddition>
+                      <SearchControlAddition name="RegisterRows_DongTienУправлениеПоиском" id="169">
+                        <AdditionSource>
+                          <Item>RegisterRows_DongTien</Item>
+                          <Type>SearchControl</Type>
+                        </AdditionSource>
+                        <ContextMenu name="RegisterRows_DongTienУправлениеПоискомКонтекстноеМеню" id="170" />
+                        <ExtendedTooltip name="RegisterRows_DongTienУправлениеПоискомРасширеннаяПодсказка" id="171" />
+                      </SearchControlAddition>
+                      <ChildItems>
+                        <InputField name="Register_DongTien_Period" id="172">
+                          <DataPath>Object.RegisterRecords.DongTien.Period</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Kỳ</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_DongTien_PeriodКонтекстноеМеню" id="173" />
+                          <ExtendedTooltip name="Register_DongTien_PeriodРасширеннаяПодсказка" id="174" />
+                        </InputField>
+                        <InputField name="Register_DongTien_PhapNhan" id="175">
+                          <DataPath>Object.RegisterRecords.DongTien.PhapNhan</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Pháp nhân</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_DongTien_PhapNhanКонтекстноеМеню" id="176" />
+                          <ExtendedTooltip name="Register_DongTien_PhapNhanРасширеннаяПодсказка" id="177" />
+                        </InputField>
+                        <InputField name="Register_DongTien_TaiKhoanTien" id="178">
+                          <DataPath>Object.RegisterRecords.DongTien.TaiKhoanTien</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Tài khoản tiền</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_DongTien_TaiKhoanTienКонтекстноеМеню" id="179" />
+                          <ExtendedTooltip name="Register_DongTien_TaiKhoanTienРасширеннаяПодсказка" id="180" />
+                        </InputField>
+                        <InputField name="Register_DongTien_KhoanMucDongTien" id="181">
+                          <DataPath>Object.RegisterRecords.DongTien.KhoanMucDongTien</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Khoản mục</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_DongTien_KhoanMucDongTienКонтекстноеМеню" id="182" />
+                          <ExtendedTooltip name="Register_DongTien_KhoanMucDongTienРасширеннаяПодсказка" id="183" />
+                        </InputField>
+                        <InputField name="Register_DongTien_SoTien" id="184">
+                          <DataPath>Object.RegisterRecords.DongTien.SoTien</DataPath>
+                          <ReadOnly>true</ReadOnly>
+                          <Title>
+                            <v8:item>
+                              <v8:lang>vi</v8:lang>
+                              <v8:content>Số tiền</v8:content>
+                            </v8:item>
+                          </Title>
+                          <ContextMenu name="Register_DongTien_SoTienКонтекстноеМеню" id="185" />
+                          <ExtendedTooltip name="Register_DongTien_SoTienРасширеннаяПодсказка" id="186" />
+                        </InputField>
+                      </ChildItems>
+                    </Table>
+                  </ChildItems>
+                </Page>
+              </ChildItems>
+            </Pages>
+          </ChildItems>
+        </Page>
+      </ChildItems>
+    </Pages>
+  </ChildItems>
+  <Attributes>
+    <Attribute name="Object" id="53">
+      <Type>
+        <v8:Type>cfg:DocumentObject.UyNhiemChi</v8:Type>
+      </Type>
+      <MainAttribute>true</MainAttribute>
+      <SavedData>true</SavedData>
+    </Attribute>
+    <Attribute name="NoiDungHTMLHeader" id="54">
+      <Title>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Nội dung HTML Header</v8:content>
+        </v8:item>
+      </Title>
+      <Type>
+        <v8:Type>xs:string</v8:Type>
+        <v8:StringQualifiers>
+          <v8:Length>0</v8:Length>
+          <v8:AllowedLength>Variable</v8:AllowedLength>
+        </v8:StringQualifiers>
+      </Type>
+    </Attribute>
+  </Attributes>
+  <Commands>
+    <Command name="CmdXemChungTuLienQuan" id="1">
+      <Title>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Chứng từ liên quan</v8:content>
+        </v8:item>
+      </Title>
+      <Action>CmdXemChungTuLienQuan</Action>
+    </Command>
+    <Command name="CmdGuiLenhChiNganHang" id="2">
+      <Title>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Gửi ngân hàng</v8:content>
+        </v8:item>
+      </Title>
+      <ToolTip>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Chuyển ủy nhiệm chi đã được Kế toán trưởng duyệt tới ngân hàng</v8:content>
+        </v8:item>
+      </ToolTip>
+      <Action>GuiLenhChiNganHang</Action>
+      <Representation>Text</Representation>
+    </Command>
+    <Command name="CmdXacNhanHoanTienNganHang" id="3">
+      <Title>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Xác nhận hoàn tiền ngân hàng</v8:content>
+        </v8:item>
+      </Title>
+      <ToolTip>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Đối soát khoản tiền hoàn đã vào tài khoản ngân hàng</v8:content>
+        </v8:item>
+      </ToolTip>
+      <Action>XacNhanHoanTienNganHang</Action>
+      <Representation>Text</Representation>
+    </Command>
+    <Command name="OpenRegisterRecords" id="4">
+      <Title>
+        <v8:item>
+          <v8:lang>vi</v8:lang>
+          <v8:content>Chuyển động của chứng từ theo sổ</v8:content>
+        </v8:item>
+      </Title>
+      <Action>OpenRegisterRecords</Action>
+    </Command>
+  </Commands>
+</Form>

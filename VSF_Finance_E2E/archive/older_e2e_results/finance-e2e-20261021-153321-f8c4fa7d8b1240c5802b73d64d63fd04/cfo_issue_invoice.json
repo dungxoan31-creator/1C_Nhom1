@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-153321-f8c4fa7d8b1240c5802b73d64d63fd04",
+"phase": "cfo_issue_invoice",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Issuing an AR invoice without external identifiers was not rejected for the invoice number: Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1715)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(39)}:Result.data = IssueFinanceE2ESalesInvoice();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM\"!\n[StoredDataError]\n{CommonModule.SeedBoundaryTestsServer.Module(1720)}:Raise StrTemplate(\"Issuing an AR invoice without external identifiers was not rejected for the invoice number: %1\", MissingIssueDataError);\n{CommonModule.SeedBoundaryTestsServer.Module(39)}:Result.data = IssueFinanceE2ESalesInvoice();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

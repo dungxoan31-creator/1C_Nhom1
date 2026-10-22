@@ -1,0 +1,16 @@
+{
+"run_id": "finance-e2e-20261020-000556-6709585ceecf41e98c323194d4db1bad",
+"phase": "setup",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"legal_entity": "PN-VSF",
+"customer": "TEST_VG_VINFAST_VN",
+"customer_contract": "HD-TEST_VG_VINFAST_VN-2025",
+"vendor": "TEST_NCC_VN_001",
+"vendor_contract": "HD-TEST_NCC_VN_001-2025",
+"bank_account": "TK-E2E-VN",
+"opening_cash_vnd": 0
+}
+}

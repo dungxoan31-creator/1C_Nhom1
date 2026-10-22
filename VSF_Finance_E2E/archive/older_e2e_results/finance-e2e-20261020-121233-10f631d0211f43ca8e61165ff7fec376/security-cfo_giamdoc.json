@@ -1,0 +1,75 @@
+{
+"run_id": "finance-e2e-20261020-121233-10f631d0211f43ca8e61165ff7fec376",
+"phase": "security_role_matrix",
+"user": "cfo_giamdoc",
+"role": "LanhDaoTaiChinh",
+"status": "PASS",
+"passed": true,
+"total": 10,
+"passed_cases": 10,
+"failed_cases": 0,
+"skipped_cases": 0,
+"cases": [
+{
+"name": "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 2: Nguoi lap tu duyet bi chan",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 7: Xem toan bo So cai",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 8: Chi CFO duoc chi dinh moi duoc phat hanh hoa don",
+"status": "PASS",
+"expected": "No",
+"actual": "No",
+"detail": ""
+},
+{
+"name": "Ca 9: Ghi so cấn trừ nội bộ chỉ cho KTT/CFO",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 10: Ghi so đối soát kênh thanh toán chỉ cho KTT/CFO",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+}
+]
+}

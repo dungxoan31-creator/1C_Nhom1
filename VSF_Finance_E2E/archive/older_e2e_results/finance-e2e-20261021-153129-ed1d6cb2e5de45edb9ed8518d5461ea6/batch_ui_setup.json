@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-153129-ed1d6cb2e5de45edb9ed8518d5461ea6",
+"phase": "batch_ui_setup",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"document_number": "E2E-BATCH-UI",
+"maker": "ketoan_ap",
+"amount_vnd": 1000000,
+"status": "Chờ Kế toán trưởng duyệt",
+"posted": false
+}
+}

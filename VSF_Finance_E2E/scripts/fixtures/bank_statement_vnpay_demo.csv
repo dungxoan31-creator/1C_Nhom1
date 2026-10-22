@@ -1,0 +1,2 @@
+﻿ExternalId,TransactionDate,InvoiceNumber,Memo,Gross,Fee,Net,Currency
+TXN-VNP-2026-001,2026-10-21,E2E-AR001,"VNPay, receipt ""settlement""",75000000,1125000,73875000,VND

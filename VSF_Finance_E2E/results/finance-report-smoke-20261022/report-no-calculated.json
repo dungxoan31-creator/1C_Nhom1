@@ -1,0 +1,12 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_reporting-fresh-20261022-2",
+    "workflow":  "ReportSmoke",
+    "flow":  "native 1C UI → AR ledger, AP ledger, aging report",
+    "verified":  [
+
+                 ],
+    "error":  "Exception calling \"FindAll\" with \"2\" argument(s): \"The target element corresponds to UI that is no longer available (for example, the parent window has closed).\n   at MS.Internal.Automation.Misc.ThrowWin32ExceptionsIfError(Int32 errorCode)\r\n   at MS.Internal.Automation.Misc.SendMessageTimeout(HWND hwnd, Int32 Msg, IntPtr wParam, IntPtr lParam)\r\n   at MS.Internal.Automation.HwndProxyElementProvider.System.Windows.Automation.Provider.IRawElementProviderSimple.GetPropertyValue(Int32 propertyId)\"",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\report-no-calculated.1c.log"
+}

@@ -1,0 +1,10 @@
+{
+"run_id": "finance-e2e-20261020-183553-98e52a141ff943198aad64790bb077ca",
+"phase": "ap_seed_master_data",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"test_vendors": 120
+}
+}

@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-014317-886951dddd5348fa8088a9f7fa6e4300",
+"phase": "ar_unpost_paid_invoice_rejected",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Paid invoice unposting rejection assertion failed: Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(174)}:Invoice.Write(DocumentWriteMode.UndoPosting);\n{CommonModule.SeedBoundaryTestsServer.Module(28)}:Result.data = VerifyPaidARInvoiceUnpostRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save \"Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM\"!\n[StoredDataError]\n{CommonModule.SeedBoundaryTestsServer.Module(183)}:Raise \"Paid invoice unposting rejection assertion failed: \" + ErrorText;\n{CommonModule.SeedBoundaryTestsServer.Module(28)}:Result.data = VerifyPaidARInvoiceUnpostRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

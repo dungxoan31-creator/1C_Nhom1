@@ -1,0 +1,39 @@
+﻿{
+    "run_id":  "finance-e2e-20261021-151701-66a1faf32fd04fc3beccf74ef5906cd9",
+    "status":  "FAIL",
+    "error":  "Phase setup produced no result JSON (1C exit -1). Log: C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-151701-66a1faf32fd04fc3beccf74ef5906cd9\\setup.log",
+    "completed_phases":  [
+
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "branch_rls":  null,
+    "fx_refund":  null,
+    "fx_refund_ui_confirmation":  [
+                                      null,
+                                      null
+                                  ],
+    "ui_e2e":  null,
+    "catalog_list_ui_e2e":  null,
+    "list_period_ui_e2e":  null,
+    "document_forms_ui_e2e":  null,
+    "required_field_ui_e2e":  null,
+    "reference_choice_ui_e2e":  null,
+    "custom_command_coverage":  null,
+    "bank_ui_e2e":  [
+
+                    ],
+    "batch_approval_ui":  null,
+    "batch_approval_ui_state":  null,
+    "batch_approval_ui_contract":  null,
+    "bank_stub_log":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-151701-66a1faf32fd04fc3beccf74ef5906cd9\\bank-stub.requests.jsonl",
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-151701-66a1faf32fd04fc3beccf74ef5906cd9",
+    "base_infobase":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\BaseInfobase",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-151701-66a1faf32fd04fc3beccf74ef5906cd9"
+}

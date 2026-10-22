@@ -1,0 +1,46 @@
+[
+  {
+    "type": "Document",
+    "name": "CanTruCongNoNoiBo",
+    "synonym": {"vi": "Cấn trừ công nợ nội bộ", "en": "Internal AR/AP Netting"},
+    "comment": "Cấn trừ song phương AR/AP theo cùng pháp nhân và đối tác; ghi giảm đồng thời hai sổ công nợ và hạch toán Nợ 3312/Có 1312.",
+    "numberLength": 20,
+    "numberPeriodicity": "Nonperiodical",
+    "posting": "Allow",
+    "registerRecords": ["AccumulationRegister.CongNoPhaiThu", "AccumulationRegister.CongNoPhaiTra", "AccountingRegister.SoCaiKeToan"],
+    "attributes": [
+      "PhapNhan: CatalogRef.PhapNhan | req",
+      "DoiTac: CatalogRef.DoiTac | req",
+      "ChungTuAR: DocumentRef.BienBanNghiemThuGiaiDoan + DocumentRef.HoaDonGTGTDauRa | req",
+      "ChungTuAP: DocumentRef.HoaDonNhaCungCap | req",
+      "SoTien: Number(15,2) | req, nonneg",
+      "NguoiLap: String(150)",
+      "NguoiDuyet: String(150)",
+      "DienGiai: String(250)"
+    ]
+  },
+  {
+    "type": "Document",
+    "name": "DoiSoatKenhThanhToan",
+    "synonym": {"vi": "Bảng kê đối soát kênh thanh toán", "en": "Payment Channel Reconciliation"},
+    "comment": "Đối soát tổng tiền giao dịch, phí cổng và tiền thực nhận; ghi nhận tiền ngân hàng, chi phí cổng và khoản phải thu trung gian thanh toán.",
+    "numberLength": 20,
+    "numberPeriodicity": "Nonperiodical",
+    "posting": "Allow",
+    "registerRecords": ["AccumulationRegister.DongTien", "AccountingRegister.SoCaiKeToan"],
+    "attributes": [
+      "PhapNhan: CatalogRef.PhapNhan | req",
+      "DoiTacTrungGian: CatalogRef.DoiTac | req",
+      "TaiKhoanTien: CatalogRef.TaiKhoanTien | req",
+      "KhoanMucDongTien: CatalogRef.KhoanMucDongTien | req",
+      "TienTe: CatalogRef.TienTe | req",
+      "KenhThanhToan: String(20) | req",
+      "TongTienGiaoDich: Number(15,2) | req, nonneg",
+      "TongPhi: Number(15,2) | req, nonneg",
+      "TongTienThucNhan: Number(15,2) | req, nonneg",
+      "NguoiLap: String(150)",
+      "NguoiDuyet: String(150)",
+      "DienGiai: String(250)"
+    ]
+  }
+]

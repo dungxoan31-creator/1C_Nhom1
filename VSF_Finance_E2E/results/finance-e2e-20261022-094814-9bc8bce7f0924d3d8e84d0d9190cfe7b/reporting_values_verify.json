@@ -1,0 +1,32 @@
+{
+"run_id": "finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b",
+"phase": "reporting_values_verify",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"status": "PASS",
+"ar_register_equation": {
+"register": "CongNoPhaiThu",
+"opening_vnd": 0,
+"increase_vnd": 1250669134,
+"decrease_vnd": 978200000,
+"closing_vnd": 272469134,
+"equation_passed": true
+},
+"ap_register_equation": {
+"register": "CongNoPhaiTra",
+"opening_vnd": 0,
+"increase_vnd": 946000001,
+"decrease_vnd": 446000000,
+"closing_vnd": 500000001,
+"equation_passed": true
+},
+"fct250_report_increase_vnd": 225000000,
+"fct250_report_decrease_vnd": 225000000,
+"fct250_closing_balance_vnd": 0,
+"aging_json": "{\r\n\"TongDoanhThu\": 717469134,\r\n\"SoHoaDonBan\": 4,\r\n\"NoPhaiThu\": 272469134,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 500000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 116075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuCanXuLy\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"UyNhiemChi\",\r\n\"TenLoaiChungTu\": \"Ủy nhiệm chi\",\r\n\"SoChungTu\": \"E2E-BANK-REJECT\",\r\n\"NgayChungTu\": \"14/10/2026\",\r\n\"SoTien\": 1000000\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 717469134,\r\n\"TienThu\": 448200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 272469134\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"ChuaXacDinhHan\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+"period_start": "2026-01-01T00:00:00",
+"period_end": "2026-10-22T00:00:00"
+}
+}

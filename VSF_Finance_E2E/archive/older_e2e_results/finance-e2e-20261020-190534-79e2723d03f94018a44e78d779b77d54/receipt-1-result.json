@@ -1,0 +1,14 @@
+{
+"status": "PASS",
+"receipt": "E2E-CONC-PT-1",
+"expected": "POSTED",
+"posted": true,
+"post_error": "",
+"ar_balance_vnd": 70000000,
+"ar_movements": 1,
+"cash_movements": 1,
+"gl_movements": 1,
+"error": "",
+"started_at": "2026-10-20T19:08:20",
+"finished_at": "2026-10-20T19:08:23"
+}

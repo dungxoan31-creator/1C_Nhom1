@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-190534-79e2723d03f94018a44e78d779b77d54",
+"phase": "ar_seed_PrepareAcceptances",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.GeneratorARServer.Module(103)}:DocBB.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(837)}:GeneratorARServer.KhoiTaoChungTuAR(Stage);\n{ManagedApplicationModule(59)}:SeedBoundaryTestsServer.RunARSeedStage(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nPháp nhân của chứng từ chưa được gán chi nhánh.\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-055743-318964f22b404c8cb8d69a426092ea79",
+"phase": "required_reference_prepare",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(3630)}:Invoice.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(3877)}:SalesInvoiceMismatch = CreatePostingInvariantSalesInvoiceDraft(Context, \"E2E-REQ-AR-DIM\", Undefined);\n{CommonModule.SeedBoundaryTestsServer.Module(14)}:Result.data = PrepareRequiredReferencePostingFixtures();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save: \"Hóa đơn GTGT đầu ra\"!\n[StoredDataError]",
+"data": {}
+}

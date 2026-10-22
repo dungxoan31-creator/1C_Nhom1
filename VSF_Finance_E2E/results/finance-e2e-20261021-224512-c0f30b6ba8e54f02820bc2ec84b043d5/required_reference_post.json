@@ -1,0 +1,68 @@
+{
+"run_id": "finance-e2e-20261021-224512-c0f30b6ba8e54f02820bc2ec84b043d5",
+"phase": "required_reference_post",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"cases": [
+{
+"name": "missing_partner",
+"missing_attribute": "DoiTac",
+"posting_call_succeeded": false,
+"posted_in_attempt": true,
+"persisted_posted": false,
+"attempt_movement_probe_available": false,
+"attempt_ar_movements": 0,
+"attempt_gl_movements": 0,
+"ar_movements": 0,
+"gl_movements": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(4346)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Biên bản nghiệm thu giai đoạn E2E-REQ-NOPARTN dated 10/20/2026 9:00:00 AM\"!\n[StoredDataError]",
+"unexpected_posting": false
+},
+{
+"name": "missing_contract",
+"missing_attribute": "HopDong",
+"posting_call_succeeded": false,
+"posted_in_attempt": true,
+"persisted_posted": false,
+"attempt_movement_probe_available": false,
+"attempt_ar_movements": 0,
+"attempt_gl_movements": 0,
+"ar_movements": 0,
+"gl_movements": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(4346)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Biên bản nghiệm thu giai đoạn E2E-REQ-NOCONTR dated 10/20/2026 10:00:00 AM\"!\n[StoredDataError]",
+"unexpected_posting": false
+},
+{
+"name": "mismatched_contract_owner",
+"missing_attribute": "HopDong.ChuSoHuu",
+"posting_call_succeeded": false,
+"posted_in_attempt": true,
+"persisted_posted": false,
+"attempt_movement_probe_available": false,
+"attempt_ar_movements": 0,
+"attempt_gl_movements": 0,
+"ar_movements": 0,
+"gl_movements": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(4346)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Biên bản nghiệm thu giai đoạn E2E-REQ-MISMATC dated 10/20/2026 11:00:00 AM\"!\n[StoredDataError]",
+"unexpected_posting": false
+},
+{
+"name": "sales_invoice_wrong_contract_owner",
+"attribute": "HopDong.ChuSoHuu",
+"posting_call_succeeded": false,
+"posted_in_attempt": false,
+"persisted_posted": false,
+"attempt_movement_probe_available": false,
+"attempt_ar_movements": 0,
+"attempt_gl_movements": 0,
+"ar_movements": 0,
+"gl_movements": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(4405)}:Invoice.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Hóa đơn GTGT đầu ra E2E-REQ-AR-DIM dated 10/20/2026 9:00:00 AM\"!\n[StoredDataError]",
+"unexpected_posting": false
+}
+],
+"failed": false
+}
+}

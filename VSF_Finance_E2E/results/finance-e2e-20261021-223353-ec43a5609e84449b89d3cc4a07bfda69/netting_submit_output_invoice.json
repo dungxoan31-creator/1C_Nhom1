@@ -1,0 +1,16 @@
+{
+"run_id": "finance-e2e-20261021-223353-ec43a5609e84449b89d3cc4a07bfda69",
+"phase": "netting_submit_output_invoice",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "Hóa đơn GTGT đầu ra E2E-AR-NT001 dated 10/20/2026 9:30:00 AM",
+"acceptance": "Biên bản nghiệm thu giai đoạn E2E-NT-AR001 dated 10/20/2026 9:00:00 AM",
+"base_vnd": 40000000,
+"vat_vnd": 3200000,
+"gross_vnd": 43200000,
+"maker": "ketoan_ar",
+"status": "ChoKySo"
+}
+}

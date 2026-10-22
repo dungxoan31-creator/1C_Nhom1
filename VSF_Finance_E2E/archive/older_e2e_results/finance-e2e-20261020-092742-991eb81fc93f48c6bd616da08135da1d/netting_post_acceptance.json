@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-092742-991eb81fc93f48c6bd616da08135da1d",
+"phase": "netting_post_acceptance",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Netting AR source did not create the expected 43.2m open receivable.\n{CommonModule.SeedBoundaryTestsServer.Module(1521)}:Raise \"Netting AR source did not create the expected 43.2m open receivable.\";\n{CommonModule.SeedBoundaryTestsServer.Module(40)}:Result.data = PostFinanceE2ENettingAcceptance();\n{ManagedApplicationModule(24)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261022-052343-3090b7607d1c4a6683c4146fda6efcfd",
+"phase": "batch_ui_queue_check",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"user": "ketoan_truong",
+"ktt_queue_count": 2,
+"document_number": "E2E-BATCH-UI",
+"document_type": "HoaDonNhaCungCap",
+"amount_vnd": 1000000,
+"approve_all_document_number": "E2E-BATCH-UI-ALL"
+}
+}

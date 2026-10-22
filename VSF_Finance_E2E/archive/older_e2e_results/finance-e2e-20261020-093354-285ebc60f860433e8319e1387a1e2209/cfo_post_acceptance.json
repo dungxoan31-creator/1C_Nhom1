@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261020-093354-285ebc60f860433e8319e1387a1e2209",
+"phase": "cfo_post_acceptance",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"acceptance_number": "E2E-BB001",
+"approver": "cfo_giamdoc",
+"posted": true,
+"status": "DaGhiSo"
+}
+}

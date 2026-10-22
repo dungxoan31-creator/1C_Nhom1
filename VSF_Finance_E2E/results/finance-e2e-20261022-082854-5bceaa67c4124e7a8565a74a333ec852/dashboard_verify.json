@@ -1,0 +1,127 @@
+{
+"run_id": "finance-e2e-20261022-082854-5bceaa67c4124e7a8565a74a333ec852",
+"phase": "dashboard_verify",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"month_json": "{\r\n\"TongDoanhThu\": 492469134,\r\n\"SoHoaDonBan\": 3,\r\n\"NoPhaiThu\": 272469134,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 725000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 116075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuCanXuLy\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"UyNhiemChi\",\r\n\"TenLoaiChungTu\": \"Ủy nhiệm chi\",\r\n\"SoChungTu\": \"E2E-BANK-REJECT\",\r\n\"NgayChungTu\": \"14/10/2026\",\r\n\"SoTien\": 1000000\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 492469134,\r\n\"TienThu\": 223200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 272469134\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"ChuaXacDinhHan\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+"quarter_json": "{\r\n\"TongDoanhThu\": 492469134,\r\n\"SoHoaDonBan\": 3,\r\n\"NoPhaiThu\": 272469134,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 725000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 116075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuCanXuLy\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"UyNhiemChi\",\r\n\"TenLoaiChungTu\": \"Ủy nhiệm chi\",\r\n\"SoChungTu\": \"E2E-BANK-REJECT\",\r\n\"NgayChungTu\": \"14/10/2026\",\r\n\"SoTien\": 1000000\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 492469134,\r\n\"TienThu\": 223200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 272469134\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"ChuaXacDinhHan\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+"year_json": "{\r\n\"TongDoanhThu\": 492469134,\r\n\"SoHoaDonBan\": 3,\r\n\"NoPhaiThu\": 272469134,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 725000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 116075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuCanXuLy\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"Hóa đơn GTGT đầu ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1333332.36\r\n},\r\n{\r\n\"LoaiChungTu\": \"UyNhiemChi\",\r\n\"TenLoaiChungTu\": \"Ủy nhiệm chi\",\r\n\"SoChungTu\": \"E2E-BANK-REJECT\",\r\n\"NgayChungTu\": \"14/10/2026\",\r\n\"SoTien\": 1000000\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 492469134,\r\n\"TienThu\": 223200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 272469134\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"ChuaXacDinhHan\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+"unsupported_period_rejected": true,
+"expected_revenue": 492469134,
+"expected_accepted_revenue": 492469134,
+"expected_direct_invoice_revenue": 0,
+"expected_gl_revenue": 492469134,
+"expected_receipts": 223200000,
+"expected_invoice_count": 3,
+"expected_ar": 272469134,
+"expected_ap": 725000001,
+"expected_cash": 116075000,
+"expected_positive_ar": 272469134,
+"as_of": "2026-10-22T08:32:17",
+"invoice_details": [
+{
+"number": "E2E-AR001",
+"date": "2026-10-10T10:00:00",
+"posted": true,
+"deletion_mark": false,
+"status": "DaPhatHanh",
+"net_amount": 200000000
+},
+{
+"number": "E2E-CONC-AR-INV",
+"date": "2026-10-17T09:00:00",
+"posted": true,
+"deletion_mark": false,
+"status": "DaPhatHanh",
+"net_amount": 250000000
+},
+{
+"number": "E2E-REQ-AR-DIM",
+"date": "2026-10-20T09:00:00",
+"posted": false,
+"deletion_mark": true,
+"status": "ChoKySo",
+"net_amount": 1234567
+},
+{
+"number": "E2E-INV-CANCEL",
+"date": "2026-10-20T09:00:00",
+"posted": false,
+"deletion_mark": false,
+"status": "ChoKySo",
+"net_amount": 1234567
+},
+{
+"number": "E2E-INV-ZVAT",
+"date": "2026-10-20T09:00:00",
+"posted": false,
+"deletion_mark": false,
+"status": "ChoKySo",
+"net_amount": 1234567
+},
+{
+"number": "E2E-INV-TX-GOOD",
+"date": "2026-10-20T09:00:00",
+"posted": false,
+"deletion_mark": false,
+"status": "ChoKySo",
+"net_amount": 1234567
+},
+{
+"number": "E2E-INV-TX-BAD",
+"date": "2026-10-20T09:00:00",
+"posted": false,
+"deletion_mark": false,
+"status": "ChoKySo",
+"net_amount": 1234567
+},
+{
+"number": "E2E-AR-NT001",
+"date": "2026-10-20T09:30:00",
+"posted": true,
+"deletion_mark": false,
+"status": "DaPhatHanh",
+"net_amount": 40000000
+}
+],
+"gl_revenue_details": [
+{
+"recorder": "Biên bản nghiệm thu giai đoạn E2E-BB001 dated 10/10/2026 9:00:00 AM",
+"period": "2026-10-10T09:00:00",
+"account_dr": "Phải thu của khách hàng nội bộ Vingroup",
+"account_cr": "Doanh thu cung cấp dịch vụ",
+"amount": 200000000
+},
+{
+"recorder": "Biên bản nghiệm thu giai đoạn E2E-CONC-AR-BB dated 10/17/2026 8:30:00 AM",
+"period": "2026-10-17T08:30:00",
+"account_dr": "Phải thu của khách hàng nội bộ Vingroup",
+"account_cr": "Doanh thu cung cấp dịch vụ",
+"amount": 250000000
+},
+{
+"recorder": "Biên bản nghiệm thu giai đoạn E2E-NT-AR001 dated 10/20/2026 9:00:00 AM",
+"period": "2026-10-20T09:00:00",
+"account_dr": "Phải thu của khách hàng nội bộ Vingroup",
+"account_cr": "Doanh thu cung cấp dịch vụ",
+"amount": 40000000
+},
+{
+"recorder": "Biên bản nghiệm thu giai đoạn E2E-INV-ZVAT-BB dated 10/20/2026 9:00:00 AM",
+"period": "2026-10-20T09:00:00",
+"account_dr": "Phải thu của khách hàng nội bộ Vingroup",
+"account_cr": "Doanh thu cung cấp dịch vụ",
+"amount": 1234567
+},
+{
+"recorder": "Biên bản nghiệm thu giai đoạn E2E-INV-TX-BB dated 10/20/2026 9:30:00 AM",
+"period": "2026-10-20T09:30:00",
+"account_dr": "Phải thu của khách hàng nội bộ Vingroup",
+"account_cr": "Doanh thu cung cấp dịch vụ",
+"amount": 1234567
+}
+]
+}
+}

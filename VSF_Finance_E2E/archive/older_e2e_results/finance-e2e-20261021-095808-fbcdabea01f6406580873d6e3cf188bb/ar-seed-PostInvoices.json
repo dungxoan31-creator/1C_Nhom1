@@ -1,0 +1,11 @@
+{
+"run_id": "finance-e2e-20261021-095808-fbcdabea01f6406580873d6e3cf188bb",
+"phase": "ar_seed_PostInvoices",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"documents": 1260,
+"posted": true
+}
+}

@@ -1,0 +1,16 @@
+{
+"run_id": "finance-e2e-20261020-191348-5436e61f0bdb43d5abc98a81c6bd90b8",
+"phase": "netting_issue_output_invoice",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "E2E-AR-NT001",
+"acceptance": "E2E-NT-AR001",
+"posted": true,
+"net_vnd": 40000000,
+"vat_vnd": 3200000,
+"gross_ar_vnd": 43200000,
+"approver": "cfo_giamdoc"
+}
+}

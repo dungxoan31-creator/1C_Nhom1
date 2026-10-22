@@ -1,0 +1,27 @@
+{
+"run_id": "finance-e2e-20261020-071936-46f5cdd18fdd4b0282f156b3d4fc06cc",
+"status": "PASS",
+"user": "Admin",
+"cases": [
+{
+"name": "ZeroResidual",
+"passed": true,
+"error": ""
+},
+{
+"name": "RepostParity",
+"passed": true,
+"error": ""
+},
+{
+"name": "TransactionRollback",
+"passed": true,
+"error": ""
+},
+{
+"name": "GLSubledger",
+"passed": true,
+"error": ""
+}
+]
+}

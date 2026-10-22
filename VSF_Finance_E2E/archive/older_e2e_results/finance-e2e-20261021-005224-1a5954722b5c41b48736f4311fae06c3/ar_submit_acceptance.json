@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261021-005224-1a5954722b5c41b48736f4311fae06c3",
+"phase": "ar_submit_acceptance",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"acceptance_number": "E2E-BB001",
+"maker": "ketoan_ar",
+"status": "ChoDuyetNoiBo",
+"net_vnd": 200000000,
+"vat_vnd": 16000000,
+"gross_vnd": 216000000
+}
+}

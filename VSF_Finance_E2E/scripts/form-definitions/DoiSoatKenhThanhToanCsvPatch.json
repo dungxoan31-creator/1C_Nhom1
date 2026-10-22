@@ -1,0 +1,133 @@
+{
+    "attributes":  [
+                       {
+                           "name":  "CsvPreviewSummary",
+                           "type":  "string(500)",
+                           "title":  "Tổng hợp xem trước"
+                       },
+                       {
+                           "name":  "CsvColumnExternalId",
+                           "type":  "string(150)",
+                           "title":  "Cột mã giao dịch"
+                       },
+                       {
+                           "name":  "CsvColumnTransactionDate",
+                           "type":  "string(150)",
+                           "title":  "Cột ngày giao dịch"
+                       },
+                       {
+                           "name":  "CsvColumnInvoiceNumber",
+                           "type":  "string(150)",
+                           "title":  "Cột số hóa đơn"
+                       },
+                       {
+                           "name":  "CsvColumnMemo",
+                           "type":  "string(150)",
+                           "title":  "Cột diễn giải"
+                       },
+                       {
+                           "name":  "CsvColumnGross",
+                           "type":  "string(150)",
+                           "title":  "Cột Gross"
+                       },
+                       {
+                           "name":  "CsvColumnFee",
+                           "type":  "string(150)",
+                           "title":  "Cột phí"
+                       },
+                       {
+                           "name":  "CsvColumnNet",
+                           "type":  "string(150)",
+                           "title":  "Cột Net"
+                       },
+                       {
+                           "name":  "CsvColumnCurrency",
+                           "type":  "string(150)",
+                           "title":  "Cột tiền tệ"
+                       }
+                   ],
+    "formEvents":  [
+                       {
+                           "name":  "OnOpen",
+                           "handler":  "OnOpen"
+                       }
+                   ],
+    "elements":  [
+                     {
+                         "group":  "vertical",
+                         "name":  "CsvMappingsGroup",
+                         "title":  "Ánh xạ cột nguồn",
+                         "after":  "CsvImportOptions",
+                         "children":  [
+                                          {
+                                              "group":  "alwaysHorizontal",
+                                              "name":  "CsvMapRowOne",
+                                              "children":  [
+                                                               {
+                                                                   "input":  "CsvColumnExternalId",
+                                                                   "path":  "CsvColumnExternalId",
+                                                                   "width":  15
+                                                               },
+                                                               {
+                                                                   "input":  "CsvColumnTransactionDate",
+                                                                   "path":  "CsvColumnTransactionDate",
+                                                                   "width":  15
+                                                               },
+                                                               {
+                                                                   "input":  "CsvColumnInvoiceNumber",
+                                                                   "path":  "CsvColumnInvoiceNumber",
+                                                                   "width":  15
+                                                               },
+                                                               {
+                                                                   "input":  "CsvColumnMemo",
+                                                                   "path":  "CsvColumnMemo",
+                                                                   "width":  15
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "group":  "alwaysHorizontal",
+                                              "name":  "CsvMapRowTwo",
+                                              "children":  [
+                                                               {
+                                                                   "input":  "CsvColumnGross",
+                                                                   "path":  "CsvColumnGross",
+                                                                   "width":  15
+                                                               },
+                                                               {
+                                                                   "input":  "CsvColumnFee",
+                                                                   "path":  "CsvColumnFee",
+                                                                   "width":  15
+                                                               },
+                                                               {
+                                                                   "input":  "CsvColumnNet",
+                                                                   "path":  "CsvColumnNet",
+                                                                   "width":  15
+                                                               },
+                                                               {
+                                                                   "input":  "CsvColumnCurrency",
+                                                                   "path":  "CsvColumnCurrency",
+                                                                   "width":  15
+                                                               }
+                                                           ]
+                                          }
+                                      ]
+                     },
+                     {
+                         "input":  "CsvPreviewSummary",
+                         "path":  "CsvPreviewSummary",
+                         "title":  "Kết quả xem trước",
+                         "readOnly":  true,
+                         "after":  "CsvMappingsGroup",
+                         "width":  80
+                     },
+                     {
+                         "input":  "CsvLineInvoiceNumber",
+                         "path":  "Объект.GiaoDichSaoKe.InvoiceNumber",
+                         "title":  "Số hóa đơn CSV",
+                         "readOnly":  true,
+                         "width":  15,
+                         "after":  "CsvLineExternalId"
+                     }
+                 ]
+}

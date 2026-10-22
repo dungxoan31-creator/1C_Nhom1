@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261022-085513-4a2cf2d295224da69299212f3cdec636",
+"phase": "concurrency_post_invoice",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "E2E-CONC-AR-INV",
+"acceptance": "E2E-CONC-AR-BB",
+"approver": "ketoan_truong",
+"status": "DaPhatHanh",
+"posted": true,
+"amount_vnd": 270000000
+}
+}

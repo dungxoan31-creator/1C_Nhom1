@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-093333-f8f65224a8e64ff2898f97ae73729dcd",
+"phase": "payment_reconciliation",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Reconciliation boundary tests require USD and the seeded expense cash-flow category.\n{CommonModule.SeedBoundaryTestsServer.Module(2500)}:Raise \"Reconciliation boundary tests require USD and the seeded expense cash-flow category.\";\n{CommonModule.SeedBoundaryTestsServer.Module(83)}:Result.data = RunFinanceE2EPaymentReconciliation();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

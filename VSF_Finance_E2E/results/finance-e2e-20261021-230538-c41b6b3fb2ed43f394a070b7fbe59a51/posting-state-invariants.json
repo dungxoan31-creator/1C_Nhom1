@@ -1,0 +1,33 @@
+{
+"run_id": "finance-e2e-20261021-230538-c41b6b3fb2ed43f394a070b7fbe59a51",
+"phase": "posting_state_invariants",
+"user": "ketoan_truong",
+"status": "PASS",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": true,
+"error": ""
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": true,
+"error": ""
+},
+{
+"name": "PostingFailureRollsBackPriorDocument",
+"passed": true,
+"error": ""
+}
+]
+}

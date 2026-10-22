@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-071710-f558773d49af4066a67cb912517e9f66",
+"phase": "ktt_post_ap_invoice",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AP001",
+"approver": "ketoan_truong",
+"posted": true,
+"gross_vnd": 200000000,
+"net_payable_vnd": 180000000
+}
+}

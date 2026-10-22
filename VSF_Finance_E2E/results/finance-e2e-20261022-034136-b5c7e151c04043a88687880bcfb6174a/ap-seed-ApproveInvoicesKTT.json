@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-034136-b5c7e151c04043a88687880bcfb6174a",
+"phase": "ap_seed_ApproveInvoicesKTT",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"documents": 1260,
+"posted": 1085,
+"pending_cfo": 175,
+"pending_ktt": 0
+}
+}

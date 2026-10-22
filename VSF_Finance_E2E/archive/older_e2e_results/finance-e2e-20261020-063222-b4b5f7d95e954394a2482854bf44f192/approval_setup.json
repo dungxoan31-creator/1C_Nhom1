@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-063222-b4b5f7d95e954394a2482854bf44f192",
+"phase": "approval_setup",
+"user": "ketoan_ap",
+"status": "FAIL",
+"error": "Object method not found (LayDanhSachChoPheDuyet)\n{CommonModule.SeedBoundaryTestsServer.Module(70)}:Queue = Workspace.LayDanhSachChoPheDuyet();\n{CommonModule.SeedBoundaryTestsServer.Module(38)}:Result.data = PrepareBulkApprovalRegression();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ScriptUseError]",
+"data": {}
+}

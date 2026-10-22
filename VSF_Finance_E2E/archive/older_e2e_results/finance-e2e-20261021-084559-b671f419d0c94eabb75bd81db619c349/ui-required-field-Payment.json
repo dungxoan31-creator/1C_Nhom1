@@ -1,0 +1,12 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-084559-b671f419d0c94eabb75bd81db619c349\\e2e-infobase",
+    "workflow":  "RequiredFieldDiagnostics",
+    "flow":  "native 1C UI → blank Payment form → Save validation diagnostic",
+    "verified":  [
+
+                 ],
+    "error":  "Payment Create form has no unique enabled Save command in its form action bar.",
+    "document_type":  "Payment"
+}

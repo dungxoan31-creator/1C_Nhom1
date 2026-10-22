@@ -1,0 +1,32 @@
+{
+    "status":  "PASS",
+    "case_count":  4,
+    "passed_count":  4,
+    "batch_approval_panel_opened":  true,
+    "cases":  [
+                  {
+                      "action":  "refresh",
+                      "passed":  true,
+                      "notification":  "Làm mới danh sách Đã cập nhật danh sách chờ duyệt."
+                  },
+                  {
+                      "action":  "approve_all",
+                      "passed":  true,
+                      "notification":  "Kết quả phê duyệt Maker-Checker Phê duyệt hoàn tất: 1 thành công, 0 thất bại."
+                  },
+                  {
+                      "action":  "isolated_one_document_queue",
+                      "passed":  true,
+                      "document_number":  "E2E-BATCH-UI"
+                  },
+                  {
+                      "action":  "persisted_ap_state",
+                      "passed":  true,
+                      "document_number":  "E2E-BATCH-UI"
+                  }
+              ],
+    "failures":  [
+
+                 ],
+    "output_path":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-133153-f5a7928d5bf949568d5b4a4212bf44bd\\batch-approval-ui-contract.json"
+}

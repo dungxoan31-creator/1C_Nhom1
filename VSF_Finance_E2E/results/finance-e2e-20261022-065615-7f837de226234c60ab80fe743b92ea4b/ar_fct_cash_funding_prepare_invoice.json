@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b",
+"phase": "ar_fct_cash_funding_prepare_invoice",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AR-FCT-FUND",
+"posted": false,
+"manual_source_empty": true,
+"net_vnd": 225000000,
+"gross_vnd": 225000000,
+"approver": "ketoan_truong"
+}
+}

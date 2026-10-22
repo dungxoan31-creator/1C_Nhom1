@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-223801-119f64101ec64e7a94f98250677f7797",
+"phase": "posting_invariant_post_acceptance",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"acceptance": "Biên bản nghiệm thu giai đoạn E2E-INV-ZVAT-BB dated 10/20/2026 9:00:00 AM",
+"transaction_acceptance": "Biên bản nghiệm thu giai đoạn E2E-INV-TX-BB dated 10/20/2026 9:30:00 AM",
+"approver": "ketoan_truong",
+"status": "DaGhiSo",
+"posted": true
+}
+}

@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-163015-b0508b491e3c4019bb287ebb04ddfef4",
+"phase": "fx_post_ar_receipts",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "AR FX register mismatch on E2E-PTUSD-GAIN: cash=27,108,000/27,108,000 gain=108,000 loss=0 AR=27,000,000.\n{CommonModule.SeedBoundaryTestsServer.Module(2390)}:Raise StrTemplate(\"AR FX register mismatch on %1: cash=%2/%3 gain=%4 loss=%5 AR=%6.\",\n{CommonModule.SeedBoundaryTestsServer.Module(100)}:Result.data = PostAndVerifyFinanceE2EFXReceipts();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

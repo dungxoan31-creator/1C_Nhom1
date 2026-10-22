@@ -1,0 +1,639 @@
+﻿### Catalogs/ChiNhanh.xml
+=== Справочник: ChiNhanh — "Chi nhánh" ===
+Поддержка: не на поддержке
+Представление типа: Chi nhánh
+
+Стандартные реквизиты:
+  Код                         Строка(10)
+  Наименование                Строка(100)  [обязательный]
+  Ссылка                      СправочникСсылка.ChiNhanh
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+### Catalogs/DichVuCNTT.xml
+=== Справочник: DichVuCNTT — "Dịch vụ CNTT" ===
+Поддержка: не на поддержке
+Представление типа: Dịch vụ CNTT
+
+Стандартные реквизиты:
+  Код                         Строка(20)
+  Наименование                Строка(150)  [обязательный]
+  Ссылка                      СправочникСсылка.DichVuCNTT
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (3):
+  MaDichVu         Строка(50)
+  TenDichVu        Строка(150)
+  TyLeVATMacDinh   Число(2,0)
+### Catalogs/DoiTac.xml
+=== Справочник: DoiTac — "Đối tác" ===
+Поддержка: не на поддержке
+Представление типа: Đối tác
+
+Стандартные реквизиты:
+  Код                         Строка(50)
+  Наименование                Строка(150)  [обязательный]
+  Ссылка                      СправочникСсылка.DoiTac
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (7):
+  LoaiDoiTac             ПеречислениеСсылка.LoaiDoiTac
+  LaBenLienKet           Булево
+  DaDangKyThueTrucTiep   Булево
+  MaSoThue               Строка(14)  [обязательный, индекс]
+  DiaChi                 Строка(250)
+  SoTaiKhoanNganHang     Строка(50)
+  TenNganHang            Строка(150)
+### Catalogs/DuAn.xml
+=== Справочник: DuAn — "Dự án" ===
+Поддержка: не на поддержке
+Представление типа: Dự án
+
+Стандартные реквизиты:
+  Код                         Строка(20)
+  Наименование                Строка(150)  [обязательный]
+  Ссылка                      СправочникСсылка.DuAn
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (3):
+  PhapNhan     СправочникСсылка.PhapNhan
+  MaDuAn       Строка(50)
+  TenDuAn      Строка(150)
+### Catalogs/HopDong.xml
+=== Справочник: HopDong — "Hợp đồng" ===
+Поддержка: не на поддержке
+Представление типа: Hợp đồng
+
+Стандартные реквизиты:
+  Код                         Строка(50)
+  Наименование                Строка(150)  [обязательный]
+  Ссылка                      СправочникСсылка.HopDong
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (5):
+  PhapNhan            СправочникСсылка.PhapNhan  [обязательный]
+  ChuSoHuu            СправочникСсылка.DoiTac
+  DongTienThanhToan   СправочникСсылка.TienTe
+  GrossUpThue         Булево
+  HanThanhToanNgay    Число(3,0)
+### Catalogs/KhoanMucDongTien.xml
+=== Справочник: KhoanMucDongTien — "Khoản mục dòng tiền" ===
+Поддержка: не на поддержке
+Представление типа: Khoản mục dòng tiền
+
+Стандартные реквизиты:
+  Код                         Строка(20)
+  Наименование                Строка(100)  [обязательный]
+  Ссылка                      СправочникСсылка.KhoanMucDongTien
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (1):
+  LoaiDongTien   Строка(50)
+### Catalogs/PhapNhan.xml
+=== Справочник: PhapNhan — "Pháp nhân" ===
+Поддержка: не на поддержке
+Представление типа: Pháp nhân
+
+Стандартные реквизиты:
+  Код                         Строка(9)
+  Наименование                Строка(150)  [обязательный]
+  Ссылка                      СправочникСсылка.PhapNhan
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (3):
+  ChiNhanh     СправочникСсылка.ChiNhanh
+  MaSoThue     Строка(14)
+  DiaChi       Строка(200)
+### Catalogs/TaiKhoanTien.xml
+=== Справочник: TaiKhoanTien — "Tài khoản tiền" ===
+Поддержка: не на поддержке
+Представление типа: Tài khoản tiền
+
+Стандартные реквизиты:
+  Код                         Строка(20)
+  Наименование                Строка(100)  [обязательный]
+  Ссылка                      СправочникСсылка.TaiKhoanTien
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (9):
+  TienTe                       СправочникСсылка.TienTe
+  SoTaiKhoan                   Строка(30)
+  NganHang                     Строка(100)
+  BankApiHost                  Строка(200)
+  BankApiPort                  Число(5,0)
+  BankApiPath                  Строка(200)
+  BankRefundConfirmationPath   Строка(200)
+  BankApiTimeoutSeconds        Число(3,0)
+  BankApiUseTLS                Булево
+### Catalogs/TienTe.xml
+=== Справочник: TienTe — "Tiền tệ" ===
+Поддержка: не на поддержке
+Представление типа: Tiền tệ
+
+Стандартные реквизиты:
+  Код                         Строка(10)
+  Наименование                Строка(50)  [обязательный]
+  Ссылка                      СправочникСсылка.TienTe
+  ПометкаУдаления             Булево
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (2):
+  MaTienTe     Строка(3)
+  TenDayDu     Строка(50)
+### Documents/BienBanNghiemThuGiaiDoan.xml
+=== Документ: BienBanNghiemThuGiaiDoan — "Biên bản nghiệm thu giai đoạn" ===
+Поддержка: не на поддержке
+Представление типа: Biên bản nghiệm thu giai đoạn
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(15)  [авто]
+  Ссылка            ДокументСсылка.BienBanNghiemThuGiaiDoan
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (14):
+  PhapNhan                 СправочникСсылка.PhapNhan  [обязательный]
+  ChiNhanh                 СправочникСсылка.ChiNhanh
+  DoiTac                   СправочникСсылка.DoiTac  [обязательный, индекс]
+  HopDong                  СправочникСсылка.HopDong  [обязательный]
+  TrangThai                ПеречислениеСсылка.TrangThaiNghiemThuAR  [обязательный, индекс]
+  GiaTriNghiemThuChuaVAT   Число(15,2)  [обязательный]
+  TyLeVAT                  Число(2,0)
+  TienVAT                  Число(15,2)
+  TongGiaTri               Число(15,2)  [обязательный]
+  NguoiTao                 Строка(50)
+  NguoiDuyet               Строка(50)
+  NgayNghiemThu            Дата  [индекс]
+  DienGiai                 Строка(200)
+  ApDungGiamThueGTGT       Булево
+
+Движения (2): РБ.SoCaiKeToan, РН.CongNoPhaiThu
+Формы: FormChungTu, FormDanhSach
+### Documents/CanTruCongNoNoiBo.xml
+=== Документ: CanTruCongNoNoiBo — "Cấn trừ công nợ nội bộ" ===
+Поддержка: не на поддержке
+Представление типа: Cấn trừ công nợ nội bộ
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(20)  [авто]
+  Ссылка            ДокументСсылка.CanTruCongNoNoiBo
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (8):
+  PhapNhan     СправочникСсылка.PhapNhan  [обязательный]
+  DoiTac       СправочникСсылка.DoiTac  [обязательный]
+  ChungTuAR    ДокументСсылка.BienBanNghiemThuGiaiDoan | ДокументСсылка.HoaDonGTGTDauRa  [обязательный]
+  ChungTuAP    ДокументСсылка.HoaDonNhaCungCap  [обязательный]
+  SoTien       Число(15,2)  [обязательный]
+  NguoiLap     Строка(150)
+  NguoiDuyet   Строка(150)
+  DienGiai     Строка(250)
+
+Движения (3): РН.CongNoPhaiTra, РБ.SoCaiKeToan, РН.CongNoPhaiThu
+### Documents/DoiSoatKenhThanhToan.xml
+=== Документ: DoiSoatKenhThanhToan — "Bảng kê đối soát kênh thanh toán" ===
+Поддержка: не на поддержке
+Представление типа: Bảng kê đối soát kênh thanh toán
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(20)  [авто]
+  Ссылка            ДокументСсылка.DoiSoatKenhThanhToan
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (12):
+  PhapNhan           СправочникСсылка.PhapNhan  [обязательный]
+  DoiTacTrungGian    СправочникСсылка.DoiTac  [обязательный]
+  TaiKhoanTien       СправочникСсылка.TaiKhoanTien  [обязательный]
+  KhoanMucDongTien   СправочникСсылка.KhoanMucDongTien  [обязательный]
+  TienTe             СправочникСсылка.TienTe  [обязательный]
+  KenhThanhToan      Строка(20)  [обязательный]
+  TongTienGiaoDich   Число(15,2)  [обязательный]
+  TongPhi            Число(15,2)  [обязательный]
+  TongTienThucNhan   Число(15,2)  [обязательный]
+  NguoiLap           Строка(150)
+  NguoiDuyet         Строка(150)
+  DienGiai           Строка(250)
+
+Движения (2): РН.DongTien, РБ.SoCaiKeToan
+### Documents/HoaDonGTGTDauRa.xml
+=== Документ: HoaDonGTGTDauRa — "Hóa đơn GTGT đầu ra" ===
+Поддержка: не на поддержке
+Представление типа: Hóa đơn GTGT đầu ra
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(20)  [авто]
+  Ссылка            ДокументСсылка.HoaDonGTGTDauRa
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (22):
+  PhapNhan             СправочникСсылка.PhapNhan  [обязательный]
+  DoiTac               СправочникСсылка.DoiTac  [обязательный, индекс]
+  HopDong              СправочникСсылка.HopDong  [обязательный]
+  BienBanNghiemThu     ДокументСсылка.BienBanNghiemThuGiaiDoan  [обязательный]
+  TrangThaiHDDT        ПеречислениеСсылка.TrangThaiHoaDonDienTu  [индекс]
+  TienTe               СправочникСсылка.TienTe
+  MaSoThueNguoiMua     Строка(14)
+  DiaChiNguoiMua       Строка(250)
+  SoHoaDon             Строка(20)  [обязательный, индекс]
+  KyHieu               Строка(10)  [обязательный]
+  NgayHoaDon           Дата  [обязательный, индекс]
+  TienChuaThue         Число(15,2)
+  ThueSuatVAT          Число(2,0)
+  TienThueVAT          Число(15,2)
+  TongTienThanhToan    Число(15,2)  [обязательный]
+  MaCQT                Строка(50)
+  DienGiai             Строка(250)
+  NguoiLap             Строка(100)
+  NguoiDuyet           Строка(100)
+  ApDungGiamThueGTGT   Булево
+  TyGia                Число(10,4)
+  TongTienNgoaiTe      Число(15,2)
+
+Движения (2): РБ.SoCaiKeToan, РН.CongNoPhaiThu
+Формы: FormChungTu, FormDanhSach
+### Documents/HoaDonNhaCungCap.xml
+=== Документ: HoaDonNhaCungCap — "Hóa đơn đầu vào (nhà cung cấp)" ===
+Поддержка: не на поддержке
+Представление типа: Hóa đơn đầu vào (nhà cung cấp)
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(20)  [авто]
+  Ссылка            ДокументСсылка.HoaDonNhaCungCap
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (23):
+  PhapNhan              СправочникСсылка.PhapNhan  [обязательный]
+  DoiTac                СправочникСсылка.DoiTac  [обязательный, индекс]
+  HopDong               СправочникСсылка.HopDong  [обязательный]
+  TienTe                СправочникСсылка.TienTe  [обязательный]
+  TrangThai             ПеречислениеСсылка.TrangThaiHoaDonAP  [индекс]
+  TaiKhoanChiPhi        ПланСчетовСсылка.HeThongTaiKhoan
+  SoHoaDon              Строка(50)  [обязательный]
+  NgayHoaDon            Дата  [обязательный, индекс]
+  TyGia                 Число(10,4)
+  TongTien              Число(15,2)  [обязательный]
+  TongTienNgoaiTe       Число(15,2)
+  TienDichVu            Число(15,2)
+  TienThueVAT           Число(15,2)
+  CoKhauTruFCT          Булево
+  TyLeThueVATNhaThau    Число(5,2)
+  TyLeThueTNDNNhaThau   Число(5,2)
+  TienThueVATNhaThau    Число(15,2)
+  TienThueTNDNNhaThau   Число(15,2)
+  ChiPhiVSF             Число(15,2)
+  NoThucTraNCC          Число(15,2)
+  DienGiai              Строка(200)
+  NguoiLap              Строка(100)
+  NguoiDuyet            Строка(100)
+
+Движения (2): РН.CongNoPhaiTra, РБ.SoCaiKeToan
+Формы: FormChungTu, FormDanhSach
+### Documents/PhieuThuTienKhachHang.xml
+=== Документ: PhieuThuTienKhachHang — "Phiếu thu tiền khách hàng" ===
+Поддержка: не на поддержке
+Представление типа: Phiếu thu tiền khách hàng
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(15)  [авто]
+  Ссылка            ДокументСсылка.PhieuThuTienKhachHang
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (14):
+  PhapNhan           СправочникСсылка.PhapNhan  [обязательный]
+  DoiTac             СправочникСсылка.DoiTac  [обязательный, индекс]
+  HopDong            СправочникСсылка.HopDong  [обязательный]
+  ChungTuGoc         ДокументСсылка.BienBanNghiemThuGiaiDoan | ДокументСсылка.HoaDonGTGTDauRa
+  TaiKhoanTien       СправочникСсылка.TaiKhoanTien  [обязательный]
+  KhoanMucDongTien   СправочникСсылка.KhoanMucDongTien  [обязательный]
+  TienTe             СправочникСсылка.TienTe  [обязательный]
+  SoTien             Число(15,2)  [обязательный]
+  SoTienNgoaiTe      Число(15,2)
+  TyGia              Число(10,4)
+  NgayThu            Дата  [индекс]
+  DienGiai           Строка(200)
+  NguoiLap           Строка(100)
+  NguoiDuyet         Строка(100)
+
+Движения (3): РН.DongTien, РБ.SoCaiKeToan, РН.CongNoPhaiThu
+Формы: FormChungTu, FormDanhSach
+### Documents/UyNhiemChi.xml
+=== Документ: UyNhiemChi — "Ủy nhiệm chi" ===
+Поддержка: не на поддержке
+Представление типа: Ủy nhiệm chi
+Проведение: да
+
+Стандартные реквизиты:
+  Дата              Дата  [обязательный]
+  Номер             Строка(20)  [авто]
+  Ссылка            ДокументСсылка.UyNhiemChi
+  ПометкаУдаления   Булево
+  Проведен          Булево
+
+Реквизиты (21):
+  PhapNhan               СправочникСсылка.PhapNhan  [обязательный]
+  DoiTac                 СправочникСсылка.DoiTac  [обязательный, индекс]
+  HopDong                СправочникСсылка.HopDong  [обязательный]
+  ChungTuGoc             ДокументСсылка.HoaDonNhaCungCap | ДокументСсылка.UyNhiemChi
+  TaiKhoanTien           СправочникСсылка.TaiKhoanTien  [обязательный]
+  KhoanMucDongTien       СправочникСсылка.KhoanMucDongTien  [обязательный]
+  TienTe                 СправочникСсылка.TienTe  [обязательный]
+  TrangThai              ПеречислениеСсылка.TrangThaiLenhThanhToan  [индекс]
+  TyGia                  Число(10,4)
+  SoTien                 Число(15,2)  [обязательный]
+  SoTienNgoaiTe          Число(15,2)
+  PhiNganHang            Число(15,2)
+  NgayLap                Дата
+  NgayGhiSo              Дата  [индекс]
+  LaTraSoatHoanTra       Булево
+  NguoiLap               Строка(50)
+  NguoiDuyet             Строка(50)
+  DienGiai               Строка(200)
+  MaGiaoDichNganHang     Строка(100)
+  TrangThaiGuiNganHang   Строка(30)
+  ThoiDiemGuiNganHang    Дата
+
+Движения (3): РН.DongTien, РН.CongNoPhaiTra, РБ.SoCaiKeToan
+Формы: FormChungTu, FormDanhSach
+### Enums/HuongDongTien.xml
+=== Перечисление: HuongDongTien — "Hướng dòng tiền" ===
+Поддержка: не на поддержке
+Представление типа: Hướng dòng tiền
+
+Значения (2):
+  Thu          "Thu tiền"
+  Chi          "Chi tiền"
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Enums/LoaiDoiTac.xml
+=== Перечисление: LoaiDoiTac — "Loại đối tác" ===
+Поддержка: не на поддержке
+Представление типа: Loại đối tác
+
+Значения (9):
+  KhachHangNgoai          "Khách hàng ngoài"
+  NoiBoVingroup           "Nội bộ Vingroup"
+  NhaCungCapCloud         "Nhà cung cấp Cloud"
+  NhaCungCapLinhKien      "Nhà cung cấp linh kiện"
+  ThauPhuCNTT             "Thầu phụ CNTT"
+  KhachHangVaNhaCungCap   "Khách hàng và Nhà cung cấp"
+  KhachHang               "Khách hàng"
+  NhaCungCap              "Nhà cung cấp"
+  NoiBoTapDoan            "Nội bộ tập đoàn"
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Enums/TrangThaiHoaDonAP.xml
+=== Перечисление: TrangThaiHoaDonAP — "Trạng thái hóa đơn đầu vào" ===
+Поддержка: не на поддержке
+Представление типа: Trạng thái hóa đơn đầu vào
+
+Значения (8):
+  DuThao                 "Dự thảo"
+  ChoDuyetKyThuat        "Chờ duyệt kỹ thuật"
+  ChoDuyetPM             "Chờ Quản lý dự án duyệt"
+  ChoDuyetITDirector     "Chờ Giám đốc hạ tầng CNTT duyệt"
+  ChoDuyetCFO            "Chờ CFO duyệt"
+  ChoKeToanTruongDuyet   "Chờ Kế toán trưởng duyệt"
+  DaGhiSo                "Đã ghi sổ"
+  TuChoi                 "Từ chối"
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Enums/TrangThaiHoaDonDienTu.xml
+=== Перечисление: TrangThaiHoaDonDienTu — "Trạng thái hóa đơn điện tử" ===
+Поддержка: не на поддержке
+Представление типа: Trạng thái hóa đơn điện tử
+
+Значения (6):
+  DuThao        "Dự thảo"
+  ChoKySo       "Chờ ký số"
+  DaPhatHanh    "Đã phát hành"
+  DaDieuChinh   "Đã điều chỉnh"
+  DaThayThe     "Đã thay thế"
+  DaHuy         "Đã hủy"
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Enums/TrangThaiLenhThanhToan.xml
+=== Перечисление: TrangThaiLenhThanhToan — "Trạng thái ủy nhiệm chi" ===
+Поддержка: не на поддержке
+Представление типа: Trạng thái ủy nhiệm chi
+
+Значения (8):
+  DuThao           "Dự thảo"
+  ChoDuyet         "Chờ duyệt"
+  DaDuyet          "Đã duyệt"
+  DaGuiNganHang    "Đã gửi ngân hàng"
+  DaNhanHoanTien   "Đã nhận hoàn tiền"
+  DaGhiSo          "Đã ghi sổ"
+  TuChoi           "Từ chối"
+  HuyBo            "Hủy bỏ"
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Enums/TrangThaiNghiemThuAR.xml
+=== Перечисление: TrangThaiNghiemThuAR — "Trạng thái nghiệm thu phải thu" ===
+Поддержка: не на поддержке
+Представление типа: Trạng thái nghiệm thu phải thu
+
+Значения (8):
+  DuThao               "Dự thảo"
+  ChoDuyetNoiBo        "Chờ duyệt nội bộ"
+  DaDuyetNoiBo         "Đã duyệt nội bộ"
+  ChoDoiTacKy          "Chờ đối tác ký"
+  DaGhiSo              "Đã ghi sổ"
+  DaThanhToanMotPhan   "Đã thanh toán một phần"
+  DaTatToan            "Đã tất toán"
+  TranhChap            "Tranh chấp"
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Constants/ChoPhepSinhDuLieuMau.xml
+=== Константа: ChoPhepSinhDuLieuMau — "Cho phép sinh dữ liệu mẫu trên bản sao UAT" ===
+Поддержка: не на поддержке
+Тип: Булево
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Constants/NguongPheDuyetChiTienCFO.xml
+=== Константа: NguongPheDuyetChiTienCFO — "Ngưỡng chi tiền cần CFO phê duyệt" ===
+Поддержка: не на поддержке
+Тип: Число(15,0)
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### Constants/PhapNhanMacDinh.xml
+=== Константа: PhapNhanMacDinh — "Pháp nhân mặc định" ===
+Поддержка: не на поддержке
+Тип: СправочникСсылка.PhapNhan
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+### InformationRegisters/PhanQuyenChiNhanh.xml
+=== Регистр сведений: PhanQuyenChiNhanh — "Phân quyền chi nhánh" ===
+Поддержка: не на поддержке
+Периодичность: Непериодический | Запись: независимая
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+
+Измерения (2):
+  NguoiDung    Строка(100)  [обязательный, индекс]
+  ChiNhanh     СправочникСсылка.ChiNhanh  [обязательный, индекс]
+### InformationRegisters/TyGiaHoiDoai.xml
+=== Регистр сведений: TyGiaHoiDoai — "Exchange Rates" ===
+Поддержка: не на поддержке
+Периодичность: День | Запись: независимая
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+
+Измерения (1):
+  TienTe       СправочникСсылка.TienTe
+
+Ресурсы (3):
+  TyGiaMua        Число(10,4)
+  TyGiaBan        Число(10,4)
+  TyGiaHachToan   Число(10,4)
+### AccumulationRegisters/CongNoPhaiThu.xml
+=== Регистр накопления: CongNoPhaiThu — "Sổ chi tiết công nợ phải thu" ===
+Поддержка: не на поддержке
+Вид: Balance
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+
+Измерения (4):
+  PhapNhan     СправочникСсылка.PhapNhan
+  DoiTac       СправочникСсылка.DoiTac
+  HopDong      СправочникСсылка.HopDong
+  ChungTuGoc   ДокументСсылка (все)
+
+Ресурсы (2):
+  SoTien          Число(15,2)
+  SoTienNgoaiTe   Число(15,2)
+### AccumulationRegisters/CongNoPhaiTra.xml
+=== Регистр накопления: CongNoPhaiTra — "Sổ chi tiết công nợ phải trả" ===
+Поддержка: не на поддержке
+Вид: Balance
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+
+Измерения (4):
+  PhapNhan     СправочникСсылка.PhapNhan
+  DoiTac       СправочникСсылка.DoiTac
+  HopDong      СправочникСсылка.HopDong
+  ChungTuGoc   ДокументСсылка (все)
+
+Ресурсы (2):
+  SoTien          Число(15,2)
+  SoTienNgoaiTe   Число(15,2)
+### AccumulationRegisters/DongTien.xml
+=== Регистр накопления: DongTien — "Sổ chi tiết dòng tiền" ===
+Поддержка: не на поддержке
+Вид: Balance
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+
+Измерения (4):
+  PhapNhan           СправочникСсылка.PhapNhan
+  TaiKhoanTien       СправочникСсылка.TaiKhoanTien
+  TienTe             СправочникСсылка.TienTe
+  KhoanMucDongTien   СправочникСсылка.KhoanMucDongTien
+
+Ресурсы (2):
+  SoTien          Число(15,2)
+  SoTienNgoaiTe   Число(15,2)
+### AccountingRegisters/SoCaiKeToan.xml
+=== Регистр бухгалтерии: SoCaiKeToan — "Sổ cái kế toán" ===
+Поддержка: не на поддержке
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+
+Измерения (2):
+  PhapNhan     СправочникСсылка.PhapNhan
+  TienTe       СправочникСсылка.TienTe
+
+Ресурсы (2):
+  SoTien          Число(15,2)
+  SoTienNgoaiTe   Число(15,2)
+
+Реквизиты (14):
+  DoiTac           СправочникСсылка.DoiTac
+  HopDong          СправочникСсылка.HopDong
+  TaiKhoanTien     СправочникСсылка.TaiKhoanTien
+  DoiTacNo         СправочникСсылка.DoiTac
+  DoiTacCo         СправочникСсылка.DoiTac
+  HopDongNo        СправочникСсылка.HopDong
+  HopDongCo        СправочникСсылка.HopDong
+  TaiKhoanTienNo   СправочникСсылка.TaiKhoanTien
+  TaiKhoanTienCo   СправочникСсылка.TaiKhoanTien
+  ChungTuGoc       ДокументСсылка (все)
+  TyGia            Число(10,4)
+  DienGiai         Строка(250)
+  ChungTuGocNo     ДокументСсылка (все)
+  ChungTuGocCo     ДокументСсылка (все)
+### ChartsOfAccounts/HeThongTaiKhoan.xml
+=== План счетов: HeThongTaiKhoan — "Hệ thống tài khoản" ===
+Поддержка: не на поддержке
+Представление типа: Hệ thống tài khoản
+
+Стандартные реквизиты:
+  Код                         Строка(20)  [обязательный]
+  Наименование                Строка(150)  [обязательный]
+  Ссылка                      ПланСчетовСсылка.HeThongTaiKhoan
+  ПометкаУдаления             Булево
+  Родитель                    ПланСчетовСсылка.HeThongTaiKhoan
+  Вид                         ВидСчета
+  Забалансовый                Булево
+  Порядок                     Число
+  Предопределенный            Булево
+  ИмяПредопределенныхДанных   Строка
+
+Реквизиты (3):
+  MaLogic       Строка(20)  [индекс]
+  TenTaiKhoan   Строка(150)
+  TinhChat      Строка(20)
+### DataProcessors/BanLamViecWebERP.xml
+=== Обработка: BanLamViecWebERP — "Bàn làm việc & Điều hành Web ERP" ===
+Поддержка: не на поддержке
+
+Стандартные реквизиты:
+  ПометкаУдаления   Булево
+Формы: FormBanLamViec, FormPheDuyetHangLoat

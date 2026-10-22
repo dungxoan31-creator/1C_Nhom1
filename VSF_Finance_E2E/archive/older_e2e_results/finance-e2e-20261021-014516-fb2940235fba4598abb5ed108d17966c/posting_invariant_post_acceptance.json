@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-014516-fb2940235fba4598abb5ed108d17966c",
+"phase": "posting_invariant_post_acceptance",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"acceptance": "Biên bản nghiệm thu giai đoạn E2E-INV-ZVAT-BB dated 10/20/2026 9:00:00 AM",
+"approver": "cfo_giamdoc",
+"status": "DaGhiSo",
+"posted": true
+}
+}

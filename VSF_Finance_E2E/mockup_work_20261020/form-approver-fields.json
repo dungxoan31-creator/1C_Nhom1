@@ -1,0 +1,18 @@
+﻿{
+  "elements": [
+    {
+      "input": "NguoiTao",
+      "path": "Object.NguoiTao",
+      "title": "Người tạo",
+      "readOnly": true,
+      "after": "DienGiai"
+    },
+    {
+      "input": "NguoiDuyet",
+      "path": "Object.NguoiDuyet",
+      "title": "Người phê duyệt",
+      "readOnly": true,
+      "after": "NguoiTao"
+    }
+  ]
+}

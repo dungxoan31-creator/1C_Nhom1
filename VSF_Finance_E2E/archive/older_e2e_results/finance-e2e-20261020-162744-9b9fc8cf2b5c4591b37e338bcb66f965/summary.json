@@ -1,0 +1,106 @@
+﻿{
+    "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+    "status":  "FAIL",
+    "error":  "Phase ar_create_receipts produced no result JSON (1C exit -1). Log: C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965\\ar_create_receipts.log",
+    "completed_phases":  [
+                             {
+                                 "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+                                 "phase":  "setup",
+                                 "user":  "Admin",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "legal_entity":  "PN-VSF",
+                                              "branch":  "CN-VSF-HCM",
+                                              "customer":  "TEST_VG_VINFAST_VN",
+                                              "customer_contract":  "HD-TEST_VG_VINFAST_VN-2025",
+                                              "vendor":  "E2E_AWS_VND",
+                                              "vendor_contract":  "HD-E2E-AWS-VND-2026",
+                                              "bank_account":  "TK-E2E-VND",
+                                              "opening_cash_vnd":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+                                 "phase":  "ar_submit_acceptance",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoDuyetNoiBo",
+                                              "net_vnd":  200000000,
+                                              "vat_vnd":  16000000,
+                                              "gross_vnd":  216000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+                                 "phase":  "cfo_approve_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "approver":  "cfo_giamdoc",
+                                              "status":  "DaDuyetNoiBo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+                                 "phase":  "cfo_post_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "approver":  "cfo_giamdoc",
+                                              "posted":  true,
+                                              "status":  "DaGhiSo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+                                 "phase":  "ar_submit_invoice",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AR001",
+                                              "sales_invoice_number":  "E2EINV-001",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoKySo",
+                                              "base_acceptance":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+                                 "phase":  "cfo_issue_invoice",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AR001",
+                                              "approver":  "cfo_giamdoc",
+                                              "posted":  true,
+                                              "net_vnd":  200000000,
+                                              "vat_vnd":  16000000,
+                                              "gross_vnd":  216000000
+                                          }
+                             }
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "branch_rls":  null,
+    "fx_refund":  null,
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965",
+    "base_infobase":  "VSF_Finance_E2E\\dt_working\\restore_final_batch_query_20261020",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261020-162744-9b9fc8cf2b5c4591b37e338bcb66f965"
+}

@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261020-071936-46f5cdd18fdd4b0282f156b3d4fc06cc",
+"phase": "ap_seed_regression",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"posted_invoices": 1260,
+"posted_payments": 0,
+"posted_usd_invoices": 315,
+"valid_usd_invoices": 315,
+"cash_category": "KM-CHI-CL"
+}
+}

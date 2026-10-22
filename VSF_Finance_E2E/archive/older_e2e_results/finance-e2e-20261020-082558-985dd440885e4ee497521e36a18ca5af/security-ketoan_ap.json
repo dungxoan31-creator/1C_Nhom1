@@ -1,0 +1,63 @@
+{
+"run_id": "finance-e2e-20261020-082558-985dd440885e4ee497521e36a18ca5af",
+"phase": "security_role_matrix",
+"user": "ketoan_ap",
+"role": "AP",
+"status": "PASS",
+"passed": true,
+"total": 8,
+"passed_cases": 8,
+"failed_cases": 0,
+"skipped_cases": 0,
+"cases": [
+{
+"name": "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 2: Nguoi lap tu duyet bi chan",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 7: Xem toan bo So cai",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 8: Chi CFO duoc chi dinh moi duoc phat hanh hoa don",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes",
+"detail": "Vi phạm phân định trách nhiệm (Segregation of Duties): Kế toán Phải trả (AP) không được phép ghi sổ, sửa hoặc can thiệp chứng từ Phải thu (AR)!\n{CommonModule.PhanQuyenBaoMatServer.Module(130)}:Raise \"Vi phạm phân định trách nhiệm (Segregation of Duties): Kế toán Phải trả (AP) không được phép ghi sổ, sửa hoặc can thiệp chứng từ Phải thu (AR)!\";\n{CommonModule.PhanQuyenBaoMatServer.Module(771)}:KiemTraQuyenChungTu(Doc, \"Write\");\n{CommonModule.PhanQuyenBaoMatServer.Module(227)}:TransitionResult = KiemTraChuyenTrangThaiHoaDonDauRa();\n{ManagedApplicationModule(49)}:PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]"
+}
+]
+}

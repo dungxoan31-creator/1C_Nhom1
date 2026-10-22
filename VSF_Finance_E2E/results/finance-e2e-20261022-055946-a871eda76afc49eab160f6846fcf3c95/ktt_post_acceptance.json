@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-055946-a871eda76afc49eab160f6846fcf3c95",
+"phase": "ktt_post_acceptance",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"acceptance_number": "E2E-BB001",
+"approver": "ketoan_truong",
+"posted": true,
+"status": "DaGhiSo"
+}
+}

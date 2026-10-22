@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-082558-985dd440885e4ee497521e36a18ca5af",
+"phase": "ar_seed_regression",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.GeneratorARServer.Module(158)}:DocBB.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(633)}:GeneratorARServer.KhoiTaoChungTuAR();\n{ManagedApplicationModule(34)}:SeedBoundaryTestsServer.RunARSeedRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nVi phạm nguyên tắc Maker-Checker: Người tạo/lập không thể tự phê duyệt chứng từ!\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261021-105934-c44c34b9954b429da9db905db9133331",
+"phase": "fx_submit_bank_payment",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"payment": "E2E-UNC-USD-01",
+"status": "DaGuiNganHang",
+"bank_transaction_id": "BANK-AD584C5C6EA54FDA67AA",
+"bank_status": "ACCEPTED",
+"foreign_amount": 500,
+"foreign_currency": "USD"
+}
+}

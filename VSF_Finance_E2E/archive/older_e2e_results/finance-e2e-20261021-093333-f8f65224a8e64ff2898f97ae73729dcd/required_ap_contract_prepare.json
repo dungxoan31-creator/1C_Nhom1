@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-093333-f8f65224a8e64ff2898f97ae73729dcd",
+"phase": "required_ap_contract_prepare",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "E2E-REQ-AP-DIM",
+"maker": "ketoan_ap",
+"approver": "ketoan_truong",
+"contract_owner": "TEST_VG_VINCLUB"
+}
+}

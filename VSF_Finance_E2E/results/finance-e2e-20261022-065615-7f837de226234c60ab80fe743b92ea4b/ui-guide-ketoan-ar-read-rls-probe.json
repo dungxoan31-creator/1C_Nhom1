@@ -1,0 +1,13 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "ketoan_ar",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\e2e-infobase",
+    "workflow":  "GuideSmoke",
+    "flow":  "native 1C UI → finance process guide and allowlisted native destinations",
+    "verified":  [
+
+                 ],
+    "error":  "UI element not found: ControlType.Pane \u0027*Biên bản nghiệm thu giai đoạn (AR) - VinSmart Future*\u0027. Candidates: Hướng dẫn quy trình tài chính - VinSmart Future",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\results\\finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-guide-ketoan-ar-read-rls-probe.1c.log",
+    "failure_screenshot_path":  ".\\VSF_Finance_E2E\\results\\finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-guide-ketoan-ar-read-rls-probe.unhandled-failure.png"
+}

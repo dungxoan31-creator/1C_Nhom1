@@ -1,0 +1,252 @@
+﻿[
+    {
+        "Path":  "VinSmart_Future_AdminFull_v5_SuaFont_pre_mockup_atomic_20261020.dt",
+        "Type":  "File",
+        "Bytes":  573459
+    },
+    {
+        "Path":  "VinSmart_Future_AdminFull_v5_SuaFont_atomic_backup_20261020.dt",
+        "Type":  "File",
+        "Bytes":  494966
+    },
+    {
+        "Path":  "1Cv8.1CD.cfl",
+        "Type":  "File",
+        "Bytes":  0
+    },
+    {
+        "Path":  "docs\\audits\\encoding-probe.txt",
+        "Type":  "File",
+        "Bytes":  27
+    },
+    {
+        "Path":  "Configuration_pre_verified_branches_20261020_155425",
+        "Type":  "Directory",
+        "Bytes":  1399749
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\guide_work_20261020\\infobase",
+        "Type":  "Directory",
+        "Bytes":  7939143
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\cleanup_review_20261020",
+        "Type":  "Directory",
+        "Bytes":  73511298
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\dashboard_compile_check_20261020",
+        "Type":  "Directory",
+        "Bytes":  9239983
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_complete_20261020",
+        "Type":  "Directory",
+        "Bytes":  7734185
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_dashboard_batch_query_20261020",
+        "Type":  "Directory",
+        "Bytes":  8801864
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_dashboard_gl_period_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  7743879
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_dashboard_gl_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  7743607
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_dashboard_net_revenue_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  7743601
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_dashboard_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  7743840
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_final_20261020_080000",
+        "Type":  "Directory",
+        "Bytes":  7562153
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_final_20261020_e2e",
+        "Type":  "Directory",
+        "Bytes":  7562153
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_final_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  7734185
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_gl_integrity_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  7735194
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_verify_20261020_073221",
+        "Type":  "Directory",
+        "Bytes":  8578962
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\roundtrip_dashboard_gl_period_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  1401152
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\roundtrip_dashboard_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  1393598
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\roundtrip_final_complete_20261020",
+        "Type":  "Directory",
+        "Bytes":  1386130
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\roundtrip_final_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  1387737
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\roundtrip_gl_integrity_verified_20261020",
+        "Type":  "Directory",
+        "Bytes":  1383659
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\roundtrip_xml_final_20261020",
+        "Type":  "Directory",
+        "Bytes":  1307670
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\source_from_current_dt_restore_dashboard_20261020",
+        "Type":  "Directory",
+        "Bytes":  8793400
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\source_net_revenue_restore_20261020",
+        "Type":  "Directory",
+        "Bytes":  0
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\source_net_revenue_restore_retry_20261020",
+        "Type":  "Directory",
+        "Bytes":  8804173
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\staging_from_original_E7D_20261020",
+        "Type":  "Directory",
+        "Bytes":  8796771
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\update_20261020_073221",
+        "Type":  "Directory",
+        "Bytes":  8833102
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\batch_query_DumpIB_20261020.log",
+        "Type":  "File",
+        "Bytes":  33
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\batch_query_UpdateDBCfg_20261020.log",
+        "Type":  "File",
+        "Bytes":  159
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\dump_config_roundtrip_gl_period.log",
+        "Type":  "File",
+        "Bytes":  3
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\dump_dashboard_gl_period.log",
+        "Type":  "File",
+        "Bytes":  33
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\dump_dashboard_gl_recognition.log",
+        "Type":  "File",
+        "Bytes":  33
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\dump_net_revenue_candidate.log",
+        "Type":  "File",
+        "Bytes":  33
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\load_config_gl_period.log",
+        "Type":  "File",
+        "Bytes":  159
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\load_config_gl_recognition.log",
+        "Type":  "File",
+        "Bytes":  159
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\load_config_net_revenue_retry.log",
+        "Type":  "File",
+        "Bytes":  0
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\manual_load_after_cleanup.log",
+        "Type":  "File",
+        "Bytes":  159
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\manual_load_check.log",
+        "Type":  "File",
+        "Bytes":  0
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\manual_load_check2.log",
+        "Type":  "File",
+        "Bytes":  0
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_gl_period_candidate.log",
+        "Type":  "File",
+        "Bytes":  35
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_gl_recognition_candidate.log",
+        "Type":  "File",
+        "Bytes":  35
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_net_revenue_candidate.log",
+        "Type":  "File",
+        "Bytes":  35
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_net_revenue_source.log",
+        "Type":  "File",
+        "Bytes":  0
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\restore_net_revenue_source_retry.log",
+        "Type":  "File",
+        "Bytes":  35
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\VinSmart_Future_AdminFull_v5_SuaFont_dashboard_gl_period_verified_20261020.dt",
+        "Type":  "File",
+        "Bytes":  539934
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\VinSmart_Future_AdminFull_v5_SuaFont_dashboard_gl_recognition_verified_20261020.dt",
+        "Type":  "File",
+        "Bytes":  539859
+    },
+    {
+        "Path":  "VSF_Finance_E2E\\dt_working\\VinSmart_Future_AdminFull_v5_SuaFont_dashboard_net_revenue_verified_20261020.dt",
+        "Type":  "File",
+        "Bytes":  539039
+    }
+]

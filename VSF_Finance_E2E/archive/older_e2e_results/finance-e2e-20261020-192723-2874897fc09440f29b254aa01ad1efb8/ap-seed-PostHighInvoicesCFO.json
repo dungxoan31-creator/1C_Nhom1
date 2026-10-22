@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261020-192723-2874897fc09440f29b254aa01ad1efb8",
+"phase": "ap_seed_PostHighInvoicesCFO",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"documents": 1260,
+"posted": 1260,
+"pending_cfo": 0,
+"pending_ktt": 0
+}
+}

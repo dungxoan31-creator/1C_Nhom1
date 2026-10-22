@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Title>
+		<v8:item>
+			<v8:lang>vi</v8:lang>
+			<v8:content>Danh sách Phiếu thu tiền khách hàng</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="BoLocNhanh" id="32">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="BoLocNhanhExtendedTooltip" id="1"/>
+			<ChildItems>
+				<InputField name="BoLocKy" id="33">
+					<DataPath>BoLocKy</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Kỳ</v8:content>
+						</v8:item>
+					</Title>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">TatCa</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">HomNay</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">ThangNay</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">QuyNay</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="BoLocKyContextMenu" id="2"/>
+					<ExtendedTooltip name="BoLocKyExtendedTooltip" id="3"/>
+					<Events>
+						<Event name="OnChange">BoLocKyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="BoLocTrangThai" id="34">
+					<DataPath>BoLocTrangThai</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Trạng thái</v8:content>
+						</v8:item>
+					</Title>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">TatCa</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">DaGhiSo</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">BanNhap</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="xs:string">DaHuy</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="BoLocTrangThaiContextMenu" id="4"/>
+					<ExtendedTooltip name="BoLocTrangThaiExtendedTooltip" id="5"/>
+					<Events>
+						<Event name="OnChange">BoLocTrangThaiOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="BoLocDoiTac" id="35">
+					<DataPath>BoLocDoiTac</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Khách hàng</v8:content>
+						</v8:item>
+					</Title>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="BoLocDoiTacContextMenu" id="6"/>
+					<ExtendedTooltip name="BoLocDoiTacExtendedTooltip" id="7"/>
+					<Events>
+						<Event name="OnChange">BoLocDoiTacOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="DanhSach" id="36">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
+			<DataPath>DanhSach</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="DanhSachContextMenu" id="8"/>
+			<AutoCommandBar name="DanhSachCommandBar" id="9"/>
+			<ExtendedTooltip name="DanhSachExtendedTooltip" id="10"/>
+			<SearchStringAddition name="DanhSachSearchString" id="11">
+				<AdditionSource>
+					<Item>DanhSach</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="DanhSachSearchStringContextMenu" id="12"/>
+				<ExtendedTooltip name="DanhSachSearchStringExtendedTooltip" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="DanhSachViewStatus" id="14">
+				<AdditionSource>
+					<Item>DanhSach</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="DanhSachViewStatusContextMenu" id="15"/>
+				<ExtendedTooltip name="DanhSachViewStatusExtendedTooltip" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="DanhSachSearchControl" id="17">
+				<AdditionSource>
+					<Item>DanhSach</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="DanhSachSearchControlContextMenu" id="18"/>
+				<ExtendedTooltip name="DanhSachSearchControlExtendedTooltip" id="19"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="DanhSachNumber" id="37">
+					<DataPath>DanhSach.Number</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Số CT</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DanhSachNumberContextMenu" id="20"/>
+					<ExtendedTooltip name="DanhSachNumberExtendedTooltip" id="21"/>
+				</InputField>
+				<InputField name="DanhSachDate" id="38">
+					<DataPath>DanhSach.Date</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Ngày lập</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DanhSachDateContextMenu" id="22"/>
+					<ExtendedTooltip name="DanhSachDateExtendedTooltip" id="23"/>
+				</InputField>
+				<InputField name="DanhSachDoiTac" id="39">
+					<DataPath>DanhSach.DoiTac</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Khách hàng</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DanhSachDoiTacContextMenu" id="24"/>
+					<ExtendedTooltip name="DanhSachDoiTacExtendedTooltip" id="25"/>
+				</InputField>
+				<InputField name="DanhSachSoTien" id="40">
+					<DataPath>DanhSach.SoTien</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Số tiền</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DanhSachSoTienContextMenu" id="26"/>
+					<ExtendedTooltip name="DanhSachSoTienExtendedTooltip" id="27"/>
+				</InputField>
+				<InputField name="DanhSachDienGiai" id="41">
+					<DataPath>DanhSach.DienGiai</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Diễn giải</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DanhSachDienGiaiContextMenu" id="28"/>
+					<ExtendedTooltip name="DanhSachDienGiaiExtendedTooltip" id="29"/>
+				</InputField>
+				<CheckBoxField name="DanhSachPosted" id="42">
+					<DataPath>DanhSach.Posted</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>Đã ghi sổ</v8:content>
+						</v8:item>
+					</Title>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="DanhSachPostedContextMenu" id="30"/>
+					<ExtendedTooltip name="DanhSachPostedExtendedTooltip" id="31"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="DanhSach" id="43">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.PhieuThuTienKhachHang</MainTable>
+				<ListSettings/>
+			</Settings>
+		</Attribute>
+		<Attribute name="BoLocKy" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Kỳ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BoLocTrangThai" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Trạng thái</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BoLocDoiTac" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Đối tác</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DoiTac</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

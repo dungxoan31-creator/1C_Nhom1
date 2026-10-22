@@ -1,0 +1,10 @@
+{
+"run_id": "mockup-20261020",
+"phase": "ap_seed_master_data",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"test_vendors": 120
+}
+}

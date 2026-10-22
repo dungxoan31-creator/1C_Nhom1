@@ -1,0 +1,94 @@
+﻿{
+    "run_id":  "finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a",
+    "status":  "FAIL",
+    "error":  "Native 1C KTT batch approval UI workflow failed: {\"status\":\"FAIL\",\"user\":\"ketoan_truong\",\"infobase\":\"C:\\\\Users\\\\Dung\\\\AppData\\\\Local\\\\Temp\\\\VSF_finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a\\\\batch-ui-infobase\",\"workflow\":\"BatchApproval\",\"flow\":\"native 1C UI → dashboard → Maker-Checker batch approval form\",\"verified\":[],\"error\":\"Batch approval Refresh action did not show its expected notification.\",\"screenshot_path\":\"C:\\\\Users\\\\Dung\\\\Documents\\\\VSF TEST\\\\VSF_Finance_E2E\\\\results\\\\finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a\\\\ui-batch-approval.png\",\"dashboard_bounds\":[241,139,1438,753],\"dashboard_click_coordinates\":[1506,410],\"foreground_window_handle\":109643160,\"main_window_handle\":109643160,\"after_click_screenshot_path\":\"C:\\\\Users\\\\Dung\\\\Documents\\\\VSF TEST\\\\VSF_Finance_E2E\\\\results\\\\finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a\\\\ui-batch-approval.after-click.png\",\"visible_action_controls\":[{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[231,892,1458,10]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[1679,139,10,753]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[231,129,1458,10]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[231,139,10,753]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[242,140,1436,751]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"Functions\",\"type\":\"ControlType.Button\",\"bounds\":[290,140,30,30]},{\"name\":\"\",\"type\":\"ControlType.Button\",\"bounds\":[1059,142,300,26]},{\"name\":\"Notifications\",\"type\":\"ControlType.Button\",\"bounds\":[1363,140,30,30]},{\"name\":\"History\",\"type\":\"ControlType.Button\",\"bounds\":[1397,140,30,30]},{\"name\":\"Favorites\",\"type\":\"ControlType.Button\",\"bounds\":[1431,140,30,30]},{\"name\":\"Kế toán trưởng\",\"type\":\"ControlType.Button\",\"bounds\":[1465,146,77,18]},{\"name\":\"Service and settings\",\"type\":\"ControlType.Button\",\"bounds\":[1546,140,30,30]},{\"name\":\"Collapse\",\"type\":\"ControlType.Button\",\"bounds\":[1580,140,30,30]},{\"name\":\"Maximize\",\"type\":\"ControlType.Button\",\"bounds\":[1614,140,30,30]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"bounds\":[1648,140,30,30]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[1059,142,300,26]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[242,171,1436,720]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[242,171,1436,720]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,171,1177,720]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,171,1177,720]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"bounds\":[1648,908,23,23]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,171,96,37]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,171,96,37]},{\"name\":\"Back\",\"type\":\"ControlType.Button\",\"bounds\":[513,179,38,25]},{\"name\":\"Forward\",\"type\":\"ControlType.Button\",\"bounds\":[551,179,36,25]},{\"name\":\"Bàn Duyệt Maker-Checker Hàng Loạt - VinSmart Future\",\"type\":\"ControlType.Pane\",\"bounds\":[631,175,852,33]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,210,1177,681]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,210,1177,681]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,210,1177,681]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,210,1177,681]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,210,1177,681]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,210,1177,681]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[513,213,1146,27]},{\"name\":\"More actions\",\"type\":\"ControlType.Button\",\"bounds\":[1551,213,108,27]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,249,1177,630]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[501,249,1177,630]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[513,249,1146,630]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[514,250,1144,628]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[514,250,1144,628]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[510,246,1152,636]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[Infinity,Infinity,-Infinity,-Infinity]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"bounds\":[1643,908,23,23]},{\"name\":\"Add to favorites\",\"type\":\"ControlType.Button\",\"bounds\":[597,175,25,33]},{\"name\":\"Close\",\"type\":\"ControlType.Button\",\"bounds\":[1640,179,23,23]},{\"name\":\"Menu\",\"type\":\"ControlType.Button\",\"bounds\":[1610,179,23,23]},{\"name\":\"Get link...\",\"type\":\"ControlType.Button\",\"bounds\":[1580,179,23,23]},{\"name\":\"Print preview\",\"type\":\"ControlType.Button\",\"bounds\":[1550,179,23,23]},{\"name\":\"Print\",\"type\":\"ControlType.Button\",\"bounds\":[1520,179,23,23]},{\"name\":\"Save\",\"type\":\"ControlType.Button\",\"bounds\":[1490,179,23,23]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[242,171,259,720]},{\"name\":\"\",\"type\":\"ControlType.Pane\",\"bounds\":[242,171,259,720]},{\"name\":\"\",\"type\":\"ControlType.Button\",\"bounds\":[465,183,16,16]}],\"batch_approval_panel_opened\":true,\"batch_approval_panel_bounds\":[631,175,852,33],\"batch_approval_queue_document_visible\":false,\"batch_approval_queue_evidence\":\"Queue content is rendered in the HTML field and captured in the screenshot; the 1C UI Automation provider exposes the form title but not the HTML text.\",\"batch_approval_actions\":[{\"action\":\"refresh\",\"invoked\":true,\"notification_visible\":false,\"notification_text\":\"\"}],\"refresh_action_coordinates\":[1319,260]}",
+    "completed_phases":  [
+                             {
+                                 "run_id":  "finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a",
+                                 "phase":  "setup",
+                                 "user":  "Admin",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "legal_entity":  "PN-VSF",
+                                              "branch":  "CN-VSF-HCM",
+                                              "customer":  "TEST_VG_VINFAST_VN",
+                                              "customer_contract":  "HD-TEST_VG_VINFAST_VN-2025",
+                                              "vendor":  "E2E_AWS_VND",
+                                              "vendor_contract":  "HD-E2E-AWS-VND-2026",
+                                              "bank_account":  "TK-E2E-VND",
+                                              "opening_cash_vnd":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a",
+                                 "phase":  "approval_ui_queue_check",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "user":  "ketoan_truong",
+                                              "ktt_queue_count":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a",
+                                 "phase":  "batch_ui_setup",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "document_number":  "E2E-BATCH-UI",
+                                              "maker":  "ketoan_ap",
+                                              "amount_vnd":  1000000,
+                                              "status":  "Chá» Káº¿ toÃ¡n trÆ°á»Ÿng duyá»‡t",
+                                              "posted":  false
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a",
+                                 "phase":  "batch_ui_queue_check",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "user":  "ketoan_truong",
+                                              "ktt_queue_count":  1,
+                                              "document_number":  "E2E-BATCH-UI",
+                                              "document_type":  "HoaDonNhaCungCap",
+                                              "amount_vnd":  1000000
+                                          }
+                             }
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "branch_rls":  null,
+    "fx_refund":  null,
+    "fx_refund_ui_confirmation":  [
+                                      null,
+                                      null
+                                  ],
+    "ui_e2e":  null,
+    "catalog_list_ui_e2e":  null,
+    "list_period_ui_e2e":  null,
+    "document_forms_ui_e2e":  null,
+    "required_field_ui_e2e":  null,
+    "reference_choice_ui_e2e":  null,
+    "custom_command_coverage":  null,
+    "bank_ui_e2e":  [
+
+                    ],
+    "batch_approval_ui":  null,
+    "batch_approval_ui_state":  null,
+    "batch_approval_ui_contract":  null,
+    "bank_stub_log":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a\\bank-stub.requests.jsonl",
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a",
+    "base_infobase":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\BaseInfobase",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-132843-98e45caf01584e47b919c63d612eb23a"
+}

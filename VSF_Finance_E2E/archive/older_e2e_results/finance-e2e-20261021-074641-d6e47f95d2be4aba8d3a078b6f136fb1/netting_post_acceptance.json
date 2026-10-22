@@ -1,0 +1,12 @@
+{
+"run_id": "finance-e2e-20261021-074641-d6e47f95d2be4aba8d3a078b6f136fb1",
+"phase": "netting_post_acceptance",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"ar_source_posted": true,
+"ar_open_vnd": 40000000,
+"approver": "cfo_giamdoc"
+}
+}

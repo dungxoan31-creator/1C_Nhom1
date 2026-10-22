@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c",
+"phase": "fx_post_ar_receipts",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"gain_vnd": 27108000,
+"loss_vnd": 25000000,
+"gain_realized_vnd": 108000,
+"loss_realized_vnd": 100000,
+"over_collection_rejected": true,
+"unpost_repost_idempotent": true
+}
+}

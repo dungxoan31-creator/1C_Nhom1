@@ -1,0 +1,19 @@
+﻿{
+    "status":  "PASS",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b\\e2e-infobase",
+    "workflow":  "BankSend",
+    "flow":  "native 1C UI → approved payment order → bank submission",
+    "verified":  [
+                     "payment order list rendered expected document",
+                     "payment form opened",
+                     "bank payment submission command invoked",
+                     "bank response status ACCEPTED rendered"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-094814-9bc8bce7f0924d3d8e84d0d9190cfe7b\\ui-bank-E2E-UNC01.1c.log",
+    "payment_number":  "E2E-UNC01",
+    "expected_bank_outcome":  "Accepted",
+    "bank_status":  "ACCEPTED",
+    "bank_transaction_id":  "BANK-90EADC72BC96583A5958"
+}

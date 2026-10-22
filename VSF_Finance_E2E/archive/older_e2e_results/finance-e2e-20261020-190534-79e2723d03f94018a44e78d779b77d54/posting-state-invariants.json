@@ -1,0 +1,33 @@
+{
+"run_id": "finance-e2e-20261020-190534-79e2723d03f94018a44e78d779b77d54",
+"phase": "posting_state_invariants",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": true,
+"error": ""
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": true,
+"error": ""
+},
+{
+"name": "PostingFailureRollsBackPriorDocument",
+"passed": true,
+"error": ""
+}
+]
+}

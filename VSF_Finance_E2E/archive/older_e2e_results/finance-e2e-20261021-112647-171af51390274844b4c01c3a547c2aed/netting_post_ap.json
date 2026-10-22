@@ -1,0 +1,12 @@
+{
+"run_id": "finance-e2e-20261021-112647-171af51390274844b4c01c3a547c2aed",
+"phase": "netting_post_ap",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"ap_source_posted": true,
+"ap_open_vnd": 40000000,
+"approver": "ketoan_truong"
+}
+}

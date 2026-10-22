@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c",
+"phase": "ar_fct_cash_funding_prepare_receipt",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"receipt_number": "E2E-PT-FCT-FUND",
+"amount_vnd": 225000000,
+"source_invoice": "Hóa đơn GTGT đầu ra E2E-AR-FCT-FUND dated 10/18/2026 12:00:00 PM",
+"posted": false
+}
+}

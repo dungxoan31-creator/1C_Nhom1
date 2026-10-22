@@ -1,0 +1,92 @@
+{
+"run_id": "finance-e2e-20261021-223353-ec43a5609e84449b89d3cc4a07bfda69",
+"phase": "payment_reconciliation",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"channel": "VNPAY",
+"gross_vnd": 75000000,
+"fee_vnd": 1125000,
+"fee_percent": 1.5,
+"net_vnd": 73875000,
+"bank_before_vnd": 39200000,
+"bank_after_vnd": 113075000,
+"gl_rows": 2,
+"unpost_repost": true,
+"negative_case_count": 7,
+"negative_cases": [
+{
+"name": "one_vnd_imbalance",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+},
+{
+"name": "unsupported_channel",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+},
+{
+"name": "negative_fee",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+},
+{
+"name": "zero_gross",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+},
+{
+"name": "zero_net",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+},
+{
+"name": "unsupported_currency",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+},
+{
+"name": "expense_cash_category",
+"rejected": true,
+"posted": false,
+"persisted": false,
+"cash_unchanged": true,
+"accumulation_rows": 0,
+"gl_rows": 0
+}
+],
+"all_negative_cases_rejected": true,
+"zero_fee_case": {
+"accepted_then_unposted": true,
+"posted_without_fee_row": true,
+"cash_restored": true,
+"accumulation_rows_after_unpost": 0,
+"gl_rows_after_unpost": 0
+}
+}
+}

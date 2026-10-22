@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-171551-ac9e5db371c24b99a558393792f3fcd4",
+"phase": "ktt_approve_payment",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "KTT approval failed for E2E-UNC01: Không lưu được trạng thái đã duyệt của ủy nhiệm chi.\n{CommonModule.SeedBoundaryTestsServer.Module(1727)}:Raise StrTemplate(\"KTT approval failed for E2E-UNC01: %1\", ApprovalResult.ChiTiet[0].GhiChu);\n{CommonModule.SeedBoundaryTestsServer.Module(34)}:Result.data = ApproveFinanceE2EPayment();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

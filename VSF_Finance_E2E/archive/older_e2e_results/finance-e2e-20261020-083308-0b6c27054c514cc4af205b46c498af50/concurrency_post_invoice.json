@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261020-083308-0b6c27054c514cc4af205b46c498af50",
+"phase": "concurrency_post_invoice",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "E2E-CONC-AR-INV",
+"approver": "cfo_giamdoc",
+"status": "DaPhatHanh",
+"posted": true,
+"amount_vnd": 270000000
+}
+}

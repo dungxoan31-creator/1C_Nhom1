@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261021-061648-02a5d37ecfda4f2e88c9681def7534ed",
+"phase": "bank_post_bulk_payment",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-BULK-PAY",
+"posted": true,
+"bank_transaction_id": "BANK-172502FE7F6B04EF1D9D",
+"ap_open_vnd": 499000001,
+"bank_before_vnd": 113075000,
+"bank_after_vnd": 112075000,
+"gl_rows": 1,
+"cash_rows": 1
+}
+}

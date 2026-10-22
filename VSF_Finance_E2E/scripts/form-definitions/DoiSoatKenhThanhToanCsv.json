@@ -1,0 +1,331 @@
+{
+    "attributes":  [
+                       {
+                           "name":  "CsvFileName",
+                           "type":  "string(500)",
+                           "title":  "Tệp CSV"
+                       },
+                       {
+                           "name":  "CsvText",
+                           "type":  "string(500000)",
+                           "title":  "Nội dung CSV"
+                       },
+                       {
+                           "name":  "CsvDelimiter",
+                           "type":  "string(1)",
+                           "title":  "Dấu phân cách cột"
+                       },
+                       {
+                           "name":  "CsvDecimalSeparator",
+                           "type":  "string(1)",
+                           "title":  "Dấu thập phân"
+                       },
+                       {
+                           "name":  "CsvThousandsSeparator",
+                           "type":  "string(1)",
+                           "title":  "Dấu phân nhóm"
+                       },
+                       {
+                           "name":  "CsvPreviewSummary",
+                           "type":  "string(500)",
+                           "title":  "Tổng hợp xem trước"
+                       },
+                       {
+                           "name":  "CsvColumnExternalId",
+                           "type":  "string(150)",
+                           "title":  "Cột mã giao dịch"
+                       },
+                       {
+                           "name":  "CsvColumnTransactionDate",
+                           "type":  "string(150)",
+                           "title":  "Cột ngày giao dịch"
+                       },
+                       {
+                           "name":  "CsvColumnInvoiceNumber",
+                           "type":  "string(150)",
+                           "title":  "Cột số hóa đơn"
+                       },
+                       {
+                           "name":  "CsvColumnMemo",
+                           "type":  "string(150)",
+                           "title":  "Cột diễn giải"
+                       },
+                       {
+                           "name":  "CsvColumnGross",
+                           "type":  "string(150)",
+                           "title":  "Cột Gross"
+                       },
+                       {
+                           "name":  "CsvColumnFee",
+                           "type":  "string(150)",
+                           "title":  "Cột phí"
+                       },
+                       {
+                           "name":  "CsvColumnNet",
+                           "type":  "string(150)",
+                           "title":  "Cột Net"
+                       },
+                       {
+                           "name":  "CsvColumnCurrency",
+                           "type":  "string(150)",
+                           "title":  "Cột tiền tệ"
+                       }
+                   ],
+    "commands":  [
+                     {
+                         "name":  "ChonTepCSV",
+                         "action":  "ChonTepCSV",
+                         "title":  "Chọn tệp CSV"
+                     },
+                     {
+                         "name":  "XemTruocCSV",
+                         "action":  "XemTruocCSV",
+                         "title":  "Phân tích và xem trước",
+                         "modifiesSavedData":  true
+                     },
+                     {
+                         "name":  "GhepHoaDonAR",
+                         "action":  "GhepHoaDonAR",
+                         "title":  "Xác nhận ghép hóa đơn AR",
+                         "table":  "GiaoDichSaoKe",
+                         "modifiesSavedData":  true
+                     }
+                 ],
+    "elements":  [
+                     {
+                         "page":  "SaoKeCSV",
+                         "title":  "Nhập sao kê CSV",
+                         "after":  "RegisterRecordsTab",
+                         "children":  [
+                                          {
+                                              "group":  "alwaysHorizontal",
+                                              "name":  "CsvImportOptions",
+                                              "title":  "Tệp và định dạng",
+                                              "children":  [
+                                                               {
+                                                                   "input":  "CsvFileName",
+                                                                   "path":  "CsvFileName",
+                                                                   "readOnly":  true,
+                                                                   "width":  45
+                                                               },
+                                                               {
+                                                                   "input":  "CsvDelimiter",
+                                                                   "path":  "CsvDelimiter",
+                                                                   "title":  "Dấu phân cách",
+                                                                   "width":  4
+                                                               },
+                                                               {
+                                                                   "input":  "CsvDecimalSeparator",
+                                                                   "path":  "CsvDecimalSeparator",
+                                                                   "title":  "Thập phân",
+                                                                   "width":  4
+                                                               },
+                                                               {
+                                                                   "input":  "CsvThousandsSeparator",
+                                                                   "path":  "CsvThousandsSeparator",
+                                                                   "title":  "Phân nhóm",
+                                                                   "width":  4
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "group":  "vertical",
+                                              "name":  "CsvMappingsGroup",
+                                              "title":  "Ánh xạ cột nguồn",
+                                              "after":  "CsvImportOptions",
+                                              "children":  [
+                                                               {
+                                                                   "group":  "alwaysHorizontal",
+                                                                   "name":  "CsvMapRowOne",
+                                                                   "children":  [
+                                                                                    {
+                                                                                        "input":  "CsvColumnExternalId",
+                                                                                        "path":  "CsvColumnExternalId",
+                                                                                        "width":  15
+                                                                                    },
+                                                                                    {
+                                                                                        "input":  "CsvColumnTransactionDate",
+                                                                                        "path":  "CsvColumnTransactionDate",
+                                                                                        "width":  15
+                                                                                    },
+                                                                                    {
+                                                                                        "input":  "CsvColumnInvoiceNumber",
+                                                                                        "path":  "CsvColumnInvoiceNumber",
+                                                                                        "width":  15
+                                                                                    },
+                                                                                    {
+                                                                                        "input":  "CsvColumnMemo",
+                                                                                        "path":  "CsvColumnMemo",
+                                                                                        "width":  15
+                                                                                    }
+                                                                                ]
+                                                               },
+                                                               {
+                                                                   "group":  "alwaysHorizontal",
+                                                                   "name":  "CsvMapRowTwo",
+                                                                   "children":  [
+                                                                                    {
+                                                                                        "input":  "CsvColumnGross",
+                                                                                        "path":  "CsvColumnGross",
+                                                                                        "width":  15
+                                                                                    },
+                                                                                    {
+                                                                                        "input":  "CsvColumnFee",
+                                                                                        "path":  "CsvColumnFee",
+                                                                                        "width":  15
+                                                                                    },
+                                                                                    {
+                                                                                        "input":  "CsvColumnNet",
+                                                                                        "path":  "CsvColumnNet",
+                                                                                        "width":  15
+                                                                                    },
+                                                                                    {
+                                                                                        "input":  "CsvColumnCurrency",
+                                                                                        "path":  "CsvColumnCurrency",
+                                                                                        "width":  15
+                                                                                    }
+                                                                                ]
+                                                               }
+                                                           ]
+                                          },
+                                          {
+                                              "input":  "CsvPreviewSummary",
+                                              "path":  "CsvPreviewSummary",
+                                              "title":  "Kết quả xem trước",
+                                              "readOnly":  true,
+                                              "after":  "CsvMappingsGroup",
+                                              "width":  80
+                                          },
+                                          {
+                                              "table":  "GiaoDichSaoKe",
+                                              "path":  "Объект.GiaoDichSaoKe",
+                                              "heightInTableRows":  12,
+                                              "selectionMode":  "SingleRow",
+                                              "currentRowUse":  "Auto",
+                                              "commandBar":  {
+                                                                 "autofill":  false,
+                                                                 "horizontalAlign":  "Right",
+                                                                 "children":  [
+                                                                                  {
+                                                                                      "button":  "XemTruocCSV",
+                                                                                      "command":  "XemTruocCSV"
+                                                                                  },
+                                                                                  {
+                                                                                      "button":  "GhepHoaDonAR",
+                                                                                      "command":  "GhepHoaDonAR"
+                                                                                  }
+                                                                              ]
+                                                             },
+                                              "columns":  [
+                                                              {
+                                                                  "input":  "CsvLineExternalId",
+                                                                  "path":  "Объект.GiaoDichSaoKe.ExternalId",
+                                                                  "title":  "Mã giao dịch ngoài",
+                                                                  "readOnly":  true,
+                                                                  "width":  16
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineInvoiceNumber",
+                                                                  "path":  "Объект.GiaoDichSaoKe.InvoiceNumber",
+                                                                  "title":  "Số hóa đơn CSV",
+                                                                  "readOnly":  true,
+                                                                  "width":  15,
+                                                                  "after":  "CsvLineExternalId"
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineKey",
+                                                                  "path":  "Объект.GiaoDichSaoKe.KhoaGiaoDich",
+                                                                  "title":  "Khóa giao dịch",
+                                                                  "readOnly":  true,
+                                                                  "width":  14
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineDate",
+                                                                  "path":  "Объект.GiaoDichSaoKe.NgayGiaoDich",
+                                                                  "title":  "Ngày giao dịch",
+                                                                  "readOnly":  true,
+                                                                  "width":  11
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineInvoice",
+                                                                  "path":  "Объект.GiaoDichSaoKe.HoaDonAR",
+                                                                  "title":  "Hóa đơn AR",
+                                                                  "width":  20
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineMemo",
+                                                                  "path":  "Объект.GiaoDichSaoKe.DienGiaiDong",
+                                                                  "title":  "Diễn giải",
+                                                                  "readOnly":  true,
+                                                                  "width":  25
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineCurrency",
+                                                                  "path":  "Объект.GiaoDichSaoKe.TienTeDong",
+                                                                  "title":  "Tiền tệ",
+                                                                  "readOnly":  true,
+                                                                  "width":  8
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineGross",
+                                                                  "path":  "Объект.GiaoDichSaoKe.Gross",
+                                                                  "title":  "Gross",
+                                                                  "readOnly":  true,
+                                                                  "width":  15
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineFee",
+                                                                  "path":  "Объект.GiaoDichSaoKe.Phi",
+                                                                  "title":  "Phí",
+                                                                  "readOnly":  true,
+                                                                  "width":  15
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineNet",
+                                                                  "path":  "Объект.GiaoDichSaoKe.Net",
+                                                                  "title":  "Net",
+                                                                  "readOnly":  true,
+                                                                  "width":  15
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineMatched",
+                                                                  "path":  "Объект.GiaoDichSaoKe.SoTienGhep",
+                                                                  "title":  "Số tiền ghép",
+                                                                  "width":  15
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineStatus",
+                                                                  "path":  "Объект.GiaoDichSaoKe.TrangThaiDong",
+                                                                  "title":  "Trạng thái",
+                                                                  "readOnly":  true,
+                                                                  "width":  12
+                                                              },
+                                                              {
+                                                                  "input":  "CsvLineReason",
+                                                                  "path":  "Объект.GiaoDichSaoKe.LyDoChan",
+                                                                  "title":  "Lý do",
+                                                                  "readOnly":  true,
+                                                                  "width":  35
+                                                              }
+                                                          ]
+                                          }
+                                      ]
+                     },
+                     {
+                         "autoCmdBar":  "FormCommandBar",
+                         "children":  [
+                                          {
+                                              "button":  "ChonTepCSV",
+                                              "command":  "ChonTepCSV",
+                                              "locationInCommandBar":  "InCommandBar"
+                                          }
+                                      ]
+                     }
+                 ],
+    "formEvents":  [
+                       {
+                           "name":  "OnOpen",
+                           "handler":  "OnOpen"
+                       }
+                   ]
+}

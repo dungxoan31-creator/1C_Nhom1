@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-170427-99fc73a42dfd4ff9b00fbe601862e579",
+"phase": "approval_ktt",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "KTT batch stage mismatch: success=2 failure=1 lowPosted=Yes highStatus=ChoDuyetCFO paymentStatus=DaDuyet.\n{CommonModule.SeedBoundaryTestsServer.Module(195)}:Raise StrTemplate(\"KTT batch stage mismatch: success=%1 failure=%2 lowPosted=%3 highStatus=%4 paymentStatus=%5.\",\n{CommonModule.SeedBoundaryTestsServer.Module(68)}:Result.data = RunBulkApprovalKTTStage();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

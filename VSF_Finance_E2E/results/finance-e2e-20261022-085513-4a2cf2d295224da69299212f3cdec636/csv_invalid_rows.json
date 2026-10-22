@@ -1,0 +1,56 @@
+{
+"run_id": "finance-e2e-20261022-085513-4a2cf2d295224da69299212f3cdec636",
+"phase": "csv_invalid_rows",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"case_count": 4,
+"passed_count": 4,
+"all_passed": true,
+"cases": [
+{
+"case_name": "unmatched_row",
+"passed": true,
+"posted": false,
+"cash_delta_vnd": 0,
+"ar_delta_vnd": 0,
+"movement_rows": 0,
+"active_key_rows": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(6202)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(6141)}:Cases.Add(AttemptFinanceE2ECsvInvalidPosting(Unmatched, Context, InvoiceRef, \"unmatched_row\", ARBefore, CashBefore));\n{CommonModule.SeedBoundaryTestsServer.Module(115)}:Result.data = VerifyFinanceE2ECsvInvalidRows();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post: \"Bảng kê đối soát kênh thanh toán\"!\n[StoredDataError]"
+},
+{
+"case_name": "fee_imbalance",
+"passed": true,
+"posted": false,
+"cash_delta_vnd": 0,
+"ar_delta_vnd": 0,
+"movement_rows": 0,
+"active_key_rows": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(6202)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(6145)}:Cases.Add(AttemptFinanceE2ECsvInvalidPosting(Imbalanced, Context, InvoiceRef, \"fee_imbalance\", ARBefore, CashBefore));\n{CommonModule.SeedBoundaryTestsServer.Module(115)}:Result.data = VerifyFinanceE2ECsvInvalidRows();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post: \"Bảng kê đối soát kênh thanh toán\"!\n[StoredDataError]"
+},
+{
+"case_name": "allocation_mismatch",
+"passed": true,
+"posted": false,
+"cash_delta_vnd": 0,
+"ar_delta_vnd": 0,
+"movement_rows": 0,
+"active_key_rows": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(6202)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(6149)}:Cases.Add(AttemptFinanceE2ECsvInvalidPosting(PartialAllocation, Context, InvoiceRef, \"allocation_mismatch\", ARBefore, CashBefore));\n{CommonModule.SeedBoundaryTestsServer.Module(115)}:Result.data = VerifyFinanceE2ECsvInvalidRows();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post: \"Bảng kê đối soát kênh thanh toán\"!\n[StoredDataError]"
+},
+{
+"case_name": "over_collection",
+"passed": true,
+"posted": false,
+"cash_delta_vnd": 0,
+"ar_delta_vnd": 0,
+"movement_rows": 0,
+"active_key_rows": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(6202)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(6153)}:Cases.Add(AttemptFinanceE2ECsvInvalidPosting(OverCollection, Context, InvoiceRef, \"over_collection\", ARBefore, CashBefore));\n{CommonModule.SeedBoundaryTestsServer.Module(115)}:Result.data = VerifyFinanceE2ECsvInvalidRows();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post: \"Bảng kê đối soát kênh thanh toán\"!\n[StoredDataError]"
+}
+],
+"cash_unchanged": true,
+"ar_unchanged": true
+}
+}

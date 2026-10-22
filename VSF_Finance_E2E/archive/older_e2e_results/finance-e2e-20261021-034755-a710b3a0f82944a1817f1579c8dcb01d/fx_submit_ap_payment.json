@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-034755-a710b3a0f82944a1817f1579c8dcb01d",
+"phase": "fx_submit_ap_payment",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"payment": "E2E-UNC-USD-01",
+"foreign_amount": 500,
+"settlement_rate": 25100,
+"indicative_vnd": 12550000,
+"status": "ChoDuyet"
+}
+}

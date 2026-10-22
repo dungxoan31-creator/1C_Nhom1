@@ -1,0 +1,21 @@
+﻿Process database structure...
+
+Collecting service information...
+
+New object: Document.CanTruCongNoNoiBo
+New object: Document.DoiSoatKenhThanhToan
+New object: Catalog.ChiNhanh
+New object: InformationRegister.PhanQuyenChiNhanh
+New object: InformationRegister.GiaoDichSaoKeDaNhap
+Object modified: Document.BienBanNghiemThuGiaiDoan
+Object modified: Document.HoaDonGTGTDauRa
+Object modified: Document.UyNhiemChi
+Object modified: Catalog.PhapNhan
+Object modified: Catalog.TaiKhoanTien
+Object modified: Catalog.KhoanMucDongTien
+Object modified: Enum.TrangThaiLenhThanhToan
+Accepting changes...
+
+Building help index...
+
+Configuration successfully updated

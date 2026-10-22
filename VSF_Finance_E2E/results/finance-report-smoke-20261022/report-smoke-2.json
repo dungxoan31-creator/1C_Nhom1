@@ -1,0 +1,14 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_reporting-fresh-20261022-2",
+    "workflow":  "ReportSmoke",
+    "flow":  "native 1C UI → AR ledger, AP ledger, aging report",
+    "verified":  [
+
+                 ],
+    "error":  "Report form SoChiTietCongNoAR did not open. Visible panes: Bàn làm việc \u0026 Điều hành Web ERP - VinSmart Future | Sections panel",
+    "report_audit":  [
+
+                     ]
+}

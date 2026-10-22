@@ -1,0 +1,75 @@
+{
+"run_id": "finance-e2e-20261020-183553-98e52a141ff943198aad64790bb077ca",
+"phase": "security_role_matrix",
+"user": "ketoan_ap",
+"role": "AP",
+"status": "PASS",
+"passed": true,
+"total": 10,
+"passed_cases": 10,
+"failed_cases": 0,
+"skipped_cases": 0,
+"cases": [
+{
+"name": "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 2: Nguoi lap tu duyet bi chan",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+"status": "PASS",
+"expected": "No",
+"actual": "No"
+},
+{
+"name": "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 7: Xem toan bo So cai",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 8: Chi CFO duoc chi dinh moi duoc phat hanh hoa don",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes",
+"detail": "Vi phạm phân định trách nhiệm (Segregation of Duties): Kế toán Phải trả (AP) không được phép ghi sổ, sửa hoặc can thiệp chứng từ Phải thu (AR)!\n{CommonModule.PhanQuyenBaoMatServer.Module(135)}:Raise \"Vi phạm phân định trách nhiệm (Segregation of Duties): Kế toán Phải trả (AP) không được phép ghi sổ, sửa hoặc can thiệp chứng từ Phải thu (AR)!\";\n{CommonModule.PhanQuyenBaoMatServer.Module(783)}:KiemTraQuyenChungTu(Doc, \"Write\");\n{CommonModule.PhanQuyenBaoMatServer.Module(232)}:TransitionResult = KiemTraChuyenTrangThaiHoaDonDauRa();\n{ManagedApplicationModule(79)}:PhanQuyenBaoMatServer.ThucThiKiemThuBaoMatToanDien(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]"
+},
+{
+"name": "Ca 9: Ghi so cấn trừ nội bộ chỉ cho KTT/CFO",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+},
+{
+"name": "Ca 10: Ghi so đối soát kênh thanh toán chỉ cho KTT/CFO",
+"status": "PASS",
+"expected": "Yes",
+"actual": "Yes"
+}
+]
+}

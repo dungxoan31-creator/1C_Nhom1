@@ -1,0 +1,628 @@
+﻿{
+    "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+    "status":  "FAIL",
+    "error":  "Posting lifecycle regression failed: {\"run_id\":\"finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c\",\"status\":\"FAIL\",\"user\":\"cfo_giamdoc\",\"cases\":[{\"name\":\"ZeroResidual\",\"passed\":false,\"error\":\"=================================================================\\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -\\u003e UNPOST -\\u003e REPOST) \\n   Thoi gian bat dau: 10/20/2026 8:09:11 AM\\n=================================================================\\n[*] Dependency selected: UyNhiemChi (á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\\n[*] Dependency selected: HoaDonNhaCungCap (HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM)\\n[*] Dependency selected: PhieuThuTienKhachHang (Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-PT001 dated 10/12/2026 10:00:00 AM)\\n[*] Dependency selected: HoaDonGTGTDauRa (HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\\n[*] Dependency selected: BienBanNghiemThuGiaiDoan (BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM)\\n  [UNPOST] UyNhiemChi: zero movements verified\\n  [UNPOST] HoaDonNhaCungCap: zero movements verified\\n  [UNPOST] PhieuThuTienKhachHang: zero movements verified\\n  [UNPOST] HoaDonGTGTDauRa: zero movements verified\\n  [UNPOST] BienBanNghiemThuGiaiDoan: zero movements verified\\n  [REPOST] BienBanNghiemThuGiaiDoan: 1 GL rows and all register rows match\\n  [REPOST] HoaDonGTGTDauRa: 1 GL rows and all register rows match\\n  [REPOST] PhieuThuTienKhachHang: 1 GL rows and all register rows match\\n[FAIL] Posting lifecycle exception: Error calling context method (Write)\\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1433)}:DocObj.Write(DocumentWriteMode.Posting);\\n{CommonModule.SeedBoundaryTestsServer.Module(754)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\\n{ManagedApplicationModule(39)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\\n\\n[ScriptRuntimeError]\\n, reason:\\nError running processor - \\u0027BeforeWrite\\u0027\\n, reason:\\nVi pháº¡m nguyÃªn táº¯c Maker-Checker: PhiÃªn ngÆ°á»i dÃ¹ng \\u0027cfo_giamdoc\\u0027 khÃ´ng pháº£i lÃ  NgÆ°á»i duyá»‡t Ä‘Ã£ chá»‰ Ä‘á»‹nh (\\u0027ketoan_truong\\u0027)!\\n[ScriptRuntimeError, ExceptionRaisedFromScript]\\n-----------------------------------------------------------------\\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \\n-----------------------------------------------------------------\\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\\n=================================================================\\n\\u003e\\u003e XAC NHAN: POSTING_LIFECYCLE_FAIL\\n=================================================================\"},{\"name\":\"RepostParity\",\"passed\":false,\"error\":\"=================================================================\\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -\\u003e UNPOST -\\u003e REPOST) \\n   Thoi gian bat dau: 10/20/2026 8:09:11 AM\\n=================================================================\\n[*] Dependency selected: UyNhiemChi (á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\\n[*] Dependency selected: HoaDonNhaCungCap (HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM)\\n[*] Dependency selected: PhieuThuTienKhachHang (Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-PT001 dated 10/12/2026 10:00:00 AM)\\n[*] Dependency selected: HoaDonGTGTDauRa (HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\\n[*] Dependency selected: BienBanNghiemThuGiaiDoan (BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM)\\n  [UNPOST] UyNhiemChi: zero movements verified\\n  [UNPOST] HoaDonNhaCungCap: zero movements verified\\n  [UNPOST] PhieuThuTienKhachHang: zero movements verified\\n  [UNPOST] HoaDonGTGTDauRa: zero movements verified\\n  [UNPOST] BienBanNghiemThuGiaiDoan: zero movements verified\\n  [REPOST] BienBanNghiemThuGiaiDoan: 1 GL rows and all register rows match\\n  [REPOST] HoaDonGTGTDauRa: 1 GL rows and all register rows match\\n  [REPOST] PhieuThuTienKhachHang: 1 GL rows and all register rows match\\n[FAIL] Posting lifecycle exception: Error calling context method (Write)\\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1433)}:DocObj.Write(DocumentWriteMode.Posting);\\n{CommonModule.SeedBoundaryTestsServer.Module(754)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\\n{ManagedApplicationModule(39)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\\n\\n[ScriptRuntimeError]\\n, reason:\\nError running processor - \\u0027BeforeWrite\\u0027\\n, reason:\\nVi pháº¡m nguyÃªn táº¯c Maker-Checker: PhiÃªn ngÆ°á»i dÃ¹ng \\u0027cfo_giamdoc\\u0027 khÃ´ng pháº£i lÃ  NgÆ°á»i duyá»‡t Ä‘Ã£ chá»‰ Ä‘á»‹nh (\\u0027ketoan_truong\\u0027)!\\n[ScriptRuntimeError, ExceptionRaisedFromScript]\\n-----------------------------------------------------------------\\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \\n-----------------------------------------------------------------\\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\\n=================================================================\\n\\u003e\\u003e XAC NHAN: POSTING_LIFECYCLE_FAIL\\n=================================================================\"},{\"name\":\"TransactionRollback\",\"passed\":false,\"error\":\"=================================================================\\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -\\u003e UNPOST -\\u003e REPOST) \\n   Thoi gian bat dau: 10/20/2026 8:09:11 AM\\n=================================================================\\n[*] Dependency selected: UyNhiemChi (á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\\n[*] Dependency selected: HoaDonNhaCungCap (HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM)\\n[*] Dependency selected: PhieuThuTienKhachHang (Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-PT001 dated 10/12/2026 10:00:00 AM)\\n[*] Dependency selected: HoaDonGTGTDauRa (HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\\n[*] Dependency selected: BienBanNghiemThuGiaiDoan (BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM)\\n  [UNPOST] UyNhiemChi: zero movements verified\\n  [UNPOST] HoaDonNhaCungCap: zero movements verified\\n  [UNPOST] PhieuThuTienKhachHang: zero movements verified\\n  [UNPOST] HoaDonGTGTDauRa: zero movements verified\\n  [UNPOST] BienBanNghiemThuGiaiDoan: zero movements verified\\n  [REPOST] BienBanNghiemThuGiaiDoan: 1 GL rows and all register rows match\\n  [REPOST] HoaDonGTGTDauRa: 1 GL rows and all register rows match\\n  [REPOST] PhieuThuTienKhachHang: 1 GL rows and all register rows match\\n[FAIL] Posting lifecycle exception: Error calling context method (Write)\\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1433)}:DocObj.Write(DocumentWriteMode.Posting);\\n{CommonModule.SeedBoundaryTestsServer.Module(754)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\\n{ManagedApplicationModule(39)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\\n\\n[ScriptRuntimeError]\\n, reason:\\nError running processor - \\u0027BeforeWrite\\u0027\\n, reason:\\nVi pháº¡m nguyÃªn táº¯c Maker-Checker: PhiÃªn ngÆ°á»i dÃ¹ng \\u0027cfo_giamdoc\\u0027 khÃ´ng pháº£i lÃ  NgÆ°á»i duyá»‡t Ä‘Ã£ chá»‰ Ä‘á»‹nh (\\u0027ketoan_truong\\u0027)!\\n[ScriptRuntimeError, ExceptionRaisedFromScript]\\n-----------------------------------------------------------------\\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \\n-----------------------------------------------------------------\\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\\n=================================================================\\n\\u003e\\u003e XAC NHAN: POSTING_LIFECYCLE_FAIL\\n=================================================================\"},{\"name\":\"GLSubledger\",\"passed\":true,\"error\":\"\"}]}",
+    "completed_phases":  [
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "setup",
+                                 "user":  "Admin",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "legal_entity":  "PN-VSF",
+                                              "customer":  "TEST_VG_VINFAST_VN",
+                                              "customer_contract":  "HD-TEST_VG_VINFAST_VN-2025",
+                                              "vendor":  "E2E_AWS_VND",
+                                              "vendor_contract":  "HD-E2E-AWS-VND-2026",
+                                              "bank_account":  "TK-E2E-VN",
+                                              "opening_cash_vnd":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ar_submit_acceptance",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoDuyetNoiBo",
+                                              "net_vnd":  200000000,
+                                              "vat_vnd":  16000000,
+                                              "gross_vnd":  216000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "cfo_approve_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "approver":  "cfo_giamdoc",
+                                              "status":  "DaDuyetNoiBo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "cfo_post_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "approver":  "cfo_giamdoc",
+                                              "posted":  true,
+                                              "status":  "DaGhiSo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ar_submit_invoice",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AR001",
+                                              "sales_invoice_number":  "E2EINV-001",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoKySo",
+                                              "base_acceptance":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "cfo_issue_invoice",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AR001",
+                                              "approver":  "cfo_giamdoc",
+                                              "posted":  true,
+                                              "net_vnd":  200000000,
+                                              "vat_vnd":  16000000,
+                                              "gross_vnd":  216000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ar_create_receipts",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "receipt_number":  "E2E-PT001",
+                                              "receipt_amount_vnd":  216000000,
+                                              "over_receipt_number":  "E2E-NEG01",
+                                              "over_receipt_amount_vnd":  216000001,
+                                              "source_invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "cfo_post_receipts",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "receipt_posted":  true,
+                                              "ar_invoice_residual_vnd":  0,
+                                              "over_receipt_posted":  false,
+                                              "over_receipt_ar_movements":  0,
+                                              "over_receipt_gl_movements":  0,
+                                              "over_receipt_cash_movements":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ap_submit_invoice",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AP001",
+                                              "maker":  "ketoan_ap",
+                                              "approver":  "ketoan_truong",
+                                              "status":  "ChoKeToanTruongDuyet",
+                                              "gross_vnd":  200000000,
+                                              "fct_vat_vnd":  10000000,
+                                              "fct_cit_vnd":  10000000,
+                                              "net_payable_vnd":  180000000,
+                                              "expense_vnd":  190000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ktt_post_ap_invoice",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AP001",
+                                              "approver":  "ketoan_truong",
+                                              "posted":  true,
+                                              "gross_vnd":  200000000,
+                                              "net_payable_vnd":  180000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ap_submit_payment",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "payment_number":  "E2E-UNC01",
+                                              "maker":  "ketoan_ap",
+                                              "status":  "ChoDuyet",
+                                              "amount_vnd":  180000000,
+                                              "fee_vnd":  0,
+                                              "source_invoice":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-AP001 dated 10/13/2026 9:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "ktt_approve_payment",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "payment_number":  "E2E-UNC01",
+                                              "approver":  "ketoan_truong",
+                                              "status":  "DaGuiNganHang"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "cfo_post_payment_verify",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_posted":  true,
+                                              "sales_invoice_posted":  true,
+                                              "receipt_posted":  true,
+                                              "ap_invoice_posted":  true,
+                                              "payment_posted":  true,
+                                              "ar_bbnt_residual_vnd":  0,
+                                              "ar_invoice_residual_vnd":  0,
+                                              "ap_invoice_residual_vnd":  0,
+                                              "fct_vat_outstanding_vnd":  10000000,
+                                              "fct_cit_outstanding_vnd":  10000000,
+                                              "gl_bank_debit_vnd":  216000000,
+                                              "gl_bank_credit_vnd":  180000000,
+                                              "gl_ar_debit_vnd":  216000000,
+                                              "gl_ar_credit_vnd":  216000000,
+                                              "gl_ap_debit_vnd":  180000000,
+                                              "gl_ap_credit_vnd":  180000000,
+                                              "sales_vat_outstanding_vnd":  16000000,
+                                              "bank_closing_vnd":  36000000,
+                                              "opening_cash_vnd":  0,
+                                              "ar_receipt_vnd":  216000000,
+                                              "ap_payment_vnd":  180000000,
+                                              "payment_number":  "E2E-UNC01"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "approval_setup",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "low_invoice":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM",
+                                              "high_invoice":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-HIGH dated 10/15/2026 10:00:00 AM",
+                                              "payment":  "á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM",
+                                              "maker":  "ketoan_ap",
+                                              "maker_queue_count":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "approval_ar_queue",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "user":  "ketoan_ar",
+                                              "queue_count":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "approval_ktt",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "batch_success":  3,
+                                              "batch_failure":  0,
+                                              "low_invoice_posted":  true,
+                                              "low_invoice_gl_rows":  1,
+                                              "high_invoice_waiting_cfo":  true,
+                                              "payment_waiting_cfo":  true,
+                                              "ktt_queue_after_escalation":  0,
+                                              "ktt_forbidden_attempt_rejected":  true
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "approval_cfo",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "batch_success":  2,
+                                              "batch_failure":  0,
+                                              "high_invoice_posted":  true,
+                                              "high_invoice_ap_residual_vnd":  500000001,
+                                              "payment_posted":  true,
+                                              "paid_invoice_ap_residual_vnd":  0,
+                                              "bank_closing_vnd":  35000000,
+                                              "high_invoice_gl_rows":  1,
+                                              "payment_gl_rows":  1,
+                                              "payment_cash_rows":  1
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "concurrency_setup",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+                                              "invoice_status":  "ChoKySo",
+                                              "maker":  "ketoan_ar",
+                                              "expected_ar_vnd":  270000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "concurrency_post_invoice",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "E2E-CONC-AR-INV",
+                                              "approver":  "cfo_giamdoc",
+                                              "status":  "DaPhatHanh",
+                                              "posted":  true,
+                                              "amount_vnd":  270000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "concurrency_receipt_setup",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+                                              "opening_ar_vnd":  270000000,
+                                              "receipt_1":  "E2E-CONC-PT-1",
+                                              "receipt_2":  "E2E-CONC-PT-2",
+                                              "maker":  "ketoan_ar"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "security_role_matrix",
+                                 "user":  "Admin",
+                                 "role":  "QuanTri",
+                                 "status":  "PASS",
+                                 "passed":  true,
+                                 "total":  7,
+                                 "passed_cases":  7,
+                                 "failed_cases":  0,
+                                 "skipped_cases":  0,
+                                 "cases":  [
+                                               {
+                                                   "name":  "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 2: Nguoi lap tu duyet bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 7: Xem toan bo So cai",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               }
+                                           ]
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "security_role_matrix",
+                                 "user":  "ketoan_ar",
+                                 "role":  "AR",
+                                 "status":  "PASS",
+                                 "passed":  true,
+                                 "total":  7,
+                                 "passed_cases":  7,
+                                 "failed_cases":  0,
+                                 "skipped_cases":  0,
+                                 "cases":  [
+                                               {
+                                                   "name":  "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 2: Nguoi lap tu duyet bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 7: Xem toan bo So cai",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               }
+                                           ]
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "security_role_matrix",
+                                 "user":  "ketoan_ap",
+                                 "role":  "AP",
+                                 "status":  "PASS",
+                                 "passed":  true,
+                                 "total":  7,
+                                 "passed_cases":  7,
+                                 "failed_cases":  0,
+                                 "skipped_cases":  0,
+                                 "cases":  [
+                                               {
+                                                   "name":  "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 2: Nguoi lap tu duyet bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 7: Xem toan bo So cai",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               }
+                                           ]
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "security_role_matrix",
+                                 "user":  "ketoan_truong",
+                                 "role":  "LanhDaoTaiChinh",
+                                 "status":  "PASS",
+                                 "passed":  true,
+                                 "total":  7,
+                                 "passed_cases":  7,
+                                 "failed_cases":  0,
+                                 "skipped_cases":  0,
+                                 "cases":  [
+                                               {
+                                                   "name":  "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 2: Nguoi lap tu duyet bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 7: Xem toan bo So cai",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               }
+                                           ]
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                                 "phase":  "security_role_matrix",
+                                 "user":  "cfo_giamdoc",
+                                 "role":  "LanhDaoTaiChinh",
+                                 "status":  "PASS",
+                                 "passed":  true,
+                                 "total":  7,
+                                 "passed_cases":  7,
+                                 "failed_cases":  0,
+                                 "skipped_cases":  0,
+                                 "cases":  [
+                                               {
+                                                   "name":  "Ca 1: Du 4 nguoi dung nghiep vu + Admin dung vai tro",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 2: Nguoi lap tu duyet bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 3: Nguoi duoc chi dinh duyet (Admin bi chan)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 4: Phien khac Nguoi duyet chi dinh bi chan",
+                                                   "status":  "PASS",
+                                                   "expected":  "Yes",
+                                                   "actual":  "Yes"
+                                               },
+                                               {
+                                                   "name":  "Ca 5: Ghi so chung tu AP (chan: AR, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 6: Ghi so chung tu AR (chan: AP, doi soat, ky thuat, quan tri)",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               },
+                                               {
+                                                   "name":  "Ca 7: Xem toan bo So cai",
+                                                   "status":  "PASS",
+                                                   "expected":  "No",
+                                                   "actual":  "No"
+                                               }
+                                           ]
+                             }
+                         ],
+    "posting_lifecycle":  {
+                              "run_id":  "finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+                              "status":  "FAIL",
+                              "user":  "cfo_giamdoc",
+                              "cases":  [
+                                            {
+                                                "name":  "ZeroResidual",
+                                                "passed":  false,
+                                                "error":  "=================================================================\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -\u003e UNPOST -\u003e REPOST) \n   Thoi gian bat dau: 10/20/2026 8:09:11 AM\n=================================================================\n[*] Dependency selected: UyNhiemChi (á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\n[*] Dependency selected: HoaDonNhaCungCap (HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM)\n[*] Dependency selected: PhieuThuTienKhachHang (Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-PT001 dated 10/12/2026 10:00:00 AM)\n[*] Dependency selected: HoaDonGTGTDauRa (HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\n[*] Dependency selected: BienBanNghiemThuGiaiDoan (BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM)\n  [UNPOST] UyNhiemChi: zero movements verified\n  [UNPOST] HoaDonNhaCungCap: zero movements verified\n  [UNPOST] PhieuThuTienKhachHang: zero movements verified\n  [UNPOST] HoaDonGTGTDauRa: zero movements verified\n  [UNPOST] BienBanNghiemThuGiaiDoan: zero movements verified\n  [REPOST] BienBanNghiemThuGiaiDoan: 1 GL rows and all register rows match\n  [REPOST] HoaDonGTGTDauRa: 1 GL rows and all register rows match\n  [REPOST] PhieuThuTienKhachHang: 1 GL rows and all register rows match\n[FAIL] Posting lifecycle exception: Error calling context method (Write)\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1433)}:DocObj.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(754)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\n{ManagedApplicationModule(39)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - \u0027BeforeWrite\u0027\n, reason:\nVi pháº¡m nguyÃªn táº¯c Maker-Checker: PhiÃªn ngÆ°á»i dÃ¹ng \u0027cfo_giamdoc\u0027 khÃ´ng pháº£i lÃ  NgÆ°á»i duyá»‡t Ä‘Ã£ chá»‰ Ä‘á»‹nh (\u0027ketoan_truong\u0027)!\n[ScriptRuntimeError, ExceptionRaisedFromScript]\n-----------------------------------------------------------------\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \n-----------------------------------------------------------------\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\n=================================================================\n\u003e\u003e XAC NHAN: POSTING_LIFECYCLE_FAIL\n================================================================="
+                                            },
+                                            {
+                                                "name":  "RepostParity",
+                                                "passed":  false,
+                                                "error":  "=================================================================\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -\u003e UNPOST -\u003e REPOST) \n   Thoi gian bat dau: 10/20/2026 8:09:11 AM\n=================================================================\n[*] Dependency selected: UyNhiemChi (á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\n[*] Dependency selected: HoaDonNhaCungCap (HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM)\n[*] Dependency selected: PhieuThuTienKhachHang (Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-PT001 dated 10/12/2026 10:00:00 AM)\n[*] Dependency selected: HoaDonGTGTDauRa (HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\n[*] Dependency selected: BienBanNghiemThuGiaiDoan (BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM)\n  [UNPOST] UyNhiemChi: zero movements verified\n  [UNPOST] HoaDonNhaCungCap: zero movements verified\n  [UNPOST] PhieuThuTienKhachHang: zero movements verified\n  [UNPOST] HoaDonGTGTDauRa: zero movements verified\n  [UNPOST] BienBanNghiemThuGiaiDoan: zero movements verified\n  [REPOST] BienBanNghiemThuGiaiDoan: 1 GL rows and all register rows match\n  [REPOST] HoaDonGTGTDauRa: 1 GL rows and all register rows match\n  [REPOST] PhieuThuTienKhachHang: 1 GL rows and all register rows match\n[FAIL] Posting lifecycle exception: Error calling context method (Write)\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1433)}:DocObj.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(754)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\n{ManagedApplicationModule(39)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - \u0027BeforeWrite\u0027\n, reason:\nVi pháº¡m nguyÃªn táº¯c Maker-Checker: PhiÃªn ngÆ°á»i dÃ¹ng \u0027cfo_giamdoc\u0027 khÃ´ng pháº£i lÃ  NgÆ°á»i duyá»‡t Ä‘Ã£ chá»‰ Ä‘á»‹nh (\u0027ketoan_truong\u0027)!\n[ScriptRuntimeError, ExceptionRaisedFromScript]\n-----------------------------------------------------------------\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \n-----------------------------------------------------------------\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\n=================================================================\n\u003e\u003e XAC NHAN: POSTING_LIFECYCLE_FAIL\n================================================================="
+                                            },
+                                            {
+                                                "name":  "TransactionRollback",
+                                                "passed":  false,
+                                                "error":  "=================================================================\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -\u003e UNPOST -\u003e REPOST) \n   Thoi gian bat dau: 10/20/2026 8:09:11 AM\n=================================================================\n[*] Dependency selected: UyNhiemChi (á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\n[*] Dependency selected: HoaDonNhaCungCap (HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM)\n[*] Dependency selected: PhieuThuTienKhachHang (Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-PT001 dated 10/12/2026 10:00:00 AM)\n[*] Dependency selected: HoaDonGTGTDauRa (HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\n[*] Dependency selected: BienBanNghiemThuGiaiDoan (BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM)\n  [UNPOST] UyNhiemChi: zero movements verified\n  [UNPOST] HoaDonNhaCungCap: zero movements verified\n  [UNPOST] PhieuThuTienKhachHang: zero movements verified\n  [UNPOST] HoaDonGTGTDauRa: zero movements verified\n  [UNPOST] BienBanNghiemThuGiaiDoan: zero movements verified\n  [REPOST] BienBanNghiemThuGiaiDoan: 1 GL rows and all register rows match\n  [REPOST] HoaDonGTGTDauRa: 1 GL rows and all register rows match\n  [REPOST] PhieuThuTienKhachHang: 1 GL rows and all register rows match\n[FAIL] Posting lifecycle exception: Error calling context method (Write)\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1433)}:DocObj.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(754)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\n{ManagedApplicationModule(39)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - \u0027BeforeWrite\u0027\n, reason:\nVi pháº¡m nguyÃªn táº¯c Maker-Checker: PhiÃªn ngÆ°á»i dÃ¹ng \u0027cfo_giamdoc\u0027 khÃ´ng pháº£i lÃ  NgÆ°á»i duyá»‡t Ä‘Ã£ chá»‰ Ä‘á»‹nh (\u0027ketoan_truong\u0027)!\n[ScriptRuntimeError, ExceptionRaisedFromScript]\n-----------------------------------------------------------------\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \n-----------------------------------------------------------------\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\n=================================================================\n\u003e\u003e XAC NHAN: POSTING_LIFECYCLE_FAIL\n================================================================="
+                                            },
+                                            {
+                                                "name":  "GLSubledger",
+                                                "passed":  true,
+                                                "error":  ""
+                                            }
+                                        ]
+                          },
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c",
+    "base_infobase":  ".\\VSF_Finance_E2E\\dt_working\\restore_final_20261020_080000",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261020-080754-f951249017ba46daae719d28b2f6065c"
+}

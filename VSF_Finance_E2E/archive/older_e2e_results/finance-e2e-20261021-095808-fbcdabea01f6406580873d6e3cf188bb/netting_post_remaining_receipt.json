@@ -1,0 +1,12 @@
+{
+"run_id": "finance-e2e-20261021-095808-fbcdabea01f6406580873d6e3cf188bb",
+"phase": "netting_post_remaining_receipt",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"receipt_posted": true,
+"ar_closing_vnd": 0,
+"bank_increase_vnd": 3200000
+}
+}

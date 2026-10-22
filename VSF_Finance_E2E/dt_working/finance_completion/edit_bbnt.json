@@ -1,0 +1,17 @@
+{
+    "elements":  [
+                     {
+                         "move":  [
+                                      "NguoiTao",
+                                      "NguoiDuyet",
+                                      "TrangThai",
+                                      "DienGiai"
+                                  ],
+                         "into":  "NhatKyVaGhiChu"
+                     },
+                     {
+                         "readOnly":  false,
+                         "set":  "NguoiDuyet"
+                     }
+                 ]
+}

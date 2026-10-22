@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-025901-52da2cab0bca4830b3007b0730d96c58",
+"phase": "fx_approve_refund",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"refund": "E2E-REFUND-USD-01",
+"duplicate_refund": "E2E-REFUND-USD-DUP",
+"approver": "ketoan_truong",
+"status": "DaDuyet",
+"posted": false
+}
+}

@@ -1,0 +1,31 @@
+{
+"run_id": "finance-e2e-20261020-062307-c0332b6cc1f14b30b7b7920c7ce7413b",
+"phase": "cfo_post_payment_verify",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"acceptance_posted": true,
+"sales_invoice_posted": true,
+"receipt_posted": true,
+"ap_invoice_posted": true,
+"payment_posted": true,
+"ar_bbnt_residual_vnd": 0,
+"ar_invoice_residual_vnd": 0,
+"ap_invoice_residual_vnd": 0,
+"fct_vat_outstanding_vnd": 10000000,
+"fct_cit_outstanding_vnd": 10000000,
+"gl_bank_debit_vnd": 220000000,
+"gl_bank_credit_vnd": 180000000,
+"gl_ar_debit_vnd": 220000000,
+"gl_ar_credit_vnd": 220000000,
+"gl_ap_debit_vnd": 180000000,
+"gl_ap_credit_vnd": 180000000,
+"sales_vat_outstanding_vnd": 20000000,
+"bank_closing_vnd": 40000000,
+"opening_cash_vnd": 0,
+"ar_receipt_vnd": 220000000,
+"ap_payment_vnd": 180000000,
+"payment_number": "E2E-UNC01"
+}
+}

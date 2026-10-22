@@ -1,0 +1,16 @@
+{
+    "elements":  [
+                     {
+                         "events":  {
+                                        "OnChange":  "BienBanNghiemThuOnChange"
+                                    },
+                         "set":  "BienBanNghiemThu"
+                     },
+                     {
+                         "quickChoice":  true,
+                         "listChoiceMode":  true,
+                         "dropListButton":  true,
+                         "set":  "NguoiDuyet"
+                     }
+                 ]
+}

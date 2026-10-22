@@ -1,0 +1,26 @@
+[
+  {
+    "type": "Report",
+    "name": "SoChiTietCongNoAR",
+    "synonym": { "vi": "Sổ chi tiết công nợ phải thu (AR)", "en": "Accounts receivable ledger" },
+    "comment": "Đối chiếu phát sinh và số dư chi tiết từ sổ phụ công nợ phải thu.",
+    "useStandardCommands": true,
+    "mainDataCompositionSchema": "Report.SoChiTietCongNoAR.Template.ОсновнаяСхемаКомпоновкиДанных"
+  },
+  {
+    "type": "Report",
+    "name": "SoChiTietCongNoAP",
+    "synonym": { "vi": "Sổ chi tiết công nợ phải trả (AP)", "en": "Accounts payable ledger" },
+    "comment": "Đối chiếu phát sinh và số dư chi tiết từ sổ phụ công nợ phải trả.",
+    "useStandardCommands": true,
+    "mainDataCompositionSchema": "Report.SoChiTietCongNoAP.Template.ОсновнаяСхемаКомпоновкиДанных"
+  },
+  {
+    "type": "Report",
+    "name": "BaoCaoTuoiNo",
+    "synonym": { "vi": "Báo cáo tuổi nợ AR/AP", "en": "AR/AP aging report" },
+    "comment": "Phân nhóm số dư công nợ theo hạn thanh toán tại ngày chốt.",
+    "useStandardCommands": true,
+    "mainDataCompositionSchema": "Report.BaoCaoTuoiNo.Template.ОсновнаяСхемаКомпоновкиДанных"
+  }
+]

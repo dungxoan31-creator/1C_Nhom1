@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H&#432;&#7899;ng d&#7851;n quy tr&#236;nh t&#224;i ch&#237;nh</title>
+  <style>
+    :root { color-scheme: light; --red:#c8102e; --ink:#172033; --muted:#52627a; --line:#dce3ec; --bg:#f4f7fb; --green:#087f5b; --amber:#9a5b00; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding:24px; background:var(--bg); color:var(--ink); font:15px/1.55 "Segoe UI",Arial,sans-serif; }
+    main { max-width:1120px; margin:auto; }
+    header,.card { background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:0 2px 8px #1720330a; }
+    header { padding:24px 28px; border-top:4px solid var(--red); margin-bottom:18px; }
+    h1 { margin:0 0 6px; font-size:25px; } h2 { margin:0 0 8px; font-size:19px; } h3 { margin:18px 0 4px; font-size:15px; }
+    p { margin:6px 0 12px; } .muted { color:var(--muted); }
+    nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    a { color:var(--red); font-weight:650; text-decoration:none; }
+    nav a,.button { display:inline-block; padding:8px 12px; border:1px solid var(--line); border-radius:8px; background:#fff; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+    .card { padding:20px 22px; scroll-margin-top:12px; }
+    .tag { display:inline-block; margin:3px 4px 3px 0; padding:2px 8px; border-radius:999px; background:#f0f4f8; color:#35445b; font-size:12px; }
+    .warning { border-left:3px solid #d99000; padding:8px 12px; background:#fff8e7; }
+    .ok { color:var(--green); font-weight:700; }
+    ol,ul { padding-left:22px; margin:6px 0 12px; } li { margin:3px 0; }
+    .route-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    footer { margin:18px 4px; color:var(--muted); font-size:12px; }
+    @media(max-width:600px) { body { padding:12px; } header,.card { padding:16px; } h1 { font-size:21px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Quy tr&#236;nh t&#224;i ch&#237;nh VinSmart Future</h1>
+    <p class="muted">H&#432;&#7899;ng d&#7851;n ch&#7913;ng t&#7915;, vai tr&#242; ph&#234; duy&#7879;t v&#224; n&#417;i ki&#7875;m tra k&#7871;t qu&#7843; ghi s&#7893; trong c&#7845;u h&#236;nh VSF Finance.</p>
+    <nav aria-label="M&#7909;c h&#432;&#7899;ng d&#7851;n">
+      <a href="route=AR">Ph&#7843;i thu AR</a><a href="route=AP">Ph&#7843;i tr&#7843; AP</a><a href="route=CanTru">C&#7845;n tr&#7915;</a>
+      <a href="route=DoiSoatCSV">&#272;&#7889;i so&#225;t CSV</a><a href="route=TaiKhoanVaChuyenDongSo">T&#224;i kho&#7843;n v&#224; s&#7893;</a>
+    </nav>
+  </header>
+  <section class="grid">
+    <article class="card" id="AR">
+      <h2>1. K&#7871; to&#225;n ph&#7843;i thu AR</h2>
+      <p>Lu&#7891;ng ghi nh&#7853;n doanh thu b&#7855;t &#273;&#7847;u t&#7915; bi&#234;n b&#7843;n nghi&#7879;m thu, ti&#7871;p t&#7909;c b&#7857;ng h&#243;a &#273;&#417;n &#273;&#7847;u ra v&#224; k&#7871;t th&#250;c khi thu ti&#7873;n kh&#225;ch h&#224;ng.</p>
+      <ol>
+        <li>L&#7853;p <b>Bi&#234;n b&#7843;n nghi&#7879;m thu giai &#273;o&#7841;n</b>, ch&#7885;n ph&#225;p nh&#226;n, kh&#225;ch h&#224;ng v&#224; h&#7907;p &#273;&#7891;ng; ki&#7875;m tra gi&#225; tr&#7883;, VAT v&#224; t&#7893;ng thanh to&#225;n.</li>
+        <li>L&#7853;p h&#243;a &#273;&#417;n GTGT &#273;&#7847;u ra t&#7915; BBNT. H&#7879; th&#7889;ng sao ch&#233;p &#273;&#7889;i t&#225;c, h&#7907;p &#273;&#7891;ng v&#224; c&#225;c gi&#225; tr&#7883; thu&#7871; t&#7915; bi&#234;n b&#7843;n. Ng&#432;&#7901;i t&#7841;o l&#224; ng&#432;&#7901;i &#273;ang &#273;&#259;ng nh&#7853;p; ng&#432;&#7901;i duy&#7879;t ph&#7843;i l&#224; ng&#432;&#7901;i kh&#225;c theo Maker-Checker.</li>
+        <li>Chuy&#7875;n h&#243;a &#273;&#417;n qua tr&#7841;ng th&#225;i ch&#7901; duy&#7879;t n&#7897;i b&#7897;; sau khi ki&#7875;m tra m&#7899;i ghi nh&#7853;n tr&#7841;ng th&#225;i h&#243;a &#273;&#417;n &#273;i&#7879;n t&#7917; &#273;&#227; ph&#225;t h&#224;nh. Tr&#7841;ng th&#225;i n&#7897;i b&#7897; v&#224; tr&#7841;ng th&#225;i h&#243;a &#273;&#417;n &#273;i&#7879;n t&#7917; l&#224; hai n&#7897;i dung ri&#234;ng.</li>
+        <li>L&#7853;p phi&#7871;u thu, ch&#7885;n h&#243;a &#273;&#417;n c&#7847;n thu v&#224; ghi s&#7893;. &#272;&#7889;i chi&#7871;u s&#7889; d&#432; kh&#225;ch h&#224;ng v&#224; d&#242;ng ti&#7873;n sau khi ghi s&#7893;.</li>
+      </ol>
+      <p><span class="tag">BBNT</span><span class="tag">H&#243;a &#273;&#417;n &#273;&#7847;u ra</span><span class="tag">Phi&#7871;u thu</span><span class="tag">Maker-Checker</span></p>
+      <p class="warning">S&#7889; li&#7879;u tr&#236;nh di&#7877;n AR: tr&#432;&#7899;c thu&#7871; 200.000.000 VND, VAT minh h&#7885;a 10% l&#224; 20.000.000 VND, t&#7893;ng thanh to&#225;n 220.000.000 VND. &#272;&#226;y l&#224; b&#7897; d&#7919; li&#7879;u demo; c&#225;c ca ki&#7875;m th&#7917; VAT 8% v&#7851;n gi&#7919; ri&#234;ng.</p>
+      <div class="route-list"><a class="button" href="route=AR">M&#7903; BBNT</a><a class="button" href="route=ARInvoice">M&#7903; h&#243;a &#273;&#417;n &#273;&#7847;u ra</a><a class="button" href="route=ARReceipt">M&#7903; phi&#7871;u thu</a><a class="button" href="route=ReportAR">M&#7903; s&#7893; chi ti&#7871;t AR</a></div>
+    </article>
+    <article class="card" id="AP">
+      <h2>2. K&#7871; to&#225;n ph&#7843;i tr&#7843; AP</h2>
+      <p>Lu&#7891;ng nh&#224; cung c&#7845;p g&#7891;m h&#243;a &#273;&#417;n &#273;&#7847;u v&#224;o, ph&#234; duy&#7879;t, l&#7879;nh thanh to&#225;n v&#224; &#273;&#7889;i chi&#7871;u c&#244;ng n&#7907; ph&#7843;i tr&#7843; v&#7899;i s&#7893; c&#225;i.</p>
+      <ol>
+        <li>Nh&#7853;p h&#243;a &#273;&#417;n nh&#224; cung c&#7845;p, ch&#7885;n ph&#225;p nh&#226;n, &#273;&#7889;i t&#225;c, h&#7907;p &#273;&#7891;ng, t&#224;i kho&#7843;n chi ph&#237; v&#224; t&#7893;ng ti&#7873;n d&#7883;ch v&#7909;.</li>
+        <li>N&#7871;u c&#243; thu&#7871; nh&#224; th&#7847;u, &#273;&#225;nh d&#7845;u <b>C&#243; kh&#7845;u tr&#7915; thu&#7871; nh&#224; th&#7847;u (FCT)</b> tr&#432;&#7899;c khi ghi s&#7893;. Ki&#7875;m tra c&#225;c d&#242;ng t&#224;i kho&#7843;n thu&#7871; v&#224; c&#244;ng n&#7907; tr&#234;n chuy&#7875;n &#273;&#7897;ng ch&#7913;ng t&#7915;.</li>
+        <li>Ch&#7885;n ng&#432;&#7901;i duy&#7879;t c&#243; th&#7849;m quy&#7873;n. Ng&#432;&#7901;i duy&#7879;t kh&#244;ng &#273;&#432;&#7907;c tr&#249;ng ng&#432;&#7901;i l&#7853;p; c&#7845;p CFO ch&#7881; xu&#7845;t hi&#7879;n khi kho&#7843;n duy&#7879;t v&#432;&#7907;t ng&#432;&#7905;ng &#273;&#227; c&#7845;u h&#236;nh.</li>
+        <li>Sau khi duy&#7879;t, l&#7853;p &#7911;y nhi&#7879;m chi, ghi s&#7893; v&#224; so kh&#7899;p s&#7889; ti&#7873;n thanh to&#225;n v&#7899;i gi&#7843;m c&#244;ng n&#7907; v&#224; gi&#7843;m ti&#7873;n ng&#226;n h&#224;ng.</li>
+      </ol>
+      <p><span class="tag">H&#243;a &#273;&#417;n &#273;&#7847;u v&#224;o</span><span class="tag">FCT</span><span class="tag">&#7910;y nhi&#7879;m chi</span><span class="tag">C&#244;ng n&#7907; AP</span></p>
+      <p class="warning">S&#7889; li&#7879;u demo AP th&#244;ng th&#432;&#7901;ng: d&#7883;ch v&#7909; 100.000.000 VND, VAT 10% l&#224; 10.000.000 VND, t&#7893;ng ph&#7843;i tr&#7843; 110.000.000 VND. Ca ki&#7875;m th&#7917; FCT ri&#234;ng c&#243; Gross 250.000.000 VND, kh&#7845;u tr&#7915; 25.000.000 VND v&#224; thanh to&#225;n th&#7921;c 225.000.000 VND; xem b&#250;t to&#225;n th&#7921;c t&#7871; trong SoCaiKeToan v&#224; CongNoPhaiTra.</p>
+      <div class="route-list"><a class="button" href="route=AP">M&#7903; h&#243;a &#273;&#417;n &#273;&#7847;u v&#224;o</a><a class="button" href="route=APPayment">M&#7903; &#7911;y nhi&#7879;m chi</a><a class="button" href="route=ReportAP">M&#7903; s&#7893; chi ti&#7871;t AP</a></div>
+    </article>
+    <article class="card" id="CanTru">
+      <h2>3. C&#7845;n tr&#7915; c&#244;ng n&#7907; n&#7897;i b&#7897;</h2>
+      <p>D&#249;ng ch&#7913;ng t&#7915; c&#7845;n tr&#7915; khi c&#249;ng &#273;&#7889;i t&#225;c c&#243; s&#7889; d&#432; ph&#7843;i thu v&#224; ph&#7843;i tr&#7843; &#273;&#7911; &#273;i&#7873;u ki&#7879;n b&#249; tr&#7915;. C&#7845;n tr&#7915; ch&#7881; gi&#7843;m c&#244;ng n&#7907;; kh&#244;ng t&#7841;o d&#242;ng ti&#7873;n thu ho&#7863;c chi.</p>
+      <ol>
+        <li>Ch&#7885;n ph&#225;p nh&#226;n, &#273;&#7889;i t&#225;c, ti&#7873;n t&#7879; v&#224; c&#225;c ch&#7913;ng t&#7915; AR/AP &#273;&#432;&#7907;c c&#7845;n tr&#7915;.</li>
+        <li>Ki&#7875;m tra s&#7889; ti&#7873;n c&#7845;n tr&#7915; kh&#244;ng v&#432;&#7907;t s&#7889; d&#432; c&#7911;a t&#7915;ng ph&#237;a r&#7891;i ghi s&#7893;.</li>
+        <li>&#272;&#7889;i chi&#7871;u hai s&#7893; ph&#7909;. V&#237; d&#7909; b&#7897; ki&#7875;m th&#7917;: AR 43.200.000 VND, AP 40.000.000 VND; sau c&#7845;n tr&#7915; c&#242;n AR 3.200.000 VND v&#224; AP b&#7857;ng 0.</li>
+        <li>Thu n&#7889;t 3.200.000 VND &#273;&#7875; kh&#233;p s&#7889; d&#432; AR; ki&#7875;m tra s&#7893; ti&#7873;n kh&#244;ng c&#243; d&#242;ng do ri&#234;ng ch&#7913;ng t&#7915; c&#7845;n tr&#7915; sinh ra.</li>
+      </ol>
+      <p class="ok">K&#7871;t qu&#7843; mong &#273;&#7907;i: AP = 0, AR c&#242;n 3.200.000 VND sau b&#249; tr&#7915;, r&#7891;i AR = 0 sau khi thu ph&#7847;n d&#432;.</p>
+      <div class="route-list"><a class="button" href="route=CanTru">M&#7903; ch&#7913;ng t&#7915; c&#7845;n tr&#7915;</a></div>
+    </article>
+    <article class="card" id="DoiSoatCSV">
+      <h2>4. Nh&#7853;p sao k&#234; v&#224; &#273;&#7889;i so&#225;t CSV</h2>
+      <p>Nh&#7853;p b&#7843;n sao k&#234; &#273;&#227; &#273;&#432;&#7907;c ph&#233;p d&#249;ng trong m&#244;i tr&#432;&#7901;ng ki&#7875;m th&#7917;, xem tr&#432;&#7899;c d&#7919; li&#7879;u, gh&#233;p giao d&#7883;ch v&#7899;i h&#243;a &#273;&#417;n AR v&#224; ch&#7881; ghi s&#7893; c&#225;c d&#242;ng h&#7907;p l&#7879;.</p>
+      <ol>
+        <li>Ch&#7885;n ph&#225;p nh&#226;n, t&#224;i kho&#7843;n ng&#226;n h&#224;ng, k&#234;nh thanh to&#225;n, d&#7845;u ph&#226;n c&#225;ch v&#224; &#225;nh x&#7841; c&#7897;t.</li>
+        <li>T&#7843;i CSV, ki&#7875;m tra ng&#224;y giao d&#7883;ch, m&#227; giao d&#7883;ch, h&#243;a &#273;&#417;n, ti&#7873;n g&#7897;p, ph&#237;, ti&#7873;n th&#7921;c nh&#7853;n v&#224; ti&#7873;n t&#7879;.</li>
+        <li>Gh&#233;p kho&#7843;n nh&#7853;n v&#7899;i h&#243;a &#273;&#417;n; x&#225;c nh&#7853;n t&#7893;ng g&#7897;p b&#7857;ng ti&#7873;n th&#7921;c nh&#7853;n c&#7897;ng ph&#237;. M&#227; giao d&#7883;ch tr&#249;ng ho&#7863;c d&#242;ng sai ph&#7843;i b&#7883; ch&#7863;n v&#224; kh&#244;ng l&#224;m &#273;&#7893;i s&#7889; d&#432;.</li>
+        <li>Ghi s&#7893; r&#7891;i ki&#7875;m tra register ti&#7873;n, AR v&#224; s&#7893; c&#225;i; b&#7887; ghi s&#7893; ph&#7843;i &#273;&#7843;o &#273;&#250;ng c&#225;c d&#242;ng &#273;&#227; sinh.</li>
+      </ol>
+      <p class="warning">Fixture VNPAY: Gross 75.000.000 VND = th&#7921;c nh&#7853;n 73.875.000 VND + ph&#237; 1.125.000 VND. &#272;&#226;y l&#224; d&#7919; li&#7879;u t&#7893;ng h&#7907;p c&#7911;a E2E, kh&#244;ng ph&#7843;i sao k&#234; ng&#226;n h&#224;ng th&#7853;t.</p>
+      <div class="route-list"><a class="button" href="route=DoiSoatCSV">M&#7903; &#273;&#7889;i so&#225;t k&#234;nh thanh to&#225;n</a></div>
+    </article>
+    <article class="card" id="TaiKhoanVaChuyenDongSo">
+      <h2>5. T&#224;i kho&#7843;n, b&#225;o c&#225;o v&#224; chuy&#7875;n &#273;&#7897;ng ch&#7913;ng t&#7915;</h2>
+      <p>&#272;&#7889;i chi&#7871;u s&#7893; ph&#7909; v&#7899;i s&#7893; c&#225;i theo c&#249;ng ph&#225;p nh&#226;n, &#273;&#7889;i t&#225;c, h&#7907;p &#273;&#7891;ng, ti&#7873;n t&#7879; v&#224; k&#7923; b&#225;o c&#225;o. S&#7889; d&#432; s&#7893; ph&#7909; ph&#7843;i gi&#7843;i th&#237;ch &#273;&#432;&#7907;c bi&#7871;n &#273;&#7897;ng t&#224;i kho&#7843;n ki&#7875;m so&#225;t tr&#234;n s&#7893; c&#225;i.</p>
+      <h3>&#272;&#432;&#7901;ng d&#7851;n chuy&#7875;n &#273;&#7897;ng ch&#7913;ng t&#7915; theo s&#7893;</h3>
+      <p>M&#7903; ch&#7913;ng t&#7915; &#273;&#227; ghi s&#7893; &#8594; <b>Kh&#225;c</b> &#8594; <b>Chuy&#7875;n &#273;&#7897;ng c&#7911;a ch&#7913;ng t&#7915; theo s&#7893;</b>. M&#224;n h&#236;nh k&#7871;t qu&#7843; hi&#7875;n th&#7883; c&#225;c tab register c&#7911;a ch&#7913;ng t&#7915;. BBNT v&#224; h&#243;a &#273;&#417;n &#273;&#7847;u ra c&#243; <code>SoCaiKeToan</code> c&#249;ng <code>CongNoPhaiThu</code>; h&#243;a &#273;&#417;n &#273;&#7847;u v&#224;o c&#243; <code>SoCaiKeToan</code> c&#249;ng <code>CongNoPhaiTra</code>. Tab ch&#7881; xu&#7845;t hi&#7879;n theo register m&#224; ch&#7913;ng t&#7915; &#273;&#243; ghi.</p>
+      <h3>B&#225;o c&#225;o v&#224; dashboard</h3>
+      <p>S&#7893; chi ti&#7871;t AR/AP tr&#236;nh b&#224;y s&#7889; d&#432; &#273;&#7847;u k&#7923;, ph&#225;t sinh t&#259;ng gi&#7843;m, s&#7889; d&#432; cu&#7889;i k&#7923; v&#224; ch&#7913;ng t&#7915; ngu&#7891;n. B&#225;o c&#225;o tu&#7893;i n&#7907; ph&#226;n nh&#243;m theo h&#7841;n thanh to&#225;n; kho&#7843;n thi&#7871;u &#273;i&#7873;u kho&#7843;n &#273;&#432;&#7907;c t&#225;ch ri&#234;ng. Ch&#7885;n m&#7897;t d&#242;ng b&#225;o c&#225;o &#273;&#7875; m&#7903; ch&#7913;ng t&#7915; ngu&#7891;n.</p>
+      <p>Dashboard c&#243; th&#7875; l&#224;m m&#7899;i b&#7857;ng n&#250;t <b>L&#224;m m&#7899;i (F5)</b>; ch&#7885;n nh&#243;m tu&#7893;i n&#7907; ho&#7863;c d&#242;ng c&#244;ng n&#7907; &#273;&#7875; m&#7903; b&#225;o c&#225;o t&#432;&#417;ng &#7913;ng. B&#225;o c&#225;o t&#244;n tr&#7885;ng quy&#7873;n chi nh&#225;nh c&#7911;a ng&#432;&#7901;i d&#249;ng.</p>
+      <div class="route-list"><a class="button" href="route=ReportAR">S&#7893; chi ti&#7871;t AR</a><a class="button" href="route=ReportAP">S&#7893; chi ti&#7871;t AP</a><a class="button" href="route=ReportAging">B&#225;o c&#225;o tu&#7893;i n&#7907;</a></div>
+    </article>
+  </section>
+  <footer>H&#432;&#7899;ng d&#7851;n m&#244; t&#7843; c&#7845;u h&#236;nh VSF Finance v&#224; d&#7919; li&#7879;u demo hi&#7879;n t&#7841;i. S&#7889; li&#7879;u minh h&#7885;a kh&#244;ng thay th&#7871; ch&#237;nh s&#225;ch thu&#7871;, h&#7907;p &#273;&#7891;ng ho&#7863;c quy tr&#236;nh ph&#234; duy&#7879;t &#273;&#227; &#273;&#432;&#7907;c doanh nghi&#7879;p ban h&#224;nh.</footer>
+</main>
+</body>
+</html>

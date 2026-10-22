@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-032854-9d78ce973ceb45e78c19d0ce96219848",
+"phase": "fx_approve_ap_payment",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"payment": "E2E-UNC-USD-01",
+"status": "DaDuyet",
+"approver": "ketoan_truong",
+"posted": false
+}
+}

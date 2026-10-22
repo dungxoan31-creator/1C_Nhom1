@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-074641-d6e47f95d2be4aba8d3a078b6f136fb1",
+"phase": "fx_submit_ap_invoice",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "E2E-AP-USD-01",
+"foreign_amount": 500,
+"book_rate": 25000,
+"payable_vnd": 12500000,
+"status": "ChoKeToanTruongDuyet"
+}
+}

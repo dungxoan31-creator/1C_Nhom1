@@ -1,0 +1,16 @@
+{
+    "elements":  [
+                     {
+                         "after":  "TienDichVu",
+                         "path":  "Object.CoKhauTruFCT",
+                         "title":  "Có khấu trừ thuế nhà thầu (FCT)",
+                         "check":  "CoKhauTruFCT"
+                     },
+                     {
+                         "input":  "NguoiDuyet",
+                         "path":  "Object.NguoiDuyet",
+                         "title":  "Người duyệt",
+                         "after":  "TrangThai"
+                     }
+                 ]
+}

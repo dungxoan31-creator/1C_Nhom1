@@ -1,0 +1,26 @@
+﻿{
+    "status":  "PASS",
+    "user":  "ketoan_truong",
+    "infobase":  ".\\dt_working\\ui_ux_refinement_20261022\\InfobaseRootSource",
+    "workflow":  "BatchApproval",
+    "flow":  "native 1C UI → dashboard → Maker-Checker batch approval form",
+    "verified":  [
+                     "Dashboard opened",
+                     "Finance charts rendered after native client scrolling"
+                 ],
+    "error":  "",
+    "onec_log_path":  ".\\dt_working\\ui_ux_refinement_20261022\\ui-root-source-wide.1c.log",
+    "screenshot_path":  ".\\dt_working\\ui_ux_refinement_20261022\\ui-root-source-wide.png",
+    "dashboard_bounds":  [
+                             -8,
+                             -8,
+                             1936,
+                             1048
+                         ],
+    "dashboard_top_screenshot_path":  ".\\dt_working\\ui_ux_refinement_20261022\\ui-root-source-wide.dashboard-top.png",
+    "dashboard_scrolled_screenshot_path":  ".\\dt_working\\ui_ux_refinement_20261022\\ui-root-source-wide.dashboard-scrolled.png",
+    "screens":  [
+                    "Dashboard opened",
+                    "Finance charts rendered after native client scrolling"
+                ]
+}

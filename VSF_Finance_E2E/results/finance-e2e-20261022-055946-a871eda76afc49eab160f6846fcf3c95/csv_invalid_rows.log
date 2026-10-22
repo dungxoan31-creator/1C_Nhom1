@@ -1,0 +1,4 @@
+﻿CSV line 1 is not confirmed for posting (status ChuaGhep).
+CSV line 1 is unbalanced: gross must equal fee plus net.
+CSV line 1 must allocate its full gross amount to one AR invoice.
+CSV line 1 exceeds the remaining open AR balance for invoice E2E-AR001.

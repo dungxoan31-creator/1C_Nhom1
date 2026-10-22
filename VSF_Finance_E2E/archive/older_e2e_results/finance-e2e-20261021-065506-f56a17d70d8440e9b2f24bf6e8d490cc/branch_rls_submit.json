@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-065506-f56a17d70d8440e9b2f24bf6e8d490cc",
+"phase": "branch_rls_submit",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"branch": "CN-E2E-BR2",
+"document": "RLS-BB02",
+"status": "ChoDuyetNoiBo",
+"maker": "ketoan_ar"
+}
+}

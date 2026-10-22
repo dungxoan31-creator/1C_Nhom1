@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-043557-c0d401bc746542f5ba96b4c2c0db2400",
+"phase": "csv_duplicate_reimport",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"duplicate_rejected": true,
+"duplicate_cash_delta_vnd": 0,
+"duplicate_ar_delta_vnd": 0,
+"duplicate_movement_rows": 0,
+"original_unposted": true,
+"key_released": true,
+"ar_restored": true,
+"cash_restored": true
+}
+}

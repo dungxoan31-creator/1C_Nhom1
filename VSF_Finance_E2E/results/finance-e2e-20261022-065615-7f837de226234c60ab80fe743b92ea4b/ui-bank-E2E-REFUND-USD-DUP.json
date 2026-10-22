@@ -1,0 +1,20 @@
+﻿{
+    "status":  "PASS",
+    "user":  "cfo_giamdoc",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\e2e-infobase",
+    "workflow":  "RefundConfirm",
+    "flow":  "native 1C UI → approved supplier refund → incoming bank receipt confirmation",
+    "verified":  [
+                     "payment order list rendered expected document",
+                     "payment form opened",
+                     "incoming refund confirmation command invoked",
+                     "bank response status REFUND_RECEIVED rendered"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-bank-E2E-REFUND-USD-DUP.1c.log",
+    "payment_number":  "E2E-REFUND-USD-DUP",
+    "expected_bank_outcome":  "RefundReceived",
+    "bank_status":  "REFUND_RECEIVED",
+    "bank_transaction_id":  "REFUND-E3D836B169912D30D327",
+    "refund_number":  "E2E-REFUND-USD-DUP"
+}

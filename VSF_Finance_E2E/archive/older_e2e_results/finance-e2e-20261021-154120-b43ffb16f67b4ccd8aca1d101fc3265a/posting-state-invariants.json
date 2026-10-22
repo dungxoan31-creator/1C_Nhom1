@@ -1,0 +1,33 @@
+{
+"run_id": "finance-e2e-20261021-154120-b43ffb16f67b4ccd8aca1d101fc3265a",
+"phase": "posting_state_invariants",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": true,
+"error": ""
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(3784)}:ZeroVATInvoice.Write();\n{ManagedApplicationModule(19)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save \"Hóa đơn GTGT đầu ra E2E-INV-ZVAT dated 10/20/2026 9:00:00 AM\"!\n[StoredDataError]"
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": true,
+"error": ""
+},
+{
+"name": "PostingFailureRollsBackPriorDocument",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(3855)}:ValidInvoice.Write();\n{ManagedApplicationModule(19)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save \"Hóa đơn GTGT đầu ra E2E-INV-TX-GOOD dated 10/20/2026 9:00:00 AM\"!\n[StoredDataError]"
+}
+]
+}

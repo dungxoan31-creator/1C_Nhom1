@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-000556-6709585ceecf41e98c323194d4db1bad",
+"phase": "cfo_post_payment_verify",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Posted AP FCT GL rows differ from expected expense, VAT, CIT, payable, or balanced totals.\n{CommonModule.SeedBoundaryTestsServer.Module(540)}:Raise \"Posted AP FCT GL rows differ from expected expense, VAT, CIT, payable, or balanced totals.\";\n{CommonModule.SeedBoundaryTestsServer.Module(36)}:Result.data = PostAndVerifyFinanceE2EPayment();\n{ManagedApplicationModule(23)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

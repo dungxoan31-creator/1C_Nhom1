@@ -1,0 +1,105 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-062920-8d69071b0ff84d0ba920a6856e80dd7c\\e2e-infobase",
+    "workflow":  "ARAutofillSmoke",
+    "flow":  "native 1C UI → create AR invoice → select BBNT → verify autofilled values",
+    "verified":  [
+                     "Created AR invoice draft from native list",
+                     "selected E2E-BB001 through the lookup",
+                     "BBNT OnChange autofilled legal entity, VinFast partner, contract, 200m net, 10% VAT, 20m VAT and 220m gross",
+                     "draft was not saved"
+                 ],
+    "error":  "",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\dt_working\\finance_complete_20261021\\ar-autofill-smoke-first.1c.log",
+    "visible_panes_before_choice":  [
+                                        "Hóa đơn GTGT đầu ra (AR) - VinSmart Future"
+                                    ],
+    "acceptance_choice_candidates":  [
+                                         {
+                                             "name":  "10/10/2026 9:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-BB001 Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/17/2026 8:30:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-CONC-AR-BB Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 9:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-REQ-NOPARTN Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 9:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-NT-AR001 Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 9:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-INV-ZVAT-BB Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 9:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "RLS-BB02 Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 9:30:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-INV-TX-BB Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 10:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-REQ-NOCONTR Number",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "10/20/2026 11:00:00 AM Date",
+                                             "control_type":  "ControlType.Custom"
+                                         },
+                                         {
+                                             "name":  "E2E-REQ-MISMATC Number",
+                                             "control_type":  "ControlType.Custom"
+                                         }
+                                     ],
+    "autofill_values":  {
+                            "Date:":  "10/22/2026  6:54:55 AM",
+                            "Thành tiền chưa thuế:":  "200,000,000.00",
+                            "Tổng tiền thanh toán:":  "220,000,000.00",
+                            "Biên bản nghiệm thu:":  "Biên bản nghiệm thu giai đoạn E2E-BB001 dated 10/10/2026 9:00:00 AM",
+                            "Pháp nhân:":  "Công ty CP VinSmart Future",
+                            "Hợp đồng:":  "Hợp đồng dịch vụ 2025 - CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+                            "Thuế suất GTGT (%):":  "10",
+                            "Đối tác:":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+                            "Tiền thuế GTGT:":  "20,000,000.00",
+                            "Number:":  ""
+                        },
+    "screenshot_path":  ".\\VSF_Finance_E2E\\dt_working\\finance_complete_20261021\\ar-autofill-smoke-first.png"
+}

@@ -1,0 +1,401 @@
+﻿### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\BienBanNghiemThuGiaiDoan\Forms\FormDanhSach\Ext\Form.xml
+=== Form: FormDanhSach — "Danh sách Biên bản nghiệm thu giai đoạn" (Documents.BienBanNghiemThuGiaiDoan) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  ├─ [Group:H] BoLocNhanh
+  │ ├─ [Input] BoLocKy -> BoLocKy [title:Kỳ] {OnChange}
+  │ ├─ [Input] BoLocTrangThai -> BoLocTrangThai [title:Trạng thái] {OnChange}
+  │ └─ [Input] BoLocDoiTac -> BoLocDoiTac [title:Khách hàng] {OnChange}
+  └─ [Table] DanhSach -> DanhSach [cmdBar:DanhSachCommandBar]
+    ├─ [Input] DanhSachNumber -> DanhSach.Number [title:Số CT]
+    ├─ [Input] DanhSachDate -> DanhSach.Date [title:Ngày lập]
+    ├─ [Input] DanhSachDoiTac -> DanhSach.DoiTac [title:Khách hàng]
+    ├─ [Input] DanhSachTongGiaTri -> DanhSach.TongGiaTri [title:Tổng giá trị]
+    ├─ [Input] DanhSachTrangThai -> DanhSach.TrangThai [title:Trạng thái]
+    └─ [Check] DanhSachPosted -> DanhSach.Posted [title:Đã ghi sổ]
+
+Attributes:
+  *DanhSach: DynamicList -> Document.BienBanNghiemThuGiaiDoan (main)
+   BoLocKy: string
+   BoLocTrangThai: string
+   BoLocDoiTac: CatalogRef.DoiTac
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\HoaDonNhaCungCap\Forms\FormDanhSach\Ext\Form.xml
+=== Form: FormDanhSach — "Danh sách Hóa đơn nhà cung cấp (AP)" (Documents.HoaDonNhaCungCap) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  ├─ [Group:H] BoLocNhanh
+  │ ├─ [Input] BoLocKy -> BoLocKy [title:Kỳ] {OnChange}
+  │ ├─ [Input] BoLocTrangThai -> BoLocTrangThai [title:Trạng thái] {OnChange}
+  │ └─ [Input] BoLocDoiTac -> BoLocDoiTac [title:Nhà cung cấp] {OnChange}
+  └─ [Table] DanhSach -> DanhSach [cmdBar:DanhSachCommandBar]
+    ├─ [Input] DanhSachNumber -> DanhSach.Number [title:Số CT]
+    ├─ [Input] DanhSachDate -> DanhSach.Date [title:Ngày lập]
+    ├─ [Input] DanhSachDoiTac -> DanhSach.DoiTac [title:Nhà cung cấp]
+    ├─ [Input] DanhSachTongTien -> DanhSach.TongTien [title:Tổng tiền]
+    ├─ [Input] DanhSachTrangThai -> DanhSach.TrangThai [title:Trạng thái]
+    └─ [Check] DanhSachPosted -> DanhSach.Posted [title:Đã ghi sổ]
+
+Attributes:
+  *DanhSach: DynamicList -> Document.HoaDonNhaCungCap (main)
+   BoLocKy: string
+   BoLocTrangThai: string
+   BoLocDoiTac: CatalogRef.DoiTac
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\HoaDonNhaCungCap\Forms\FormChungTu\Ext\Form.xml
+=== Form: FormChungTu — "Hóa đơn nhà cung cấp (AP) - VinSmart Future" (Documents.HoaDonNhaCungCap) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false, AutoTime=CurrentOrLast, UsePostingMode=Auto, RepostOnWrite=true
+
+Events:
+  AfterWrite -> AfterWrite
+  OnReadAtServer -> OnReadAtServer
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar FormCommandBar [autofill]
+  [Button] FormCmdXemChungTuLienQuan -> Form.Command.CmdXemChungTuLienQuan
+
+Elements:
+  ├─ [HTMLDocumentField] TruongHTMLHeader -> NoiDungHTMLHeader
+  └─ [Pages] Pages
+    ├─ [Page] ThongTinChung [title:1. Thông tin chung]
+    │ └─ [Group:H] Group2Cot
+    │   ├─ [Group:V] CotTrai
+    │   │ ├─ [Input] Number -> Object.Number [ro]
+    │   │ ├─ [Input] Date -> Object.Date
+    │   │ ├─ [Input] PhapNhan -> Object.PhapNhan
+    │   │ ├─ [Input] DoiTac -> Object.DoiTac
+    │   │ ├─ [Input] HopDong -> Object.HopDong
+    │   │ └─ [Input] SoHoaDon -> Object.SoHoaDon
+    │   └─ [Group:V] CotPhai
+    │     ├─ [Input] TienDichVu -> Object.TienDichVu {OnChange}
+    │     ├─ [Input] TienThueVAT -> Object.TienThueVAT
+    │     └─ [Input] TongTien -> Object.TongTien [ro]
+    ├─ [Page] ChiTietHangHoa [title:2. Chi tiết hàng hóa/dịch vụ]
+    │ ├─ [Input] ChiTietTienDichVu -> Object.TienDichVu
+    │ └─ [Input] ChiTietTienThueVAT -> Object.TienThueVAT
+    ├─ [Page] ThueVaHoaDonDienTu [title:3. Trạng thái phê duyệt]
+    │ └─ [Input] TrangThai -> Object.TrangThai
+    └─ [Page] NhatKyVaGhiChu [title:4. Diễn giải & Nhật ký]
+      └─ [Input] DienGiai -> Object.DienGiai
+
+Attributes:
+  *Object: DocumentObject.HoaDonNhaCungCap (main)
+   NoiDungHTMLHeader: string
+
+Commands:
+  CmdXemChungTuLienQuan -> CmdXemChungTuLienQuan
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\BienBanNghiemThuGiaiDoan\Forms\FormChungTu\Ext\Form.xml
+=== Form: FormChungTu — "Biên bản nghiệm thu giai đoạn (AR) - VinSmart Future" (Documents.BienBanNghiemThuGiaiDoan) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false, AutoTime=CurrentOrLast, UsePostingMode=Auto, RepostOnWrite=true
+
+Events:
+  AfterWrite -> AfterWrite
+  OnReadAtServer -> OnReadAtServer
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  ├─ [HTMLDocumentField] TruongHTMLHeader -> NoiDungHTMLHeader
+  └─ [Pages] Pages
+    ├─ [Page] ThongTinChung [title:1. Thông tin chung]
+    │ └─ [Group:H] Group2Cot
+    │   ├─ [Group:V] CotTrai
+    │   │ ├─ [Input] Number -> Object.Number [ro]
+    │   │ ├─ [Input] Date -> Object.Date
+    │   │ ├─ [Input] NgayNghiemThu -> Object.NgayNghiemThu {OnChange}
+    │   │ ├─ [Input] PhapNhan -> Object.PhapNhan
+    │   │ ├─ [Input] DoiTac -> Object.DoiTac
+    │   │ └─ [Input] HopDong -> Object.HopDong
+    │   └─ [Group:V] CotPhai
+    │     ├─ [Input] GiaTriNghiemThuChuaVAT -> Object.GiaTriNghiemThuChuaVAT {OnChange}
+    │     ├─ [Input] TyLeVAT -> Object.TyLeVAT {OnChange}
+    │     ├─ [Check] ApDungGiamThueGTGT -> Object.ApDungGiamThueGTGT [title:Thuộc đối tượng được giảm thuế GTGT] {OnChange}
+    │     ├─ [Input] TienVAT -> Object.TienVAT
+    │     └─ [Input] TongGiaTri -> Object.TongGiaTri [ro]
+    ├─ [Page] ChiTietHangHoa [title:2. Chi tiết nghiệm thu]
+    │ └─ [Input] ChiTietGiaTriNghiemThuChuaVAT -> Object.GiaTriNghiemThuChuaVAT
+    ├─ [Page] ThueVaHoaDonDienTu [title:3. Thuế & HĐĐT]
+    │ └─ [Input] TrangThai -> Object.TrangThai
+    └─ [Page] NhatKyVaGhiChu [title:4. Nhật ký & Phê duyệt]
+      └─ [Input] DienGiai -> Object.DienGiai
+
+Attributes:
+  *Object: DocumentObject.BienBanNghiemThuGiaiDoan (main)
+   NoiDungHTMLHeader: string
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\PhieuThuTienKhachHang\Forms\FormChungTu\Ext\Form.xml
+=== Form: FormChungTu — "Phiếu thu tiền khách hàng (AR) - VinSmart Future" (Documents.PhieuThuTienKhachHang) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false, AutoTime=CurrentOrLast, UsePostingMode=Auto, RepostOnWrite=true
+
+Events:
+  AfterWrite -> AfterWrite
+  OnReadAtServer -> OnReadAtServer
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar FormCommandBar [autofill]
+  [Button] FormCmdXemChungTuLienQuan -> Form.Command.CmdXemChungTuLienQuan
+
+Elements:
+  ├─ [HTMLDocumentField] TruongHTMLHeader -> NoiDungHTMLHeader
+  └─ [Pages] Pages
+    ├─ [Page] ThongTinChung [title:1. Thông tin chung]
+    │ └─ [Group:H] Group2Cot
+    │   ├─ [Group:V] CotTrai
+    │   │ ├─ [Input] Number -> Object.Number [ro]
+    │   │ ├─ [Input] Date -> Object.Date
+    │   │ ├─ [Input] PhapNhan -> Object.PhapNhan
+    │   │ ├─ [Input] DoiTac -> Object.DoiTac
+    │   │ └─ [Input] HopDong -> Object.HopDong
+    │   └─ [Group:V] CotPhai
+    │     ├─ [Input] TaiKhoanTien -> Object.TaiKhoanTien
+    │     ├─ [Input] KhoanMucDongTien -> Object.KhoanMucDongTien
+    │     └─ [Input] SoTien -> Object.SoTien {OnChange}
+    ├─ [Page] ChiTietThanhToan [title:2. Chi tiết thu tiền]
+    │ └─ [Input] ChiTietSoTien -> Object.SoTien
+    ├─ [Page] ThueVaHoaDonDienTu [title:3. Đối soát chứng từ]
+    │ └─ [Input] DoiSoatHopDong -> Object.HopDong
+    └─ [Page] NhatKyVaGhiChu [title:4. Diễn giải & Nhật ký]
+      └─ [Input] DienGiai -> Object.DienGiai
+
+Attributes:
+  *Object: DocumentObject.PhieuThuTienKhachHang (main)
+   NoiDungHTMLHeader: string
+
+Commands:
+  CmdXemChungTuLienQuan -> CmdXemChungTuLienQuan
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\PhieuThuTienKhachHang\Forms\FormDanhSach\Ext\Form.xml
+=== Form: FormDanhSach — "Danh sách Phiếu thu tiền khách hàng" (Documents.PhieuThuTienKhachHang) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  ├─ [Group:H] BoLocNhanh
+  │ ├─ [Input] BoLocKy -> BoLocKy [title:Kỳ] {OnChange}
+  │ ├─ [Input] BoLocTrangThai -> BoLocTrangThai [title:Trạng thái] {OnChange}
+  │ └─ [Input] BoLocDoiTac -> BoLocDoiTac [title:Khách hàng] {OnChange}
+  └─ [Table] DanhSach -> DanhSach [cmdBar:DanhSachCommandBar]
+    ├─ [Input] DanhSachNumber -> DanhSach.Number [title:Số CT]
+    ├─ [Input] DanhSachDate -> DanhSach.Date [title:Ngày lập]
+    ├─ [Input] DanhSachDoiTac -> DanhSach.DoiTac [title:Khách hàng]
+    ├─ [Input] DanhSachSoTien -> DanhSach.SoTien [title:Số tiền]
+    ├─ [Input] DanhSachDienGiai -> DanhSach.DienGiai [title:Diễn giải]
+    └─ [Check] DanhSachPosted -> DanhSach.Posted [title:Đã ghi sổ]
+
+Attributes:
+  *DanhSach: DynamicList -> Document.PhieuThuTienKhachHang (main)
+   BoLocKy: string
+   BoLocTrangThai: string
+   BoLocDoiTac: CatalogRef.DoiTac
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\HoaDonGTGTDauRa\Forms\FormDanhSach\Ext\Form.xml
+=== Form: FormDanhSach — "Danh sách Hóa đơn GTGT đầu ra (AR)" (Documents.HoaDonGTGTDauRa) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  ├─ [Group:H] BoLocNhanh
+  │ ├─ [Input] BoLocKy -> BoLocKy [title:Kỳ báo cáo] {OnChange}
+  │ ├─ [Input] BoLocTrangThai -> BoLocTrangThai [title:Trạng thái] {OnChange}
+  │ └─ [Input] BoLocDoiTac -> BoLocDoiTac [title:Đối tác] {OnChange}
+  └─ [Table] DanhSach -> DanhSach [cmdBar:DanhSachCommandBar]
+    ├─ [Input] DanhSachNumber -> DanhSach.Number [title:Số CT]
+    ├─ [Input] DanhSachDate -> DanhSach.Date [title:Ngày lập]
+    ├─ [Input] DanhSachDoiTac -> DanhSach.DoiTac [title:Khách hàng]
+    ├─ [Input] DanhSachTongTienThanhToan -> DanhSach.TongTienThanhToan [title:Tổng tiền]
+    └─ [Check] DanhSachPosted -> DanhSach.Posted [title:Đã ghi sổ]
+
+Attributes:
+  *DanhSach: DynamicList -> Document.HoaDonGTGTDauRa (main)
+   BoLocKy: string
+   BoLocTrangThai: string
+   BoLocDoiTac: CatalogRef.DoiTac
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\HoaDonGTGTDauRa\Forms\FormChungTu\Ext\Form.xml
+=== Form: FormChungTu — "Hóa đơn GTGT đầu ra (AR) - VinSmart Future" (Documents.HoaDonGTGTDauRa) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false, AutoTime=CurrentOrLast, UsePostingMode=Auto, RepostOnWrite=true
+
+Events:
+  AfterWrite -> AfterWrite
+  OnReadAtServer -> OnReadAtServer
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar FormCommandBar [autofill]
+  [Button] FormCmdXemChungTuLienQuan -> Form.Command.CmdXemChungTuLienQuan
+
+Elements:
+  ├─ [HTMLDocumentField] TruongHTMLHeader -> NoiDungHTMLHeader
+  └─ [Pages] Pages
+    ├─ [Page] ThongTinChung [title:1. Thông tin chung]
+    │ └─ [Group:H] Group2Cot
+    │   ├─ [Group:V] CotTrai
+    │   │ ├─ [Input] Number -> Object.Number [ro]
+    │   │ ├─ [Input] Date -> Object.Date
+    │   │ ├─ [Input] PhapNhan -> Object.PhapNhan
+    │   │ ├─ [Input] DoiTac -> Object.DoiTac
+    │   │ ├─ [Input] HopDong -> Object.HopDong
+    │   │ └─ [Input] BienBanNghiemThu -> Object.BienBanNghiemThu
+    │   └─ [Group:V] CotPhai
+    │     ├─ [Input] TienChuaThue -> Object.TienChuaThue {OnChange}
+    │     ├─ [Input] ThueSuatVAT -> Object.ThueSuatVAT [ro] [title:Thuế suất GTGT (%)]
+    │     ├─ [Check] ApDungGiamThueGTGT -> Object.ApDungGiamThueGTGT [title:Thuộc đối tượng được giảm thuế GTGT] {OnChange}
+    │     ├─ [Input] TienThueVAT -> Object.TienThueVAT
+    │     └─ [Input] TongTienThanhToan -> Object.TongTienThanhToan [ro]
+    ├─ [Page] ChiTietHangHoa [title:2. Chi tiết hàng hóa/dịch vụ]
+    │ ├─ [Input] ChiTietTienChuaThue -> Object.TienChuaThue
+    │ └─ [Input] ChiTietTienThueVAT -> Object.TienThueVAT
+    ├─ [Page] ThanhToanVaThue [title:3. Thuế & HĐĐT]
+    │ ├─ [Input] ThueTienThueVAT -> Object.TienThueVAT
+    │ └─ [Input] ThueTongTienThanhToan -> Object.TongTienThanhToan [ro]
+    └─ [Page] NhatKyVaGhiChu [title:4. Nhật ký & Phê duyệt]
+      └─ [Input] DienGiai -> Object.DienGiai
+
+Attributes:
+  *Object: DocumentObject.HoaDonGTGTDauRa (main)
+   NoiDungHTMLHeader: string
+
+Commands:
+  CmdXemChungTuLienQuan -> CmdXemChungTuLienQuan
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\UyNhiemChi\Forms\FormDanhSach\Ext\Form.xml
+=== Form: FormDanhSach — "Danh sách Ủy nhiệm chi" (Documents.UyNhiemChi) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  ├─ [Group:H] BoLocNhanh
+  │ ├─ [Input] BoLocKy -> BoLocKy [title:Kỳ] {OnChange}
+  │ ├─ [Input] BoLocTrangThai -> BoLocTrangThai [title:Trạng thái] {OnChange}
+  │ └─ [Input] BoLocDoiTac -> BoLocDoiTac [title:Đối tác] {OnChange}
+  └─ [Table] DanhSach -> DanhSach [cmdBar:DanhSachCommandBar]
+    ├─ [Input] DanhSachNumber -> DanhSach.Number [title:Số CT]
+    ├─ [Input] DanhSachDate -> DanhSach.Date [title:Ngày lập]
+    ├─ [Input] DanhSachDoiTac -> DanhSach.DoiTac [title:Đối tác thụ hưởng]
+    ├─ [Input] DanhSachSoTien -> DanhSach.SoTien [title:Số tiền]
+    ├─ [Input] DanhSachTrangThai -> DanhSach.TrangThai [title:Trạng thái lệnh]
+    └─ [Check] DanhSachPosted -> DanhSach.Posted [title:Đã ghi sổ]
+
+Attributes:
+  *DanhSach: DynamicList -> Document.UyNhiemChi (main)
+   BoLocKy: string
+   BoLocTrangThai: string
+   BoLocDoiTac: CatalogRef.DoiTac
+### VSF_Finance_E2E\guide_work_20261020\Configuration\Documents\UyNhiemChi\Forms\FormChungTu\Ext\Form.xml
+=== Form: FormChungTu — "Ủy nhiệm chi ngân hàng (AP) - VinSmart Future" (Documents.UyNhiemChi) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false, AutoTime=CurrentOrLast, UsePostingMode=Auto, RepostOnWrite=true
+
+Events:
+  AfterWrite -> AfterWrite
+  OnReadAtServer -> OnReadAtServer
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar FormCommandBar [autofill]
+  [Button] FormCmdXemChungTuLienQuan -> Form.Command.CmdXemChungTuLienQuan
+  [Button] CmdGuiLenhChiNganHang -> Form.Command.CmdGuiLenhChiNganHang
+  [Button] CmdXacNhanHoanTienNganHang -> Form.Command.CmdXacNhanHoanTienNganHang
+
+Elements:
+  ├─ [HTMLDocumentField] TruongHTMLHeader -> NoiDungHTMLHeader
+  └─ [Pages] Pages
+    ├─ [Page] ThongTinChung [title:1. Thông tin chung]
+    │ └─ [Group:H] Group2Cot
+    │   ├─ [Group:V] CotTrai
+    │   │ ├─ [Input] Number -> Object.Number [ro]
+    │   │ ├─ [Input] Date -> Object.Date
+    │   │ ├─ [Input] PhapNhan -> Object.PhapNhan
+    │   │ ├─ [Input] DoiTac -> Object.DoiTac
+    │   │ └─ [Input] HopDong -> Object.HopDong
+    │   └─ [Group:V] CotPhai
+    │     ├─ [Input] TaiKhoanTien -> Object.TaiKhoanTien
+    │     ├─ [Input] KhoanMucDongTien -> Object.KhoanMucDongTien
+    │     └─ [Input] SoTien -> Object.SoTien {OnChange}
+    ├─ [Page] ChiTietThanhToan [title:2. Chi tiết lệnh chi]
+    │ └─ [Input] ChiTietSoTien -> Object.SoTien
+    ├─ [Page] ThueVaHoaDonDienTu [title:3. Trạng thái thanh toán]
+    │ ├─ [Input] TrangThai -> Object.TrangThai
+    │ ├─ [Input] TrangThaiGuiNganHangUI -> Object.TrangThaiGuiNganHang [ro] [title:Trạng thái ngân hàng]
+    │ ├─ [Input] MaGiaoDichNganHangUI -> Object.MaGiaoDichNganHang [ro] [title:Mã giao dịch ngân hàng]
+    │ └─ [Input] ThoiDiemGuiNganHangUI -> Object.ThoiDiemGuiNganHang [ro] [title:Thời điểm gửi ngân hàng]
+    └─ [Page] NhatKyVaGhiChu [title:4. Diễn giải & Nhật ký]
+      └─ [Input] DienGiai -> Object.DienGiai
+
+Attributes:
+  *Object: DocumentObject.UyNhiemChi (main)
+   NoiDungHTMLHeader: string
+
+Commands:
+  CmdXemChungTuLienQuan -> CmdXemChungTuLienQuan
+  CmdGuiLenhChiNganHang -> GuiLenhChiNganHang
+  CmdXacNhanHoanTienNganHang -> XacNhanHoanTienNganHang
+### VSF_Finance_E2E\guide_work_20261020\Configuration\DataProcessors\BanLamViecWebERP\Forms\FormBanLamViec\Ext\Form.xml
+=== Form: FormBanLamViec — "Bàn làm việc & Điều hành Web ERP - VinSmart Future" (DataProcessors.BanLamViecWebERP) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  └─ [HTMLDocumentField] TruongHTMLCockpit -> NoiDungHTML {OnClick}
+
+Attributes:
+  *Object: DataProcessorObject.BanLamViecWebERP (main)
+   NoiDungHTML: string
+### VSF_Finance_E2E\guide_work_20261020\Configuration\DataProcessors\BanLamViecWebERP\Forms\FormPheDuyetHangLoat\Ext\Form.xml
+=== Form: FormPheDuyetHangLoat — "Bàn Duyệt Maker-Checker Hàng Loạt - VinSmart Future" (DataProcessors.BanLamViecWebERP) ===
+Поддержка: не на поддержке
+
+Properties: AutoTitle=false
+
+Events:
+  OnCreateAtServer -> OnCreateAtServer
+
+AutoCommandBar  [autofill]
+
+Elements:
+  └─ [HTMLDocumentField] TruongHTMLPheDuyet -> NoiDungHTML {OnClick}
+
+Attributes:
+  *Object: DataProcessorObject.BanLamViecWebERP (main)
+   NoiDungHTML: string

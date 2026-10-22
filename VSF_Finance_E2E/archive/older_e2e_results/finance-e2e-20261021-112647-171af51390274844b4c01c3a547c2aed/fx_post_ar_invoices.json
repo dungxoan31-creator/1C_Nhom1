@@ -1,0 +1,11 @@
+{
+"run_id": "finance-e2e-20261021-112647-171af51390274844b4c01c3a547c2aed",
+"phase": "fx_post_ar_invoices",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"gain_posted": true,
+"loss_posted": true
+}
+}

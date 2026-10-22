@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261020-180914-ddfa7a0a0edf405ba00e0eed36943f5f",
+"phase": "ap_seed_regression",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"posted_invoices": 1260,
+"posted_payments": 0,
+"posted_usd_invoices": 315,
+"valid_usd_invoices": 315,
+"cash_category": "KM-CHI-CLOUD"
+}
+}

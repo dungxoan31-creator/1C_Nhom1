@@ -1,0 +1,14 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-014516-fb2940235fba4598abb5ed108d17966c\\e2e-infobase",
+    "workflow":  "CatalogSmoke",
+    "flow":  "native 1C UI → nine catalog list forms → visible controls and commands",
+    "verified":  [
+
+                 ],
+    "error":  "UI element not found: ControlType.MenuItem \u0027*Chi nhánh*\u0027. Candidates: ",
+    "catalog_screens":  [
+
+                        ]
+}

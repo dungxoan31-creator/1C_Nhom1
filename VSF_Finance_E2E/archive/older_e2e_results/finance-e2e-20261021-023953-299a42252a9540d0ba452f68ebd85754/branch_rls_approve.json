@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-023953-299a42252a9540d0ba452f68ebd85754",
+"phase": "branch_rls_approve",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"branch": "CN-E2E-BR2",
+"document": "RLS-BB02",
+"status": "DaDuyetNoiBo",
+"approver": "cfo_giamdoc"
+}
+}

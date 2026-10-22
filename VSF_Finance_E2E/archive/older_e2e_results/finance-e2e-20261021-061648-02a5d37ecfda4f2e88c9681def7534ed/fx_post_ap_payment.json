@@ -1,0 +1,18 @@
+{
+"run_id": "finance-e2e-20261021-061648-02a5d37ecfda4f2e88c9681def7534ed",
+"phase": "fx_post_ap_payment",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"payment": "E2E-UNC-USD-01",
+"posted": true,
+"book_value_vnd": 12500000,
+"foreign_amount": 500,
+"bank_outflow_vnd": 12525962,
+"realized_fx_loss_vnd": 25962,
+"ap_residual_vnd": 0,
+"cash_balance_vnd": 39582038,
+"cash_balance_usd": 1580
+}
+}

@@ -1,0 +1,19 @@
+{
+"run_id": "finance-e2e-20261020-190534-79e2723d03f94018a44e78d779b77d54",
+"phase": "payment_reconciliation",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"channel": "VNPAY",
+"gross_vnd": 75000000,
+"fee_vnd": 1125000,
+"fee_percent": 1.5,
+"net_vnd": 73875000,
+"bank_before_vnd": 39200000,
+"bank_after_vnd": 113075000,
+"gl_rows": 2,
+"unpost_repost": true,
+"one_vnd_imbalance_rejected": true
+}
+}

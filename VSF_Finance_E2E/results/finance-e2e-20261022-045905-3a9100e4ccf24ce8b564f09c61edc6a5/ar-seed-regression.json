@@ -1,0 +1,25 @@
+{
+"run_id": "finance-e2e-20261022-045905-3a9100e4ccf24ce8b564f09c61edc6a5",
+"phase": "ar_seed_regression",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"posted_acceptances": 1260,
+"posted_invoices": 1260,
+"posted_receipts": 1162,
+"expected_receipts": 1162,
+"vat_boundary_cases": 6,
+"standard_rate_acceptances": 360,
+"reduced_rate_acceptances": 900,
+"invoice_tax_source_mismatches": 0,
+"receipt_gl_entries": 1162,
+"receipt_gl_internal_1312": 361,
+"receipt_gl_external_1311": 801,
+"receipt_gl_debit_vnd": 1083765480000,
+"receipt_gl_credit_ar": 1083765480000,
+"receipt_ar_movements": 1162,
+"receipt_cash_movements": 1162,
+"contract_query_batch": true
+}
+}

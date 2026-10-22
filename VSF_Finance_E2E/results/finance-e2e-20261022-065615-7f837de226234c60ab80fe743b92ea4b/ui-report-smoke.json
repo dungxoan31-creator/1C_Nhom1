@@ -1,0 +1,122 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\e2e-infobase",
+    "workflow":  "ReportSmoke",
+    "flow":  "native 1C UI → AR ledger, AP ledger, aging report",
+    "verified":  [
+                     "SoChiTietCongNoAR: opened, generated, and rendered a visible result grid",
+                     "SoChiTietCongNoAP: opened, generated, and rendered a visible result grid",
+                     "BaoCaoTuoiNo: opened, generated, and rendered a visible result grid"
+                 ],
+    "error":  "",
+    "onec_log_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-report-smoke.1c.log",
+    "report_audit":  [
+                         {
+                             "report":  "SoChiTietCongNoAR",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_result_grid_count":  1,
+                             "visible_result_grid_bounds":  [
+                                                                513,
+                                                                385,
+                                                                1146,
+                                                                494
+                                                            ],
+                             "visible_edit_count":  2,
+                             "visible_fields":  [
+                                                    "Ngay bat dau:",
+                                                    "Ngay ket thuc:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Tien te:",
+                                                    "Chứng từ gốc:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay bat dau:",
+                                                             "ControlType.Text:Ngay ket thuc:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Tien te:",
+                                                             "ControlType.Text:Chứng từ gốc:"
+                                                         ],
+                             "result_screenshot":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-report-smoke.SoChiTietCongNoAR.report-result.png",
+                             "ui_error_count":  0
+                         },
+                         {
+                             "report":  "SoChiTietCongNoAP",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_result_grid_count":  1,
+                             "visible_result_grid_bounds":  [
+                                                                513,
+                                                                385,
+                                                                1146,
+                                                                494
+                                                            ],
+                             "visible_edit_count":  2,
+                             "visible_fields":  [
+                                                    "Ngay bat dau:",
+                                                    "Ngay ket thuc:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Tien te:",
+                                                    "Chứng từ gốc:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay bat dau:",
+                                                             "ControlType.Text:Ngay ket thuc:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Tien te:",
+                                                             "ControlType.Text:Chứng từ gốc:"
+                                                         ],
+                             "result_screenshot":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-report-smoke.SoChiTietCongNoAP.report-result.png",
+                             "ui_error_count":  0
+                         },
+                         {
+                             "report":  "BaoCaoTuoiNo",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_result_grid_count":  1,
+                             "visible_result_grid_bounds":  [
+                                                                513,
+                                                                351,
+                                                                1146,
+                                                                528
+                                                            ],
+                             "visible_edit_count":  3,
+                             "visible_fields":  [
+                                                    "Ngay chot:",
+                                                    "Loai cong no:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Nhom tuoi no:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay chot:",
+                                                             "ControlType.Text:Loai cong no:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Nhom tuoi no:"
+                                                         ],
+                             "result_screenshot":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b\\ui-report-smoke.BaoCaoTuoiNo.report-result.png",
+                             "ui_error_count":  0
+                         }
+                     ]
+}

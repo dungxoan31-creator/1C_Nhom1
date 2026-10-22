@@ -1,0 +1,11 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-232429-e955588bb1b147899ba23008917551c7\\e2e-infobase",
+    "workflow":  "ARInvoice",
+    "flow":  "native 1C UI → Functions → AR sales invoice list → sales invoice form",
+    "verified":  [
+                     "AR invoice list rendered expected document"
+                 ],
+    "error":  "UI element not found: ControlType.Pane \u0027Hóa đơn GTGT đầu ra (AR) - VinSmart Future\u0027."
+}

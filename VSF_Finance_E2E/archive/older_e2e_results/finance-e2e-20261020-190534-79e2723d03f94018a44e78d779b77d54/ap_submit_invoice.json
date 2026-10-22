@@ -1,0 +1,18 @@
+{
+"run_id": "finance-e2e-20261020-190534-79e2723d03f94018a44e78d779b77d54",
+"phase": "ap_submit_invoice",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AP001",
+"maker": "ketoan_ap",
+"approver": "ketoan_truong",
+"status": "ChoKeToanTruongDuyet",
+"gross_vnd": 200000000,
+"fct_vat_vnd": 10000000,
+"fct_cit_vnd": 10000000,
+"net_payable_vnd": 180000000,
+"expense_vnd": 190000000
+}
+}

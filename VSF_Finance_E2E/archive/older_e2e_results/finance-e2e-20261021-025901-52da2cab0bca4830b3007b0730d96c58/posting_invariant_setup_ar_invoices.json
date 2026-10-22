@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-025901-52da2cab0bca4830b3007b0730d96c58",
+"phase": "posting_invariant_setup_ar_invoices",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"cancelled_invoice": "E2E-INV-CANCEL",
+"zero_vat_invoice": "E2E-INV-ZVAT",
+"transaction_valid": "E2E-INV-TX-GOOD",
+"transaction_invalid": "E2E-INV-TX-BAD",
+"maker": "ketoan_ar"
+}
+}

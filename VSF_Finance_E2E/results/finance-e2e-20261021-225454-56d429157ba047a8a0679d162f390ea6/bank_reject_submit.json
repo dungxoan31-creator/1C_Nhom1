@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-225454-56d429157ba047a8a0679d162f390ea6",
+"phase": "bank_reject_submit",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-BANK-REJECT",
+"amount_vnd": 1000000,
+"initial_status": "ChoDuyet",
+"source_invoice": "Hóa đơn đầu vào (nhà cung cấp) E2E-AP001 dated 10/13/2026 9:00:00 AM"
+}
+}

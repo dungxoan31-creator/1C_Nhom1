@@ -1,0 +1,47 @@
+﻿{
+    "status":  "PASS",
+    "background_runtime":  {
+                               "status":  "PASS",
+                               "error":  "",
+                               "attempt_marker_before_release":  true,
+                               "lock_wait_seconds":  3
+                           },
+    "lock_holder":  {
+                        "status":  "PASS",
+                        "user":  "cfo_giamdoc",
+                        "error":  "",
+                        "locked_at":  "2026-10-20T11:20:00",
+                        "released_at":  "2026-10-20T11:20:03"
+                    },
+    "first_receipt_exit_code":  0,
+    "second_receipt_exit_code":  0,
+    "first_receipt":  {
+                          "status":  "PASS",
+                          "receipt":  "E2E-CONC-PT-1",
+                          "expected":  "POSTED",
+                          "posted":  true,
+                          "post_error":  "",
+                          "ar_balance_vnd":  70000000,
+                          "ar_movements":  1,
+                          "cash_movements":  1,
+                          "gl_movements":  1,
+                          "error":  "",
+                          "started_at":  "2026-10-20T11:20:00",
+                          "finished_at":  "2026-10-20T11:20:03"
+                      },
+    "over_collection_rejected":  {
+                                     "status":  "PASS",
+                                     "receipt":  "E2E-CONC-PT-2",
+                                     "expected":  "REJECTED",
+                                     "posted":  false,
+                                     "post_error":  "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(434)}:Receipt.Write(DocumentWriteMode.Posting);\n{ManagedApplicationModule(84)}:SeedBoundaryTestsServer.PostConcurrentARReceipt(ParamParts[1], ParamParts[2], ParamParts[3], ParamParts[4]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Phiáº¿u thu tiá»n khÃ¡ch hÃ ng E2E-CONC-PT-2 dated 10/18/2026 10:00:00 AM\"!\n[StoredDataError]",
+                                     "ar_balance_vnd":  70000000,
+                                     "ar_movements":  0,
+                                     "cash_movements":  0,
+                                     "gl_movements":  0,
+                                     "error":  "",
+                                     "started_at":  "2026-10-20T11:20:05",
+                                     "finished_at":  "2026-10-20T11:20:05"
+                                 },
+    "reason":  ""
+}

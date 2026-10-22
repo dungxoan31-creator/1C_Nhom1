@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-132410-25c2d8c5dd7542dd8a3c2b5b76d3c9ae",
+"phase": "approval_ui_queue_check",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "Batch approval UI fixture requires an empty KTT queue; found 1 pending documents.\n{CommonModule.SeedBoundaryTestsServer.Module(257)}:Raise StrTemplate(\"Batch approval UI fixture requires an empty KTT queue; found %1 pending documents.\", Queue.Count());\n{CommonModule.SeedBoundaryTestsServer.Module(89)}:Result.data = VerifyFinanceE2EBatchApprovalUIQueueEmpty();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

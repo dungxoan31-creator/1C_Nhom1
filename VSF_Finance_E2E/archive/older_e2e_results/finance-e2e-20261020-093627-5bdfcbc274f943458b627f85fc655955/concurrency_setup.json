@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261020-093627-5bdfcbc274f943458b627f85fc655955",
+"phase": "concurrency_setup",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice": "Hóa đơn GTGT đầu ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+"invoice_status": "ChoKySo",
+"maker": "ketoan_ar",
+"expected_ar_vnd": 270000000
+}
+}

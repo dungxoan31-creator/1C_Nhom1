@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-025901-52da2cab0bca4830b3007b0730d96c58",
+"phase": "netting_submit_acceptance",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"ar_source": "Biên bản nghiệm thu giai đoạn E2E-NT-AR001 dated 10/20/2026 9:00:00 AM",
+"base_vnd": 40000000,
+"vat_vnd": 3200000,
+"gross_vnd": 43200000,
+"maker": "ketoan_ar"
+}
+}

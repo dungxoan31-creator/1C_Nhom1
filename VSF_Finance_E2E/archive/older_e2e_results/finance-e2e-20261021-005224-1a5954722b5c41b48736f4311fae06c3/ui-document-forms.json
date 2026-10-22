@@ -1,0 +1,36 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-005224-1a5954722b5c41b48736f4311fae06c3\\e2e-infobase",
+    "workflow":  "FormSmoke",
+    "flow":  "native 1C UI → five document lists, five document forms, two data processor forms",
+    "verified":  [
+                     "Danh sách Biên bản nghiệm thu giai đoạn: opened",
+                     "E2E-BB001: form opened; visible edit controls=11",
+                     "Danh sách Hóa đơn GTGT đầu ra (AR): opened",
+                     "E2E-AR001: form opened; visible edit controls=11",
+                     "Danh sách Phiếu thu tiền khách hàng: opened",
+                     "E2E-PT001: form opened; visible edit controls=9",
+                     "Danh sách Hóa đơn nhà cung cấp (AP): opened",
+                     "E2E-AP001: form opened; visible edit controls=10",
+                     "Danh sách Ủy nhiệm chi: opened",
+                     "E2E-UNC01: form opened; visible edit controls=9",
+                     "Bàn làm việc \u0026 Điều hành Web ERP: opened",
+                     "Bàn Duyệt Maker-Checker Hàng Loạt: opened from dashboard"
+                 ],
+    "error":  "",
+    "screens":  [
+                    "Danh sách Biên bản nghiệm thu giai đoạn: opened",
+                    "E2E-BB001: form opened; visible edit controls=11",
+                    "Danh sách Hóa đơn GTGT đầu ra (AR): opened",
+                    "E2E-AR001: form opened; visible edit controls=11",
+                    "Danh sách Phiếu thu tiền khách hàng: opened",
+                    "E2E-PT001: form opened; visible edit controls=9",
+                    "Danh sách Hóa đơn nhà cung cấp (AP): opened",
+                    "E2E-AP001: form opened; visible edit controls=10",
+                    "Danh sách Ủy nhiệm chi: opened",
+                    "E2E-UNC01: form opened; visible edit controls=9",
+                    "Bàn làm việc \u0026 Điều hành Web ERP: opened",
+                    "Bàn Duyệt Maker-Checker Hàng Loạt: opened from dashboard"
+                ]
+}

@@ -1,0 +1,20 @@
+{
+"run_id": "finance-e2e-20261022-081451-45ddd733b5e24b6fa0abecc978fd9e96",
+"phase": "branch_rls_prepare",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"branch": "CN-E2E-BR2",
+"legal_entity": "PN-BR02",
+"contract": "HD-RLS-BR02",
+"assigned_users": [
+"ketoan_ar",
+"ketoan_ap",
+"cfo_giamdoc",
+"ketoan_truong"
+],
+"branch1_legal_entity_uuid": "1d3fdc2d-cad0-11f1-92c7-f4a475ea2b8e",
+"branch1_vendor_contract_uuid": "14eb29bd-cdb6-11f1-92c8-f4a475ea2b8e"
+}
+}

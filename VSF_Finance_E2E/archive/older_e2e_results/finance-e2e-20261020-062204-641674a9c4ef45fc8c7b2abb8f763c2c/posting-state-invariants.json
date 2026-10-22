@@ -1,0 +1,28 @@
+{
+"run_id": "finance-e2e-20261020-062204-641674a9c4ef45fc8c7b2abb8f763c2c",
+"phase": "posting_state_invariants",
+"user": "Admin",
+"status": "FAIL",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": false,
+"error": "Draft payment invariant failed: Posted=Yes AP=0 Cash=0 GL=0"
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": false,
+"error": "Cancelled invoice invariant failed: Posted=Yes AR=0 GL=0"
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": false,
+"error": "Zero-VAT debt transfer failed: Posted=Yes records=0 cleared=0 invoiced=0 expected=1,234,567"
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": false,
+"error": "Object method not found (PheDuyetHangLoat)\n{CommonModule.SeedBoundaryTestsServer.Module(892)}:BulkResult = DataProcessors.BanLamViecWebERP.PheDuyetHangLoat(Refs);\n{ManagedApplicationModule(23)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError, ScriptUseError]"
+}
+]
+}

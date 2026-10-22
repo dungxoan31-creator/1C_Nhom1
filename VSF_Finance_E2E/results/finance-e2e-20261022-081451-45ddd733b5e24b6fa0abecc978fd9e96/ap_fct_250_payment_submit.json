@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-081451-45ddd733b5e24b6fa0abecc978fd9e96",
+"phase": "ap_fct_250_payment_submit",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-UNC-FCT250",
+"amount_vnd": 225000000,
+"status": "ChoDuyet",
+"source_invoice": "Hóa đơn đầu vào (nhà cung cấp) E2E-AP-FCT250 dated 10/16/2026 11:00:00 AM"
+}
+}

@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-081451-45ddd733b5e24b6fa0abecc978fd9e96",
+"phase": "branch_rls_approve",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"branch": "CN-E2E-BR2",
+"document": "RLS-BB02",
+"status": "DaDuyetNoiBo",
+"approver": "ketoan_truong"
+}
+}

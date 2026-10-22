@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-082854-5bceaa67c4124e7a8565a74a333ec852",
+"phase": "ap_fct_250_payment_post_verify",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-UNC-FCT250",
+"posted": true,
+"amount_vnd": 225000000,
+"ap_balance_after_vnd": 0,
+"cash_rows": 1,
+"ap_rows": 1,
+"gl_rows": 1,
+"bank_status": "ACCEPTED"
+}
+}

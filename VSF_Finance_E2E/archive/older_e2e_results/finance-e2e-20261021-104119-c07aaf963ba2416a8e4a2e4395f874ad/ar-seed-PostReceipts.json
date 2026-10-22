@@ -1,0 +1,11 @@
+{
+"run_id": "finance-e2e-20261021-104119-c07aaf963ba2416a8e4a2e4395f874ad",
+"phase": "ar_seed_PostReceipts",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"documents": 1162,
+"posted": true
+}
+}

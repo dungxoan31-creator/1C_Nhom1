@@ -1,0 +1,22 @@
+{
+"run_id": "finance-e2e-20261020-063502-f3c0328cc7b94bcc8648246b7a125b55",
+"status": "FAIL",
+"user": "Admin",
+"cases": [
+{
+"name": "ZeroResidual",
+"passed": false,
+"error": "=================================================================\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -> UNPOST -> REPOST) \n   Thoi gian bat dau: 10/20/2026 6:35:55 AM\n=================================================================\n[*] Kiem thu chung tu: HoaDonGTGTDauRa (Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\n  [1] POST BAN DAU: SoCaiKeToan = 1 ban ghi\n  [FAIL] HoaDonGTGTDauRa: Ngoai le khi test chu trinh: Error calling context method (Write)\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1418)}:DocObj.Write(DocumentWriteMode.UndoPosting);\n{CommonModule.SeedBoundaryTestsServer.Module(312)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\n{ManagedApplicationModule(38)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save \"Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM\"!\n[StoredDataError]\n[*] Kiem thu chung tu: HoaDonNhaCungCap (Hóa đơn đầu vào (nhà cung cấp) E2E-BULK-HIGH dated 10/15/2026 10:00:00 AM)\n  [1] POST BAN DAU: SoCaiKeToan = 1 ban ghi\n  [2] UNPOST THANH CONG: SoCaiKeToan = 0 ban ghi (ZERO RESIDUAL VERIFIED)\n  [3] REPOST THANH CONG: SoCaiKeToan tai tao dung 1 ban ghi (REPOST PARITY VERIFIED)\n[*] Kiem thu chung tu: UyNhiemChi (Ủy nhiệm chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\n  [1] POST BAN DAU: SoCaiKeToan = 1 ban ghi\n  [2] UNPOST THANH CONG: SoCaiKeToan = 0 ban ghi (ZERO RESIDUAL VERIFIED)\n  [3] REPOST THANH CONG: SoCaiKeToan tai tao dung 1 ban ghi (REPOST PARITY VERIFIED)\n-----------------------------------------------------------------\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \n-----------------------------------------------------------------\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\n=================================================================\n>> XAC NHAN: POSTING_LIFECYCLE_FAIL\n================================================================="
+},
+{
+"name": "RepostParity",
+"passed": false,
+"error": "=================================================================\n   KIEM THU RUNTIME: CHU TRINH GHI SO (POST -> UNPOST -> REPOST) \n   Thoi gian bat dau: 10/20/2026 6:35:55 AM\n=================================================================\n[*] Kiem thu chung tu: HoaDonGTGTDauRa (Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM)\n  [1] POST BAN DAU: SoCaiKeToan = 1 ban ghi\n  [FAIL] HoaDonGTGTDauRa: Ngoai le khi test chu trinh: Error calling context method (Write)\n{CommonModule.QuanLyVongDoiChungTuServer.Module(1418)}:DocObj.Write(DocumentWriteMode.UndoPosting);\n{CommonModule.SeedBoundaryTestsServer.Module(312)}:Cases = QuanLyVongDoiChungTuServer.KiemThuChuTrinhGhiSoRuntime();\n{ManagedApplicationModule(38)}:SeedBoundaryTestsServer.RunPostingLifecycleRegression(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save \"Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM\"!\n[StoredDataError]\n[*] Kiem thu chung tu: HoaDonNhaCungCap (Hóa đơn đầu vào (nhà cung cấp) E2E-BULK-HIGH dated 10/15/2026 10:00:00 AM)\n  [1] POST BAN DAU: SoCaiKeToan = 1 ban ghi\n  [2] UNPOST THANH CONG: SoCaiKeToan = 0 ban ghi (ZERO RESIDUAL VERIFIED)\n  [3] REPOST THANH CONG: SoCaiKeToan tai tao dung 1 ban ghi (REPOST PARITY VERIFIED)\n[*] Kiem thu chung tu: UyNhiemChi (Ủy nhiệm chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM)\n  [1] POST BAN DAU: SoCaiKeToan = 1 ban ghi\n  [2] UNPOST THANH CONG: SoCaiKeToan = 0 ban ghi (ZERO RESIDUAL VERIFIED)\n  [3] REPOST THANH CONG: SoCaiKeToan tai tao dung 1 ban ghi (REPOST PARITY VERIFIED)\n-----------------------------------------------------------------\n   DOI SOAT DOC LAP GL VS SO PHU (AR / AP / NGAN HANG)          \n-----------------------------------------------------------------\n  [PASS] GL vs Subledger: Delta AR = 0, Delta AP = 0, Delta Bank = 0 (GL_SUBLEDGER_DELTA_ZERO)\n=================================================================\n>> XAC NHAN: POSTING_LIFECYCLE_FAIL\n================================================================="
+},
+{
+"name": "GLSubledger",
+"passed": true,
+"error": ""
+}
+]
+}

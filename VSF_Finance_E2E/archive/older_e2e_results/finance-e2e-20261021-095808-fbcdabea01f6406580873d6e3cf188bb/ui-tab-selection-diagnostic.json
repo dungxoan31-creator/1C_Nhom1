@@ -1,0 +1,305 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-095808-fbcdabea01f6406580873d6e3cf188bb\\e2e-infobase",
+    "workflow":  "FormSmoke",
+    "flow":  "native 1C UI → seven document lists, seven document forms, two data processor forms",
+    "verified":  [
+
+                 ],
+    "error":  "Could not select document form tab \u00271. Thông tin chung\u0027 on BienBanNghiemThuGiaiDoan. Visible fields: Number: | Date: | Ngày nghiệm thu: | Pháp nhân: | Đối tác: | Hợp đồng: | Giá trị nghiệm thu chưa thuế GTGT: | Thuế suất GTGT (%): | ApDungGiamThueGTGT | Tiền thuế GTGT: | Tổng giá trị: | Messages:. Tab controls: [{\"name\":\"1. Thông tin chung\",\"enabled\":true,\"offscreen\":false,\"selected\":\"True\",\"patterns\":[\"SelectionItemPatternIdentifiers.Pattern\"],\"bounds\":[513,638,129,27]},{\"name\":\"2. Chi tiết nghiệm thu\",\"enabled\":true,\"offscreen\":false,\"selected\":\"False\",\"patterns\":[\"SelectionItemPatternIdentifiers.Pattern\"],\"bounds\":[641,638,146,27]},{\"name\":\"3. Thuế \\u0026 HĐĐT\",\"enabled\":true,\"offscreen\":false,\"selected\":\"False\",\"patterns\":[\"SelectionItemPatternIdentifiers.Pattern\"],\"bounds\":[786,638,116,27]},{\"name\":\"4. Nhật ký \\u0026 Phê duyệt\",\"enabled\":true,\"offscreen\":false,\"selected\":\"False\",\"patterns\":[\"SelectionItemPatternIdentifiers.Pattern\"],\"bounds\":[901,638,158,27]}]",
+    "screens":  [
+                    "Danh sách Biên bản nghiệm thu giai đoạn: opened; Create form opened and closed without saving"
+                ],
+    "form_audit":  [
+                       {
+                           "screen":  "E2E-BB001",
+                           "control_scope":  "visible_controls_in_active_window",
+                           "form_bounds":  [
+                                               631,
+                                               175,
+                                               852,
+                                               33
+                                           ],
+                           "visible_edit_count":  11,
+                           "visible_input_count":  14,
+                           "visible_field_names":  [
+                                                       "Number:",
+                                                       "Date:",
+                                                       "Ngày nghiệm thu:",
+                                                       "Pháp nhân:",
+                                                       "Đối tác:",
+                                                       "Hợp đồng:",
+                                                       "Giá trị nghiệm thu chưa thuế GTGT:",
+                                                       "Thuế suất GTGT (%):",
+                                                       "ApDungGiamThueGTGT",
+                                                       "Tiền thuế GTGT:",
+                                                       "Tổng giá trị:",
+                                                       "Messages:"
+                                                   ],
+                           "visible_control_details":  [
+                                                           {
+                                                               "name":  "",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1045,
+                                                                              142,
+                                                                              280,
+                                                                              26
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.List",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              513,
+                                                                              938,
+                                                                              1158,
+                                                                              18
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Number:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "E2E-BB001",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              632,
+                                                                              675,
+                                                                              408,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Date:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "10/10/2026  9:00:00 AM",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              632,
+                                                                              709,
+                                                                              159,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Ngày nghiệm thu:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "10/10/2026",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              632,
+                                                                              743,
+                                                                              99,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Pháp nhân:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "Công ty CP VinSmart Future",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              632,
+                                                                              777,
+                                                                              366,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Đối tác:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              632,
+                                                                              811,
+                                                                              366,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Hợp đồng:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "Hợp đồng dịch vụ 2025 - CTCP VinFast Việt Nam (Pháp nhân mới sau tách)",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              632,
+                                                                              845,
+                                                                              366,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Giá trị nghiệm thu chưa thuế GTGT:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "200,000,000.00",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1265,
+                                                                              675,
+                                                                              149,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Thuế suất GTGT (%):",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "8",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1265,
+                                                                              709,
+                                                                              29,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "ApDungGiamThueGTGT",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.CheckBox",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1051,
+                                                                              742,
+                                                                              17,
+                                                                              17
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Tiền thuế GTGT:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "16,000,000.00",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1265,
+                                                                              769,
+                                                                              149,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Tổng giá trị:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "216,000,000.00",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1265,
+                                                                              803,
+                                                                              149,
+                                                                              23
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Messages:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.List",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              513,
+                                                                              938,
+                                                                              1153,
+                                                                              18
+                                                                          ]
+                                                           }
+                                                       ],
+                           "visible_button_count":  24,
+                           "visible_button_names":  [
+                                                        "Functions",
+                                                        "Notifications",
+                                                        "History",
+                                                        "Favorites",
+                                                        "Quản trị hệ thống VSF",
+                                                        "Service and settings",
+                                                        "Collapse",
+                                                        "Maximize",
+                                                        "Close",
+                                                        "Back",
+                                                        "Forward",
+                                                        "Save",
+                                                        "More actions",
+                                                        "Add to favorites",
+                                                        "Menu",
+                                                        "Get link...",
+                                                        "Print preview",
+                                                        "Print"
+                                                    ],
+                           "enabled_button_names":  [
+                                                        "Functions",
+                                                        "Notifications",
+                                                        "History",
+                                                        "Favorites",
+                                                        "Quản trị hệ thống VSF",
+                                                        "Service and settings",
+                                                        "Collapse",
+                                                        "Maximize",
+                                                        "Close",
+                                                        "Back",
+                                                        "Forward",
+                                                        "More actions",
+                                                        "Add to favorites",
+                                                        "Menu",
+                                                        "Get link...",
+                                                        "Print preview",
+                                                        "Print",
+                                                        "Save"
+                                                    ],
+                           "disabled_button_names":  [
+                                                         "Save"
+                                                     ]
+                       }
+                   ],
+    "form_tab_audit":  [
+
+                       ],
+    "document_list_actions":  [
+                                  {
+                                      "document_number":  "E2E-BB001",
+                                      "create_form_opened":  true,
+                                      "create_form_closed_without_save":  true,
+                                      "copy_form_opened":  true,
+                                      "copy_form_closed_without_save":  true
+                                  }
+                              ],
+    "form_command_actions":  [
+
+                             ],
+    "related_document_actions":  [
+
+                                 ],
+    "print_preview_actions":  [
+
+                              ]
+}

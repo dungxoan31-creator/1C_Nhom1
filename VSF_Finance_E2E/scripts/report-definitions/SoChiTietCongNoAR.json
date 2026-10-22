@@ -1,0 +1,46 @@
+{
+  "dataSets": [
+    {
+      "name": "PhatSinhCongNoAR",
+      "query": "@../report-queries/ar-ledger.sql",
+      "fields": [
+        { "field": "PhapNhan", "title": "Pháp nhân", "type": "CatalogRef.PhapNhan" },
+        { "field": "DoiTac", "title": "Đối tác", "type": "CatalogRef.DoiTac" },
+        { "field": "HopDong", "title": "Hợp đồng", "type": "CatalogRef.HopDong" },
+        { "field": "ChungTuGoc", "title": "Chứng từ gốc", "type": ["DocumentRef.BienBanNghiemThuGiaiDoan", "DocumentRef.HoaDonGTGTDauRa"] },
+        { "field": "ChungTuPhatSinh", "title": "Chứng từ phát sinh", "type": ["DocumentRef.BienBanNghiemThuGiaiDoan", "DocumentRef.HoaDonGTGTDauRa", "DocumentRef.PhieuThuTienKhachHang", "DocumentRef.HoaDonNhaCungCap", "DocumentRef.UyNhiemChi", "DocumentRef.CanTruCongNoNoiBo", "DocumentRef.DoiSoatKenhThanhToan"] },
+        { "field": "NgayChungTu", "title": "Ngày chứng từ", "type": "date" },
+        { "field": "SoChungTu", "title": "Số chứng từ", "type": "string(50)" },
+        { "field": "LoaiChungTu", "title": "Loại chứng từ", "type": "string(150)" },
+        { "field": "DienGiai", "title": "Diễn giải", "type": "string(250)" },
+        { "field": "TienTe", "title": "Tiền tệ", "type": "CatalogRef.TienTe" },
+        { "field": "SoDuDauKy", "title": "Số dư đầu kỳ", "type": "decimal(15,2)" },
+        { "field": "PhatSinhTang", "title": "Phát sinh tăng", "type": "decimal(15,2)" },
+        { "field": "PhatSinhGiam", "title": "Phát sinh giảm", "type": "decimal(15,2)" },
+        { "field": "SoTienBienDong", "title": "Biến động", "type": "decimal(15,2)", "restrict": ["noField", "noFilter", "noOrder"] },
+        { "field": "SoDuCuoiKy", "title": "Số dư cuối kỳ", "type": "decimal(15,2)" },
+        { "field": "SoTien", "title": "Số tiền", "type": "decimal(15,2)" }
+      ]
+    }
+  ],
+  "calculatedFields": [
+    "SoDuLuyKe [Số dư lũy kế]: decimal(15,2) = SoDuDauKy + EvalExpression(\"SUM(SoTienBienDong)\", \"\", \"\", \"First\", \"Current\", \"NgayChungTu asc, SoChungTu asc\", \"\", \"Separately\")"
+  ],
+  "parameters": [
+    { "name": "NgayBatDau", "title": "Ngày bắt đầu", "type": "date", "use": "Always", "denyIncompleteValues": true },
+    { "name": "NgayKetThuc", "title": "Ngày kết thúc", "type": "date", "use": "Always", "denyIncompleteValues": true }
+  ],
+  "settingsVariants": [
+    {
+      "name": "Chinh",
+      "title": "Sổ chi tiết công nợ phải thu (AR)",
+      "settings": {
+        "selection": ["PhapNhan", "DoiTac", "HopDong", "NgayChungTu", "SoChungTu", "LoaiChungTu", "DienGiai", "TienTe", "SoDuDauKy", "PhatSinhTang", "PhatSinhGiam", "SoTien", "SoDuLuyKe", "SoDuCuoiKy", "ChungTuGoc"],
+        "filter": ["PhapNhan = _ @off @user", "DoiTac = _ @off @user", "HopDong = _ @off @user", "TienTe = _ @off @user", "ChungTuGoc = _ @off @user"],
+        "dataParameters": ["NgayBatDau = 2026-01-01T00:00:00 @user", "NgayKetThuc = 2026-10-22T00:00:00 @user"],
+        "order": ["NgayChungTu asc", "SoChungTu asc", "Auto"],
+        "structure": "PhapNhan > DoiTac > HopDong > details"
+      }
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+﻿{
+    "source_file_count":  200,
+    "candidate_file_count":  200,
+    "matched_count":  145,
+    "difference_count":  55,
+    "differences":  [
+                        {
+                            "Path":  "Configuration.xml",
+                            "Source":  "9D7D5254A582118DD38BBB0F2BED44BF4BC6252C288F3145DB6E24C820A762D2",
+                            "Candidate":  "87D89F510639C411B7C7655AEC2B0425D76970F0649490BB60D622CFF25601EB"
+                        },
+                        {
+                            "Path":  "Catalogs\\KhoanMucDongTien.xml",
+                            "Source":  "FADA021EB1BC451AF5789986B1A852B7429BFEF0353182E888959F2F46F1306C",
+                            "Candidate":  "7EC209B55A1A12153C98BB60B12BD20D49979A2B555D762CFE8FBED706E5DD8B"
+                        },
+                        {
+                            "Path":  "Catalogs\\TaiKhoanTien.xml",
+                            "Source":  "A372F3E780AB707387EF34F0A67A23B69280394FEC48F09144F928943C7E926F",
+                            "Candidate":  "0A43B5CBA8CB4AC973D510741C5BEC65EAB4C0FD6A3A09250195B808643D65E4"
+                        },
+                        {
+                            "Path":  "CommonModules\\SeedBoundaryTestsServer.xml",
+                            "Source":  "626625F3776BA6E9509BB79F35FB400BD5059F2A43C34DEBF92B54032CCCAB73",
+                            "Candidate":  "356419B32E26A2AF0C1B77BAEA0234A84C820874360176999A1C875B6973A384"
+                        },
+                        {
+                            "Path":  "CommonModules\\TichHopNganHangServer.xml",
+                            "Source":  "BA27E85C77A787A1307412642ECECB0486A1A6849BCEB6EB55EF534D57FD67F9",
+                            "Candidate":  "A9E2FB8308BB6675B5687471ADC5EABA4495634E66AD2ABB5565782A83064372"
+                        },
+                        {
+                            "Path":  "CommonModules\\BangDieuKhienServer\\Ext\\Module.bsl",
+                            "Source":  "5E7410EC90B42045708392E92D3E0BAED42C4F8F8115C58E7B0E80151F1C5AAC",
+                            "Candidate":  "F06D4A46CB026CB052CBB006B9EE0E234B7CB48EB765D3BCE863180D20A15780"
+                        },
+                        {
+                            "Path":  "CommonModules\\NhapSaoKeCsvServer\\Ext\\Module.bsl",
+                            "Source":  "E3DB74830736308FA4A4C4600E4243B37579AD048A5585AE4D7C5E6D9EEADBEC",
+                            "Candidate":  "DC9732499709DAE70FF74B68C8E1F6DE1409A4FF61ADD581A8256A318FE28AEB"
+                        },
+                        {
+                            "Path":  "CommonModules\\PhanQuyenBaoMatServer\\Ext\\Module.bsl",
+                            "Source":  "C833754699F8431A267F699724E1DDCFDA4CF0CE1EE720EC05BE47F2EB73A2B6",
+                            "Candidate":  "559EE5A616785D7FC04802BC21D9E72D70364CEB8D873842A4BF33E74C0FCC9D"
+                        },
+                        {
+                            "Path":  "CommonModules\\SeedBoundaryTestsServer\\Ext\\Module.bsl",
+                            "Source":  "149FB9B29F19DF35DEE8694182881A894143E0F6C1E8576F0E6933E0E4CD2D51",
+                            "Candidate":  "7DF73E42CDCF50FF8A6D4712670C43D0170F4D6F783732A1B5D6572897279E62"
+                        },
+                        {
+                            "Path":  "CommonModules\\ThueGTGTClientServer\\Ext\\Module.bsl",
+                            "Source":  "1922AD0871D91A80923206254ABC587CBD3735C4F6DC9325FFF0841C2EB9AFAA",
+                            "Candidate":  "BFF856C7B428E7BBF8861D86E635397CCC2D6B84B60EBCC92F2A5BB7658C3A3A"
+                        },
+                        {
+                            "Path":  "CommonModules\\TichHopNganHangServer\\Ext\\Module.bsl",
+                            "Source":  "FA72D979855F2A8A88330AEE6B539E45BBF6B5C3B593396D1892D287319E5E37",
+                            "Candidate":  "CC1C2AA12C5D17991E7093DF62F658178D7E6F776161B6E381B64DE07139D1E8"
+                        },
+                        {
+                            "Path":  "CommonTemplates\\MauHTMLHuongDanQuyTrinhTaiChinh.xml",
+                            "Source":  "3267D21171EE2EEC5EE2C8EC8E257A7B12348B86526BDCE5FDF3515B4E0CDF4A",
+                            "Candidate":  "C92FBEF84442E87AED13975CEA70A3F6FD69FAA750818369CFCD42365F870E45"
+                        },
+                        {
+                            "Path":  "DataProcessors\\HuongDanQuyTrinhTaiChinh.xml",
+                            "Source":  "21042E90F2243B270369DFA7025FBF73480E0F5BD977C77326C28F02B022F8A1",
+                            "Candidate":  "5EB868C48DAE6C7EDD98E3D4BAEAEF34C1A0402CE0EB00501844CF4DBBE1B482"
+                        },
+                        {
+                            "Path":  "DataProcessors\\BanLamViecWebERP\\Ext\\ManagerModule.bsl",
+                            "Source":  "EA589459E69016F253F6C734F2B28268D03A4FBD5F05ABEED04CDF65E3BAA897",
+                            "Candidate":  "5A7EDFB0099844F3E47A814BC5B4D41711E7B1EA6BC16E5DB668FC53DF40627E"
+                        },
+                        {
+                            "Path":  "DataProcessors\\BanLamViecWebERP\\Forms\\FormBanLamViec\\Ext\\Form\\Module.bsl",
+                            "Source":  "2E9237D78382683BF65B75ECA94C9FE5BA5FCA43DB1C23050BA757177D720245",
+                            "Candidate":  "5E17411E2F8F8C2014192DCBCD492300B95F4E453889552C9F95CB91725DAFB3"
+                        },
+                        {
+                            "Path":  "DataProcessors\\HuongDanQuyTrinhTaiChinh\\Ext\\ObjectModule.bsl",
+                            "Source":  "EDC18BCA96CFBB34A283DCEB9BD9B7F8CADDBF41663E27BEA83764EE9EFE1C8F",
+                            "Candidate":  "025F24F0BE757B00AA4AB2BD237A3ACB60931B1286E2127AFDF3C25C91CC3ACC"
+                        },
+                        {
+                            "Path":  "DataProcessors\\HuongDanQuyTrinhTaiChinh\\Forms\\FormHuongDanQuyTrinhTaiChinh.xml",
+                            "Source":  "5BDF0102AAFD9A1C1EB55B6CD7AF1EE860FE0E0E05959A4331BD97661C60D39A",
+                            "Candidate":  "F74BD35F015C88D0E77E4B6C359E0A9B6B1CBD725FE3BC91D9DABA1A32D11117"
+                        },
+                        {
+                            "Path":  "DataProcessors\\HuongDanQuyTrinhTaiChinh\\Forms\\FormHuongDanQuyTrinhTaiChinh\\Ext\\Form.xml",
+                            "Source":  "153DF225AEA37B485A186C9A2812A579D92111B1174C3C2FECBC73732F8B1760",
+                            "Candidate":  "99A860D68F9772D4CB736EDACACCE2C171462CE39A62533FB08B0E0ED921D9F0"
+                        },
+                        {
+                            "Path":  "DataProcessors\\HuongDanQuyTrinhTaiChinh\\Forms\\FormHuongDanQuyTrinhTaiChinh\\Ext\\Form\\Module.bsl",
+                            "Source":  "22E9E77EC6E2624899F240CAC407D08108392818FCB030B6072E14CAB4E104C7",
+                            "Candidate":  "536D1AD5AE74752648E5F4424D5E6A4E069941628813CEEAAC8D273B30B2F422"
+                        },
+                        {
+                            "Path":  "Documents\\BienBanNghiemThuGiaiDoan.xml",
+                            "Source":  "DDB454F4A852A2F6DB3B2EF8A23D0388D73CB21B647306331759B7011820FA5A",
+                            "Candidate":  "A30B20356B1C355CAEEA132CBD77E8356BB8F2A4F4BE4E054F3C00F789E9CDF3"
+                        },
+                        {
+                            "Path":  "Documents\\CanTruCongNoNoiBo.xml",
+                            "Source":  "A28A3C7B5B2DC1FAB89FD558F2A889315B8F5AE8B0B3E7D25138FEDCDBBE09E2",
+                            "Candidate":  "5AAA8C8C325B3B8E6344FE7E9A2E29185BDFD97B05A385EBC207145B05C7211F"
+                        },
+                        {
+                            "Path":  "Documents\\DoiSoatKenhThanhToan.xml",
+                            "Source":  "9DBA91BCBFDAE6A0D08AE9809D26D92B9E0CD923C4983CD3DAD4E42EDA76F870",
+                            "Candidate":  "466F613A5D9F3AAE163EA94CC5F5A25366665E593A3DC7A44FC211B83B7EB17D"
+                        },
+                        {
+                            "Path":  "Documents\\HoaDonGTGTDauRa.xml",
+                            "Source":  "38DA13F0744569454CAEC4AC500A3E575B442494247B1788A0456C53787E4B77",
+                            "Candidate":  "26ECFFD1357FA96A433C8011231B484324348CFF61F114D4862F3740BD94C827"
+                        },
+                        {
+                            "Path":  "Documents\\BienBanNghiemThuGiaiDoan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "B3A6F9DBEA3D948824D3B77D14917E394EF08525B91FF07E8B343F6A08B02FCE",
+                            "Candidate":  "F23809F9FA649357F9C16F018BB5D6DCD4860FE7AEF9D88523AE3C1E21DC61FF"
+                        },
+                        {
+                            "Path":  "Documents\\CanTruCongNoNoiBo\\Ext\\ObjectModule.bsl",
+                            "Source":  "C68C6841F148E80DFECFB8A78A0CFAF55ABF7BDA44DA5CB891C7919BC737C761",
+                            "Candidate":  "53E8ED3392539881598725A542374C1E0C269091818EFF7E6528AD254D6B56A5"
+                        },
+                        {
+                            "Path":  "Documents\\CanTruCongNoNoiBo\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "A619A10D7D438574C00BD536845B514F2FD4D5634FF61FCC476B086EF1CE52CC",
+                            "Candidate":  "7B23D2F8BD72B4CAE4478F36888EE50F56445DE37ABCAFA4287DDF75CEE795FE"
+                        },
+                        {
+                            "Path":  "Documents\\DoiSoatKenhThanhToan\\Ext\\ObjectModule.bsl",
+                            "Source":  "78E20A8CD9E78C5114F1CBD3FB9D435EE75671A19E4FA67DC8823B31786FDD6D",
+                            "Candidate":  "83C7A473C918507D33480E0456CD61EB5BDF26E2DCEC5A73654700E7C94023EC"
+                        },
+                        {
+                            "Path":  "Documents\\DoiSoatKenhThanhToan\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "CB253F794C2009EBFA5BEA6DBB1BDEACA0AA0BC6B081C3982E1C5BF2B619DABE",
+                            "Candidate":  "48E1B8A536D927B550AA36E2E712575FEE93451E3829FD76EDD594DCFAB635FA"
+                        },
+                        {
+                            "Path":  "Documents\\DoiSoatKenhThanhToan\\Forms\\FormChungTu\\Ext\\Form\\Module.bsl",
+                            "Source":  "5B6FA5DBB02453A3A37471915106E6E77408DF9D0395C57E0E0BF874089B2138",
+                            "Candidate":  "E16AAD7B666940694DDE5155488F863E36C773F936199DA42DDB6B2E632728B0"
+                        },
+                        {
+                            "Path":  "Documents\\HoaDonGTGTDauRa\\Ext\\ObjectModule.bsl",
+                            "Source":  "E482696C680B2A41AB88072FF1C5F043C0F999E55EA3C0D8644EAFE919B5B954",
+                            "Candidate":  "E9CAA58F5E0B82EE5ED46A53E436457EB6B948A1C5F236C2A8BAF37B3847598F"
+                        },
+                        {
+                            "Path":  "Documents\\HoaDonGTGTDauRa\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "E294BB549C3AE003642E5F153C7FE3A63F761422167F789FD00A99E1B0408E9A",
+                            "Candidate":  "55A09077197F564D322EEA7FB8D781F35A0A2B6476081BE4ECA1170354B94CD8"
+                        },
+                        {
+                            "Path":  "Documents\\HoaDonNhaCungCap\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "D93039A8AC2E87CBA7C77E3F8724B3DC53B46D13C42B958A5034CBA8574B9BAA",
+                            "Candidate":  "D026A511864407AC2B8AD523B74DD297E5A4CFDB9D738A9E6B74A0AAA60E8134"
+                        },
+                        {
+                            "Path":  "Documents\\PhieuThuTienKhachHang\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "6519E0920E61A4224F7932626BD2C01C0C3A20BE89EF053B846434C600F4A3A5",
+                            "Candidate":  "16AAD25B670C446DEA1EA62F00FAD49A978B13EDFA3CE94C7479035EE7202914"
+                        },
+                        {
+                            "Path":  "Documents\\UyNhiemChi\\Forms\\FormChungTu\\Ext\\Form.xml",
+                            "Source":  "F756F23B72F2B9055A4DBD76C333BCC06D7C1CADA7E0E4026D432771A93D3985",
+                            "Candidate":  "7A619C6E068969E0B6C98922BD0B1EA27EA88DAA853862428F39C0DEC45A65D0"
+                        },
+                        {
+                            "Path":  "Enums\\TrangThaiLenhThanhToan.xml",
+                            "Source":  "0162253302A85A803E31D8CF8028B675054C1893247FCA78528D2CE1522D99F1",
+                            "Candidate":  "12011BEF0ADECF1A7DA08C42EF8DE544FE736B79A88F32B86C038E8DDE56B3C3"
+                        },
+                        {
+                            "Path":  "Ext\\MainSectionCommandInterface.xml",
+                            "Source":  "C928926B5FC791E4B133C0043066289DED1706504A81C38C08D8E89A5EB766BF",
+                            "Candidate":  "C3560FAB2D0A2B471E14C8F9D2FFDC7F489D3226300A38FCA0959304EE38CB80"
+                        },
+                        {
+                            "Path":  "Ext\\SessionModule.bsl",
+                            "Source":  "C6C107852DD9083F2CEEC33BF8A3289B3B8EE3056CF26D7C65557C6491E73DA2",
+                            "Candidate":  "90A2AB7791B13E364BDBCEE1A40EECD4D2069DC626639A3948A9955634A45DF7"
+                        },
+                        {
+                            "Path":  "InformationRegisters\\GiaoDichSaoKeDaNhap.xml",
+                            "Source":  "266F1294D6F210BB11E283664B330B559C348B11A012B2B7D51D8E7F05B84415",
+                            "Candidate":  "916621E5B9AF8802AF71442CFC6D79C66C9C1095AF6E5B99AD668C314E8907C3"
+                        },
+                        {
+                            "Path":  "Reports\\BaoCaoTuoiNo.xml",
+                            "Source":  "684677EF8BE7627309D55BB2C264C18A2572D0E9FB2F4860E5BB6096D3F8CBF4",
+                            "Candidate":  "CFF0AECE268A04A5C460813DF7F9BD86BE59DD3D1AF47B61D7D38EEAAC2394E8"
+                        },
+                        {
+                            "Path":  "Reports\\SoChiTietCongNoAP.xml",
+                            "Source":  "533FE447F8E288D2A09723637081D9CC139F4B4666219EA799A85A54DDDDA667",
+                            "Candidate":  "D9DA140A7984056BB63089EA6C8BE6EFDDD6D92F12CFBEEE524C31004DB84AA3"
+                        },
+                        {
+                            "Path":  "Reports\\SoChiTietCongNoAR.xml",
+                            "Source":  "9E36725BE5BEC0D4182336CF41FE62CB49C734B00B05D6CC82F803DDF242B0A2",
+                            "Candidate":  "4870E4884192CA4E3E626EC83690BC2C118AE3599C96AAAA459A656CA97A71FA"
+                        },
+                        {
+                            "Path":  "Reports\\BaoCaoTuoiNo\\Templates\\ОсновнаяСхемаКомпоновкиДанных.xml",
+                            "Source":  "C516317A3AED1A43A1356A71811C22CE5E7CB2D67823E3AC134B99552C950FB8",
+                            "Candidate":  "48360267C020E3CC02629373591B027F6213BE57AF18D291B4364049024B0A1A"
+                        },
+                        {
+                            "Path":  "Reports\\BaoCaoTuoiNo\\Templates\\ОсновнаяСхемаКомпоновкиДанных\\Ext\\Template.xml",
+                            "Source":  "7CC7942E0B8FE3115AC01F92B6E7639FA6BE01D96EFCB80DA3C276569FD0E0D1",
+                            "Candidate":  "1B0F005B4C8FF344B21488A798B8C383474A4821C7CA840C8280C9ACEFF8B8AB"
+                        },
+                        {
+                            "Path":  "Reports\\SoChiTietCongNoAP\\Templates\\ОсновнаяСхемаКомпоновкиДанных.xml",
+                            "Source":  "2390BE540C8CA33BED8124424D541951990B1E7EDD34E635484108F9EDECCBAA",
+                            "Candidate":  "29B1FB67BD194DB805257A3E93FA7C5A78FD4B3EFC730CAA46A4119B8DAFADD1"
+                        },
+                        {
+                            "Path":  "Reports\\SoChiTietCongNoAP\\Templates\\ОсновнаяСхемаКомпоновкиДанных\\Ext\\Template.xml",
+                            "Source":  "59CE61EB792EBD3C842CFBF88459F4D6AFE01EED4C40792D403817A270241FB0",
+                            "Candidate":  "47E0DEBDEF1570E5EDE18BC227AEEEFA5F60C19B736770A2BD1ED331835145C6"
+                        },
+                        {
+                            "Path":  "Reports\\SoChiTietCongNoAR\\Templates\\ОсновнаяСхемаКомпоновкиДанных.xml",
+                            "Source":  "7994BCFF2BD773592B860605098F2CE9099E101618C83C2E84D41DD3AF68317B",
+                            "Candidate":  "92D6A5284E830F55B71FADF724BE3C6C9763005BE3878427D916311C008E64EB"
+                        },
+                        {
+                            "Path":  "Reports\\SoChiTietCongNoAR\\Templates\\ОсновнаяСхемаКомпоновкиДанных\\Ext\\Template.xml",
+                            "Source":  "D95F18EA8DE559D1B62C9FA3093091BF4B44FC725921682F76F47CF23E7C7966",
+                            "Candidate":  "C18CBBB7689654E303F73DE618BBABA61AC835E6A33D3E71EB63D83BB5983679"
+                        },
+                        {
+                            "Path":  "Roles\\GiamDocTaiChinh_CFO\\Ext\\Rights.xml",
+                            "Source":  "21D5F184186D6CC3D4E969E7A7690CEC1EC0F2617716FC6102F3ABB800257B94",
+                            "Candidate":  "902E17CE91F811B3E8877D162A0AD298AC2AE27971F259B1FC6B95A2B5540169"
+                        },
+                        {
+                            "Path":  "Roles\\KeToanPhaiThu\\Ext\\Rights.xml",
+                            "Source":  "E2CF3885AB5666DF152B41089AD8C176B9B52BAE280B1BE5C71CC31EE28FC93A",
+                            "Candidate":  "4F257BC08981A03F77E9331D27C5B078105397A9D6185FD21B4A3331BFD9E3B6"
+                        },
+                        {
+                            "Path":  "Roles\\KeToanPhaiTra\\Ext\\Rights.xml",
+                            "Source":  "FEA1081CC0292C89A0E149D982249ECCEDEFC62028F4CF72B7A56D52D7B60CFE",
+                            "Candidate":  "EB04B783AC93CC67E692FDCF8F6F668AA27599C63461703946CA25E657608366"
+                        },
+                        {
+                            "Path":  "Roles\\KeToanTruong\\Ext\\Rights.xml",
+                            "Source":  "B53DA8163015229D71AB691B90146AA1E5269CF70FE2D3FF2BA0CEB6954E669C",
+                            "Candidate":  "A70EE99912998A93C123E6E536F5BB38EA834E8F20833BB34068990F7AC1D2D1"
+                        },
+                        {
+                            "Path":  "Roles\\QuanTriHeThong\\Ext\\Rights.xml",
+                            "Source":  "E005EAEB7DA7C86DAF597BE5AF798ABEBADD25ED881A99E98A200FA0A30AC722",
+                            "Candidate":  "48AC89F5D8656535F7C5CE5BC16B9A18AF45273DA68416C7C385055F4E3E2BB7"
+                        },
+                        {
+                            "Path":  "Subsystems\\PhanHePhaiThu.xml",
+                            "Source":  "44F8C89CA0CD9793B1ABCFBDC028D6E7DB71592FECB2CC628043A79AFA6D37E5",
+                            "Candidate":  "F1C79EE95F18F238A3C8CF7790A8AC7BE713BE5E6BA6A0656C3AE204A30C6FB2"
+                        },
+                        {
+                            "Path":  "Subsystems\\PhanHePhaiTra.xml",
+                            "Source":  "8BE3E04048AEC5878A31C2E31039E6F800CDD6A6843E4132A5C14A8883BA5859",
+                            "Candidate":  "9D62B462B4B3A19BAEA7EF0ECAED3485680BAF0619170323D95090B4FB76A382"
+                        },
+                        {
+                            "Path":  "Subsystems\\PhanHeSoCaiVaDongBo.xml",
+                            "Source":  "26EFB257F3889DBAB383F7F0B5AEBC1EBD831424BD642D2619D5567C901FA123",
+                            "Candidate":  "2B7B356115EEE148B59A385A4E0972584AD9F282EF242F53042CF7E695EFF87B"
+                        }
+                    ]
+}

@@ -1,0 +1,1 @@
+{"name":"PhanHeCanTruCongNo","synonym":"4. Cấn trừ công nợ (Netting)","comment":"Cấn trừ song phương công nợ phải thu và phải trả nội bộ.","includeInCommandInterface":true,"content":["Document.CanTruCongNoNoiBo"]}

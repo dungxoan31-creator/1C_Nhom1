@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-153820-d1eb358cc7ed48f68ac056108f9e22e2",
+"phase": "concurrency_post_invoice",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(629)}:Invoice.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(117)}:Result.data = PostConcurrentARInvoice();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to save \"Hóa đơn GTGT đầu ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM\"!\n[StoredDataError]",
+"data": {}
+}

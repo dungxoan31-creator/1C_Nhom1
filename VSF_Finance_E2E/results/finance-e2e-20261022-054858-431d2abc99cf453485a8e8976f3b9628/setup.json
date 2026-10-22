@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261022-054858-431d2abc99cf453485a8e8976f3b9628",
+"phase": "setup",
+"user": "Admin",
+"status": "FAIL",
+"error": "E2E bank account already has a balance; run against a fresh infobase copy.\n{CommonModule.SeedBoundaryTestsServer.Module(1511)}:Raise \"E2E bank account already has a balance; run against a fresh infobase copy.\";\n{CommonModule.SeedBoundaryTestsServer.Module(12)}:Result.data = PrepareFinanceE2E();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

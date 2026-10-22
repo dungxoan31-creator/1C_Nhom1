@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261021-001312-d50648f89955417680154eb281d0bb44",
+"phase": "fx_reject_unconfirmed_refund",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"refund": "E2E-REFUND-USD-01",
+"unconfirmed_post_rejected": true,
+"posted": false,
+"ledger_movements": 0
+}
+}

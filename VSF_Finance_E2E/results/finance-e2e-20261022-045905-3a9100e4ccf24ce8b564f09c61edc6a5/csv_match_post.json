@@ -1,0 +1,20 @@
+{
+"run_id": "finance-e2e-20261022-045905-3a9100e4ccf24ce8b564f09c61edc6a5",
+"phase": "csv_match_post",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"document_number": "E2E-BK-CSV-001",
+"posted": true,
+"gross_vnd": 75000000,
+"fee_vnd": 1125000,
+"net_vnd": 73875000,
+"ar_before_vnd": 216000000,
+"ar_after_vnd": 141000000,
+"cash_delta_vnd": 73875000,
+"gl_rows": 3,
+"ar_rows": 1,
+"key_reserved": true
+}
+}

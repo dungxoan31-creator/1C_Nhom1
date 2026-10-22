@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261021-104119-c07aaf963ba2416a8e4a2e4395f874ad",
+"phase": "approval_ktt",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"batch_success": 3,
+"batch_failure": 0,
+"low_invoice_posted": true,
+"low_invoice_gl_rows": 1,
+"high_invoice_waiting_cfo": true,
+"payment_waiting_bank": true,
+"ktt_queue_after_escalation": 2,
+"ktt_forbidden_attempt_rejected": true
+}
+}

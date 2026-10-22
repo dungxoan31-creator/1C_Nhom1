@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-222322-0c708938027e462ea9c167a4d399a122",
+"phase": "batch_ui_setup",
+"user": "ketoan_ap",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(624)}:Doc.Write();\n{CommonModule.SeedBoundaryTestsServer.Module(385)}:CreateBulkApprovalInvoice(Context, \"E2E-BATCH-UI-ALL\", \"E2E-BATCH-UI-ALL-TAX\", 1000000, Date(2026, 10, 21, 15, 0, 0));\n{CommonModule.SeedBoundaryTestsServer.Module(93)}:Result.data = PrepareFinanceE2EBatchApprovalUI();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nError running processor - 'BeforeWrite'\n, reason:\nError calling context method (ValueIsFilled)\n[ScriptRuntimeError]\n, reason:\nMutable values filling check is unavailable",
+"data": {}
+}

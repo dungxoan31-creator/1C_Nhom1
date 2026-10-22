@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-223029-a43740b1f0304663ab7b59e069f26253",
+"phase": "posting_invariant_setup_ar_invoices",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "AR invariant draft E2E-INV-CANCEL was not created by the authenticated maker in ChoKySo.\n{CommonModule.SeedBoundaryTestsServer.Module(3813)}:Raise StrTemplate(\"AR invariant draft %1 was not created by the authenticated maker in ChoKySo.\", Invoice.Number);\n{CommonModule.SeedBoundaryTestsServer.Module(115)}:Result.data = PreparePostingInvariantARInvoices();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

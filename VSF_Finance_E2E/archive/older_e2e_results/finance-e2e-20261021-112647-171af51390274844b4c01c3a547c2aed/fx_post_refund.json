@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261021-112647-171af51390274844b4c01c3a547c2aed",
+"phase": "fx_post_refund",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"refund": "E2E-REFUND-USD-01",
+"posted": true,
+"original_payment": "E2E-UNC-USD-01",
+"ap_reopened_vnd": 12500000,
+"bank_reopened_usd": 2080,
+"bank_reopened_vnd": 52108000,
+"bank_transaction_id": "REFUND-106BA3407EEB7B3659A2",
+"duplicate_refund_rejected": true
+}
+}

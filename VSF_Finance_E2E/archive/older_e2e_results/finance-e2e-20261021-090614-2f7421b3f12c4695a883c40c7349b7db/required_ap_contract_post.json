@@ -1,0 +1,26 @@
+{
+"run_id": "finance-e2e-20261021-090614-2f7421b3f12c4695a883c40c7349b7db",
+"phase": "required_ap_contract_post",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"cases": [
+{
+"name": "ap_invoice_wrong_contract_owner",
+"attribute": "HopDong.ChuSoHuu",
+"posting_call_succeeded": false,
+"posted_in_attempt": true,
+"persisted_posted": false,
+"attempt_movement_probe_available": false,
+"attempt_ap_movements": 0,
+"attempt_gl_movements": 0,
+"ap_movements": 0,
+"gl_movements": 0,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(4161)}:Invoice.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(20)}:Result.data = VerifyAPWrongContractPostingRejected();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Hóa đơn đầu vào (nhà cung cấp) E2E-REQ-AP-DIM dated 10/20/2026 12:00:00 PM\"!\n[StoredDataError]",
+"unexpected_posting": false
+}
+],
+"failed": false
+}
+}

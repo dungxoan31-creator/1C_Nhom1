@@ -1,0 +1,13 @@
+{
+"run_id": "finance-e2e-20261022-082854-5bceaa67c4124e7a8565a74a333ec852",
+"phase": "netting_create_remaining_receipt",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"receipt_number": "E2E-PT-NT001",
+"maker": "ketoan_ar",
+"amount_vnd": 3200000,
+"source": "Hóa đơn GTGT đầu ra E2E-AR-NT001 dated 10/20/2026 9:30:00 AM"
+}
+}

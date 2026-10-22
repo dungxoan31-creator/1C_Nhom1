@@ -1,0 +1,31 @@
+{
+"run_id": "finance-e2e-20261021-230538-c41b6b3fb2ed43f394a070b7fbe59a51",
+"phase": "required_reference_prepare",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"fixtures": [
+{
+"name": "missing_partner",
+"number": "E2E-REQ-NOPARTN",
+"maker": "ketoan_ar"
+},
+{
+"name": "missing_contract",
+"number": "E2E-REQ-NOCONTR",
+"maker": "ketoan_ar"
+},
+{
+"name": "mismatched_contract_owner",
+"number": "E2E-REQ-MISMATC",
+"maker": "ketoan_ar"
+},
+{
+"name": "sales_invoice_wrong_contract_owner",
+"number": "E2E-REQ-AR-DIM",
+"maker": "ketoan_ar"
+}
+]
+}
+}

@@ -1,0 +1,28 @@
+{
+"run_id": "finance-e2e-20261020-062715-86a184c0d69d462ebc916e8cf5333c97",
+"phase": "posting_state_invariants",
+"user": "Admin",
+"status": "FAIL",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(798)}:Payment.Write(DocumentWriteMode.Posting);\n{ManagedApplicationModule(23)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Ủy nhiệm chi E2E-INV-DRAFT dated 10/20/2026 6:27:59 AM\"!\n[StoredDataError]"
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": false,
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(818)}:Invoice.Write(DocumentWriteMode.Posting);\n{ManagedApplicationModule(23)}:SeedBoundaryTestsServer.RunPostingStateInvariantTests(ParamParts[1], ParamParts[2]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Hóa đơn GTGT đầu ra E2E-INV-CANCEL dated 10/20/2026 6:27:59 AM\"!\n[StoredDataError]"
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": true,
+"error": ""
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": true,
+"error": ""
+}
+]
+}

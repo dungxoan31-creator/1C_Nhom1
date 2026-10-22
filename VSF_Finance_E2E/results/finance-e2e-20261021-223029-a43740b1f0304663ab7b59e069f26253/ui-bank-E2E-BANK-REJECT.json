@@ -1,0 +1,18 @@
+﻿{
+    "status":  "PASS",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-223029-a43740b1f0304663ab7b59e069f26253\\e2e-infobase",
+    "workflow":  "BankSend",
+    "flow":  "native 1C UI → approved payment order → bank submission",
+    "verified":  [
+                     "payment order list rendered expected document",
+                     "payment form opened",
+                     "bank payment submission command invoked",
+                     "bank response status HTTP_REJECTED rendered"
+                 ],
+    "error":  "",
+    "payment_number":  "E2E-BANK-REJECT",
+    "expected_bank_outcome":  "Rejected",
+    "bank_status":  "HTTP_REJECTED",
+    "bank_transaction_id":  ""
+}

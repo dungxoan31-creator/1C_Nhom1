@@ -1,0 +1,252 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-074641-d6e47f95d2be4aba8d3a078b6f136fb1\\e2e-infobase",
+    "workflow":  "ReferenceChoiceDiagnostics",
+    "flow":  "native 1C UI → ARInvoice partner/contract reference choice diagnostic",
+    "verified":  [
+                     "ARInvoice partner choice opened; TEST_VG_VINCLUB selected; contract choice showed only HD-TEST_VG_VINCLUB-2025; draft closed without saving"
+                 ],
+    "error":  "",
+    "visible_input_probe":  [
+                                {
+                                    "name":  "",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Number:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Date:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "10/21/2026  8:02:44 AM",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Pháp nhân:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.ComboBox",
+                                    "value":  "Công ty CP VinSmart Future",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Đối tác:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.ComboBox",
+                                    "value":  "",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Hợp đồng:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.ComboBox",
+                                    "value":  "",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Biên bản nghiệm thu:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.ComboBox",
+                                    "value":  "",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Thành tiền chưa thuế:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "0.00",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Thuế suất GTGT (%):",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "10",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Tiền thuế GTGT:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "0.00",
+                                    "enabled":  true
+                                },
+                                {
+                                    "name":  "Tổng tiền thanh toán:",
+                                    "automation_id":  "",
+                                    "control_type":  "ControlType.Edit",
+                                    "value":  "0.00",
+                                    "enabled":  true
+                                }
+                            ],
+    "partner_field_before":  "",
+    "contract_field_before":  "",
+    "visible_panes_before_choice":  [
+                                        "Hóa đơn GTGT đầu ra (AR) - VinSmart Future"
+                                    ],
+    "visible_panes_after_partner_choice":  [
+                                               "Đối tác",
+                                               "Hóa đơn GTGT đầu ra (AR) - VinSmart Future"
+                                           ],
+    "partner_choice_candidates":  [
+                                      {
+                                          "name":  "Amazon Web Services Inc Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_NCC_AWS Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Atlassian Pty Ltd Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_NCC_ATLASSIAN Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Chương trình Khách hàng thân thiết VinClub Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINCLUB Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Cisco Systems International Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_NCC_CISCO Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Cloudflare Network US Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_NCC_CLOUDFLARE Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Bệnh viện ĐKQT Vinmec Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINMEC Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Di chuyển Xanh và Thông minh GSM (Xanh SM) Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_GSM Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Giải pháp Năng lượng VinES Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINES Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Phát triển Trạm sạc Toàn cầu V-Green Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VGREEN Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP VinBigdata Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINBIGDATA Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP VinBrain Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINBRAIN Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Vincom Retail Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINCOM_RETAIL Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Vinhomes Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINHOMES Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP Vinpearl Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINPEARL Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty CP VinWonders Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINWONDERS Code",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "Công ty Dịch vụ An ninh mạng VinCSS Description",
+                                          "control_type":  "ControlType.Custom"
+                                      },
+                                      {
+                                          "name":  "TEST_VG_VINCSS Code",
+                                          "control_type":  "ControlType.Custom"
+                                      }
+                                  ],
+    "partner_choice_open_detected":  true,
+    "reference_choice_document":  "ARInvoice",
+    "expected_partner_code":  "TEST_VG_VINCLUB",
+    "expected_contract_code":  "HD-TEST_VG_VINCLUB-2025",
+    "selected_partner":  "Chương trình Khách hàng thân thiết VinClub",
+    "contract_choice_panes":  [
+                                  "Hợp đồng",
+                                  "Hóa đơn GTGT đầu ra (AR) - VinSmart Future *"
+                              ],
+    "contract_choice_candidates":  [
+                                       {
+                                           "name":  "Hợp đồng dịch vụ 2025 - Chương trình Khách hàng thân thiết VinClub Description",
+                                           "control_type":  "ControlType.Custom"
+                                       },
+                                       {
+                                           "name":  "HD-TEST_VG_VINCLUB-2025 Code",
+                                           "control_type":  "ControlType.Custom"
+                                       }
+                                   ],
+    "expected_contract_visible":  true,
+    "unexpected_contract_code_count":  0,
+    "contract_choice_open_detected":  true,
+    "choice_open_detected":  true
+}

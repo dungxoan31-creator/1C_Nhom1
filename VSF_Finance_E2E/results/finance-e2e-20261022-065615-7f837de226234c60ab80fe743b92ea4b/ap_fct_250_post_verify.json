@@ -1,0 +1,20 @@
+{
+"run_id": "finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b",
+"phase": "ap_fct_250_post_verify",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AP-FCT250",
+"posted": true,
+"gross_vnd": 250000000,
+"fct_vat_vnd": 12500000,
+"fct_cit_vnd": 12500000,
+"expense_vnd": 237500000,
+"payable_vnd": 225000000,
+"ap_balance_vnd": 225000000,
+"gl_rows": 3,
+"ap_rows": 1,
+"checkbox_persisted": true
+}
+}

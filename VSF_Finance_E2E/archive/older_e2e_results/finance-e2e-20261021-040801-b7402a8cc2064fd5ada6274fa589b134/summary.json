@@ -1,0 +1,81 @@
+﻿{
+    "run_id":  "finance-e2e-20261021-040801-b7402a8cc2064fd5ada6274fa589b134",
+    "status":  "FAIL",
+    "error":  "Required-reference posting regression did not reject all four incomplete or inconsistent AR fixtures: {\"cases\":[{\"name\":\"missing_partner\",\"missing_attribute\":\"DoiTac\",\"posting_call_succeeded\":false,\"posted_in_attempt\":true,\"persisted_posted\":false,\"ar_movements\":0,\"gl_movements\":0,\"error\":\"Error calling context method (Write)\\n{CommonModule.SeedBoundaryTestsServer.Module(3904)}:Doc.Write(DocumentWriteMode.Posting);\\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\\n\\n[ScriptRuntimeError]\\n, reason:\\nFailed to post \\\"BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-REQ-NOPARTN dated 10/20/2026 9:00:00 AM\\\"!\\n[StoredDataError]\",\"unexpected_posting\":false},{\"name\":\"missing_contract\",\"missing_attribute\":\"HopDong\",\"posting_call_succeeded\":false,\"posted_in_attempt\":true,\"persisted_posted\":false,\"ar_movements\":0,\"gl_movements\":0,\"error\":\"Error calling context method (Write)\\n{CommonModule.SeedBoundaryTestsServer.Module(3904)}:Doc.Write(DocumentWriteMode.Posting);\\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\\n\\n[ScriptRuntimeError]\\n, reason:\\nFailed to post \\\"BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-REQ-NOCONTR dated 10/20/2026 10:00:00 AM\\\"!\\n[StoredDataError]\",\"unexpected_posting\":false},{\"name\":\"mismatched_contract_owner\",\"missing_attribute\":\"HopDong.ChuSoHuu\",\"posting_call_succeeded\":false,\"posted_in_attempt\":true,\"persisted_posted\":false,\"ar_movements\":0,\"gl_movements\":0,\"error\":\"Error calling context method (Write)\\n{CommonModule.SeedBoundaryTestsServer.Module(3904)}:Doc.Write(DocumentWriteMode.Posting);\\n{CommonModule.SeedBoundaryTestsServer.Module(16)}:Result.data = VerifyRequiredReferencePostingRejected();\\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\\n\\n[ScriptRuntimeError]\\n, reason:\\nFailed to post \\\"BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-REQ-MISMATC dated 10/20/2026 11:00:00 AM\\\"!\\n[StoredDataError]\",\"unexpected_posting\":false},{\"name\":\"sales_invoice_wrong_contract_owner\",\"attribute\":\"HopDong.ChuSoHuu\",\"posting_call_succeeded\":true,\"posted_in_attempt\":true,\"persisted_posted\":false,\"ar_movements\":0,\"gl_movements\":0,\"error\":\"\",\"unexpected_posting\":true}],\"failed\":true}",
+    "completed_phases":  [
+                             {
+                                 "run_id":  "finance-e2e-20261021-040801-b7402a8cc2064fd5ada6274fa589b134",
+                                 "phase":  "setup",
+                                 "user":  "Admin",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "legal_entity":  "PN-VSF",
+                                              "branch":  "CN-VSF-HCM",
+                                              "customer":  "TEST_VG_VINFAST_VN",
+                                              "customer_contract":  "HD-TEST_VG_VINFAST_VN-2025",
+                                              "vendor":  "E2E_AWS_VND",
+                                              "vendor_contract":  "HD-E2E-AWS-VND-2026",
+                                              "bank_account":  "TK-E2E-VND",
+                                              "opening_cash_vnd":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261021-040801-b7402a8cc2064fd5ada6274fa589b134",
+                                 "phase":  "required_reference_prepare",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "fixtures":  [
+                                                               {
+                                                                   "name":  "missing_partner",
+                                                                   "number":  "E2E-REQ-NOPARTN",
+                                                                   "maker":  "ketoan_ar"
+                                                               },
+                                                               {
+                                                                   "name":  "missing_contract",
+                                                                   "number":  "E2E-REQ-NOCONTR",
+                                                                   "maker":  "ketoan_ar"
+                                                               },
+                                                               {
+                                                                   "name":  "mismatched_contract_owner",
+                                                                   "number":  "E2E-REQ-MISMATC",
+                                                                   "maker":  "ketoan_ar"
+                                                               },
+                                                               {
+                                                                   "name":  "sales_invoice_wrong_contract_owner",
+                                                                   "number":  "E2E-REQ-AR-DIM",
+                                                                   "maker":  "ketoan_ar"
+                                                               }
+                                                           ]
+                                          }
+                             }
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "branch_rls":  null,
+    "fx_refund":  null,
+    "fx_refund_ui_confirmation":  [
+                                      null,
+                                      null
+                                  ],
+    "ui_e2e":  null,
+    "catalog_list_ui_e2e":  null,
+    "list_period_ui_e2e":  null,
+    "document_forms_ui_e2e":  null,
+    "reference_choice_ui_e2e":  null,
+    "bank_ui_e2e":  [
+
+                    ],
+    "bank_stub_log":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-040801-b7402a8cc2064fd5ada6274fa589b134\\bank-stub.requests.jsonl",
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-040801-b7402a8cc2064fd5ada6274fa589b134",
+    "base_infobase":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\BaseInfobase",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-040801-b7402a8cc2064fd5ada6274fa589b134"
+}

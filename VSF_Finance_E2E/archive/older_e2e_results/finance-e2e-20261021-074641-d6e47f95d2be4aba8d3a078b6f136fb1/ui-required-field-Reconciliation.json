@@ -1,0 +1,510 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-074641-d6e47f95d2be4aba8d3a078b6f136fb1\\e2e-infobase",
+    "workflow":  "RequiredFieldDiagnostics",
+    "flow":  "native 1C UI → blank Reconciliation form → Save validation diagnostic",
+    "verified":  [
+                     "blank Reconciliation Save rejected, no number assigned, validation message visible; clone only"
+                 ],
+    "error":  "",
+    "document_type":  "Reconciliation",
+    "empty_save_before":  [
+                              {
+                                  "name":  "",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Number:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "Date:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "10/21/2026  8:02:18 AM",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "PhapNhan:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "Công ty CP VinSmart Future",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "DoiTacTrungGian:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TaiKhoanTien:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "KhoanMucDongTien:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TienTe:",
+                                  "control_type":  "ControlType.ComboBox",
+                                  "value":  "Việt Nam Đồng",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "KenhThanhToan:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "VNPAY",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TongTienGiaoDich:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TongPhi:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "TongTienThucNhan:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "0.00",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "NguoiLap:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "Admin",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "NguoiDuyet:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              },
+                              {
+                                  "name":  "DienGiai:",
+                                  "control_type":  "ControlType.Edit",
+                                  "value":  "",
+                                  "enabled":  true
+                              }
+                          ],
+    "empty_save_after":  [
+                             {
+                                 "name":  "",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Number:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "Date:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "10/21/2026  8:02:18 AM",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "PhapNhan:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "Công ty CP VinSmart Future",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "DoiTacTrungGian:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TaiKhoanTien:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "KhoanMucDongTien:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TienTe:",
+                                 "control_type":  "ControlType.ComboBox",
+                                 "value":  "Việt Nam Đồng",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "KenhThanhToan:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "VNPAY",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TongTienGiaoDich:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TongPhi:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "TongTienThucNhan:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "0.00",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "NguoiLap:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "Admin",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "NguoiDuyet:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             },
+                             {
+                                 "name":  "DienGiai:",
+                                 "control_type":  "ControlType.Edit",
+                                 "value":  "",
+                                 "enabled":  true
+                             }
+                         ],
+    "document_number_before":  "",
+    "document_number_after":  "",
+    "validation_message_visible":  true,
+    "validation_message_text":  "Failed to save: \"Bảng kê đối soát kênh thanh toán\"! | Thiếu thông tin bắt buộc: Đơn vị trung gian.",
+    "success_notification_visible":  false,
+    "visible_message_controls":  [
+                                     {
+                                         "name":  "1C:Enterprise (training version)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Failed to save: \"Bảng kê đối soát kênh thanh toán\"!",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Number:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Date:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "PhapNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DoiTacTrungGian:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TaiKhoanTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KhoanMucDongTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TienTe:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KenhThanhToan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienGiaoDich:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongPhi:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienThucNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiLap:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiDuyet:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DienGiai:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Thiếu thông tin bắt buộc: Đơn vị trung gian.",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "77°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "77°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Search",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "77°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "77°F",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Mostly sunny",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Search",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "VINSMART FUTURE - Hệ Thống Tài Chính \u0026 Kế Toán",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1C:Enterprise (training version)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Failed to save: \"Bảng kê đối soát kênh thanh toán\"!",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Number:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Date:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "PhapNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DoiTacTrungGian:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TaiKhoanTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KhoanMucDongTien:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TienTe:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "KenhThanhToan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienGiaoDich:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongPhi:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "TongTienThucNhan:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiLap:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "NguoiDuyet:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "DienGiai:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Messages:",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Thiếu thông tin bắt buộc: Đơn vị trung gian.",
+                                         "control_type":  "ControlType.ListItem"
+                                     },
+                                     {
+                                         "name":  "Orca",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Projects",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "···",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Still sized for your phone",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "Still sized for your phone",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Your phone session ended. Restore to fit this window.",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Used",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "13%",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " 4h 3m",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "28%",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  " 6d 7h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Gemini",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "0% 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "53% wk",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Claude/GPT",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "0% 5h",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "·",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "44% wk",
+                                         "control_type":  "ControlType.Text"
+                                     },
+                                     {
+                                         "name":  "Zalo",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "docs - File Explorer",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1C:Enterprise (training version) - VINSMART FUTURE - Hệ Thống Tài Chính \u0026 Kế Toán",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "VSF TEST (only 19 days left to buy a license)",
+                                         "control_type":  "ControlType.Window"
+                                     },
+                                     {
+                                         "name":  "1c-dev-mentor-student-claude-gpt.zip (only 19 days left to buy a license)",
+                                         "control_type":  "ControlType.Window"
+                                     }
+                                 ],
+    "save_button_still_visible":  true,
+    "document_persisted":  false,
+    "blank_save_rejected":  true
+}

@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261020-111751-e4edea3b07ff490ebf57e64d6d0b0638",
+"phase": "approval_setup",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"low_invoice": "Hóa đơn đầu vào (nhà cung cấp) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM",
+"high_invoice": "Hóa đơn đầu vào (nhà cung cấp) E2E-BULK-HIGH dated 10/15/2026 10:00:00 AM",
+"payment": "Ủy nhiệm chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM",
+"maker": "ketoan_ap",
+"maker_queue_count": 0
+}
+}

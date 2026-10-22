@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-034136-b5c7e151c04043a88687880bcfb6174a",
+"phase": "setup",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"legal_entity": "PN-VSF",
+"branch": "CN-VSF-HCM",
+"customer": "TEST_VG_VINFAST_VN",
+"customer_contract": "HD-TEST_VG_VINFAST_VN-2025",
+"vendor": "E2E_AWS_VND",
+"vendor_contract": "HD-E2E-AWS-VND-2026",
+"bank_account": "TK-E2E-VND",
+"opening_cash_vnd": 0
+}
+}

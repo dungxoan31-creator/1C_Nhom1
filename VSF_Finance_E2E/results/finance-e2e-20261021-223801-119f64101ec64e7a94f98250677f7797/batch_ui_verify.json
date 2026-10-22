@@ -1,0 +1,24 @@
+{
+"run_id": "finance-e2e-20261021-223801-119f64101ec64e7a94f98250677f7797",
+"phase": "batch_ui_verify",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"document_number": "E2E-BATCH-UI",
+"posted": true,
+"status": "Đã ghi sổ",
+"maker": "ketoan_ap",
+"approver": "ketoan_truong",
+"open_ap_vnd": 1000000,
+"gl_rows": 1,
+"cash_rows": 0,
+"ktt_queue_count": 0,
+"approve_all_document_number": "E2E-BATCH-UI-ALL",
+"approve_all_posted": true,
+"approve_all_status": "Đã ghi sổ",
+"approve_all_open_ap_vnd": 1000000,
+"approve_all_gl_rows": 1,
+"approve_all_cash_rows": 0
+}
+}

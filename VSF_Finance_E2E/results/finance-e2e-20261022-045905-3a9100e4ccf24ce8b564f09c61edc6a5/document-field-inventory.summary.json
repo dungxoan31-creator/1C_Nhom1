@@ -1,0 +1,20 @@
+{
+    "status":  "PASS",
+    "document_count":  7,
+    "attribute_count":  127,
+    "show_error_attribute_count":  48,
+    "runtime_required_write_count":  41,
+    "runtime_system_managed_count":  7,
+    "runtime_field_probe_count":  79,
+    "attributes_without_dedicated_field_case":  0,
+    "attributes_with_runtime_classification":  127,
+    "custom_form_count":  7,
+    "custom_form_page_audit_count":  20,
+    "form_audit_failures":  [
+
+                            ],
+    "uncovered_metadata_required_fields":  [
+
+                                           ],
+    "output_csv":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261022-045905-3a9100e4ccf24ce8b564f09c61edc6a5\\document-field-inventory.csv"
+}

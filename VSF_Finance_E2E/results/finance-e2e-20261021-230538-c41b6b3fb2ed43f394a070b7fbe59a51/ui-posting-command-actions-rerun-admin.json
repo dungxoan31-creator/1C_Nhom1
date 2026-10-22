@@ -1,0 +1,14 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-230538-c41b6b3fb2ed43f394a070b7fbe59a51\\e2e-infobase",
+    "workflow":  "PostingCommandDiagnostics",
+    "flow":  "native 1C UI → post and undo posting for netting and reconciliation",
+    "verified":  [
+
+                 ],
+    "error":  "Fixture E2E-NET-001 was expected to be posted, but no enabled undo-posting command is available. Visible controls: Save | Reread | Copy | Mark for deletion / Unmark for deletion | Delete | Show in list | Change form... | Help | Functions | Notifications | History | Favorites | Quản trị hệ thống VSF | Service and settings | Collapse | Maximize | Close | Messages: | Back | Forward | More actions | Add to favorites | Menu | Get link...",
+    "posting_command_actions":  [
+
+                                ]
+}

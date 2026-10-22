@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-132140-928e9a7925c345d093062066ba3a3fa7",
+"phase": "bank_reject_send",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "Error calling context method (FindByCode)\n{CommonModule.SeedBoundaryTestsServer.Module(3346)}:Context.Insert(\"PaymentProvider\", Catalogs.DoiTac.FindByCode(\"E2E_VNPAY\"));\n{CommonModule.SeedBoundaryTestsServer.Module(2023)}:Context = FinanceE2EContext();\n{CommonModule.SeedBoundaryTestsServer.Module(63)}:Result.data = VerifyFinanceE2EBankRejectedPayment();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nYou do not have enough rights to perform the database operation.\n[AccessViolation]",
+"data": {}
+}

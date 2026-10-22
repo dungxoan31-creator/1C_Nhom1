@@ -1,0 +1,80 @@
+{
+"run_id": "finance-e2e-20261022-081451-45ddd733b5e24b6fa0abecc978fd9e96",
+"phase": "approver_eligibility_verify",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"case_count": 11,
+"passed_count": 11,
+"threshold_vnd": 500000000,
+"cases": [
+{
+"name": "AR_threshold_excludes_CFO",
+"passed": true,
+"expected": "no CFO",
+"actual": "ketoan_truong,Admin"
+},
+{
+"name": "AR_threshold_includes_KTT_and_Admin",
+"passed": true,
+"expected": "KTT and Admin",
+"actual": "ketoan_truong,Admin"
+},
+{
+"name": "AR_above_threshold_includes_CFO",
+"passed": true,
+"expected": "CFO",
+"actual": "ketoan_truong,Admin,cfo_giamdoc"
+},
+{
+"name": "AP_threshold_excludes_CFO_and_Admin",
+"passed": true,
+"expected": "KTT only",
+"actual": "ketoan_truong"
+},
+{
+"name": "AP_above_threshold_includes_CFO",
+"passed": true,
+"expected": "KTT and CFO",
+"actual": "ketoan_truong,cfo_giamdoc"
+},
+{
+"name": "Admin_is_eligible_AR_checker",
+"passed": true,
+"expected": true,
+"actual": true
+},
+{
+"name": "CFO_rejected_at_threshold",
+"passed": true,
+"expected": true,
+"actual": true
+},
+{
+"name": "CFO_accepted_above_threshold",
+"passed": true,
+"expected": true,
+"actual": true
+},
+{
+"name": "maker_self_approval_rejected",
+"passed": true,
+"expected": true,
+"actual": true
+},
+{
+"name": "assigned_Admin_can_check",
+"passed": true,
+"expected": true,
+"actual": true
+},
+{
+"name": "Admin_still_cannot_post",
+"passed": true,
+"expected": true,
+"actual": true
+}
+]
+}
+}

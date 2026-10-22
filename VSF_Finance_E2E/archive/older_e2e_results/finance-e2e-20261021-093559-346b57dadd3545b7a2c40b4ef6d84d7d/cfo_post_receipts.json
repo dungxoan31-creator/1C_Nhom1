@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261021-093559-346b57dadd3545b7a2c40b4ef6d84d7d",
+"phase": "cfo_post_receipts",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"receipt_posted": true,
+"ar_invoice_residual_vnd": 0,
+"over_receipt_posted": false,
+"over_receipt_ar_movements": 0,
+"over_receipt_gl_movements": 0,
+"over_receipt_cash_movements": 0
+}
+}

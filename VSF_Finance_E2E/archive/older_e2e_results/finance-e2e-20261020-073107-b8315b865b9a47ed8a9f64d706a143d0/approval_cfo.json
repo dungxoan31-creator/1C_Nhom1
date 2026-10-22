@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-073107-b8315b865b9a47ed8a9f64d706a143d0",
+"phase": "approval_cfo",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Bulk approval ledger mismatch: lowAP=0 highAP=500,000,001 bank=35,000,000.\n{CommonModule.SeedBoundaryTestsServer.Module(180)}:Raise StrTemplate(\"Bulk approval ledger mismatch: lowAP=%1 highAP=%2 bank=%3.\", LowBalance, HighBalance, CashBalance);\n{CommonModule.SeedBoundaryTestsServer.Module(44)}:Result.data = RunBulkApprovalCFOStage();\n{ManagedApplicationModule(24)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

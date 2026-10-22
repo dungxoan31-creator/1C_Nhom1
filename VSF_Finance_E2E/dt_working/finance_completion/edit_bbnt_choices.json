@@ -1,0 +1,10 @@
+{
+    "elements":  [
+                     {
+                         "quickChoice":  true,
+                         "listChoiceMode":  true,
+                         "dropListButton":  true,
+                         "set":  "NguoiDuyet"
+                     }
+                 ]
+}

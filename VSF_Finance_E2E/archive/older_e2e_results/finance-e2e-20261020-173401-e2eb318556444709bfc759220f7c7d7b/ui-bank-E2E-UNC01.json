@@ -1,0 +1,315 @@
+﻿{
+    "status":  "PASS",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-173401-e2eb318556444709bfc759220f7c7d7b\\e2e-infobase",
+    "workflow":  "BankSend",
+    "flow":  "native 1C UI → payment order → bank submission",
+    "verified":  [
+                     "payment order list rendered expected document",
+                     "payment form opened",
+                     "bank submission command invoked",
+                     "bank response status ACCEPTED rendered"
+                 ],
+    "error":  "",
+    "payment_row_name":  "E2E-UNC01 Số CT",
+    "payment_row_control":  "ControlType.Custom",
+    "payment_row_bounds":  "514,315,249,29",
+    "payment_row_is_offscreen":  false,
+    "payment_row_is_enabled":  true,
+    "payment_row_children":  [
+
+                             ],
+    "payment_row_patterns":  [
+                                 {
+                                     "id":  10000,
+                                     "available":  false
+                                 },
+                                 {
+                                     "id":  10010,
+                                     "available":  false
+                                 }
+                             ],
+    "payment_row_hit_test":  {
+                                 "control":  "ControlType.Custom",
+                                 "name":  "E2E-UNC01 Số CT",
+                                 "bounds":  "514,315,249,29"
+                             },
+    "visible_ui_tree":  [
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Functions",
+                                "bounds":  "290,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Notifications",
+                                "bounds":  "1363,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "History",
+                                "bounds":  "1397,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Favorites",
+                                "bounds":  "1431,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Kế toán trưởng",
+                                "bounds":  "1465,146,77,18"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Service and settings",
+                                "bounds":  "1546,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Collapse",
+                                "bounds":  "1580,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Maximize",
+                                "bounds":  "1614,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Close",
+                                "bounds":  "1648,140,30,30"
+                            },
+                            {
+                                "control":  "ControlType.Text",
+                                "name":  "Messages:",
+                                "bounds":  "513,908,1127,19"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Close",
+                                "bounds":  "1648,908,23,23"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Back",
+                                "bounds":  "513,179,38,25"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Forward",
+                                "bounds":  "551,179,36,25"
+                            },
+                            {
+                                "control":  "ControlType.Pane",
+                                "name":  "Danh sách Ủy nhiệm chi",
+                                "bounds":  "631,175,942,33"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Create",
+                                "bounds":  "513,213,66,27"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Copy",
+                                "bounds":  "588,213,30,27"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Find...",
+                                "bounds":  "627,213,65,27"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Cancel search",
+                                "bounds":  "701,213,111,27"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "More actions",
+                                "bounds":  "1551,213,108,27"
+                            },
+                            {
+                                "control":  "ControlType.Text",
+                                "name":  "Kỳ:",
+                                "bounds":  "513,253,20,16"
+                            },
+                            {
+                                "control":  "ControlType.ComboBox",
+                                "name":  "Kỳ:",
+                                "bounds":  "539,250,263,23"
+                            },
+                            {
+                                "control":  "ControlType.Text",
+                                "name":  "Trạng thái:",
+                                "bounds":  "834,253,61,16"
+                            },
+                            {
+                                "control":  "ControlType.ComboBox",
+                                "name":  "Trạng thái:",
+                                "bounds":  "901,250,298,23"
+                            },
+                            {
+                                "control":  "ControlType.Text",
+                                "name":  "Đối tác:",
+                                "bounds":  "1231,253,45,16"
+                            },
+                            {
+                                "control":  "ControlType.ComboBox",
+                                "name":  "Đối tác:",
+                                "bounds":  "1282,250,313,23"
+                            },
+                            {
+                                "control":  "ControlType.Custom",
+                                "name":  "E2E-UNC01 Số CT",
+                                "bounds":  "514,315,249,29"
+                            },
+                            {
+                                "control":  "ControlType.Custom",
+                                "name":  "10/14/2026 9:00:00 AM Ngày lập",
+                                "bounds":  "763,315,189,29"
+                            },
+                            {
+                                "control":  "ControlType.Custom",
+                                "name":  "E2E AWS foreign contractor, VND settlement Đối tác thụ hưởng",
+                                "bounds":  "952,315,240,29"
+                            },
+                            {
+                                "control":  "ControlType.Custom",
+                                "name":  "180,000,000.00 Số tiền",
+                                "bounds":  "1192,315,179,29"
+                            },
+                            {
+                                "control":  "ControlType.Custom",
+                                "name":  "Đã duyệt Trạng thái lệnh",
+                                "bounds":  "1371,315,215,29"
+                            },
+                            {
+                                "control":  "ControlType.CheckBox",
+                                "name":  " Đã ghi sổ",
+                                "bounds":  "1586,315,72,29"
+                            },
+                            {
+                                "control":  "ControlType.Text",
+                                "name":  "Messages:",
+                                "bounds":  "513,908,136,19"
+                            },
+                            {
+                                "control":  "ControlType.List",
+                                "name":  "Messages:",
+                                "bounds":  "513,938,1153,18"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Close",
+                                "bounds":  "1643,908,23,23"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Add to favorites",
+                                "bounds":  "597,175,25,33"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Close",
+                                "bounds":  "1640,179,23,23"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Menu",
+                                "bounds":  "1610,179,23,23"
+                            },
+                            {
+                                "control":  "ControlType.Button",
+                                "name":  "Get link...",
+                                "bounds":  "1580,179,23,23"
+                            }
+                        ],
+    "screenshot_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-173401-e2eb318556444709bfc759220f7c7d7b\\ui-bank-E2E-UNC01.png",
+    "payment_number":  "E2E-UNC01",
+    "expected_bank_outcome":  "Accepted",
+    "bank_status":  "ACCEPTED",
+    "bank_transaction_id":  "BANK-55CA9A299FF9C794F635",
+    "foreground_window_handle":  "3D02BA",
+    "desktop_windows":  [
+                            {
+                                "control":  "ControlType.ToolTip",
+                                "name":  "Gửi lệnh chi thành công Ngân hàng đã xác nhận giao dịch BANK-55CA9A299FF9C794F635.",
+                                "bounds":  "1664,946,255,85",
+                                "process_id":  20684
+                            },
+                            {
+                                "control":  "ControlType.Pane",
+                                "name":  "",
+                                "bounds":  "0,1032,1920,48",
+                                "process_id":  10028
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "VINSMART FUTURE - Hệ Thống Tài Chính \u0026 Kế Toán",
+                                "bounds":  "241,139,1438,753",
+                                "process_id":  20684
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "Windows PowerShell",
+                                "bounds":  "148,156,1129,635",
+                                "process_id":  17632
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "Orca",
+                                "bounds":  "-8,-8,1936,1048",
+                                "process_id":  18308
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "Document1 - Word",
+                                "bounds":  "-8,-8,1936,1048",
+                                "process_id":  5932
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "Viết prompt kiểm thử codebase - Cốc Cốc",
+                                "bounds":  "-8,-8,1936,1048",
+                                "process_id":  11452
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "VSF TEST - File Explorer",
+                                "bounds":  "Empty",
+                                "process_id":  10028
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "Zalo",
+                                "bounds":  "750,194,550,680",
+                                "process_id":  8672
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "VSF_VietERP_to_1C_Migration_Specification.md - Notepad",
+                                "bounds":  "-8,-8,1936,1048",
+                                "process_id":  18516
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "VSF TEST (only 19 days left to buy a license)",
+                                "bounds":  "Empty",
+                                "process_id":  432
+                            },
+                            {
+                                "control":  "ControlType.Window",
+                                "name":  "1c-dev-mentor-student-claude-gpt.zip (only 19 days left to buy a license)",
+                                "bounds":  "Empty",
+                                "process_id":  1644
+                            },
+                            {
+                                "control":  "ControlType.Pane",
+                                "name":  "Program Manager",
+                                "bounds":  "0,0,1920,1080",
+                                "process_id":  10028
+                            }
+                        ]
+}

@@ -1,0 +1,11 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-001312-d50648f89955417680154eb281d0bb44\\e2e-infobase",
+    "workflow":  "ListPeriods",
+    "flow":  "native 1C UI → Functions → AR sales invoice list → sales invoice form",
+    "verified":  [
+
+                 ],
+    "error":  "List period ComboBox did not accept \u0027ThangNay\u0027; current value is \u0027QuyNay\u0027."
+}

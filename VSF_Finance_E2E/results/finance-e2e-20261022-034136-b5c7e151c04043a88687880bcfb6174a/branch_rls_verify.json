@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-034136-b5c7e151c04043a88687880bcfb6174a",
+"phase": "branch_rls_verify",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"current_branch": "CN-E2E-BR2",
+"branch2_documents": 1,
+"branch1_documents": 0,
+"branch2_ar_movements": 1,
+"branch1_ar_movements": 0,
+"branch2_gl_movements": 1,
+"branch1_gl_movements": 0,
+"foreign_insert_denied": true
+}
+}

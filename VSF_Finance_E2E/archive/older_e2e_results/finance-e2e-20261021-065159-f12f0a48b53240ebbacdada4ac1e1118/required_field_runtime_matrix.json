@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-065159-f12f0a48b53240ebbacdada4ac1e1118",
+"phase": "required_field_runtime_matrix",
+"user": "Admin",
+"status": "FAIL",
+"error": "Error calling context method (FindByNumber)\n{CommonModule.SeedBoundaryTestsServer.Module(4791)}:Return ValueIsFilled(Documents.BienBanNghiemThuGiaiDoan.FindByNumber(DocumentNumber, DocumentDate));\n{CommonModule.SeedBoundaryTestsServer.Module(4548)}:PersistedInTransaction = RequiredFieldMatrixDocumentExists(MatrixCase.document_type, NumberAfter, DocumentObject.Date);\n{CommonModule.SeedBoundaryTestsServer.Module(4504)}:AutoResults = RunRequiredFieldAutoFillMatrix(Context, ARSource, APSource);\n{CommonModule.SeedBoundaryTestsServer.Module(22)}:Result.data = RunRequiredFieldRuntimeMatrix();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nErrors occurred earlier in this transaction!",
+"data": {}
+}

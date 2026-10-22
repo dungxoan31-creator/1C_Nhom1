@@ -1,0 +1,14 @@
+{
+"run_id": "finance-e2e-20261021-010741-799d2f7e4a924ae88293e21dae9793d8",
+"phase": "netting_submit_ap",
+"user": "ketoan_ap",
+"status": "PASS",
+"error": "",
+"data": {
+"ap_source": "Hóa đơn đầu vào (nhà cung cấp) E2E-AP-NT001 dated 10/20/2026 10:00:00 AM",
+"maker": "ketoan_ap",
+"approver": "ketoan_truong",
+"payable_vnd": 40000000,
+"status": "ChoKeToanTruongDuyet"
+}
+}

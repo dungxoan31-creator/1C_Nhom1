@@ -1,0 +1,54 @@
+{
+    "status":  "PASS",
+    "choice_filter_count":  5,
+    "choice_filters":  [
+                           {
+                               "document":  "BienBanNghiemThuGiaiDoan",
+                               "partner_field":  "DoiTac",
+                               "contract_field":  "HopDong",
+                               "choice_parameter":  "Filter.ChuSoHuu",
+                               "choice_data_path":  "Document.BienBanNghiemThuGiaiDoan.Attribute.DoiTac",
+                               "partner_change":  "Clear",
+                               "form_fields_present":  true
+                           },
+                           {
+                               "document":  "HoaDonGTGTDauRa",
+                               "partner_field":  "DoiTac",
+                               "contract_field":  "HopDong",
+                               "choice_parameter":  "Filter.ChuSoHuu",
+                               "choice_data_path":  "Document.HoaDonGTGTDauRa.Attribute.DoiTac",
+                               "partner_change":  "Clear",
+                               "form_fields_present":  true
+                           },
+                           {
+                               "document":  "HoaDonNhaCungCap",
+                               "partner_field":  "DoiTac",
+                               "contract_field":  "HopDong",
+                               "choice_parameter":  "Filter.ChuSoHuu",
+                               "choice_data_path":  "Document.HoaDonNhaCungCap.Attribute.DoiTac",
+                               "partner_change":  "Clear",
+                               "form_fields_present":  true
+                           },
+                           {
+                               "document":  "PhieuThuTienKhachHang",
+                               "partner_field":  "DoiTac",
+                               "contract_field":  "HopDong",
+                               "choice_parameter":  "Filter.ChuSoHuu",
+                               "choice_data_path":  "Document.PhieuThuTienKhachHang.Attribute.DoiTac",
+                               "partner_change":  "Clear",
+                               "form_fields_present":  true
+                           },
+                           {
+                               "document":  "UyNhiemChi",
+                               "partner_field":  "DoiTac",
+                               "contract_field":  "HopDong",
+                               "choice_parameter":  "Filter.ChuSoHuu",
+                               "choice_data_path":  "Document.UyNhiemChi.Attribute.DoiTac",
+                               "partner_change":  "Clear",
+                               "form_fields_present":  true
+                           }
+                       ],
+    "failures":  [
+
+                 ]
+}

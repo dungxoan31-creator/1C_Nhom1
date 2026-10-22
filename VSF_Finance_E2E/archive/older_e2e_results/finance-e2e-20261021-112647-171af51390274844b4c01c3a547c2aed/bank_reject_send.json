@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261021-112647-171af51390274844b4c01c3a547c2aed",
+"phase": "bank_reject_send",
+"user": "ketoan_truong",
+"status": "PASS",
+"error": "",
+"data": {
+"payment_number": "E2E-BANK-REJECT",
+"bank_status": "HTTP_REJECTED",
+"http_code": 422,
+"request_id": "c27ea24d-cd07-11f1-92c8-f4a475ea2b8e",
+"ap_before_vnd": 180000000,
+"ap_after_vnd": 180000000,
+"posted": false,
+"transaction_id_empty": true
+}
+}

@@ -1,0 +1,101 @@
+﻿{
+    "status":  "PASS",
+    "user":  "Admin",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_reporting-final-20261022",
+    "workflow":  "ReportSmoke",
+    "flow":  "native 1C UI → AR ledger, AP ledger, aging report",
+    "verified":  [
+                     "SoChiTietCongNoAR: opened from native menu and generated",
+                     "SoChiTietCongNoAP: opened from native menu and generated",
+                     "BaoCaoTuoiNo: opened from native menu and generated"
+                 ],
+    "error":  "",
+    "onec_log_path":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\final-report-smoke-1.1c.log",
+    "report_audit":  [
+                         {
+                             "report":  "SoChiTietCongNoAR",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_edit_count":  2,
+                             "visible_fields":  [
+                                                    "Ngay bat dau:",
+                                                    "Ngay ket thuc:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Tien te:",
+                                                    "Chứng từ gốc:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay bat dau:",
+                                                             "ControlType.Text:Ngay ket thuc:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Tien te:",
+                                                             "ControlType.Text:Chứng từ gốc:"
+                                                         ],
+                             "result_screenshot":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\final-report-smoke-1.SoChiTietCongNoAR.report-result.png",
+                             "ui_error_count":  0
+                         },
+                         {
+                             "report":  "SoChiTietCongNoAP",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_edit_count":  2,
+                             "visible_fields":  [
+                                                    "Ngay bat dau:",
+                                                    "Ngay ket thuc:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Tien te:",
+                                                    "Chứng từ gốc:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay bat dau:",
+                                                             "ControlType.Text:Ngay ket thuc:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Tien te:",
+                                                             "ControlType.Text:Chứng từ gốc:"
+                                                         ],
+                             "result_screenshot":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\final-report-smoke-1.SoChiTietCongNoAP.report-result.png",
+                             "ui_error_count":  0
+                         },
+                         {
+                             "report":  "BaoCaoTuoiNo",
+                             "command_opened":  true,
+                             "form_opened":  true,
+                             "generate_invoked":  true,
+                             "visible_edit_count":  3,
+                             "visible_fields":  [
+                                                    "Ngay chot:",
+                                                    "Loai cong no:",
+                                                    "Pháp nhân:",
+                                                    "Đối tác:",
+                                                    "Hợp đồng:",
+                                                    "Nhom tuoi no:",
+                                                    "Messages:"
+                                                ],
+                             "visible_result_elements":  [
+                                                             "ControlType.Text:Messages:",
+                                                             "ControlType.Text:Ngay chot:",
+                                                             "ControlType.Text:Loai cong no:",
+                                                             "ControlType.Text:Pháp nhân:",
+                                                             "ControlType.Text:Đối tác:",
+                                                             "ControlType.Text:Hợp đồng:",
+                                                             "ControlType.Text:Nhom tuoi no:"
+                                                         ],
+                             "result_screenshot":  ".\\VSF_Finance_E2E\\results\\finance-report-smoke-20261022\\final-report-smoke-1.BaoCaoTuoiNo.report-result.png",
+                             "ui_error_count":  0
+                         }
+                     ]
+}

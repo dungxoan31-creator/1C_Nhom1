@@ -1,0 +1,856 @@
+﻿{
+    "status":  "PASS",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-153444-beda6fc4ce8341e786bb97fe67c946f4\\batch-ui-infobase",
+    "workflow":  "BatchApproval",
+    "flow":  "native 1C UI → dashboard → Maker-Checker batch approval form",
+    "verified":  [
+                     "Dashboard opened",
+                     "Batch approval panel opened",
+                     "Refresh invoked",
+                     "Single-row approval invoked",
+                     "Approve All invoked with one remaining queue item"
+                 ],
+    "error":  "",
+    "screenshot_path":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-153444-beda6fc4ce8341e786bb97fe67c946f4\\ui-batch-approval.png",
+    "dashboard_bounds":  [
+                             241,
+                             139,
+                             1438,
+                             753
+                         ],
+    "dashboard_click_coordinates":  [
+                                        1506,
+                                        410
+                                    ],
+    "foreground_window_handle":  102434442,
+    "main_window_handle":  102434442,
+    "after_click_screenshot_path":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-153444-beda6fc4ce8341e786bb97fe67c946f4\\ui-batch-approval.after-click.png",
+    "visible_action_controls":  [
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       231,
+                                                       892,
+                                                       1458,
+                                                       10
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       1679,
+                                                       139,
+                                                       10,
+                                                       753
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       231,
+                                                       129,
+                                                       1458,
+                                                       10
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       231,
+                                                       139,
+                                                       10,
+                                                       753
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       242,
+                                                       140,
+                                                       1436,
+                                                       751
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Functions",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       290,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1059,
+                                                       142,
+                                                       300,
+                                                       26
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Notifications",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1363,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "History",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1397,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Favorites",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1431,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Kế toán trưởng",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1465,
+                                                       146,
+                                                       77,
+                                                       18
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Service and settings",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1546,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Collapse",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1580,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Maximize",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1614,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Close",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1648,
+                                                       140,
+                                                       30,
+                                                       30
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       1059,
+                                                       142,
+                                                       300,
+                                                       26
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       242,
+                                                       171,
+                                                       1436,
+                                                       720
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       242,
+                                                       171,
+                                                       1436,
+                                                       720
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       171,
+                                                       1177,
+                                                       720
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       171,
+                                                       1177,
+                                                       720
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Close",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1648,
+                                                       908,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       171,
+                                                       96,
+                                                       37
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       171,
+                                                       96,
+                                                       37
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Back",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       513,
+                                                       179,
+                                                       38,
+                                                       25
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Forward",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       551,
+                                                       179,
+                                                       36,
+                                                       25
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Bàn Duyệt Maker-Checker Hàng Loạt - VinSmart Future",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       631,
+                                                       175,
+                                                       852,
+                                                       33
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       210,
+                                                       1177,
+                                                       681
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       210,
+                                                       1177,
+                                                       681
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       210,
+                                                       1177,
+                                                       681
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       210,
+                                                       1177,
+                                                       681
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       210,
+                                                       1177,
+                                                       681
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       210,
+                                                       1177,
+                                                       681
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       513,
+                                                       213,
+                                                       1146,
+                                                       27
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "More actions",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1551,
+                                                       213,
+                                                       108,
+                                                       27
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       249,
+                                                       1177,
+                                                       630
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       501,
+                                                       249,
+                                                       1177,
+                                                       630
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       513,
+                                                       249,
+                                                       1146,
+                                                       630
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       514,
+                                                       250,
+                                                       1144,
+                                                       628
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       514,
+                                                       250,
+                                                       1144,
+                                                       628
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       510,
+                                                       246,
+                                                       1152,
+                                                       636
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       Infinity,
+                                                       Infinity,
+                                                       -Infinity,
+                                                       -Infinity
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Close",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1643,
+                                                       908,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Add to favorites",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       597,
+                                                       175,
+                                                       25,
+                                                       33
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Close",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1640,
+                                                       179,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Menu",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1610,
+                                                       179,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Get link...",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1580,
+                                                       179,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Print preview",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1550,
+                                                       179,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Print",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1520,
+                                                       179,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "Save",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       1490,
+                                                       179,
+                                                       23,
+                                                       23
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       242,
+                                                       171,
+                                                       259,
+                                                       720
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Pane",
+                                        "bounds":  [
+                                                       242,
+                                                       171,
+                                                       259,
+                                                       720
+                                                   ]
+                                    },
+                                    {
+                                        "name":  "",
+                                        "type":  "ControlType.Button",
+                                        "bounds":  [
+                                                       465,
+                                                       183,
+                                                       16,
+                                                       16
+                                                   ]
+                                    }
+                                ],
+    "batch_approval_panel_opened":  true,
+    "batch_approval_panel_bounds":  [
+                                        631,
+                                        175,
+                                        852,
+                                        33
+                                    ],
+    "batch_approval_queue_document_visible":  false,
+    "batch_approval_queue_evidence":  "Queue content is rendered in the HTML field and captured in the screenshot; the 1C UI Automation provider exposes the form title but not the HTML text.",
+    "batch_approval_actions":  [
+                                   {
+                                       "action":  "refresh",
+                                       "invoked":  true,
+                                       "notification_visible":  true,
+                                       "notification_text":  "Làm mới danh sách Đã cập nhật danh sách chờ duyệt."
+                                   },
+                                   {
+                                       "action":  "approve_one",
+                                       "invoked":  true,
+                                       "notification_visible":  true,
+                                       "notification_text":  "Kết quả phê duyệt Maker-Checker Duyệt chứng từ hoàn tất: 1 thành công, 0 thất bại."
+                                   },
+                                   {
+                                       "action":  "approve_all",
+                                       "invoked":  true,
+                                       "notification_visible":  true,
+                                       "notification_text":  "Kết quả phê duyệt Maker-Checker Phê duyệt hoàn tất: 1 thành công, 0 thất bại."
+                                   }
+                               ],
+    "refresh_action_coordinates":  [
+                                       1384,
+                                       319
+                                   ],
+    "approve_one_action_coordinates":  [
+                                           1572,
+                                           455
+                                       ],
+    "after_row_approval_screenshot_path":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261021-153444-beda6fc4ce8341e786bb97fe67c946f4\\ui-batch-approval.after-row-approval.png",
+    "approve_all_action_coordinates":  [
+                                           1525,
+                                           319
+                                       ],
+    "after_approval_screenshot_path":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261021-153444-beda6fc4ce8341e786bb97fe67c946f4\\ui-batch-approval.after-approval.png",
+    "screens":  [
+                    "Dashboard opened",
+                    "Batch approval panel opened",
+                    "Refresh invoked",
+                    "Single-row approval invoked",
+                    "Approve All invoked with one remaining queue item"
+                ],
+    "form_audit":  [
+                       {
+                           "screen":  "Bàn Duyệt Maker-Checker Hàng Loạt",
+                           "control_scope":  "visible_controls_in_active_window",
+                           "form_bounds":  [
+                                               631,
+                                               175,
+                                               852,
+                                               33
+                                           ],
+                           "visible_edit_count":  1,
+                           "visible_input_count":  3,
+                           "visible_field_names":  [
+                                                       "Messages:"
+                                                   ],
+                           "visible_control_details":  [
+                                                           {
+                                                               "name":  "",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.Edit",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              1079,
+                                                                              142,
+                                                                              280,
+                                                                              26
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.List",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              513,
+                                                                              938,
+                                                                              1158,
+                                                                              18
+                                                                          ]
+                                                           },
+                                                           {
+                                                               "name":  "Messages:",
+                                                               "automation_id":  "",
+                                                               "control_type":  "ControlType.List",
+                                                               "value":  "",
+                                                               "enabled":  true,
+                                                               "offscreen":  false,
+                                                               "bounds":  [
+                                                                              513,
+                                                                              938,
+                                                                              1153,
+                                                                              18
+                                                                          ]
+                                                           }
+                                                       ],
+                           "visible_button_count":  23,
+                           "visible_button_names":  [
+                                                        "Functions",
+                                                        "Notifications",
+                                                        "History",
+                                                        "Favorites",
+                                                        "Kế toán trưởng",
+                                                        "Service and settings",
+                                                        "Collapse",
+                                                        "Maximize",
+                                                        "Close",
+                                                        "Back",
+                                                        "Forward",
+                                                        "More actions",
+                                                        "Add to favorites",
+                                                        "Menu",
+                                                        "Get link...",
+                                                        "Print preview",
+                                                        "Print",
+                                                        "Save"
+                                                    ],
+                           "enabled_button_names":  [
+                                                        "Functions",
+                                                        "Notifications",
+                                                        "History",
+                                                        "Favorites",
+                                                        "Kế toán trưởng",
+                                                        "Service and settings",
+                                                        "Collapse",
+                                                        "Maximize",
+                                                        "Close",
+                                                        "Back",
+                                                        "Forward",
+                                                        "More actions",
+                                                        "Add to favorites",
+                                                        "Menu",
+                                                        "Get link...",
+                                                        "Print preview",
+                                                        "Print",
+                                                        "Save"
+                                                    ],
+                           "disabled_button_names":  [
+
+                                                     ]
+                       }
+                   ]
+}

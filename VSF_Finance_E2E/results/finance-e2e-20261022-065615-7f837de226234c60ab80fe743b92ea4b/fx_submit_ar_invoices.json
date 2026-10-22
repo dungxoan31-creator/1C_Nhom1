@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-065615-7f837de226234c60ab80fe743b92ea4b",
+"phase": "fx_submit_ar_invoices",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"gain_invoice": "E2E-ARUSD-GAIN",
+"gain_rate": 25000,
+"gain_vnd": 27000000,
+"gain_foreign": 1080,
+"loss_invoice": "E2E-ARUSD-LOSS",
+"loss_rate": 25100,
+"loss_vnd": 25100000,
+"loss_foreign": 1000
+}
+}

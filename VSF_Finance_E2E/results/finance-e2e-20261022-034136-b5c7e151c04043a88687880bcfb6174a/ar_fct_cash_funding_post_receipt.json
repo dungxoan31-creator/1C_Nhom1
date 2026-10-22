@@ -1,0 +1,16 @@
+{
+"run_id": "finance-e2e-20261022-034136-b5c7e151c04043a88687880bcfb6174a",
+"phase": "ar_fct_cash_funding_post_receipt",
+"user": "cfo_giamdoc",
+"status": "PASS",
+"error": "",
+"data": {
+"receipt_number": "E2E-PT-FCT-FUND",
+"posted": true,
+"amount_vnd": 225000000,
+"ar_balance_vnd": 0,
+"cash_balance_vnd": 337075000,
+"cash_rows": 1,
+"gl_rows": 1
+}
+}

@@ -1,0 +1,15 @@
+{
+"run_id": "finance-e2e-20261021-153444-beda6fc4ce8341e786bb97fe67c946f4",
+"phase": "ar_submit_invoice",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"invoice_number": "E2E-AR001",
+"external_ids_empty_before_issue": true,
+"draft_saved_unposted": true,
+"maker": "ketoan_ar",
+"status": "ChoKySo",
+"base_acceptance": "Biên bản nghiệm thu giai đoạn E2E-BB001 dated 10/10/2026 9:00:00 AM"
+}
+}

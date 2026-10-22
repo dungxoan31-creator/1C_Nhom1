@@ -1,0 +1,28 @@
+{
+"run_id": "finance-e2e-20261020-062307-c0332b6cc1f14b30b7b7920c7ce7413b",
+"phase": "posting_state_invariants",
+"user": "Admin",
+"status": "FAIL",
+"cases": [
+{
+"name": "UNC_DraftCannotBePosted",
+"passed": false,
+"error": "Draft payment invariant failed: Posted=Yes AP=0 Cash=0 GL=0"
+},
+{
+"name": "CancelledInvoiceCannotBePosted",
+"passed": false,
+"error": "Cancelled invoice invariant failed: Posted=Yes AR=0 GL=0"
+},
+{
+"name": "ZeroVATInvoiceTransfersAcceptanceAR",
+"passed": false,
+"error": "Zero-VAT debt transfer failed: Posted=Yes records=0 cleared=0 invoiced=0 expected=1,234,567"
+},
+{
+"name": "BatchApprovalRejectsDraft",
+"passed": false,
+"error": "Batch approval eligibility failed: success=1 failure=0 posted=Yes queued=No"
+}
+]
+}

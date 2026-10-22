@@ -1,0 +1,15 @@
+﻿=== Validation: Configuration.Configuration ===
+
+[WARN]  1. Format version '2.15' is below the tested range 2.17-2.21 — skills were not verified on it
+[OK]    1. Root structure: MetaDataObject/Configuration, version 2.15
+[OK]    2. InternalInfo: 7 ContainedObject, all ClassIds valid
+[OK]    3. Properties: Name="Configuration", Synonym present, DefaultLanguage=Language.TiengViet
+[OK]    4. Property values: 10 enum properties checked
+[OK]    5. ChildObjects: 19 types, 88 objects, order correct
+[OK]    6. DefaultLanguage "Language.TiengViet" found in ChildObjects
+[OK]    7. Language files: 2/2 exist
+[OK]    8. Object directories: 18 directories, all exist
+[OK]    9. Form references: none to check
+[OK]    10. Format version: 3 stamped Ext part(s) agree with Configuration.xml
+
+=== Result: 0 errors, 1 warnings (11 checks) ===

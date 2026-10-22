@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-153129-ed1d6cb2e5de45edb9ed8518d5461ea6",
+"phase": "cfo_issue_invoice",
+"user": "cfo_giamdoc",
+"status": "FAIL",
+"error": "Error calling context method (Write)\n{CommonModule.SeedBoundaryTestsServer.Module(1713)}:Doc.Write(DocumentWriteMode.Posting);\n{CommonModule.SeedBoundaryTestsServer.Module(39)}:Result.data = IssueFinanceE2ESalesInvoice();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError]\n, reason:\nFailed to post \"Hóa đơn GTGT đầu ra E2E-AR001 dated 10/10/2026 10:00:00 AM\"!\n[StoredDataError]",
+"data": {}
+}

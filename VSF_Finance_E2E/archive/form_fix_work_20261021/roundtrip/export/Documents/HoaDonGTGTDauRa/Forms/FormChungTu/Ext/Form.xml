@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.15">
+	<Title>
+		<v8:item>
+			<v8:lang>vi</v8:lang>
+			<v8:content>Hóa đơn GTGT đầu ra (AR) - VinSmart Future</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCmdXemChungTuLienQuan" id="64">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CmdXemChungTuLienQuan</CommandName>
+				<ExtendedTooltip name="FormCmdXemChungTuLienQuanExtendedTooltip" id="65"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<HTMLDocumentField name="TruongHTMLHeader" id="39">
+			<DataPath>NoiDungHTMLHeader</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ContextMenu name="TruongHTMLHeaderContextMenu" id="1"/>
+			<ExtendedTooltip name="TruongHTMLHeaderExtendedTooltip" id="2"/>
+		</HTMLDocumentField>
+		<Pages name="Pages" id="40">
+			<ExtendedTooltip name="PagesExtendedTooltip" id="3"/>
+			<ChildItems>
+				<Page name="ThongTinChung" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>1. Thông tin chung</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ThongTinChungExtendedTooltip" id="4"/>
+					<ChildItems>
+						<UsualGroup name="Group2Cot" id="42">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group2CotExtendedTooltip" id="5"/>
+							<ChildItems>
+								<UsualGroup name="CotTrai" id="43">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="CotTraiExtendedTooltip" id="6"/>
+									<ChildItems>
+										<InputField name="Number" id="44">
+											<DataPath>Object.Number</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ContextMenu name="NumberContextMenu" id="7"/>
+											<ExtendedTooltip name="NumberExtendedTooltip" id="8"/>
+										</InputField>
+										<InputField name="Date" id="45">
+											<DataPath>Object.Date</DataPath>
+											<ContextMenu name="DateContextMenu" id="9"/>
+											<ExtendedTooltip name="DateExtendedTooltip" id="10"/>
+										</InputField>
+										<InputField name="PhapNhan" id="46">
+											<DataPath>Object.PhapNhan</DataPath>
+											<ContextMenu name="PhapNhanContextMenu" id="11"/>
+											<ExtendedTooltip name="PhapNhanExtendedTooltip" id="12"/>
+										</InputField>
+										<InputField name="DoiTac" id="47">
+											<DataPath>Object.DoiTac</DataPath>
+											<ContextMenu name="DoiTacContextMenu" id="13"/>
+											<ExtendedTooltip name="DoiTacExtendedTooltip" id="14"/>
+										</InputField>
+										<InputField name="HopDong" id="48">
+											<DataPath>Object.HopDong</DataPath>
+											<ContextMenu name="HopDongContextMenu" id="15"/>
+											<ExtendedTooltip name="HopDongExtendedTooltip" id="16"/>
+										</InputField>
+										<InputField name="BienBanNghiemThu" id="49">
+											<DataPath>Object.BienBanNghiemThu</DataPath>
+											<ContextMenu name="BienBanNghiemThuContextMenu" id="17"/>
+											<ExtendedTooltip name="BienBanNghiemThuExtendedTooltip" id="18"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="CotPhai" id="50">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="CotPhaiExtendedTooltip" id="19"/>
+									<ChildItems>
+										<InputField name="TienChuaThue" id="51">
+											<DataPath>Object.TienChuaThue</DataPath>
+											<ContextMenu name="TienChuaThueContextMenu" id="20"/>
+											<ExtendedTooltip name="TienChuaThueExtendedTooltip" id="21"/>
+											<Events>
+												<Event name="OnChange">TienChuaThueOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="ThueSuatVAT" id="66">
+											<DataPath>Object.ThueSuatVAT</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Thuế suất GTGT (%)</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ThueSuatVATКонтекстноеМеню" id="67"/>
+											<ExtendedTooltip name="ThueSuatVATРасширеннаяПодсказка" id="68"/>
+										</InputField>
+										<CheckBoxField name="ApDungGiamThueGTGT" id="69">
+											<DataPath>Object.ApDungGiamThueGTGT</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Thuộc đối tượng được giảm thuế GTGT</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Chỉ chọn khi dịch vụ đã được phân loại đủ điều kiện giảm thuế. Nếu hóa đơn lấy từ BBNT, căn cứ thuế kế thừa từ BBNT.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ApDungGiamThueGTGTКонтекстноеМеню" id="70"/>
+											<ExtendedTooltip name="ApDungGiamThueGTGTРасширеннаяПодсказка" id="71"/>
+											<Events>
+												<Event name="OnChange">ApDungGiamThueGTGTOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="TienThueVAT" id="52">
+											<DataPath>Object.TienThueVAT</DataPath>
+											<ContextMenu name="TienThueVATContextMenu" id="22"/>
+											<ExtendedTooltip name="TienThueVATExtendedTooltip" id="23"/>
+										</InputField>
+										<InputField name="TongTienThanhToan" id="53">
+											<DataPath>Object.TongTienThanhToan</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ContextMenu name="TongTienThanhToanContextMenu" id="24"/>
+											<ExtendedTooltip name="TongTienThanhToanExtendedTooltip" id="25"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ChiTietHangHoa" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>2. Chi tiết hàng hóa/dịch vụ</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ChiTietHangHoaExtendedTooltip" id="26"/>
+					<ChildItems>
+						<InputField name="ChiTietTienChuaThue" id="55">
+							<DataPath>Object.TienChuaThue</DataPath>
+							<ContextMenu name="ChiTietTienChuaThueContextMenu" id="27"/>
+							<ExtendedTooltip name="ChiTietTienChuaThueExtendedTooltip" id="28"/>
+						</InputField>
+						<InputField name="ChiTietTienThueVAT" id="56">
+							<DataPath>Object.TienThueVAT</DataPath>
+							<ContextMenu name="ChiTietTienThueVATContextMenu" id="29"/>
+							<ExtendedTooltip name="ChiTietTienThueVATExtendedTooltip" id="30"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ThanhToanVaThue" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>3. Thuế &amp; HĐĐT</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ThanhToanVaThueExtendedTooltip" id="31"/>
+					<ChildItems>
+						<InputField name="ThueTienThueVAT" id="58">
+							<DataPath>Object.TienThueVAT</DataPath>
+							<ContextMenu name="ThueTienThueVATContextMenu" id="32"/>
+							<ExtendedTooltip name="ThueTienThueVATExtendedTooltip" id="33"/>
+						</InputField>
+						<InputField name="ThueTongTienThanhToan" id="59">
+							<DataPath>Object.TongTienThanhToan</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ThueTongTienThanhToanContextMenu" id="34"/>
+							<ExtendedTooltip name="ThueTongTienThanhToanExtendedTooltip" id="35"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="NhatKyVaGhiChu" id="60">
+					<Title>
+						<v8:item>
+							<v8:lang>vi</v8:lang>
+							<v8:content>4. Nhật ký &amp; Phê duyệt</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="NhatKyVaGhiChuExtendedTooltip" id="36"/>
+					<ChildItems>
+						<InputField name="DienGiai" id="61">
+							<DataPath>Object.DienGiai</DataPath>
+							<ContextMenu name="DienGiaiContextMenu" id="37"/>
+							<ExtendedTooltip name="DienGiaiExtendedTooltip" id="38"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="62">
+			<Type>
+				<v8:Type>cfg:DocumentObject.HoaDonGTGTDauRa</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="NoiDungHTMLHeader" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Nội dung HTML Header</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CmdXemChungTuLienQuan" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>vi</v8:lang>
+					<v8:content>Chứng từ liên quan</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CmdXemChungTuLienQuan</Action>
+		</Command>
+	</Commands>
+</Form>

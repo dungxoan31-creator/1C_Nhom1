@@ -1,0 +1,11 @@
+﻿{
+    "status":  "FAIL",
+    "user":  "ketoan_truong",
+    "infobase":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-171700-096b8f41a6854cc08bae36851d20d016\\e2e-infobase",
+    "workflow":  "BankSend",
+    "flow":  "native 1C UI → payment order → bank submission",
+    "verified":  [
+                     "payment order list rendered expected document"
+                 ],
+    "error":  "UI element not found: ControlType.Pane \u0027*Ủy nhiệm chi ngân hàng (AP)*VinSmart Future*\u0027."
+}

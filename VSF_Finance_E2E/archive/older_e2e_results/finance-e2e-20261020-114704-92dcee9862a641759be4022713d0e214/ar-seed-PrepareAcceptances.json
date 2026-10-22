@@ -1,0 +1,11 @@
+{
+"run_id": "finance-e2e-20261020-114704-92dcee9862a641759be4022713d0e214",
+"phase": "ar_seed_PrepareAcceptances",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"documents": 1260,
+"posted": false
+}
+}

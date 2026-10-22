@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Rights xmlns="http://v8.1c.ru/8.2/roles" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Rights" version="2.15">
+	<setForNewObjects>true</setForNewObjects>
+	<setForAttributesByDefault>true</setForAttributesByDefault>
+	<independentRightsOfChildObjects>false</independentRightsOfChildObjects>
+	<object>
+		<name>AccumulationRegister.DongTien</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Catalog.DuAn</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Document.UyNhiemChi</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Document.PhieuThuTienKhachHang</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Document.BienBanNghiemThuGiaiDoan</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+			<restrictionByCondition>
+				<field>Ref</field>
+				<condition>WHERE True</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>AccumulationRegister.CongNoPhaiTra</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>InformationRegister.PhanQuyenChiNhanh</name>
+		<right>
+			<name>Read</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>View</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>Edit</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>TotalsControl</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>ReadDataHistory</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>ReadDataHistoryOfMissingData</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>UpdateDataHistory</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>UpdateDataHistoryOfMissingData</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>UpdateDataHistoryVersionComment</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>ViewDataHistory</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>EditDataHistoryVersionComment</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>SwitchToDataHistoryVersion</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
+		<name>AccountingRegister.SoCaiKeToan</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Catalog.HopDong</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Document.DoiSoatKenhThanhToan</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>AccumulationRegister.CongNoPhaiThu</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>SessionParameter.CurrentBranch</name>
+		<right>
+			<name>Set</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
+		<name>Document.HoaDonNhaCungCap</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>InformationRegister.GiaoDichSaoKeDaNhap</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Catalog.PhapNhan</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE ChiNhanh = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Catalog.ChiNhanh</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE Ref = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>false</value>
+			<restrictionByCondition>
+				<condition>WHERE Ref = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>false</value>
+			<restrictionByCondition>
+				<condition>WHERE Ref = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>false</value>
+			<restrictionByCondition>
+				<condition>WHERE Ref = &amp;CurrentBranch</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>InteractiveInsert</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>Edit</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveDelete</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveSetDeletionMark</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveClearDeletionMark</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveDeleteMarked</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveDeletePredefinedData</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveSetDeletionMarkPredefinedData</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveClearDeletionMarkPredefinedData</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>InteractiveDeleteMarkedPredefinedData</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
+		<name>Report.SoChiTietCongNoAP</name>
+		<right>
+			<name>Use</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>View</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
+		<name>Document.CanTruCongNoNoiBo</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+	<object>
+		<name>Document.HoaDonGTGTDauRa</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Insert</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Delete</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Posting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>UndoPosting</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>WHERE PhapNhan IN (SELECT Ref FROM Catalog.PhapNhan WHERE ChiNhanh = &amp;CurrentBranch)</condition>
+			</restrictionByCondition>
+		</right>
+	</object>
+</Rights>

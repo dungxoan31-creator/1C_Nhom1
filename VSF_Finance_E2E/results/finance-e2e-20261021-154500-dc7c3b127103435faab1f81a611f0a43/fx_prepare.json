@@ -1,0 +1,16 @@
+{
+"run_id": "finance-e2e-20261021-154500-dc7c3b127103435faab1f81a611f0a43",
+"phase": "fx_prepare",
+"user": "Admin",
+"status": "PASS",
+"error": "",
+"data": {
+"currency": "USD",
+"bank": "TK-E2E-USD",
+"customer_contract": "HD-E2E-CUSTOMER-USD",
+"opening_vnd": 0,
+"opening_usd": 0,
+"invoice_gain": "E2E-ARUSD-GAIN",
+"invoice_loss": "E2E-ARUSD-LOSS"
+}
+}

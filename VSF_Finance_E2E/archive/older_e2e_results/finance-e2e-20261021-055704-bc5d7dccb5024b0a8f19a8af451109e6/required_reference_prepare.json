@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261021-055704-bc5d7dccb5024b0a8f19a8af451109e6",
+"phase": "required_reference_prepare",
+"user": "ketoan_ar",
+"status": "FAIL",
+"error": "Partner-missing fixture was not saved as an unposted document by the authenticated AR maker.\n{CommonModule.SeedBoundaryTestsServer.Module(3823)}:Raise \"Partner-missing fixture was not saved as an unposted document by the authenticated AR maker.\";\n{CommonModule.SeedBoundaryTestsServer.Module(14)}:Result.data = PrepareRequiredReferencePostingFixtures();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ExceptionRaisedFromScript]",
+"data": {}
+}

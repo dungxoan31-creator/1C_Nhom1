@@ -1,0 +1,8 @@
+{
+"run_id": "finance-e2e-20261020-165907-a3be1a7f9c3046f19bb5f08504389d59",
+"phase": "ktt_approve_payment",
+"user": "ketoan_truong",
+"status": "FAIL",
+"error": "Object method not found (PheDuyetHangLoat)\n{CommonModule.SeedBoundaryTestsServer.Module(1666)}:ApprovalResult = DataProcessors.BanLamViecWebERP.PheDuyetHangLoat(PaymentRefs);\n{CommonModule.SeedBoundaryTestsServer.Module(34)}:Result.data = ApproveFinanceE2EPayment();\n{ManagedApplicationModule(28)}:SeedBoundaryTestsServer.RunFinanceE2EPhase(ParamParts[1], ParamParts[2], ParamParts[3]);\n\n[ScriptRuntimeError, ScriptUseError]",
+"data": {}
+}

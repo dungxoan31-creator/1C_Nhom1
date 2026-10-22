@@ -1,0 +1,26 @@
+{
+"run_id": "finance-e2e-20261021-032854-9d78ce973ceb45e78c19d0ce96219848",
+"phase": "required_reference_prepare",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"fixtures": [
+{
+"name": "missing_partner",
+"number": "E2E-REQ-NOPARTN",
+"maker": "ketoan_ar"
+},
+{
+"name": "missing_contract",
+"number": "E2E-REQ-NOCONTR",
+"maker": "ketoan_ar"
+},
+{
+"name": "mismatched_contract_owner",
+"number": "E2E-REQ-MISMATC",
+"maker": "ketoan_ar"
+}
+]
+}
+}

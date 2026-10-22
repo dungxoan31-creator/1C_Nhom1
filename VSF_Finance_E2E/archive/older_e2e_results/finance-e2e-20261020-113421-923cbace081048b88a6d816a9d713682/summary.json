@@ -1,0 +1,546 @@
+﻿{
+    "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+    "status":  "FAIL",
+    "error":  "Dashboard runtime assertions failed: {\"TongDoanhThu\":490000000,\"SoHoaDonBan\":3,\"NoPhaiThu\":271234567,\"NoPhaiThuQuaHan\":0,\"NoPhaiTra\":500000001,\"NoPhaiTraDenHan\":0,\"TienKhaDung\":112075000,\"TopNoQuaHan\":[],\"TopChungTuChoDuyet\":[{\"LoaiChungTu\":\"HoaDonGTGTDauRa\",\"TenLoaiChungTu\":\"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\"SoChungTu\":\"E2E-INV-CANCEL\",\"NgayChungTu\":\"20/10/2026\",\"SoTien\":1234567},{\"LoaiChungTu\":\"HoaDonGTGTDauRa\",\"TenLoaiChungTu\":\"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\"SoChungTu\":\"E2E-INV-ZVAT\",\"NgayChungTu\":\"20/10/2026\",\"SoTien\":1234567},{\"LoaiChungTu\":\"HoaDonGTGTDauRa\",\"TenLoaiChungTu\":\"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\"SoChungTu\":\"E2E-INV-TX-GOOD\",\"NgayChungTu\":\"20/10/2026\",\"SoTien\":1234567},{\"LoaiChungTu\":\"HoaDonGTGTDauRa\",\"TenLoaiChungTu\":\"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\"SoChungTu\":\"E2E-INV-TX-BAD\",\"NgayChungTu\":\"20/10/2026\",\"SoTien\":1234567}],\"BieuDoDoanhThu\":[{\"Ky\":\"05/2026\",\"DoanhThu\":0,\"TienThu\":0},{\"Ky\":\"06/2026\",\"DoanhThu\":0,\"TienThu\":0},{\"Ky\":\"07/2026\",\"DoanhThu\":0,\"TienThu\":0},{\"Ky\":\"08/2026\",\"DoanhThu\":0,\"TienThu\":0},{\"Ky\":\"09/2026\",\"DoanhThu\":0,\"TienThu\":0},{\"Ky\":\"10/2026\",\"DoanhThu\":490000000,\"TienThu\":219200000}],\"BieuDoTuoiNo\":[{\"Nhom\":\"TrongHan\",\"SoTien\":271234567},{\"Nhom\":\"QuaHan1Den30\",\"SoTien\":0},{\"Nhom\":\"QuaHan31Den60\",\"SoTien\":0},{\"Nhom\":\"QuaHan61Den90\",\"SoTien\":0},{\"Nhom\":\"QuaHanTren90\",\"SoTien\":0}]}",
+    "completed_phases":  [
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "setup",
+                                 "user":  "Admin",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "legal_entity":  "PN-VSF",
+                                              "customer":  "TEST_VG_VINFAST_VN",
+                                              "customer_contract":  "HD-TEST_VG_VINFAST_VN-2025",
+                                              "vendor":  "E2E_AWS_VND",
+                                              "vendor_contract":  "HD-E2E-AWS-VND-2026",
+                                              "bank_account":  "TK-E2E-VND",
+                                              "opening_cash_vnd":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ar_submit_acceptance",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoDuyetNoiBo",
+                                              "net_vnd":  200000000,
+                                              "vat_vnd":  16000000,
+                                              "gross_vnd":  216000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "cfo_approve_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "approver":  "cfo_giamdoc",
+                                              "status":  "DaDuyetNoiBo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "cfo_post_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_number":  "E2E-BB001",
+                                              "approver":  "cfo_giamdoc",
+                                              "posted":  true,
+                                              "status":  "DaGhiSo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ar_submit_invoice",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AR001",
+                                              "sales_invoice_number":  "E2EINV-001",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoKySo",
+                                              "base_acceptance":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-BB001 dated 10/10/2026 9:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "cfo_issue_invoice",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AR001",
+                                              "approver":  "cfo_giamdoc",
+                                              "posted":  true,
+                                              "net_vnd":  200000000,
+                                              "vat_vnd":  16000000,
+                                              "gross_vnd":  216000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ar_create_receipts",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "receipt_number":  "E2E-PT001",
+                                              "receipt_amount_vnd":  216000000,
+                                              "over_receipt_number":  "E2E-NEG01",
+                                              "over_receipt_amount_vnd":  216000001,
+                                              "source_invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR001 dated 10/10/2026 10:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "cfo_post_receipts",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "receipt_posted":  true,
+                                              "ar_invoice_residual_vnd":  0,
+                                              "over_receipt_posted":  false,
+                                              "over_receipt_ar_movements":  0,
+                                              "over_receipt_gl_movements":  0,
+                                              "over_receipt_cash_movements":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ap_submit_invoice",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AP001",
+                                              "maker":  "ketoan_ap",
+                                              "approver":  "ketoan_truong",
+                                              "status":  "ChoKeToanTruongDuyet",
+                                              "gross_vnd":  200000000,
+                                              "fct_vat_vnd":  10000000,
+                                              "fct_cit_vnd":  10000000,
+                                              "net_payable_vnd":  180000000,
+                                              "expense_vnd":  190000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ktt_post_ap_invoice",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice_number":  "E2E-AP001",
+                                              "approver":  "ketoan_truong",
+                                              "posted":  true,
+                                              "gross_vnd":  200000000,
+                                              "net_payable_vnd":  180000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ap_submit_payment",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "payment_number":  "E2E-UNC01",
+                                              "maker":  "ketoan_ap",
+                                              "status":  "ChoDuyet",
+                                              "amount_vnd":  180000000,
+                                              "fee_vnd":  0,
+                                              "source_invoice":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-AP001 dated 10/13/2026 9:00:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "ktt_approve_payment",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "payment_number":  "E2E-UNC01",
+                                              "approver":  "ketoan_truong",
+                                              "status":  "DaGuiNganHang"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "cfo_post_payment_verify",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance_posted":  true,
+                                              "sales_invoice_posted":  true,
+                                              "receipt_posted":  true,
+                                              "ap_invoice_posted":  true,
+                                              "payment_posted":  true,
+                                              "ar_bbnt_residual_vnd":  0,
+                                              "ar_invoice_residual_vnd":  0,
+                                              "ap_invoice_residual_vnd":  0,
+                                              "fct_vat_outstanding_vnd":  10000000,
+                                              "fct_cit_outstanding_vnd":  10000000,
+                                              "gl_bank_debit_vnd":  216000000,
+                                              "gl_bank_credit_vnd":  180000000,
+                                              "gl_ar_debit_vnd":  216000000,
+                                              "gl_ar_credit_vnd":  216000000,
+                                              "gl_ap_debit_vnd":  180000000,
+                                              "gl_ap_credit_vnd":  180000000,
+                                              "sales_vat_outstanding_vnd":  16000000,
+                                              "bank_closing_vnd":  36000000,
+                                              "opening_cash_vnd":  0,
+                                              "ar_receipt_vnd":  216000000,
+                                              "ap_payment_vnd":  180000000,
+                                              "payment_number":  "E2E-UNC01"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_submit_acceptance",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "ar_source":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-NT-AR001 dated 10/20/2026 9:00:00 AM",
+                                              "base_vnd":  40000000,
+                                              "vat_vnd":  3200000,
+                                              "gross_vnd":  43200000,
+                                              "maker":  "ketoan_ar"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_post_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "ar_source_posted":  true,
+                                              "ar_open_vnd":  40000000,
+                                              "approver":  "cfo_giamdoc"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_submit_output_invoice",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR-NT001 dated 10/20/2026 9:30:00 AM",
+                                              "acceptance":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-NT-AR001 dated 10/20/2026 9:00:00 AM",
+                                              "base_vnd":  40000000,
+                                              "vat_vnd":  3200000,
+                                              "gross_vnd":  43200000,
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoKySo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_issue_output_invoice",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "E2E-AR-NT001",
+                                              "acceptance":  "E2E-NT-AR001",
+                                              "posted":  true,
+                                              "net_vnd":  40000000,
+                                              "vat_vnd":  3200000,
+                                              "gross_ar_vnd":  43200000,
+                                              "approver":  "cfo_giamdoc"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_submit_ap",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "ap_source":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-AP-NT001 dated 10/20/2026 10:00:00 AM",
+                                              "maker":  "ketoan_ap",
+                                              "approver":  "ketoan_truong",
+                                              "payable_vnd":  40000000,
+                                              "status":  "ChoKeToanTruongDuyet"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_post_ap",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "ap_source_posted":  true,
+                                              "ap_open_vnd":  40000000,
+                                              "approver":  "ketoan_truong"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_post_verify",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "netting_posted":  true,
+                                              "ar_open_before_vnd":  43200000,
+                                              "ap_open_before_vnd":  40000000,
+                                              "ar_open_after_vnd":  3200000,
+                                              "ap_open_after_vnd":  0,
+                                              "gl_debit":  "3312",
+                                              "gl_credit":  "1312",
+                                              "unpost_repost":  true,
+                                              "over_available_balance_rejected":  true,
+                                              "exhausted_ap_rejected":  true,
+                                              "cash_movements":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_create_remaining_receipt",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "receipt_number":  "E2E-PT-NT001",
+                                              "maker":  "ketoan_ar",
+                                              "amount_vnd":  3200000,
+                                              "source":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-AR-NT001 dated 10/20/2026 9:30:00 AM"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "netting_post_remaining_receipt",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "receipt_posted":  true,
+                                              "ar_closing_vnd":  0,
+                                              "bank_increase_vnd":  3200000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "payment_reconciliation",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "channel":  "VNPAY",
+                                              "gross_vnd":  75000000,
+                                              "fee_vnd":  1125000,
+                                              "fee_percent":  1.5,
+                                              "net_vnd":  73875000,
+                                              "bank_before_vnd":  39200000,
+                                              "bank_after_vnd":  113075000,
+                                              "gl_rows":  2,
+                                              "unpost_repost":  true,
+                                              "one_vnd_imbalance_rejected":  true
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "approval_setup",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "low_invoice":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-LOW dated 10/15/2026 9:00:00 AM",
+                                              "high_invoice":  "HÃ³a Ä‘Æ¡n Ä‘áº§u vÃ o (nhÃ  cung cáº¥p) E2E-BULK-HIGH dated 10/15/2026 10:00:00 AM",
+                                              "payment":  "á»¦y nhiá»‡m chi E2E-BULK-PAY dated 10/16/2026 9:00:00 AM",
+                                              "maker":  "ketoan_ap",
+                                              "maker_queue_count":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "approval_ar_queue",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "user":  "ketoan_ar",
+                                              "queue_count":  0
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "approval_ktt",
+                                 "user":  "ketoan_truong",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "batch_success":  3,
+                                              "batch_failure":  0,
+                                              "low_invoice_posted":  true,
+                                              "low_invoice_gl_rows":  1,
+                                              "high_invoice_waiting_cfo":  true,
+                                              "payment_waiting_cfo":  true,
+                                              "ktt_queue_after_escalation":  0,
+                                              "ktt_forbidden_attempt_rejected":  true
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "approval_cfo",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "batch_success":  2,
+                                              "batch_failure":  0,
+                                              "high_invoice_posted":  true,
+                                              "high_invoice_ap_residual_vnd":  499000001,
+                                              "payment_posted":  true,
+                                              "payment_source_ap_residual_vnd":  499000001,
+                                              "bank_opening_vnd":  113075000,
+                                              "expected_bank_closing_vnd":  112075000,
+                                              "bank_closing_vnd":  112075000,
+                                              "high_invoice_gl_rows":  1,
+                                              "payment_gl_rows":  1,
+                                              "payment_cash_rows":  1
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "posting_invariant_setup_ap",
+                                 "user":  "ketoan_ap",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "draft_payment":  "á»¦y nhiá»‡m chi E2E-INV-DRAFT dated 10/20/2026 8:00:00 AM",
+                                              "batch_payment":  "á»¦y nhiá»‡m chi E2E-INV-BULK dated 10/20/2026 8:00:00 AM",
+                                              "maker":  "ketoan_ap"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "posting_invariant_setup_acceptance",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-INV-ZVAT-BB dated 10/20/2026 9:00:00 AM",
+                                              "maker":  "ketoan_ar",
+                                              "status":  "ChoDuyetNoiBo"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "posting_invariant_post_acceptance",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "acceptance":  "BiÃªn báº£n nghiá»‡m thu giai Ä‘oáº¡n E2E-INV-ZVAT-BB dated 10/20/2026 9:00:00 AM",
+                                              "approver":  "cfo_giamdoc",
+                                              "status":  "DaGhiSo",
+                                              "posted":  true
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "posting_invariant_setup_ar_invoices",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "cancelled_invoice":  "E2E-INV-CANCEL",
+                                              "zero_vat_invoice":  "E2E-INV-ZVAT",
+                                              "transaction_valid":  "E2E-INV-TX-GOOD",
+                                              "transaction_invalid":  "E2E-INV-TX-BAD",
+                                              "maker":  "ketoan_ar"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "concurrency_setup",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+                                              "invoice_status":  "ChoKySo",
+                                              "maker":  "ketoan_ar",
+                                              "expected_ar_vnd":  270000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "concurrency_post_invoice",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "E2E-CONC-AR-INV",
+                                              "approver":  "cfo_giamdoc",
+                                              "status":  "DaPhatHanh",
+                                              "posted":  true,
+                                              "amount_vnd":  270000000
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "concurrency_receipt_setup",
+                                 "user":  "ketoan_ar",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "invoice":  "HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra E2E-CONC-AR-INV dated 10/17/2026 9:00:00 AM",
+                                              "opening_ar_vnd":  270000000,
+                                              "receipt_1":  "E2E-CONC-PT-1",
+                                              "receipt_2":  "E2E-CONC-PT-2",
+                                              "maker":  "ketoan_ar"
+                                          }
+                             },
+                             {
+                                 "run_id":  "finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+                                 "phase":  "dashboard_verify",
+                                 "user":  "cfo_giamdoc",
+                                 "status":  "PASS",
+                                 "error":  "",
+                                 "data":  {
+                                              "month_json":  "{\r\n\"TongDoanhThu\": 490000000,\r\n\"SoHoaDonBan\": 3,\r\n\"NoPhaiThu\": 271234567,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 500000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 112075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuChoDuyet\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 490000000,\r\n\"TienThu\": 219200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 271234567\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+                                              "quarter_json":  "{\r\n\"TongDoanhThu\": 490000000,\r\n\"SoHoaDonBan\": 3,\r\n\"NoPhaiThu\": 271234567,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 500000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 112075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuChoDuyet\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 490000000,\r\n\"TienThu\": 219200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 271234567\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+                                              "year_json":  "{\r\n\"TongDoanhThu\": 490000000,\r\n\"SoHoaDonBan\": 3,\r\n\"NoPhaiThu\": 271234567,\r\n\"NoPhaiThuQuaHan\": 0,\r\n\"NoPhaiTra\": 500000001,\r\n\"NoPhaiTraDenHan\": 0,\r\n\"TienKhaDung\": 112075000,\r\n\"TopNoQuaHan\": [],\r\n\"TopChungTuChoDuyet\": [\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-CANCEL\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-ZVAT\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-GOOD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n},\r\n{\r\n\"LoaiChungTu\": \"HoaDonGTGTDauRa\",\r\n\"TenLoaiChungTu\": \"HÃ³a Ä‘Æ¡n GTGT Ä‘áº§u ra\",\r\n\"SoChungTu\": \"E2E-INV-TX-BAD\",\r\n\"NgayChungTu\": \"20/10/2026\",\r\n\"SoTien\": 1234567\r\n}\r\n],\r\n\"BieuDoDoanhThu\": [\r\n{\r\n\"Ky\": \"05/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"06/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"07/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"08/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"09/2026\",\r\n\"DoanhThu\": 0,\r\n\"TienThu\": 0\r\n},\r\n{\r\n\"Ky\": \"10/2026\",\r\n\"DoanhThu\": 490000000,\r\n\"TienThu\": 219200000\r\n}\r\n],\r\n\"BieuDoTuoiNo\": [\r\n{\r\n\"Nhom\": \"TrongHan\",\r\n\"SoTien\": 271234567\r\n},\r\n{\r\n\"Nhom\": \"QuaHan1Den30\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan31Den60\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHan61Den90\",\r\n\"SoTien\": 0\r\n},\r\n{\r\n\"Nhom\": \"QuaHanTren90\",\r\n\"SoTien\": 0\r\n}\r\n]\r\n}",
+                                              "unsupported_period_rejected":  true,
+                                              "expected_revenue":  490000000,
+                                              "expected_gl_revenue":  491234567,
+                                              "expected_receipts":  216000000,
+                                              "expected_invoice_count":  3,
+                                              "expected_ar":  271234567,
+                                              "expected_ap":  500000001,
+                                              "expected_cash":  112075000,
+                                              "expected_positive_ar":  271234567
+                                          }
+                             }
+                         ],
+    "posting_lifecycle":  null,
+    "gl_subledger_integrity":  null,
+    "ap_invoice_posting_lifecycle":  null,
+    "posting_state_invariants":  null,
+    "ar_concurrency":  null,
+    "boundary_tests":  null,
+    "ar_seed_regression":  null,
+    "ap_seed_regression":  null,
+    "temp_root":  "C:\\Users\\Dung\\AppData\\Local\\Temp\\VSF_finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682",
+    "base_infobase":  ".\\VSF_Finance_E2E\\dt_working\\restore_dashboard_net_revenue_verified_20261020",
+    "artifact_root":  "C:\\Users\\Dung\\Documents\\VSF TEST\\VSF_Finance_E2E\\results\\finance-e2e-20261020-113421-923cbace081048b88a6d816a9d713682"
+}

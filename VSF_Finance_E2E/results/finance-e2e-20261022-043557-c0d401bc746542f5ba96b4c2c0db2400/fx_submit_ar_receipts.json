@@ -1,0 +1,17 @@
+{
+"run_id": "finance-e2e-20261022-043557-c0d401bc746542f5ba96b4c2c0db2400",
+"phase": "fx_submit_ar_receipts",
+"user": "ketoan_ar",
+"status": "PASS",
+"error": "",
+"data": {
+"gain_receipt": "E2E-PTUSD-GAIN",
+"gain_rate": 25100,
+"gain_cash_vnd": 27108000,
+"loss_receipt": "E2E-PTUSD-LOSS",
+"loss_rate": 25000,
+"loss_cash_vnd": 25000000,
+"over_receipt": "E2E-PTUSD-OVER",
+"over_foreign": 1081
+}
+}
