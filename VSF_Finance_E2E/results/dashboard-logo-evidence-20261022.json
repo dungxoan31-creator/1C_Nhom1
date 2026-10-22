@@ -1,0 +1,17 @@
+﻿{
+    "status":  "PASS",
+    "compiled":  "Designer configuration successfully updated in an isolated infobase",
+    "visual_check":  "1C dashboard header displays the supplied transparent VinSmart Future logo without distortion",
+    "user":  "ketoan_truong",
+    "screenshots":  [
+                        "dashboard-logo-vinsmart-20261022.png",
+                        "dashboard-logo-header-20261022.png"
+                    ],
+    "source":  "Configuration/CommonTemplates/MauHTMLTrangChu/Ext/Template.txt",
+    "root_dt":  "VinSmart_Future_AdminFull_v5_SuaFont.dt",
+    "candidate_dt":  "VSF_Finance_E2E/dt_working/ui_ux_refinement_20261022/VinSmart_Future_UIUX_candidate_20261022.dt",
+    "compile_logs":  [
+                         "dashboard-logo-compile-20261022.log",
+                         "dashboard-logo-compile-candidate-20261022.log"
+                     ]
+}
